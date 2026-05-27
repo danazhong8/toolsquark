@@ -28,9 +28,10 @@
       background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
       min-height: 100vh;
       display: flex;
+      flex-direction: column; /* 改为纵向排列，确保FAQ在底部 */
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 40px 20px;
       color: #222;
     }
 
@@ -41,6 +42,7 @@
       border-radius: 20px;
       padding: 30px 24px;
       box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px; /* 与底部文字保持间距 */
     }
 
     .title {
@@ -120,6 +122,36 @@
       color: #9ca3af;
     }
 
+    /* FAQ 底部文字样式优化 */
+    .faq-section {
+      width: 100%;
+      max-width: 600px; /* 限制底部文字的最大宽度，方便阅读 */
+      margin: 20px auto 0 auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.6); /* 稍微加点透明背景，呼应主卡片 */
+      border-radius: 16px;
+    }
+
+    .faq-section h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #111827;
+      text-align: center;
+    }
+
+    .faq-section h3 {
+      font-size: 16px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #374151;
+    }
+
+    .faq-section p {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
     @media (max-width: 480px) {
       .container {
         padding: 24px 18px;
@@ -183,6 +215,22 @@
     </div>
   </div>
 
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is BMI?</h3>
+    <p>BMI stands for Body Mass Index. It is a simple way to measure body fat based on height and weight.</p>
+
+    <h3>How is BMI calculated?</h3>
+    <p>BMI is calculated by dividing weight by height squared.</p>
+
+    <h3>What is a healthy BMI?</h3>
+    <p>A healthy BMI is generally between 18.5 and 24.9.</p>
+
+    <h3>Is this BMI calculator free?</h3>
+    <p>Yes, this online BMI calculator is completely free to use.</p>
+  </section>
+
   <script>
     const heightInput = document.getElementById("height");
     const weightInput = document.getElementById("weight");
@@ -223,20 +271,5 @@
     heightInput.addEventListener("input", calculateBMI);
     weightInput.addEventListener("input", calculateBMI);
   </script>
-<section style="max-width:800px;margin:50px auto;padding:20px;">
-  <h2>Frequently Asked Questions</h2>
-
-  <h3>What is BMI?</h3>
-  <p>BMI stands for Body Mass Index. It is a simple way to measure body fat based on height and weight.</p>
-
-  <h3>How is BMI calculated?</h3>
-  <p>BMI is calculated by dividing weight by height squared.</p>
-
-  <h3>What is a healthy BMI?</h3>
-  <p>A healthy BMI is generally between 18.5 and 24.9.</p>
-
-  <h3>Is this BMI calculator free?</h3>
-  <p>Yes, this online BMI calculator is completely free to use.</p>
-</section>
 </body>
 </html>
