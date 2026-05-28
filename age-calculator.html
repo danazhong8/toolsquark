@@ -3,29 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Age Calculator | Free Online Age Calculator - ToolsQuark</title>
+  <title>Age Calculator | Free Online Age Calculator</title>
   <meta name="description" content="Free online Age Calculator. Calculate your exact age in years, months, and days instantly with ToolsQuark." />
-  <meta name="keywords" content="Age Calculator, Online Age Calculator, Calculate Age, Date Calculator, Birthday Calculator" />
+  <meta name="keywords" content="Age Calculator, Online Age Calculator, Calculate Age, Date Calculator" />
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
+      font-family: Arial, Helvetica, sans-serif;
       background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding: 40px 20px;
       color: #222;
     }
 
-    /* 主计算器卡片 - 与 BMI 卡片尺寸和视觉完全一致 */
+    .tool-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 6px;
+      border-radius: 30px;
+      backdrop-filter: blur(5px);
+    }
+
+    .tool-tabs a {
+      padding: 8px 18px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: 0.2s;
+    }
+
+    .tool-tabs .active {
+      background: #111827;
+      color: #fff;
+    }
+
+    .tool-tabs .inactive {
+      color: #4b5563;
+    }
+
+    .tool-tabs .inactive:hover {
+      background: rgba(255, 255, 255, 0.6);
+      color: #111827;
+    }
+
     .container {
       width: 100%;
       max-width: 420px;
@@ -36,7 +68,7 @@
       margin-bottom: 30px;
     }
 
-    h1.title {
+    h1 {
       text-align: center;
       font-size: 32px;
       font-weight: bold;
@@ -52,10 +84,6 @@
       line-height: 1.5;
     }
 
-    .input-group {
-      margin-bottom: 20px;
-    }
-
     label {
       display: block;
       margin-bottom: 8px;
@@ -63,20 +91,14 @@
       color: #374151;
     }
 
-    input[type="date"] {
+    input {
       width: 100%;
       padding: 14px;
       border: 1px solid #d1d5db;
       border-radius: 12px;
+      margin-bottom: 20px;
       font-size: 16px;
       outline: none;
-      transition: 0.3s;
-      background-color: #fff;
-    }
-
-    input[type="date"]:focus {
-      border-color: #111827;
-      box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.1);
     }
 
     button {
@@ -87,50 +109,32 @@
       border: none;
       border-radius: 12px;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 4px 12px rgba(17, 24, 39, 0.15);
     }
 
     button:hover {
       background: #374151;
-      transform: translateY(-1px);
     }
 
-    button:active {
-      transform: translateY(0);
-    }
-
-    /* 结果区域框 */
-    .result-box {
+    .result {
       margin-top: 25px;
+      padding: 20px;
       background: #f9fafb;
       border-radius: 16px;
-      padding: 22px;
+      font-size: 16px;
       text-align: center;
-      border: 1px solid #e5e7eb;
-    }
-
-    .result-value {
-      font-size: 20px;
       font-weight: bold;
-      color: #111827;
+      border: 1px solid #e5e7eb;
+      color: #2563eb;
       line-height: 1.5;
     }
 
-    .footer-text {
-      margin-top: 25px;
-      text-align: center;
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    /* 下方内容区外盒 - 呼应 BMI 页面的下半部分 */
     .content-section {
       width: 100%;
       max-width: 650px;
-      margin: 20px auto 0 auto;
+      margin: 10px auto 0 auto;
       padding: 30px 24px;
       background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(10px);
@@ -157,176 +161,113 @@
       padding-left: 10px;
     }
 
-    .content-section p {
+    .content-section h3 {
+      font-size: 15px;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .content-section p, .content-section li {
       font-size: 14px;
       color: #4b5563;
       line-height: 1.7;
     }
 
-    /* 特性/优势网格卡片 */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 15px;
+    .content-section ul {
+      padding-left: 20px;
+      margin-top: 10px;
     }
 
-    .feature-card {
-      background: #fff;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid #e5e7eb;
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }
-
-    .feature-card h4 {
-      font-size: 14px;
-      color: #111827;
-      margin-bottom: 4px;
-      font-weight: bold;
-    }
-
-    .feature-card p {
-      font-size: 12px;
-      color: #6b7280;
-      line-height: 1.4;
-    }
-
-    /* FAQ 内部列表样式 */
-    .faq-item {
-      margin-bottom: 16px;
-    }
-
-    .faq-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .faq-item h3 {
-      font-size: 14px;
-      color: #1f2937;
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-
-    /* 版权页脚 */
     .site-footer {
       text-align: center;
-      margin-top: 40px;
-      color: #9ca3af;
-      font-size: 13px;
+      margin-top: auto;
+      padding-top: 50px;
+      padding-bottom: 15px;
       width: 100%;
+      max-width: 650px;
     }
 
-    /* 响应式断点 */
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: #6b7280;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #111827;
+      text-decoration: underline;
+    }
+
+    .copyright {
+      color: #9ca3af;
+      font-size: 12px;
+    }
+
     @media (max-width: 480px) {
-      .container {
-        padding: 24px 18px;
-      }
-      h1.title { font-size: 28px; }
-      .result-value { font-size: 18px; }
-      .features-grid { grid-template-columns: 1fr; } /* 移动端变为单列 */
+      body { padding: 25px 15px; }
+      .container { padding: 24px 18px; }
+      h1 { font-size: 28px; }
       .content-section { padding: 20px 16px; }
+      .footer-links { gap: 16px; }
     }
-  <style>
-  /* 这里是原有的 CSS 样式... */
-  .container {
-    width: 100%;
-    max-width: 420px;
-  }
-
-  /* ========================================== */
-  /* 【正确位置】新样式应该加在这里，也就是原样式的下方 */
-  /* ========================================== */
-  .site-footer {
-    text-align: center;
-    margin-top: 50px;
-  }
-</style></style>
+  </style>
 </head>
-
 <body>
 
+  <nav class="tool-tabs">
+    <a href="index.html" class="inactive">BMI Calculator</a>
+    <a href="age-calculator.html" class="active">Age Calculator</a>
+  </nav>
+
   <div class="container">
-    <h1 class="title">Age Calculator</h1>
-    <p class="subtitle">
-      Calculate your exact age in years, months, and days instantly.
-    </p>
+    <h1>Age Calculator</h1>
+    <p class="subtitle">Calculate your exact age in years, months, and days instantly.</p>
 
-    <div class="input-group">
-      <label for="birthdate">Enter Your Birth Date</label>
-      <input type="date" id="birthdate" />
-    </div>
+    <label for="birthdate">Enter Your Birth Date</label>
+    <input type="date" id="birthdate" />
 
-    <button onclick="calculateAge()">
-      Calculate Age
-    </button>
+    <button onclick="calculateAge()">Calculate Age</button>
 
-    <div class="result-box">
-      <div class="result-value" id="result">
-        Your age will appear here.
-      </div>
-    </div>
-
-    <div class="footer-text">
-      Free Age Calculator Tool
+    <div class="result" id="result">
+      Your age will appear here.
     </div>
   </div>
 
   <main class="content-section">
-    
     <section class="section-block">
       <h2>How to Use the Age Calculator</h2>
-      <p>
-        Select your correct date of birth using the date picker input above, then simply click the "Calculate Age" button. 
-        The system will breakdown the duration and instantly display your chronological age down to the exact number of years, months, and days.
-      </p>
+      <p>Select your specific birth date parameter within the picker field structure above and strike the evaluation action. The interface renders structural timeline outputs instantly.</p>
     </section>
 
     <section class="section-block">
-      <h2>Why Use an Age Calculator?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <h4>Accurate & Instant</h4>
-          <p>Eliminate manual calendar math and leap year confusion instantly.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Official Records</h4>
-          <p>Perfect for filling out background forms, visa applications, and registrations.</p>
-        </div>
-        <div class="feature-card">
-          <h4>100% Free Tool</h4>
-          <p>Enjoy unlimited calculations anytime without any hidden premium walls.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Fully Responsive</h4>
-          <p>Optimized seamlessly for flawless usage on both desktop and smartphones.</p>
-        </div>
-      </div>
+      <h2>Why Use our Utility?</h2>
+      <ul>
+        <li>Acquire granular breakdowns across year, month, and day matrix values instantly.</li>
+        <li>Optimize accurate verification records for formal data logs.</li>
+        <li>Lightweight deployment layer ensures client-side privacy.</li>
+      </ul>
     </section>
 
     <section class="section-block">
       <h2>Frequently Asked Questions</h2>
-      
-      <div class="faq-item">
-        <h3>What is an Age Calculator?</h3>
-        <p>An Age Calculator is a digital tool designed to determine the precise time gap between an individual's birth date and the current date or a targeted milestone date.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Does this calculator store my data?</h3>
-        <p>No, your privacy is completely safe. All calculations execute locally inside your own web browser. No personal birthday data is transmitted or saved onto our servers.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Can I use this tool on mobile?</h3>
-        <p>Yes, the layout features adaptive grid systems that automatically adjust to offer an ideal viewing experience on any mobile screen scale.</p>
-      </div>
+      <h3>Is this Age Calculator free?</h3>
+      <p>Yes, this utility operates completely free with zero gated computational limits.</p>
+      <h3>Does this calculator store my data?</h3>
+      <p>No. All scripts run entirely on local processing modules. No metrics cross network ports.</p>
     </section>
-
   </main>
 
- <footer class="site-footer">
+  <footer class="site-footer">
     <div class="footer-links">
       <a href="about.html">About Us</a>
       <a href="privacy.html">Privacy Policy</a>
@@ -340,38 +281,27 @@
   <script>
     function calculateAge() {
       const birthInput = document.getElementById("birthdate").value;
-
       if (!birthInput) {
         document.getElementById("result").innerText = "Please select your birth date.";
         return;
       }
-
       const birthDate = new Date(birthInput);
       const today = new Date();
-
       let years = today.getFullYear() - birthDate.getFullYear();
       let months = today.getMonth() - birthDate.getMonth();
       let days = today.getDate() - birthDate.getDate();
 
       if (days < 0) {
         months--;
-        const previousMonth = new Date(
-          today.getFullYear(),
-          today.getMonth(),
-          0
-        );
+        const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
         days += previousMonth.getDate();
       }
-
       if (months < 0) {
         years--;
         months += 12;
       }
-
-      document.getElementById("result").innerHTML =
-        `You are <span style="color:#111827; font-weight:800;">${years}</span> years, <span style="color:#111827; font-weight:800;">${months}</span> months, and <span style="color:#111827; font-weight:800;">${days}</span> days old.`;
+      document.getElementById("result").innerText = `You are ${years} years, ${months} months, and ${days} days old.`;
     }
   </script>
-
 </body>
 </html>
