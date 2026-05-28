@@ -101,7 +101,16 @@
     </div>
 
 
-    <div class="category-section" style="margin-top: 50px;">
+    /* 清除所有可能导致偏差的混乱间距 */
+.category-section {
+  margin-top: 0 !important;      /* 统一清除顶部间距，防止干扰 */
+  margin-bottom: 52px;          /* 统一用底部外边距来推开下一个板块 */
+}
+
+/* 最后一个板块不需要底部间距 */
+.category-section:last-child {
+  margin-bottom: 0;
+}
   <h2>Mental Health & Behavio</h2>
   <div class="tools-grid">
 
