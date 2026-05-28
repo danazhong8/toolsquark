@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Procrastination Index Test - ToolsQuark</title>
+  <meta name="description" content="Free online Procrastination Test. Find out your procrastination score and execution efficiency baseline with our accurate psychological behavior framework.">
+  <meta name="keywords" content="Procrastination Test, IPS Scale, Time Management Tracker, Productivity Tools, Behavior Assessment">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #b8c6db);
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      padding: 40px 20px; color: #222;
+    }
+    .site-header-nav { width: 100%; max-width: 460px; margin-bottom: 15px; display: flex; justify-content: flex-start; }
+    .site-header-nav a { font-size: 14px; color: #555; text-decoration: none; font-weight: 600; }
+    .site-header-nav a:hover { color: #f59e0b; }
+    
+    .container {
+      width: 100%; max-width: 460px; background: #fff; border-radius: 20px;
+      padding: 30px 24px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
+    }
+    .title { text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
+    .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
+    
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden; }
+    .progress-bar { width: 20%; height: 100%; background: #f59e0b; transition: width 0.3s ease; }
+    
+    .quiz-card { display: none; }
+    .quiz-card.active { display: block; }
+    .question-text { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 20px; line-height: 1.5; }
+    
+    .options-list { display: flex; flex-direction: column; gap: 12px; }
+    .option-btn {
+      width: 100%; padding: 14px; text-align: left; background: #fff;
+      border: 1px solid #d1d5db; border-radius: 12px; font-size: 15px; font-weight: 500;
+      color: #374151; cursor: pointer; transition: all 0.2s; outline: none;
+    }
+    .option-btn:hover { background: #f3f4f6; border-color: #9ca3af; transform: translateY(-1px); }
+    
+    .result-box { display: none; text-align: center; background: #faf8f5; border-radius: 16px; padding: 25px 20px; border: 1px solid #e5e7eb; }
+    .score-title { font-size: 15px; font-weight: bold; color: #4b5563; text-transform: uppercase; }
+    .score-value { font-size: 48px; font-weight: 900; color: #f59e0b; margin: 10px 0; }
+    .score-status { font-size: 18px; font-weight: bold; color: #111827; margin-bottom: 12px; }
+    .score-desc { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .restart-btn { margin-top: 20px; width: auto; display: inline-block; padding: 10px 24px; background: #111827; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    .restart-btn:hover { background: #374151; }
+
+    .card-footer { margin-top: 25px; text-align: center; font-size: 13px; color: #9ca3af; }
+    
+    .content-section { width: 100%; max-width: 650px; margin: 10px auto 0 auto; padding: 30px 24px; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); border-radius: 20px; }
+    .section-block { margin-bottom: 35px; }
+    .content-section h2 { font-size: 20px; color: #111827; margin-bottom: 12px; border-left: 4px solid #f59e0b; padding-left: 10px; }
+    .content-section p, .content-section li { font-size: 14px; color: #4b5563; line-height: 1.7; }
+    
+    .site-footer { text-align: center; margin-top: auto; padding-top: 50px; padding-bottom: 15px; width: 100%; max-width: 650px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; }
+    .footer-links a { font-size: 13px; color: #6b7280; text-decoration: none; }
+    .copyright { color: #9ca3af; font-size: 12px; }
+  </style>
+</head>
+<body>
+
+  <div class="site-header-nav">
+    <a href="index.html">← ToolsQuark Home</a>
+  </div>
+
+  <div class="container">
+    <h1 class="title">Procrastination Test</h1>
+    <p class="subtitle">Analyze your structural task-delay patterns and understand your execution delay factors.</p>
+
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="quizContainer">
+      <div class="quiz-card active" data-step="1">
+        <p class="question-text">1. When I am given a critical assignment, I find myself delaying the initial execution step until the absolute threshold deadline.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(1)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Sometimes True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Often True</button>
+          <button class="option-btn" onclick="nextQuestion(4)">Extremely True</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="2">
+        <p class="question-text">2. I frequently spend hours managing secondary trivial operations instead of attacking my main project target.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(1)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Sometimes True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Often True</button>
+          <button class="option-btn" onclick="nextQuestion(4)">Extremely True</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="3">
+        <p class="question-text">3. My scheduling parameters are clean, and I consistently execute strategic objectives ahead of schedule.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(4)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Sometimes True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Often True</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Extremely True</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="4">
+        <p class="question-text">4. I deliberately tell myself 'I will execute this action tomorrow' knowing well it won't happen.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(1)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Sometimes True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Often True</button>
+          <button class="option-btn" onclick="nextQuestion(4)">Extremely True</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="5">
+        <p class="question-text">5. The anxiety of potentially executing a task imperfectly paralyzes my capacity to initiate it.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(1)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Sometimes True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Often True</button>
+          <button class="option-btn" onclick="nextQuestion(4)">Extremely True</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <span class="score-title">Procrastination Index</span>
+      <div class="score-value" id="scoreVal">0%</div>
+      <div class="score-status" id="statusVal">Balanced</div>
+      <p class="score-desc" id="descVal">Processing parameters look regular.</p>
+      <button class="restart-btn" onclick="restartQuiz()">Retake Test</button>
+    </div>
+
+    <div class="card-footer">Private Client-Side Behavioral Delay Metrics Matrix</div>
+  </div>
+
+  <main class="content-section">
+    <section class="section-block">
+      <h2>The Mechanics of Irrational Delay Cycles</h2>
+      <p>Procrastination rarely indicates structural laziness. It is primarily driven by immediate mood repair mechanisms, where your emotional regulation systems choose task avoidance to dodge immediate discomfort.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <div class="copyright">© 2026 ToolsQuark. All rights reserved.</div>
+  </footer>
+
+  <script>
+    let currentStep = 1; let totalScore = 0; const maxSteps = 5;
+    function nextQuestion(score) {
+      totalScore += score;
+      document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.remove('active');
+      currentStep++;
+      if(currentStep <= maxSteps) {
+        document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.add('active');
+        document.getElementById("progressBar").style.width = `${(currentStep / maxSteps) * 100}%`;
+      } else { showResults(); }
+    }
+    function showResults() {
+      document.getElementById("progressContainer").style.display = "none";
+      document.getElementById("quizContainer").style.display = "none";
+      const indexPercentage = Math.round(((totalScore - 5) / 15) * 100); // 线性转换5-20分范围到百分比
+      document.getElementById("scoreVal").textContent = `${indexPercentage}%`;
+      let status = ""; let desc = "";
+      if(indexPercentage <= 30) {
+        status = "Active Executor";
+        desc = "Your emotional shielding and action initiation vectors are operating at optimal levels. Delays are minor anomalies.";
+      } else if(indexPercentage <= 70) {
+        status = "Chronic Postponer";
+        desc = "You alternate between active execution and avoidant postponement. Try deploying structured 5-minute microscopic entry boundaries.";
+      } else {
+        status = "Severe Procrastinator";
+        desc = "Irrational delay patterns significantly distort your focus. Deconstruct complex milestones into individual independent atomic tasks.";
+      }
+      document.getElementById("statusVal").textContent = status;
+      document.getElementById("descVal").textContent = desc;
+      document.getElementById("resultBox").style.display = "block";
+    }
+    function restartQuiz() {
+      currentStep = 1; totalScore = 0;
+      document.getElementById("progressBar").style.width = "20%";
+      document.getElementById("progressContainer").style.display = "block";
+      document.getElementById("quizContainer").style.display = "block";
+      document.getElementById("resultBox").style.display = "none";
+      document.querySelectorAll('.quiz-card').forEach(card => card.classList.remove('active'));
+      document.querySelector('.quiz-card[data-step="1"]').classList.add('active');
+    }
+  </script>
+</body>
+</html>
