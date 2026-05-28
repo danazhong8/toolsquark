@@ -2,356 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BMI Calculator - ToolsQuark</title>
-  <meta name="description" content="Free online BMI Calculator. Calculate your Body Mass Index instantly and check your BMI category including Underweight, Normal, Overweight, and Obese.">
-  <meta name="keywords" content="BMI Calculator, Body Mass Index, Health Calculator, Weight Calculator">
+  <title>ToolsQuark - Free Online Web Utilities & Calculators</title>
+  <meta name="description" content="Discover a clean, simple, and privacy-first collection of free online tools and calculators. Zero server storage, pure client-side processing.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     body {
-      font-family: Arial, Helvetica, sans-serif;
       background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
       min-height: 100vh;
+      color: #111827;
+      padding: 50px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 40px 20px;
-      color: #222;
     }
-
-    /* 工具多端互联切换导航栏 */
-    .tool-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
-      background: rgba(255, 255, 255, 0.5);
-      padding: 6px;
-      border-radius: 30px;
-      backdrop-filter: blur(5px);
+    .header { text-align: center; margin-bottom: 40px; max-width: 600px; }
+    .header h1 { font-size: 42px; font-weight: bold; margin-bottom: 12px; }
+    .header p { color: #6b7280; font-size: 16px; line-height: 1.6; }
+    
+    /* 实时搜索框，便于未来几十上百个工具检索 */
+    .search-container { width: 100%; max-width: 500px; margin-bottom: 40px; }
+    .search-input {
+      width: 100%; padding: 16px 20px; border: 1px solid #d1d5db;
+      border-radius: 30px; font-size: 16px; outline: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s;
     }
+    .search-input:focus { border-color: #2563eb; box-shadow: 0 4px 20px rgba(37,99,235,0.15); }
 
-    .tool-tabs a {
-      padding: 8px 18px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 20px;
-      transition: 0.2s;
+    /* 分类版块与工具卡片 */
+    .category-section { width: 100%; max-width: 900px; margin-bottom: 35px; }
+    .category-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #2563eb; padding-left: 10px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    
+    .tool-card {
+      background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5); padding: 24px; border-radius: 16px;
+      text-decoration: none; color: inherit; transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column;
     }
+    .tool-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); border-color: #2563eb; }
+    .tool-icon { font-size: 28px; margin-bottom: 12px; }
+    .tool-name { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #111827; }
+    .tool-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
 
-    .tool-tabs .active {
-      background: #111827;
-      color: #fff;
-    }
-
-    .tool-tabs .inactive {
-      color: #4b5563;
-    }
-
-    .tool-tabs .inactive:hover {
-      background: rgba(255, 255, 255, 0.6);
-      color: #111827;
-    }
-
-    /* 计算器卡片主容器 */
-    .container {
-      width: 100%;
-      max-width: 420px;
-      background: #fff;
-      border-radius: 20px;
-      padding: 30px 24px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-      margin-bottom: 30px;
-    }
-
-    .title {
-      text-align: center;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #111827;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #6b7280;
-      font-size: 15px;
-      margin-bottom: 28px;
-      line-height: 1.5;
-    }
-
-    .input-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #374151;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 12px;
-      font-size: 16px;
-      outline: none;
-      transition: 0.3s;
-    }
-
-    input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-    }
-
-    .result-box {
-      margin-top: 25px;
-      background: #f9fafb;
-      border-radius: 16px;
-      padding: 22px;
-      text-align: center;
-      border: 1px solid #e5e7eb;
-    }
-
-    .bmi-value {
-      font-size: 42px;
-      font-weight: bold;
-      color: #2563eb;
-      margin-bottom: 10px;
-    }
-
-    .category {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .info {
-      color: #6b7280;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .card-footer {
-      margin-top: 25px;
-      text-align: center;
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    /* 下方整合内容卡片 */
-    .content-section {
-      width: 100%;
-      max-width: 650px;
-      margin: 10px auto 0 auto;
-      padding: 30px 24px;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-    }
-
-    .section-block {
-      margin-bottom: 35px;
-    }
-
-    .section-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .content-section h2 {
-      font-size: 20px;
-      color: #111827;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-left: 4px solid #2563eb;
-      padding-left: 10px;
-    }
-
-    .content-section h3 {
-      font-size: 15px;
-      margin-top: 18px;
-      margin-bottom: 6px;
-      color: #1f2937;
-      font-weight: 600;
-    }
-
-    .content-section p {
-      font-size: 14px;
-      color: #4b5563;
-      line-height: 1.7;
-    }
-
-    .bmi-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 15px;
-    }
-
-    .bmi-card {
-      background: #fff;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid #e5e7eb;
-      text-align: center;
-    }
-
-    .bmi-card .range {
-      font-size: 15px;
-      font-weight: bold;
-      margin-bottom: 4px;
-    }
-
-    .bmi-card .label {
-      font-size: 12px;
-      color: #6b7280;
-    }
-
-    .c-underweight { border-top: 4px solid #fbbf24; color: #b45309; }
-    .c-normal { border-top: 4px solid #10b981; color: #047857; }
-    .c-overweight { border-top: 4px solid #f97316; color: #c2410c; }
-    .c-obese { border-top: 4px solid #ef4444; color: #b91c1c; }
-
-    /* 完美沉底的全局英文页脚 */
-    .site-footer {
-      text-align: center;
-      margin-top: auto;
-      padding-top: 50px;
-      padding-bottom: 15px;
-      width: 100%;
-      max-width: 650px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 12px;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: #6b7280;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #111827;
-      text-decoration: underline;
-    }
-
-    .copyright {
-      color: #9ca3af;
-      font-size: 12px;
-    }
-
-    @media (max-width: 480px) {
-      body { padding: 25px 15px; }
-      .container { padding: 24px 18px; }
-      .title { font-size: 28px; }
-      .content-section { padding: 20px 16px; }
-      .bmi-grid { grid-template-columns: 1fr; }
-      .footer-links { gap: 16px; }
-    }
+    .site-footer { text-align: center; margin-top: auto; padding-top: 60px; }
+    .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: #6b7280; text-decoration: none; }
+    .footer-links a:hover { color: #111827; text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <nav class="tool-tabs">
-    <a href="index.html" class="active">BMI Calculator</a>
-    <a href="age-calculator.html" class="inactive">Age Calculator</a>
-  </nav>
+  <header class="header">
+    <h1>ToolsQuark</h1>
+    <p>Your minimalist library of efficient, private, and 100% free online web applications and responsive diagnostic tools.</p>
+  </header>
 
-  <div class="container">
-    <h1 class="title">BMI Calculator</h1>
-    <p class="subtitle">Calculate your Body Mass Index (BMI) instantly and check your health category.</p>
-
-    <div class="input-group">
-      <label for="height">Height (cm)</label>
-      <input type="number" id="height" placeholder="Enter your height" />
-    </div>
-
-    <div class="input-group">
-      <label for="weight">Weight (kg)</label>
-      <input type="number" id="weight" placeholder="Enter your weight" />
-    </div>
-
-    <div class="result-box">
-      <div class="bmi-value" id="bmiValue">0.0</div>
-      <div class="category" id="bmiCategory">Enter your details</div>
-      <div class="info">
-        BMI Categories:<br>
-        Underweight (<18.5), Normal (18.5–24.9),<br>
-        Overweight (25–29.9), Obese (30+)
-      </div>
-    </div>
-
-    <div class="card-footer">
-      Free BMI Calculator Tool
-    </div>
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search from dozens of tools..." oninput="filterTools()">
   </div>
 
-  <main class="content-section">
-    <section class="section-block">
-      <h2>How to Use the BMI Calculator</h2>
-      <p>Simply enter your weight in kilograms (kg) and your height in centimeters (cm) into the fields above. The tool automatically computes your data in real-time. No manual submission buttons required!</p>
-    </section>
+  <main class="category-section" id="healthSection">
+    <h2 class="category-title">Health & Lifestyle</h2>
+    <div class="tools-grid">
+      
+      <a href="bmi-calculator.html" class="tool-card">
+        <div class="tool-icon">⚖️</div>
+        <div class="tool-name">BMI Calculator</div>
+        <div class="tool-desc">Calculate your Body Mass Index instantly and check your body fat distribution category.</div>
+      </a>
 
-    <section class="section-block">
-      <h2>BMI Classification</h2>
-      <p>Standard ranges established for adult populations globally:</p>
-      <div class="bmi-grid">
-        <div class="bmi-card c-underweight">
-          <div class="range">Below 18.5</div>
-          <div class="label">Underweight</div>
-        </div>
-        <div class="bmi-card c-normal">
-          <div class="range">18.5 – 24.9</div>
-          <div class="label">Normal Weight</div>
-        </div>
-        <div class="bmi-card c-overweight">
-          <div class="range">25.0 – 29.9</div>
-          <div class="label">Overweight</div>
-        </div>
-        <div class="bmi-card c-obese">
-          <div class="range">30.0 or Above</div>
-          <div class="label">Obese</div>
-        </div>
+      <a href="age-calculator.html" class="tool-card">
+        <div class="tool-icon">📅</div>
+        <div class="tool-name">Age Calculator</div>
+        <div class="tool-desc">Find your exact chronological age parameters broken down in precise years, months, and days.</div>
+      </a>
+      
       </div>
-    </section>
-
-    <section class="section-block">
-      <h2>Health Tips</h2>
-      <p>Maintaining balanced proportional scores helps mitigate systemic health challenges. Incorporate structural cardiovascular exercises alongside organic, nutrient-dense diet profiles to scale long-term bodily wellness.</p>
-    </section>
-
-    <section class="section-block">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>What is BMI?</h3>
-        <p>Body Mass Index (BMI) is a universal parameters metric utilized to scale body fat approximations contextually derived through height/weight metrics.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How is BMI calculated?</h3>
-        <p>The calculation divides an individual's mass in kilograms by their height in meters squared: Formula = (Weight in kg) / (Height in meters)².</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is this data stored?</h3>
-        <p>No. Our scripts execute exclusively on the local machine client-side layer. Zero tracking parameters exist.</p>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
@@ -360,34 +87,24 @@
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
     </div>
-    <div class="copyright">
-      © 2026 ToolsQuark. All rights reserved.
-    </div>
+    <div style="font-size:12px; color:#9ca3af;">© 2026 ToolsQuark. All rights reserved.</div>
   </footer>
 
   <script>
-    const heightInput = document.getElementById("height");
-    const weightInput = document.getElementById("weight");
-    const bmiValue = document.getElementById("bmiValue");
-    const bmiCategory = document.getElementById("bmiCategory");
-
-    function calculateBMI() {
-      const height = parseFloat(heightInput.value);
-      const weight = parseFloat(weightInput.value);
-      if (!height || !weight || height <= 0 || weight <= 0) {
-        bmiValue.textContent = "0.0";
-        bmiCategory.textContent = "Enter your details";
-        return;
-      }
-      const bmi = weight / ((height / 100) * (height / 100));
-      bmiValue.textContent = bmi.toFixed(1);
-      if (bmi < 18.5) bmiCategory.textContent = "Underweight";
-      else if (bmi < 25) bmiCategory.textContent = "Normal Weight";
-      else if (bmi < 30) bmiCategory.textContent = "Overweight";
-      else bmiCategory.textContent = "Obese";
+    // 简单的全站本地实时搜索过滤器
+    function filterTools() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".tool-card");
+      cards.forEach(card => {
+        const name = card.querySelector(".tool-name").textContent.toLowerCase();
+        const desc = card.querySelector(".tool-desc").textContent.toLowerCase();
+        if (name.includes(query) || desc.includes(query)) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
     }
-    heightInput.addEventListener("input", calculateBMI);
-    weightInput.addEventListener("input", calculateBMI);
   </script>
 </body>
 </html>
