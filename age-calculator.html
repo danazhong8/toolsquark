@@ -224,10 +224,29 @@
 </head>
 <body>
 
-  <nav class="tool-tabs">
-    <a href="index.html" class="inactive">BMI Calculator</a>
-    <a href="age-calculator.html" class="active">Age Calculator</a>
-  </nav>
+ <style>
+  .site-header-nav {
+    width: 100%;
+    max-width: 420px; /* 保持与你计算器主卡片同宽，显得非常整齐 */
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .site-header-nav a {
+    font-size: 14px;
+    color: #6b7280;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .site-header-nav a:hover {
+    color: #2563eb;
+  }
+</style>
+
+<div class="site-header-nav">
+  <a href="index.html">← ToolsQuark Home</a>
+</div>
 
   <div class="container">
     <h1>Age Calculator</h1>
