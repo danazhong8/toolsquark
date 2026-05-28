@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anxiety Index Test - ToolsQuark</title>
+  <meta name="description" content="Free online Anxiety Index Test. Evaluate your mental tension, nervousness, and emotional warning baselines utilizing standard mental health frameworks.">
+  <meta name="keywords" content="Anxiety Test, GAD-7 Scale, Mental Internal Friction, Stress Tracker, Psychology Tools">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f3e7e9, #e3eeff);
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      padding: 40px 20px; color: #222;
+    }
+    .site-header-nav { width: 100%; max-width: 460px; margin-bottom: 15px; display: flex; justify-content: flex-start; }
+    .site-header-nav a { font-size: 14px; color: #555; text-decoration: none; font-weight: 600; }
+    .site-header-nav a:hover { color: #818cf8; }
+    
+    .container {
+      width: 100%; max-width: 460px; background: #fff; border-radius: 20px;
+      padding: 30px 24px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
+    }
+    .title { text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
+    .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
+    
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden; }
+    .progress-bar { width: 20%; height: 100%; background: #818cf8; transition: width 0.3s ease; }
+    
+    .quiz-card { display: none; }
+    .quiz-card.active { display: block; }
+    .question-text { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 20px; line-height: 1.5; }
+    
+    .options-list { display: flex; flex-direction: column; gap: 12px; }
+    .option-btn {
+      width: 100%; padding: 14px; text-align: left; background: #fff;
+      border: 1px solid #d1d5db; border-radius: 12px; font-size: 15px; font-weight: 500;
+      color: #374151; cursor: pointer; transition: all 0.2s; outline: none;
+    }
+    .option-btn:hover { background: #f3f4f6; border-color: #9ca3af; transform: translateY(-1px); }
+    
+    .result-box { display: none; text-align: center; background: #f9f9fe; border-radius: 16px; padding: 25px 20px; border: 1px solid #e5e7eb; }
+    .score-title { font-size: 15px; font-weight: bold; color: #4b5563; text-transform: uppercase; }
+    .score-value { font-size: 48px; font-weight: 900; color: #818cf8; margin: 10px 0; }
+    .score-status { font-size: 18px; font-weight: bold; color: #111827; margin-bottom: 12px; }
+    .score-desc { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .restart-btn { margin-top: 20px; width: auto; display: inline-block; padding: 10px 24px; background: #111827; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    .restart-btn:hover { background: #374151; }
+
+    .card-footer { margin-top: 25px; text-align: center; font-size: 13px; color: #9ca3af; }
+    
+    .content-section { width: 100%; max-width: 650px; margin: 10px auto 0 auto; padding: 30px 24px; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); border-radius: 20px; }
+    .section-block { margin-bottom: 35px; }
+    .content-section h2 { font-size: 20px; color: #111827; margin-bottom: 12px; border-left: 4px solid #818cf8; padding-left: 10px; }
+    .content-section p, .content-section li { font-size: 14px; color: #4b5563; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <div class="site-header-nav">
+    <a href="index.html">← ToolsQuark Home</a>
+  </div>
+
+  <div class="container">
+    <h1 class="title">Anxiety Index Test</h1>
+    <p class="subtitle">Screen your current somatic tension, persistent worrying, and biological alertness scales.</p>
+
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="quizContainer">
+      <div class="quiz-card active" data-step="1">
+        <p class="question-text">1. Over the last 2 weeks, how often have you been bothered by feeling nervous, anxious, or explicitly on edge?</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Several days</button>
+          <button class="option-btn" onclick="nextQuestion(2)">More than half the days</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Nearly every day</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="2">
+        <p class="question-text">2. Over the last 2 weeks, how often have you found yourself unable to stop or control persistent worrying threads?</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Several days</button>
+          <button class="option-btn" onclick="nextQuestion(2)">More than half the days</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Nearly every day</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="3">
+        <p class="question-text">3. Over the last 2 weeks, how often have you had trouble relaxing your baseline muscular and physical system?</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Several days</button>
+          <button class="option-btn" onclick="nextQuestion(2)">More than half the days</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Nearly every day</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="4">
+        <p class="question-text">4. Over the last 2 weeks, how often have you been so restless that it is hard to sit completely still?</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Several days</button>
+          <button class="option-btn" onclick="nextQuestion(2)">More than half the days</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Nearly every day</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="5">
+        <p class="question-text">5. Over the last 2 weeks, how often have you felt afraid as if something awful and catastrophic might happen?</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Several days</button>
+          <button class="option-btn" onclick="nextQuestion(2)">More than half the days</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Nearly every day</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <span class="score-title">Anxiety Index</span>
+      <div class="score-value" id="scoreVal">0%</div>
+      <div class="score-status" id="statusVal">Stable</div>
+      <p class="score-desc" id="descVal">Metrics reading.</p>
+      <button class="restart-btn" onclick="restartQuiz()">Retake Test</button>
+    </div>
+
+    <div class="card-footer">Private Client-Side Mood Distress Screening Assessment</div>
+  </div>
+
+  <main class="content-section">
+    <section class="section-block">
+      <h2>Understanding Somatic Tension Patterns</h2>
+      <p>Anxiety is fundamentally your amygdala's over-extended warning loop. Measuring tracking baselines helps identify whether ongoing responses stem from brief environmental triggers or chronic psychological load.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <div class="copyright">© 2026 ToolsQuark. All rights reserved.</div>
+  </footer>
+
+  <script>
+    let currentStep = 1; let totalScore = 0; const maxSteps = 5;
+    function nextQuestion(score) {
+      totalScore += score;
+      document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.remove('active');
+      currentStep++;
+      if(currentStep <= maxSteps) {
+        document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.add('active');
+        document.getElementById("progressBar").style.width = `${(currentStep / maxSteps) * 100}%`;
+      } else { showResults(); }
+    }
+    function showResults() {
+      document.getElementById("progressContainer").style.display = "none";
+      document.getElementById("quizContainer").style.display = "none";
+      const indexPercentage = Math.round((totalScore / 15) * 100);
+      document.getElementById("scoreVal").textContent = `${indexPercentage}%`;
+      let status = ""; let desc = "";
+      if(indexPercentage <= 30) {
+        status = "Minimal / Healthy Alertness";
+        desc = "Your neuro-emotional threat monitoring operates inside baseline parameters. Internal friction remains optimal.";
+      } else if(indexPercentage <= 65) {
+        status = "Mild to Moderate Anxiety";
+        desc = "Persistent internal chatter or nervous anticipation blocks focus blocks occasionally. Deploy regular grounded mindfulness steps.";
+      } else {
+        status = "Heightened Anxiety Profile";
+        desc = "Hyper-vigilance metrics are heavily elevated. Prioritize active nervous grounding protocols and minimize demanding workflows.";
+      }
+      document.getElementById("statusVal").textContent = status;
+      document.getElementById("descVal").textContent = desc;
+      document.getElementById("resultBox").style.display = "block";
+    }
+    function restartQuiz() {
+      currentStep = 1; totalScore = 0;
+      document.getElementById("progressBar").style.width = "20%";
+      document.getElementById("progressContainer").style.display = "block";
+      document.getElementById("quizContainer").style.display = "block";
+      document.getElementById("resultBox").style.display = "none";
+      document.querySelectorAll('.quiz-card').forEach(card => card.classList.remove('active'));
+      document.querySelector('.quiz-card[data-step="1"]').classList.add('active');
+    }
+  </script>
+</body>
+</html>
