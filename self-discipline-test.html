@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Self-Discipline & Consistency Matrix - ToolsQuark</title>
+  <title>Self-Discipline & Focus Resilience Matrix - ToolsQuark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
@@ -31,13 +31,26 @@
   </style>
 </head>
 <body>
+
   <div class="container">
-    <div class="header-block"><h2>Self-Discipline Test</h2><a href="index.html" class="back-btn">← Back</a></div>
+    <div class="header-block">
+      <h2 style="font-size: 22px; font-weight: bold;">Self-Discipline Test</h2>
+      <a href="index.html" class="back-btn">← Back to Hub</a>
+    </div>
+    
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-    <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
+
+    <div id="quizInterface">
+      <div class="question-box">
+        <h3 id="questionText">Loading assessment node...</h3>
+        <div class="options-list" id="optionsWrapper"></div>
+      </div>
+    </div>
+
     <div class="result-box" id="resultInterface">
       <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
-      <h3 class="result-title" id="analysisTitle"></h3><div class="result-interpretation" id="analysisText"></div>
+      <h3 class="result-title" id="analysisTitle">Analyzing...</h3>
+      <div class="result-interpretation" id="analysisText">Computing metrics...</div>
       <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
     </div>
   </div>
@@ -45,8 +58,16 @@
   <section class="faq-container">
     <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
     <div class="faq-item">
-      <div class="faq-q">💡 What parameters are generated?</div>
-      <div class="faq-a">This tracks your executive framework consistency, short-term impulse inhibition resilience, and strategic focus parameters.</div>
+      <div class="faq-q">💡 How is the Self-Discipline Index calculated?</div>
+      <div class="faq-a">This index targets advanced executive control frameworks, measuring impulse inhibition levels and long-range goal adherence. Ten specific behavioral friction parameters weight from 0 (optimal internal control) to 3 (systemic choice exhaustion), presenting a baseline metric map of cognitive discipline consistency.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">🔒 Are my personal habit parameters shared anywhere?</div>
+      <div class="faq-a">No. ToolsQuark operates on a strict zero-server footprint standard. All diagnostic state calculations process directly inside your local browser client instance. No performance profiles, habit databases, or telemetry logs are initialized or transmitted.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">⚠️ Does a low score signify an executive cognitive disorder?</div>
+      <div class="faq-a">No. Discipline indices vary based on environmental friction, immediate fatigue loads, and intrinsic reward structures. This matrix is educational and holds no neural diagnostic standing. For clinical evaluation of chronic focus anomalies, consult an executive neurological professional.</div>
     </div>
   </section>
 
@@ -63,13 +84,16 @@
       "Failed to establish daily target parameters or document your milestone execution metrics?",
       "Struggled to maintain emotional regulation and behavioral stability under prolonged focus demands?"
     ];
+
     const interpretations = [
-      { bound: 10, title: "Compounded Chaos Hazard (Low Discipline)", text: "Your executive control parameters show systematic vulnerability to short-term temptation vectors. Immediate external structures are recommended." },
-      { bound: 20, title: "Fluctuating Focus Resiliency (Moderate Discipline)", text: "Your execution parameters are functional but vulnerable. Consistency relies heavily on clear short-term environments." },
-      { bound: 30, title: "Elite Executive Core (Exceptional Discipline)", text: "Your internal regulatory frameworks are highly optimized. Long-range focus parameters indicate superior resilience." }
+      { bound: 10, title: "Compounded Chaos Hazard (Low Discipline Profile)", text: "Your executive control parameters show systematic vulnerability to short-term temptation vectors. Immediate implementation of rigid external accountability scaffolds is recommended." },
+      { bound: 20, title: "Fluctuating Focus Resiliency (Moderate Discipline)", text: "Your execution parameters are functional but vulnerable. Consistency relies heavily on favorable environmental conditions and clear short-term rewards." },
+      { bound: 30, title: "Elite Executive Core (Exceptional Discipline)", text: "Your internal regulatory frameworks are highly optimized. Long-range focus parameters and impulse inhibition indicate superior resilience and programmatic goal execution." }
     ];
-    const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
+
+    const options = ["0 - Never / Almost Never", "1 - Sometimes (Mild Frequency)", "2 - Often (Disruptive Frequency)", "3 - Almost Continuously (Severe Level)"];
     let idx = 0, score = 0;
+
     function render() {
       document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
       document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
