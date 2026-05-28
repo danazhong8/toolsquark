@@ -2,199 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Social Anxiety Test - ToolsQuark</title>
-  <meta name="description" content="Free online Social Anxiety Test. Measure your social discomfort, phobia parameters, and avoidance metrics based on professional scale components.">
-  <meta name="keywords" content="Social Anxiety Test, Phobia Calculator, LSAS Scale, Social Discomfort Assessment, Fitness Tools">
+  <title>Social Anxiety Evaluation Matrix - ToolsQuark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #e0eae9, #a1c4fd);
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-      padding: 40px 20px; color: #222;
-    }
-    .site-header-nav { width: 100%; max-width: 460px; margin-bottom: 15px; display: flex; justify-content: flex-start; }
-    .site-header-nav a { font-size: 14px; color: #555; text-decoration: none; font-weight: 600; }
-    .site-header-nav a:hover { color: #3b82f6; }
-    
-    .container {
-      width: 100%; max-width: 460px; background: #fff; border-radius: 20px;
-      padding: 30px 24px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
-    }
-    .title { text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
-    .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
-    
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden; }
-    .progress-bar { width: 20%; height: 100%; background: #3b82f6; transition: width 0.3s ease; }
-    
-    .quiz-card { display: none; }
-    .quiz-card.active { display: block; }
-    .question-text { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 20px; line-height: 1.5; }
-    
-    .options-list { display: flex; flex-direction: column; gap: 12px; }
-    .option-btn {
-      width: 100%; padding: 14px; text-align: left; background: #fff;
-      border: 1px solid #d1d5db; border-radius: 12px; font-size: 15px; font-weight: 500;
-      color: #374151; cursor: pointer; transition: all 0.2s; outline: none;
-    }
-    .option-btn:hover { background: #f3f4f6; border-color: #9ca3af; transform: translateY(-1px); }
-    
-    .result-box { display: none; text-align: center; background: #f5f9ff; border-radius: 16px; padding: 25px 20px; border: 1px solid #e5e7eb; }
-    .score-title { font-size: 15px; font-weight: bold; color: #4b5563; text-transform: uppercase; }
-    .score-value { font-size: 48px; font-weight: 900; color: #3b82f6; margin: 10px 0; }
-    .score-status { font-size: 18px; font-weight: bold; color: #111827; margin-bottom: 12px; }
-    .score-desc { font-size: 14px; color: #4b5563; line-height: 1.6; }
-    .restart-btn { margin-top: 20px; width: auto; display: inline-block; padding: 10px 24px; background: #111827; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-    .restart-btn:hover { background: #374151; }
-
-    .card-footer { margin-top: 25px; text-align: center; font-size: 13px; color: #9ca3af; }
-    
-    .content-section { width: 100%; max-width: 650px; margin: 10px auto 0 auto; padding: 30px 24px; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); border-radius: 20px; }
-    .section-block { margin-bottom: 35px; }
-    .content-section h2 { font-size: 20px; color: #111827; margin-bottom: 12px; border-left: 4px solid #3b82f6; padding-left: 10px; }
-    .content-section p, .content-section li { font-size: 14px; color: #4b5563; line-height: 1.7; }
-    
-    .site-footer { text-align: center; margin-top: auto; padding-top: 50px; padding-bottom: 15px; width: 100%; max-width: 650px; }
-    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; }
-    .footer-links a { font-size: 13px; color: #6b7280; text-decoration: none; }
-    .copyright { color: #9ca3af; font-size: 12px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
+    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
+    .back-btn:hover { background: #1f2937; }
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
+    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
+    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
+    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
+    .result-box { display: none; text-align: center; }
+    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 38px; font-weight: bold; }
+    .metric-label { font-size: 12px; opacity: 0.9; }
+    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
+    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
+    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
+    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
+    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
   </style>
 </head>
 <body>
-
-  <div class="site-header-nav">
-    <a href="index.html">← ToolsQuark Home</a>
-  </div>
-
   <div class="container">
-    <h1 class="title">Social Anxiety Test</h1>
-    <p class="subtitle">Evaluate your subjective discomfort thresholds across public performance and social communication matrices.</p>
-
-    <div class="progress-container" id="progressContainer">
-      <div class="progress-bar" id="progressBar"></div>
+    <div class="header-block"><h2>Social Anxiety Test</h2><a href="index.html" class="back-btn">← Back</a></div>
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
+    <div class="result-box" id="resultInterface">
+      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
+      <h3 class="result-title" id="analysisTitle"></h3><div class="result-interpretation" id="analysisText"></div>
+      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
     </div>
-
-    <div id="quizContainer">
-      <div class="quiz-card active" data-step="1">
-        <p class="question-text">1. Delivering a presentation or speaking formally in front of a structured group of people makes me feel highly uncomfortable.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Mildly anxious</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Moderately anxious</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Severely anxious</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="2">
-        <p class="question-text">2. I explicitly avoid attending social events or parties where unfamiliar faces are dominant.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(0)">Never avoid</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Rarely avoid</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Frequently avoid</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Always avoid</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="3">
-        <p class="question-text">3. Eating or drinking in clear view of other individuals makes me feel intensely self-conscious.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Mildly anxious</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Moderately anxious</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Severely anxious</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="4">
-        <p class="question-text">4. Entering a room where other individuals are already structurally seated and talking triggers heightened stress.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Mildly anxious</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Moderately anxious</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Severely anxious</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="5">
-        <p class="question-text">5. Expressing open disagreement or facing an authority figure makes my internal systems go into freeze mode.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(0)">Not at all</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Mildly anxious</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Moderately anxious</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Severely anxious</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-box" id="resultBox">
-      <span class="score-title">Social Anxiety Index</span>
-      <div class="score-value" id="scoreVal">0%</div>
-      <div class="score-status" id="statusVal">Balanced</div>
-      <p class="score-desc" id="descVal">Processing parameter metrics.</p>
-      <button class="restart-btn" onclick="restartQuiz()">Retake Test</button>
-    </div>
-
-    <div class="card-footer">Private Diagnostic Simulation Analytics Module</div>
   </div>
 
-  <main class="content-section">
-    <section class="section-block">
-      <h2>Understanding the Social Phobia Architecture</h2>
-      <p>Social discomfort is an adaptive neurological mechanism related to hyper-vigilance towards negative assessment. Knowing your target operational thresholds helps distinguish between general introversion and clinical anxiety boundaries.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="about.html">About Us</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
+  <section class="faq-container">
+    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
+    <div class="faq-item">
+      <div class="faq-q">💡 What metrics are evaluated?</div>
+      <div class="faq-a">This program measures interaction-based autonomic discomfort parameters and quantifies performance environment avoidance thresholds.</div>
     </div>
-    <div class="copyright">© 2026 ToolsQuark. All rights reserved.</div>
-  </footer>
+  </section>
 
   <script>
-    let currentStep = 1; let totalScore = 0; const maxSteps = 5;
-    function nextQuestion(score) {
-      totalScore += score;
-      document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.remove('active');
-      currentStep++;
-      if(currentStep <= maxSteps) {
-        document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.add('active');
-        document.getElementById("progressBar").style.width = `${(currentStep / maxSteps) * 100}%`;
-      } else { showResults(); }
+    const questions = [
+      "Felt an intense aversion to unexpected verbal performance environments or public briefings?",
+      "Anticipated severe negative evaluation, micro-judgment, or social humiliation prior to group entry?",
+      "Experienced sudden autonomic physiological spikes (e.g., sweating, palpitations, vocal tremor) when speaking?",
+      "Avoided vital social environments deliberately or exited networking platforms prematurely?",
+      "Analyzed personal conversational output extensively in post-event loops, cataloging minor errors?",
+      "Felt excessive self-consciousness or physical stiffness when traversing public walkways or open workspaces?",
+      "Sought physical perimeter positions or immediate exits when introduced to dense unfamiliar cohorts?",
+      "Experienced a complete freeze in ideation when addressed unexpectedly by higher authority figures?",
+      "Felt severe anticipatory exhaustion up to several days before scheduled group meetings?",
+      "Withheld logical ideas or insights in structured collaborations out of deep fear of public disapproval?"
+    ];
+    const interpretations = [
+      { bound: 10, title: "Uninhibited Social Function", text: "Social environmental processing operates within nominal baseline zones. Cognitive threat filters for public evaluation are low." },
+      { bound: 20, title: "Situational Hyper-Vigilance", text: "You exhibit mild to moderate evaluation discomfort. Public speaking or high-stakes authority networking cause minor autonomic acceleration." },
+      { bound: 30, title: "Phobic Avoidance Architecture", text: "Interaction nodes trigger deep emotional and physiological distress. Fear of judgment significantly restricts professional and interpersonal development vectors." }
+    ];
+    const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
+    let idx = 0, score = 0;
+    function render() {
+      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
+      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
+      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
+      options.forEach((opt, w) => {
+        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
+        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
+        wrapper.appendChild(d);
+      });
     }
-    function showResults() {
-      document.getElementById("progressContainer").style.display = "none";
-      document.getElementById("quizContainer").style.display = "none";
-      const indexPercentage = Math.round((totalScore / 15) * 100);
-      document.getElementById("scoreVal").textContent = `${indexPercentage}%`;
-      let status = ""; let desc = "";
-      if(indexPercentage <= 30) {
-        status = "Socially Confident / Low Fear";
-        desc = "Your system manages external evaluation matrices smoothly. Public interactions trigger minimal physiological warnings.";
-      } else if(indexPercentage <= 65) {
-        status = "Moderate Social Fear";
-        desc = "You experience occasional hyper-awareness during group interaction tasks. Gradual exposure pacing can minimize these friction points.";
-      } else {
-        status = "High Social Phobia Vulnerability";
-        desc = "Social interaction environments impose significant cognitive strain. Consider gentle desensitization approaches and boundary pacing.";
-      }
-      document.getElementById("statusVal").textContent = status;
-      document.getElementById("descVal").textContent = desc;
-      document.getElementById("resultBox").style.display = "block";
+    function showResult() {
+      document.getElementById("quizInterface").style.display = "none";
+      document.getElementById("resultInterface").style.display = "block";
+      document.getElementById("progressBar").style.width = "100%";
+      document.getElementById("finalScore").textContent = score;
+      let target = interpretations.find(i => score <= i.bound) || interpretations[2];
+      document.getElementById("analysisTitle").textContent = target.title;
+      document.getElementById("analysisText").textContent = target.text;
     }
-    function restartQuiz() {
-      currentStep = 1; totalScore = 0;
-      document.getElementById("progressBar").style.width = "20%";
-      document.getElementById("progressContainer").style.display = "block";
-      document.getElementById("quizContainer").style.display = "block";
-      document.getElementById("resultBox").style.display = "none";
-      document.querySelectorAll('.quiz-card').forEach(card => card.classList.remove('active'));
-      document.querySelector('.quiz-card[data-step="1"]').classList.add('active');
-    }
+    render();
   </script>
 </body>
 </html>
