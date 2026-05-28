@@ -3,20 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>BMI Calculator - ToolsQuark</title>
-  <meta name="description" content="Calculate your BMI easily with ToolsQuark online BMI calculator. Understand your healthy weight range and track your fitness.">
-  <meta name="keywords" content="BMI, BMI Calculator, Body Mass Index, Health, Weight, Fitness">
-</head>
-
-  <meta
-    name="description"
-    content="Free online BMI Calculator. Calculate your Body Mass Index instantly and check your BMI category including Underweight, Normal, Overweight, and Obese."
-  />
-
-  <meta
-    name="keywords"
-    content="BMI Calculator, Body Mass Index, Health Calculator, Weight Calculator"
-  />
-
+  <meta name="description" content="Free online BMI Calculator. Calculate your Body Mass Index instantly and check your BMI category including Underweight, Normal, Overweight, and Obese.">
+  <meta name="keywords" content="BMI Calculator, Body Mass Index, Health Calculator, Weight Calculator">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       margin: 0;
@@ -29,7 +18,7 @@
       background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
       min-height: 100vh;
       display: flex;
-      flex-direction: column; /* 改为纵向排列，确保FAQ在底部 */
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 40px 20px;
@@ -43,7 +32,7 @@
       border-radius: 20px;
       padding: 30px 24px;
       box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-      margin-bottom: 30px; /* 与底部文字保持间距 */
+      margin-bottom: 30px;
     }
 
     .title {
@@ -123,48 +112,99 @@
       color: #9ca3af;
     }
 
-    /* FAQ 底部文字样式优化 */
-    .faq-section {
+    /* --- 新增与优化：底部内容区样式 --- */
+    .content-section {
       width: 100%;
-      max-width: 600px; /* 限制底部文字的最大宽度，方便阅读 */
+      max-width: 650px;
       margin: 20px auto 0 auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.6); /* 稍微加点透明背景，呼应主卡片 */
-      border-radius: 16px;
+      padding: 30px 24px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
     }
 
-    .faq-section h2 {
-      font-size: 22px;
-      margin-bottom: 15px;
+    .section-block {
+      margin-bottom: 35px;
+    }
+
+    .section-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-section h2 {
+      font-size: 20px;
       color: #111827;
-      text-align: center;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 4px solid #2563eb;
+      padding-left: 10px;
     }
 
-    .faq-section h3 {
-      font-size: 16px;
-      margin-top: 15px;
-      margin-bottom: 5px;
-      color: #374151;
-    }
-
-    .faq-section p {
+    .content-section p {
       font-size: 14px;
       color: #4b5563;
-      line-height: 1.6;
+      line-height: 1.7;
+    }
+
+    /* BMI分类的网格布局卡片 */
+    .bmi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .bmi-card {
+      background: #fff;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .bmi-card .range {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .bmi-card .label {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    /* 各分类的品牌特征色 */
+    .c-underweight { border-top: 4px solid #fbbf24; color: #b45309; }
+    .c-normal { border-top: 4px solid #10b981; color: #047857; }
+    .c-overweight { border-top: 4px solid #f97316; color: #c2410c; }
+    .c-obese { border-top: 4px solid #ef4444; color: #b91c1c; }
+
+    /* FAQ 内部小排版 */
+    .faq-item {
+      margin-bottom: 16px;
+    }
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+    .faq-item h3 {
+      font-size: 14px;
+      color: #1f2937;
+      margin-bottom: 4px;
+      font-weight: 600;
     }
 
     @media (max-width: 480px) {
       .container {
         padding: 24px 18px;
       }
-
-      .title {
-        font-size: 28px;
-      }
-
-      .bmi-value {
-        font-size: 36px;
-      }
+      .title { font-size: 28px; }
+      .bmi-value { font-size: 36px; }
+      .bmi-grid { grid-template-columns: 1fr; } /* 移动端单列显示 */
+      .content-section { padding: 20px 16px; }
     }
   </style>
 </head>
@@ -172,42 +212,27 @@
 <body>
   <div class="container">
     <h1 class="title">BMI Calculator</h1>
-
     <p class="subtitle">
       Calculate your Body Mass Index (BMI) instantly and check your health category.
     </p>
 
     <div class="input-group">
       <label for="height">Height (cm)</label>
-      <input
-        type="number"
-        id="height"
-        placeholder="Enter your height"
-      />
+      <input type="number" id="height" placeholder="Enter your height" />
     </div>
 
     <div class="input-group">
       <label for="weight">Weight (kg)</label>
-      <input
-        type="number"
-        id="weight"
-        placeholder="Enter your weight"
-      />
+      <input type="number" id="weight" placeholder="Enter your weight" />
     </div>
 
     <div class="result-box">
       <div class="bmi-value" id="bmiValue">0.0</div>
-
-      <div class="category" id="bmiCategory">
-        Enter your details
-      </div>
-
+      <div class="category" id="bmiCategory">Enter your details</div>
       <div class="info">
-        BMI Categories:
-        Underweight (&lt;18.5),
-        Normal (18.5–24.9),
-        Overweight (25–29.9),
-        Obese (30+)
+        BMI Categories:<br>
+        Underweight (<18.5), Normal (18.5–24.9),<br>
+        Overweight (25–29.9), Obese (30+)
       </div>
     </div>
 
@@ -216,26 +241,71 @@
     </div>
   </div>
 
-  <section class="faq-section">
-    <h2>Frequently Asked Questions</h2>
+  <main class="content-section">
+    
+    <section class="section-block">
+      <h2>How to Use the BMI Calculator</h2>
+      <p>
+        Simply enter your current weight in kilograms (kg) and your height in centimeters (cm) into the fields above. 
+        The tool will instantly process your Body Mass Index (BMI) and point out your specific health category in real-time. No clicking needed!
+      </p>
+    </section>
 
-    <h3>What is BMI?</h3>
-    <p>BMI stands for Body Mass Index. It is a simple way to measure body fat based on height and weight.</p>
+    <section class="section-block">
+      <h2>BMI Classification</h2>
+      <p>Standard BMI categories established for adults aged 20 and older:</p>
+      <div class="bmi-grid">
+        <div class="bmi-card c-underweight">
+          <div class="range">Below 18.5</div>
+          <div class="label">Underweight</div>
+        </div>
+        <div class="bmi-card c-normal">
+          <div class="range">18.5 – 24.9</div>
+          <div class="label">Normal Weight</div>
+        </div>
+        <div class="bmi-card c-overweight">
+          <div class="range">25.0 – 29.9</div>
+          <div class="label">Overweight</div>
+        </div>
+        <div class="bmi-card c-obese">
+          <div class="range">30.0 or Above</div>
+          <div class="label">Obese</div>
+        </div>
+      </div>
+    </section>
 
-    <h3>How is BMI calculated?</h3>
-    <p>BMI is calculated by dividing weight by height squared.</p>
+    <section class="section-block">
+      <h2>Health Tips</h2>
+      <p>
+        Maintaining a balanced BMI range is a great step toward lowering the risk of chronic conditions like heart disease, type 2 diabetes, and hypertension. 
+        Prioritize a colorful, nutrient-dense diet combined with at least 150 minutes of moderate physical activity weekly for long-term well-being.
+      </p>
+    </section>
 
-    <h3>What is a healthy BMI?</h3>
-    <p>A healthy BMI is generally between 18.5 and 24.9.</p>
+    <section class="section-block">
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <h3>What is BMI?</h3>
+        <p>BMI stands for Body Mass Index. It is a straightforward, universally accepted screening tool used to estimate body fat based on an individual's height and weight.</p>
+      </div>
 
-    <h3>Is this BMI calculator free?</h3>
-    <p>Yes, this online BMI calculator is completely free to use.</p>
-  </section>
+      <div class="faq-item">
+        <h3>How is BMI calculated?</h3>
+        <p>The mathematical formula divides weight in kilograms by height in meters squared ($BMI = \frac{\text{weight}}{\text{height}^2}$). Our calculator automates this using centimeters for your convenience.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is BMI accurate for everyone?</h3>
+        <p>While useful for most people, BMI can sometimes misclassify athletes or individuals with high muscle mass as overweight, as it cannot distinguish between muscle and fat weight directly.</p>
+      </div>
+    </section>
+
+  </main>
 
   <script>
     const heightInput = document.getElementById("height");
     const weightInput = document.getElementById("weight");
-
     const bmiValue = document.getElementById("bmiValue");
     const bmiCategory = document.getElementById("bmiCategory");
 
@@ -255,7 +325,6 @@
       bmiValue.textContent = roundedBMI;
 
       let category = "";
-
       if (bmi < 18.5) {
         category = "Underweight";
       } else if (bmi < 25) {
@@ -272,32 +341,5 @@
     heightInput.addEventListener("input", calculateBMI);
     weightInput.addEventListener("input", calculateBMI);
   </script>
-<section style="max-width:800px;margin:50px auto;padding:20px;line-height:1.8;">
-
-  <h2>How to Use the BMI Calculator</h2>
-
-  <p>
-    Enter your weight and height into the BMI calculator and click the calculate button.
-    The tool will instantly show your Body Mass Index (BMI) and your BMI category.
-  </p>
-
-  <h2>BMI Classification</h2>
-
-  <ul>
-    <li><strong>Underweight:</strong> BMI below 18.5</li>
-    <li><strong>Normal weight:</strong> BMI between 18.5 and 24.9</li>
-    <li><strong>Overweight:</strong> BMI between 25 and 29.9</li>
-    <li><strong>Obese:</strong> BMI 30 or above</li>
-  </ul>
-
-  <h2>Health Tips</h2>
-
-  <p>
-    Maintaining a healthy BMI can help reduce the risk of heart disease,
-    diabetes, and other health problems. Regular exercise and balanced nutrition
-    are important for long-term health.
-  </p>
-
-</section>
 </body>
 </html>
