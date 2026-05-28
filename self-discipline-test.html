@@ -2,194 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Self-Discipline Index Test - ToolsQuark</title>
-  <meta name="description" content="Free online Self-Discipline Calculator. Evaluate your impulse control, willpower resilience, and focus metric systems instantly.">
-  <meta name="keywords" content="Self-Discipline Test, Willpower Calculator, Habits Index Tracker, Behavior Analytics Tools">
+  <title>Self-Discipline & Consistency Matrix - ToolsQuark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #f3f4f6, #10b981);
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-      padding: 40px 20px; color: #222;
-    }
-    .site-header-nav { width: 100%; max-width: 460px; margin-bottom: 15px; display: flex; justify-content: flex-start; }
-    .site-header-nav a { font-size: 14px; color: #555; text-decoration: none; font-weight: 600; }
-    .site-header-nav a:hover { color: #10b981; }
-    
-    .container {
-      width: 100%; max-width: 460px; background: #fff; border-radius: 20px;
-      padding: 30px 24px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
-    }
-    .title { text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
-    .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
-    
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden; }
-    .progress-bar { width: 20%; height: 100%; background: #10b981; transition: width 0.3s ease; }
-    
-    .quiz-card { display: none; }
-    .quiz-card.active { display: block; }
-    .question-text { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 20px; line-height: 1.5; }
-    
-    .options-list { display: flex; flex-direction: column; gap: 12px; }
-    .option-btn {
-      width: 100%; padding: 14px; text-align: left; background: #fff;
-      border: 1px solid #d1d5db; border-radius: 12px; font-size: 15px; font-weight: 500;
-      color: #374151; cursor: pointer; transition: all 0.2s; outline: none;
-    }
-    .option-btn:hover { background: #f3f4f6; border-color: #9ca3af; transform: translateY(-1px); }
-    
-    .result-box { display: none; text-align: center; background: #f4faf7; border-radius: 16px; padding: 25px 20px; border: 1px solid #e5e7eb; }
-    .score-title { font-size: 15px; font-weight: bold; color: #4b5563; text-transform: uppercase; }
-    .score-value { font-size: 48px; font-weight: 900; color: #10b981; margin: 10px 0; }
-    .score-status { font-size: 18px; font-weight: bold; color: #111827; margin-bottom: 12px; }
-    .score-desc { font-size: 14px; color: #4b5563; line-height: 1.6; }
-    .restart-btn { margin-top: 20px; width: auto; display: inline-block; padding: 10px 24px; background: #111827; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-    .restart-btn:hover { background: #374151; }
-
-    .card-footer { margin-top: 25px; text-align: center; font-size: 13px; color: #9ca3af; }
-    
-    .content-section { width: 100%; max-width: 650px; margin: 10px auto 0 auto; padding: 30px 24px; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); border-radius: 20px; }
-    .section-block { margin-bottom: 35px; }
-    .content-section h2 { font-size: 20px; color: #111827; margin-bottom: 12px; border-left: 4px solid #10b981; padding-left: 10px; }
-    .content-section p, .content-section li { font-size: 14px; color: #4b5563; line-height: 1.7; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
+    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
+    .back-btn:hover { background: #1f2937; }
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
+    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
+    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
+    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
+    .result-box { display: none; text-align: center; }
+    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 38px; font-weight: bold; }
+    .metric-label { font-size: 12px; opacity: 0.9; }
+    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
+    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
+    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
+    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
+    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
   </style>
 </head>
 <body>
-
-  <div class="site-header-nav">
-    <a href="index.html">← ToolsQuark Home</a>
-  </div>
-
   <div class="container">
-    <h1 class="title">Self-Discipline Test</h1>
-    <p class="subtitle">Calculate your execution stability parameters, delayed gratification indices, and habit loops.</p>
-
-    <div class="progress-container" id="progressContainer">
-      <div class="progress-bar" id="progressBar"></div>
+    <div class="header-block"><h2>Self-Discipline Test</h2><a href="index.html" class="back-btn">← Back</a></div>
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
+    <div class="result-box" id="resultInterface">
+      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
+      <h3 class="result-title" id="analysisTitle"></h3><div class="result-interpretation" id="analysisText"></div>
+      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
     </div>
-
-    <div id="quizContainer">
-      <div class="quiz-card active" data-step="1">
-        <p class="question-text">1. I successfully resist distraction anomalies (social feeds, video channels) when working on key target assets.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(4)">Always True</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Mostly True</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Rarely True</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Never True</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="2">
-        <p class="question-text">2. When establishing long-range target paths, I break them down into consistent routine actions without abandoning the framework midway.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(4)">Always True</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Mostly True</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Rarely True</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Never True</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="3">
-        <p class="question-text">3. I frequently give in to instant gratification loops (impulse buying, unhealthy food tracking choices).</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(1)">Always True</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Mostly True</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Rarely True</button>
-          <button class="option-btn" onclick="nextQuestion(4)">Never True</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="4">
-        <p class="question-text">4. Even when motivation parameters dip, I rely on my structural calendar systems to finish objectives.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(4)">Always True</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Mostly True</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Rarely True</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Never True</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="5">
-        <p class="question-text">5. I systematically track personal fitness, sleep budgets, or structural scheduling metrics.</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(4)">Always True</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Mostly True</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Rarely True</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Never True</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-box" id="resultBox">
-      <span class="score-title">Self-Discipline Index</span>
-      <div class="score-value" id="scoreVal">0%</div>
-      <div class="score-status" id="statusVal">Operational</div>
-      <p class="score-desc" id="descVal">Metrics parsing.</p>
-      <button class="restart-btn" onclick="restartQuiz()">Retake Test</button>
-    </div>
-
-    <div class="card-footer">Private Impulse Control Estimation Matrix</div>
   </div>
 
-  <main class="content-section">
-    <section class="section-block">
-      <h2>The Anatomy of Long-Range Willpower Resilience</h2>
-      <p>True self-discipline does not rely on daily inspiration or intense mental pressure. It centers on constructing automatic environmental prompts that minimize decision fatigue inside pre-set task frameworks.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="about.html">About Us</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
+  <section class="faq-container">
+    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
+    <div class="faq-item">
+      <div class="faq-q">💡 What parameters are generated?</div>
+      <div class="faq-a">This tracks your executive framework consistency, short-term impulse inhibition resilience, and strategic focus parameters.</div>
     </div>
-    <div class="copyright">© 2026 ToolsQuark. All rights reserved.</div>
-  </footer>
+  </section>
 
   <script>
-    let currentStep = 1; let totalScore = 0; const maxSteps = 5;
-    function nextQuestion(score) {
-      totalScore += score;
-      document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.remove('active');
-      currentStep++;
-      if(currentStep <= maxSteps) {
-        document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.add('active');
-        document.getElementById("progressBar").style.width = `${(currentStep / maxSteps) * 100}%`;
-      } else { showResults(); }
+    const questions = [
+      "Struggled to sustain multi-hour focus matrices on analytical tasks when alternative distractions exist?",
+      "Abandoned long-range fitness, skill-acquisition, or financial regimens within the initial 14-day cycle?",
+      "Allowed instant notifications or micro-dopamine triggers to derail scheduled blocks of deep work?",
+      "Failed to adhere to self-directed chronological sleep schedules or early morning routines?",
+      "Neglected core structural preparation, preferring immediate low-effort comfort optimization?",
+      "Felt that your operational consistency relies heavily on temporary inspiration rather than structured systemization?",
+      "Experienced significant difficulty breaking cyclical unhealthy nutritional or digital habits?",
+      "Abandoned primary objectives completely when facing minor systemic resistance or friction?",
+      "Failed to establish daily target parameters or document your milestone execution metrics?",
+      "Struggled to maintain emotional regulation and behavioral stability under prolonged focus demands?"
+    ];
+    const interpretations = [
+      { bound: 10, title: "Compounded Chaos Hazard (Low Discipline)", text: "Your executive control parameters show systematic vulnerability to short-term temptation vectors. Immediate external structures are recommended." },
+      { bound: 20, title: "Fluctuating Focus Resiliency (Moderate Discipline)", text: "Your execution parameters are functional but vulnerable. Consistency relies heavily on clear short-term environments." },
+      { bound: 30, title: "Elite Executive Core (Exceptional Discipline)", text: "Your internal regulatory frameworks are highly optimized. Long-range focus parameters indicate superior resilience." }
+    ];
+    const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
+    let idx = 0, score = 0;
+    function render() {
+      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
+      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
+      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
+      options.forEach((opt, w) => {
+        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
+        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
+        wrapper.appendChild(d);
+      });
     }
-    function showResults() {
-      document.getElementById("progressContainer").style.display = "none";
-      document.getElementById("quizContainer").style.display = "none";
-      const indexPercentage = Math.round(((totalScore - 5) / 15) * 100);
-      document.getElementById("scoreVal").textContent = `${indexPercentage}%`;
-      let status = ""; let desc = "";
-      if(indexPercentage <= 35) {
-        status = "Impulsive / Low Systems Control";
-        desc = "You rely extensively on emotional momentum to fuel tasks. Build robust environmental rules to anchor your focus patterns.";
-      } else if(indexPercentage <= 75) {
-        status = "Structured Routine Executor";
-        desc = "Your system exhibits dependable executive function under normal loads. Refine micro-habits to withstand unexpected high-stress anomalies.";
-      } else {
-        status = "Hyper-Disciplined Catalyst";
-        desc = "Exceptional target alignment and impulse mitigation. Remember to allow space for intentional cognitive relaxation to prevent long-term rigidity.";
-      }
-      document.getElementById("statusVal").textContent = status;
-      document.getElementById("descVal").textContent = desc;
-      document.getElementById("resultBox").style.display = "block";
+    function showResult() {
+      document.getElementById("quizInterface").style.display = "none";
+      document.getElementById("resultInterface").style.display = "block";
+      document.getElementById("progressBar").style.width = "100%";
+      document.getElementById("finalScore").textContent = score;
+      let target = interpretations.find(i => score <= i.bound) || interpretations[2];
+      document.getElementById("analysisTitle").textContent = target.title;
+      document.getElementById("analysisText").textContent = target.text;
     }
-    function restartQuiz() {
-      currentStep = 1; totalScore = 0;
-      document.getElementById("progressBar").style.width = "20%";
-      document.getElementById("progressContainer").style.display = "block";
-      document.getElementById("quizContainer").style.display = "block";
-      document.getElementById("resultBox").style.display = "none";
-      document.querySelectorAll('.quiz-card').forEach(card => card.classList.remove('active'));
-      document.querySelector('.quiz-card[data-step="1"]').classList.add('active');
-    }
+    render();
   </script>
 </body>
 </html>
