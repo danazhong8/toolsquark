@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Self-Discipline Index Test - ToolsQuark</title>
+  <meta name="description" content="Free online Self-Discipline Calculator. Evaluate your impulse control, willpower resilience, and focus metric systems instantly.">
+  <meta name="keywords" content="Self-Discipline Test, Willpower Calculator, Habits Index Tracker, Behavior Analytics Tools">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f3f4f6, #10b981);
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      padding: 40px 20px; color: #222;
+    }
+    .site-header-nav { width: 100%; max-width: 460px; margin-bottom: 15px; display: flex; justify-content: flex-start; }
+    .site-header-nav a { font-size: 14px; color: #555; text-decoration: none; font-weight: 600; }
+    .site-header-nav a:hover { color: #10b981; }
+    
+    .container {
+      width: 100%; max-width: 460px; background: #fff; border-radius: 20px;
+      padding: 30px 24px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
+    }
+    .title { text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
+    .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
+    
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden; }
+    .progress-bar { width: 20%; height: 100%; background: #10b981; transition: width 0.3s ease; }
+    
+    .quiz-card { display: none; }
+    .quiz-card.active { display: block; }
+    .question-text { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 20px; line-height: 1.5; }
+    
+    .options-list { display: flex; flex-direction: column; gap: 12px; }
+    .option-btn {
+      width: 100%; padding: 14px; text-align: left; background: #fff;
+      border: 1px solid #d1d5db; border-radius: 12px; font-size: 15px; font-weight: 500;
+      color: #374151; cursor: pointer; transition: all 0.2s; outline: none;
+    }
+    .option-btn:hover { background: #f3f4f6; border-color: #9ca3af; transform: translateY(-1px); }
+    
+    .result-box { display: none; text-align: center; background: #f4faf7; border-radius: 16px; padding: 25px 20px; border: 1px solid #e5e7eb; }
+    .score-title { font-size: 15px; font-weight: bold; color: #4b5563; text-transform: uppercase; }
+    .score-value { font-size: 48px; font-weight: 900; color: #10b981; margin: 10px 0; }
+    .score-status { font-size: 18px; font-weight: bold; color: #111827; margin-bottom: 12px; }
+    .score-desc { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .restart-btn { margin-top: 20px; width: auto; display: inline-block; padding: 10px 24px; background: #111827; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    .restart-btn:hover { background: #374151; }
+
+    .card-footer { margin-top: 25px; text-align: center; font-size: 13px; color: #9ca3af; }
+    
+    .content-section { width: 100%; max-width: 650px; margin: 10px auto 0 auto; padding: 30px 24px; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); border-radius: 20px; }
+    .section-block { margin-bottom: 35px; }
+    .content-section h2 { font-size: 20px; color: #111827; margin-bottom: 12px; border-left: 4px solid #10b981; padding-left: 10px; }
+    .content-section p, .content-section li { font-size: 14px; color: #4b5563; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <div class="site-header-nav">
+    <a href="index.html">← ToolsQuark Home</a>
+  </div>
+
+  <div class="container">
+    <h1 class="title">Self-Discipline Test</h1>
+    <p class="subtitle">Calculate your execution stability parameters, delayed gratification indices, and habit loops.</p>
+
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="quizContainer">
+      <div class="quiz-card active" data-step="1">
+        <p class="question-text">1. I successfully resist distraction anomalies (social feeds, video channels) when working on key target assets.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(4)">Always True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Mostly True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Never True</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="2">
+        <p class="question-text">2. When establishing long-range target paths, I break them down into consistent routine actions without abandoning the framework midway.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(4)">Always True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Mostly True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Never True</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="3">
+        <p class="question-text">3. I frequently give in to instant gratification loops (impulse buying, unhealthy food tracking choices).</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(1)">Always True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Mostly True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(4)">Never True</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="4">
+        <p class="question-text">4. Even when motivation parameters dip, I rely on my structural calendar systems to finish objectives.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(4)">Always True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Mostly True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Never True</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" data-step="5">
+        <p class="question-text">5. I systematically track personal fitness, sleep budgets, or structural scheduling metrics.</p>
+        <div class="options-list">
+          <button class="option-btn" onclick="nextQuestion(4)">Always True</button>
+          <button class="option-btn" onclick="nextQuestion(3)">Mostly True</button>
+          <button class="option-btn" onclick="nextQuestion(2)">Rarely True</button>
+          <button class="option-btn" onclick="nextQuestion(1)">Never True</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <span class="score-title">Self-Discipline Index</span>
+      <div class="score-value" id="scoreVal">0%</div>
+      <div class="score-status" id="statusVal">Operational</div>
+      <p class="score-desc" id="descVal">Metrics parsing.</p>
+      <button class="restart-btn" onclick="restartQuiz()">Retake Test</button>
+    </div>
+
+    <div class="card-footer">Private Impulse Control Estimation Matrix</div>
+  </div>
+
+  <main class="content-section">
+    <section class="section-block">
+      <h2>The Anatomy of Long-Range Willpower Resilience</h2>
+      <p>True self-discipline does not rely on daily inspiration or intense mental pressure. It centers on constructing automatic environmental prompts that minimize decision fatigue inside pre-set task frameworks.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <div class="copyright">© 2026 ToolsQuark. All rights reserved.</div>
+  </footer>
+
+  <script>
+    let currentStep = 1; let totalScore = 0; const maxSteps = 5;
+    function nextQuestion(score) {
+      totalScore += score;
+      document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.remove('active');
+      currentStep++;
+      if(currentStep <= maxSteps) {
+        document.querySelector(`.quiz-card[data-step="${currentStep}"]`).classList.add('active');
+        document.getElementById("progressBar").style.width = `${(currentStep / maxSteps) * 100}%`;
+      } else { showResults(); }
+    }
+    function showResults() {
+      document.getElementById("progressContainer").style.display = "none";
+      document.getElementById("quizContainer").style.display = "none";
+      const indexPercentage = Math.round(((totalScore - 5) / 15) * 100);
+      document.getElementById("scoreVal").textContent = `${indexPercentage}%`;
+      let status = ""; let desc = "";
+      if(indexPercentage <= 35) {
+        status = "Impulsive / Low Systems Control";
+        desc = "You rely extensively on emotional momentum to fuel tasks. Build robust environmental rules to anchor your focus patterns.";
+      } else if(indexPercentage <= 75) {
+        status = "Structured Routine Executor";
+        desc = "Your system exhibits dependable executive function under normal loads. Refine micro-habits to withstand unexpected high-stress anomalies.";
+      } else {
+        status = "Hyper-Disciplined Catalyst";
+        desc = "Exceptional target alignment and impulse mitigation. Remember to allow space for intentional cognitive relaxation to prevent long-term rigidity.";
+      }
+      document.getElementById("statusVal").textContent = status;
+      document.getElementById("descVal").textContent = desc;
+      document.getElementById("resultBox").style.display = "block";
+    }
+    function restartQuiz() {
+      currentStep = 1; totalScore = 0;
+      document.getElementById("progressBar").style.width = "20%";
+      document.getElementById("progressContainer").style.display = "block";
+      document.getElementById("quizContainer").style.display = "block";
+      document.getElementById("resultBox").style.display = "none";
+      document.querySelectorAll('.quiz-card').forEach(card => card.classList.remove('active'));
+      document.querySelector('.quiz-card[data-step="1"]').classList.add('active');
+    }
+  </script>
+</body>
+</html>
