@@ -2,239 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Stress Index Test - ToolsQuark</title>
-  <meta name="description" content="Free online Stress Index Test. Assess your psychological stress and anxiety levels instantly with our client-side clinical matrix questionnaire.">
-  <meta name="keywords" content="Stress Index Test, Stress Calculator, Mental Health Test, Burnout Assessment, Fitness Tools">
+  <title>Stress Index Core Assessment Matrix - ToolsQuark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #eef2f3, #8e9eab);
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-      padding: 40px 20px; color: #222;
-    }
-    .site-header-nav { width: 100%; max-width: 460px; margin-bottom: 15px; display: flex; justify-content: flex-start; }
-    .site-header-nav a { font-size: 14px; color: #555; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-    .site-header-nav a:hover { color: #2563eb; }
-    
-    .container {
-      width: 100%; max-width: 460px; background: #fff; border-radius: 20px;
-      padding: 30px 24px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
-    }
-    .title { text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
-    .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
-    
-    /* 进度条样式 */
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden; }
-    .progress-bar { width: 20%; height: 100%; background: #2563eb; transition: width 0.3s ease; }
-    
-    /* 问题卡片流 */
-    .quiz-card { display: none; }
-    .quiz-card.active { display: block; }
-    .question-text { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 20px; line-height: 1.5; }
-    
-    /* 优雅的选项按钮 */
-    .options-list { display: flex; flex-direction: column; gap: 12px; }
-    .option-btn {
-      width: 100%; padding: 14px; text-align: left; background: #fff;
-      border: 1px solid #d1d5db; border-radius: 12px; font-size: 15px; font-weight: 500;
-      color: #374151; cursor: pointer; transition: all 0.2s; outline: none;
-    }
-    .option-btn:hover { background: #f3f4f6; border-color: #9ca3af; transform: translateY(-1px); }
-    
-    /* 结果面板 */
-    .result-box { display: none; text-align: center; background: #f9fafb; border-radius: 16px; padding: 25px 20px; border: 1px solid #e5e7eb; }
-    .score-title { font-size: 15px; font-weight: bold; color: #4b5563; text-transform: uppercase; letter-spacing: 0.05em; }
-    .score-value { font-size: 48px; font-weight: 900; color: #2563eb; margin: 10px 0; }
-    .score-status { font-size: 18px; font-weight: bold; color: #111827; margin-bottom: 12px; }
-    .score-desc { font-size: 14px; color: #4b5563; line-height: 1.6; }
-    .restart-btn { margin-top: 20px; width: auto; display: inline-block; padding: 10px 24px; background: #111827; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-    .restart-btn:hover { background: #374151; }
-
-    .card-footer { margin-top: 25px; text-align: center; font-size: 13px; color: #9ca3af; }
-    
-    .content-section { width: 100%; max-width: 650px; margin: 10px auto 0 auto; padding: 30px 24px; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03); }
-    .section-block { margin-bottom: 35px; }
-    .content-section h2 { font-size: 20px; color: #111827; margin-bottom: 12px; border-left: 4px solid #2563eb; padding-left: 10px; }
-    .content-section p, .content-section li { font-size: 14px; color: #4b5563; line-height: 1.7; }
-    .content-section ul { padding-left: 20px; margin-top: 10px; }
-    .content-section li { margin-bottom: 6px; }
-    
-    .site-footer { text-align: center; margin-top: auto; padding-top: 50px; padding-bottom: 15px; width: 100%; max-width: 650px; }
-    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; }
-    .footer-links a { font-size: 13px; color: #6b7280; text-decoration: none; }
-    .footer-links a:hover { color: #111827; text-decoration: underline; }
-    .copyright { color: #9ca3af; font-size: 12px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
+    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
+    .back-btn:hover { background: #1f2937; }
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
+    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
+    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
+    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
+    .result-box { display: none; text-align: center; }
+    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 38px; font-weight: bold; }
+    .metric-label { font-size: 12px; opacity: 0.9; }
+    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
+    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
+    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
+    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
+    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
   </style>
 </head>
 <body>
 
-  <div class="site-header-nav">
-    <a href="index.html">← ToolsQuark Home</a>
-  </div>
-
   <div class="container">
-    <h1 class="title">Stress Index Test</h1>
-    <p class="subtitle">Evaluate your current psychological workload and perceive pressure levels objectively.</p>
-
-    <div class="progress-container" id="progressContainer">
-      <div class="progress-bar" id="progressBar"></div>
+    <div class="header-block">
+      <h2 style="font-size: 22px; font-weight: bold;">Stress Index Test</h2>
+      <a href="index.html" class="back-btn">← Back to Hub</a>
     </div>
+    
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
-    <div id="quizContainer">
-      <div class="quiz-card active" data-step="1">
-        <p class="question-text">1. In the last month, how often have you felt that you were unable to control the important things in your life?</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(0)">Never</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Almost Never</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Sometimes</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Fairly Often</button>
-          <button class="option-btn" onclick="nextQuestion(4)">Very Often</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="2">
-        <p class="question-text">2. In the last month, how often have you felt confident about your ability to handle your personal problems?</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(4)">Never</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Almost Never</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Sometimes</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Fairly Often</button>
-          <button class="option-btn" onclick="nextQuestion(0)">Very Often</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="3">
-        <p class="question-text">3. In the last month, how often have you felt that things were going your way?</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(4)">Never</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Almost Never</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Sometimes</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Fairly Often</button>
-          <button class="option-btn" onclick="nextQuestion(0)">Very Often</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="4">
-        <p class="question-text">4. In the last month, how often have you found that you could not cope with all the things that you had to do?</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(0)">Never</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Almost Never</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Sometimes</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Fairly Often</button>
-          <button class="option-btn" onclick="nextQuestion(4)">Very Often</button>
-        </div>
-      </div>
-
-      <div class="quiz-card" data-step="5">
-        <p class="question-text">5. In the last month, how often have you felt difficulties were piling up so high that you could not overcome them?</p>
-        <div class="options-list">
-          <button class="option-btn" onclick="nextQuestion(0)">Never</button>
-          <button class="option-btn" onclick="nextQuestion(1)">Almost Never</button>
-          <button class="option-btn" onclick="nextQuestion(2)">Sometimes</button>
-          <button class="option-btn" onclick="nextQuestion(3)">Fairly Often</button>
-          <button class="option-btn" onclick="nextQuestion(4)">Very Often</button>
-        </div>
+    <div id="quizInterface">
+      <div class="question-box">
+        <h3 id="questionText">Loading assessment node...</h3>
+        <div class="options-list" id="optionsWrapper"></div>
       </div>
     </div>
 
-    <div class="result-box" id="resultBox">
-      <span class="score-title">Your Stress Index</span>
-      <div class="score-value" id="scoreVal">0%</div>
-      <div class="score-status" id="statusVal">Normal</div>
-      <p class="score-desc" id="descVal">Everything seems stable.</p>
-      <button class="restart-btn" onclick="restartQuiz()">Retake Test</button>
+    <div class="result-box" id="resultInterface">
+      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
+      <h3 class="result-title" id="analysisTitle">Analyzing...</h3>
+      <div class="result-interpretation" id="analysisText">Computing metrics...</div>
+      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
     </div>
-
-    <div class="card-footer">Anonymous Client-Side Stress Measurement Matrix</div>
   </div>
 
-  <main class="content-section">
-    <section class="section-block">
-      <h2>About the Perceived Stress Scale Framework</h2>
-      <p>This metrics engine operates based on the conceptual frameworks of the Perceived Stress Scale (PSS). It cross-references answers against typical neural load matrices to identify whether your current workload requires recovery adjustments.</p>
-    </section>
-    <section class="section-block">
-      <h2>Strategies for Effective Stress Reduction</h2>
-      <ul>
-        <li><strong>Box Breathing Protocols:</strong> Introduce tactical box breathing intervals (4-second inhalation, 4-second preservation, 4-second expiration) to regulate nervous equilibrium.</li>
-        <li><strong>Digital Detoxification:</strong> Allocate structured boundaries to filter external notification triggers during high mental loads.</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="about.html">About Us</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
+  <section class="faq-container">
+    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
+    <div class="faq-item">
+      <div class="faq-q">💡 How is the Stress Index calculated?</div>
+      <div class="faq-a">This metric uses a standardized 10-item psychometric assessment framework. Each response is assigned a value from 0 to 3. The aggregate sum provides an absolute marker mapping mild, moderate, or acute stress overload parameters.</div>
     </div>
-    <div class="copyright">© 2026 ToolsQuark. All rights reserved.</div>
-  </footer>
+    <div class="faq-item">
+      <div class="faq-q">🔒 Is my behavioral health data stored or tracked?</div>
+      <div class="faq-a">No. ToolsQuark operates on a strict zero-server footprint standard. All diagnostic state calculations process directly inside your local browser client instance. No data profiles are compiled or transmitted.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">⚠️ Can this replace professional diagnostic screenings?</div>
+      <div class="faq-a">No. This platform is purely for self-screening and behavioral educational tracking. It does not issue official psychological signatures. Please consult a licensed professional for specialized clinical evaluation.</div>
+    </div>
+  </section>
 
   <script>
-    let currentStep = 1;
-    let totalScore = 0;
-    const maxSteps = 5;
+    const questions = [
+      "Felt unable to manage significant unexpected environmental shifts or situational disruption?",
+      "Experienced systemic tension or perceived yourself to lose authority over personal micro-timelines?",
+      "Noticed somatic nervous system load like continuous shoulder compression or persistent headaches?",
+      "Felt increasingly irritated or defensive when coping with minor logistical errors or daily friction?",
+      "Discovered that focus matrices decay rapidly under normal execution parameters?",
+      "Felt overwhelmed by the aggregate density of your immediate career or family obligations?",
+      "Felt that your capacity to mitigate emerging situational crises is nearing complete depletion?",
+      "Experienced persistent disruptions in healthy sleep architecture or sudden mid-cycle exhaustion?",
+      "Perceived a loss of resilience when addressing unanticipated performance demands?",
+      "Felt that micro-stress parameters are compounding at an exponential rate relative to your coping framework?"
+    ];
 
-    function nextQuestion(score) {
-      totalScore += score;
-      const currentCard = document.querySelector(`.quiz-card[data-step="${currentStep}"]`);
-      currentCard.classList.remove('active');
-      
-      currentStep++;
-      
-      if(currentStep <= maxSteps) {
-        const nextCard = document.querySelector(`.quiz-card[data-step="${currentStep}"]`);
-        nextCard.classList.add('active');
-        document.getElementById("progressBar").style.width = `${(currentStep / maxSteps) * 100}%`;
-      } else {
-        showResults();
-      }
-    }
+    const interpretations = [
+      { bound: 10, title: "Resilient Control (Mild Stress Baseline)", text: "Your analytical metrics indicate high levels of executive resilience. Autonomic physiological parameters are operating within standard equilibrium frameworks." },
+      { bound: 20, title: "Elevated Homeostatic Load (Moderate Stress)", text: "Indications point towards mild systemic hyperarousal. Emerging professional or academic fatigue structures suggest a need for proactive workload delegation or relaxation protocols." },
+      { bound: 30, title: "Critical Exhaustion Hazard (Intense Stress Profile)", text: "Your score registers a severe imbalance in coping metrics. You are actively approaching clear boundaries of clinical burnout. High risk of physiological depletion if micro-load values are not immediate modulated." }
+    ];
 
-    function showResults() {
-      document.getElementById("progressContainer").style.display = "none";
-      document.getElementById("quizContainer").style.display = "none";
-      
-      // 转换成百分比指数
-      const maxPossibleScore = maxSteps * 4;
-      const indexPercentage = Math.round((totalScore / maxPossibleScore) * 100);
-      
-      document.getElementById("scoreVal").textContent = `${indexPercentage}%`;
-      
-      let status = "";
-      let desc = "";
-      
-      if(indexPercentage <= 35) {
-        status = "Low Stress (Optimal)";
-        desc = "Your system exhibits balanced adaptability. Current environmental triggers are within highly operational margins.";
-      } else if(indexPercentage <= 70) {
-        status = "Moderate Stress";
-        desc = "You are carrying a noticeable psychological workload. Prioritize operational boundaries and structured sleep patterns to avoid cumulative fatigue.";
-      } else {
-        status = "High Stress / Near Burnout";
-        desc = "Your physical and mental architecture indicates heightened stress overload. Consider halting external strain metrics and integrating physiological recovery.";
-      }
-      
-      document.getElementById("statusVal").textContent = status;
-      document.getElementById("descVal").textContent = desc;
-      document.getElementById("resultBox").style.display = "block";
-    }
+    const options = ["0 - Never / Almost Never", "1 - Sometimes (Mild Frequency)", "2 - Often (Disruptive Frequency)", "3 - Almost Continuously (Severe Level)"];
+    let idx = 0, score = 0;
 
-    function restartQuiz() {
-      currentStep = 1;
-      totalScore = 0;
-      document.getElementById("progressBar").style.width = "20%";
-      document.getElementById("progressContainer").style.display = "block";
-      document.getElementById("quizContainer").style.display = "block";
-      document.getElementById("resultBox").style.display = "none";
-      
-      document.querySelectorAll('.quiz-card').forEach(card => card.classList.remove('active'));
-      document.querySelector('.quiz-card[data-step="1"]').classList.add('active');
+    function render() {
+      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
+      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
+      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
+      options.forEach((opt, w) => {
+        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
+        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
+        wrapper.appendChild(d);
+      });
     }
+    function showResult() {
+      document.getElementById("quizInterface").style.display = "none";
+      document.getElementById("resultInterface").style.display = "block";
+      document.getElementById("progressBar").style.width = "100%";
+      document.getElementById("finalScore").textContent = score;
+      let target = interpretations.find(i => score <= i.bound) || interpretations[2];
+      document.getElementById("analysisTitle").textContent = target.title;
+      document.getElementById("analysisText").textContent = target.text;
+    }
+    render();
   </script>
 </body>
 </html>
