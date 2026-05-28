@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Anxiety Hyperarousal Assessment Engine - ToolsQuark</title>
+  <title>Anxiety Hyperarousal Index Engine - ToolsQuark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
@@ -31,13 +31,26 @@
   </style>
 </head>
 <body>
+
   <div class="container">
-    <div class="header-block"><h2>Anxiety Index Test</h2><a href="index.html" class="back-btn">← Back</a></div>
+    <div class="header-block">
+      <h2 style="font-size: 22px; font-weight: bold;">Anxiety Index Test</h2>
+      <a href="index.html" class="back-btn">← Back to Hub</a>
+    </div>
+    
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-    <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
+
+    <div id="quizInterface">
+      <div class="question-box">
+        <h3 id="questionText">Loading assessment node...</h3>
+        <div class="options-list" id="optionsWrapper"></div>
+      </div>
+    </div>
+
     <div class="result-box" id="resultInterface">
       <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
-      <h3 class="result-title" id="analysisTitle"></h3><div class="result-interpretation" id="analysisText"></div>
+      <h3 class="result-title" id="analysisTitle">Analyzing...</h3>
+      <div class="result-interpretation" id="analysisText">Computing metrics...</div>
       <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
     </div>
   </div>
@@ -45,8 +58,16 @@
   <section class="faq-container">
     <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
     <div class="faq-item">
-      <div class="faq-q">💡 What are the clinical constraints?</div>
-      <div class="faq-a">Screens for persistent generalized somatic nervous tension or catastrophic thought forecasting metrics. It does not replace psychotherapeutic signatures.</div>
+      <div class="faq-q">💡 How is the Anxiety Index calculated?</div>
+      <div class="faq-a">This analytical instrument maps somatic nervous system hyperarousal loops using frameworks calibrated with Generalized Anxiety Disorder metrics. Across 10 clinical items evaluating tension parameters, scores are recorded from 0 to 3 points per node, rendering a definitive index map bounded from 0 to 30.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">🔒 Are my internal tension scores protected from external extraction?</div>
+      <div class="faq-a">Yes. ToolsQuark operates on a strict zero-server footprint standard. All diagnostic state calculations process directly inside your local browser client instance. No database records, tracking identifiers, or hyperarousal logs are transferred or aggregated.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">⚠️ Can an intense anxiety index score substitute an official psychotherapeutic signature?</div>
+      <div class="faq-a">No. High score parameters indicate systemic tension loops but do not equate to a psychiatric diagnostic signature. This engine serves purely as an educational tracker for general mental wellness boundaries. For accurate clinical screening, seek out a credentialed clinical psychotherapist.</div>
     </div>
   </section>
 
@@ -63,13 +84,16 @@
       "Feared that invisible future scenarios are spinning entirely beyond your system parameters?",
       "Felt a profound sense of impending crisis or somatic vulnerability without any real, logical root cause?"
     ];
+
     const interpretations = [
-      { bound: 10, title: "Calm Neural Processing", text: "Nervous system modulation shows strong homeostatic grounding. Worry cycles are easily targeted, parsed, and dismissed." },
-      { bound: 20, title: "Hyperarousal Tendency", text: "Your score registers moderate generalized tension. Somatic tracking indicates frequent cognitive worrying patterns." },
-      { bound: 30, title: "Somatic Strain Warning", text: "System parameters reveal severe hyperarousal cycles. Strongly consider professional clinical consultation to optimize regulatory health." }
+      { bound: 10, title: "Calm Neural Processing (Minimal Anxiety)", text: "Nervous system modulation shows strong homeostatic grounding. Worry cycles are easily targeted, parsed, and dismissed." },
+      { bound: 20, title: "Hyperarousal Tendency (Moderate Anxiety Loop)", text: "Your score registers moderate generalized tension. Somatic tracking indicates frequent cognitive worrying patterns, suggesting the integration of mindfulness or cognitive reframing parameters." },
+      { bound: 30, title: "Somatic Strain Warning (High Generalized Anxiety)", text: "System parameters reveal severe hyperarousal cycles. High cognitive energy is actively drained by negative forecasting loops. Strongly consider professional clinical consultation to optimize regulatory health." }
     ];
-    const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
+
+    const options = ["0 - Never / Almost Never", "1 - Sometimes (Mild Frequency)", "2 - Often (Disruptive Frequency)", "3 - Almost Continuously (Severe Level)"];
     let idx = 0, score = 0;
+
     function render() {
       document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
       document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
