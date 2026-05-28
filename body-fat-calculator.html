@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Body Fat Calculator - ToolsQuark</title>
+  <meta name="description" content="Free online Body Fat Calculator. Calculate your estimated body fat percentage using the accurate U.S. Navy circumference method.">
+  <meta name="keywords" content="Body Fat Calculator, Body Fat Percentage, BFP Calculator, Navy Body Fat Formula, Fitness Tools">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+      color: #222;
+    }
+
+    /* 顶层大首页返回面包屑导航 */
+    .site-header-nav {
+      width: 100%;
+      max-width: 440px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: flex-start;
+    }
+    
+    .site-header-nav a {
+      font-size: 14px;
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    
+    .site-header-nav a:hover {
+      color: #2563eb;
+    }
+
+    /* 计算器卡片主容器 */
+    .container {
+      width: 100%;
+      max-width: 440px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px 24px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    /* 性别单选按钮样式优化 */
+    .gender-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .gender-label {
+      flex: 1;
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #4b5563;
+      transition: 0.2s;
+    }
+
+    .gender-group input[type="radio"] {
+      display: none;
+    }
+
+    .gender-group input[type="radio"]:checked + .gender-label {
+      background: #111827;
+      color: #fff;
+      border-color: #111827;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      background-color: #fff;
+      transition: 0.3s;
+    }
+
+    input[type="number"]:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    /* 动态女性臀围输入框显隐动画特效 */
+    #hipGroup {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      background: #374151;
+    }
+
+    /* 结果展现面板 */
+    .result-box {
+      margin-top: 25px;
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 22px;
+      border: 1px solid #e5e7eb;
+      display: none; /* 初始隐藏 */
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+
+    .result-row:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .result-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    .result-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .result-value.category {
+      font-size: 18px;
+      color: #10b981;
+    }
+
+    .card-footer {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    /* 说明与SEO优化文档卡片 */
+    .content-section {
+      width: 100%;
+      max-width: 650px;
+      margin: 10px auto 0 auto;
+      padding: 30px 24px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .section-block {
+      margin-bottom: 35px;
+    }
+
+    .section-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-section h2 {
+      font-size: 20px;
+      color: #111827;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 4px solid #2563eb;
+      padding-left: 10px;
+    }
+
+    .content-section h3 {
+      font-size: 15px;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .content-section p, .content-section li {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .content-section ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .content-section li {
+      margin-bottom: 6px;
+    }
+
+    /* 完美沉底的全局全英文页脚 */
+    .site-footer {
+      text-align: center;
+      margin-top: auto;
+      padding-top: 50px;
+      padding-bottom: 15px;
+      width: 100%;
+      max-width: 650px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: #6b7280;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #111827;
+      text-decoration: underline;
+    }
+
+    .copyright {
+      color: #9ca3af;
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 25px 15px; }
+      .container { padding: 24px 18px; }
+      .title { font-size: 28px; }
+      .content-section { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-header-nav">
+    <a href="index.html">← ToolsQuark Home</a>
+  </div>
+
+  <div class="container">
+    <h1 class="title">Body Fat Calculator</h1>
+    <p class="subtitle">Estimate your body fat percentage using the standardized U.S. Navy anthropometric equations.</p>
+
+    <div class="input-group">
+      <label>Gender</label>
+      <div class="gender-group">
+        <input type="radio" name="gender" id="male" value="male" checked onclick="toggleGenderInputs()">
+        <label for="male" class="gender-label">Male</label>
+        
+        <input type="radio" name="gender" id="female" value="female" onclick="toggleGenderInputs()">
+        <label for="female" class="gender-label">Female</label>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="height">Height (cm)</label>
+      <input type="number" id="height" placeholder="e.g. 175" min="100" max="250">
+    </div>
+
+    <div class="input-group">
+      <label for="neck">Neck Circumference (cm)</label>
+      <input type="number" id="neck" placeholder="e.g. 38" min="20" max="60">
+    </div>
+
+    <div class="input-group">
+      <label for="waist">Waist Circumference (cm)</label>
+      <input type="number" id="waist" placeholder="e.g. 85" min="40" max="180">
+    </div>
+
+    <div class="input-group" id="hipGroup">
+      <label for="hip">Hip Circumference (cm)</label>
+      <input type="number" id="hip" placeholder="e.g. 95" min="40" max="180">
+    </div>
+
+    <button onclick="calculateBodyFat()">Calculate Body Fat</button>
+
+    <div class="result-box" id="resultBox">
+      <div class="result-row">
+        <span class="result-label">Body Fat Percentage:</span>
+        <span class="result-value" id="bfpValue">0.0%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Category:</span>
+        <span class="result-value category" id="bfpCategory">Normal</span>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      Private Client-Side Physical Analysis Tool
+    </div>
+  </div>
+
+  <main class="content-section">
+    <section class="section-block">
+      <h2>How to Measure Correctly</h2>
+      <p>For high accuracy, follow strict measurement protocols with a flexible tape measure:</p>
+      <ul>
+        <li><strong>Neck:</strong> Measure just below the larynx, sloping slightly downward to the front.</li>
+        <li><strong>Waist:</strong> Measure horizontally around your natural waistline (for men, at the navel level; for women, at the narrowest point above the navel).</li>
+        <li><strong>Hips (Women Only):</strong> Measure around the largest horizontal circumference of the buttocks.</li>
+      </ul>
+    </section>
+
+    <section class="section-block">
+      <h2>Body Fat Categories (ACE Standards)</h2>
+      <p>According to the American Council on Exercise (ACE), body fat distributions fall into the following structural classifications:</p>
+      <h3>For Men:</h3>
+      <p>Essential Fat: 2-5% | Athletes: 6-13% | Fitness: 14-17% | Acceptable: 18-24% | Obesity: 25%+</p>
+      <h3>For Women:</h3>
+      <p>Essential Fat: 10-13% | Athletes: 14-20% | Fitness: 21-24% | Acceptable: 25-31% | Obesity: 32%+</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <div class="copyright">
+      © 2026 ToolsQuark. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // 监听性别单选，动态切出或隐藏臀围（Hips）
+    function toggleGenderInputs() {
+      const isFemale = document.getElementById("female").checked;
+      const hipGroup = document.getElementById("hipGroup");
+      if (isFemale) {
+        hipGroup.style.display = "block";
+        setTimeout(() => hipGroup.style.opacity = "1", 10);
+      } else {
+        hipGroup.style.opacity = "0";
+        setTimeout(() => hipGroup.style.display = "none", 300);
+      }
+    }
+
+    function calculateBodyFat() {
+      const isMale = document.getElementById("male").checked;
+      const height = parseFloat(document.getElementById("height").value);
+      const neck = parseFloat(document.getElementById("neck").value);
+      const waist = parseFloat(document.getElementById("waist").value);
+      const hip = parseFloat(document.getElementById("hip").value);
+
+      if (!height || !neck || !waist || height <= 0 || neck <= 0 || waist <= 0 || (!isMale && (!hip || hip <= 0))) {
+        alert("Please enter valid positive measurements for all fields.");
+        return;
+      }
+
+      let bfp = 0;
+
+      // 经典美国海军体脂公式矩阵运算（使用对数公式 Log10）
+      if (isMale) {
+        if (waist <= neck) {
+          alert("Waist measurement must be larger than neck measurement.");
+          return;
+        }
+        bfp = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+      } else {
+        if ((waist + hip) <= neck) {
+          alert("Waist and hip parameters are physically inconsistent with neck metrics.");
+          return;
+        }
+        bfp = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+      }
+
+      // 极端异常防御机制
+      if (bfp < 2) bfp = 2;
+      if (bfp > 60) bfp = 60;
+
+      const roundedBFP = bfp.toFixed(1);
+      document.getElementById("bfpValue").textContent = `${roundedBFP}%`;
+
+      // 评估分级类别（ACE 分类矩阵）
+      let category = "Normal";
+      if (isMale) {
+        if (bfp < 6) category = "Essential Fat";
+        else if (bfp < 14) category = "Athletes";
+        else if (bfp < 18) category = "Fitness";
+        else if (bfp < 25) category = "Acceptable";
+        else category = "Obesity";
+      } else {
+        if (bfp < 14) category = "Essential Fat";
+        else if (bfp < 21) category = "Athletes";
+        else if (bfp < 25) category = "Fitness";
+        else if (bfp < 32) category = "Acceptable";
+        else category = "Obesity";
+      }
+
+      document.getElementById("bfpCategory").textContent = category;
+      document.getElementById("resultBox").style.display = "block";
+    }
+  </script>
+</body>
+</html>
