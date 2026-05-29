@@ -3,149 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <title>Overthinking Test - Cognitive Rumination & Analysis Paralysis Scale</title>
+  <meta name="description" content="Evaluate your mental overthinking index parameters. Diagnose chronic rumination loops, worry loops, and decision-making analysis paralysis thresholds.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
     .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { text-decoration: none; color: #4b5563; font-size: 14px; display: flex; align-items: center; gap: 5px; padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.5); transition: background 0.2s; min-height: 48px; }
-    .back-btn:hover { background: #fff; }
-    h1 { font-size: 24px; font-weight: bold; color: #111827; }
-    .progress-container { width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 30px; overflow: hidden; }
-    .progress-bar { width: 0%; height: 100%; background: #10b981; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .question-card { animation: fadeIn 0.3s ease-out; }
-    .question-title { font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 20px; line-height: 1.5; }
-    .options-wrapper { display: flex; flex-direction: column; gap: 12px; }
-    .option-item { padding: 16px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; cursor: pointer; font-size: 15px; color: #374151; transition: all 0.2s; display: flex; align-items: center; min-height: 52px; }
-    .option-item:hover { border-color: #10b981; background: rgba(16,185,129,0.03); transform: translateX(2px); }
-    .nav-buttons { display: flex; justify-content: space-between; margin-top: 25px; border-top: 1px solid #e5e7eb; padding-top: 15px; }
-    .btn-nav { padding: 8px 16px; background: rgba(0,0,0,0.05); border: none; border-radius: 8px; font-size: 14px; cursor: pointer; color: #4b5563; min-height: 40px; }
-    .btn-nav:hover:not(:disabled) { background: rgba(0,0,0,0.1); }
-    .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
-    .result-card { display: none; text-align: center; animation: fadeIn 0.4s ease-out; }
-    .score-badge { font-size: 56px; font-weight: 800; color: #10b981; margin: 15px 0; }
-    .analysis-title { font-size: 22px; font-weight: bold; color: #1f2937; margin-bottom: 15px; }
-    .analysis-text { color: #4b5563; font-size: 15px; line-height: 1.6; text-align: left; background: #fff; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; }
-    .btn-reset { margin-top: 25px; padding: 12px 24px; background: #6b7280; color: #fff; border: none; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer; min-height: 45px; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 20px; }
+    .back-home { display: inline-flex; align-items: center; text-decoration: none; color: #2563eb; font-size: 14px; font-weight: bold; transition: 0.2s; }
+    .back-home:hover { transform: translateX(-3px); }
+    .logo-text { font-size: 20px; font-weight: bold; color: #111827; }
+    
+    h1 { font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
+    .subtitle { font-size: 14px; color: #6b7280; line-height: 1.6; margin-bottom: 30px; }
+    
+    .progress-container { background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { background: #2563eb; width: 10%; height: 100%; transition: width 0.4s ease; }
+    
+    .question-card { display: none; }
+    .question-card.active { display: block; }
+    .question-text { font-size: 19px; font-weight: bold; margin-bottom: 22px; color: #1f2937; line-height: 1.4; }
+    
+    .options-list { display: flex; flex-direction: column; gap: 12px; }
+    .option-btn { background: #ffffff; border: 1px solid #e5e7eb; padding: 16px 20px; border-radius: 12px; text-align: left; font-size: 15px; cursor: pointer; transition: all 0.2s ease; color: #374151; font-weight: 500; }
+    .option-btn:hover { border-color: #2563eb; background: rgba(37, 99, 235, 0.03); transform: translateY(-1px); }
+    
+    .result-panel { display: none; text-align: center; padding: 20px 0; }
+    .score-badge { font-size: 48px; font-weight: 900; color: #2563eb; margin-bottom: 15px; }
+    .result-title { font-size: 22px; font-weight: bold; margin-bottom: 15px; color: #111827; }
+    .result-text { font-size: 15px; color: #4b5563; line-height: 1.6; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .retry-btn { background: #2563eb; color: white; border: none; padding: 14px 30px; font-size: 15px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 15px rgba(37,99,235,0.2); }
+    .retry-btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+    
+    .info-section { width: 100%; max-width: 750px; margin-top: 40px; background: rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.4); }
+    .info-section h2 { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #111827; border-left: 4px solid #2563eb; padding-left: 10px; }
+    .info-section p { font-size: 14px; color: #4b5563; line-height: 1.6; margin-bottom: 25px; }
+    
+    .faq-item { margin-bottom: 20px; }
+    .faq-q { font-size: 15px; font-weight: bold; color: #111827; margin-bottom: 6px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.5; }
+    
+    .site-footer { text-align: center; margin-top: 50px; padding: 20px; font-size: 12px; color: #9ca3af; }
   </style>
 </head>
 <body>
-  <main class="container">
-    <div class="header-block">
-      <a href="index.html" class="back-btn">← Back to Hub</a>
-      <h1>Overthinking Test</h1>
-    </div>
-    <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
 
-    <div id="quizInterface">
-      <div class="question-card">
-        <div id="questionText" class="question-title">Analyzing rumination models...</div>
-        <div id="optionsWrapper" class="options-wrapper"></div>
+  <div class="container">
+    <header class="header-block">
+      <a href="index.html" class="back-home">⬅ Back to Home</a>
+      <div class="logo-text">ToolsQuark 🌪️</div>
+    </header>
+
+    <main>
+      <div id="quizInterface">
+        <h1>Cognitive Overthinking Test</h1>
+        <p class="subtitle">Map your destructive psychological rumination loops, retrospective analysis traps, and future-projection anxiety parameters cleanly.</p>
+
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div id="questionsContainer">
+          <div class="question-card active">
+  <div class="question-text">Q1: After an awkward or routine social interaction, how long do you spend dissecting what you said or did?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Days or weeks of continuous analysis</button>
+    <button class="option-btn" onclick="selectOption(2)">Several hours of repetitive review</button>
+    <button class="option-btn" onclick="selectOption(1)">A few minutes of passing review</button>
+    <button class="option-btn" onclick="selectOption(0)">Zero seconds / Move on instantly</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q2: When faced with a relatively simple decision (e.g., picking a restaurant or item), what is your process?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Paralyzed for hours reviewing reviews</button>
+    <button class="option-btn" onclick="selectOption(2)">Significant hesitation and double-guessing</button>
+    <button class="option-btn" onclick="selectOption(1)">Quick analysis then firm selection</button>
+    <button class="option-btn" onclick="selectOption(0)">Instant intuitive choice with no regrets</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q3: How frequently do you construct worst-case catastrophic scenarios in your head for upcoming events?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Every single hour / Continuous doomsday mapping</button>
+    <button class="option-btn" onclick="selectOption(2)">Frequently before major shifts</button>
+    <button class="option-btn" onclick="selectOption(1)">Rarely, only under extreme duress</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / High optimistical realism</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q4: When a close friend or colleague sends a slightly brief text message, what does your brain conclude?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">They secretly hate me or I offended them</button>
+    <button class="option-btn" onclick="selectOption(2)">They are likely annoyed at something I did</button>
+    <button class="option-btn" onclick="selectOption(1)">They are probably busy or tired</button>
+    <button class="option-btn" onclick="selectOption(0)">Nothing at all / Text length has zero meaning</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q5: How often does your brain replay historical mistakes or embarrassing memories from years ago when you try to sleep?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Every single night / Non-stop loop</button>
+    <button class="option-btn" onclick="selectOption(2)">Several times a week</button>
+    <button class="option-btn" onclick="selectOption(1)">Once in a blue moon</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / Past is archived and done</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q6: How much does your continuous stream of internal dialogue interfere with enjoying real-time physical experiences?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Completely detaches me from reality</button>
+    <button class="option-btn" onclick="selectOption(2)">Noticeably dampens my presence</button>
+    <button class="option-btn" onclick="selectOption(1)">Mildly intrusive during high stress</button>
+    <button class="option-btn" onclick="selectOption(0)">Zero impact / Deeply rooted in physical presence</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q7: How frequently do you seek excessive validation from 3+ people before finalizing an individual choice?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Always / Unable to choose independently</button>
+    <button class="option-btn" onclick="selectOption(2)">Frequently / Lack confidence in my calls</button>
+    <button class="option-btn" onclick="selectOption(1)">Rarely / Only for major life crossways</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / Trust my personal assessment fully</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q8: When something actually goes completely right, do you immediately look for hidden traps or tell yourself it won't last?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Yes, constant hyper-vigilant paranoia</button>
+    <button class="option-btn" onclick="selectOption(2)">Often suspicious of smooth outcomes</button>
+    <button class="option-btn" onclick="selectOption(1)">Slightly cautious but accept the win</button>
+    <button class="option-btn" onclick="selectOption(0)">Celebrate fully without any dark underlying thoughts</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q9: How easily can you intentionally silence or redirect your thoughts when you realize you are looping?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Completely impossible / Swept away by the storm</button>
+    <button class="option-btn" onclick="selectOption(2)">Very difficult / Requires intense effort</button>
+    <button class="option-btn" onclick="selectOption(1)">Can break loop with specific grounding tech</button>
+    <button class="option-btn" onclick="selectOption(0)">Instantly dismiss unhelpful thoughts at will</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q10: How frequently do minor, unchangeable past details keep you awake with deep, agonizing 'What if' patterns?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Constantly / Haunted by branches of time</button>
+    <button class="option-btn" onclick="selectOption(2)">Often / High counter-factual thinking</button>
+    <button class="option-btn" onclick="selectOption(1)">Rarely / Accept constraints of reality</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / Radical acceptance of what is</button>
+  </div>
+</div>
+
+
+        </div>
       </div>
-      <div class="nav-buttons">
-        <button id="btnBack" class="btn-nav" onclick="prevQuestion()" disabled>← Previous Question</button>
-        <span id="questionCount" style="font-size:13px; color:#9ca3af; align-self:center;">Step 1 of 10</span>
+
+      <div id="resultInterface" class="result-panel">
+        <div class="score-badge" id="finalScore">0</div>
+        <h2 class="result-title" id="analysisTitle">Result Loading...</h2>
+        <p class="result-text" id="analysisText">Please wait while the engine computes your systemic indicators...</p>
+        <button class="retry-btn" onclick="location.reload()">Retake Assessment</button>
       </div>
+    </main>
+  </div>
+
+  <section class="info-section">
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    
+    <div class="faq-item">
+      <div class="faq-q">Q1: What is Cognitive Overthinking Test?</div>
+      <div class="faq-a">It is a premium, free, privacy-focused online diagnostic web application designed to evaluate specific behavioral, biological, or psychological indices entirely within your local browser ecosystem.</div>
     </div>
 
-    <div id="resultInterface" class="result-card">
-      <p style="font-size:14px; text-transform:uppercase; letter-spacing:1.5px; color:#6b7280; font-weight:600;">Rumination Density Score</p>
-      <div id="finalScore" class="score-badge">0 / 30</div>
-      <div id="analysisTitle" class="analysis-title">Deconstructing thoughts...</div>
-      <div id="analysisText" class="analysis-text"></div>
-      <button class="btn-reset" onclick="resetTest()">Retake Assessment</button>
+    <div class="faq-item">
+      <div class="faq-q">Q2: How accurate is this calculator?</div>
+      <div class="faq-a">This tool uses weighted assessment values drawn from standardized modern behavioral frameworks. While highly analytical, it is intended for educational tracking and self-awareness benchmarks rather than formal medical or clinical diagnostic prescriptions.</div>
     </div>
-  </main>
+
+    <div class="faq-item">
+      <div class="faq-q">Q3: How do I use it?</div>
+      <div class="faq-a">Simply progress through each of the 10 sequential situational prompts naturally. Select the option that mirrors your authentic reality most closely, and the algorithm will generate your data insights instantly upon completion.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q4: Is it free?</div>
+      <div class="faq-a">Yes, 100% free. ToolsQuark operates on a strict zero-registration, zero-paywall infrastructure. Your diagnostic responses are processed instantly in memory on your client-side browser and are never saved or sent to any remote server.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q5: Who should use it?</div>
+      <div class="faq-a">This evaluation layout is tailored for modern individuals, wellness seekers, remote professionals, and lifestyle optimizers aiming to identify personal mental barriers, analyze daily habit structures, and build reliable lifestyle goals.</div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    © 2026 ToolsQuark. All rights reserved. Zero Server Storing - Privacy Guaranteed.
+  </footer>
 
   <script>
-    const questions = [
-      "After an awkward or routine social interaction, how long do you spend dissecting what you said or did?",
-      "When faced with a relatively simple decision (e.g., picking a restaurant or item), what is your process?",
-      "How frequently do you construct worst-case catastrophic scenarios in your head for upcoming events?",
-      "When a close friend or colleague sends a slightly brief text message, what does your brain conclude?",
-      "How often does your brain replay historical mistakes or embarrassing memories from years ago when you try to sleep?",
-      "How much does your continuous stream of internal dialogue interfere with enjoying real-time physical experiences?",
-      "How frequently do you seek excessive validation from multiple people before finalizing an individual choice?",
-      "When something actually goes completely right, do you immediately look for hidden traps or tell yourself it won't last?",
-      "How easily can you intentionally silence or redirect your thoughts when you realize you are looping?",
-      "How frequently do minor, unchangeable past details keep you awake with deep, agonizing 'What if' patterns?"
-    ];
-
-    const interpretations = [
-      { bound: 8, title: "Zen Present-Moment Integration Master (Mindful Baseline)", text: "<strong>1. Current Profile:</strong> Your cognitive clearance rate is exceptional. You process events efficiently without leaving a heavy psychological debt loop behind.<br><br><strong>2. Core Psychological Root:</strong> You practice automated radical acceptance of past variables, viewing simple decisions as transient matters rather than high-stakes parameters.<br><br><strong>3. Actionable Hack:</strong> Keep relying on your intuition. When complex multi-layered dilemmas occur, trust your fast analytical instinct to maintain this mental clarity." },
-      { bound: 19, title: "Elevated Retrospective Loop Tendencies (Moderate Rumination)", text: "<strong>1. Current Profile:</strong> You have a healthy mind that occasionally gets trapped in heavy analysis paralysis. Mild bottlenecks can trigger loop sequences that waste mental energy.<br><br><strong>2. Core Psychological Root:</strong> An Underlying perfectionist tendency makes you feel that collecting more data or second-guessing choices will protect you from minor mistakes.<br><br><strong>3. Actionable Hack:</strong> Practice strict time-boxing for low-stakes decisions. Give yourself exactly 2 minutes to select meals or outfits, and pledge to move forward with zero looking back." },
-      { bound: 30, title: "Hyper-Analytic Rumination Lockout (Severe Overthinking)", text: "<strong>1. Current Profile:</strong> Your brain is locked in continuous, high-friction over-processing. This mental loop can trigger physical exhaustion and disrupt your sleep.<br><br><strong>2. Core Psychological Root:</strong> High hyper-vigilance causes your mind to mistake routine social inputs or brief texts as active threats, replaying past details on repeat.<br><br><strong>3. Actionable Hack:</strong> Use the 5-4-3-2-1 grounding technique whenever loops spin out of control. Force yourself to name 5 things you can see, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste to snap back to reality." }
-    ];
-
-    const optionsText = [
-      "3 - Constantly / Severe Analysis Paralysis",
-      "2 - Frequently / Notable Loop Cycles",
-      "1 - Occasionally / passing thoughts",
-      "0 - Never / Dismissed Instantly"
-    ];
+    let currentStep = 0;
+    const totalSteps = 10;
+    let accumulatedScore = 0;
     
-    let currentIndex = 0;
-    let answerHistory = [];
-
-    function renderQuestion() {
-      document.getElementById("progressBar").style.width = (currentIndex / questions.length) * 100 + "%";
-      document.getElementById("questionCount").textContent = `Question ${currentIndex + 1} of ${questions.length}`;
-      document.getElementById("questionText").textContent = `${currentIndex + 1}. ${questions[currentIndex]}`;
+    const cards = document.querySelectorAll('.question-card');
+    const progressBar = document.getElementById('progressBar');
+    
+    function selectOption(scoreValue) {
+      accumulatedScore += scoreValue;
+      cards[currentStep].classList.remove('active');
+      currentStep++;
       
-      document.getElementById("btnBack").disabled = currentIndex === 0;
-      const wrapper = document.getElementById("optionsWrapper");
-      wrapper.innerHTML = "";
-      
-      optionsText.forEach((opt, idx) => {
-        const div = document.createElement("div");
-        div.className = "option-item";
-        div.textContent = opt;
-        let scoreWeight = 3 - idx;
-        div.onclick = () => selectOption(scoreWeight);
-        wrapper.appendChild(div);
-      });
-    }
-
-    function selectOption(weight) {
-      answerHistory[currentIndex] = weight;
-      currentIndex++;
-      if (currentIndex < questions.length) {
-        renderQuestion();
+      if (currentStep < totalSteps) {
+        cards[currentStep].classList.add('active');
+        progressBar.style.width = ((currentStep + 1) * 10) + '%';
       } else {
-        showResult();
+        showAnalysis();
       }
     }
-
-    function prevQuestion() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        renderQuestion();
-      }
-    }
-
-    function showResult() {
-      let totalScore = answerHistory.reduce((a, b) => a + b, 0);
-      document.getElementById("quizInterface").style.display = "none";
-      document.getElementById("resultInterface").style.display = "block";
-      document.getElementById("progressBar").style.width = "100%";
+    
+    function showAnalysis() {
+      const resultsArray = ['Hyper-Analytic Rumination Lockout (Score 85-100%). Your brain is stuck in chronic analysis paralysis loops that cause high somatic friction. Grounding mechanisms or cognitive restructuring are strongly recommended.', 'Elevated Retrospective Loop Tendencies (Score 60-84%). Notable over-processing of simple events. Practicing time-boxing for decisions will protect your energetic baseline.', 'Balanced Mindful Analytic Processing (Score 40-59%). Safe analytical depth. Your mind processes details thoroughly without falling off into toxic, unending cycles.', 'Zen Present-Moment Integration Master (Score Below 40%). High operational immediacy. Your brain processes, acts, accepts, and purges data without keeping heavy psychological debt loops.'];
+      let finalIndex = 0;
       
-      document.getElementById("finalScore").textContent = totalScore + " / 30";
-      let matched = interpretations.find(i => totalScore <= i.bound) || interpretations[interpretations.length - 1];
-      document.getElementById("analysisTitle").textContent = matched.title;
-      document.getElementById("analysisText").innerHTML = matched.text;
+      if (accumulatedScore >= 25) finalIndex = 0;
+      else if (accumulatedScore >= 17) finalIndex = 1;
+      else if (accumulatedScore >= 10) finalIndex = 2;
+      else finalIndex = 3;
+      
+      let selectedResult = resultsArray[finalIndex];
+      let splitPos = selectedResult.indexOf('. ');
+      let titleText = selectedResult.substring(0, splitPos + 1);
+      let bodyText = selectedResult.substring(splitPos + 1);
+      
+      document.getElementById('quizInterface').style.display = 'none';
+      document.getElementById('resultInterface').style.display = 'block';
+      progressBar.style.width = '100%';
+      
+      document.getElementById('finalScore').textContent = accumulatedScore + ' pts';
+      document.getElementById('analysisTitle').textContent = titleText;
+      document.getElementById('analysisText').textContent = bodyText;
     }
-
-    function resetTest() {
-      currentIndex = 0;
-      answerHistory = [];
-      document.getElementById("resultInterface").style.display = "none";
-      document.getElementById("quizInterface").style.display = "block";
-      renderQuestion();
-    }
-
-    renderQuestion();
   </script>
 </body>
 </html>

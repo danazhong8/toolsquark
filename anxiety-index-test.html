@@ -18,19 +18,16 @@
     .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
     .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
     .result-box { display: none; text-align: center; }
-    
-    .metric-circle { width: 140px; height: 140px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 36px; font-weight: bold; }
-    .metric-label { font-size: 11px; opacity: 0.9; letter-spacing: 1px; margin-top: 2px; }
-    
-    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 18px; color: #111827; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 24px; border-radius: 16px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    
-    .user-friendly-translation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #cbd5e1; color: #1e293b; font-weight: 500; }
-    .actionable-tips { margin-top: 15px; background: #f0fdf4; border-left: 4px solid #16a34a; padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 14px; color: #14532d; text-align: left; }
-    .actionable-tips div { margin-bottom: 6px; }
-
-    .action-buttons { display: flex; justify-content: center; gap: 15px; }
+    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 38px; font-weight: bold; }
+    .metric-label { font-size: 12px; opacity: 0.9; }
+    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
+    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
+    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
+    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
+    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -38,68 +35,41 @@
     <div class="header-block"><h2>Anxiety Index Test</h2><a href="index.html" class="back-btn">← Back</a></div>
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
     <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
-    
     <div class="result-box" id="resultInterface">
-      <div class="metric-circle">
-        <div class="metric-value" id="finalScore">0 / 30</div>
-        <div class="metric-label">TOTAL SCORE</div>
-      </div>
-      <h3 class="result-title" id="analysisTitle"></h3>
-      
-      <div class="result-interpretation">
-        <div id="analysisText"></div>
-        <div class="user-friendly-translation" id="plainTextTranslation"></div>
-        <div class="actionable-tips" id="actionableTipsBox"></div>
-      </div>
-      
-      <div class="action-buttons">
-        <button onclick="restartQuiz()" class="back-btn" style="background:#4b5563; padding:12px 24px; font-size:15px; font-weight:bold;">Retake Test</button>
-        <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 28px; font-size:15px; font-weight:bold;">Back to Home Base</a>
-      </div>
+      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
+      <h3 class="result-title" id="analysisTitle"></h3><div class="result-interpretation" id="analysisText"></div>
+      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
     </div>
   </div>
 
+  <section class="faq-container">
+    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
+    <div class="faq-item">
+      <div class="faq-q">💡 What are the clinical constraints?</div>
+      <div class="faq-a">Screens for persistent generalized somatic nervous tension or catastrophic thought forecasting metrics. It does not replace psychotherapeutic signatures.</div>
+    </div>
+  </section>
+
   <script>
     const questions = [
-      "Experienced unexpected physiological muscle tension or standard baseline physical restlessness?",
-      "Felt overwhelming internal patterns of continuous worry regarding upcoming non-urgent events?",
-      "Struggled to calm your hyperactive train of thought when preparing for nighttime sleep cycles?",
-      "Noticed brief acceleration spikes in your baseline resting heart rate due to non-physical stress?",
-      "Experienced sudden irrational fears of worst-case scenarios unfolding without external prompts?",
-      "Felt easily irritated or hyper-reactive to sudden auditory environmental noise changes?",
-      "Had trouble concentrating on linear deep work because of persistent underlying apprehension?",
-      "Felt lightheaded, slightly dizzy, or unstable under completely routine daily public settings?",
-      "Experienced digestive discomfort or somatic stomach knots during highly competitive scenarios?",
-      "Felt a compulsive urge to repeatedly check security parameters or micro-manage plans due to unease?"
+      "Experienced a continuous, objectless background hum of dread, apprehension, or catastrophe forecasting?",
+      "Felt completely incapable of halting or modulating cascading intrusive negative thought loops?",
+      "Noticed systemic restlessness, physical agitation, or an absolute inability to sit completely still?",
+      "Experienced sudden unexplained muscle constriction, jaw clenching, or shallow respiratory cycles?",
+      "Felt highly jumpy, easily startled, or hyper-vigilant to environmental audio stimuli?",
+      "Suffered from distinct, intense cognitive fatigue caused by persistent chronic worry cycles?",
+      "Felt overly sensitive or irritable when processing complex sensory inputs or multi-source tasks?",
+      "Experienced sudden gastrointestinal distress or cold extremities linked to acute cognitive worry?",
+      "Feared that invisible future scenarios are spinning entirely beyond your system parameters?",
+      "Felt a profound sense of impending crisis or somatic vulnerability without any real, logical root cause?"
     ];
-
     const interpretations = [
-      { 
-        bound: 10, 
-        title: "Regulated Autonomic Baseline (Low Anxiety)", 
-        text: "Your somatic response parameters suggest a highly functional and stable nervous baseline. Worry vectors are processed efficiently without systematic strain.",
-        plainText: "📢 Plain English Summary: Your mental state is generally calm and well-balanced. You manage everyday stress without letting it take over your physical comfort.",
-        tips: "<div>💡 <b>Tip 1:</b> Keep doing what you're doing. Maintain a standard routine of mindfulness or regular breaks.</div><div>💡 <b>Tip 2:</b> Track temporary spikes to identify specific seasonal or environmental triggers.</div>"
-      },
-      { 
-        bound: 20, 
-        title: "Elevated Hyperarousal Tendency (Moderate Anxiety)", 
-        text: "System parameters display intermittent elevation in sensory gating. Worry cycles are present, generating minor underlying autonomic tension.",
-        plainText: "📢 Plain English Summary: You are carrying some noticeable stress in your background mind. Your thoughts might race occasionally, leading to mild physical tension or sleep drift.",
-        tips: "<div>💡 <b>Tip 1:</b> Try the 4-7-8 breathing method for two minutes when you notice your thoughts looping or moving too fast.</div><div>💡 <b>Tip 2:</b> Limit high-caffeine intake after mid-afternoon to give your nervous system room to settle down naturally.</div>"
-      },
-      { 
-        bound: 30, 
-        title: "Severe Autonomic Strain Warning (High Anxiety)", 
-        text: "System parameters reveal severe hyperarousal cycles. Strongly consider professional clinical consultation to optimize regulatory health.",
-        plainText: "📢 Plain English Summary: Your nervous system is working overtime in high-alert mode. This level of stress can cause physical exhaustion and heavy mental loops.",
-        tips: "<div>💡 <b>Tip 1:</b> Talk to a trusted healthcare provider or therapist to get structured, professional support tailored for you.</div><div>💡 <b>Tip 2:</b> Set a strict digital boundaries window in the evening to block out over-stimulating news or intense feeds.</div>"
-      }
+      { bound: 10, title: "Calm Neural Processing", text: "Nervous system modulation shows strong homeostatic grounding. Worry cycles are easily targeted, parsed, and dismissed." },
+      { bound: 20, title: "Hyperarousal Tendency", text: "Your score registers moderate generalized tension. Somatic tracking indicates frequent cognitive worrying patterns." },
+      { bound: 30, title: "Somatic Strain Warning", text: "System parameters reveal severe hyperarousal cycles. Strongly consider professional clinical consultation to optimize regulatory health." }
     ];
-
     const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
     let idx = 0, score = 0;
-
     function render() {
       document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
       document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
@@ -110,26 +80,14 @@
         wrapper.appendChild(d);
       });
     }
-
     function showResult() {
       document.getElementById("quizInterface").style.display = "none";
       document.getElementById("resultInterface").style.display = "block";
       document.getElementById("progressBar").style.width = "100%";
-      document.getElementById("finalScore").textContent = `${score} / 30`;
-      
+      document.getElementById("finalScore").textContent = score;
       let target = interpretations.find(i => score <= i.bound) || interpretations[2];
       document.getElementById("analysisTitle").textContent = target.title;
       document.getElementById("analysisText").textContent = target.text;
-      document.getElementById("plainTextTranslation").textContent = target.plainText;
-      document.getElementById("actionableTipsBox").innerHTML = target.tips;
-    }
-
-    function restartQuiz() {
-      idx = 0; score = 0;
-      document.getElementById("quizInterface").style.display = "block";
-      document.getElementById("resultInterface").style.display = "none";
-      document.getElementById("progressBar").style.width = "0%";
-      render();
     }
     render();
   </script>

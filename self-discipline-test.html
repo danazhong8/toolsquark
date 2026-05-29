@@ -18,24 +18,11 @@
     .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
     .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
     .result-box { display: none; text-align: center; }
-    
-    /* Optimized score display circle */
-    .metric-circle { width: 140px; height: 140px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 36px; font-weight: bold; }
-    .metric-label { font-size: 11px; opacity: 0.9; letter-spacing: 1px; margin-top: 2px; }
-    
-    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 18px; color: #111827; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 24px; border-radius: 16px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    
-    /* Plain English and Tips visual styles */
-    .user-friendly-translation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #cbd5e1; color: #1e293b; font-weight: 500; }
-    .actionable-tips { margin-top: 15px; background: #f0fdf4; border-left: 4px solid #16a34a; padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 14px; color: #14532d; text-align: left; }
-    .actionable-tips div { margin-bottom: 6px; }
-    .actionable-tips div:last-child { margin-bottom: 0; }
-
-    /* Bottom buttons positioning */
-    .action-buttons { display: flex; justify-content: center; gap: 15px; }
-    
+    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 38px; font-weight: bold; }
+    .metric-label { font-size: 12px; opacity: 0.9; }
+    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
     .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
     .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
     .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
@@ -48,38 +35,18 @@
     <div class="header-block"><h2>Self-Discipline Test</h2><a href="index.html" class="back-btn">← Back</a></div>
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
     <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
-    
     <div class="result-box" id="resultInterface">
-      <div class="metric-circle">
-        <div class="metric-value" id="finalScore">0 / 30</div>
-        <div class="metric-label">TOTAL SCORE</div>
-      </div>
-      <h3 class="result-title" id="analysisTitle"></h3>
-      
-      <div class="result-interpretation">
-        <div id="analysisText"></div>
-        
-        <div class="user-friendly-translation" id="plainTextTranslation"></div>
-        
-        <div class="actionable-tips" id="actionableTipsBox"></div>
-      </div>
-      
-      <div class="action-buttons">
-        <button onclick="restartQuiz()" class="back-btn" style="background:#4b5563; padding:12px 24px; font-size:15px; font-weight:bold;">Retake Test</button>
-        <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 28px; font-size:15px; font-weight:bold;">Back to Home Base</a>
-      </div>
+      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
+      <h3 class="result-title" id="analysisTitle"></h3><div class="result-interpretation" id="analysisText"></div>
+      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
     </div>
   </div>
 
   <section class="faq-container">
     <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
     <div class="faq-item">
-      <div class="faq-q">Q1: What parameters are analyzed in this test?</div>
-      <div class="faq-a">This diagnostic test evaluates your cognitive executive framework, daily operational consistency, short-term impulse inhibition thresholds, and long-range focus patterns when handling low-dopamine tasks.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q2: How is the score calculated?</div>
-      <div class="faq-a">The system processes 10 standardized psychological behavior vectors. Each question scores from 0 to 3 based on your frequency. A higher total score points to robust internal regulatory frameworks and strong habit consistency.</div>
+      <div class="faq-q">💡 What parameters are generated?</div>
+      <div class="faq-a">This tracks your executive framework consistency, short-term impulse inhibition resilience, and strategic focus parameters.</div>
     </div>
   </section>
 
@@ -96,77 +63,32 @@
       "Failed to establish daily target parameters or document your milestone execution metrics?",
       "Struggled to maintain emotional regulation and behavioral stability under prolonged focus demands?"
     ];
-
     const interpretations = [
-      { 
-        bound: 10, 
-        title: "Compounded Chaos Hazard (Low Discipline)", 
-        text: "Your executive control parameters show systematic vulnerability to short-term temptation vectors. Immediate external tracking structures and rigid constraints are highly recommended to prevent focus decay.",
-        plainText: "📢 Plain English Summary: You are currently finding it tough to block out distractions and stick to long-term plans. Relying purely on raw willpower might feel exhausting right now.",
-        tips: "<div>💡 <b>Tip 1:</b> Put your phone in another room or use strict website blockers during working hours.</div><div>💡 <b>Tip 2:</b> Forget motivation—start with tiny, unmissable 5-minute tasks to rebuild your execution momentum.</div>"
-      },
-      { 
-        bound: 20, 
-        title: "Fluctuating Focus Resiliency (Moderate Discipline)", 
-        text: "Your execution parameters are functional but environmentally dependent. Consistency values are high under structured environments but drop during low-accountability intervals.",
-        plainText: "📢 Plain English Summary: You have a great baseline! You work beautifully when your desk is clean and tasks are clear, but you tend to drift off when things get fuzzy or boring.",
-        tips: "<div>💡 <b>Tip 1:</b> Clear your physical workspace and close unrelated browser tabs before starting any project.</div><div>💡 <b>Tip 2:</b> Break giant goals into tiny milestones with instant, clear rewards to keep yourself engaged.</div>"
-      },
-      { 
-        bound: 30, 
-        title: "Elite Executive Core (Exceptional Discipline)", 
-        text: "Your internal regulatory frameworks are highly optimized. Long-range focus parameters indicate superior resilience against micro-dopamine disruptions and excellent habit automation.",
-        plainText: "📢 Plain English Summary: Exceptional self-control! You possess highly optimized focus habits and can stay locked into long-term goals even through boring or repetitive periods.",
-        tips: "<div>💡 <b>Tip 1:</b> Guard against burnout—make sure you schedule intentional guilt-free recovery windows into your week.</div><div>💡 <b>Tip 2:</b> Keep optimization logs to track your macro goals and maintain this elite competitive edge.</div>"
-      }
+      { bound: 10, title: "Compounded Chaos Hazard (Low Discipline)", text: "Your executive control parameters show systematic vulnerability to short-term temptation vectors. Immediate external structures are recommended." },
+      { bound: 20, title: "Fluctuating Focus Resiliency (Moderate Discipline)", text: "Your execution parameters are functional but vulnerable. Consistency relies heavily on clear short-term environments." },
+      { bound: 30, title: "Elite Executive Core (Exceptional Discipline)", text: "Your internal regulatory frameworks are highly optimized. Long-range focus parameters indicate superior resilience." }
     ];
-
     const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
     let idx = 0, score = 0;
-
     function render() {
       document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
       document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
       const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
       options.forEach((opt, w) => {
         const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
-        d.onclick = () => { 
-          score += w; 
-          idx++; 
-          if(idx < questions.length) { 
-            render(); 
-          } else { 
-            showResult(); 
-          } 
-        };
+        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
         wrapper.appendChild(d);
       });
     }
-
     function showResult() {
       document.getElementById("quizInterface").style.display = "none";
       document.getElementById("resultInterface").style.display = "block";
       document.getElementById("progressBar").style.width = "100%";
-      
-      document.getElementById("finalScore").textContent = `${score} / 30`;
-      
+      document.getElementById("finalScore").textContent = score;
       let target = interpretations.find(i => score <= i.bound) || interpretations[2];
       document.getElementById("analysisTitle").textContent = target.title;
       document.getElementById("analysisText").textContent = target.text;
-      
-      document.getElementById("plainTextTranslation").textContent = target.plainText;
-      document.getElementById("actionableTipsBox").innerHTML = target.tips;
     }
-
-    function restartQuiz() {
-      idx = 0;
-      score = 0;
-      document.getElementById("quizInterface").style.display = "block";
-      document.getElementById("resultInterface").style.display = "none";
-      document.getElementById("progressBar").style.width = "0%";
-      render();
-    }
-
     render();
   </script>
 </body>

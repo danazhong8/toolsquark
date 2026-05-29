@@ -9,139 +9,111 @@
     body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
     .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { text-decoration: none; color: #4b5563; font-size: 14px; display: flex; align-items: center; gap: 5px; padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.5); transition: background 0.2s; min-height: 48px; }
-    .back-btn:hover { background: #fff; }
-    h1 { font-size: 24px; font-weight: bold; color: #111827; }
-    .progress-container { width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 30px; overflow: hidden; }
-    .progress-bar { width: 0%; height: 100%; background: #ef4444; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .question-card { animation: fadeIn 0.3s ease-out; }
-    .question-title { font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 20px; line-height: 1.5; }
-    .options-wrapper { display: flex; flex-direction: column; gap: 12px; }
-    .option-item { padding: 16px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; cursor: pointer; font-size: 15px; color: #374151; transition: all 0.2s; display: flex; align-items: center; min-height: 52px; }
-    .option-item:hover { border-color: #ef4444; background: rgba(239,68,68,0.03); transform: translateX(2px); }
-    .nav-buttons { display: flex; justify-content: space-between; margin-top: 25px; border-top: 1px solid #e5e7eb; padding-top: 15px; }
-    .btn-nav { padding: 8px 16px; background: rgba(0,0,0,0.05); border: none; border-radius: 8px; font-size: 14px; cursor: pointer; color: #4b5563; min-height: 40px; transition: background 0.2s; }
-    .btn-nav:hover:not(:disabled) { background: rgba(0,0,0,0.1); color: #111827; }
-    .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
-    .result-card { display: none; text-align: center; animation: fadeIn 0.4s ease-out; }
-    .score-badge { font-size: 56px; font-weight: 800; color: #ef4444; margin: 15px 0; }
-    .analysis-title { font-size: 22px; font-weight: bold; color: #1f2937; margin-bottom: 15px; }
-    .analysis-text { color: #4b5563; font-size: 15px; line-height: 1.6; text-align: left; background: #fff; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0,0,0,0.01); }
-    .btn-reset { margin-top: 25px; padding: 12px 24px; background: #6b7280; color: #fff; border: none; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer; min-height: 45px; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
+    .back-btn:hover { background: #1f2937; }
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
+    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
+    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
+    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
+    .result-box { display: none; text-align: center; }
+    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 38px; font-weight: bold; }
+    .metric-label { font-size: 12px; opacity: 0.9; }
+    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
+    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
+    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
+    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
+    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
   </style>
 </head>
 <body>
-  <main class="container">
+
+  <div class="container">
     <div class="header-block">
+      <h2 style="font-size: 22px; font-weight: bold;">Stress Index Test</h2>
       <a href="index.html" class="back-btn">← Back to Hub</a>
-      <h1>Stress Index Matrix</h1>
     </div>
-    <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
+    
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
     <div id="quizInterface">
-      <div class="question-card">
-        <div id="questionText" class="question-title">Loading system diagnostic vectors...</div>
-        <div id="optionsWrapper" class="options-wrapper"></div>
-      </div>
-      <div class="nav-buttons">
-        <button id="btnBack" class="btn-nav" onclick="prevQuestion()" disabled>← Previous Question</button>
-        <span id="questionCount" style="font-size:13px; color:#9ca3af; align-self:center;">Step 1 of 10</span>
+      <div class="question-box">
+        <h3 id="questionText">Loading assessment node...</h3>
+        <div class="options-list" id="optionsWrapper"></div>
       </div>
     </div>
 
-    <div id="resultInterface" class="result-card">
-      <p style="font-size:14px; text-transform:uppercase; letter-spacing:1.5px; color:#6b7280; font-weight:600;">Your Stress Loading Score</p>
-      <div id="finalScore" class="score-badge">0</div>
-      <div id="analysisTitle" class="analysis-title">Processing Assessment Matrix...</div>
-      <div id="analysisText" class="analysis-text"></div>
-      <button class="btn-reset" onclick="resetTest()">Re-Initialize Scale</button>
+    <div class="result-box" id="resultInterface">
+      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
+      <h3 class="result-title" id="analysisTitle">Analyzing...</h3>
+      <div class="result-interpretation" id="analysisText">Computing metrics...</div>
+      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
     </div>
-  </main>
+  </div>
+
+  <section class="faq-container">
+    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
+    <div class="faq-item">
+      <div class="faq-q">💡 How is the Stress Index calculated?</div>
+      <div class="faq-a">This metric uses a standardized 10-item psychometric assessment framework. Each response is assigned a value from 0 to 3. The aggregate sum provides an absolute marker mapping mild, moderate, or acute stress overload parameters.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">🔒 Is my behavioral health data stored or tracked?</div>
+      <div class="faq-a">No. ToolsQuark operates on a strict zero-server footprint standard. All diagnostic state calculations process directly inside your local browser client instance. No data profiles are compiled or transmitted.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">⚠️ Can this replace professional diagnostic screenings?</div>
+      <div class="faq-a">No. This platform is purely for self-screening and behavioral educational tracking. It does not issue official psychological signatures. Please consult a licensed professional for specialized clinical evaluation.</div>
+    </div>
+  </section>
 
   <script>
     const questions = [
-      "How frequently do you encounter unexpected emotional friction or disruption caused by sudden baseline environmental updates?",
-      "How often do you feel unable to control or regulate critical elements within your personal professional ecosystem?",
-      "How regularly do your cognitive processing reserves feel overdrawn or heavily maxed out by task queues?",
-      "How often do you experience irritation or nervous system hyperarousal from standard operational friction?",
-      "How frequently do you find yourself skipping necessary rest protocols to keep up with competitive timelines?",
-      "How often do your close peers observe signs of mental fatigue or emotional defensive behavior in you?",
-      "How regularly do intrusive micro-worries loop inside your cognitive foreground during recovery windows?",
-      "How often do you experience bodily fatigue parameters (like jaw tension, headaches, sleep latency) without distinct medical causes?",
-      "How often do you perceive that ongoing systemic challenges have stacked up too high to actively break down?",
-      "How frequently do you doubt your own adaptive durability against upcoming structural stressors?"
+      "Felt unable to manage significant unexpected environmental shifts or situational disruption?",
+      "Experienced systemic tension or perceived yourself to lose authority over personal micro-timelines?",
+      "Noticed somatic nervous system load like continuous shoulder compression or persistent headaches?",
+      "Felt increasingly irritated or defensive when coping with minor logistical errors or daily friction?",
+      "Discovered that focus matrices decay rapidly under normal execution parameters?",
+      "Felt overwhelmed by the aggregate density of your immediate career or family obligations?",
+      "Felt that your capacity to mitigate emerging situational crises is nearing complete depletion?",
+      "Experienced persistent disruptions in healthy sleep architecture or sudden mid-cycle exhaustion?",
+      "Perceived a loss of resilience when addressing unanticipated performance demands?",
+      "Felt that micro-stress parameters are compounding at an exponential rate relative to your coping framework?"
     ];
 
     const interpretations = [
-      { bound: 7, title: "Optimal Homeostasis & High Neurological Buffer", text: "<strong>Status Evaluation:</strong> Your systemic autonomic tracking resides within an enviable state of high resilience. Your sympathetic nervous system initiates safe down-regulation immediately upon task fulfillment.<br><br><strong>Core Driver:</strong> You likely possess either excellent current workplace environmental safety metrics or exceptionally disciplined cognitive framing maps.<br><br><strong>Actionable Guide:</strong> Capitalize on this peak operational envelope. This window represents the ideal neuro-cognitive baseline for tackling highly complex, creative developmental challenges or acquiring intense structural skill sets." },
-      { bound: 18, title: "Allostatic Load Accretion (Moderate Stress Bound)", text: "<strong>Status Evaluation:</strong> Your system is absorbing notable everyday operational strain. Your allostatic framework is successfully handling current demands, but a continuous background tax is drawing on your energetic baseline.<br><br><strong>Core Driver:</strong> Prolonged multi-tasking and boundary breakdown between intense professional focuses and deep sensory recovery windows.<br><br><strong>Actionable Guide:</strong> Implement a strict 3-minute physiological sigh protocol twice daily (two deep nasal inhales followed by one long extended mouth exhale). This resets real-time vagal tone parameters, cutting off chemical cortisol feedback loops before they solidify." },
-      { bound: 30, title: "Systemic Exhaustion Hazard (Severe Chronic Hyperarousal)", text: "<strong>Status Evaluation:</strong> High-alert alert. Your autonomic metrics point toward deep somatic nervous exhaustion. Your cognitive system has remained stuck in sympathetic survival fight-or-flight tracking too long, resulting in system-wide recovery degradation.<br><br><strong>Core Driver:</strong> Prolonged boundary breakdown, persistent multi-point task friction, and chronic sleep latency interference.<br><br><strong>Actionable Guide:</strong> 1. Enforce an immediate digital-off boundary at least 45 minutes before sleep. 2. Implement an urgent workload offloading protocol—delegate or defer non-essential objectives. 3. Consider consulting clinical wellness professionals to prevent burnout from causing deep physiological depletion." }
+      { bound: 10, title: "Resilient Control (Mild Stress Baseline)", text: "Your analytical metrics indicate high levels of executive resilience. Autonomic physiological parameters are operating within standard equilibrium frameworks." },
+      { bound: 20, title: "Elevated Homeostatic Load (Moderate Stress)", text: "Indications point towards mild systemic hyperarousal. Emerging professional or academic fatigue structures suggest a need for proactive workload delegation or relaxation protocols." },
+      { bound: 30, title: "Critical Exhaustion Hazard (Intense Stress Profile)", text: "Your score registers a severe imbalance in coping metrics. You are actively approaching clear boundaries of clinical burnout. High risk of physiological depletion if micro-load values are not immediate modulated." }
     ];
 
-    const optionsText = ["0 - Never / Almost Never", "1 - Sometimes (Mild Frequency)", "2 - Often (Disruptive Frequency)", "3 - Almost Continuously (Severe Level)"];
-    
-    let currentIndex = 0;
-    let answerHistory = [];
+    const options = ["0 - Never / Almost Never", "1 - Sometimes (Mild Frequency)", "2 - Often (Disruptive Frequency)", "3 - Almost Continuously (Severe Level)"];
+    let idx = 0, score = 0;
 
-    function renderQuestion() {
-      document.getElementById("progressBar").style.width = (currentIndex / questions.length) * 100 + "%";
-      document.getElementById("questionCount").textContent = `Question ${currentIndex + 1} of ${questions.length}`;
-      document.getElementById("questionText").textContent = `${currentIndex + 1}. ${questions[currentIndex]}`;
-      
-      document.getElementById("btnBack").disabled = currentIndex === 0;
-      
-      const wrapper = document.getElementById("optionsWrapper");
-      wrapper.innerHTML = "";
-      
-      optionsText.forEach((opt, weight) => {
-        const div = document.createElement("div");
-        div.className = "option-item";
-        div.textContent = opt;
-        div.onclick = () => selectOption(weight);
-        wrapper.appendChild(div);
+    function render() {
+      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
+      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
+      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
+      options.forEach((opt, w) => {
+        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
+        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
+        wrapper.appendChild(d);
       });
     }
-
-    function selectOption(weight) {
-      answerHistory[currentIndex] = weight;
-      currentIndex++;
-      if (currentIndex < questions.length) {
-        renderQuestion();
-      } else {
-        showResult();
-      }
-    }
-
-    function prevQuestion() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        renderQuestion();
-      }
-    }
-
     function showResult() {
-      let totalScore = answerHistory.reduce((a, b) => a + b, 0);
       document.getElementById("quizInterface").style.display = "none";
       document.getElementById("resultInterface").style.display = "block";
       document.getElementById("progressBar").style.width = "100%";
-      
-      document.getElementById("finalScore").textContent = totalScore + " pts";
-      let matched = interpretations.find(i => totalScore <= i.bound) || interpretations[interpretations.length - 1];
-      document.getElementById("analysisTitle").textContent = matched.title;
-      document.getElementById("analysisText").innerHTML = matched.text;
+      document.getElementById("finalScore").textContent = score;
+      let target = interpretations.find(i => score <= i.bound) || interpretations[2];
+      document.getElementById("analysisTitle").textContent = target.title;
+      document.getElementById("analysisText").textContent = target.text;
     }
-
-    function resetTest() {
-      currentIndex = 0;
-      answerHistory = [];
-      document.getElementById("resultInterface").style.display = "none";
-      document.getElementById("quizInterface").style.display = "block";
-      renderQuestion();
-    }
-
-    // 初次挂载加载
-    renderQuestion();
+    render();
   </script>
 </body>
 </html>
