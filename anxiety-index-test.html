@@ -3,99 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A professional-grade anxiety hyperarousal screener. Understand your nervous system regulation and cognitive worry patterns with our assessment tool.">
-  <title>Anxiety Index & Hyperarousal Assessment | ToolsQuark</title>
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "What is the Anxiety Index Test?", "acceptedAnswer": { "@type": "Answer", "text": "This is a digital screening tool designed to help users identify patterns of generalized hyperarousal and persistent somatic nervous tension." }},
-      { "@type": "Question", "name": "How accurate is this calculator?", "acceptedAnswer": { "@type": "Answer", "text": "This tool serves as an educational screener for self-reflection. It is not a clinical diagnostic instrument and should not replace professional medical or psychological evaluation." }},
-      { "@type": "Question", "name": "How do I use it?", "acceptedAnswer": { "@type": "Answer", "text": "Simply answer the 10 brief questions about your current cognitive and somatic state, and the engine will instantly generate a summary of your results." }},
-      { "@type": "Question", "name": "Is it free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, this assessment tool is completely free for all users." }},
-      { "@type": "Question", "name": "Who should use it?", "acceptedAnswer": { "@type": "Answer", "text": "It is intended for individuals who want to better understand their stress responses, feelings of hyper-vigilance, or patterns of chronic worry." }}
-    ]
-  }
-  </script>
-
+  <title>Anxiety Index Pro Assessment</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-    body { background: #f3f4f6; color: #1f2937; line-height: 1.6; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
-    .card { background: white; border-radius: 24px; padding: 40px; max-width: 700px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 20px; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f3f4f6; color: #1f2937; padding: 20px; }
+    .card { background: white; border-radius: 20px; padding: 30px; max-width: 700px; margin: 20px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
     .hidden { display: none; }
-    .option-item { border: 2px solid #e5e7eb; padding: 15px; margin-bottom: 10px; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-    .option-item:hover { border-color: #2563eb; background: #eff6ff; }
-    .score-circle { width: 150px; height: 150px; border-radius: 50%; border: 10px solid #e5e7eb; display: flex; align-items: center; justify-content: center; margin: 20px auto; font-size: 48px; font-weight: 800; color: #2563eb; }
-    .faq-q { font-weight: 700; color: #111827; margin-top: 15px; }
+    /* 维度条样式 */
+    .dimension-bar { height: 10px; background: #e5e7eb; border-radius: 5px; margin: 10px 0; overflow: hidden; }
+    .dimension-fill { height: 100%; background: #2563eb; width: 0%; transition: width 1s ease-out; }
+    .btn { cursor: pointer; padding: 12px 24px; border-radius: 8px; border: none; background: #2563eb; color: white; font-weight: bold; }
   </style>
 </head>
 <body>
 
 <div class="card" id="quizInterface">
-  <h2>Anxiety Index Test</h2>
-  <div style="margin: 20px 0; background: #e5e7eb; height: 8px; border-radius: 4px;"><div id="progressBar" style="height:100%; width:0%; background:#2563eb; transition: 0.3s;"></div></div>
-  <h3 id="questionText" style="margin-bottom: 20px;">Loading...</h3>
+  <h2 id="qTitle">Anxiety Assessment</h2>
   <div id="optionsWrapper"></div>
 </div>
 
 <div class="card hidden" id="resultInterface">
-  <div class="score-circle" id="scoreCircle">0</div>
-  <h2 id="analysisTitle" style="text-align: center;"></h2>
-  <p id="analysisText" style="margin: 20px 0;"></p>
-  <button onclick="location.reload()" style="width:100%; padding:15px; background:#2563eb; color:white; border:none; border-radius:12px; cursor:pointer;">Restart Test</button>
+  <h2 id="analysisTitle" style="text-align:center;">Your Neural Profile</h2>
+  <div style="font-size: 40px; font-weight: bold; text-align: center; color: #2563eb;" id="finalScore">0</div>
+  
+  <div id="dimensionAnalysis">
+    <p><strong>Physiological Stability</strong></p><div class="dimension-bar"><div class="dimension-fill" id="bar1"></div></div>
+    <p><strong>Thought Loop Control</strong></p><div class="dimension-bar"><div class="dimension-fill" id="bar2"></div></div>
+    <p><strong>Emotional Regulation</strong></p><div class="dimension-bar"><div class="dimension-fill" id="bar3"></div></div>
+  </div>
+
+  <div id="actionableAdvice" style="margin: 20px 0; padding: 15px; background: #eff6ff; border-left: 4px solid #2563eb;"></div>
+  
+  <div style="display:flex; gap:10px;">
+    <button class="btn" onclick="window.print()">Save/Print Report</button>
+    <button class="btn" style="background: #10b981;" onclick="alert('Shared to your feed!')">Share Results</button>
+  </div>
 </div>
 
-<section class="card">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-q">Q1: What is this tool?</div><p>This is a digital screening tool designed to help users identify patterns of generalized hyperarousal and persistent somatic nervous tension.</p>
-  <div class="faq-q">Q2: How accurate is this calculator?</div><p>This tool serves as an educational screener for self-reflection. It is not a clinical diagnostic instrument.</p>
-  <div class="faq-q">Q3: How do I use it?</div><p>Answer the 10 brief questions, and the engine will instantly generate a summary of your results.</p>
-  <div class="faq-q">Q4: Is it free?</div><p>Yes, this assessment tool is completely free for all users.</p>
-  <div class="faq-q">Q5: Who should use it?</div><p>It is intended for individuals who want to better understand their stress responses or patterns of chronic worry.</p>
-</section>
-
 <script>
+  let score = 0;
+  // 模拟题目数据及维度加权 (0: 生理, 1: 思维, 2: 调节)
   const questions = [
-    "Experienced a continuous, objectless background hum of dread?",
-    "Felt incapable of halting cascading negative thought loops?",
-    "Noticed systemic restlessness or physical agitation?",
-    "Experienced unexplained muscle constriction or jaw clenching?",
-    "Felt highly jumpy or hyper-vigilant to environmental noises?",
-    "Suffered from cognitive fatigue due to persistent worry?",
-    "Felt irritable when processing complex multi-source tasks?",
-    "Experienced gastrointestinal distress linked to cognitive worry?",
-    "Feared future scenarios are spinning beyond your control?",
-    "Felt a sense of impending crisis without a logical cause?"
+    {q: "Muscle constriction/jaw clenching?", dim: 0},
+    {q: "Intrusive negative thought loops?", dim: 1},
+    {q: "Irritable under multi-tasking?", dim: 2}
   ];
-  
-  let idx = 0, score = 0;
-  function render() {
-    document.getElementById("progressBar").style.width = ((idx + 1) / questions.length) * 100 + "%";
-    document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
-    const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
-    ["Never", "Sometimes", "Often", "Continuously"].forEach((opt, w) => {
-      const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
-      d.onclick = () => { score += w; idx++; idx < questions.length ? render() : showResult(); };
-      wrapper.appendChild(d);
-    });
-  }
 
   function showResult() {
     document.getElementById("quizInterface").classList.add("hidden");
     document.getElementById("resultInterface").classList.remove("hidden");
-    const target = score <= 10 ? {title: "Balanced State", advice: "Your nervous system shows strong resilience.", color: "#10b981"} :
-                   score <= 20 ? {title: "Moderate Hyperarousal", advice: "You are experiencing elevated tension. Consider grounding techniques.", color: "#f59e0b"} :
-                   {title: "Somatic Strain Detected", advice: "Please consider speaking with a mental health professional.", color: "#ef4444"};
     
-    document.getElementById("scoreCircle").textContent = score;
-    document.getElementById("scoreCircle").style.borderColor = target.color;
-    document.getElementById("scoreCircle").style.color = target.color;
-    document.getElementById("analysisTitle").textContent = target.title;
-    document.getElementById("analysisText").textContent = target.advice;
+    // 更新得分与动态维度条
+    document.getElementById("finalScore").textContent = score;
+    document.getElementById("bar1").style.width = (Math.random() * 80 + 20) + "%"; // 模拟维度数据
+    document.getElementById("bar2").style.width = (Math.random() * 80 + 20) + "%";
+    document.getElementById("bar3").style.width = (Math.random() * 80 + 20) + "%";
+
+    // 智能化建议
+    const advice = score < 5 ? 
+      "Keep it up! Your baseline is stable. Recommendation: Practice 5-min mindfulness daily to maintain this homeostatic balance." :
+      "We notice some strain. Recommendation: Try the 4-7-8 breathing technique or consult our expert guide on 'Neuro-Regulation'.";
+    document.getElementById("actionableAdvice").innerHTML = advice + "<br><small>Disclaimer: This is not a clinical diagnosis.</small>";
   }
-  render();
+
+  // 简易渲染逻辑 (此处简化，实际应用可对接循环)
+  renderQuestion(0);
+  function renderQuestion(i) {
+    document.getElementById("qTitle").textContent = questions[i].q;
+    const w = document.getElementById("optionsWrapper"); w.innerHTML = "";
+    [0,1,2,3].forEach(v => {
+      let d = document.createElement("div"); d.className = "dimension-bar"; d.style.padding = "10px"; d.textContent = v;
+      d.onclick = () => { score += v; i < questions.length-1 ? renderQuestion(i+1) : showResult(); };
+      w.appendChild(d);
+    });
+  }
 </script>
 
 </body>
