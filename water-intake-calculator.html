@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Water Intake Calculator - ToolsQuark</title>
+  <meta name="description" content="Calculate personal hydration requirements based on body mass, exercise intensity, and ambient climate scenarios for peak cellular performance.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
+    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
+    .back-btn:hover { background: #1f2937; }
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { height: 100%; background: #2563eb; width: 50%; transition: width 0.3s ease; }
+    .question-box h3 { font-size: 24px; margin-bottom: 10px; line-height: 1.4; color: #111827; font-weight: bold; }
+    .question-box p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
+    .result-box { display: none; text-align: center; }
+    .metric-circle { width: 150px; height: 150px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 32px; font-weight: bold; padding: 0 10px; overflow-wrap: break-word; max-width: 140px; }
+    .metric-label { font-size: 11px; opacity: 0.9; margin-top: 4px; letter-spacing: 1px; font-weight: bold; }
+    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
+    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
+    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
+    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
+    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-block">
+      <h2 style="font-size: 22px; font-weight: bold;">Water Intake Calculator</h2>
+      <a href="index.html" class="back-btn">← Back to Hub</a>
+    </div>
+    
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+    <div id="quizInterface">
+      <div class="question-box">
+        <h3>Optimal Daily Water Intake Calculator</h3>
+        <p>Calculate personal hydration requirements based on body mass, exercise intensity, and ambient climate scenarios for peak cellular performance.</p>
+        
+        <div class="options-list" style="gap:15px;">
+          <div>
+            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Body Weight (kg)</label>
+            <input type="number" id="weight" value="70" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
+          </div>
+          <div>
+            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Daily Exercise Duration (Minutes)</label>
+            <input type="number" id="exercise" value="30" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
+          </div>
+          <div>
+            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Climate Environment Scenario</label>
+            <select id="climate" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px; background:white;">
+              <option value="cool">Temperate / Cool Climate</option>
+              <option value="hot">Hot / Humid / Tropical Scenario</option>
+            </select>
+          </div>
+          <button onclick="calculateWater()" style="width:100%; background:#2563eb; color:white; border:none; padding:14px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.2s;">Compute Target Fluid Volumetrics</button>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="result-box" id="resultInterface">
+      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">LITERS</div></div>
+      <h3 class="result-title" id="analysisTitle">Result</h3>
+      <div class="result-interpretation" id="analysisText">Interpretation...</div>
+      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
+    </div>
+  </div>
+
+  <section class="faq-container">
+    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
+    <div class="faq-item">
+      <div class="faq-q">Q1: What is Optimal Daily Water Intake Calculator?</div>
+      <div class="faq-a">The Water Intake Calculator is a privacy-first physiological hydration tracking utility designed to determine personalized optimal daily water volume metrics. It computes target fluid intake by analyzing essential biological variables such as total body weight, metabolic physical exercise duration, and localized climate scenarios to support athletes, health-conscious individuals, and general users in maintaining homeostatic fluid balance.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q2: How accurate is this calculator?</div>
+      <div class="faq-a">This calculator uses established empirical health guidelines (including the baseline 35ml/kg rule combined with standard sweat-loss variables of approximately 500-750ml per hour of active training). While highly precise for general wellness frameworks, it provides an educational assessment metric rather than medical fluid prescription. Extreme conditions, specific medical diagnoses, or clinical dietary requirements may alter actual physiological fluid needs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q3: How do I use it?</div>
+      <div class="faq-a">Simply enter your exact body weight in kilograms, log your average daily structured exercise duration in minutes, and choose your current ambient weather scenario (Temperate/Cool or Hot/Humid). Click the execution action button to instantly generate your target volumetric fluid requirements in liters without passing any telemetry lines over a network.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q4: Is it free?</div>
+      <div class="faq-a">Yes. This utility is entirely free and open-source. True to the ToolsQuark system architecture, there are no structural content blocks, locked analytical upgrades, premium payment paywalls, or hidden tracking scripts.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q5: Who should use it?</div>
+      <div class="faq-a">This tool is specifically optimized for high-performance fitness enthusiasts tracking fluid replenishment curves, individuals seeking an efficient tool to counter chronic afternoon fatigue, people living or working in tropical heat scenarios, and anyone aiming to systemize their baseline personal biological wellness.</div>
+    </div>
+  </section>
+
+  <script>
+    
+        function calculateWater() {
+          let weight = parseFloat(document.getElementById('weight').value) || 70;
+          let exercise = parseFloat(document.getElementById('exercise').value) || 0;
+          let climate = document.getElementById('climate').value;
+          
+          // Base math: 35ml per kg
+          let baseWater = weight * 35;
+          // Add exercise fluid loss: ~11.8ml per minute of sweat
+          let exerciseWater = exercise * 11.8;
+          // Climate adjustment
+          let climateAdd = (climate === 'hot') ? 500 : 0;
+          
+          let totalMl = baseWater + exerciseWater + climateAdd;
+          let totalLiters = (totalMl / 1000).toFixed(2);
+          
+          document.getElementById('quizInterface').style.display = 'none';
+          document.getElementById('resultInterface').style.display = 'block';
+          document.getElementById('progressBar').style.width = '100%';
+          document.getElementById('finalScore').textContent = totalLiters;
+          document.getElementById('analysisTitle').textContent = "Your Recommended Daily Hydration Target";
+          document.getElementById('analysisText').textContent = "Based on an empirical biological fluid loss model, your custom system requires approximately " + totalLiters + " Liters (" + Math.round(totalMl) + " mL) of safe drinking water per 24-hour cycle to offset basic baseline metabolic drainage, active exercise sweat factors, and ambient moisture depletion scenarios.";
+        }
+        
+  </script>
+</body>
+</html>
