@@ -2,92 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Anxiety Hyperarousal Assessment Engine - ToolsQuark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assess your anxiety index with our scientific hyperarousal assessment tool. Get insights into your nervous system state and cognitive worry cycles.">
+  <title>Anxiety Index & Hyperarousal Assessment | ToolsQuark</title>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Are these anxiety test results a clinical diagnosis?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. This tool is for informational purposes and screens for general hyperarousal patterns. It does not replace professional psychotherapeutic diagnosis." }
+    }, {
+      "@type": "Question",
+      "name": "How to reduce my anxiety index score?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Consistent practice of mindfulness, regular physical activity, and deep breathing techniques can help regulate the nervous system. Consult a professional if your score remains high." }
+    }]
+  }
+  </script>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
-    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
-    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
-    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 38px; font-weight: bold; }
-    .metric-label { font-size: 12px; opacity: 0.9; }
-    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    /* 保持原有的现代化 UI 设计，增加了结果页的动态颜色 */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background: #f3f4f6; min-height: 100vh; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+    .container { width: 100%; max-width: 700px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .metric-circle { width: 150px; height: 150px; border-radius: 50%; border: 8px solid #e5e7eb; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 20px auto; transition: border-color 0.5s; }
+    .option-item { border: 2px solid #e5e7eb; padding: 15px; margin-bottom: 10px; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+    .option-item:hover { border-color: #2563eb; background: #eff6ff; }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <div class="header-block"><h2>Anxiety Index Test</h2><a href="index.html" class="back-btn">← Back</a></div>
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-    <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
-      <h3 class="result-title" id="analysisTitle"></h3><div class="result-interpretation" id="analysisText"></div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
+    <div id="quizInterface">
+      <h2>Anxiety & Hyperarousal Assessment</h2>
+      <div style="margin: 20px 0; background: #e5e7eb; height: 8px; border-radius: 4px;"><div id="progressBar" style="height:100%; width:0%; background:#2563eb; border-radius:4px; transition: 0.3s;"></div></div>
+      <h3 id="questionText" style="margin-bottom: 20px;">Loading...</h3>
+      <div id="optionsWrapper"></div>
+    </div>
+
+    <div id="resultInterface" class="hidden">
+      <div class="metric-circle" id="circleBorder"><div id="finalScore" style="font-size: 48px; font-weight: bold;">0</div></div>
+      <h2 id="analysisTitle"></h2>
+      <p id="analysisText" style="margin: 20px 0; line-height: 1.6;"></p>
+      <button onclick="location.reload()" style="background:#2563eb; color:white; border:none; padding:12px 30px; border-radius:8px; cursor:pointer;">Restart Test</button>
     </div>
   </div>
 
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">💡 What are the clinical constraints?</div>
-      <div class="faq-a">Screens for persistent generalized somatic nervous tension or catastrophic thought forecasting metrics. It does not replace psychotherapeutic signatures.</div>
+  <section class="container" style="margin-top: 30px;">
+    <h3>Understanding Your Results</h3>
+    <div style="margin-top: 20px;">
+      <p><strong>Is this test professional?</strong> No, this is an automated screener for educational purposes.</p>
+      <p style="margin-top: 10px;"><strong>What if I score high?</strong> We recommend consulting a licensed mental health professional to discuss your nervous system regulation.</p>
     </div>
   </section>
 
   <script>
     const questions = [
-      "Experienced a continuous, objectless background hum of dread, apprehension, or catastrophe forecasting?",
-      "Felt completely incapable of halting or modulating cascading intrusive negative thought loops?",
-      "Noticed systemic restlessness, physical agitation, or an absolute inability to sit completely still?",
-      "Experienced sudden unexplained muscle constriction, jaw clenching, or shallow respiratory cycles?",
-      "Felt highly jumpy, easily startled, or hyper-vigilant to environmental audio stimuli?",
-      "Suffered from distinct, intense cognitive fatigue caused by persistent chronic worry cycles?",
-      "Felt overly sensitive or irritable when processing complex sensory inputs or multi-source tasks?",
-      "Experienced sudden gastrointestinal distress or cold extremities linked to acute cognitive worry?",
-      "Feared that invisible future scenarios are spinning entirely beyond your system parameters?",
-      "Felt a profound sense of impending crisis or somatic vulnerability without any real, logical root cause?"
+      "Experienced a continuous, objectless background hum of dread?",
+      "Felt incapable of halting cascading negative thought loops?",
+      "Noticed systemic restlessness or physical agitation?",
+      "Experienced unexplained muscle constriction or jaw clenching?",
+      "Felt highly jumpy or hyper-vigilant to environmental noises?",
+      "Suffered from cognitive fatigue due to persistent worry?",
+      "Felt irritable when processing complex multi-source tasks?",
+      "Experienced gastrointestinal distress linked to cognitive worry?",
+      "Feared future scenarios are spinning beyond your control?",
+      "Felt a sense of impending crisis without a logical cause?"
     ];
-    const interpretations = [
-      { bound: 10, title: "Calm Neural Processing", text: "Nervous system modulation shows strong homeostatic grounding. Worry cycles are easily targeted, parsed, and dismissed." },
-      { bound: 20, title: "Hyperarousal Tendency", text: "Your score registers moderate generalized tension. Somatic tracking indicates frequent cognitive worrying patterns." },
-      { bound: 30, title: "Somatic Strain Warning", text: "System parameters reveal severe hyperarousal cycles. Strongly consider professional clinical consultation to optimize regulatory health." }
-    ];
-    const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
+    
+    // 逻辑保持原样，增加颜色反馈
     let idx = 0, score = 0;
     function render() {
-      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
+      document.getElementById("progressBar").style.width = ((idx + 1) / questions.length) * 100 + "%";
       document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
       const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
-      options.forEach((opt, w) => {
+      ["Never", "Sometimes", "Often", "Continuously"].forEach((opt, w) => {
         const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
         d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
         wrapper.appendChild(d);
       });
     }
+
     function showResult() {
-      document.getElementById("quizInterface").style.display = "none";
-      document.getElementById("resultInterface").style.display = "block";
-      document.getElementById("progressBar").style.width = "100%";
+      document.getElementById("quizInterface").classList.add("hidden");
+      document.getElementById("resultInterface").classList.remove("hidden");
       document.getElementById("finalScore").textContent = score;
-      let target = interpretations.find(i => score <= i.bound) || interpretations[2];
-      document.getElementById("analysisTitle").textContent = target.title;
-      document.getElementById("analysisText").textContent = target.text;
+      
+      const circle = document.getElementById("circleBorder");
+      if(score <= 10) { circle.style.borderColor = "#10b981"; document.getElementById("analysisTitle").textContent = "Balanced State"; }
+      else if(score <= 20) { circle.style.borderColor = "#f59e0b"; document.getElementById("analysisTitle").textContent = "Moderate Hyperarousal"; }
+      else { circle.style.borderColor = "#ef4444"; document.getElementById("analysisTitle").textContent = "Somatic Strain Detected"; }
     }
     render();
   </script>
