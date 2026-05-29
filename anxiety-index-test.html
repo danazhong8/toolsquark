@@ -3,100 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Assess your anxiety index with our scientific hyperarousal assessment tool. Get insights into your nervous system state and cognitive worry cycles.">
+  <meta name="description" content="A scientific hyperarousal assessment tool designed to help you understand your nervous system state. Free, fast, and easy to use.">
   <title>Anxiety Index & Hyperarousal Assessment | ToolsQuark</title>
   
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [{
-      "@type": "Question",
-      "name": "Are these anxiety test results a clinical diagnosis?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. This tool is for informational purposes and screens for general hyperarousal patterns. It does not replace professional psychotherapeutic diagnosis." }
-    }, {
-      "@type": "Question",
-      "name": "How to reduce my anxiety index score?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Consistent practice of mindfulness, regular physical activity, and deep breathing techniques can help regulate the nervous system. Consult a professional if your score remains high." }
-    }]
+    "mainEntity": [
+      { "@type": "Question", "name": "What is the Anxiety Index Test?", "acceptedAnswer": { "@type": "Answer", "text": "This is a digital screening tool designed to help users identify patterns of generalized hyperarousal and persistent somatic nervous tension." }},
+      { "@type": "Question", "name": "How accurate is this calculator?", "acceptedAnswer": { "@type": "Answer", "text": "This tool serves as an educational screener for self-reflection. It is not a clinical diagnostic instrument and should not replace professional medical or psychological evaluation." }},
+      { "@type": "Question", "name": "How do I use it?", "acceptedAnswer": { "@type": "Answer", "text": "Simply answer the 10 brief questions about your current cognitive and somatic state, and the engine will instantly generate a summary of your results." }},
+      { "@type": "Question", "name": "Is it free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, this assessment tool is completely free for all users." }},
+      { "@type": "Question", "name": "Who should use it?", "acceptedAnswer": { "@type": "Answer", "text": "It is intended for individuals who want to better understand their stress responses, feelings of hyper-vigilance, or patterns of chronic worry." }}
+    ]
   }
   </script>
 
   <style>
-    /* 保持原有的现代化 UI 设计，增加了结果页的动态颜色 */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-    body { background: #f3f4f6; min-height: 100vh; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 700px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    .metric-circle { width: 150px; height: 150px; border-radius: 50%; border: 8px solid #e5e7eb; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 20px auto; transition: border-color 0.5s; }
-    .option-item { border: 2px solid #e5e7eb; padding: 15px; margin-bottom: 10px; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-    .option-item:hover { border-color: #2563eb; background: #eff6ff; }
-    .hidden { display: none; }
+    /* 核心样式优化，增加 FAQ 可读性 */
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f3f4f6; color: #1f2937; line-height: 1.6; padding: 40px 20px; }
+    .card { background: white; border-radius: 24px; padding: 40px; max-width: 750px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 20px; }
+    .faq-section { margin-top: 40px; }
+    .faq-item { margin-bottom: 25px; }
+    .faq-q { font-weight: 700; color: #111827; margin-bottom: 5px; }
+    .faq-a { color: #4b5563; font-size: 0.95rem; }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div id="quizInterface">
-      <h2>Anxiety & Hyperarousal Assessment</h2>
-      <div style="margin: 20px 0; background: #e5e7eb; height: 8px; border-radius: 4px;"><div id="progressBar" style="height:100%; width:0%; background:#2563eb; border-radius:4px; transition: 0.3s;"></div></div>
-      <h3 id="questionText" style="margin-bottom: 20px;">Loading...</h3>
-      <div id="optionsWrapper"></div>
-    </div>
+<div class="card" id="resultInterface">
+  <div id="scoreCircle" style="width: 160px; height: 160px; border-radius: 50%; border: 10px solid #e5e7eb; display: flex; align-items: center; justify-content: center; margin: 20px auto; font-size: 48px; font-weight: 800;">0</div>
+  <h2 id="analysisTitle" style="text-align: center;">Result</h2>
+  <div id="analysisText" style="padding: 20px; border-radius: 8px; margin: 20px 0;"></div>
+</div>
 
-    <div id="resultInterface" class="hidden">
-      <div class="metric-circle" id="circleBorder"><div id="finalScore" style="font-size: 48px; font-weight: bold;">0</div></div>
-      <h2 id="analysisTitle"></h2>
-      <p id="analysisText" style="margin: 20px 0; line-height: 1.6;"></p>
-      <button onclick="location.reload()" style="background:#2563eb; color:white; border:none; padding:12px 30px; border-radius:8px; cursor:pointer;">Restart Test</button>
-    </div>
+<section class="card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  
+  <div class="faq-item">
+    <div class="faq-q">Q1: What is this tool?</div>
+    <div class="faq-a">This is a digital screening tool designed to help users identify patterns of generalized hyperarousal and persistent somatic nervous tension.</div>
   </div>
 
-  <section class="container" style="margin-top: 30px;">
-    <h3>Understanding Your Results</h3>
-    <div style="margin-top: 20px;">
-      <p><strong>Is this test professional?</strong> No, this is an automated screener for educational purposes.</p>
-      <p style="margin-top: 10px;"><strong>What if I score high?</strong> We recommend consulting a licensed mental health professional to discuss your nervous system regulation.</p>
-    </div>
-  </section>
+  <div class="faq-item">
+    <div class="faq-q">Q2: How accurate is this calculator?</div>
+    <div class="faq-a">This tool serves as an educational screener for self-reflection. It is not a clinical diagnostic instrument and should not replace professional medical or psychological evaluation.</div>
+  </div>
 
-  <script>
-    const questions = [
-      "Experienced a continuous, objectless background hum of dread?",
-      "Felt incapable of halting cascading negative thought loops?",
-      "Noticed systemic restlessness or physical agitation?",
-      "Experienced unexplained muscle constriction or jaw clenching?",
-      "Felt highly jumpy or hyper-vigilant to environmental noises?",
-      "Suffered from cognitive fatigue due to persistent worry?",
-      "Felt irritable when processing complex multi-source tasks?",
-      "Experienced gastrointestinal distress linked to cognitive worry?",
-      "Feared future scenarios are spinning beyond your control?",
-      "Felt a sense of impending crisis without a logical cause?"
-    ];
-    
-    // 逻辑保持原样，增加颜色反馈
-    let idx = 0, score = 0;
-    function render() {
-      document.getElementById("progressBar").style.width = ((idx + 1) / questions.length) * 100 + "%";
-      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
-      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
-      ["Never", "Sometimes", "Often", "Continuously"].forEach((opt, w) => {
-        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
-        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
-        wrapper.appendChild(d);
-      });
-    }
+  <div class="faq-item">
+    <div class="faq-q">Q3: How do I use it?</div>
+    <div class="faq-a">Simply answer the 10 brief questions about your current cognitive and somatic state, and the engine will instantly generate a summary of your results.</div>
+  </div>
 
-    function showResult() {
-      document.getElementById("quizInterface").classList.add("hidden");
-      document.getElementById("resultInterface").classList.remove("hidden");
-      document.getElementById("finalScore").textContent = score;
-      
-      const circle = document.getElementById("circleBorder");
-      if(score <= 10) { circle.style.borderColor = "#10b981"; document.getElementById("analysisTitle").textContent = "Balanced State"; }
-      else if(score <= 20) { circle.style.borderColor = "#f59e0b"; document.getElementById("analysisTitle").textContent = "Moderate Hyperarousal"; }
-      else { circle.style.borderColor = "#ef4444"; document.getElementById("analysisTitle").textContent = "Somatic Strain Detected"; }
-    }
-    render();
-  </script>
+  <div class="faq-item">
+    <div class="faq-q">Q4: Is it free?</div>
+    <div class="faq-a">Yes, this assessment tool is completely free for all users.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Q5: Who should use it?</div>
+    <div class="faq-a">It is intended for individuals who want to better understand their stress responses, feelings of hyper-vigilance, or patterns of chronic worry.</div>
+  </div>
+</section>
+
 </body>
 </html>
