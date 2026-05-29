@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Social Media Addiction Index Test - Online Dopamine Loop Assessment</title>
+  <meta name="description" content="Calculate your social media addiction index score and determine if validation-seeking dopamine loops are undermining your real-world relationships.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 20px; }
+    .back-home { display: inline-flex; align-items: center; text-decoration: none; color: #2563eb; font-size: 14px; font-weight: bold; transition: 0.2s; }
+    .back-home:hover { transform: translateX(-3px); }
+    .logo-text { font-size: 20px; font-weight: bold; color: #111827; }
+    
+    h1 { font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
+    .subtitle { font-size: 14px; color: #6b7280; line-height: 1.6; margin-bottom: 30px; }
+    
+    .progress-container { background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { background: #2563eb; width: 10%; height: 100%; transition: width 0.4s ease; }
+    
+    .question-card { display: none; }
+    .question-card.active { display: block; }
+    .question-text { font-size: 19px; font-weight: bold; margin-bottom: 22px; color: #1f2937; line-height: 1.4; }
+    
+    .options-list { display: flex; flex-direction: column; gap: 12px; }
+    .option-btn { background: #ffffff; border: 1px solid #e5e7eb; padding: 16px 20px; border-radius: 12px; text-align: left; font-size: 15px; cursor: pointer; transition: all 0.2s ease; color: #374151; font-weight: 500; }
+    .option-btn:hover { border-color: #2563eb; background: rgba(37, 99, 235, 0.03); transform: translateY(-1px); }
+    
+    .result-panel { display: none; text-align: center; padding: 20px 0; }
+    .score-badge { font-size: 48px; font-weight: 900; color: #2563eb; margin-bottom: 15px; }
+    .result-title { font-size: 22px; font-weight: bold; margin-bottom: 15px; color: #111827; }
+    .result-text { font-size: 15px; color: #4b5563; line-height: 1.6; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .retry-btn { background: #2563eb; color: white; border: none; padding: 14px 30px; font-size: 15px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 15px rgba(37,99,235,0.2); }
+    .retry-btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+    
+    .info-section { width: 100%; max-width: 750px; margin-top: 40px; background: rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.4); }
+    .info-section h2 { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #111827; border-left: 4px solid #2563eb; padding-left: 10px; }
+    .info-section p { font-size: 14px; color: #4b5563; line-height: 1.6; margin-bottom: 25px; }
+    
+    .faq-item { margin-bottom: 20px; }
+    .faq-q { font-size: 15px; font-weight: bold; color: #111827; margin-bottom: 6px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.5; }
+    
+    .site-footer { text-align: center; margin-top: 50px; padding: 20px; font-size: 12px; color: #9ca3af; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="header-block">
+      <a href="index.html" class="back-home">⬅ Back to Home</a>
+      <div class="logo-text">ToolsQuark 📸</div>
+    </header>
+
+    <main>
+      <div id="quizInterface">
+        <h1>Social Media Addiction Index</h1>
+        <p class="subtitle">Evaluate your digital validation dependency, continuous update scrolling habits, and FOMO (Fear of Missing Out) index scores scientifically.</p>
+
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div id="questionsContainer">
+          <div class="question-card active">
+  <div class="question-text">Q1: How often do you feel an urgent compulsion to check social feeds when facing a minor life stressor?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Always / First reflex</button>
+    <button class="option-btn" onclick="selectOption(2)">Frequently</button>
+    <button class="option-btn" onclick="selectOption(1)">Rarely</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / I seek other coping outlets</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q2: How much does the view count, like metric, or comment volume on your posts affect your daily mood?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Dramatically sets my mood</button>
+    <button class="option-btn" onclick="selectOption(2)">Moderately impacts my self-esteem</button>
+    <button class="option-btn" onclick="selectOption(1)">Slightly noticeable but minor</button>
+    <button class="option-btn" onclick="selectOption(0)">Not at all / I do not track metrics</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q3: Do you frequently catch yourself scrolling feeds while watching movies, walking, or during conversations?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Yes, continuously</button>
+    <button class="option-btn" onclick="selectOption(2)">Often during slow moments</button>
+    <button class="option-btn" onclick="selectOption(1)">Very rarely</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / I practice single-tasking</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q4: How often do you experience acute FOMO (Fear of Missing Out) when seeing others post highlights?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Severe envy and dissatisfaction</button>
+    <button class="option-btn" onclick="selectOption(2)">Moderate comparison anxiety</button>
+    <button class="option-btn" onclick="selectOption(1)">Mild fleeting thoughts</button>
+    <button class="option-btn" onclick="selectOption(0)">Zero effect / Happy for them</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q5: Have you noticed your real-world hobbies, reading habits, or physical exercise declining due to social feeds?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Yes, significantly reduced</button>
+    <button class="option-btn" onclick="selectOption(2)">Somewhat reduced</button>
+    <button class="option-btn" onclick="selectOption(1)">Slightly, but maintaining balance</button>
+    <button class="option-btn" onclick="selectOption(0)">No, my hobbies take full priority</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q6: Do you feel restless, isolated, or disconnected if you cannot access your social accounts for a full day?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Extremely anxious and cut off</button>
+    <button class="option-btn" onclick="selectOption(2)">Uncomfortable and bored</button>
+    <button class="option-btn" onclick="selectOption(1)">Slightly out of the loop</button>
+    <button class="option-btn" onclick="selectOption(0)">Completely liberated and peaceful</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q7: How frequently do you construct daily life experiences specifically around how 'postable' they are?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Constantly / Life is content</button>
+    <button class="option-btn" onclick="selectOption(2)">Frequently</button>
+    <button class="option-btn" onclick="selectOption(1)">Only for rare milestone events</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / I live entirely in the moment</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q8: How often do you read or engage in heated argument threads, comment sections, or drama?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Multiple times every day</button>
+    <button class="option-btn" onclick="selectOption(2)">Several times a week</button>
+    <button class="option-btn" onclick="selectOption(1)">Rarely / Lurk only</button>
+    <button class="option-btn" onclick="selectOption(0)">Never engage in internet drama</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q9: Do you consume algorithm feeds automatically during work or study tasks without realizing you opened them?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Yes, dozens of times a day</button>
+    <button class="option-btn" onclick="selectOption(2)">Occasionally when losing focus</button>
+    <button class="option-btn" onclick="selectOption(1)">Rarely with strict blocking apps</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / High behavioral control</button>
+  </div>
+</div>
+
+<div class="question-card ">
+  <div class="question-text">Q10: What happens to your intended sleep window due to doomscrolling short-form video reels?</div>
+  <div class="options-list">
+    <button class="option-btn" onclick="selectOption(3)">Delayed by 1-2+ hours daily</button>
+    <button class="option-btn" onclick="selectOption(2)">Delayed by 30-60 minutes frequently</button>
+    <button class="option-btn" onclick="selectOption(1)">Rarely impacts my bedtime routines</button>
+    <button class="option-btn" onclick="selectOption(0)">Never / Device is stored outside bedroom</button>
+  </div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="resultInterface" class="result-panel">
+        <div class="score-badge" id="finalScore">0</div>
+        <h2 class="result-title" id="analysisTitle">Result Loading...</h2>
+        <p class="result-text" id="analysisText">Please wait while the engine computes your systemic indicators...</p>
+        <button class="retry-btn" onclick="location.reload()">Retake Assessment</button>
+      </div>
+    </main>
+  </div>
+
+  <section class="info-section">
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    
+    <div class="faq-item">
+      <div class="faq-q">Q1: What is Social Media Addiction Index?</div>
+      <div class="faq-a">It is a premium, free, privacy-focused online diagnostic web application designed to evaluate specific behavioral, biological, or psychological indices entirely within your local browser ecosystem.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q2: How accurate is this calculator?</div>
+      <div class="faq-a">This tool uses weighted assessment values drawn from standardized modern behavioral frameworks. While highly analytical, it is intended for educational tracking and self-awareness benchmarks rather than formal medical or clinical diagnostic prescriptions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q3: How do I use it?</div>
+      <div class="faq-a">Simply progress through each of the 10 sequential situational prompts naturally. Select the option that mirrors your authentic reality most closely, and the algorithm will generate your data insights instantly upon completion.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q4: Is it free?</div>
+      <div class="faq-a">Yes, 100% free. ToolsQuark operates on a strict zero-registration, zero-paywall infrastructure. Your diagnostic responses are processed instantly in memory on your client-side browser and are never saved or sent to any remote server.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q5: Who should use it?</div>
+      <div class="faq-a">This evaluation layout is tailored for modern individuals, wellness seekers, remote professionals, and lifestyle optimizers aiming to identify personal mental barriers, analyze daily habit structures, and build reliable lifestyle goals.</div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    © 2026 ToolsQuark. All rights reserved. Zero Server Storing - Privacy Guaranteed.
+  </footer>
+
+  <script>
+    let currentStep = 0;
+    const totalSteps = 10;
+    let accumulatedScore = 0;
+    
+    const cards = document.querySelectorAll('.question-card');
+    const progressBar = document.getElementById('progressBar');
+    
+    function selectOption(scoreValue) {
+      accumulatedScore += scoreValue;
+      cards[currentStep].classList.remove('active');
+      currentStep++;
+      
+      if (currentStep < totalSteps) {
+        cards[currentStep].classList.add('active');
+        progressBar.style.width = ((currentStep + 1) * 10) + '%';
+      } else {
+        showAnalysis();
+      }
+    }
+    
+    function showAnalysis() {
+      const resultsArray = ['Hyper-Validation Digital Dopamine Lock (Score 85-100%). Your social feedback loops are deeply embedded. Radical algorithmic isolation protocol advised.', 'Elevated Virtual Comparison Tendency (Score 60-84%). Moderate algorithmic conditioning. Restructuring notification triggers will help protect real-world presence.', 'Regulated Social Utility Profile (Score 40-59%). Safe, intentional connection patterns. Feeds are treated as optional entertainment rather than core identity hubs.', 'Autonomous Real-World Anchor (Score Below 40%). High existential independence from digital networks. Strong mental fortress against algorithmic validation hooks.'];
+      let finalIndex = 0;
+      
+      if (accumulatedScore >= 25) finalIndex = 0;
+      else if (accumulatedScore >= 17) finalIndex = 1;
+      else if (accumulatedScore >= 10) finalIndex = 2;
+      else finalIndex = 3;
+      
+      let selectedResult = resultsArray[finalIndex];
+      let splitPos = selectedResult.indexOf('. ');
+      let titleText = selectedResult.substring(0, splitPos + 1);
+      let bodyText = selectedResult.substring(splitPos + 1);
+      
+      document.getElementById('quizInterface').style.display = 'none';
+      document.getElementById('resultInterface').style.display = 'block';
+      progressBar.style.width = '100%';
+      
+      document.getElementById('finalScore').textContent = accumulatedScore + ' pts';
+      document.getElementById('analysisTitle').textContent = titleText;
+      document.getElementById('analysisText').textContent = bodyText;
+    }
+  </script>
+</body>
+</html>
