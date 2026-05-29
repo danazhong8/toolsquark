@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sleep Calculator - ToolsQuark</title>
+  <meta name="description" content="Optimize your sleep-wake schedule based on standard 90-minute sleep cycles to eliminate morning grogginess and enhance cognitive recovery pathways.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
+    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
+    .back-btn:hover { background: #1f2937; }
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { height: 100%; background: #2563eb; width: 50%; transition: width 0.3s ease; }
+    .question-box h3 { font-size: 24px; margin-bottom: 10px; line-height: 1.4; color: #111827; font-weight: bold; }
+    .question-box p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
+    .result-box { display: none; text-align: center; }
+    .metric-circle { width: 150px; height: 150px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 32px; font-weight: bold; padding: 0 10px; overflow-wrap: break-word; max-width: 140px; }
+    .metric-label { font-size: 11px; opacity: 0.9; margin-top: 4px; letter-spacing: 1px; font-weight: bold; }
+    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
+    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
+    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
+    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
+    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-block">
+      <h2 style="font-size: 22px; font-weight: bold;">Sleep Calculator</h2>
+      <a href="index.html" class="back-btn">← Back to Hub</a>
+    </div>
+    
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+    <div id="quizInterface">
+      <div class="question-box">
+        <h3>Scientific Sleep Cycle Calculator</h3>
+        <p>Optimize your sleep-wake schedule based on standard 90-minute sleep cycles to eliminate morning grogginess and enhance cognitive recovery pathways.</p>
+        
+        <div class="options-list" style="gap:15px;">
+          <div>
+            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">If I go to bed right NOW, or at a specific target time:</label>
+            <input type="time" id="sleepTime" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
+          </div>
+          <button onclick="calculateSleep()" style="width:100%; background:#2563eb; color:white; border:none; padding:14px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.2s;">Compute Optimal Wake-Up Times</button>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="result-box" id="resultInterface">
+      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">CYCLES</div></div>
+      <h3 class="result-title" id="analysisTitle">Result</h3>
+      <div class="result-interpretation" id="analysisText">Interpretation...</div>
+      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
+    </div>
+  </div>
+
+  <section class="faq-container">
+    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
+    <div class="faq-item">
+      <div class="faq-q">Q1: What is Scientific Sleep Cycle Calculator?</div>
+      <div class="faq-a">The Sleep Calculator is an analytical sleep scheduling utility designed to synchronize wake times with standard human sleep architecture. By aligning alarm schedules with natural 90-minute REM/NREM sleep cycles, this tool helps shift workers, students, and busy professionals calculate optimal bedtime or wake-up windows to avoid waking up during deep sleep stages.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q2: How accurate is this calculator?</div>
+      <div class="faq-a">This calculator uses standard medical consensus regarding human sleep physiology, which dictates that an average adult sleep cycle lasts roughly 90 minutes, alongside a 15-minute average sleep onset latency buffer. However, because individual biological biological clocks fluctuate based on age, daily fatigue metrics, and neural patterns, these results serve as an excellent operational framework rather than a clinical medical diagnostic standard.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q3: How do I use it?</div>
+      <div class="faq-a">Input your intended bedtime into the time matrix box (or leave it blank to calculate using your current browser clock time). Execute the script by clicking the compute button, and the interface will output the exact target chronological nodes when you will be at the lightest stage of sleep.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q4: Is it free?</div>
+      <div class="faq-a">Yes. This interactive tool operates entirely on local client scripts and is 100% free with no premium paywalls or tracking pixels.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q5: Who should use it?</div>
+      <div class="faq-a">This system is engineered for corporate professionals seeking to recover from chronic sleep deprivation, students optimizing cognitive study schedules, shift workers navigating irregular routines, and fitness enthusiasts tracking cellular tissue regeneration properties.</div>
+    </div>
+  </section>
+
+  <script>
+    
+        function calculateSleep() {
+          let timeVal = document.getElementById('sleepTime').value;
+          let now = new Date();
+          if (timeVal) {
+            let parts = timeVal.split(':');
+            now.setHours(parseInt(parts[0]), parseInt(parts[1]), 0, 0);
+          }
+          
+          // Average sleep onset latency: 15 minutes
+          let baseTime = new Date(now.getTime() + 15 * 60 * 1000);
+          
+          // Calculate 5 and 6 cycles (7.5 and 9 hours)
+          let time5 = new Date(baseTime.getTime() + 450 * 60 * 1000);
+          let time6 = new Date(baseTime.getTime() + 540 * 60 * 1000);
+          
+          function fmt(d) {
+            return d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+          }
+          
+          document.getElementById('quizInterface').style.display = 'none';
+          document.getElementById('resultInterface').style.display = 'block';
+          document.getElementById('progressBar').style.width = '100%';
+          document.getElementById('finalScore').textContent = "5-6";
+          document.getElementById('analysisTitle').textContent = "Optimal Wake-Up Architecture Nodes";
+          document.getElementById('analysisText').textContent = "To complete an ideal sequence of standard 90-minute physiological sleep cycles (accounting for a standard 15-minute sleep onset latency), you should program your alarm matrix for either " + fmt(time5) + " (5 cycles / 7.5 hours of real sleep) or " + fmt(time6) + " (6 cycles / 9.0 hours of real sleep) to wake up at the precise boundary of your REM architecture and prevent grogginess.";
+        }
+        
+  </script>
+</body>
+</html>
