@@ -29,15 +29,15 @@
     }
     .search-input:focus { border-color: #2563eb; box-shadow: 0 4px 20px rgba(37,99,235,0.15); }
 
-    /* 【核心修正】分类版块与完美对齐的上下间距生态 */
+    /* 分类版块与标准间距 */
     .category-section { 
       width: 100%; 
       max-width: 900px; 
       margin-top: 0 !important;
-      margin-bottom: 55px !important; /* 统一由底部 margin 优雅推开下一个板块 */
+      margin-bottom: 55px !important;
     }
     .category-section:last-of-type {
-      margin-bottom: 20px !important; /* 最后一个板块距离 footer 的间距 */
+      margin-bottom: 20px !important;
     }
 
     .category-title { 
@@ -77,134 +77,134 @@
   </header>
 
   <div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="Search from dozens of tools..." oninput="filterTools()">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search from tools..." oninput="filterTools()">
   </div>
 
   <main style="width: 100%; display: flex; flex-direction: column; align-items: center;">
 
     <section class="category-section" id="healthSection">
-      <h2 class="category-title">Health & Lifestyle</h2>
+      <h2 class="category-title">健康与生活方式</h2>
       <div class="tools-grid">
         
         <a href="bmi-calculator.html" class="tool-card">
           <div class="tool-icon">⚖️</div>
-          <div class="tool-name">BMI Calculator</div>
-          <div class="tool-desc">Calculate your Body Mass Index instantly and check your body fat distribution category.</div>
+          <div class="tool-name">BMI计算器</div>
+          <div class="tool-desc">立即计算您的身体质量指数并查看您的体脂分布类别。</div>
         </a>
 
         <a href="age-calculator.html" class="tool-card">
           <div class="tool-icon">📅</div>
-          <div class="tool-name">Age Calculator</div>
-          <div class="tool-desc">Find your exact chronological age parameters broken down in precise years, months, and days.</div>
+          <div class="tool-name">年龄计算器</div>
+          <div class="tool-desc">找到您精确到年、月、日的实际年龄参数。</div>
         </a>
 
         <a href="bmr-calculator.html" class="tool-card">
           <div class="tool-icon">🔥</div>
-          <div class="tool-name">BMR Calculator</div>
-          <div class="tool-desc">Calculate your Basal Metabolic Rate and determine your daily caloric requirements based on activity.</div>
+          <div class="tool-name">基础代谢率计算器</div>
+          <div class="tool-desc">计算你的基础代谢率，并根据活动量确定你的每日卡路里需求。</div>
         </a>
 
         <a href="due-date-calculator.html" class="tool-card">
           <div class="tool-icon">👶</div>
-          <div class="tool-name">Due Date Calculator</div>
-          <div class="tool-desc">Calculate your estimated pregnancy due date, active gestational milestones, and current trimester phase.</div>
+          <div class="tool-name">截止日期计算器</div>
+          <div class="tool-desc">计算您的预产期、妊娠里程碑和当前妊娠阶段。</div>
         </a>
 
         <a href="period-calculator.html" class="tool-card">
           <div class="tool-icon">🌸</div>
-          <div class="tool-name">Period & Ovulation Calculator</div>
-          <div class="tool-desc">Track your cycle lengths and estimate your upcoming period start date, ovulation events, and natural fertility frames.</div>
+          <div class="tool-name">月经周期和排卵计算器</div>
+          <div class="tool-desc">记录你的月经周期长度，并估算你下一次月经开始日期、排卵事件和自然受孕期。</div>
         </a>
 
         <a href="body-fat-calculator.html" class="tool-card">
           <div class="tool-icon">🧬</div>
-          <div class="tool-name">Body Fat Calculator</div>
-          <div class="tool-desc">Determine your estimated body fat percentage and fitness category using the standardized U.S. Navy method.</div>
+          <div class="tool-name">体脂计算器</div>
+          <div class="tool-desc">使用美国海军标准方法确定您的体脂百分比和体能等级。</div>
         </a>
 
         <a href="water-intake-calculator.html" class="tool-card">
           <div class="tool-icon">💧</div>
-          <div class="tool-name">Water Intake Calculator</div>
-          <div class="tool-desc">Estimate your personalized optimal daily fluid consumption parameters based on climate adjustments and biological weight.</div>
+          <div class="tool-name">饮水计算器</div>
+          <div class="tool-desc">根据气候调节和生物体重估算您的个性化每日最佳液体消耗参数。</div>
         </a>
 
         <a href="sleep-calculator.html" class="tool-card">
           <div class="tool-icon">💤</div>
-          <div class="tool-name">Sleep Calculator</div>
-          <div class="tool-desc">Optimize your sleep architecture boundaries and calculate precise wake or sleep schedules using natural cardiac sleep cycles.</div>
+          <div class="tool-name">睡眠计算器</div>
+          <div class="tool-desc">优化您的睡眠架构边界，并利用自然心脏睡眠周期计算精确的清醒或睡眠时间表。</div>
         </a>
 
         <a href="tdee-calculator.html" class="tool-card">
           <div class="tool-icon">📊</div>
-          <div class="tool-name">TDEE Calculator</div>
-          <div class="tool-desc">Determine your Total Daily Energy Expenditure metrics to precisely map daily baseline energy output requirements.</div>
+          <div class="tool-name">TDEE计算器</div>
+          <div class="tool-desc">确定您的每日总能量消耗指标，以精确绘制每日基线能量输出需求。</div>
         </a>
 
-        <a href="waist-to-height-ratio-calculator.html" class="tool-card">
+        <a href="waist-height-ratio-calculator.html" class="tool-card">
           <div class="tool-icon">📏</div>
-          <div class="tool-name">Waist to Height Ratio Calculator</div>
-          <div class="tool-desc">Assess your central adiposity indicator score and parse metabolic cardiovascular threshold statuses effortlessly.</div>
+          <div class="tool-name">腰高比计算器</div>
+          <div class="tool-desc">评估您的中心型肥胖指标得分，轻松解析代谢心血管阈值状态。</div>
         </a>
 
         <a href="healthy-weight-range-calculator.html" class="tool-card">
           <div class="tool-icon">🏃</div>
-          <div class="tool-name">Healthy Weight Range Calculator</div>
-          <div class="tool-desc">Discover your specific physiological ideal body mass targets adapted to structural somatic height profiles.</div>
+          <div class="tool-name">健康体重范围计算器</div>
+          <div class="tool-desc">发现适合您特定身体高度特征的理想体重目标。</div>
         </a>
 
         <a href="lean-body-mass-calculator.html" class="tool-card">
           <div class="tool-icon">💪</div>
-          <div class="tool-name">Lean Body Mass Calculator</div>
-          <div class="tool-desc">Calculate your absolute non-fat biological tissues and optimize body composition metrics for systemic strength tracks.</div>
+          <div class="tool-name">瘦体重计算器</div>
+          <div class="tool-desc">计算您的绝对非脂肪生物组织，优化身体成分指标以实现系统力量追踪。</div>
         </a>
 
-        <a href="steps-to-calories-converter.html" class="tool-card">
+        <a href="step-to-calories-converter.html" class="tool-card">
           <div class="tool-icon">👟</div>
-          <div class="tool-name">Steps to Calories Converter</div>
-          <div class="tool-desc">Translate your walking spatial displacement into kinetic active thermogenesis caloric data values.</div>
+          <div class="tool-name">步数转卡路里转换器</div>
+          <div class="tool-desc">将您的行走空间位移转化为动态活动产热卡路里数据值。</div>
         </a>
 
         <a href="daily-steps-goal-calculator.html" class="tool-card">
           <div class="tool-icon">🎯</div>
-          <div class="tool-name">Daily Steps Goal Calculator</div>
-          <div class="tool-desc">Map out strategic activity milestones and evaluate customized pacing parameters to achieve specific fitness targets.</div>
+          <div class="tool-name">每日步数目标计算器</div>
+          <div class="tool-desc">规划战略活动里程碑并评估定制的步伐参数以实现特定的健身目标。</div>
         </a>
 
       </div>
     </section>
 
     <section class="category-section" id="mentalSection">
-      <h2 class="category-title">Mental Health & Behavior</h2>
+      <h2 class="category-title">心理健康与行为</h2>
       <div class="tools-grid">
 
         <a href="stress-index-test.html" class="tool-card">
           <div class="tool-icon">🧠</div>
-          <div class="tool-name">Stress Index Test</div>
-          <div class="tool-desc">Evaluate your subjective pressure indicators and determine if you are approaching psychological burnout boundaries.</div>
+          <div class="tool-name">压力指数测试</div>
+          <div class="tool-desc">评估您的主观压力指标，确定您是否正在接近心理倦怠的边缘。</div>
         </a>
 
         <a href="procrastination-test.html" class="tool-card">
           <div class="tool-icon">⏳</div>
-          <div class="tool-name">Procrastination Test</div>
-          <div class="tool-desc">Discover your specific avoidant delay habits and parse your irrational postponement execution factors.</div>
+          <div class="tool-name">拖延症测试</div>
+          <div class="tool-desc">发现您特定的回避拖延习惯，并解析您的非理性延期执行因素。</div>
         </a>
 
         <a href="social-anxiety-test.html" class="tool-card">
           <div class="tool-icon">🫣</div>
-          <div class="tool-name">Social Anxiety Test</div>
-          <div class="tool-desc">Map out your social phobia metrics across performance environments and evaluate discomfort thresholds.</div>
+          <div class="tool-name">社交焦虑测试</div>
+          <div class="tool-desc">绘制您在不同社交与绩效环境中的焦虑度指标，评估不适阈值。</div>
         </a>
 
         <a href="self-discipline-test.html" class="tool-card">
           <div class="tool-icon">🎯</div>
-          <div class="tool-name">Self-Discipline Test</div>
-          <div class="tool-desc">Assess your executive framework resilience, impulse inhibition levels, and long-range focus parameters.</div>
+          <div class="tool-name">自律能力测试</div>
+          <div class="tool-desc">评估您的执行框架弹性、冲动抑制水平以及长期专注参数。</div>
         </a>
 
         <a href="anxiety-index-test.html" class="tool-card">
           <div class="tool-icon">🌪️</div>
-          <div class="tool-name">Anxiety Index Test</div>
-          <div class="tool-desc">Screen your somatic nervous tension and gauge your continuous worrying profiles using standard wellness benchmarks.</div>
+          <div class="tool-name">焦虑指数测试</div>
+          <div class="tool-desc">筛查您的躯体神经紧张度，并结合标准健康基准衡量您的持续担忧特征。</div>
         </a>
 
       </div>
@@ -222,7 +222,6 @@
   </footer>
 
   <script>
-    // 简单的全站本地实时搜索过滤器
     function filterTools() {
       const query = document.getElementById("searchInput").value.toLowerCase();
       const cards = document.querySelectorAll(".tool-card");
