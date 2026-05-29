@@ -3,309 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Age Calculator | Free Online Age Calculator</title>
-  <meta name="description" content="Free online Age Calculator. Calculate your exact age in years, months, and days instantly with ToolsQuark." />
-  <meta name="keywords" content="Age Calculator, Online Age Calculator, Calculate Age, Date Calculator" />
+  <title>Age Calculator - ToolsQuark</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 40px 20px;
-      color: #222;
-    }
-
-    .tool-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
-      background: rgba(255, 255, 255, 0.5);
-      padding: 6px;
-      border-radius: 30px;
-      backdrop-filter: blur(5px);
-    }
-
-    .tool-tabs a {
-      padding: 8px 18px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 20px;
-      transition: 0.2s;
-    }
-
-    .tool-tabs .active {
-      background: #111827;
-      color: #fff;
-    }
-
-    .tool-tabs .inactive {
-      color: #4b5563;
-    }
-
-    .tool-tabs .inactive:hover {
-      background: rgba(255, 255, 255, 0.6);
-      color: #111827;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 420px;
-      background: #fff;
-      border-radius: 20px;
-      padding: 30px 24px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #111827;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #6b7280;
-      font-size: 15px;
-      margin-bottom: 28px;
-      line-height: 1.5;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #374151;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      font-size: 16px;
-      outline: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background: #111827;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #374151;
-    }
-
-    .result {
-      margin-top: 25px;
-      padding: 20px;
-      background: #f9fafb;
-      border-radius: 16px;
-      font-size: 16px;
-      text-align: center;
-      font-weight: bold;
-      border: 1px solid #e5e7eb;
-      color: #2563eb;
-      line-height: 1.5;
-    }
-
-    .content-section {
-      width: 100%;
-      max-width: 650px;
-      margin: 10px auto 0 auto;
-      padding: 30px 24px;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-    }
-
-    .section-block {
-      margin-bottom: 35px;
-    }
-
-    .section-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .content-section h2 {
-      font-size: 20px;
-      color: #111827;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-left: 4px solid #111827;
-      padding-left: 10px;
-    }
-
-    .content-section h3 {
-      font-size: 15px;
-      margin-top: 18px;
-      margin-bottom: 6px;
-      color: #1f2937;
-      font-weight: 600;
-    }
-
-    .content-section p, .content-section li {
-      font-size: 14px;
-      color: #4b5563;
-      line-height: 1.7;
-    }
-
-    .content-section ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    .site-footer {
-      text-align: center;
-      margin-top: auto;
-      padding-top: 50px;
-      padding-bottom: 15px;
-      width: 100%;
-      max-width: 650px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 12px;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: #6b7280;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #111827;
-      text-decoration: underline;
-    }
-
-    .copyright {
-      color: #9ca3af;
-      font-size: 12px;
-    }
-
-    @media (max-width: 480px) {
-      body { padding: 25px 15px; }
-      .container { padding: 24px 18px; }
-      h1 { font-size: 28px; }
-      .content-section { padding: 20px 16px; }
-      .footer-links { gap: 16px; }
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+    .container { width: 100%; max-width: 550px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
+    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
+    .back-btn:hover { background: #1f2937; }
+    
+    .input-group { margin-bottom: 22px; text-align: left; }
+    .input-group label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 14px; color: #4b5563; }
+    .input-group input { width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 16px; outline: none; }
+    
+    .calc-btn { width: 100%; background: #2563eb; color: white; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    .calc-btn:hover { background: #1d4ed8; }
+    
+    .result-box { display: none; text-align: center; }
+    .age-pill { background: #2563eb; color: white; padding: 20px; border-radius: 16px; font-size: 26px; font-weight: bold; margin-bottom: 20px; box-shadow: 0 8px 16px rgba(37,99,235,0.1); }
+    .result-interpretation { font-size: 14px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 16px; border-left: 4px solid #2563eb; }
+    .action-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
   </style>
 </head>
 <body>
-
- <style>
-  .site-header-nav {
-    width: 100%;
-    max-width: 420px; /* 保持与你计算器主卡片同宽，显得非常整齐 */
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: flex-start;
-  }
-  .site-header-nav a {
-    font-size: 14px;
-    color: #6b7280;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-  .site-header-nav a:hover {
-    color: #2563eb;
-  }
-</style>
-
-<div class="site-header-nav">
-  <a href="index.html">← ToolsQuark Home</a>
-</div>
-
   <div class="container">
-    <h1>Age Calculator</h1>
-    <p class="subtitle">Calculate your exact age in years, months, and days instantly.</p>
+    <div id="inputInterface">
+      <div class="header-block"><h2>Chronological Age</h2><a href="index.html" class="back-btn">← Back</a></div>
+      <div class="input-group">
+        <label>Select Date of Birth</label>
+        <input type="date" id="birthdate">
+      </div>
+      <button class="calc-btn" onclick="calculateAge()">Parse Chrono Parameters</button>
+    </div>
 
-    <label for="birthdate">Enter Your Birth Date</label>
-    <input type="date" id="birthdate" />
-
-    <button onclick="calculateAge()">Calculate Age</button>
-
-    <div class="result" id="result">
-      Your age will appear here.
+    <div class="result-box" id="resultInterface">
+      <div class="age-pill" id="ageDisplay">-</div>
+      <div class="result-interpretation">
+        <p>📢 <b>Plain English Summary:</b> Your precise chronological age parameters have been parsed successfully down to years, months, and active days alignment metrics.</p>
+      </div>
+      <div class="action-buttons">
+        <button onclick="resetCalc()" class="back-btn" style="background:#4b5563; padding:12px 24px; font-size:15px; font-weight:bold;">Recalculate</button>
+        <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 28px; font-size:15px; font-weight:bold;">Back to Home</a>
+      </div>
     </div>
   </div>
-
-  <main class="content-section">
-    <section class="section-block">
-      <h2>How to Use the Age Calculator</h2>
-      <p>Select your specific birth date parameter within the picker field structure above and strike the evaluation action. The interface renders structural timeline outputs instantly.</p>
-    </section>
-
-    <section class="section-block">
-      <h2>Why Use our Utility?</h2>
-      <ul>
-        <li>Acquire granular breakdowns across year, month, and day matrix values instantly.</li>
-        <li>Optimize accurate verification records for formal data logs.</li>
-        <li>Lightweight deployment layer ensures client-side privacy.</li>
-      </ul>
-    </section>
-
-    <section class="section-block">
-      <h2>Frequently Asked Questions</h2>
-      <h3>Is this Age Calculator free?</h3>
-      <p>Yes, this utility operates completely free with zero gated computational limits.</p>
-      <h3>Does this calculator store my data?</h3>
-      <p>No. All scripts run entirely on local processing modules. No metrics cross network ports.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="about.html">About Us</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-    </div>
-    <div class="copyright">
-      © 2026 ToolsQuark. All rights reserved.
-    </div>
-  </footer>
 
   <script>
     function calculateAge() {
       const birthInput = document.getElementById("birthdate").value;
-      if (!birthInput) {
-        document.getElementById("result").innerText = "Please select your birth date.";
-        return;
-      }
-      const birthDate = new Date(birthInput);
-      const today = new Date();
+      if (!birthInput) { alert("Please select a valid date."); return; }
+      
+      const birthDate = new Date(birthInput); const today = new Date();
       let years = today.getFullYear() - birthDate.getFullYear();
       let months = today.getMonth() - birthDate.getMonth();
       let days = today.getDate() - birthDate.getDate();
@@ -315,11 +63,16 @@
         const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
         days += previousMonth.getDate();
       }
-      if (months < 0) {
-        years--;
-        months += 12;
-      }
-      document.getElementById("result").innerText = `You are ${years} years, ${months} months, and ${days} days old.`;
+      if (months < 0) { years--; months += 12; }
+
+      document.getElementById("ageDisplay").textContent = `${years} Yrs, ${months} Mos, ${days} Days`;
+      document.getElementById("inputInterface").style.display = "none";
+      document.getElementById("resultInterface").style.display = "block";
+    }
+
+    function resetCalc() {
+      document.getElementById("inputInterface").style.display = "block";
+      document.getElementById("resultInterface").style.display = "none";
     }
   </script>
 </body>

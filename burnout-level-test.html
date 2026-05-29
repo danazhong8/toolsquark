@@ -2,257 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Burnout Level Test - Professional Exhaustion & Depersonalization Scale</title>
-  <meta name="description" content="Measure your occupational burnout level score. Evaluate physical fatigue, chronic workplace stress, cynical depersonalization, and emotional depletion.">
+  <title>Burnout Level Test - ToolsQuark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
     .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 20px; }
-    .back-home { display: inline-flex; align-items: center; text-decoration: none; color: #2563eb; font-size: 14px; font-weight: bold; transition: 0.2s; }
-    .back-home:hover { transform: translateX(-3px); }
-    .logo-text { font-size: 20px; font-weight: bold; color: #111827; }
+    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
+    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
+    .back-btn:hover { background: #1f2937; }
+    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
+    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
+    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
+    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
+    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
+    .result-box { display: none; text-align: center; }
     
-    h1 { font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #111827; }
-    .subtitle { font-size: 14px; color: #6b7280; line-height: 1.6; margin-bottom: 30px; }
+    .metric-circle { width: 140px; height: 140px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .metric-value { font-size: 30px; font-weight: bold; }
+    .metric-label { font-size: 11px; opacity: 0.9; letter-spacing: 1px; margin-top: 2px; }
     
-    .progress-container { background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { background: #2563eb; width: 10%; height: 100%; transition: width 0.4s ease; }
+    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 18px; color: #111827; }
+    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 24px; border-radius: 16px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
     
-    .question-card { display: none; }
-    .question-card.active { display: block; }
-    .question-text { font-size: 19px; font-weight: bold; margin-bottom: 22px; color: #1f2937; line-height: 1.4; }
-    
-    .options-list { display: flex; flex-direction: column; gap: 12px; }
-    .option-btn { background: #ffffff; border: 1px solid #e5e7eb; padding: 16px 20px; border-radius: 12px; text-align: left; font-size: 15px; cursor: pointer; transition: all 0.2s ease; color: #374151; font-weight: 500; }
-    .option-btn:hover { border-color: #2563eb; background: rgba(37, 99, 235, 0.03); transform: translateY(-1px); }
-    
-    .result-panel { display: none; text-align: center; padding: 20px 0; }
-    .score-badge { font-size: 48px; font-weight: 900; color: #2563eb; margin-bottom: 15px; }
-    .result-title { font-size: 22px; font-weight: bold; margin-bottom: 15px; color: #111827; }
-    .result-text { font-size: 15px; color: #4b5563; line-height: 1.6; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
-    .retry-btn { background: #2563eb; color: white; border: none; padding: 14px 30px; font-size: 15px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 15px rgba(37,99,235,0.2); }
-    .retry-btn:hover { background: #1d4ed8; transform: translateY(-2px); }
-    
-    .info-section { width: 100%; max-width: 750px; margin-top: 40px; background: rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.4); }
-    .info-section h2 { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #111827; border-left: 4px solid #2563eb; padding-left: 10px; }
-    .info-section p { font-size: 14px; color: #4b5563; line-height: 1.6; margin-bottom: 25px; }
-    
-    .faq-item { margin-bottom: 20px; }
-    .faq-q { font-size: 15px; font-weight: bold; color: #111827; margin-bottom: 6px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.5; }
-    
-    .site-footer { text-align: center; margin-top: 50px; padding: 20px; font-size: 12px; color: #9ca3af; }
+    .user-friendly-translation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #cbd5e1; color: #1e293b; font-weight: 500; }
+    .actionable-tips { margin-top: 15px; background: #f0fdf4; border-left: 4px solid #16a34a; padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 14px; color: #14532d; text-align: left; }
+    .actionable-tips div { margin-bottom: 6px; }
+
+    .action-buttons { display: flex; justify-content: center; gap: 15px; }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <header class="header-block">
-      <a href="index.html" class="back-home">⬅ Back to Home</a>
-      <div class="logo-text">ToolsQuark 🔥</div>
-    </header>
-
-    <main>
-      <div id="quizInterface">
-        <h1>Occupational Burnout Level Test</h1>
-        <p class="subtitle">Assess your stress adaptation limits, systemic professional cynicism indices, and structural emotional depletion markers using expert clinical frameworks.</p>
-
-        <div class="progress-container">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
-
-        <div id="questionsContainer">
-          <div class="question-card active">
-  <div class="question-text">Q1: How would you describe your baseline physical and emotional energy levels when starting your workday?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Completely drained and exhausted</button>
-    <button class="option-btn" onclick="selectOption(2)">Noticeably fatigued and unmotivated</button>
-    <button class="option-btn" onclick="selectOption(1)">Slightly tired but functional</button>
-    <button class="option-btn" onclick="selectOption(0)">Energized, focused, and enthusiastic</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q2: How frequently do you experience a cynical, detached, or negative attitude toward your tasks or clients?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Almost every single hour</button>
-    <button class="option-btn" onclick="selectOption(2)">Most days of the week</button>
-    <button class="option-btn" onclick="selectOption(1)">Occasionally during peak stress</button>
-    <button class="option-btn" onclick="selectOption(0)">Rarely or never</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q3: How do you rate your sense of professional efficacy and personal accomplishment lately?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Completely worthless / Zero progress</button>
-    <button class="option-btn" onclick="selectOption(2)">Diminished sense of achievement</button>
-    <button class="option-btn" onclick="selectOption(1)">Moderately proud of output</button>
-    <button class="option-btn" onclick="selectOption(0)">Highly accomplished and impactful</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q4: Do you suffer from persistent physical stress symptoms like tension headaches, stomach issues, or jaw clenching?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Yes, daily and severe</button>
-    <button class="option-btn" onclick="selectOption(2)">Frequently throughout the week</button>
-    <button class="option-btn" onclick="selectOption(1)">Mildly and rarely</button>
-    <button class="option-btn" onclick="selectOption(0)">Never experience physical stress</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q5: How easily do you lose patience, snap at coworkers, or experience irritability over minor bottlenecks?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Extremely explosive / Immediate snap</button>
-    <button class="option-btn" onclick="selectOption(2)">Noticeably short-tempered lately</button>
-    <button class="option-btn" onclick="selectOption(1)">Standard controlled reactions</button>
-    <button class="option-btn" onclick="selectOption(0)">Highly patient and empathetic</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q6: When you are officially off-the-clock, how successfully can your mind disconnect from workplace worries?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Completely impossible / Chronic rumination</button>
-    <button class="option-btn" onclick="selectOption(2)">Very difficult to stop worrying</button>
-    <button class="option-btn" onclick="selectOption(1)">Can disconnect with some effort</button>
-    <button class="option-btn" onclick="selectOption(0)">Instantly switch off and relax</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q7: How has your sleep architecture reacted to your current vocational workload or environmental pressures?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Severe stress insomnias / Nightmares</button>
-    <button class="option-btn" onclick="selectOption(2)">Frequent midnight waking with racing thoughts</button>
-    <button class="option-btn" onclick="selectOption(1)">Slight restlessness on Sundays</button>
-    <button class="option-btn" onclick="selectOption(0)">Perfect restorative deep sleep</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q8: Do you find yourself using avoidance mechanisms (food, alcohol, shopping) to cope with professional anxiety?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Yes, heavily dependent on these</button>
-    <button class="option-btn" onclick="selectOption(2)">Frequently using them as escapes</button>
-    <button class="option-btn" onclick="selectOption(1)">Rarely as a temporary relief</button>
-    <button class="option-btn" onclick="selectOption(0)">Never / Healthy proactive coping</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q9: How much meaning, joy, or intrinsic purpose do you find in your core day-to-day work tasks?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Absolutely none / Feels robotic and bleak</button>
-    <button class="option-btn" onclick="selectOption(2)">Very little / Lost my passion</button>
-    <button class="option-btn" onclick="selectOption(1)">Moderate meaning / Just a job</button>
-    <button class="option-btn" onclick="selectOption(0)">Immensely purposeful and rewarding</button>
-  </div>
-</div>
-
-<div class="question-card ">
-  <div class="question-text">Q10: How supported do you feel by management, system boundaries, or your immediate team infrastructure?</div>
-  <div class="options-list">
-    <button class="option-btn" onclick="selectOption(3)">Completely isolated or toxic culture</button>
-    <button class="option-btn" onclick="selectOption(2)">Under-appreciated and neglected</button>
-    <button class="option-btn" onclick="selectOption(1)">Adequately supported when asking</button>
-    <button class="option-btn" onclick="selectOption(0)">Deeply valued, safe, and empowered</button>
-  </div>
-</div>
-
-
-        </div>
-      </div>
-
-      <div id="resultInterface" class="result-panel">
-        <div class="score-badge" id="finalScore">0</div>
-        <h2 class="result-title" id="analysisTitle">Result Loading...</h2>
-        <p class="result-text" id="analysisText">Please wait while the engine computes your systemic indicators...</p>
-        <button class="retry-btn" onclick="location.reload()">Retake Assessment</button>
-      </div>
-    </main>
-  </div>
-
-  <section class="info-section">
-    <h2>Frequently Asked Questions (FAQ)</h2>
+    <div class="header-block"><h2>Burnout Level Test</h2><a href="index.html" class="back-btn">← Back</a></div>
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
     
-    <div class="faq-item">
-      <div class="faq-q">Q1: What is Occupational Burnout Level Test?</div>
-      <div class="faq-a">It is a premium, free, privacy-focused online diagnostic web application designed to evaluate specific behavioral, biological, or psychological indices entirely within your local browser ecosystem.</div>
+    <div class="result-box" id="resultInterface">
+      <div class="metric-circle">
+        <div class="metric-value" id="finalScore">0 pts</div>
+        <div class="metric-label">TOTAL SCORE</div>
+      </div>
+      <h3 class="result-title" id="analysisTitle"></h3>
+      
+      <div class="result-interpretation">
+        <div id="analysisText"></div>
+        <div class="user-friendly-translation" id="plainTextTranslation"></div>
+        <div class="actionable-tips" id="actionableTipsBox"></div>
+      </div>
+      
+      <div class="action-buttons">
+        <button onclick="restartQuiz()" class="back-btn" style="background:#4b5563; padding:12px 24px; font-size:15px; font-weight:bold;">Retake Test</button>
+        <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 28px; font-size:15px; font-weight:bold;">Back to Home Base</a>
+      </div>
     </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Q2: How accurate is this calculator?</div>
-      <div class="faq-a">This tool uses weighted assessment values drawn from standardized modern behavioral frameworks. While highly analytical, it is intended for educational tracking and self-awareness benchmarks rather than formal medical or clinical diagnostic prescriptions.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Q3: How do I use it?</div>
-      <div class="faq-a">Simply progress through each of the 10 sequential situational prompts naturally. Select the option that mirrors your authentic reality most closely, and the algorithm will generate your data insights instantly upon completion.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Q4: Is it free?</div>
-      <div class="faq-a">Yes, 100% free. ToolsQuark operates on a strict zero-registration, zero-paywall infrastructure. Your diagnostic responses are processed instantly in memory on your client-side browser and are never saved or sent to any remote server.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Q5: Who should use it?</div>
-      <div class="faq-a">This evaluation layout is tailored for modern individuals, wellness seekers, remote professionals, and lifestyle optimizers aiming to identify personal mental barriers, analyze daily habit structures, and build reliable lifestyle goals.</div>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    © 2026 ToolsQuark. All rights reserved. Zero Server Storing - Privacy Guaranteed.
-  </footer>
+  </div>
 
   <script>
-    let currentStep = 0;
-    const totalSteps = 10;
-    let accumulatedScore = 0;
-    
-    const cards = document.querySelectorAll('.question-card');
-    const progressBar = document.getElementById('progressBar');
-    
-    function selectOption(scoreValue) {
-      accumulatedScore += scoreValue;
-      cards[currentStep].classList.remove('active');
-      currentStep++;
-      
-      if (currentStep < totalSteps) {
-        cards[currentStep].classList.add('active');
-        progressBar.style.width = ((currentStep + 1) * 10) + '%';
-      } else {
-        showAnalysis();
+    const questions = [
+      "Feel physically depleted and exhausted at the end of a typical operational day?",
+      "Find yourself becoming increasingly cynical or detached regarding task values or team dynamics?",
+      "Experience a sense of low personal accomplishment and feel your daily output has minimal macro impact?",
+      "Have trouble initiating basic work workflows in the morning due to an underlying sense of dread?",
+      "Notice a decreased tolerance threshold when dealing with minor operational hitches or coworker queries?",
+      "Suffer from chronic physical symptoms like stress headaches or muscle tension tied to work environments?",
+      "Find it hard to maintain cognitive focus on single objectives, feeling completely scattered?",
+      "Feel that your personal life boundaries have been completely overtaken by vocational worry loops?",
+      "Resort to quick-fix coping habits (like mindless scrolling or emotional eating) to dull work stress?",
+      "Feel unappreciated or systematically trapped within your current workflow distribution matrices?"
+    ];
+
+    const interpretations = [
+      {
+        min: 25, max: 30,
+        title: "Critical System Exhaustion (Severe Burnout)",
+        text: "Your core parameters signal complete depletion. Immediate offloading, systematic lifestyle adjustments, medical leaves, or structural role changes are essential.",
+        plainText: "📢 Plain English Summary: You are running on empty. Chronic stress has deeply affected both your physical energy and mental connection to work.",
+        tips: "<div>💡 <b>Tip 1:</b> Speak with leadership or HR immediately to discuss shifting your current workload bounds.</div><div>💡 <b>Tip 2:</b> Book real, unplugged time off to let your nervous system step down from high-alert mode.</div>"
+      },
+      {
+        min: 17, max: 24,
+        title: "Active Chronic Erosion Track (Moderate Burnout)",
+        text: "High boundary degradation. Chronic stress is morphing into systemic professional cynicism. Immediate offloading required.",
+        plainText: "📢 Plain English Summary: You are on the edge of breaking down. Work feels increasingly frustrating, and standard weekend rests are no longer enough.",
+        tips: "<div>💡 <b>Tip 1:</b> Set a firm cut-off time for checking work notifications every single evening.</div><div>💡 <b>Tip 2:</b> Delegate or say no to extra tasks that fall outside your core required duties.</div>"
+      },
+      {
+        min: 10, max: 16,
+        title: "Standard Positional Stress Loading (Mild Burnout)",
+        text: "Balanced acute workload fatigue. Standard recuperative weekend breaks and boundary setting will keep you safe.",
+        plainText: "📢 Plain English Summary: You are feeling normal everyday work fatigue. You still care about your role, but you need to rest intentionally.",
+        tips: "<div>💡 <b>Tip 1:</b> Make sure you completely disconnect from work chatter during your regular weekends.</div><div>💡 <b>Tip 2:</b> Add a short, non-work hobby or light walk to your evening to reset your mental space.</div>"
+      },
+      {
+        min: 0, max: 9,
+        title: "Resilient Ecological Alignment Master (Excellent Baseline)",
+        text: "High work-life harmony, exceptional neurological buffering, and deep protective professional fulfillment.",
+        plainText: "📢 Plain English Summary: You are in an excellent place! Your work matches your current capacity well, and you hold strong boundaries.",
+        tips: "<div>💡 <b>Tip 1:</b> Protect this balance by keeping your current boundaries solid as new demands arrive.</div><div>💡 <b>Tip 2:</b> Mentally log what makes this structure work so well for your future reference.</div>"
       }
+    ];
+
+    const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
+    let idx = 0, score = 0;
+
+    function render() {
+      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
+      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
+      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
+      options.forEach((opt, w) => {
+        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
+        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
+        wrapper.appendChild(d);
+      });
     }
-    
-    function showAnalysis() {
-      const resultsArray = ['Critical Clinical Exhaustion Phase (Score 85-100%). Your nervous system is operating on total depletion. Radical lifestyle adjustments, medical leaves, or structural role changes are essential.', 'Active Chronic Erosion Track (Score 60-84%). High boundary degradation. Chronic stress is morphing into systemic professional cynicism. Immediate offloading required.', 'Standard Positional Stress Loading (Score 40-59%). Balanced acute workload fatigue. Standard recuperative weekend breaks and boundary setting will keep you safe.', 'Resilient Ecological Alignment Master (Score Below 40%). High work-life harmony, exceptional neurological buffering, and deep protective professional fulfillment.'];
-      let finalIndex = 0;
+
+    function showResult() {
+      document.getElementById("quizInterface").style.display = "none";
+      document.getElementById("resultInterface").style.display = "block";
+      document.getElementById("progressBar").style.width = "100%";
+      document.getElementById("finalScore").textContent = `${score} / 30`;
       
-      if (accumulatedScore >= 25) finalIndex = 0;
-      else if (accumulatedScore >= 17) finalIndex = 1;
-      else if (accumulatedScore >= 10) finalIndex = 2;
-      else finalIndex = 3;
-      
-      let selectedResult = resultsArray[finalIndex];
-      let splitPos = selectedResult.indexOf('. ');
-      let titleText = selectedResult.substring(0, splitPos + 1);
-      let bodyText = selectedResult.substring(splitPos + 1);
-      
-      document.getElementById('quizInterface').style.display = 'none';
-      document.getElementById('resultInterface').style.display = 'block';
-      progressBar.style.width = '100%';
-      
-      document.getElementById('finalScore').textContent = accumulatedScore + ' pts';
-      document.getElementById('analysisTitle').textContent = titleText;
-      document.getElementById('analysisText').textContent = bodyText;
+      let target = interpretations.find(i => score >= i.min && score <= i.max) || interpretations[ interpretations.length - 1 ];
+      document.getElementById("analysisTitle").textContent = target.title;
+      document.getElementById("analysisText").textContent = target.text;
+      document.getElementById("plainTextTranslation").textContent = target.plainText;
+      document.getElementById("actionableTipsBox").innerHTML = target.tips;
     }
+
+    function restartQuiz() {
+      idx = 0; score = 0;
+      document.getElementById("quizInterface").style.display = "block";
+      document.getElementById("resultInterface").style.display = "none";
+      document.getElementById("progressBar").style.width = "0%";
+      render();
+    }
+    render();
   </script>
 </body>
 </html>

@@ -3,126 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <title>Water Intake Calculator - ToolsQuark</title>
-  <meta name="description" content="Calculate personal hydration requirements based on body mass, exercise intensity, and ambient climate scenarios for peak cellular performance.">
+  <meta name="description" content="Calculate personal hydration requirements based on body mass, gender, life stage, exercise intensity, and ambient climate scenarios for peak cellular performance.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
     .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 50%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 24px; margin-bottom: 10px; line-height: 1.4; color: #111827; font-weight: bold; }
-    .question-box p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 150px; height: 150px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 32px; font-weight: bold; padding: 0 10px; overflow-wrap: break-word; max-width: 140px; }
-    .metric-label { font-size: 11px; opacity: 0.9; margin-top: 4px; letter-spacing: 1px; font-weight: bold; }
-    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .back-btn { text-decoration: none; color: #4b5563; font-size: 14px; display: flex; align-items: center; gap: 5px; padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.5); transition: background 0.2s; min-height: 48px; }
+    .back-btn:hover { background: #fff; }
+    h1 { font-size: 24px; font-weight: bold; color: #111827; }
+    .progress-container { width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 30px; overflow: hidden; }
+    .progress-bar { width: 50%; height: 100%; background: #3b82f6; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .form-group { margin-bottom: 24px; }
+    label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+    input[type="number"], select { width: 100%; padding: 14px; border: 1px solid #d1d5db; border-radius: 12px; background: #fff; font-size: 16px; color: #111827; outline: none; transition: border-color 0.2s; min-height: 48px; }
+    input[type="number"]:focus, select:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+    .radio-group { display: flex; gap: 12px; }
+    .radio-tile { flex: 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px; border: 1px solid #d1d5db; border-radius: 12px; cursor: pointer; background: #fff; transition: all 0.2s; min-height: 52px; text-align: center; }
+    .radio-group input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .radio-group input[type="radio"]:checked + .radio-tile { border-color: #3b82f6; background: rgba(59,130,246,0.05); color: #3b82f6; font-weight: bold; }
+    .btn-submit { width: 100%; padding: 16px; background: #3b82f6; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; min-height: 48px; margin-top: 10px; }
+    .btn-submit:hover { background: #2563eb; }
+    .result-card { display: none; text-align: center; animation: fadeIn 0.4s ease-out; }
+    .score-badge { font-size: 48px; font-weight: 800; color: #3b82f6; margin: 15px 0; }
+    .analysis-title { font-size: 20px; font-weight: bold; color: #1f2937; margin-bottom: 12px; }
+    .analysis-text { color: #4b5563; font-size: 15px; line-height: 1.6; text-align: left; background: rgba(255,255,255,0.6); padding: 20px; border-radius: 16px; border: 1px solid #e5e7eb; margin-bottom: 20px; }
+    .equivalent-box { background: rgba(59,130,246,0.08); border: 1px dashed #3b82f6; padding: 15px; border-radius: 12px; margin-bottom: 25px; color: #1e40af; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-reset { padding: 12px 24px; background: #6b7280; color: #fff; border: none; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer; transition: background 0.2s; min-height: 45px; }
+    .btn-reset:hover { background: #4b5563; }
+    .info-section { width: 100%; max-width: 750px; margin-top: 40px; background: rgba(255, 255, 255, 0.7); border-radius: 24px; padding: 35px; border: 1px solid rgba(255,255,255,0.5); }
+    .info-section h2 { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #111827; }
+    .info-section p { font-size: 14px; color: #4b5563; line-height: 1.6; margin-bottom: 15px; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-
-  <div class="container">
+  <main class="container">
     <div class="header-block">
-      <h2 style="font-size: 22px; font-weight: bold;">Water Intake Calculator</h2>
       <a href="index.html" class="back-btn">← Back to Hub</a>
+      <h1>Water Intake Calculator</h1>
     </div>
-    
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
 
     <div id="quizInterface">
-      <div class="question-box">
-        <h3>Optimal Daily Water Intake Calculator</h3>
-        <p>Calculate personal hydration requirements based on body mass, exercise intensity, and ambient climate scenarios for peak cellular performance.</p>
-        
-        <div class="options-list" style="gap:15px;">
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Body Weight (kg)</label>
-            <input type="number" id="weight" value="70" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
-          </div>
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Daily Exercise Duration (Minutes)</label>
-            <input type="number" id="exercise" value="30" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
-          </div>
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Climate Environment Scenario</label>
-            <select id="climate" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px; background:white;">
-              <option value="cool">Temperate / Cool Climate</option>
-              <option value="hot">Hot / Humid / Tropical Scenario</option>
-            </select>
-          </div>
-          <button onclick="calculateWater()" style="width:100%; background:#2563eb; color:white; border:none; padding:14px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.2s;">Compute Target Fluid Volumetrics</button>
+      <div class="form-group">
+        <label>Biological Gender & Stage</label>
+        <div class="radio-group">
+          <label style="flex:1;"><input type="radio" name="gender" value="male" checked onclick="toggleStage(false)"><div class="radio-tile">Male</div></label>
+          <label style="flex:1;"><input type="radio" name="gender" value="female" onclick="toggleStage(true)"><div class="radio-tile">Female</div></label>
         </div>
-        
       </div>
+
+      <div class="form-group" id="stageGroup" style="display:none;">
+        <label>Special Life Stage (Females Only)</label>
+        <select id="stage">
+          <option value="none">Standard Baseline</option>
+          <option value="pregnancy">Pregnancy (+300 mL)</option>
+          <option value="lactation">Lactation / Breastfeeding (+750 mL)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="weight">Body Weight (kg)</label>
+        <input type="number" id="weight" value="70" min="10" max="300">
+      </div>
+
+      <div class="form-group">
+        <label for="exercise">Daily Active Exercise (Minutes)</label>
+        <input type="number" id="exercise" value="30" min="0" max="480">
+      </div>
+
+      <div class="form-group">
+        <label for="climate">Ambient Climate Environment</label>
+        <select id="climate">
+          <option value="temperate">Temperate / Cool / Indoors</option>
+          <option value="hot">Hot / Humid / High-Temperature Exposure</option>
+        </select>
+      </div>
+
+      <button class="btn-submit" onclick="calculateWater()">Compute Optimal Hydration</button>
     </div>
 
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">LITERS</div></div>
-      <h3 class="result-title" id="analysisTitle">Result</h3>
-      <div class="result-interpretation" id="analysisText">Interpretation...</div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
+    <div id="resultInterface" class="result-card">
+      <p style="font-size:14px; text-transform:uppercase; letter-spacing:1px; color:#6b7280; font-weight:600;">Recommended Intake</p>
+      <div id="finalScore" class="score-badge">0.00</div>
+      <div class="equivalent-box">
+        <span>💧</span>
+        <span id="equivalentText">Equates to roughly 0 cups (250ml each) per day</span>
+      </div>
+      <div id="analysisTitle" class="analysis-title">Hydration Target Target Locked</div>
+      <div id="analysisText" class="analysis-text"></div>
+      <button class="btn-reset" onclick="resetCalculator()">Recalculate Metrics</button>
     </div>
-  </div>
+  </main>
 
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">Q1: What is Optimal Daily Water Intake Calculator?</div>
-      <div class="faq-a">The Water Intake Calculator is a privacy-first physiological hydration tracking utility designed to determine personalized optimal daily water volume metrics. It computes target fluid intake by analyzing essential biological variables such as total body weight, metabolic physical exercise duration, and localized climate scenarios to support athletes, health-conscious individuals, and general users in maintaining homeostatic fluid balance.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q2: How accurate is this calculator?</div>
-      <div class="faq-a">This calculator uses established empirical health guidelines (including the baseline 35ml/kg rule combined with standard sweat-loss variables of approximately 500-750ml per hour of active training). While highly precise for general wellness frameworks, it provides an educational assessment metric rather than medical fluid prescription. Extreme conditions, specific medical diagnoses, or clinical dietary requirements may alter actual physiological fluid needs.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q3: How do I use it?</div>
-      <div class="faq-a">Simply enter your exact body weight in kilograms, log your average daily structured exercise duration in minutes, and choose your current ambient weather scenario (Temperate/Cool or Hot/Humid). Click the execution action button to instantly generate your target volumetric fluid requirements in liters without passing any telemetry lines over a network.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q4: Is it free?</div>
-      <div class="faq-a">Yes. This utility is entirely free and open-source. True to the ToolsQuark system architecture, there are no structural content blocks, locked analytical upgrades, premium payment paywalls, or hidden tracking scripts.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q5: Who should use it?</div>
-      <div class="faq-a">This tool is specifically optimized for high-performance fitness enthusiasts tracking fluid replenishment curves, individuals seeking an efficient tool to counter chronic afternoon fatigue, people living or working in tropical heat scenarios, and anyone aiming to systemize their baseline personal biological wellness.</div>
-    </div>
+  <section class="info-section">
+    <h2>Hydration Engineering & Biological Baseline Insights</h2>
+    <p>Adequate water absorption drives baseline cellular metabolism, programmatic body temperature regulation, joints lubrication, and structural dynamic waste transport mechanisms. Fluid deficiency degrades physical work thresholds, attention span duration parameters, and metabolic regulation efficiency.</p>
   </section>
 
   <script>
-    
-        function calculateWater() {
-          let weight = parseFloat(document.getElementById('weight').value) || 70;
-          let exercise = parseFloat(document.getElementById('exercise').value) || 0;
-          let climate = document.getElementById('climate').value;
-          
-          // Base math: 35ml per kg
-          let baseWater = weight * 35;
-          // Add exercise fluid loss: ~11.8ml per minute of sweat
-          let exerciseWater = exercise * 11.8;
-          // Climate adjustment
-          let climateAdd = (climate === 'hot') ? 500 : 0;
-          
-          let totalMl = baseWater + exerciseWater + climateAdd;
-          let totalLiters = (totalMl / 1000).toFixed(2);
-          
-          document.getElementById('quizInterface').style.display = 'none';
-          document.getElementById('resultInterface').style.display = 'block';
-          document.getElementById('progressBar').style.width = '100%';
-          document.getElementById('finalScore').textContent = totalLiters;
-          document.getElementById('analysisTitle').textContent = "Your Recommended Daily Hydration Target";
-          document.getElementById('analysisText').textContent = "Based on an empirical biological fluid loss model, your custom system requires approximately " + totalLiters + " Liters (" + Math.round(totalMl) + " mL) of safe drinking water per 24-hour cycle to offset basic baseline metabolic drainage, active exercise sweat factors, and ambient moisture depletion scenarios.";
-        }
-        
+    function toggleStage(show) {
+      document.getElementById('stageGroup').style.display = show ? 'block' : 'none';
+    }
+
+    function calculateWater() {
+      let weight = parseFloat(document.getElementById('weight').value) || 70;
+      let exercise = parseFloat(document.getElementById('exercise').value) || 0;
+      let climate = document.getElementById('climate').value;
+      let isFemale = document.getElementsByName('gender')[1].checked;
+      let stage = document.getElementById('stage').value;
+      
+      // 经典生理耗水公式: 35ml 每 kg 体重
+      let baseWater = weight * 35;
+      
+      // 运动汗液流失补充系数: 约每分钟 11.8 ml
+      let exerciseWater = exercise * 11.8;
+      
+      // 气候调节变量
+      let climateAdd = (climate === 'hot') ? 500 : 0;
+      
+      // 女性特殊生理周期补水校准矩阵
+      let stageAdd = 0;
+      if (isFemale) {
+        if (stage === 'pregnancy') stageAdd = 300;
+        else if (stage === 'lactation') stageAdd = 750;
+      }
+      
+      let totalMl = baseWater + exerciseWater + climateAdd + stageAdd;
+      let totalLiters = (totalMl / 1000).toFixed(2);
+      let cups = Math.ceil(totalMl / 250);
+      
+      document.getElementById('quizInterface').style.display = 'none';
+      document.getElementById('resultInterface').style.display = 'block';
+      document.getElementById('progressBar').style.width = '100%';
+      
+      document.getElementById('finalScore').textContent = totalLiters + " L";
+      document.getElementById('equivalentText').textContent = "Equates to roughly " + cups + " healthy cups (250mL each) across your active waking hours.";
+      
+      let advice = "Based on your anthropometric metrics, active exercise load, and environmental factors, your body requires approximately " + totalLiters + " Liters (" + Math.round(totalMl) + " mL) of clean fluids per 24-hour cycle. ";
+      if(isFemale && stage !== 'none') {
+        advice += "This includes specific physiological volume offsets tailored to your current reproductive lifecycle vector. ";
+      }
+      advice += "Actionable Strategy: Avoid programmatic hyper-hydration in narrow windows. Space your fluid intake continuously at a rate of 200-300 mL per hour to protect cellular sodium balance and maintain peak tissue oxygenation.";
+      
+      document.getElementById('analysisText').textContent = advice;
+    }
+
+    function resetCalculator() {
+      document.getElementById('resultInterface').style.display = 'none';
+      document.getElementById('quizInterface').style.display = 'block';
+      document.getElementById('progressBar').style.width = '50%';
+    }
   </script>
 </body>
 </html>

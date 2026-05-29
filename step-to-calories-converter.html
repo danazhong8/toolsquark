@@ -3,122 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <title>Step to Calories Converter - ToolsQuark</title>
-  <meta name="description" content="Convert your daily walking stride counts into estimated metabolic energy expenditure metrics based on body mass and stride speed variables.">
+  <meta name="description" content="Convert your daily walking stride counts into estimated metabolic energy expenditure metrics based on terrain incline, body mass, and stride speed variables.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
     .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 50%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 24px; margin-bottom: 10px; line-height: 1.4; color: #111827; font-weight: bold; }
-    .question-box p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 150px; height: 150px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 32px; font-weight: bold; padding: 0 10px; overflow-wrap: break-word; max-width: 140px; }
-    .metric-label { font-size: 11px; opacity: 0.9; margin-top: 4px; letter-spacing: 1px; font-weight: bold; }
-    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .back-btn { text-decoration: none; color: #4b5563; font-size: 14px; display: flex; align-items: center; gap: 5px; padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.5); transition: background 0.2s; min-height: 48px; }
+    .back-btn:hover { background: #fff; }
+    h1 { font-size: 24px; font-weight: bold; color: #111827; }
+    .progress-container { width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 30px; overflow: hidden; }
+    .progress-bar { width: 50%; height: 100%; background: #10b981; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .form-group { margin-bottom: 24px; }
+    label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+    input[type="number"], select { width: 100%; padding: 14px; border: 1px solid #d1d5db; border-radius: 12px; background: #fff; font-size: 16px; color: #111827; outline: none; transition: border-color 0.2s; min-height: 48px; }
+    input[type="number"]:focus, select:focus { border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.1); }
+    .btn-submit { width: 100%; padding: 16px; background: #10b981; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; min-height: 48px; margin-top: 10px; }
+    .btn-submit:hover { background: #059669; }
+    .result-card { display: none; text-align: center; animation: fadeIn 0.4s ease-out; }
+    .score-badge { font-size: 48px; font-weight: 800; color: #10b981; margin: 15px 0; }
+    .analysis-title { font-size: 20px; font-weight: bold; color: #1f2937; margin-bottom: 12px; }
+    .analysis-text { color: #4b5563; font-size: 15px; line-height: 1.6; text-align: left; background: rgba(255,255,255,0.6); padding: 20px; border-radius: 16px; border: 1px solid #e5e7eb; margin-bottom: 20px; }
+    .food-card { background: rgba(244,63,94,0.06); border: 1px dashed #f43f5e; padding: 15px; border-radius: 12px; margin-bottom: 25px; color: #be123c; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-reset { padding: 12px 24px; background: #6b7280; color: #fff; border: none; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer; transition: background 0.2s; min-height: 45px; }
+    .btn-reset:hover { background: #4b5563; }
+    .info-section { width: 100%; max-width: 750px; margin-top: 40px; background: rgba(255, 255, 255, 0.7); border-radius: 24px; padding: 35px; border: 1px solid rgba(255,255,255,0.5); }
+    .info-section h2 { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #111827; }
+    .info-section p { font-size: 14px; color: #4b5563; line-height: 1.6; margin-bottom: 15px; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-
-  <div class="container">
+  <main class="container">
     <div class="header-block">
-      <h2 style="font-size: 22px; font-weight: bold;">Step to Calories Converter</h2>
       <a href="index.html" class="back-btn">← Back to Hub</a>
+      <h1>Step to Calories Converter</h1>
     </div>
-    
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
 
     <div id="quizInterface">
-      <div class="question-box">
-        <h3>Activity Step-to-Calories Burn Converter</h3>
-        <p>Convert your daily walking stride counts into estimated metabolic energy expenditure metrics based on body mass and stride speed variables.</p>
-        
-        <div class="options-list" style="gap:12px;">
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Total Steps Counted</label>
-            <input type="number" id="steps" value="10000" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <div>
-              <label style="display:block; font-size:13px; font-weight:600; margin-bottom:4px;">Body Weight (kg)</label>
-              <input type="number" id="weight" value="70" style="width:100%; padding:10px; border:1px solid #e5e7eb; border-radius:8px;">
-            </div>
-            <div>
-              <label style="display:block; font-size:13px; font-weight:600; margin-bottom:4px;">Pace / Stride Speed</label>
-              <select id="pace" style="width:100%; padding:10px; border:1px solid #e5e7eb; border-radius:8px; background:white; font-size:14px;">
-                <option value="0.035">Casual Walking Pace</option>
-                <option value="0.045">Brisk Exertion Stride</option>
-                <option value="0.055">Fast / Power Walk Mode</option>
-              </select>
-            </div>
-          </div>
-          <button onclick="convertSteps()" style="width:100%; background:#2563eb; color:white; border:none; padding:14px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:5px;">Convert Stride Exertion Energy</button>
-        </div>
-        
+      <div class="form-group">
+        <label for="steps">Total Amassed Stride Count (Steps)</label>
+        <input type="number" id="steps" value="10000" min="0" max="200000">
       </div>
+
+      <div class="form-group">
+        <label for="weight">Body Mass Weight (kg)</label>
+        <input type="number" id="weight" value="70" min="20" max="350">
+      </div>
+
+      <div class="form-group">
+        <label for="pace">Ambulatory Movement Style & Velocity</label>
+        <select id="pace">
+          <option value="0.029">Casual Strolling (Slow, ~3.0 km/h)</option>
+          <option value="0.035" selected>Standard Kinetic Walk (~4.8 km/h)</option>
+          <option value="0.048">Brisk Fitness Walk / Speed Walk (~6.4 km/h)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="terrain">Terrain Gradient & Elevation Factor</label>
+        <select id="terrain">
+          <option value="1.0">Flat Pathway / Smooth Standard Surface</option>
+          <option value="1.4">Uphill Track / Moderate Nature Incline (×1.4)</option>
+          <option value="2.3">Stair-Climbing / Structural Vertical Ascent (×2.3)</option>
+        </select>
+      </div>
+
+      <button class="btn-submit" onclick="convertSteps()">Calculate Caloric Dissipation</button>
     </div>
 
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">KCAL BURNED</div></div>
-      <h3 class="result-title" id="analysisTitle">Result</h3>
-      <div class="result-interpretation" id="analysisText">Interpretation...</div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
+    <div id="resultInterface" class="result-card">
+      <p style="font-size:14px; text-transform:uppercase; letter-spacing:1px; color:#6b7280; font-weight:600;">Active Energy Expended</p>
+      <div id="finalScore" class="score-badge">0 kcal</div>
+      <div class="food-card">
+        <span>🍕</span>
+        <span id="foodEquivalent">This offsets approximately 0.0 slices of standard pepperoni pizza.</span>
+      </div>
+      <div id="analysisTitle" class="analysis-title">Metabolic Kinetic Transformation Complete</div>
+      <div id="analysisText" class="analysis-text"></div>
+      <button class="btn-reset" onclick="resetConverter()">Convert New Data</button>
     </div>
-  </div>
+  </main>
 
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">Q1: What is Activity Step-to-Calories Burn Converter?</div>
-      <div class="faq-a">The Step to Calories Converter is a neat physical fitness conversion utility designed to translate cumulative pedometer step counts into estimated active metabolic calorie burn metrics. It calculates energy expenditure by analyzing specific personal variables such as absolute step volume, body mass parameters, and walking pace dynamics.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q2: How accurate is this calculator?</div>
-      <div class="faq-a">This converter uses empirical MET (Metabolic Equivalent of Task) values tailored to variable walking velocities. While it provides an accurate, evidence-based estimate for daily activity tracking, individual energy burn metrics can vary due to factors like personal running economy, changes in terrain incline, and unique cardiovascular efficiency levels.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q3: How do I use it?</div>
-      <div class="faq-a">Input your current step count data from your phone tracker, enter your total body weight in kilograms, and select your estimated average walking pace. Click the conversion execution button to view your active metabolic metrics instantly.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q4: Is it free?</div>
-      <div class="faq-a">Yes. This utility script runs completely within your local browser sandbox, meaning it is 100% free and preserves full data privacy.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q5: Who should use it?</div>
-      <div class="faq-a">This converter is optimized for office employees managing sedentary schedules, lifestyle walkers seeking to measure daily activity goals, and fitness tracking enthusiasts looking to fine-tune their nutritional and caloric targets.</div>
-    </div>
+  <section class="info-section">
+    <h2>Biomechanical Energy Expenditure Analysis</h2>
+    <p>Caloric burning during physical movement scales as a direct function of total body weight shifted against Earth gravity vector over time. Introducing incline variables shifts recruitment towards deeper gluteal and core skeletal muscular layers, driving exponential metabolic oxidation rates compared to flat ground strolls.</p>
   </section>
 
   <script>
-    
-        function convertSteps() {
-          let steps = parseFloat(document.getElementById('steps').value) || 0;
-          let weight = parseFloat(document.getElementById('weight').value) || 70;
-          let paceFactor = parseFloat(document.getElementById('pace').value) || 0.035;
-          
-          // Basic approximation: steps * factor * (weight/70)
-          let burned = Math.round(steps * paceFactor * (weight / 70));
-          
-          document.getElementById('quizInterface').style.display = 'none';
-          document.getElementById('resultInterface').style.display = 'block';
-          document.getElementById('progressBar').style.width = '100%';
-          document.getElementById('finalScore').textContent = burned;
-          document.getElementById('analysisTitle').textContent = "Active Energy Burn Extrapolated";
-          document.getElementById('analysisText').textContent = "Your ambulatory movement profile of " + steps + " total steps combined with your specific body mass index factors indicates an estimated active energy expenditure of approximately " + burned + " kcal. This caloric shift contributes directly to your active physical daily energy expenditure (TDEE) and supports healthy weight management goals.";
-        }
-        
+    function convertSteps() {
+      let steps = parseFloat(document.getElementById('steps').value) || 0;
+      let weight = parseFloat(document.getElementById('weight').value) || 70;
+      let paceFactor = parseFloat(document.getElementById('pace').value) || 0.035;
+      let terrainMultiplier = parseFloat(document.getElementById('terrain').value) || 1.0;
+      
+      // 精准复合估算公式: 步数 * 速度因子 * 地形参数 * (体重相对标准系数)
+      let burned = Math.round(steps * paceFactor * terrainMultiplier * (weight / 70));
+      
+      // 趣味等值卡路里转换
+      let pizzaSlices = (burned / 285).toFixed(1);
+      
+      document.getElementById('quizInterface').style.display = 'none';
+      document.getElementById('resultInterface').style.display = 'block';
+      document.getElementById('progressBar').style.width = '100%';
+      
+      document.getElementById('finalScore').textContent = burned + " kcal";
+      document.getElementById('foodEquivalent').textContent = "This movement dynamic neutralizes the metabolic equivalent of roughly " + pizzaSlices + " slices of standard fast-food pizza.";
+      
+      document.getElementById('analysisText').textContent = "Your ambulatory metric pattern of " + steps + " total steps, integrated with an intentional terrain inclination vector and body mass index components, outputs an active mechanical net cost of " + burned + " kilocalories. This kinetic allocation feeds straight into your Total Daily Energy Expenditure (TDEE), assisting programmatic fat-loss pathways and supporting metabolic flexibility.";
+    }
+
+    function resetConverter() {
+      document.getElementById('resultInterface').style.display = 'none';
+      document.getElementById('quizInterface').style.display = 'block';
+      document.getElementById('progressBar').style.width = '50%';
+    }
   </script>
 </body>
 </html>

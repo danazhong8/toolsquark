@@ -3,108 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title>Healthy Weight Range Calculator - ToolsQuark</title>
-  <meta name="description" content="Calculate your ideal biological weight boundaries using standard physiological body mass index (BMI) frameworks tailored to your vertical height.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .container { width: 100%; max-width: 550px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
     .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
     .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 50%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 24px; margin-bottom: 10px; line-height: 1.4; color: #111827; font-weight: bold; }
-    .question-box p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
+    
+    .input-group { margin-bottom: 20px; text-align: left; }
+    .input-group label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 14px; color: #4b5563; }
+    .input-group input { width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 16px; outline: none; }
+    
+    .calc-btn { width: 100%; background: #2563eb; color: white; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    .calc-btn:hover { background: #1d4ed8; }
+    
     .result-box { display: none; text-align: center; }
-    .metric-circle { width: 150px; height: 150px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 32px; font-weight: bold; padding: 0 10px; overflow-wrap: break-word; max-width: 140px; }
-    .metric-label { font-size: 11px; opacity: 0.9; margin-top: 4px; letter-spacing: 1px; font-weight: bold; }
-    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .metric-display { background: #2563eb; color: white; padding: 22px; border-radius: 16px; font-size: 28px; font-weight: bold; margin-bottom: 20px; box-shadow: 0 8px 16px rgba(37,99,235,0.15); }
+    .result-interpretation { font-size: 14px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 16px; border-left: 4px solid #2563eb; margin-bottom: 25px; }
+    .action-buttons { display: flex; justify-content: center; gap: 15px; }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <div class="header-block">
-      <h2 style="font-size: 22px; font-weight: bold;">Healthy Weight Range Calculator</h2>
-      <a href="index.html" class="back-btn">← Back to Hub</a>
-    </div>
-    
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizInterface">
-      <div class="question-box">
-        <h3>Optimal Healthy Weight Range Calculator</h3>
-        <p>Calculate your ideal biological weight boundaries using standard physiological body mass index (BMI) frameworks tailored to your vertical height.</p>
-        
-        <div class="options-list" style="gap:15px;">
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Your Height (cm)</label>
-            <input type="number" id="height" value="170" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
-          </div>
-          <button onclick="calculateWeightRange()" style="width:100%; background:#2563eb; color:white; border:none; padding:14px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.2s;">Compute Healthy Mass Boundaries</button>
-        </div>
-        
+    <div id="inputInterface">
+      <div class="header-block"><h2>Healthy Weight Range</h2><a href="index.html" class="back-btn">← Back</a></div>
+      <div class="input-group">
+        <label>Enter Your Height (cm)</label>
+        <input type="number" id="height" placeholder="e.g. 170" min="100" max="240">
       </div>
+      <button class="calc-btn" onclick="calculateWeightRange()">Find Weight Window</button>
     </div>
 
     <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">KG RANGE</div></div>
-      <h3 class="result-title" id="analysisTitle">Result</h3>
-      <div class="result-interpretation" id="analysisText">Interpretation...</div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
+      <div class="metric-display" id="finalScore">54 - 72 kg</div>
+      <h3 style="font-size:20px; margin-bottom:12px;" id="analysisTitle">Ideal Weight Envelope</h3>
+      <div class="result-interpretation" id="analysisText"></div>
+      <div class="action-buttons">
+        <button onclick="resetCalc()" class="back-btn" style="background:#4b5563; padding:12px 24px; font-size:15px; font-weight:bold;">Change Stature</button>
+        <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 28px; font-size:15px; font-weight:bold;">Back to Home</a>
+      </div>
     </div>
   </div>
 
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">Q1: What is Optimal Healthy Weight Range Calculator?</div>
-      <div class="faq-a">The Healthy Weight Range Calculator is an online biological weight analysis tool designed to determine your ideal health-based body weight parameters. Utilizing the World Health Organization's standard body mass classification guidelines, it isolates the exact lower and upper boundaries of your weight envelope based on your vertical height.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q2: How accurate is this calculator?</div>
-      <div class="faq-a">This calculator uses standard clinical BMI formulas (mapping the 18.5 to 24.9 healthy index brackets), making it highly accurate for standard population screening. However, because it does not directly parse internal skeletal density parameters or skeletal muscle tissue mass, highly athletic individuals or competitive bodybuilders may find the weight limits misaligned with their actual physical compositions.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q3: How do I use it?</div>
-      <div class="faq-a">Simply enter your precise vertical height metric in centimeters into the input text box and press the execution button. The script will calculate your ideal biological mass boundaries locally within your browser tab.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q4: Is it free?</div>
-      <div class="faq-a">Yes. This interactive tool is completely free and unencumbered by functional data paywalls or tracking scripts.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q5: Who should use it?</div>
-      <div class="faq-a">This calculator is an excellent resource for parents monitoring development charts, individuals designing personalized weight management plans, and anyone establishing lifestyle metrics for upcoming physical wellness reviews.</div>
-    </div>
-  </section>
-
   <script>
-    
-        function calculateWeightRange() {
-          let heightCm = parseFloat(document.getElementById('height').value) || 170;
-          let heightMeters = heightCm / 100;
-          
-          // BMI 18.5 to 24.9 bounds
-          let minWeight = Math.round(18.5 * (heightMeters * heightMeters));
-          let maxWeight = Math.round(24.9 * (heightMeters * heightMeters));
-          
-          document.getElementById('quizInterface').style.display = 'none';
-          document.getElementById('resultInterface').style.display = 'block';
-          document.getElementById('progressBar').style.width = '100%';
-          document.getElementById('finalScore').textContent = minWeight + "-" + maxWeight;
-          document.getElementById('analysisTitle').textContent = "Ideal Weight Envelope For Your Height";
-          document.getElementById('analysisText').textContent = "According to standard clinical health models, the optimal mass envelope for an adult with a vertical height stature of " + heightCm + " cm is between " + minWeight + " kg and " + maxWeight + " kg. Maintaining your body weight within this target window is statistically correlated with balanced metabolic rates, lower cardiovascular strain parameters, and improved longevity vectors.";
-        }
-        
+    function calculateWeightRange() {
+      let heightCm = parseFloat(document.getElementById('height').value) || 170;
+      if (heightCm <= 0) { alert("Please provide a valid height."); return; }
+      
+      let heightMeters = heightCm / 100;
+      let minWeight = Math.round(18.5 * (heightMeters * heightMeters));
+      let maxWeight = Math.round(24.9 * (heightMeters * heightMeters));
+      
+      document.getElementById('finalScore').textContent = `${minWeight} - ${maxWeight} kg`;
+      document.getElementById('analysisText').innerHTML = `📢 <b>Plain English Summary:</b> For an adult at <b>${heightCm} cm</b> tall, medical safety standards show your healthiest clinical body composition envelope stays between <b>${minWeight} kg</b> and <b>${maxWeight} kg</b>.<br><br>💡 <b>Actionable Habit Tip:</b> Staying inside this range significantly lowers long-term blood pressure variables and metabolic fatigue indicators. Try tracking body metrics bi-weekly to maintain balance smoothly.`;
+      
+      document.getElementById('inputInterface').style.display = 'none';
+      document.getElementById('resultInterface').style.display = 'block';
+    }
+
+    function resetCalc() {
+      document.getElementById('inputInterface').style.display = 'block';
+      document.getElementById('resultInterface').style.display = 'none';
+    }
   </script>
 </body>
 </html>

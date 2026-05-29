@@ -10,119 +10,154 @@
     body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
     .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 50%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 24px; margin-bottom: 10px; line-height: 1.4; color: #111827; font-weight: bold; }
-    .question-box p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 150px; height: 150px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 32px; font-weight: bold; padding: 0 10px; overflow-wrap: break-word; max-width: 140px; }
-    .metric-label { font-size: 11px; opacity: 0.9; margin-top: 4px; letter-spacing: 1px; font-weight: bold; }
-    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .back-btn { text-decoration: none; color: #4b5563; font-size: 14px; display: flex; align-items: center; gap: 5px; padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.5); transition: background 0.2s; min-height: 48px; }
+    .back-btn:hover { background: #fff; }
+    h1 { font-size: 24px; font-weight: bold; color: #111827; }
+    .progress-container { width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 30px; overflow: hidden; }
+    .progress-bar { width: 50%; height: 100%; background: #ec4899; transition: width 0.3s ease; }
+    .form-group { margin-bottom: 24px; }
+    label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+    input[type="number"] { width: 100%; padding: 14px; border: 1px solid #d1d5db; border-radius: 12px; background: #fff; font-size: 16px; outline: none; min-height: 48px; }
+    input[type="number"]:focus { border-color: #ec4899; box-shadow: 0 0 0 3px rgba(236,72,153,0.1); }
+    .radio-group { display: flex; gap: 12px; }
+    .radio-tile { flex: 1; display: flex; align-items: center; justify-content: center; padding: 14px; border: 1px solid #d1d5db; border-radius: 12px; cursor: pointer; background: #fff; min-height: 48px; transition: all 0.2s; }
+    .radio-group input[type="radio"] { position: absolute; opacity: 0; }
+    .radio-group input[type="radio"]:checked + .radio-tile { border-color: #ec4899; background: rgba(236,72,153,0.05); color: #ec4899; font-weight: bold; }
+    .btn-submit { width: 100%; padding: 16px; background: #ec4899; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; min-height: 48px; margin-top: 10px; }
+    .btn-submit:hover { background: #db2777; }
+    
+    /* 核心重构：高级可视化健康标尺系统 */
+    .gauge-wrapper { width: 100%; margin: 25px 0 15px 0; padding: 0 10px; }
+    .gauge-track { width: 100%; height: 16px; border-radius: 8px; background: linear-gradient(to right, #60a5fa 0%, #34d399 30%, #fbbf24 55%, #f87171 85%); position: relative; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
+    .gauge-pointer { width: 16px; height: 16px; background: #111827; border: 3px solid #fff; border-radius: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%); box-shadow: 0 2px 4px rgba(0,0,0,0.3); transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .gauge-labels { display: flex; justify-content: space-between; font-size: 11px; color: #6b7280; font-weight: 600; margin-top: 6px; }
+
+    .result-card { display: none; text-align: center; animation: fadeIn 0.4s ease-out; }
+    .score-badge { font-size: 52px; font-weight: 800; color: #ec4899; margin: 10px 0; }
+    .analysis-title { font-size: 20px; font-weight: bold; color: #1f2937; margin-bottom: 12px; }
+    .analysis-text { color: #4b5563; font-size: 15px; line-height: 1.6; text-align: left; background: rgba(255,255,255,0.6); padding: 20px; border-radius: 16px; border: 1px solid #e5e7eb; }
+    .btn-reset { margin-top: 20px; padding: 12px 24px; background: #6b7280; color: #fff; border: none; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer; min-height: 45px; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-
-  <div class="container">
+  <main class="container">
     <div class="header-block">
-      <h2 style="font-size: 22px; font-weight: bold;">Waist to Height Ratio Calculator</h2>
       <a href="index.html" class="back-btn">← Back to Hub</a>
+      <h1>Waist-to-Height Ratio (WHtR)</h1>
     </div>
-    
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
 
     <div id="quizInterface">
-      <div class="question-box">
-        <h3>Visceral Adiposity Waist-to-Height Ratio Calculator</h3>
-        <p>Assess your central abdominal fat distribution and metabolic health risk profile with an accurate anthropometric alternative to standard BMI metrics.</p>
-        
-        <div class="options-list" style="gap:15px;">
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Waist Circumference (cm)</label>
-            <input type="number" id="waist" value="80" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
-          </div>
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Height (cm)</label>
-            <input type="number" id="height" value="170" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
-          </div>
-          <button onclick="calculateWHtR()" style="width:100%; background:#2563eb; color:white; border:none; padding:14px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.2s;">Compute WHtR Index Matrix</button>
+      <div class="form-group">
+        <label>Biological Sex Alignment</label>
+        <div class="radio-group">
+          <label style="flex:1;"><input type="radio" name="gender" value="male" checked><div class="radio-tile">Male</div></label>
+          <label style="flex:1;"><input type="radio" name="gender" value="female"><div class="radio-tile">Female</div></label>
         </div>
-        
       </div>
+
+      <div class="form-group">
+        <label for="height">Stature Vertical Height (cm)</label>
+        <input type="number" id="height" value="170" min="90" max="250">
+      </div>
+
+      <div class="form-group">
+        <label for="waist">Abdominal Horizontal Waistline (cm)</label>
+        <input type="number" id="waist" value="80" min="30" max="200">
+      </div>
+
+      <button class="btn-submit" onclick="calculateWHtR()">Deconstruct Anthropometric Index</button>
     </div>
 
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">RATIO</div></div>
-      <h3 class="result-title" id="analysisTitle">Result</h3>
-      <div class="result-interpretation" id="analysisText">Interpretation...</div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
-    </div>
-  </div>
+    <div id="resultInterface" class="result-card">
+      <p style="font-size:14px; text-transform:uppercase; letter-spacing:1px; color:#6b7280; font-weight:600;">Calculated WHtR Ratio</p>
+      <div id="finalScore" class="score-badge">0.00</div>
+      
+      <div class="gauge-wrapper">
+        <div class="gauge-track">
+          <div id="gaugePointer" class="gauge-pointer" style="left: 50%;"></div>
+        </div>
+        <div class="gauge-labels">
+          <span>Slim (&lt;0.4)</span>
+          <span>Optimal (0.4-0.5)</span>
+          <span>Overweight (0.5-0.6)</span>
+          <span>High Risk (&gt;0.6)</span>
+        </div>
+      </div>
 
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">Q1: What is Visceral Adiposity Waist-to-Height Ratio (WHtR) Calculator?</div>
-      <div class="faq-a">The Waist to Height Ratio Calculator is an anthropometric health assessment utility designed to evaluate body fat distribution and central adiposity tracking curves. By analyzing the relationship between waist circumference and absolute vertical height, this tool helps users identify localized abdominal fat collection, which serves as a key predictor for potential cardiovascular and metabolic health anomalies.</div>
+      <div id="analysisTitle" class="analysis-title">Analyzing Visceral Vectors...</div>
+      <div id="analysisText" class="analysis-text"></div>
+      <button class="btn-reset" onclick="resetWHtR()">Run New Profiling</button>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Q2: How accurate is this calculator?</div>
-      <div class="faq-a">Modern clinical epidemiology establishes that WHtR provides a significantly more accurate metric for identifying metabolic syndrome risks than traditional Body Mass Index (BMI), as BMI fails to distinguish between heavy muscle tissue mass and visceral fat storage. While highly reliable for personal risk screening, it does not replace official clinical vascular imaging or body composition scans.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q3: How do I use it?</div>
-      <div class="faq-a">Use a flexible measuring tape to find your waist circumference at the midpoint between your lowest palpable rib and the top of the iliac crest (usually right above the navel). Input this value alongside your height in centimeters into the calculator, then trigger the execution code.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q4: Is it free?</div>
-      <div class="faq-a">Yes. This online health checker is entirely free, loading zero external tracker cookies or marketing network dependencies.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q5: Who should use it?</div>
-      <div class="faq-a">This system is optimized for gym goers tracking abdominal fat reduction changes, individuals looking for a reliable check beyond basic BMI numbers, and anyone managing personal metrics related to hypertension or pre-diabetic monitoring profiles.</div>
-    </div>
-  </section>
+  </main>
 
   <script>
-    
-        function calculateWHtR() {
-          let waist = parseFloat(document.getElementById('waist').value) || 0;
-          let height = parseFloat(document.getElementById('height').value) || 1;
-          
-          let whtr = (waist / height).toFixed(2);
-          let status = "";
-          let advice = "";
-          
-          if (whtr < 0.43) {
-            status = "Extremely Slim / Underweight Spectrum";
-            advice = "Your abdominal fat parameters indicate a very lean profile. Ensure your current nutritional habits provide adequate caloric support for necessary endocrine health functions.";
-          } else if (whtr >= 0.43 && whtr <= 0.52) {
-            status = "Healthy / Low Visceral Risk Matrix";
-            advice = "Your ratio falls squarely within the scientifically optimal cardiovascular and metabolic baseline zone. Keep maintaining your balance of lean nutrition and physical exercise.";
-          } else if (whtr > 0.52 && whtr <= 0.62) {
-            status = "Overweight / Elevated Visceral Accumulation";
-            advice = "Your metrics reveal moderate central abdominal fat collection. This profile is often correlated with increased risks for lipid variations and insulin sensitivity challenges.";
-          } else {
-            status = "Highly Elevated / High Visceral Risk Zone";
-            advice = "Your central anthropometric index suggests deep visceral adipose aggregation. This is structurally linked to heightened risk levels for metabolic conditions. Implementing custom nutritional changes and structured physical activity is highly recommended.";
-          }
-          
-          document.getElementById('quizInterface').style.display = 'none';
-          document.getElementById('resultInterface').style.display = 'block';
-          document.getElementById('progressBar').style.width = '100%';
-          document.getElementById('finalScore').textContent = whtr;
-          document.getElementById('analysisTitle').textContent = status;
-          document.getElementById('analysisText').textContent = advice;
+    function calculateWHtR() {
+      let gender = document.querySelector('input[name="gender"]:checked').value;
+      let height = parseFloat(document.getElementById('height').value) || 170;
+      let waist = parseFloat(document.getElementById('waist').value) || 80;
+      
+      let whtr = waist / height;
+      let whtrFixed = whtr.toFixed(2);
+      
+      // 指针精细位移映射计算核心 (将 0.35 到 0.65 的比率映射到标尺 0% - 100% 的渲染宽度)
+      let minPct = 0.35;
+      let maxPct = 0.65;
+      let pct = ((whtr - minPct) / (maxPct - minPct)) * 100;
+      if (pct < 2) pct = 2;
+      if (pct > 98) pct = 98;
+      
+      let status = "";
+      let advice = "";
+      
+      // 引入现代性别切片矩阵对内脏脂肪临床阈值进行双轨制精细诊断
+      if (gender === 'male') {
+        if (whtr < 0.43) {
+          status = "Extremely Lean / Sub-Optimal Margin";
+          advice = "Your core horizontal waistline metrics track significantly lower than standard structural reference baselines. Monitor whether lean structural mass index levels require nutritional support.";
+        } else if (whtr <= 0.52) {
+          status = "Healthy / Low Visceral Risk Matrix";
+          advice = "Excellent. Your current metric profile sits inside the optimal baseline envelope correlated with strong metabolic safety profiles and lower arterial strain vectors.";
+        } else if (whtr <= 0.62) {
+          status = "Central Overweight / Elevated Visceral Mass";
+          advice = "Alert: Data marks moderate visceral fat aggregation wrapped around internal organs. This profile signals early risks for lipid profile drift and insulin receptor loading.";
+        } else {
+          status = "Highly Elevated / Extreme Visceral Fat Risk Zone";
+          advice = "Critical Warning: Your abdominal cross-section shows deep visceral adipose accumulation. This state acts as an active endocrine stress driver, severely compounding metabolic syndrome risks. Urgent action via customized resistance training and clean dietary changes is strongly advised.";
         }
-        
+      } else {
+        // 女性差异化精细标尺
+        if (whtr < 0.42) {
+          status = "Extremely Lean / Sub-Optimal Margin";
+          advice = "Your parameters indicate low fat metrics. Ensure your nutritional strategy covers standard physiological lipid synthesis targets vital for balanced reproductive hormone tracking.";
+        } else if (whtr <= 0.49) {
+          status = "Healthy / Low Visceral Risk Matrix";
+          advice = "Optimal. Your metrics show healthy central body distribution, signaling excellent metabolic efficiency and minimal cardiovascular risk indicators.";
+        } else if (whtr <= 0.57) {
+          status = "Central Overweight / Elevated Visceral Mass";
+          advice = "Caution: Your markers indicate mild central body fat deposition. Introducing consistent active movement targets and managing insulin health can help safely pull this back into range.";
+        } else {
+          status = "Highly Elevated / Extreme Visceral Fat Risk Zone";
+          advice = "High Warning: Your anthropometric waistline parameters point toward significant visceral adipose tissue collection. This condition triggers systemic pro-inflammatory feedback loops. Focus on sleep quality, clean nutrition, and consistent training to reduce visceral strain.";
+        }
+      }
+      
+      document.getElementById('quizInterface').style.display = 'none';
+      document.getElementById('resultInterface').style.display = 'block';
+      document.getElementById('progressBar').style.width = '100%';
+      
+      document.getElementById('finalScore').textContent = whtrFixed;
+      document.getElementById('gaugePointer').style.left = pct + "%";
+      document.getElementById('analysisTitle').textContent = status;
+      document.getElementById('analysisText').innerHTML = advice;
+    }
+
+    function resetWHtR() {
+      document.getElementById('resultInterface').style.display = 'none';
+      document.getElementById('quizInterface').style.display = 'block';
+      document.getElementById('progressBar').style.width = '50%';
+    }
   </script>
 </body>
 </html>
