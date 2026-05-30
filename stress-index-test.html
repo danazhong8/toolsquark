@@ -205,24 +205,27 @@ font-size:24px;
 }
 
 /* ==========================================================================
-   ENHANCED UX STYLES (Appended without modifying existing rules)
+   FIXED RESPONSIVE UX STYLES (Re-engineered to support both PC & Mobile)
    ========================================================================== */
    
-/* 1. Container for top navigation and progress alignment */
+/* Robust header structure that forces elements into a neat single row */
 .quiz-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 25px;
 }
 
-/* 2. Elegant 'Back Home' button style */
+/* Fixed Home button logic to stop text wrapping on PC screens */
 .back-home-btn {
     font-size: 15px;
     color: #64748b;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    white-space: nowrap; /* CRITICAL: Prevents vertical text splitting */
+    flex-shrink: 0;       /* CRITICAL: Protects the button from crushing */
     cursor: pointer;
     font-weight: 500;
     transition: color 0.2s;
@@ -230,56 +233,65 @@ font-size:24px;
     border: none;
     padding: 0;
     width: auto;
+    margin-right: 20px;
 }
 .back-home-btn:hover {
     color: #2563eb;
     background: transparent;
 }
 
-/* 3. Progress bar upgrade: Increased thickness and integrated text percent */
+/* Redesigned fluid container for the progress bar */
 .progress-wrap.enhanced-progress {
-    height: 16px; /* Thickened from 10px */
+    height: 18px; /* Slightly thickened for modern typography */
     margin-bottom: 0px;
     flex-grow: 1;
-    margin-left: 20px;
     position: relative;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
 }
+
 .progress.enhanced-bar {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    height: 100%;
+    background: #2563eb;
+    transition: width 0.3s ease;
 }
+
 .progress-text {
     position: absolute;
-    right: 8px;
+    right: 10px;
     color: white;
     font-size: 11px;
     font-weight: bold;
     line-height: 1;
+    white-space: nowrap;
 }
 
-/* 4. Option items upgrade: Better spacing and active interaction states */
+/* Premium feedback styling for the question selection cards */
 .option.enhanced-option {
-    margin-bottom: 16px; /* Increased spacing to prevent accidental clicks */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    margin-bottom: 16px; /* Strategic spacing to avoid multi-click errors */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+    transition: all 0.2s ease;
 }
 .option.enhanced-option:hover {
-    transform: scale(1.01); /* Micro-interaction scale on hover */
+    transform: translateY(-1px); /* Cleaner, subtle vertical shift */
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
 }
 .option.enhanced-option:active {
-    transform: scale(0.99); /* Press down effect */
+    transform: scale(0.995);
 }
-/* Softer warm tone for high-stress options to improve psychological comfort */
+/* Calming warm tone for high-stress answers instead of alarming alerts */
 .option.enhanced-option.selected-heavy {
     border-color: #f97316;
     background: #fff7ed;
 }
 
-/* 5. Next button padding adjustment */
 button.enhanced-submit-btn {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 </style>
 
@@ -370,4 +382,239 @@ Regular exercise, quality sleep, and recovery routines may significantly improve
 <h3>Recommended Tests</h3>
 
 <div class="recommend">
-<strong>
+<strong>Burnout Recovery Test</strong><br>
+Measure emotional exhaustion and recovery readiness.
+</div>
+
+<div class="recommend">
+<strong>Sleep Quality Test</strong><br>
+Analyze how stress affects sleep quality.
+</div>
+
+<div class="recommend">
+<strong>Anxiety Level Test</strong><br>
+Identify persistent worry and emotional tension.
+</div>
+
+<div class="recommend">
+<strong>Emotional Fatigue Test</strong><br>
+Evaluate mental energy and resilience.
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>FAQ</h3>
+
+<div class="faq-item">
+<strong>Is this a medical diagnosis?</strong><br>
+No. This assessment is intended for educational and self-awareness purposes only.
+</div>
+
+<div class="faq-item">
+<strong>Can I retake the test?</strong><br>
+Yes. Many users repeat the assessment weekly to monitor stress trends.
+</div>
+
+<div class="faq-item">
+<strong>How accurate is it?</strong><br>
+The questions are based on common indicators associated with stress and emotional fatigue.
+</div>
+
+</div>
+
+<footer>
+© 2026 Stress Index Test
+</footer>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+question:"How often do you feel mentally exhausted during the day?",
+options:["Rarely","Sometimes","Frequently","Almost every day"]
+},
+
+{
+question:"Do you struggle to relax during free time?",
+options:["Never","Occasionally","Often","Constantly"]
+},
+
+{
+question:"How often does stress affect your sleep?",
+options:["Never","Sometimes","Regularly","Almost every night"]
+},
+
+{
+question:"Do responsibilities feel overwhelming?",
+options:["Rarely","Sometimes","Frequently","Almost constantly"]
+},
+
+{
+question:"How difficult is it to stay focused under pressure?",
+options:["Easy","Manageable","Difficult","Very difficult"]
+},
+
+{
+question:"Do small problems easily frustrate you?",
+options:["Rarely","Occasionally","Frequently","Very often"]
+},
+
+{
+question:"How often do you feel emotionally drained?",
+options:["Rarely","Sometimes","Frequently","Almost daily"]
+},
+
+{
+question:"Do you keep thinking about problems repeatedly?",
+options:["Never","Occasionally","Often","Almost constantly"]
+},
+
+{
+question:"Do you feel pressure to stay productive?",
+options:["Rarely","Sometimes","Frequently","All the time"]
+},
+
+{
+question:"Is stress affecting your happiness or relationships?",
+options:["Not at all","Slightly","Moderately","Severely"]
+}
+
+];
+
+let current=0;
+let totalScore=0;
+let selected=null;
+
+function loadQuestion(){
+
+const q=questions[current];
+
+document.getElementById("question").innerText=q.question;
+
+/* Fix: Calculate percentage, dynamic progress alignment */
+const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
+document.getElementById("progress").style.width=currentPercentage+"%";
+document.getElementById("progress-percent").innerText=currentPercentage+"%";
+
+let html="";
+
+q.options.forEach((option,index)=>{
+
+html+=`
+<div class="option enhanced-option"
+onclick="selectOption(this,${index+1},${index})">
+${option}
+</div>
+`;
+
+});
+
+document.getElementById("answers").innerHTML=html;
+
+}
+
+function selectOption(el,score,optionIndex){
+
+document.querySelectorAll(".option")
+.forEach(item=>{
+    item.classList.remove("selected");
+    item.classList.remove("selected-heavy");
+});
+
+if(optionIndex >= 2) {
+    el.classList.add("selected-heavy");
+} else {
+    el.classList.add("selected");
+}
+
+selected=score;
+
+}
+
+function nextQuestion(){
+
+if(selected===null){
+
+alert("Please select an answer.");
+
+return;
+
+}
+
+totalScore+=selected;
+
+selected=null;
+
+current++;
+
+if(current<questions.length){
+
+loadQuestion();
+
+}else{
+
+showResult();
+
+}
+
+}
+
+function showResult(){
+
+document.getElementById("quiz").classList.add("hidden");
+
+document.getElementById("result").classList.remove("hidden");
+
+document.getElementById("recommendations").classList.remove("hidden");
+
+document.getElementById("score").innerText=totalScore+"/40";
+
+let profile="";
+let desc="";
+
+if(totalScore<=16){
+
+profile="Balanced Stress Profile";
+
+desc="You currently maintain healthy emotional balance and demonstrate strong resilience under pressure.";
+
+}
+else if(totalScore<=28){
+
+profile="Moderate Pressure Accumulator";
+
+desc="You experience noticeable stress and mental fatigue. Long-term pressure may begin affecting sleep, focus, and emotional stability.";
+
+}
+else{
+
+profile="High Stress & Burnout Risk";
+
+desc="Your results indicate elevated stress levels and possible emotional exhaustion. Recovery strategies may be beneficial.";
+
+}
+
+document.getElementById("profile").innerText=profile;
+document.getElementById("description").innerText=desc;
+
+}
+
+/* Native leave confirmation pop-up handler */
+function handleBackHome() {
+    const confirmLeave = confirm("Are you sure you want to leave?\nYour current test progress will not be saved.");
+    if (confirmLeave) {
+        window.location.href = "/";
+    }
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
