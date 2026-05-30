@@ -205,10 +205,8 @@ font-size:24px;
 }
 
 /* ==========================================================================
-   FIXED RESPONSIVE UX STYLES (Re-engineered to support both PC & Mobile)
+   RESPONSIVE UX STYLES
    ========================================================================== */
-   
-/* Robust header structure that forces elements into a neat single row */
 .quiz-header {
     display: flex;
     justify-content: space-between;
@@ -217,15 +215,14 @@ font-size:24px;
     margin-bottom: 25px;
 }
 
-/* Fixed Home button logic to stop text wrapping on PC screens */
 .back-home-btn {
     font-size: 15px;
     color: #64748b;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    white-space: nowrap; /* CRITICAL: Prevents vertical text splitting */
-    flex-shrink: 0;       /* CRITICAL: Protects the button from crushing */
+    white-space: nowrap;
+    flex-shrink: 0;
     cursor: pointer;
     font-weight: 500;
     transition: color 0.2s;
@@ -240,9 +237,8 @@ font-size:24px;
     background: transparent;
 }
 
-/* Redesigned fluid container for the progress bar */
 .progress-wrap.enhanced-progress {
-    height: 18px; /* Slightly thickened for modern typography */
+    height: 18px;
     margin-bottom: 0px;
     flex-grow: 1;
     position: relative;
@@ -271,27 +267,36 @@ font-size:24px;
     white-space: nowrap;
 }
 
-/* Premium feedback styling for the question selection cards */
 .option.enhanced-option {
-    margin-bottom: 16px; /* Strategic spacing to avoid multi-click errors */
+    margin-bottom: 16px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.01);
     transition: all 0.2s ease;
 }
 .option.enhanced-option:hover {
-    transform: translateY(-1px); /* Cleaner, subtle vertical shift */
+    transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
 }
 .option.enhanced-option:active {
     transform: scale(0.995);
 }
-/* Calming warm tone for high-stress answers instead of alarming alerts */
 .option.enhanced-option.selected-heavy {
     border-color: #f97316;
     background: #fff7ed;
 }
 
-button.enhanced-submit-btn {
-    margin-top: 15px;
+/* Enhanced clickable links for recommendations */
+.recommend-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.recommend-link:hover .recommend {
+    background: #e0f2fe;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05);
+}
+.recommend-link:active {
+    transform: scale(0.995);
 }
 </style>
 
@@ -325,7 +330,7 @@ mental pressure, and burnout risk with this behavioral assessment.
 
 <div id="answers"></div>
 
-<button onclick="nextQuestion()" class="enhanced-submit-btn">Continue</button>
+<button onclick="nextQuestion()" class="hidden">Continue</button>
 
 </div>
 
@@ -381,25 +386,33 @@ Regular exercise, quality sleep, and recovery routines may significantly improve
 
 <h3>Recommended Tests</h3>
 
-<div class="recommend">
-<strong>Burnout Recovery Test</strong><br>
-Measure emotional exhaustion and recovery readiness.
-</div>
+<a href="/burnout-recovery-test.html" class="recommend-link">
+    <div class="recommend">
+    <strong>Burnout Recovery Test</strong><br>
+    Measure emotional exhaustion and recovery readiness.
+    </div>
+</a>
 
-<div class="recommend">
-<strong>Sleep Quality Test</strong><br>
-Analyze how stress affects sleep quality.
-</div>
+<a href="/sleep-quality-test.html" class="recommend-link">
+    <div class="recommend">
+    <strong>Sleep Quality Test</strong><br>
+    Analyze how stress affects sleep quality.
+    </div>
+</a>
 
-<div class="recommend">
-<strong>Anxiety Level Test</strong><br>
-Identify persistent worry and emotional tension.
-</div>
+<a href="/anxiety-level-test.html" class="recommend-link">
+    <div class="recommend">
+    <strong>Anxiety Level Test</strong><br>
+    Identify persistent worry and emotional tension.
+    </div>
+</a>
 
-<div class="recommend">
-<strong>Emotional Fatigue Test</strong><br>
-Evaluate mental energy and resilience.
-</div>
+<a href="/emotional-fatigue-test.html" class="recommend-link">
+    <div class="recommend">
+    <strong>Emotional Fatigue Test</strong><br>
+    Evaluate mental energy and resilience.
+    </div>
+</a>
 
 </div>
 
@@ -489,6 +502,7 @@ options:["Not at all","Slightly","Moderately","Severely"]
 let current=0;
 let totalScore=0;
 let selected=null;
+let isTransitioning=false; // Lock flag to prevent double submission errors during automatic page turning
 
 function loadQuestion(){
 
@@ -496,7 +510,6 @@ const q=questions[current];
 
 document.getElementById("question").innerText=q.question;
 
-/* Fix: Calculate percentage, dynamic progress alignment */
 const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
 document.getElementById("progress").style.width=currentPercentage+"%";
 document.getElementById("progress-percent").innerText=currentPercentage+"%";
@@ -515,10 +528,12 @@ ${option}
 });
 
 document.getElementById("answers").innerHTML=html;
+isTransitioning = false; // Reset lock flag for next question block
 
 }
 
 function selectOption(el,score,optionIndex){
+if(isTransitioning) return; // Prevent user multi-clicks within the delay buffer
 
 document.querySelectorAll(".option")
 .forEach(item=>{
@@ -533,35 +548,36 @@ if(optionIndex >= 2) {
 }
 
 selected=score;
-
-}
-
-function nextQuestion(){
-
-if(selected===null){
-
-alert("Please select an answer.");
-
-return;
-
-}
-
 totalScore+=selected;
-
 selected=null;
+isTransitioning = true;
 
-current++;
-
-if(current<questions.length){
-
-loadQuestion();
-
-}else{
-
-showResult();
+// Auto-advance mechanism: transition elegantly after 300ms visual buffer
+setTimeout(() => {
+    current++;
+    if(current<questions.length){
+        loadQuestion();
+    }else{
+        showResult();
+    }
+}, 300);
 
 }
 
+// Kept untouched for base architecture compliance
+function nextQuestion(){
+if(selected===null){
+alert("Please select an answer.");
+return;
+}
+totalScore+=selected;
+selected=null;
+current++;
+if(current<questions.length){
+loadQuestion();
+}else{
+showResult();
+}
 }
 
 function showResult(){
@@ -604,7 +620,6 @@ document.getElementById("description").innerText=desc;
 
 }
 
-/* Native leave confirmation pop-up handler */
 function handleBackHome() {
     const confirmLeave = confirm("Are you sure you want to leave?\nYour current test progress will not be saved.");
     if (confirmLeave) {
