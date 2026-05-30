@@ -1,119 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Stress Index Core Assessment Matrix - ToolsQuark</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Stress Index Test | AI Stress Level Assessment Tool</title>
+  <meta name="description" content="Take a modern AI-powered digital addiction psychology test. Discover your attention span, dopamine dependency, screen attachment level, and focus profile." />
+  <meta name="keywords" content="digital addiction test, dopamine test, attention span test, screen addiction test, psychology tool" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Digital Addiction Test" />
+  <meta property="og:description" content="AI-powered behavioral psychology assessment with visual analysis." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
-    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
-    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
-    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 38px; font-weight: bold; }
-    .metric-label { font-size: 12px; opacity: 0.9; }
-    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #f3f6ff 0%, #ffffff 100%);
+      color: #111827;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      border-radius: 32px;
+      padding: 40px 28px;
+      color: white;
+      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.18);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      top: -60px;
+      right: -60px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 38px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.92);
+      max-width: 540px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 18px 0 30px;
+    }
+
+    .progress {
+      width: 25%;
+      height: 100%;
+      background: linear-gradient(90deg, #2563eb, #4f46e5);
+      transition: 0.4s ease;
+    }
+
+    .question-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      border: 2px solid #eef2ff;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-weight: 500;
+      background: #fafbff;
+    }
+
+    .option:hover {
+      transform: translateY(-2px);
+      border-color: #2563eb;
+      background: #f3f7ff;
+    }
+
+    .option.selected {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      padding: 18px;
+      border-radius: 18px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: white;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+      transition: 0.25s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .score {
+      text-align: center;
+      font-size: 68px;
+      font-weight: 800;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    .profile-title {
+      text-align: center;
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .profile-desc {
+      text-align: center;
+      color: #6b7280;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 22px;
+    }
+
+    .stat-box h4 {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #374151;
+    }
+
+    .meter {
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .meter-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2563eb, #4f46e5);
+    }
+
+    .insights {
+      margin-top: 30px;
+    }
+
+    .insights h3,
+    .faq h3,
+    .recommendations h3 {
+      margin-bottom: 18px;
+      font-size: 24px;
+    }
+
+    .insight-item {
+      background: #f8fafc;
+      padding: 18px;
+      border-radius: 18px;
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    .recommend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .recommend-card {
+      background: linear-gradient(135deg, #f8fbff, #eef4ff);
+      border-radius: 22px;
+      padding: 20px;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .recommend-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .recommend-card h4 {
+      margin-bottom: 8px;
+    }
+
+    .faq-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: #f9fafb;
+      margin-bottom: 14px;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    @media(max-width: 640px) {
+      h1 {
+        font-size: 30px;
+      }
+
+      .profile-title {
+        font-size: 28px;
+      }
+
+      .score {
+        font-size: 54px;
+      }
+
+      .stats-grid,
+      .recommend-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .hero {
+        padding: 22px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="header-block">
-      <h2 style="font-size: 22px; font-weight: bold;">Stress Index Test</h2>
-      <a href="index.html" class="back-btn">← Back to Hub</a>
-    </div>
-    
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+<div class="container">
 
-    <div id="quizInterface">
-      <div class="question-box">
-        <h3 id="questionText">Loading assessment node...</h3>
-        <div class="options-list" id="optionsWrapper"></div>
+  <section class="hero">
+    <div class="badge">AI Behavioral Assessment</div>
+    <h1>Stress Index Test</h1>
+   <p>
+Measure your current stress level, emotional fatigue, mental pressure,
+and burnout risk with this AI-powered behavioral assessment.
+</p>
+  </section>
+
+  <section class="card" id="quiz-section">
+
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <div class="question-title" id="question-title"></div>
+
+    <div id="options-container"></div>
+
+    <button onclick="nextQuestion()">Continue Assessment</button>
+
+  </section>
+
+  <section class="card hidden" id="result-section">
+
+    <div class="score" id="score"></div>
+
+    <div class="profile-title" id="profile"></div>
+
+    <div class="profile-desc" id="description"></div>
+
+    <div class="stats-grid">
+
+      <div class="stat-box">
+        <h4>Focus Stability</h4>
+        <div class="meter">
+          <div class="meter-fill" style="width:62%"></div>
+        </div>
+        <p>62%</p>
       </div>
+
+      <div class="stat-box">
+        <h4>Dopamine Dependency</h4>
+        <div class="meter">
+          <div class="meter-fill" style="width:78%"></div>
+        </div>
+        <p>78%</p>
+      </div>
+
+      <div class="stat-box">
+        <h4>Sleep Impact</h4>
+        <div class="meter">
+          <div class="meter-fill" style="width:69%"></div>
+        </div>
+        <p>69%</p>
+      </div>
+
+      <div class="stat-box">
+        <h4>Attention Fragmentation</h4>
+        <div class="meter">
+          <div class="meter-fill" style="width:74%"></div>
+        </div>
+        <p>74%</p>
+      </div>
+
     </div>
 
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
-      <h3 class="result-title" id="analysisTitle">Analyzing...</h3>
-      <div class="result-interpretation" id="analysisText">Computing metrics...</div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
-    </div>
-  </div>
+    <div class="insights">
+      <h3>Behavioral Insights</h3>
 
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">💡 How is the Stress Index calculated?</div>
-      <div class="faq-a">This metric uses a standardized 10-item psychometric assessment framework. Each response is assigned a value from 0 to 3. The aggregate sum provides an absolute marker mapping mild, moderate, or acute stress overload parameters.</div>
+      <div class="insight-item">
+Persistent stress may gradually reduce emotional resilience and increase mental fatigue over time.
+</div>
+
+<div class="insight-item">
+High-pressure thinking patterns can affect concentration, sleep quality, and emotional recovery.
+</div>
+
+<div class="insight-item">
+Regular recovery habits such as exercise, quality sleep, and screen-time reduction may significantly improve stress balance.
+</div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">🔒 Is my behavioral health data stored or tracked?</div>
-      <div class="faq-a">No. ToolsQuark operates on a strict zero-server footprint standard. All diagnostic state calculations process directly inside your local browser client instance. No data profiles are compiled or transmitted.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">⚠️ Can this replace professional diagnostic screenings?</div>
-      <div class="faq-a">No. This platform is purely for self-screening and behavioral educational tracking. It does not issue official psychological signatures. Please consult a licensed professional for specialized clinical evaluation.</div>
+
+  </section>
+
+  <section class="card recommendations hidden" id="recommendations">
+    <h3>Recommended Assessments</h3>
+
+    <div class="recommend-grid">
+
+      <div class="recommend-card">
+        <div class="recommend-card">
+  <h4>Burnout Recovery Test</h4>
+  <p>Measure emotional exhaustion and recovery readiness.</p>
+</div>
+
+<div class="recommend-card">
+  <h4>Sleep Quality Test</h4>
+  <p>Analyze how stress affects sleep and mental recovery.</p>
+</div>
+
+<div class="recommend-card">
+  <h4>Anxiety Level Test</h4>
+  <p>Discover signs of persistent worry and emotional tension.</p>
+</div>
+
+<div class="recommend-card">
+  <h4>Emotional Fatigue Test</h4>
+  <p>Evaluate your current mental energy and emotional resilience.</p>
+</div>
+        <p>Analyze your focus consistency and concentration depth.</p>
+      </div>
+
+      <div class="recommend-card">
+        <h4>Dopamine Dependency Test</h4>
+        <p>Understand your stimulation-seeking behavior patterns.</p>
+      </div>
+
+      <div class="recommend-card">
+        <h4>Burnout Recovery Score</h4>
+        <p>Measure emotional fatigue and recovery readiness.</p>
+      </div>
+
+      <div class="recommend-card">
+        <h4>Sleep Quality Analyzer</h4>
+        <p>Discover how your habits impact rest and recovery.</p>
+      </div>
+
     </div>
   </section>
 
-  <script>
-    const questions = [
-      "Felt unable to manage significant unexpected environmental shifts or situational disruption?",
-      "Experienced systemic tension or perceived yourself to lose authority over personal micro-timelines?",
-      "Noticed somatic nervous system load like continuous shoulder compression or persistent headaches?",
-      "Felt increasingly irritated or defensive when coping with minor logistical errors or daily friction?",
-      "Discovered that focus matrices decay rapidly under normal execution parameters?",
-      "Felt overwhelmed by the aggregate density of your immediate career or family obligations?",
-      "Felt that your capacity to mitigate emerging situational crises is nearing complete depletion?",
-      "Experienced persistent disruptions in healthy sleep architecture or sudden mid-cycle exhaustion?",
-      "Perceived a loss of resilience when addressing unanticipated performance demands?",
-      "Felt that micro-stress parameters are compounding at an exponential rate relative to your coping framework?"
-    ];
+  <section class="card faq">
+    <h3>Frequently Asked Questions</h3>
 
-    const interpretations = [
-      { bound: 10, title: "Resilient Control (Mild Stress Baseline)", text: "Your analytical metrics indicate high levels of executive resilience. Autonomic physiological parameters are operating within standard equilibrium frameworks." },
-      { bound: 20, title: "Elevated Homeostatic Load (Moderate Stress)", text: "Indications point towards mild systemic hyperarousal. Emerging professional or academic fatigue structures suggest a need for proactive workload delegation or relaxation protocols." },
-      { bound: 30, title: "Critical Exhaustion Hazard (Intense Stress Profile)", text: "Your score registers a severe imbalance in coping metrics. You are actively approaching clear boundaries of clinical burnout. High risk of physiological depletion if micro-load values are not immediate modulated." }
-    ];
+    <div class="faq-item">
+      <strong>Is this a medical diagnosis?</strong>
+      No. This tool provides behavioral insights for educational and self-awareness purposes only.
+    </div>
 
-    const options = ["0 - Never / Almost Never", "1 - Sometimes (Mild Frequency)", "2 - Often (Disruptive Frequency)", "3 - Almost Continuously (Severe Level)"];
-    let idx = 0, score = 0;
+    <div class="faq-item">
+      <strong>How accurate is this assessment?</strong>
+      The assessment uses behavioral pattern scoring models inspired by digital wellness research.
+    </div>
 
-    function render() {
-      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
-      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
-      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
-      options.forEach((opt, w) => {
-        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
-        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
-        wrapper.appendChild(d);
-      });
-    }
-    function showResult() {
-      document.getElementById("quizInterface").style.display = "none";
-      document.getElementById("resultInterface").style.display = "block";
-      document.getElementById("progressBar").style.width = "100%";
-      document.getElementById("finalScore").textContent = score;
-      let target = interpretations.find(i => score <= i.bound) || interpretations[2];
-      document.getElementById("analysisTitle").textContent = target.title;
-      document.getElementById("analysisText").textContent = target.text;
-    }
-    render();
-  </script>
+    <div class="faq-item">
+      <strong>Can I retake the test?</strong>
+      Yes. Many users retake the assessment weekly to track behavior changes.
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 MindScope Tools · Behavioral Psychology Toolkit
+  </footer>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+  question: "How often do you feel mentally exhausted during the day?",
+  options: [
+    { text: "Rarely", score: 1 },
+    { text: "Sometimes", score: 2 },
+    { text: "Frequently", score: 3 },
+    { text: "Almost every day", score: 4 }
+  ]
+},
+
+{
+  question: "Do you struggle to relax even during free time?",
+  options: [
+    { text: "Never", score: 1 },
+    { text: "Occasionally", score: 2 },
+    { text: "Often", score: 3 },
+    { text: "Constantly", score: 4 }
+  ]
+},
+
+{
+  question: "How often do you experience sleep problems caused by stress?",
+  options: [
+    { text: "Never", score: 1 },
+    { text: "A few times", score: 2 },
+    { text: "Regularly", score: 3 },
+    { text: "Almost every night", score: 4 }
+  ]
+},
+
+{
+  question: "Do you feel overwhelmed by responsibilities or expectations?",
+  options: [
+    { text: "Rarely", score: 1 },
+    { text: "Sometimes", score: 2 },
+    { text: "Frequently", score: 3 },
+    { text: "Almost constantly", score: 4 }
+  ]
+},
+
+{
+  question: "How difficult is it to stay focused under pressure?",
+  options: [
+    { text: "Very easy", score: 1 },
+    { text: "Manageable", score: 2 },
+    { text: "Quite difficult", score: 3 },
+    { text: "Extremely difficult", score: 4 }
+  ]
+},
+
+{
+  question: "Do small problems easily irritate or frustrate you?",
+  options: [
+    { text: "Rarely", score: 1 },
+    { text: "Occasionally", score: 2 },
+    { text: "Frequently", score: 3 },
+    { text: "Very often", score: 4 }
+  ]
+},
+
+{
+  question: "How often do you feel emotionally drained after work or study?",
+  options: [
+    { text: "Rarely", score: 1 },
+    { text: "Sometimes", score: 2 },
+    { text: "Frequently", score: 3 },
+    { text: "Almost daily", score: 4 }
+  ]
+},
+
+{
+  question: "Do you find it hard to stop thinking about problems?",
+  options: [
+    { text: "Never", score: 1 },
+    { text: "Occasionally", score: 2 },
+    { text: "Often", score: 3 },
+    { text: "Almost constantly", score: 4 }
+  ]
+},
+
+{
+  question: "How often do you feel pressure to always stay productive?",
+  options: [
+    { text: "Rarely", score: 1 },
+    { text: "Sometimes", score: 2 },
+    { text: "Frequently", score: 3 },
+    { text: "All the time", score: 4 }
+  ]
+},
+
+{
+  question: "Do you feel your stress level is affecting your happiness or relationships?",
+  options: [
+    { text: "Not at all", score: 1 },
+    { text: "Slightly", score: 2 },
+    { text: "Moderately", score: 3 },
+    { text: "Severely", score: 4 }
+  ]
+  }
+];
+
+let currentQuestion = 0;
+let totalScore = 0;
+let selectedScore = null;
+
+const questionTitle = document.getElementById('question-title');
+const optionsContainer = document.getElementById('options-container');
+const progress = document.getElementById('progress');
+
+function loadQuestion() {
+  const q = questions[currentQuestion];
+
+  questionTitle.innerText = q.question;
+  optionsContainer.innerHTML = '';
+
+  progress.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+
+  q.options.forEach(option => {
+    const div = document.createElement('div');
+    div.classList.add('option');
+    div.innerText = option.text;
+
+    div.onclick = () => {
+      document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+      div.classList.add('selected');
+      selectedScore = option.score;
+    };
+
+    optionsContainer.appendChild(div);
+  });
+}
+
+function nextQuestion() {
+
+  if(selectedScore === null) {
+    alert('Please select an option.');
+    return;
+  }
+
+  totalScore += selectedScore;
+  selectedScore = null;
+  currentQuestion++;
+
+  if(currentQuestion < questions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+
+  document.getElementById('quiz-section').classList.add('hidden');
+  document.getElementById('result-section').classList.remove('hidden');
+  document.getElementById('recommendations').classList.remove('hidden');
+
+  document.getElementById('score').innerText = totalScore + ' pts';
+
+  let profile = '';
+  let description = '';
+
+  if(totalScore <= 16) {
+
+  profile = 'Balanced Stress Profile';
+
+  description = 'You currently maintain healthy emotional balance and show good resilience under pressure. Your stress level appears manageable and unlikely to significantly affect daily performance.';
+
+}
+
+else if(totalScore <= 28) {
+
+  profile = 'Moderate Pressure Accumulator';
+
+  description = 'You experience noticeable stress and mental fatigue during daily life. While still functional, prolonged pressure may begin affecting focus, sleep quality, and emotional stability.';
+
+}
+
+else {
+
+  profile = 'High Stress & Burnout Risk';
+
+  description = 'Your results suggest elevated psychological stress and possible emotional exhaustion. Persistent pressure may already be impacting sleep, concentration, mood, and overall well-being.';
+
+}
+loadQuestion();
+
+</script>
+
 </body>
 </html>
+```
+
