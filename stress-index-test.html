@@ -206,7 +206,7 @@ font-size:24px;
 
 /* ==========================================================================
    RESPONSIVE UX STYLES
-   ========================================================================== */
+   ========================================================================= */
 .quiz-header {
     display: flex;
     justify-content: space-between;
@@ -386,28 +386,28 @@ Regular exercise, quality sleep, and recovery routines may significantly improve
 
 <h3>Recommended Tests</h3>
 
-<a href="/burnout-recovery-test.html" class="recommend-link">
+<a href="https://www.toolsquark.com/burnout-recovery-score.html" class="recommend-link">
     <div class="recommend">
     <strong>Burnout Recovery Test</strong><br>
     Measure emotional exhaustion and recovery readiness.
     </div>
 </a>
 
-<a href="/sleep-quality-test.html" class="recommend-link">
+<a href="https://www.toolsquark.com/sleep-quality-score.html" class="recommend-link">
     <div class="recommend">
     <strong>Sleep Quality Test</strong><br>
     Analyze how stress affects sleep quality.
     </div>
 </a>
 
-<a href="/anxiety-level-test.html" class="recommend-link">
+<a href="https://www.toolsquark.com/anxiety-level-score.html" class="recommend-link">
     <div class="recommend">
     <strong>Anxiety Level Test</strong><br>
     Identify persistent worry and emotional tension.
     </div>
 </a>
 
-<a href="/emotional-fatigue-test.html" class="recommend-link">
+<a href="https://www.toolsquark.com/emotional-fatigue-score.html" class="recommend-link">
     <div class="recommend">
     <strong>Emotional Fatigue Test</strong><br>
     Evaluate mental energy and resilience.
@@ -502,7 +502,7 @@ options:["Not at all","Slightly","Moderately","Severely"]
 let current=0;
 let totalScore=0;
 let selected=null;
-let isTransitioning=false; // Lock flag to prevent double submission errors during automatic page turning
+let isTransitioning=false; 
 
 function loadQuestion(){
 
@@ -528,12 +528,12 @@ ${option}
 });
 
 document.getElementById("answers").innerHTML=html;
-isTransitioning = false; // Reset lock flag for next question block
+isTransitioning = false; 
 
 }
 
 function selectOption(el,score,optionIndex){
-if(isTransitioning) return; // Prevent user multi-clicks within the delay buffer
+if(isTransitioning) return; 
 
 document.querySelectorAll(".option")
 .forEach(item=>{
@@ -552,7 +552,6 @@ totalScore+=selected;
 selected=null;
 isTransitioning = true;
 
-// Auto-advance mechanism: transition elegantly after 300ms visual buffer
 setTimeout(() => {
     current++;
     if(current<questions.length){
@@ -564,7 +563,6 @@ setTimeout(() => {
 
 }
 
-// Kept untouched for base architecture compliance
 function nextQuestion(){
 if(selected===null){
 alert("Please select an answer.");
@@ -623,7 +621,8 @@ document.getElementById("description").innerText=desc;
 function handleBackHome() {
     const confirmLeave = confirm("Are you sure you want to leave?\nYour current test progress will not be saved.");
     if (confirmLeave) {
-        window.location.href = "/";
+        // Automatically link back to your root homepage domain
+        window.location.href = "https://www.toolsquark.com/";
     }
 }
 
