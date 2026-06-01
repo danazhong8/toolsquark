@@ -3,7 +3,7 @@
 
   <!-- 首页 -->
   <url>
-    <loc>https://www.toolsquark.com/</loc>
+    <loc>https://toolsquark.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
