@@ -7,15 +7,12 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
-/* 调整为与测试模板一致的 800px 宽度 */
 .container{max-width:800px;margin:auto;}
-/* 调整为与测试模板一致的经典科技蓝渐变色 */
 .hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
 .hero h1{font-size:36px;margin-bottom:15px;}
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
 
-/* 头部返回按钮样式 - 与测试模板完全一致 */
 .calc-header{display:flex;justify-content:flex-start;align-items:center;width:100%;margin-bottom:25px;}
 .back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;}
 .back-home-btn:hover{color:#2563eb;}
@@ -23,19 +20,23 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .input-group{margin-bottom:20px;}
 .input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
 .input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
-/* 聚焦状态调整为科技蓝系 */
 .input-group input:focus{border-color:#2563eb;background:#eff6ff;}
 
-/* 按钮调整为科技蓝 */
 button{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
 button:hover{background:#1d4ed8;}
 
-/* 结果区块调整为虚线蓝框与浅蓝底色 */
-.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:20px;border-radius:15px;margin-top:25px;text-align:center;}
+/* 结果框优化 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
 .result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
-.result-desc{color:#374151;font-size:15px;}
+.normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
+.result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
 
-/* 推荐板块样式与动效 - 完美同步测试模板 */
+/* 新增：动态建议区块样式 */
+.suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
+.suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
+.suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
+
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
 .recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
@@ -60,8 +61,14 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <button onclick="calculateNow()">Calculate Now</button>
     
     <div id="result-area" class="result-box" style="display:none;">
+        <div class="normal-range-badge">Normal Range: {{NORMAL_RANGE}}</div>
         <div class="result-val" id="calc-output">0.00</div>
+        <div class="result-status" id="calc-status"></div>
         <div class="result-desc" id="calc-desc"></div>
+        <div class="suggestion-box">
+            <h4>💡 Professional Suggestions:</h4>
+            <p id="calc-suggestion"></p>
+        </div>
     </div>
 </div>
 
@@ -94,7 +101,7 @@ footer{text-align:center;margin-top:30px;color:#777;}
 <script>
 const inputConfigs = [{"id":"weight","label":"Your Weight","unit":"kg","placeholder":"70"},{"id":"height","label":"Your Height","unit":"cm","placeholder":"175"}];
 const calcFormulaText = `fields.weight / ((fields.height / 100) * (fields.height / 100))`;
-const resultDescText = "A normal BMI range is between 18.5 and 24.9. Scores outside this range may indicate underweight or overweight categories.";
+const interpretationRules = {{INTERPRETATION_RULES}};
 
 // 1. 动态生成输入框结构
 const inputsArea = document.getElementById('inputs-area');
@@ -108,7 +115,7 @@ inputConfigs.forEach(cfg => {
 });
 inputsArea.innerHTML = html;
 
-// 2. 核心数学计算驱动
+// 2. 核心数学计算与区间判定
 function calculateNow() {
     let args = {};
     let missing = false;
@@ -128,15 +135,29 @@ function calculateNow() {
         const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
         const finalResult = formulaFunc(args);
         
+        // 动态匹配解读结果与建议
+        let matchedRule = null;
+        for (let rule of interpretationRules) {
+            if (finalResult >= rule.min && finalResult < rule.max) {
+                matchedRule = rule;
+                break;
+            }
+        }
+        
+        // 如果超出常规区间，默认给最后一个
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
+        
         document.getElementById('result-area').style.display = 'block';
         document.getElementById('calc-output').innerText = finalResult.toFixed(2);
-        document.getElementById('calc-desc').innerText = resultDescText;
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
+        
     } catch (e) {
         alert("Calculation error. Please check inputs.");
     }
 }
 
-// 3. 返回首页逻辑 - 与测试模板完全一致
 function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 </script>
 </body>
