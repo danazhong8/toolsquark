@@ -1,428 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Due Date Calculator - ToolsQuark</title>
-  <meta name="description" content="Free online Pregnancy Due Date Calculator. Estimate your expected due date, current gestational age, and pregnancy trimester instantly based on your last period.">
-  <meta name="keywords" content="Due Date Calculator, Pregnancy Calculator, Expected Due Date, Gestational Age, Pregnancy Tracker, Fitness Tools">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Due Date Calculator | ToolsQuark</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 40px 20px;
-      color: #222;
-    }
+/* 独立导航栏样式 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
+.back-home-btn:hover{color:#2563eb;}
 
-    /* 顶层大首页返回面包屑导航 */
-    .site-header-nav {
-      width: 100%;
-      max-width: 440px;
-      margin-bottom: 15px;
-      display: flex;
-      justify-content: flex-start;
-    }
-    
-    .site-header-nav a {
-      font-size: 14px;
-      color: #6b7280;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-    
-    .site-header-nav a:hover {
-      color: #f43f5e; /* 温馨舒适的母婴粉红调 */
-    }
+/* 输入框样式 */
+.input-group{margin-bottom:20px;}
+.input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
+.input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
+.input-group input:focus{border-color:#2563eb;background:#eff6ff;}
 
-    /* 计算器卡片主容器 */
-    .container {
-      width: 100%;
-      max-width: 440px;
-      background: #fff;
-      border-radius: 20px;
-      padding: 30px 24px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
-      margin-bottom: 30px;
-    }
+/* 立即计算主按钮 */
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
+.calc-submit-btn:hover{background:#1d4ed8;}
 
-    .title {
-      text-align: center;
-      font-size: 30px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #111827;
-    }
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
+.result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
+.result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
 
-    .subtitle {
-      text-align: center;
-      color: #6b7280;
-      font-size: 14px;
-      margin-bottom: 25px;
-      line-height: 1.5;
-    }
+/* 动态专业建议区块 */
+.suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
+.suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
+.suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
 
-    .input-group {
-      margin-bottom: 18px;
-    }
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #374151;
-    }
-
-    input[type="date"], select {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 12px;
-      font-size: 16px;
-      outline: none;
-      background-color: #fff;
-      transition: 0.3s;
-    }
-
-    input[type="date"]:focus, select:focus {
-      border-color: #f43f5e;
-      box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.1);
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background: #111827;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 5px;
-    }
-
-    button:hover {
-      background: #374151;
-    }
-
-    /* 周期预测多维度结果展现面板 */
-    .result-box {
-      margin-top: 25px;
-      background: #fff1f2; /* 浅淡舒适的孕期粉底色 */
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid #ffe4e6;
-      display: none; /* 初始隐藏 */
-    }
-
-    .result-title {
-      font-size: 16px;
-      font-weight: bold;
-      color: #111827;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .date-card {
-      background: #fff;
-      padding: 14px 16px;
-      border-radius: 12px;
-      border: 1px solid #fecdd3;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .date-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .date-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .date-name {
-      font-size: 14px;
-      font-weight: bold;
-      color: #374151;
-    }
-
-    .date-desc {
-      font-size: 11px;
-      color: #6b7280;
-      margin-top: 2px;
-    }
-
-    .date-value {
-      font-size: 16px;
-      font-weight: bold;
-      text-align: right;
-    }
-
-    /* 多维度指标指示条 */
-    .c-due-date { border-left: 4px solid #f43f5e; color: #f43f5e; }
-    .c-progress { border-left: 4px solid #06b6d4; color: #06b6d4; }
-    .c-trimester { border-left: 4px solid #10b981; color: #10b981; }
-
-    .card-footer {
-      margin-top: 25px;
-      text-align: center;
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    /* SEO深度文章与说明文档卡片 */
-    .content-section {
-      width: 100%;
-      max-width: 650px;
-      margin: 10px auto 0 auto;
-      padding: 30px 24px;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
-    }
-
-    .section-block {
-      margin-bottom: 35px;
-    }
-
-    .section-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .content-section h2 {
-      font-size: 20px;
-      color: #111827;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-left: 4px solid #f43f5e;
-      padding-left: 10px;
-    }
-
-    .content-section p, .content-section li {
-      font-size: 14px;
-      color: #4b5563;
-      line-height: 1.7;
-    }
-
-    .content-section ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    .content-section li {
-      margin-bottom: 6px;
-    }
-
-    /* 全局全英文相对路径页脚 */
-    .site-footer {
-      text-align: center;
-      margin-top: auto;
-      padding-top: 50px;
-      padding-bottom: 15px;
-      width: 100%;
-      max-width: 650px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 12px;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: #6b7280;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #111827;
-      text-decoration: underline;
-    }
-
-    .copyright {
-      color: #9ca3af;
-      font-size: 12px;
-    }
-
-    @media (max-width: 480px) {
-      body { padding: 25px 15px; }
-      .container { padding: 24px 18px; }
-      .title { font-size: 26px; }
-      .content-section { padding: 20px 16px; }
-    }
-  </style>
+.faq-item{margin-bottom:15px;}
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
+</style>
 </head>
 <body>
+<div class="container">
+<div class="hero">
+    <h1>Due Date Calculator</h1>
+    <p>Estimate your standard clinical estimated due date (EDD) based on your last menstrual period timeline.</p>
+</div>
 
-  <div class="site-header-nav">
-    <a href="index.html">← ToolsQuark Home</a>
-  </div>
+<!-- 返回主页导航栏 -->
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
 
-  <div class="container">
-    <h1 class="title">Due Date Calculator</h1>
-    <p class="subtitle">Calculate your estimated pregnancy due date and track your developmental timeline benchmarks.</p>
+<div class="card">
+    <!-- 专属数据渲染槽 -->
+    <div id="inputs-area"></div>
+    <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
+    
+    <!-- 智能解说区域 -->
+    <div id="result-area" class="result-box" style="display:none;">
+        <div class="normal-range-badge">Normal Range: N/A</div>
+        <div class="result-val" id="calc-output">0.00</div>
+        <div class="result-status" id="calc-status"></div>
+        <div class="result-desc" id="calc-desc"></div>
+        <div class="suggestion-box">
+            <h4>💡 Professional Suggestions:</h4>
+            <p id="calc-suggestion"></p>
+        </div>
+    </div>
+</div>
 
+<div class="card">
+    <h3>Recommended Tools</h3>
+    <a href="https://www.toolsquark.com/bmi-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+    </a>
+    <a href="https://www.toolsquark.com/bmr-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+    </a>
+    <a href="https://www.toolsquark.com/simple-interest-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>Simple Interest Calculator</strong><br>Estimate your financial investment returns instantly.</div>
+    </a>
+</div>
+
+<div class="card">
+    <h3>FAQ</h3>
+    
+            <div class="faq-item">
+                <strong>What is the standard clinical rule used here?</strong><br>This utilizes the obstetric standard Naegele's Rule, which models pregnancy tracking based on a 280-day biological gestational framework from the last menstrual period (LMP).
+            </div>
+            <div class="faq-item">
+                <strong>Will I give birth exactly on this estimated day?</strong><br>Only about 4% of babies arrive precisely on their EDD. Delivery within a standard threshold of 2 weeks before or after this benchmark is clinically normative.
+            </div>
+</div>
+<footer>© 2026 ToolsQuark</footer>
+</div>
+
+<script>
+// 接收打包注入的底层配置
+const inputConfigs = undefined;
+const interpretationRules = [];
+
+// 1. 动态生成输入框结构
+const inputsArea = document.getElementById('inputs-area');
+let html = "";
+inputConfigs.forEach(cfg => {
+    html += `
     <div class="input-group">
-      <label for="lmpDate">First Day of Last Period (LMP)</label>
-      <input type="date" id="lmpDate">
-    </div>
+        <label>${cfg.label} (${cfg.unit})</label>
+        <input type="number" id="input_${cfg.id}" placeholder="e.g. ${cfg.placeholder}">
+    </div>`;
+});
+inputsArea.innerHTML = html;
 
-    <div class="input-group">
-      <label for="cycleLength">Average Cycle Length</label>
-      <select id="cycleLength">
-        <script>
-          for (let i = 22; i <= 45; i++) {
-            document.write(`<option value="${i}" ${i === 28 ? 'selected' : ''}>${i} days</option>`);
-          }
-        </script>
-      </select>
-    </div>
-
-    <button onclick="calculatePregnancy()">Calculate Due Date</button>
-
-    <div class="result-box" id="resultBox">
-      <h2 class="result-title">Your Pregnancy Estimation</h2>
-      
-      <div class="date-card c-due-date">
-        <div class="date-info">
-          <span class="date-name">Estimated Due Date (EDD)</span>
-          <span class="date-desc">Standard 40-week gestational target</span>
-        </div>
-        <span class="date-value" id="eddVal">--</span>
-      </div>
-
-      <div class="date-card c-progress">
-        <div class="date-info">
-          <span class="date-name">Current Progress</span>
-          <span class="date-desc">Total weeks and days since LMP</span>
-        </div>
-        <span class="date-value" id="progressVal">--</span>
-      </div>
-
-      <div class="date-card c-trimester">
-        <div class="date-info">
-          <span class="date-name">Current Trimester</span>
-          <span class="date-desc">Specific gestational lifecycle phase</span>
-        </div>
-        <span class="date-value" id="trimesterVal">--</span>
-      </div>
-    </div>
-
-    <div class="card-footer">
-      Private Client-Side Pregnancy Tracking Tool
-    </div>
-  </div>
-
-  <main class="content-section">
-    <section class="section-block">
-      <h2>How the Due Date Calculator Works</h2>
-      <p>This estimation system applies Mittendorf-Williams and Naegele's rule frameworks. By identifying the entry point of your Last Menstrual Period (LMP) and adjusting for your distinct cycle metrics, it structures an automated timeline map matching typical clinical standards.</p>
-    </section>
-
-    <section class="section-block">
-      <h2>Understanding Pregnancy Trimesters</h2>
-      <ul>
-        <li><strong>First Trimester (Weeks 1 - 12):</strong> The milestone foundational phase involving rapid cellular diversification and essential structural architecture mapping.</li>
-        <li><strong>Second Trimester (Weeks 13 - 26):</strong> Often referred to as the comfort milestone, where fetal systems refine and external movements begin to manifest.</li>
-        <li><strong>Third Trimester (Weeks 27 - 40):</strong> The ultimate growth sprint focusing heavily on mass expansion, respiratory finalization, and birth structural readiness.</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="about.html">About Us</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-    </div>
-    <div class="copyright">
-      © 2026 ToolsQuark. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    function formatDateString(dateObj) {
-      const options = { month: 'short', day: 'numeric', year: 'numeric' };
-      return dateObj.toLocaleDateString('en-US', options);
-    }
-
-    function calculatePregnancy() {
-      const lmpInput = document.getElementById("lmpDate").value;
-      const cycleLength = parseInt(document.getElementById("cycleLength").value);
-      
-      if (!lmpInput) {
-        alert("Please pick the first day of your last period to begin.");
+// 2. 核心数学运算引擎
+function calculateNow() {
+    let args = {};
+    let missing = false;
+    
+    inputConfigs.forEach(cfg => {
+        const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);
+        if (isNaN(val)) missing = true;
+        args[cfg.id] = val;
+    });
+    
+    if (missing) {
+        alert("Please fill in all input fields correctly.");
         return;
-      }
-
-      const lmpDate = new Date(lmpInput);
-      const today = new Date();
-
-      // 1. 计算预产期 (EDD)
-      // 标准Naegele法则假设周期为28天（自LMP起加280天）
-      // 针对非28天周期的修正公式：EDD = LMP + 280天 + (实际周期 - 28天)
-      const eddDate = new Date(lmpDate);
-      const totalDaysToEDD = 280 + (cycleLength - 28);
-      eddDate.setDate(lmpDate.getDate() + totalDaysToEDD);
-
-      // 2. 计算当前怀孕周数 (Gestational Age)
-      const timeDiff = today.getTime() - lmpDate.getTime();
-      const totalDaysPreg = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-      let progressText = "";
-      let trimesterText = "";
-
-      if (totalDaysPreg < 0) {
-        progressText = "Not started yet";
-        trimesterText = "Pre-pregnancy";
-      } else if (totalDaysPreg > 294) { // 超过42周
-        progressText = "Post-term / Given Birth";
-        trimesterText = "Post-term";
-      } else {
-        const weeks = Math.floor(totalDaysPreg / 7);
-        const days = totalDaysPreg % 7;
-        progressText = `${weeks} Weeks, ${days} Days`;
-
-        // 根据周数划分孕期阶段
-        if (weeks <= 12) {
-          trimesterText = "First Trimester";
-        } else if (weeks <= 26) {
-          trimesterText = "Second Trimester";
-        } else {
-          trimesterText = "Third Trimester";
-        }
-      }
-
-      // 渲染数值到前端界面
-      document.getElementById("eddVal").textContent = formatDateString(eddDate);
-      document.getElementById("progressVal").textContent = progressText;
-      document.getElementById("trimesterVal").textContent = trimesterText;
-
-      // 展开原本处于隐藏状态的结果盒子
-      document.getElementById("resultBox").style.display = "block";
     }
-  </script>
+    
+    try {
+        // 安全获取后端公式并直接执行
+        const formulaFunc = new Function('fields', 'return undefined');
+        const finalResult = formulaFunc(args);
+        
+        let matchedRule = null;
+        for (let rule of interpretationRules) {
+            if (finalResult >= rule.min && finalResult < rule.max) {
+                matchedRule = rule;
+                break;
+            }
+        }
+        
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
+        
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('calc-output').innerText = finalResult.toFixed(2);
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
+        
+    } catch (e) {
+        alert("Calculation error. Please check inputs.");
+    }
+}
+
+function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+</script>
 </body>
 </html>
