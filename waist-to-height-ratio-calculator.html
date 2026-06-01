@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Healthy Weight Range Calculator | ToolsQuark</title>
+<title>Waist-to-Height Ratio Calculator | ToolsQuark</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -52,8 +52,8 @@ footer{text-align:center;margin-top:30px;color:#777;}
 <body>
 <div class="container">
 <div class="hero">
-    <h1>Healthy Weight Range Calculator</h1>
-    <p>Discover your medically optimal healthy weight spectrum adjusted directly to your specific height parameters.</p>
+    <h1>Waist-to-Height Ratio Calculator</h1>
+    <p>Determine your Waist-to-Height Ratio (WHtR), a superior clinical marker for screening cardiovascular and visceral fat risks.</p>
 </div>
 
 <!-- 返回主页导航栏 -->
@@ -68,7 +68,7 @@ footer{text-align:center;margin-top:30px;color:#777;}
     
     <!-- 智能解说区域 -->
     <div id="result-area" class="result-box" style="display:none;">
-        <div class="normal-range-badge">Normal Range: BMI 18.5 - 24.9 Equivalent</div>
+        <div class="normal-range-badge">Normal Range: 0.40 - 0.49 (Healthy Range)</div>
         <div class="result-val" id="calc-output">0.00</div>
         <div class="result-status" id="calc-status"></div>
         <div class="result-desc" id="calc-desc"></div>
@@ -96,10 +96,10 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h3>FAQ</h3>
     
             <div class="faq-item">
-                <strong>How is the healthy range defined?</strong><br>It calculates the exact weights that place you perfectly between a healthy 18.5 and 24.9 BMI spectrum.
+                <strong>Why is WHtR better than BMI?</strong><br>BMI ignores where fat is stored. WHtR targets central abdominal fat, which is the most dangerous type of fat affecting vital organs.
             </div>
             <div class="faq-item">
-                <strong>Should I strive for the exact midpoint score?</strong><br>Not necessarily. It serves as a great reference point, but individual bone structures and muscle ratios provide natural variance.
+                <strong>Where exactly should I measure my waist?</strong><br>Measure horizontally at the midpoint between your lowest rib and the top of your hip bone, usually right across the belly button line.
             </div>
 </div>
 <footer>© 2026 ToolsQuark</footer>
@@ -107,8 +107,8 @@ footer{text-align:center;margin-top:30px;color:#777;}
 
 <script>
 // 接收打包注入的底层配置
-const inputConfigs = [{"id":"height","label":"Height","unit":"cm","placeholder":"175"}];
-const interpretationRules = [{"min":0,"max":55,"status":"Petite Framework Baseline","desc":"Your calculated optimal midpoint weight falls on a lighter spectrum, aligned with shorter stature requirements.","suggestion":"Focus on a balanced whole-food diet rich in minerals and complete proteins to maintain healthy bone structure and metabolic consistency."},{"min":55,"max":75,"status":"Standard Adult Framework","desc":"Your target baseline sits squarely within the standard physiological demographic range for balanced adults.","suggestion":"Aim to keep your actual weight within +/- 10% of this calculated midpoint value to preserve optimal biometric cardiovascular functions."},{"min":75,"max":999,"status":"Robust Framework Allocation","desc":"Your calculated benchmark accounts for taller statures or denser structural bone mass demands.","suggestion":"Ensure this target weight is backed by healthy muscle density rather than excess adipose fat by keeping up with regular exercise."}];
+const inputConfigs = [{"id":"waist","label":"Waist Circumference","unit":"cm","placeholder":"80"},{"id":"height","label":"Height","unit":"cm","placeholder":"175"}];
+const interpretationRules = [{"min":0,"max":0.4,"status":"Extremely Slim / Underweight Profile","desc":"Your ratio is exceptionally low, which may correlate with lower muscle mass or overall underweight status.","suggestion":"Focus on nutrient-dense dietary tracking and strength training to build functional body mass and core muscular framework safely."},{"min":0.4,"max":0.5,"status":"Healthy Viscerally Balanced Range","desc":"Ideal score! This metric indicates a highly safe level of visceral abdominal fat storage, minimizing metabolic risks.","suggestion":"Superb body composition marker. Maintain your current active lifestyle and dietary patterns to protect this cardiovascular baseline."},{"min":0.5,"max":0.6,"status":"Increased Metabolic Risk Threshold","desc":"Your ratio has crossed the healthy limit. A ratio over 0.50 mathematically signals early visceral fat accumulation around major internal organs.","suggestion":"Prioritize dropping abdominal fat. Cut out refined liquid carbohydrates (sodas, beer) and introduce moderate cardio alongside structural portion control."},{"min":0.6,"max":99,"status":"High Visceral Adiposity Alert","desc":"Your WHtR indicates elevated abdominal fat distribution, which clinically correlates with vascular stress and insulin resistance.","suggestion":"Take immediate proactive steps. We strongly advice consulting a healthcare practitioner to review metabolic health markers while optimizing daily nutrition."}];
 
 // 1. 动态生成输入框结构
 const inputsArea = document.getElementById('inputs-area');
@@ -140,7 +140,7 @@ function calculateNow() {
     
     try {
         // 安全获取后端公式并直接执行
-        const formulaFunc = new Function('fields', 'return 21.7 * ((fields.height / 100) * (fields.height / 100))');
+        const formulaFunc = new Function('fields', 'return fields.waist / fields.height');
         const finalResult = formulaFunc(args);
         
         let matchedRule = null;

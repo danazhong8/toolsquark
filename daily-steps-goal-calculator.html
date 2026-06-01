@@ -1,121 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Daily Steps Goal Calculator - ToolsQuark</title>
-  <meta name="description" content="Calculate an actionable target step volume framework aligned with your unique weight management goals and active lifestyle targets.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 50%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 24px; margin-bottom: 10px; line-height: 1.4; color: #111827; font-weight: bold; }
-    .question-box p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 150px; height: 150px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 32px; font-weight: bold; padding: 0 10px; overflow-wrap: break-word; max-width: 140px; }
-    .metric-label { font-size: 11px; opacity: 0.9; margin-top: 4px; letter-spacing: 1px; font-weight: bold; }
-    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Steps Goal Calculator | ToolsQuark</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+
+/* 独立导航栏样式 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
+.back-home-btn:hover{color:#2563eb;}
+
+/* 输入框样式 */
+.input-group{margin-bottom:20px;}
+.input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
+.input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
+.input-group input:focus{border-color:#2563eb;background:#eff6ff;}
+
+/* 立即计算主按钮 */
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
+.calc-submit-btn:hover{background:#1d4ed8;}
+
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
+.result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
+.result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
+
+/* 动态专业建议区块 */
+.suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
+.suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
+.suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
+
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+
+.faq-item{margin-bottom:15px;}
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
+</style>
 </head>
 <body>
+<div class="container">
+<div class="hero">
+    <h1>Daily Steps Goal Calculator</h1>
+    <p>Calculate your recommended target daily step counts tailored directly to your specific fitness and fat loss aspirations.</p>
+</div>
 
-  <div class="container">
-    <div class="header-block">
-      <h2 style="font-size: 22px; font-weight: bold;">Daily Steps Goal Calculator</h2>
-      <a href="index.html" class="back-btn">← Back to Hub</a>
-    </div>
+<!-- 返回主页导航栏 -->
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
+
+<div class="card">
+    <!-- 专属数据渲染槽 -->
+    <div id="inputs-area"></div>
+    <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
     
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizInterface">
-      <div class="question-box">
-        <h3>Custom Daily Steps Goal Calculator</h3>
-        <p>Calculate an actionable target step volume framework aligned with your unique weight management goals and active lifestyle targets.</p>
-        
-        <div class="options-list" style="gap:15px;">
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Primary Physical Fitness Target</label>
-            <select id="goalType" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px; background:white;">
-              <option value="5000">Sedentary Base Correction (Health Baseline)</option>
-              <option value="8000">Moderate Cardiovascular Optimization (Active Fitness)</option>
-              <option value="12000">Caloric Deficit Acceleration (Fat Loss Support)</option>
-              <option value="15000">High Performance Conditioning (Athletic Tier)</option>
-            </select>
-          </div>
-          <div>
-            <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;">Current Daily Baseline Level (Steps)</label>
-            <input type="number" id="currentSteps" value="4000" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px; font-size:16px;">
-          </div>
-          <button onclick="calculateStepGoal()" style="width:100%; background:#2563eb; color:white; border:none; padding:14px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.2s;">Generate Custom Stride Target</button>
+    <!-- 智能解说区域 -->
+    <div id="result-area" class="result-box" style="display:none;">
+        <div class="normal-range-badge">Normal Range: 6,000 - 12,000 Steps / Day</div>
+        <div class="result-val" id="calc-output">0.00</div>
+        <div class="result-status" id="calc-status"></div>
+        <div class="result-desc" id="calc-desc"></div>
+        <div class="suggestion-box">
+            <h4>💡 Professional Suggestions:</h4>
+            <p id="calc-suggestion"></p>
         </div>
-        
-      </div>
     </div>
+</div>
 
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TARGET STEPS</div></div>
-      <h3 class="result-title" id="analysisTitle">Result</h3>
-      <div class="result-interpretation" id="analysisText">Interpretation...</div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
-    </div>
-  </div>
+<div class="card">
+    <h3>Recommended Tools</h3>
+    <a href="https://www.toolsquark.com/bmi-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+    </a>
+    <a href="https://www.toolsquark.com/bmr-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+    </a>
+    <a href="https://www.toolsquark.com/simple-interest-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>Simple Interest Calculator</strong><br>Estimate your financial investment returns instantly.</div>
+    </a>
+</div>
 
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">Q1: What is Custom Daily Steps Goal Calculator?</div>
-      <div class="faq-a">The Daily Steps Goal Calculator is an interactive lifestyle optimization utility designed to establish personalized daily walking targets. Rather than relying on arbitrary population averages, it analyzes your unique fitness objectives and current movement baselines to define an actionable, progressive step goal that supports long-term habit formation.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q2: How accurate is this calculator?</div>
-      <div class="faq-a">This calculator uses sports science guidelines for progressive physical adaptation, applying safe pacing limits to protect joints and prevent burnout. While it provides an excellent roadmap for lifestyle habit changes, individuals managing joint rehabilitation or specific medical conditions should consult a physical therapist to tailor activity targets.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q3: How do I use it?</div>
-      <div class="faq-a">Select your primary health or weight management objective from the options menu, enter your current average step count data, and press the generation button to receive a customized daily target optimized for your routine.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q4: Is it free?</div>
-      <div class="faq-a">Yes. This target planning script runs entirely within your browser client tab, making it 100% free and private.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q5: Who should use it?</div>
-      <div class="faq-a">This tool is ideal for remote employees trying to break up sedentary routines, individuals planning progressive weight management journeys, and tracking enthusiasts looking for actionable daily activity milestones.</div>
-    </div>
-  </section>
-
-  <script>
+<div class="card">
+    <h3>FAQ</h3>
     
-        function calculateStepGoal() {
-          let targetBase = parseInt(document.getElementById('goalType').value) || 8000;
-          let currentBase = parseInt(document.getElementById('currentSteps').value) || 4000;
-          
-          // Goal optimization architecture: safe incremental adjustments
-          let stepGoal = targetBase;
-          if (stepGoal > currentBase + 3000) {
-            stepGoal = currentBase + 3000; // Recommend progressive adaptation path
-          }
-          
-          document.getElementById('quizInterface').style.display = 'none';
-          document.getElementById('resultInterface').style.display = 'block';
-          document.getElementById('progressBar').style.width = '100%';
-          document.getElementById('finalScore').textContent = stepGoal;
-          document.getElementById('analysisTitle').textContent = "Your Optimized Daily Step Target";
-          document.getElementById('analysisText').textContent = "To support your primary fitness target without overloading your musculoskeletal system, your custom daily target is set to " + stepGoal + " steps. This progressive adaptation path helps prevent sudden tendon strain while effectively boosting your daily insulin sensitivity and metabolic baseline curves.";
+            <div class="faq-item">
+                <strong>Is 10,000 steps a hard rule?</strong><br>No, it originated as a marketing slogan. Clinical benefits scale beautifully starting from 7,500-8,500 steps per day.
+            </div>
+            <div class="faq-item">
+                <strong>Can I stack all my steps into the weekend?</strong><br>While helpful, consistent daily movement spreads metabolic benefits far more effectively than one massive weekend session.
+            </div>
+</div>
+<footer>© 2026 ToolsQuark</footer>
+</div>
+
+<script>
+// 接收打包注入的底层配置
+const inputConfigs = [{"id":"goal","label":"Fitness Focus (1=Weight Loss, 2=General Health, 3=Sedentary Break)","unit":"ID","placeholder":"2"}];
+const interpretationRules = [{"min":0,"max":6000,"status":"Active Break Target","desc":"This goal focuses on reducing the cardiovascular damages of prolonged sitting, serving as a clean entry point to daily fitness.","suggestion":"Set a recurring chime to walk for 2 minutes every hour. Seamlessly hitting this baseline protects vascular elasticity."},{"min":6000,"max":10000,"status":"Cardio-Protective Health Target","desc":"The clinical sweet spot! This target is tied directly to reduced all-cause mortality, improved heart health, and mental clarity.","suggestion":"Fulfill parts of this goal via a structured morning brisk walk. Consistency at this tier builds great vascular and metabolic health."},{"min":10000,"max":99999,"status":"Caloric Deficit Maximizer Target","desc":"An aggressive, highly rewarding tier optimized to create an un-restrictive, natural caloric deficit for fat management.","suggestion":"Incorporate longer weekend outdoor hikes to easily buffer your weekly numbers without fatiguing your central nervous system."}];
+
+// 1. 动态生成输入框结构
+const inputsArea = document.getElementById('inputs-area');
+let html = "";
+inputConfigs.forEach(cfg => {
+    html += `
+    <div class="input-group">
+        <label>${cfg.label} (${cfg.unit})</label>
+        <input type="number" id="input_${cfg.id}" placeholder="e.g. ${cfg.placeholder}">
+    </div>`;
+});
+inputsArea.innerHTML = html;
+
+// 2. 核心数学运算引擎
+function calculateNow() {
+    let args = {};
+    let missing = false;
+    
+    inputConfigs.forEach(cfg => {
+        const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);
+        if (isNaN(val)) missing = true;
+        args[cfg.id] = val;
+    });
+    
+    if (missing) {
+        alert("Please fill in all input fields correctly.");
+        return;
+    }
+    
+    try {
+        // 安全获取后端公式并直接执行
+        const formulaFunc = new Function('fields', 'return fields.goal === 1 ? 12000 : (fields.goal === 2 ? 8500 : 5000)');
+        const finalResult = formulaFunc(args);
+        
+        let matchedRule = null;
+        for (let rule of interpretationRules) {
+            if (finalResult >= rule.min && finalResult < rule.max) {
+                matchedRule = rule;
+                break;
+            }
         }
         
-  </script>
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
+        
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('calc-output').innerText = finalResult.toFixed(2);
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
+        
+    } catch (e) {
+        alert("Calculation error. Please check inputs.");
+    }
+}
+
+function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+</script>
 </body>
 </html>

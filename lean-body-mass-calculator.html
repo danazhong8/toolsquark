@@ -1,133 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Lean Body Mass Calculator - ToolsQuark</title>
-  <meta name="description" content="Isolate your precise non-fat structural weight mass using validated Boer and James formulas to fine-tune protein targets and macro goals.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 50%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 24px; margin-bottom: 10px; line-height: 1.4; color: #111827; font-weight: bold; }
-    .question-box p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 150px; height: 150px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 32px; font-weight: bold; padding: 0 10px; overflow-wrap: break-word; max-width: 140px; }
-    .metric-label { font-size: 11px; opacity: 0.9; margin-top: 4px; letter-spacing: 1px; font-weight: bold; }
-    .result-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lean Body Mass Calculator | ToolsQuark</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+
+/* 独立导航栏样式 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
+.back-home-btn:hover{color:#2563eb;}
+
+/* 输入框样式 */
+.input-group{margin-bottom:20px;}
+.input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
+.input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
+.input-group input:focus{border-color:#2563eb;background:#eff6ff;}
+
+/* 立即计算主按钮 */
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
+.calc-submit-btn:hover{background:#1d4ed8;}
+
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
+.result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
+.result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
+
+/* 动态专业建议区块 */
+.suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
+.suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
+.suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
+
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+
+.faq-item{margin-bottom:15px;}
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
+</style>
 </head>
 <body>
+<div class="container">
+<div class="hero">
+    <h1>Lean Body Mass Calculator</h1>
+    <p>Calculate your Lean Body Mass (LBM) using the Boer formula to isolate your active muscle, bone, and organ mass from body fat.</p>
+</div>
 
-  <div class="container">
-    <div class="header-block">
-      <h2 style="font-size: 22px; font-weight: bold;">Lean Body Mass Calculator</h2>
-      <a href="index.html" class="back-btn">← Back to Hub</a>
-    </div>
+<!-- 返回主页导航栏 -->
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
+
+<div class="card">
+    <!-- 专属数据渲染槽 -->
+    <div id="inputs-area"></div>
+    <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
     
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizInterface">
-      <div class="question-box">
-        <h3>Lean Body Mass (LBM) Composition Calculator</h3>
-        <p>Isolate your precise non-fat structural weight mass using validated Boer and James formulas to fine-tune protein targets and macro goals.</p>
-        
-        <div class="options-list" style="gap:12px;">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <div>
-              <label style="display:block; font-size:13px; font-weight:600; margin-bottom:4px;">Gender</label>
-              <select id="gender" style="width:100%; padding:10px; border:1px solid #e5e7eb; border-radius:8px; background:white;">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-            <div>
-              <label style="display:block; font-size:13px; font-weight:600; margin-bottom:4px;">Weight (kg)</label>
-              <input type="number" id="weight" value="70" style="width:100%; padding:10px; border:1px solid #e5e7eb; border-radius:8px;">
-            </div>
-          </div>
-          <div>
-            <label style="display:block; font-size:13px; font-weight:600; margin-bottom:4px;">Height (cm)</label>
-            <input type="number" id="height" value="175" style="width:100%; padding:10px; border:1px solid #e5e7eb; border-radius:8px;">
-          </div>
-          <button onclick="calculateLBM()" style="width:100%; background:#2563eb; color:white; border:none; padding:14px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:5px;">Isolate Pure Muscle Stature Mass</button>
+    <!-- 智能解说区域 -->
+    <div id="result-area" class="result-box" style="display:none;">
+        <div class="normal-range-badge">Normal Range: 70% - 90% of Total Weight</div>
+        <div class="result-val" id="calc-output">0.00</div>
+        <div class="result-status" id="calc-status"></div>
+        <div class="result-desc" id="calc-desc"></div>
+        <div class="suggestion-box">
+            <h4>💡 Professional Suggestions:</h4>
+            <p id="calc-suggestion"></p>
         </div>
-        
-      </div>
     </div>
+</div>
 
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">KG LBM</div></div>
-      <h3 class="result-title" id="analysisTitle">Result</h3>
-      <div class="result-interpretation" id="analysisText">Interpretation...</div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
-    </div>
-  </div>
+<div class="card">
+    <h3>Recommended Tools</h3>
+    <a href="https://www.toolsquark.com/bmi-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+    </a>
+    <a href="https://www.toolsquark.com/bmr-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+    </a>
+    <a href="https://www.toolsquark.com/simple-interest-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>Simple Interest Calculator</strong><br>Estimate your financial investment returns instantly.</div>
+    </a>
+</div>
 
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">Q1: What is Lean Body Mass (LBM) Composition Calculator?</div>
-      <div class="faq-a">The Lean Body Mass Calculator is an analytical body composition assessment tool designed to calculate your exact non-fat mass component. By isolating your muscle, bone, and essential organ weight from adipose fat stores, this utility helps users accurately track lean tissue changes and optimize fitness goals.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q2: How accurate is this calculator?</div>
-      <div class="faq-a">This system utilizes the clinically validated Boer Formula matrix, which uses anthropometric variables to provide reliable estimates for general tracking purposes. While highly effective for monitoring changes over time, it cannot perfectly reflect unique structural details like real-time variations in bone density or acute water retention, which are best captured through clinical DXA bone scans.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q3: How do I use it?</div>
-      <div class="faq-a">Select your physiological gender marker, enter your exact total body weight in kilograms, and specify your current height in centimeters. Click the calculation button to run the formula locally inside your browser client instance.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q4: Is it free?</div>
-      <div class="faq-a">Yes. This body composition analysis tool is entirely free, operating without background cloud databases or data-sharing dependencies.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q5: Who should use it?</div>
-      <div class="faq-a">This calculator is an indispensable tool for bodybuilders designing specialized hyper-trophy phases, personal trainers setting accurate client protein intake parameters, and individuals seeking to monitor actual muscle growth independently of standard scale weight changes.</div>
-    </div>
-  </section>
-
-  <script>
+<div class="card">
+    <h3>FAQ</h3>
     
-        function calculateLBM() {
-          let gender = document.getElementById('gender').value;
-          let w = parseFloat(document.getElementById('weight').value) || 70;
-          let h = parseFloat(document.getElementById('height').value) || 175;
-          
-          let lbm = 0;
-          // Using Boer Formula Matrix
-          if (gender === 'male') {
-            lbm = (0.407 * w) + (0.267 * h) - 19.2;
-          } else {
-            lbm = (0.252 * w) + (0.473 * h) - 48.3;
-          }
-          
-          lbm = Math.max(20, Math.min(w, lbm)); // bounding
-          let lbmKg = lbm.toFixed(1);
-          let fatMass = (w - lbm).toFixed(1);
-          let fatPct = ((fatMass / w) * 100).toFixed(1);
-          
-          document.getElementById('quizInterface').style.display = 'none';
-          document.getElementById('resultInterface').style.display = 'block';
-          document.getElementById('progressBar').style.width = '100%';
-          document.getElementById('finalScore').textContent = lbmKg;
-          document.getElementById('analysisTitle').textContent = "Pure Lean Structural Weight Identified";
-          document.getElementById('analysisText').textContent = "Your calculated Lean Body Mass (LBM) profile is " + lbmKg + " kg. This means your non-fat body mass (comprising skeletal muscle tissue, bones, organs, and essential cellular fluids) accounts for the vast majority of your physical weight, leaving an estimated fat mass index of " + fatMass + " kg (" + fatPct + "% total body fat storage level). Use these metrics to precisely calibrate your training volume and macronutrient intake benchmarks.";
+            <div class="faq-item">
+                <strong>What is Included in Lean Body Mass?</strong><br>LBM includes everything except storage fat—your skeletal muscles, bones, vital organs, connective tissues, and water.
+            </div>
+            <div class="faq-item">
+                <strong>Why does tracking LBM matter for fat loss?</strong><br>When losing weight, you want to ensure your weight drop comes purely from body fat, while your LBM remains stable or increases.
+            </div>
+</div>
+<footer>© 2026 ToolsQuark</footer>
+</div>
+
+<script>
+// 接收打包注入的底层配置
+const inputConfigs = [{"id":"gender","label":"Gender (Select 1 for Male, 2 for Female)","unit":"ID","placeholder":"1"},{"id":"weight","label":"Weight","unit":"kg","placeholder":"70"},{"id":"height","label":"Height","unit":"cm","placeholder":"175"}];
+const interpretationRules = [{"min":0,"max":45,"status":"Lean Mass Conservation","desc":"Your active metabolic lean tissue weight sits at a conservative level, common in individuals with fine bone frames or lighter builds.","suggestion":"To preserve and build up this lean core, prioritize high-quality protein tracking and systematically introduce basic strength conditioning."},{"min":45,"max":65,"status":"Developed Muscle Framework","desc":"A highly robust and functional level of lean mass. This active tissue fuels a steady, reliable metabolic rate.","suggestion":"Great job. Keep this metabolically active framework well-fed with sufficient amino acids and maintain consistent progressive overload training."},{"min":65,"max":999,"status":"High Muscle Density Profile","desc":"Exceptional lean tissue allocation, typical of well-trained athletic profiles or individuals with substantial structural heights.","suggestion":"Your body requires significant daily caloric support just to maintain this massive lean matrix. Avoid prolonged fasting to protect your muscle tissue."}];
+
+// 1. 动态生成输入框结构
+const inputsArea = document.getElementById('inputs-area');
+let html = "";
+inputConfigs.forEach(cfg => {
+    html += `
+    <div class="input-group">
+        <label>${cfg.label} (${cfg.unit})</label>
+        <input type="number" id="input_${cfg.id}" placeholder="e.g. ${cfg.placeholder}">
+    </div>`;
+});
+inputsArea.innerHTML = html;
+
+// 2. 核心数学运算引擎
+function calculateNow() {
+    let args = {};
+    let missing = false;
+    
+    inputConfigs.forEach(cfg => {
+        const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);
+        if (isNaN(val)) missing = true;
+        args[cfg.id] = val;
+    });
+    
+    if (missing) {
+        alert("Please fill in all input fields correctly.");
+        return;
+    }
+    
+    try {
+        // 安全获取后端公式并直接执行
+        const formulaFunc = new Function('fields', 'return fields.gender === 1 ? (0.407 * fields.weight) + (0.267 * fields.height) - 19.2 : (0.252 * fields.weight) + (0.473 * fields.height) - 48.3');
+        const finalResult = formulaFunc(args);
+        
+        let matchedRule = null;
+        for (let rule of interpretationRules) {
+            if (finalResult >= rule.min && finalResult < rule.max) {
+                matchedRule = rule;
+                break;
+            }
         }
         
-  </script>
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
+        
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('calc-output').innerText = finalResult.toFixed(2);
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
+        
+    } catch (e) {
+        alert("Calculation error. Please check inputs.");
+    }
+}
+
+function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+</script>
 </body>
 </html>
