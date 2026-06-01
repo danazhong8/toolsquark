@@ -5,47 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Due Date Calculator - ToolsQuark</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
-    .calc-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
-    .calc-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 24px; border-radius: 12px; color: #fff; margin-bottom: 24px; text-align: center; }
-    .calc-header h1 { margin: 0; font-size: 24px; font-weight: 700; }
-    .calc-header p { margin: 8px 0 0; font-size: 14px; opacity: 0.9; line-height: 1.4; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+    .calc-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
     
-    .range-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
-    .input-group { margin-bottom: 18px; }
-    .input-group label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px; text-align: left; }
-    .input-wrapper { display: flex; align-items: center; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; overflow: hidden; }
-    .input-wrapper input { flex: 1; border: none; padding: 12px; font-size: 15px; outline: none; }
-    .input-unit { background: #f3f4f6; color: #6b7280; padding: 12px 14px; font-size: 13px; border-left: 1px solid #e5e7eb; min-width: 50px; text-align: center; font-weight: bold; }
+    /* 💡 Symmetrical Alignment: Header Container housing the embedded Home button */
+    .calc-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 24px 24px 28px 24px; border-radius: 12px; color: #fff; margin-bottom: 24px; position: relative; text-align: center; }
     
-    .btn-submit { display: block; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 24px; transition: background 0.2s; }
+    /* 💡 Integrated Layout Fix: Seamless internal positioning for the Back link */
+    .nav-back-box { text-align: left; margin-bottom: 12px; }
+    .nav-back { display: inline-flex; align-items: center; color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 13px; background: rgba(255, 255, 255, 0.15); padding: 5px 12px; border-radius: 20px; transition: all 0.2s; font-weight: 500; }
+    .nav-back:hover { background: rgba(255, 255, 255, 0.25); color: #fff; }
+
+    .calc-header h1 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px; }
+    .calc-header p { margin: 10px 0 0; font-size: 14px; opacity: 0.9; line-height: 1.5; }
+    
+    .range-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 24px; text-align: left; }
+    .input-group { margin-bottom: 20px; text-align: left; }
+    .input-group label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+    .input-wrapper { display: flex; align-items: center; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; overflow: hidden; transition: border-color 0.2s; }
+    .input-wrapper:focus-within { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+    .input-wrapper input { flex: 1; border: none; padding: 12px 14px; font-size: 15px; outline: none; width: 100%; color: #1f2937; }
+    .input-unit { background: #f3f4f6; color: #4b5563; padding: 12px 16px; font-size: 13px; border-left: 1px solid #e5e7eb; min-width: 45px; text-align: center; font-weight: 600; }
+    
+    .btn-submit { display: block; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 28px; transition: background 0.2s; }
     .btn-submit:hover { background: #2563eb; }
     
-    .result-box { display: none; margin-top: 24px; padding: 24px; border: 2px dashed #3b82f6; border-radius: 12px; background: #eff6ff; }
-    .result-value { font-size: 42px; font-weight: 800; color: #3b82f6; margin: 12px 0; text-align: center; }
+    .result-box { display: none; margin-top: 26px; padding: 24px; border: 2px dashed #3b82f6; border-radius: 12px; background: #eff6ff; }
+    .result-value { font-size: 44px; font-weight: 800; color: #3b82f6; margin: 10px 0; text-align: center; }
     .result-title { font-size: 18px; font-weight: 700; color: #1e3a8a; text-align: center; }
-    .result-desc { font-size: 14px; color: #4b5563; line-height: 1.6; margin-top: 12px; border-top: 1px solid #dbeafe; padding-top: 12px; }
+    .result-desc { font-size: 14px; color: #4b5563; line-height: 1.6; margin-top: 12px; border-top: 1px solid #dbeafe; padding-top: 12px; text-align: left; }
     
-    .faq-section { margin-top: 32px; border-top: 1px solid #e5e7eb; padding-top: 24px; }
-    .faq-title { font-size: 16px; font-weight: 700; color: #1f2937; margin-bottom: 16px; text-align: left; }
-    .faq-item { margin-bottom: 16px; text-align: left; }
-    .faq-item strong { display: block; font-size: 14px; color: #374151; margin-bottom: 4px; }
-    .faq-item p { margin: 0; font-size: 13px; color: #6b7280; line-height: 1.5; }
-    .nav-back { display: inline-block; margin-bottom: 16px; color: #6b7280; text-decoration: none; font-size: 14px; }
-    .nav-back:hover { color: #3b82f6; }
+    .faq-section { margin-top: 36px; border-top: 1px solid #e5e7eb; padding-top: 24px; }
+    .faq-title { font-size: 16px; font-weight: 700; color: #1f2937; margin-bottom: 18px; text-align: left; }
+    .faq-item { margin-bottom: 18px; text-align: left; }
+    .faq-item strong { display: block; font-size: 14px; color: #374151; margin-bottom: 6px; }
+    .faq-item p { margin: 0; font-size: 13px; color: #6b7280; line-height: 1.6; }
   </style>
 </head>
 <body>
 
   <div class="calc-container">
-    <a href="/" class="nav-back">&larr; Home</a>
     
     <div class="calc-header">
+      <div class="nav-back-box">
+        <a href="/" class="nav-back">← Home</a>
+      </div>
       <h1>Due Date Calculator</h1>
-      <p>Estimate your standard clinical estimated due date (EDD) based on your last menstrual period timeline.</p>
+      <p>Estimate your standard clinical estimated due date (EDD) and track your remaining developmental timeline based on your last menstrual period.</p>
     </div>
 
-    <div class="range-badge">Normal Range: Approx. 280 Days / 40 Weeks</div>
+    <div style="text-align: left;">
+      <div class="range-badge">Normal Range: Approx. 280 Days / 40 Weeks</div>
+    </div>
 
     <div id="inputsForm"></div>
 
@@ -56,22 +67,23 @@
       <div id="resultVal" class="result-value">--</div>
       <div class="result-desc">
         <strong>Professional Interpretation & Suggestion:</strong><br>
-        The output tracks remaining developmental weeks until estimated delivery. This threshold supports clinical readiness and timely maternal care logistics.
+        The calculation charts the remaining weeks until your estimated delivery target window. This framework prioritizes parental readiness, logistical organization, and optimal clinical prenatal tracking schedules.
       </div>
     </div>
 
     <div class="faq-section">
       <div class="faq-title">Frequently Asked Questions</div>
-      <div class='faq-item'><strong>What is Naegele's Rule?</strong><p>It is the standard obstetric method estimating delivery by adding 7 days to the LMP and subtracting 3 months.</p></div><div class='faq-item'><strong>Will I give birth exactly on this day?</strong><p>Only about 4% of entries deliver on the exact predicted date. Delivery within two weeks before or after is highly standard.</p></div>
+      <div class='faq-item'><strong>What clinical rule is utilized here?</strong><p>This tool integrates Naegele's Rule, the clinical standard that projects gestational milestones by mapping 280 days out from the first day of your last menstrual period (LMP).</p></div><div class='faq-item'><strong>Will delivery occur precisely on the predicted date?</strong><p> Statistically, only about 4% of babies arrive precisely on their estimated due date. Spontaneous onset of labor within a two-week boundary before or after this date is clinically normative.</p></div>
     </div>
   </div>
 
   <script>
-    // 💡 核心防御性安全解码：由编译脚本注入标准的、带单引号转义的 JSON 纯文本，再由前端还原为原生数组
-    const inputConfigs = [{"id":"startYear","label":"LMP Year (YYYY)","unit":"year","placeholder":"2026"},{"id":"startMonth","label":"LMP Month (1-12)","unit":"month","placeholder":"3"},{"id":"startDay","label":"LMP Day (1-31)","unit":"day","placeholder":"1"}];
+    // 💡 Secure Retrieval Channel: Decode the Base64 configuration string passed from node
+    const rawB64 = `W3siaWQiOiJzdGFydFllYXIiLCJsYWJlbCI6IkxNUCBZZWFyIChZWVlZKSIsInVuaXQiOiJ5ZWFyIiwicGxhY2Vob2xkZXIiOiIyMDI2In0seyJpZCI6InN0YXJ0TW9udGgiLCJsYWJlbCI6IkxNUCBNb250aCAoMS0xMikiLCJ1bml0IjoibW9udGgiLCJwbGFjZWhvbGRlciI6IjMifSx7ImlkIjoic3RhcnREYXkiLCJsYWJlbCI6IkxNUCBEYXkgKDEtMzEpIiwidW5pdCI6ImRheSIsInBsYWNlaG9sZGVyIjoiMSJ9XQ==`;
+    const inputConfigs = JSON.parse(decodeURIComponent(escape(window.atob(rawB64))));
     const formContainer = document.getElementById("inputsForm");
 
-    // 严密循环，渲染出带有美化边框、Label 提示以及 Unit 后缀的精美输入框
+    // Dynamic Element Factory: Safely construct input grids 
     if (Array.isArray(inputConfigs)) {
       inputConfigs.forEach(cfg => {
         const group = document.createElement("div");
@@ -92,7 +104,6 @@
         const fields = {};
         let isValid = true;
         
-        // 抓取并校验用户输入的值
         inputConfigs.forEach(cfg => {
           const element = document.getElementById(cfg.id);
           const val = element ? parseFloat(element.value) : NaN;
@@ -103,21 +114,21 @@
         });
 
         if (!isValid) {
-          alert("Please complete all fields with valid numbers before calculating.");
+          alert("Please fill in all inputs with valid numeric metrics before calculating.");
           return;
         }
 
-        // 动态读取单行高纯净度公式
+        // Formula execution loop
         const calcFormulaText = `Math.max(0, Math.floor((new Date(fields.startYear, fields.startMonth - 1, fields.startDay).getTime() + (280 * 24 * 60 * 60 * 1000) - new Date().getTime()) / (1000 * 60 * 60 * 24 * 7)))`;
         const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
         const result = formulaFunc(fields);
         
-        // 优雅唤醒结果大卡片
+        // Populate and display result elements
         document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
         document.getElementById("resultBox").style.display = "block";
         document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth' });
       } catch (err) {
-        alert("An error occurred during calculation. Please check your parameters.");
+        alert("An error occurred during calculation. Please check your field parameters.");
         console.error(err);
       }
     }
