@@ -1,112 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- 首页 -->
   <url>
     <loc>https://www.toolsquark.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
 
-  <url>
-    <loc>https://www.toolsquark.com/bmi-calculator.html</loc>
-  </url>
+  <!-- 健康计算工具类 -->
+  <url><loc>https://www.toolsquark.com/bmi-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/age-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/bmr-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/due-date-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/period-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/body-fat-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/water-intake-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/sleep-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/tdee-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/waist-height-ratio-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/healthy-weight-range-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/lean-body-mass-calculator.html</loc></url>
+  <url><loc>https://www.toolsquark.com/step-to-calories-converter.html</loc></url>
+  <url><loc>https://www.toolsquark.com/daily-steps-goal-calculator.html</loc></url>
 
-  <url>
-    <loc>https://www.toolsquark.com/age-calculator.html</loc>
-  </url>
-
- <url>
-    <loc>https://www.toolsquark.com/bmr-calculator.html</loc>
-  </url>
-
- <url>
-    <loc>https://www.toolsquark.com/due-date-calculator.html</loc>
-  </url>
-
-<url>
-    <loc>https://www.toolsquark.com/period-calculator.html</loc>
-  </url>
-
-<url>
-    <loc>https://www.toolsquark.com/body-fat-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/water-intake-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/sleep-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/tdee-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/waist-height-ratio-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/healthy-weight-range-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/lean-body-mass-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/step-to-calories-converter.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/daily-steps-goal-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/procrastination-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/stress-index-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/social-anxiety-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/self-discipline-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/anxiety-index-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/sleep-quality-score.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/phone-addiction-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/social-media-addiction-index.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/burnout-level-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/loneliness-level-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/focus-attention-test.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.toolsquark.com/overthinking-test.html</loc>
-  </url>
+  <!-- 心理评估工具类 (已修正文件名与data.js一致) -->
+  <url><loc>https://www.toolsquark.com/loneliness-level-test.html</loc></url>
+  <url><loc>https://www.toolsquark.com/sleep-quality-assessment.html</loc></url>
+  <url><loc>https://www.toolsquark.com/smartphone-addiction-test.html</loc></url>
+  <url><loc>https://www.toolsquark.com/social-media-addiction-index.html</loc></url>
+  <url><loc>https://www.toolsquark.com/occupational-burnout-level-test.html</loc></url>
+  <url><loc>https://www.toolsquark.com/focus-attention-diagnostic.html</loc></url>
+  <url><loc>https://www.toolsquark.com/cognitive-overthinking-test.html</loc></url>
+  <url><loc>https://www.toolsquark.com/stress-index-test.html</loc></url>
+  <url><loc>https://www.toolsquark.com/procrastination-test.html</loc></url>
+  <url><loc>https://www.toolsquark.com/social-anxiety-test.html</loc></url>
+  <url><loc>https://www.toolsquark.com/self-discipline-test.html</loc></url>
+  <url><loc>https://www.toolsquark.com/anxiety-hyperarousal-assessment.html</loc></url>
 
 </urlset>
