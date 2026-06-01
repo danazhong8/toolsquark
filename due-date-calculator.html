@@ -9,14 +9,14 @@
     .calc-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
     .calc-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 24px; border-radius: 12px; color: #fff; margin-bottom: 24px; text-align: center; }
     .calc-header h1 { margin: 0; font-size: 24px; font-weight: 700; }
-    .calc-header p { margin: 8px 0 0; font-size: 14px; opacity: 0.9; }
+    .calc-header p { margin: 8px 0 0; font-size: 14px; opacity: 0.9; line-height: 1.4; }
     
     .range-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
     .input-group { margin-bottom: 18px; }
-    .input-group label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px; }
+    .input-group label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px; text-align: left; }
     .input-wrapper { display: flex; align-items: center; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; overflow: hidden; }
-    .input-wrapper input { flex: 1; border: none; padding: 10px 12px; font-size: 15px; outline: none; }
-    .input-unit { background: #f3f4f6; color: #6b7280; padding: 10px 14px; font-size: 13px; border-left: 1px solid #e5e7eb; min-width: 45px; text-align: center; }
+    .input-wrapper input { flex: 1; border: none; padding: 12px; font-size: 15px; outline: none; }
+    .input-unit { background: #f3f4f6; color: #6b7280; padding: 12px 14px; font-size: 13px; border-left: 1px solid #e5e7eb; min-width: 50px; text-align: center; font-weight: bold; }
     
     .btn-submit { display: block; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 24px; transition: background 0.2s; }
     .btn-submit:hover { background: #2563eb; }
@@ -27,8 +27,8 @@
     .result-desc { font-size: 14px; color: #4b5563; line-height: 1.6; margin-top: 12px; border-top: 1px solid #dbeafe; padding-top: 12px; }
     
     .faq-section { margin-top: 32px; border-top: 1px solid #e5e7eb; padding-top: 24px; }
-    .faq-title { font-size: 16px; font-weight: 700; color: #1f2937; margin-bottom: 16px; }
-    .faq-item { margin-bottom: 16px; }
+    .faq-title { font-size: 16px; font-weight: 700; color: #1f2937; margin-bottom: 16px; text-align: left; }
+    .faq-item { margin-bottom: 16px; text-align: left; }
     .faq-item strong { display: block; font-size: 14px; color: #374151; margin-bottom: 4px; }
     .faq-item p { margin: 0; font-size: 13px; color: #6b7280; line-height: 1.5; }
     .nav-back { display: inline-block; margin-bottom: 16px; color: #6b7280; text-decoration: none; font-size: 14px; }
@@ -56,43 +56,46 @@
       <div id="resultVal" class="result-value">--</div>
       <div class="result-desc">
         <strong>Professional Interpretation & Suggestion:</strong><br>
-        {{RESULT_DESC}}
+        The output tracks remaining developmental weeks until estimated delivery. This threshold supports clinical readiness and timely maternal care logistics.
       </div>
     </div>
 
     <div class="faq-section">
       <div class="faq-title">Frequently Asked Questions</div>
-      
+      <div class='faq-item'><strong>What is Naegele's Rule?</strong><p>It is the standard obstetric method estimating delivery by adding 7 days to the LMP and subtracting 3 months.</p></div><div class='faq-item'><strong>Will I give birth exactly on this day?</strong><p>Only about 4% of entries deliver on the exact predicted date. Delivery within two weeks before or after is highly standard.</p></div>
     </div>
   </div>
 
   <script>
-    // 💡 核心解法：将打包进来的纯文本字符串，在前端通过 JSON.parse 转换为真正无损的配置数组
-    const inputConfigs = JSON.parse(`undefined`);
+    // 💡 核心防御性安全解码：由编译脚本注入标准的、带单引号转义的 JSON 纯文本，再由前端还原为原生数组
+    const inputConfigs = [{"id":"startYear","label":"LMP Year (YYYY)","unit":"year","placeholder":"2026"},{"id":"startMonth","label":"LMP Month (1-12)","unit":"month","placeholder":"3"},{"id":"startDay","label":"LMP Day (1-31)","unit":"day","placeholder":"1"}];
     const formContainer = document.getElementById("inputsForm");
 
-    // 动态无损渲染表单输入域
-    inputConfigs.forEach(cfg => {
-      const group = document.createElement("div");
-      group.className = "input-group";
-      group.innerHTML = `
-        <label for="${cfg.id}">${cfg.label}</label>
-        <div class="input-wrapper">
-          <input type="number" id="${cfg.id}" placeholder="${cfg.placeholder || ''}">
-          <div class="input-unit">${cfg.unit}</div>
-        </div>
-      `;
-      formContainer.appendChild(group);
-    });
+    // 严密循环，渲染出带有美化边框、Label 提示以及 Unit 后缀的精美输入框
+    if (Array.isArray(inputConfigs)) {
+      inputConfigs.forEach(cfg => {
+        const group = document.createElement("div");
+        group.className = "input-group";
+        group.innerHTML = `
+          <label for="${cfg.id}">${cfg.label}</label>
+          <div class="input-wrapper">
+            <input type="number" id="${cfg.id}" placeholder="${cfg.placeholder || ''}">
+            <div class="input-unit">${cfg.unit}</div>
+          </div>
+        `;
+        formContainer.appendChild(group);
+      });
+    }
 
     function performCalculation() {
       try {
-        // 收集表单输入数据
         const fields = {};
         let isValid = true;
         
+        // 抓取并校验用户输入的值
         inputConfigs.forEach(cfg => {
-          const val = parseFloat(document.getElementById(cfg.id).value);
+          const element = document.getElementById(cfg.id);
+          const val = element ? parseFloat(element.value) : NaN;
           if (isNaN(val)) {
             isValid = false;
           }
@@ -100,21 +103,21 @@
         });
 
         if (!isValid) {
-          alert("Please fill in all inputs with valid numeric values.");
+          alert("Please complete all fields with valid numbers before calculating.");
           return;
         }
 
-        // 动态执行精简单行计算公式
-        const calcFormulaText = `undefined`;
+        // 动态读取单行高纯净度公式
+        const calcFormulaText = `Math.max(0, Math.floor((new Date(fields.startYear, fields.startMonth - 1, fields.startDay).getTime() + (280 * 24 * 60 * 60 * 1000) - new Date().getTime()) / (1000 * 60 * 60 * 24 * 7)))`;
         const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
         const result = formulaFunc(fields);
         
-        // 动态回显完美的结果看板
+        // 优雅唤醒结果大卡片
         document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
         document.getElementById("resultBox").style.display = "block";
         document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth' });
       } catch (err) {
-        alert("An error occurred during calculation. Please check your input fields.");
+        alert("An error occurred during calculation. Please check your parameters.");
         console.error(err);
       }
     }
