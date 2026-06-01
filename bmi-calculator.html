@@ -13,11 +13,12 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
 
-/* 导航头部样式优化：置于卡片上方，确保绝对不发生元素冲突 */
+/* 独立导航栏样式 */
 .calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
 .back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
 
+/* 输入框样式 */
 .input-group{margin-bottom:20px;}
 .input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
 .input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
@@ -55,16 +56,19 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <p>Accurately calculate your Body Mass Index (BMI) based on your weight and height to understand your health status.</p>
 </div>
 
+<!-- 返回主页导航栏 -->
 <div class="calc-navigation">
     <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
 </div>
 
 <div class="card">
+    <!-- 专属数据渲染槽 -->
     <div id="inputs-area"></div>
     <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
     
+    <!-- 智能解说区域 -->
     <div id="result-area" class="result-box" style="display:none;">
-        <div class="normal-range-badge">Normal Range: {{NORMAL_RANGE}}</div>
+        <div class="normal-range-badge">Normal Range: 18.5 - 24.9</div>
         <div class="result-val" id="calc-output">0.00</div>
         <div class="result-status" id="calc-status"></div>
         <div class="result-desc" id="calc-desc"></div>
@@ -102,11 +106,11 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </div>
 
 <script>
+// 接收打包注入的底层配置
 const inputConfigs = [{"id":"weight","label":"Your Weight","unit":"kg","placeholder":"70"},{"id":"height","label":"Your Height","unit":"cm","placeholder":"175"}];
-const calcFormulaText = `fields.weight / ((fields.height / 100) * (fields.height / 100))`;
-const interpretationRules = {{INTERPRETATION_RULES}};
+const interpretationRules = [{"min":0,"max":18.5,"status":"Underweight (偏瘦)","desc":"Your BMI is below the healthy threshold. This may indicate insufficient nutrient intake or potential low muscle mass.","suggestion":"Focus on nutritional balance. Gradually increase caloric intake with high-quality proteins and healthy fats. Incorporate light strength training to build muscle safely."},{"min":18.5,"max":25,"status":"Normal Weight (标准体重)","desc":"Congratulations! Your BMI falls within the ideal and healthiest range. Your current weight poses the lowest risk for metabolic conditions.","suggestion":"Keep up the excellent lifestyle! Maintain your current balanced diet and regular physical activity (at least 150 minutes of moderate exercise per week)."},{"min":25,"max":30,"status":"Overweight (超重)","desc":"Your BMI is slightly above the healthy spectrum. Carrying extra weight can increase physical fatigue and slightly raise cardiovascular strain.","suggestion":"Consider a mild caloric deficit. Reduce refined sugars and processed carbs. Enhance your routine with regular aerobic exercises like jogging, cycling, or swimming."},{"min":30,"max":999,"status":"Obese (肥胖 Alert)","desc":"Your BMI indicates a significant variance from standard ranges. This profile is clinically associated with a higher risk of hypertension, type 2 diabetes, and metabolic syndrome.","suggestion":"Prioritize health management immediately. We highly recommend consulting a physician or a registered dietitian. Focus on structured portion control and joint-friendly exercises like walking or water aerobics."}];
 
-// 1. 动态安全填充输入框
+// 1. 动态生成输入框结构
 const inputsArea = document.getElementById('inputs-area');
 let html = "";
 inputConfigs.forEach(cfg => {
@@ -118,7 +122,7 @@ inputConfigs.forEach(cfg => {
 });
 inputsArea.innerHTML = html;
 
-// 2. 运算与建议匹配引擎
+// 2. 核心数学运算引擎
 function calculateNow() {
     let args = {};
     let missing = false;
@@ -135,7 +139,8 @@ function calculateNow() {
     }
     
     try {
-        const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
+        // 安全获取后端公式并直接执行
+        const formulaFunc = new Function('fields', 'return fields.weight / ((fields.height / 100) * (fields.height / 100))');
         const finalResult = formulaFunc(args);
         
         let matchedRule = null;
