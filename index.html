@@ -2,279 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ToolsQuark - Free Online Web Utilities & Calculators</title>
-  <meta name="description" content="Discover a clean, simple, and privacy-first collection of free online tools and calculators. Zero server storage, pure client-side processing.">
+  <title>ToolsQuark - Free Online Web Utilities & Diagnostic Tools</title>
+  <meta name="description" content="A minimalist library of efficient, private, and 100% free online web applications and diagnostic tools.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body {
-      background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
-      min-height: 100vh;
-      color: #111827;
-      padding: 50px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
     .header { text-align: center; margin-bottom: 40px; max-width: 600px; }
     .header h1 { font-size: 42px; font-weight: bold; margin-bottom: 12px; }
-    .header p { color: #6b7280; font-size: 16px; line-height: 1.6; }
-    
-    /* Search Bar */
     .search-container { width: 100%; max-width: 500px; margin-bottom: 40px; }
-    .search-input {
-      width: 100%; padding: 16px 20px; border: 1px solid #d1d5db;
-      border-radius: 30px; font-size: 16px; outline: none;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s;
-    }
-    .search-input:focus { border-color: #2563eb; box-shadow: 0 4px 20px rgba(37,99,235,0.15); }
-
-    /* Category Layout */
-    .category-section { 
-      width: 100%; 
-      max-width: 900px; 
-      margin-top: 0 !important;
-      margin-bottom: 55px !important;
-    }
-    .category-section:last-of-type {
-      margin-bottom: 20px !important;
-    }
-
-    .category-title { 
-      font-size: 20px; 
-      font-weight: bold; 
-      margin-top: 0;
-      margin-bottom: 18px; 
-      border-left: 4px solid #2563eb; 
-      padding-left: 10px; 
-    }
-    
-    /* Grid Layout */
+    .search-input { width: 100%; padding: 16px 20px; border: 1px solid #d1d5db; border-radius: 30px; font-size: 16px; outline: none; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+    .category-section { width: 100%; max-width: 900px; margin-bottom: 55px; }
+    .category-title { font-size: 20px; font-weight: bold; margin-bottom: 18px; border-left: 4px solid #2563eb; padding-left: 10px; }
     .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-    
-    .tool-card {
-      background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.5); padding: 24px; border-radius: 16px;
-      text-decoration: none; color: inherit; transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column;
-    }
+    .tool-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.5); padding: 24px; border-radius: 16px; text-decoration: none; color: inherit; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; }
     .tool-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); border-color: #2563eb; }
     .tool-icon { font-size: 28px; margin-bottom: 12px; }
     .tool-name { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #111827; }
     .tool-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
-
-    .site-footer { text-align: center; margin-top: auto; padding-top: 40px; }
-    .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 10px; }
-    .footer-links a { font-size: 13px; color: #6b7280; text-decoration: none; }
-    .footer-links a:hover { color: #111827; text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <header class="header">
     <h1>ToolsQuark</h1>
-    <p>Your minimalist library of efficient, private, and 100% free online web applications and responsive diagnostic tools.</p>
+    <p>Efficient, private, and 100% free online diagnostics and calculators.</p>
   </header>
 
   <div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="Search from tools..." oninput="filterTools()">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search tools..." oninput="filterTools()">
   </div>
 
   <main style="width: 100%; display: flex; flex-direction: column; align-items: center;">
 
-    <section class="category-section" id="healthSection">
-      <h2 class="category-title">Health & Lifestyle</h2>
+    <!-- 心理与行为评估板块 -->
+    <section class="category-section">
+      <h2 class="category-title">Mental Health & Behavioral Diagnostics</h2>
       <div class="tools-grid">
-        
-        <a href="bmi-calculator.html" class="tool-card">
-          <div class="tool-icon">⚖️</div>
-          <div class="tool-name">BMI Calculator</div>
-          <div class="tool-desc">Calculate your Body Mass Index instantly and check your body fat distribution category.</div>
-        </a>
-
-        <a href="age-calculator.html" class="tool-card">
-          <div class="tool-icon">📅</div>
-          <div class="tool-name">Age Calculator</div>
-          <div class="tool-desc">Find your exact chronological age parameters broken down in precise years, months, and days.</div>
-        </a>
-
-        <a href="bmr-calculator.html" class="tool-card">
-          <div class="tool-icon">🔥</div>
-          <div class="tool-name">BMR Calculator</div>
-          <div class="tool-desc">Calculate your Basal Metabolic Rate and determine your daily caloric requirements based on activity.</div>
-        </a>
-
-        <a href="due-date-calculator.html" class="tool-card">
-          <div class="tool-icon">👶</div>
-          <div class="tool-name">Due Date Calculator</div>
-          <div class="tool-desc">Calculate your estimated pregnancy due date, active gestational milestones, and current trimester phase.</div>
-        </a>
-
-        <a href="period-calculator.html" class="tool-card">
-          <div class="tool-icon">🌸</div>
-          <div class="tool-name">Period & Ovulation Calculator</div>
-          <div class="tool-desc">Track your cycle lengths and estimate your upcoming period start date, ovulation events, and natural fertility frames.</div>
-        </a>
-
-        <a href="body-fat-calculator.html" class="tool-card">
-          <div class="tool-icon">🧬</div>
-          <div class="tool-name">Body Fat Calculator</div>
-          <div class="tool-desc">Determine your estimated body fat percentage and fitness category using the standardized U.S. Navy method.</div>
-        </a>
-
-        <a href="water-intake-calculator.html" class="tool-card">
-          <div class="tool-icon">💧</div>
-          <div class="tool-name">Water Intake Calculator</div>
-          <div class="tool-desc">Estimate your personalized optimal daily fluid consumption parameters based on climate adjustments and biological weight.</div>
-        </a>
-
-        <a href="sleep-calculator.html" class="tool-card">
-          <div class="tool-icon">⏰</div>
-          <div class="tool-name">Sleep Calculator</div>
-          <div class="tool-desc">Optimize your sleep architecture boundaries and calculate precise wake or sleep schedules using natural sleep cycles.</div>
-        </a>
-
-        <a href="tdee-calculator.html" class="tool-card">
-          <div class="tool-icon">📊</div>
-          <div class="tool-name">TDEE Calculator</div>
-          <div class="tool-desc">Determine your Total Daily Energy Expenditure metrics to precisely map daily baseline energy output requirements.</div>
-        </a>
-
-        <a href="waist-height-ratio-calculator.html" class="tool-card">
-          <div class="tool-icon">📏</div>
-          <div class="tool-name">Waist to Height Ratio Calculator</div>
-          <div class="tool-desc">Assess your central adiposity indicator score and parse metabolic cardiovascular threshold statuses effortlessly.</div>
-        </a>
-
-        <a href="healthy-weight-range-calculator.html" class="tool-card">
-          <div class="tool-icon">🏃</div>
-          <div class="tool-name">Healthy Weight Range Calculator</div>
-          <div class="tool-desc">Discover your specific physiological ideal body mass targets adapted to structural somatic height profiles.</div>
-        </a>
-
-        <a href="lean-body-mass-calculator.html" class="tool-card">
-          <div class="tool-icon">💪</div>
-          <div class="tool-name">Lean Body Mass Calculator</div>
-          <div class="tool-desc">Calculate your absolute non-fat biological tissues and optimize body composition metrics for systemic strength tracks.</div>
-        </a>
-
-        <a href="step-to-calories-converter.html" class="tool-card">
-          <div class="tool-icon">👟</div>
-          <div class="tool-name">Step to Calories Converter</div>
-          <div class="tool-desc">Translate your walking spatial displacement into kinetic active thermogenesis caloric data values.</div>
-        </a>
-
-        <a href="daily-steps-goal-calculator.html" class="tool-card">
-          <div class="tool-icon">🎯</div>
-          <div class="tool-name">Daily Steps Goal Calculator</div>
-          <div class="tool-desc">Map out strategic activity milestones and evaluate customized pacing parameters to achieve specific fitness targets.</div>
-        </a>
-
+        <a href="loneliness-level-test.html" class="tool-card"><div class="tool-icon">👥</div><div class="tool-name">Loneliness Level Test</div><div class="tool-desc">Assess subjective social connectedness and emotional isolation.</div></a>
+        <a href="sleep-quality-assessment.html" class="tool-card"><div class="tool-icon">💤</div><div class="tool-name">Sleep Quality Assessment</div><div class="tool-desc">Analyze your sleep architecture and nighttime restlessness.</div></a>
+        <a href="smartphone-addiction-test.html" class="tool-card"><div class="tool-icon">📱</div><div class="tool-name">Smartphone Addiction Test</div><div class="tool-desc">Measure digital reliance and compulsive checking habits.</div></a>
+        <a href="social-media-addiction-index.html" class="tool-card"><div class="tool-icon">📸</div><div class="tool-name">Social Media Addiction Index</div><div class="tool-desc">Assess impact of validation metrics and FOMO.</div></a>
+        <a href="occupational-burnout-level-test.html" class="tool-card"><div class="tool-icon">🔥</div><div class="tool-name">Burnout Level Test</div><div class="tool-desc">Diagnose professional exhaustion and efficacy erosion.</div></a>
+        <a href="focus-attention-diagnostic.html" class="tool-card"><div class="tool-icon">🎯</div><div class="tool-name">Focus & Attention Diagnostic</div><div class="tool-desc">Identify concentration spans and distraction barriers.</div></a>
+        <a href="cognitive-overthinking-test.html" class="tool-card"><div class="tool-icon">🌪️</div><div class="tool-name">Cognitive Overthinking Test</div><div class="tool-desc">Map rumination loops and analysis paralysis.</div></a>
+        <a href="stress-index-test.html" class="tool-card"><div class="tool-icon">🧠</div><div class="tool-name">Stress Index Test</div><div class="tool-desc">Evaluate allostatic load and nervous system reactivity.</div></a>
+        <a href="procrastination-test.html" class="tool-card"><div class="tool-icon">⏳</div><div class="tool-name">Procrastination Test</div><div class="tool-desc">Unpack delay mechanisms and perfectionism barriers.</div></a>
+        <a href="social-anxiety-test.html" class="tool-card"><div class="tool-icon">🫣</div><div class="tool-name">Social Anxiety Test</div><div class="tool-desc">Examine fear of evaluation and social hyper-vigilance.</div></a>
+        <a href="self-discipline-test.html" class="tool-card"><div class="tool-icon">🛡️</div><div class="tool-name">Self-Discipline Test</div><div class="tool-desc">Evaluate willpower consistency and goal alignment.</div></a>
+        <a href="anxiety-hyperarousal-assessment.html" class="tool-card"><div class="tool-icon">🌊</div><div class="tool-name">Anxiety & Hyperarousal Assessment</div><div class="tool-desc">Map sympathetic system tension and physical loops.</div></a>
       </div>
     </section>
 
-    <section class="category-section" id="mentalSection">
-      <h2 class="category-title">Mental Health & Behavior</h2>
+    <!-- 健康与计算工具板块 -->
+    <section class="category-section">
+      <h2 class="category-title">Physical Health & Calculators</h2>
       <div class="tools-grid">
-
-        <a href="sleep-quality-score.html" class="tool-card">
-          <div class="tool-icon">💤</div>
-          <div class="tool-name">Sleep Quality Score</div>
-          <div class="tool-desc">Assess your circadian sleep quality score and check nighttime restlessness patterns using expert diagnostic metrics.</div>
-        </a>
-
-        <a href="phone-addiction-test.html" class="tool-card">
-          <div class="tool-icon">📱</div>
-          <div class="tool-name">Phone Addiction Test</div>
-          <div class="tool-desc">Check your smartphone dependency index score and evaluate dopamine-driven screen habits.</div>
-        </a>
-
-        <a href="social-media-addiction-index.html" class="tool-card">
-          <div class="tool-icon">📸</div>
-          <div class="tool-name">Social Media Addiction Index</div>
-          <div class="tool-desc">Calculate your social media feedback loop scores and analyze validation-seeking digital impulses.</div>
-        </a>
-
-        <a href="burnout-level-test.html" class="tool-card">
-          <div class="tool-icon">🔥</div>
-          <div class="tool-name">Burnout Level Test</div>
-          <div class="tool-desc">Measure your chronic workplace stress indicators, physical fatigue, and systemic vocational exhaustion level.</div>
-        </a>
-
-        <a href="loneliness-level-test.html" class="tool-card">
-          <div class="tool-icon">👥</div>
-          <div class="tool-name">Loneliness Level Test</div>
-          <div class="tool-desc">Examine your perceived emotional isolation gaps and core interpersonal alignment metrics scientifically.</div>
-        </a>
-
-        <a href="focus-attention-test.html" class="tool-card">
-          <div class="tool-icon">🎯</div>
-          <div class="tool-name">Focus & Attention Test</div>
-          <div class="tool-desc">Map out your executive concentration span thresholds and evaluate cognitive distraction vulnerability.</div>
-        </a>
-
-        <a href="overthinking-test.html" class="tool-card">
-          <div class="tool-icon">🌪️</div>
-          <div class="tool-name">Overthinking Test</div>
-          <div class="tool-desc">Evaluate your mental overthinking metrics and parse psychological analysis paralysis boundaries.</div>
-        </a>
-
-        <a href="stress-index-test.html" class="tool-card">
-          <div class="tool-icon">🧠</div>
-          <div class="tool-name">Stress Index Test</div>
-          <div class="tool-desc">Evaluate your subjective pressure indicators and determine if you are approaching psychological burnout boundaries.</div>
-        </a>
-
-        <a href="procrastination-test.html" class="tool-card">
-          <div class="tool-icon">⏳</div>
-          <div class="tool-name">Procrastination Test</div>
-          <div class="tool-desc">Discover your specific avoidant delay habits and parse your irrational postponement execution factors.</div>
-        </a>
-
-        <a href="social-anxiety-test.html" class="tool-card">
-          <div class="tool-icon">🫣</div>
-          <div class="tool-name">Social Anxiety Test</div>
-          <div class="tool-desc">Map out your social phobia metrics across performance environments and evaluate discomfort thresholds.</div>
-        </a>
-
-        <a href="self-discipline-test.html" class="tool-card">
-          <div class="tool-icon">🛡️</div>
-          <div class="tool-name">Self-Discipline Test</div>
-          <div class="tool-desc">Assess your executive framework resilience, impulse inhibition levels, and long-range focus parameters.</div>
-        </a>
-
-        <a href="anxiety-index-test.html" class="tool-card">
-          <div class="tool-icon">🌊</div>
-          <div class="tool-name">Anxiety Index Test</div>
-          <div class="tool-desc">Screen your somatic nervous tension and gauge your continuous worrying profiles using standard wellness benchmarks.</div>
-        </a>
-
+        <a href="bmr-calculator.html" class="tool-card"><div class="tool-icon">🔥</div><div class="tool-name">BMR Calculator</div><div class="tool-desc">Determine your daily baseline metabolic rate.</div></a>
+        <a href="daily-steps-goal-calculator.html" class="tool-card"><div class="tool-icon">🎯</div><div class="tool-name">Daily Steps Goal</div><div class="tool-desc">Map out strategic physical activity milestones.</div></a>
+        <a href="healthy-weight-range-calculator.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">Healthy Weight Range</div><div class="tool-desc">Discover your physiological ideal body mass targets.</div></a>
+        <a href="lean-body-mass-calculator.html" class="tool-card"><div class="tool-icon">💪</div><div class="tool-name">Lean Body Mass</div><div class="tool-desc">Calculate non-fat biological tissue metrics.</div></a>
+        <a href="sleep-calculator.html" class="tool-card"><div class="tool-icon">⏰</div><div class="tool-name">Sleep Calculator</div><div class="tool-desc">Optimize wake and sleep schedule cycles.</div></a>
+        <a href="step-to-calories-converter.html" class="tool-card"><div class="tool-icon">👟</div><div class="tool-name">Steps to Calories</div><div class="tool-desc">Convert walking displacement to thermogenesis data.</div></a>
+        <a href="tdee-calculator.html" class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">TDEE Calculator</div><div class="tool-desc">Map your Total Daily Energy Expenditure.</div></a>
+        <a href="waist-height-ratio-calculator.html" class="tool-card"><div class="tool-icon">📏</div><div class="tool-name">Waist to Height Ratio</div><div class="tool-desc">Assess your central adiposity indicator score.</div></a>
+        <a href="body-fat-calculator.html" class="tool-card"><div class="tool-icon">🧬</div><div class="tool-name">Body Fat Calculator</div><div class="tool-desc">Estimate fat percentage via standard methods.</div></a>
+        <a href="water-intake-calculator.html" class="tool-card"><div class="tool-icon">💧</div><div class="tool-name">Water Intake</div><div class="tool-desc">Calculate personalized daily hydration needs.</div></a>
+        <a href="age-calculator.html" class="tool-card"><div class="tool-icon">📅</div><div class="tool-name">Age Calculator</div><div class="tool-desc">Precise chronological age breakdown.</div></a>
+        <a href="due-date-calculator.html" class="tool-card"><div class="tool-icon">👶</div><div class="tool-name">Due Date Calculator</div><div class="tool-desc">Estimate gestational milestones.</div></a>
+        <a href="period-calculator.html" class="tool-card"><div class="tool-icon">🌸</div><div class="tool-name">Period & Ovulation</div><div class="tool-desc">Track cycle lengths and fertility frames.</div></a>
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="about.html">About Us</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-    </div>
-    <div style="font-size:12px; color:#9ca3af;">© 2026 ToolsQuark. All rights reserved.</div>
-  </footer>
-
   <script>
     function filterTools() {
       const query = document.getElementById("searchInput").value.toLowerCase();
-      const cards = document.querySelectorAll(".tool-card");
-      cards.forEach(card => {
-        const name = card.querySelector(".tool-name").textContent.toLowerCase();
-        const desc = card.querySelector(".tool-desc").textContent.toLowerCase();
-        if (name.includes(query) || desc.includes(query)) {
-          card.style.display = "flex";
-        } else {
-          card.style.display = "none";
-        }
+      document.querySelectorAll(".tool-card").forEach(card => {
+        const text = (card.querySelector(".tool-name").textContent + card.querySelector(".tool-desc").textContent).toLowerCase();
+        card.style.display = text.includes(query) ? "flex" : "none";
       });
     }
   </script>
