@@ -1,119 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Procrastination Assessment Matrix - ToolsQuark</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
-    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
-    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
-    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 38px; font-weight: bold; }
-    .metric-label { font-size: 12px; opacity: 0.9; }
-    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procrastination Test | ToolsQuark</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+.progress-wrap{width:100%;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;flex-grow:1;}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:25px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
+.back-home-btn:hover{color:#2563eb;}
+.progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
+.progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
+.question{font-size:24px;font-weight:bold;margin-bottom:20px;}
+.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;}
+.option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
+.selected{border-color:#2563eb;background:#dbeafe;}
+.selected-heavy{border-color:#f97316;background:#fff7ed;}
+.hidden{display:none;}
+.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;}
+.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
+.description{text-align:center;color:#555;margin-bottom:25px;}
+.bar{margin-bottom:18px;}
+.bar-label{margin-bottom:5px;font-weight:bold;}
+.bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
+.bar-fill{height:100%;background:#2563eb;}
+.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;}
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
+.faq-item{margin-bottom:15px;}
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
+</style>
 </head>
 <body>
-
-  <div class="container">
-    <div class="header-block">
-      <h2 style="font-size: 22px; font-weight: bold;">Procrastination Test</h2>
-      <a href="index.html" class="back-btn">← Back to Hub</a>
+<div class="container">
+<div class="hero">
+    <h1>Procrastination Test</h1>
+    <p>Unpack your delay mechanisms, emotional regulation short-circuits, and perfectionism barriers to task execution.</p>
+</div>
+<div class="card" id="quiz">
+    <div class="quiz-header">
+        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+        <div class="progress-wrap">
+            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+        </div>
     </div>
+    <div class="question" id="question"></div>
+    <div id="answers"></div>
+</div>
+<div class="card hidden" id="result">
+    <div class="score" id="score"></div>
+    <div class="profile" id="profile"></div>
+    <div class="description" id="description"></div>
+    <h3>Assessment Indicators</h3>
     
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizInterface">
-      <div class="question-box">
-        <h3 id="questionText">Loading assessment node...</h3>
-        <div class="options-list" id="optionsWrapper"></div>
-      </div>
-    </div>
-
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
-      <h3 class="result-title" id="analysisTitle">Analyzing...</h3>
-      <div class="result-interpretation" id="analysisText">Computing metrics...</div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
-    </div>
-  </div>
-
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">💡 How is the Procrastination Index calculated?</div>
-      <div class="faq-a">This metric uses a standardized 10-item behavioral evaluation matrix based on General Procrastination Scale criteria. Each responsive item scales from 0 to 3 points. The sum cumulative represents non-linear task delay indices, categorizing profiles into standard execution action tiers.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">🔒 Is my executive execution or behavioral health data stored?</div>
-      <div class="faq-a">No. ToolsQuark operates on a strict zero-server footprint standard. All diagnostic state calculations process directly inside your local browser client instance. No trackable analytical cookies, pipeline entries, or behavioral metrics are stored or transmitted.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">⚠️ Can this replace a formal clinical behavioral evaluation?</div>
-      <div class="faq-a">No. This platform is purely for empirical self-screening and situational productivity tracking. It does not issue official psychological signatures or operational disorder verdicts. Please consult a certified professional for dedicated cognitive behavioral therapies.</div>
-    </div>
-  </section>
-
-  <script>
-    const questions = [
-      "Delayed critical task execution deliberately even when recognizing imminent systemic penalties?",
-      "Wasted core prime hours on safe, lower-priority micro-actions to evade targeted task milestones?",
-      "Felt intense psychological aversion toward launching foundational segments of complex objectives?",
-      "Rationalized chronic project delays using transient internal conditions (e.g., 'waiting for prime clarity')?",
-      "Pushed high-stakes timelines continuously to the final absolute operational buffers?",
-      "Experienced profound guilt, self-reproach, or psychological strain following active target avoidance?",
-      "Substituted immediately critical tasks with addictive dopamine-seeking cycles or aimless surfing?",
-      "Required explicit emergency outward stress stimuli (e.g., impending deadlines) to initiate focus execution?",
-      "Avoided tracking your ongoing progress or checking task boards to evade feelings of anxiety?",
-      "Allowed critical administrative or personal health tasks to pile up until they trigger major system blockages?"
-    ];
-
-    const interpretations = [
-      { bound: 10, title: "High-Efficiency Execution (Optimized Action Matrix)", text: "Your metric shows structural alignment between intention and execution vectors. Task-avoidance algorithms are minimized, displaying excellent working discipline." },
-      { bound: 20, title: "Transient Executive Delay (Moderate Avoidance)", text: "You demonstrate standard situational displacement habits. Task initiation parameters are often subject to short-term motivational or clarity blocks." },
-      { bound: 30, title: "Chronic Irrational Postponement (Intense Procrastination)", text: "Your profile exhibits profound executive task-routing friction. Avoidant loops are deeply systemic, leading to high operational anxiety and consistent pipeline bottlenecks." }
-    ];
-
-    const options = ["0 - Never / Almost Never", "1 - Sometimes (Mild Frequency)", "2 - Often (Disruptive Frequency)", "3 - Almost Continuously (Severe Level)"];
-    let idx = 0, score = 0;
-
-    function render() {
-      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
-      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
-      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
-      options.forEach((opt, w) => {
-        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
-        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
-        wrapper.appendChild(d);
-      });
-    }
-    function showResult() {
-      document.getElementById("quizInterface").style.display = "none";
-      document.getElementById("resultInterface").style.display = "block";
-      document.getElementById("progressBar").style.width = "100%";
-      document.getElementById("finalScore").textContent = score;
-      let target = interpretations.find(i => score <= i.bound) || interpretations[2];
-      document.getElementById("analysisTitle").textContent = target.title;
-      document.getElementById("analysisText").textContent = target.text;
-    }
-    render();
-  </script>
+            <div class="bar">
+                <div class="bar-label">Emotional Avoidance</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Temporal Discounting</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Perfectionism Block</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:58%"></div></div>
+            </div>
+    <h3 style="margin-top:30px;">Behavioral Insights</h3>
+    <div class="insight">Procrastination is an emotional regulation problem, not a time management flaw; you are avoiding the bad feelings a task triggers.</div><div class="insight">Perfectionism often drives delay; if you fear your output won't be perfect, your brain uses procrastination as a shield.</div><div class="insight">Lowering the entry barrier—like committing to working on a project for just 2 minutes—bypasses deep amygdala resistance.</div>
+</div>
+<div class="card hidden" id="recommendations">
+    <h3>Recommended Tests</h3>
+    <a href="https://www.toolsquark.com/burnout-recovery-score.html" class="recommend-link"><div class="recommend"><strong>Burnout Recovery Test</strong><br>Measure emotional exhaustion and recovery readiness.</div></a>
+    <a href="https://www.toolsquark.com/sleep-quality-score.html" class="recommend-link"><div class="recommend"><strong>Sleep Quality Test</strong><br>Analyze how stress affects sleep quality.</div></a>
+    <a href="https://www.toolsquark.com/anxiety-level-score.html" class="recommend-link"><div class="recommend"><strong>Anxiety Level Test</strong><br>Identify persistent worry and emotional tension.</div></a>
+    <a href="https://www.toolsquark.com/emotional-fatigue-score.html" class="recommend-link"><div class="recommend"><strong>Emotional Fatigue Test</strong><br>Evaluate mental energy and resilience.</div></a>
+</div>
+<div class="card">
+    <h3>FAQ</h3>
+    
+            <div class="faq-item">
+                <strong>Why do I work better under tight deadline pressure?</strong><br>The intense fear of immediate failure overrides your emotional avoidance. However, this creates extreme stress and hurts overall quality.
+            </div>
+            <div class="faq-item">
+                <strong>Is procrastination just laziness?</strong><br>No. Lazy people simply don't care to do the work. Procrastinators desperately want to do the work but are blocked by internal anxiety.
+            </div>
+            <div class="faq-item">
+                <strong>How do I overcome a massive, daunting task?</strong><br>Micro-segment it. Break the project down until the first individual step feels too ridiculously simple to avoid.
+            </div>
+</div>
+<footer>© 2026 ToolsQuark</footer>
+</div>
+<script>
+const questions = [{"question":"When assigned a large project with a distant deadline, when do you typically begin real work?","options":["Immediately","In comfortable stages","A bit close to deadline","At the absolute final minute"]},{"question":"How often do you clean your desk, organize emails, or do low-priority chores to avoid a critical task?","options":["Rarely","Occasionally","Frequently","Every single time"]},{"question":"Do you find yourself waiting for the 'perfect mood' or 'inspired moment' before starting difficult work?","options":["No, just start","Sometimes wait","Often wait in vain","Always dependent on mood"]},{"question":"How frequently do you feel deep guilt, self-loathing, or anxiety because you are delaying a task?","options":["Never","Rarely","Often","Constantly living with guilt"]},{"question":"When you look at your daily to-do list, how do you select which tasks to execute first?","options":["By objective priority","Mix of easy/hard","Only the easy tasks","Paralyzed; look at none"]},{"question":"How often do you miss deadlines or ask for extensions due to poor initiation planning?","options":["Never","Rarely","Occasionally","Frequently"]},{"question":"Does the fear of doing a job poorly or imperfectly make you avoid beginning it at all?","options":["Not at all","Slightly loops me","Strongly paralyzes me","It is my primary barrier"]},{"question":"How often do you say 'I will do this tomorrow' for a task you could easily finish right now?","options":["Rarely","Sometimes","Most days","It is my life motto"]},{"question":"When you finally force yourself to sit down and do the avoided task, how does the actual experience feel?","options":["Satisfying","Easier than expected","Mildly annoying","Utterly agonizing"]},{"question":"How much has procrastination damaged your professional reputation or personal growth goals?","options":["No damage","Minor setbacks","Noticeable consequences","Severe ongoing damage"]}];
+const resultProfiles = {"low":{"profile":"Proactive Task Executor","desc":"You possess high emotional regulation and clear agency. You initiate unpleasant tasks promptly and manage internal resistance effectively."},"medium":{"profile":"Deadline-Driven Delayer","desc":"You frequently delay complex or emotionally taxing projects until the final window. You deliver, but experience high stress and panic spirals."},"high":{"profile":"Chronic Avoidance Gridlock","desc":"Procrastination is paralyzing your professional and personal life. Severe avoidance loop cycles cause constant guilt, anxiety, and missed windows."}};
+let current=0, totalScore=0, selected=null, isTransitioning=false;
+function loadQuestion(){
+    const q=questions[current];
+    document.getElementById("question").innerText=q.question;
+    const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
+    document.getElementById("progress").style.width=currentPercentage+"%";
+    document.getElementById("progress-percent").innerText=currentPercentage+"%";
+    let html="";
+    q.options.forEach((option,index)=>{
+        html+=`<div class="option" onclick="selectOption(this,${index+1},${index})">${option}</div>`;
+    });
+    document.getElementById("answers").innerHTML=html;
+    isTransitioning = false;
+}
+function selectOption(el,score,optionIndex){
+    if(isTransitioning) return;
+    document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
+    if(optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+    isTransitioning = true;
+    totalScore+=score;
+    setTimeout(() => {
+        current++;
+        if(current<questions.length) loadQuestion(); else showResult();
+    }, 300);
+}
+function showResult(){
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("recommendations").classList.remove("hidden");
+    document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
+    let activeProfile = resultProfiles.high;
+    if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
+    else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
+    document.getElementById("profile").innerText=activeProfile.profile;
+    document.getElementById("description").innerText=activeProfile.desc;
+}
+function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+loadQuestion();
+</script>
 </body>
 </html>

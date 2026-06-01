@@ -1,95 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Self-Discipline & Consistency Matrix - ToolsQuark</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: linear-gradient(135deg, #f5f7fa, #dfe9f3); min-height: 100vh; color: #111827; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 750px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .header-block { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; }
-    .back-btn { background: #4b5563; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 14px; transition: 0.2s; border: none; cursor: pointer; }
-    .back-btn:hover { background: #1f2937; }
-    .progress-container { width: 100%; background: #e5e7eb; height: 6px; border-radius: 3px; margin-bottom: 35px; overflow: hidden; }
-    .progress-bar { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s ease; }
-    .question-box h3 { font-size: 22px; margin-bottom: 25px; line-height: 1.4; color: #111827; }
-    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
-    .option-item { background: white; border: 1px solid #e5e7eb; padding: 18px 24px; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; font-weight: 500; }
-    .option-item:hover { border-color: #2563eb; background: #f0f5ff; transform: translateX(4px); }
-    .result-box { display: none; text-align: center; }
-    .metric-circle { width: 130px; height: 130px; border-radius: 50%; background: #2563eb; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-    .metric-value { font-size: 38px; font-weight: bold; }
-    .metric-label { font-size: 12px; opacity: 0.9; }
-    .result-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; }
-    .result-interpretation { font-size: 15px; color: #4b5563; line-height: 1.6; text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #2563eb; margin-bottom: 30px; }
-    .faq-container { width: 100%; max-width: 750px; margin-top: 40px; border-top: 1px solid #d1d5db; padding-top: 40px; }
-    .faq-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #111827; }
-    .faq-item { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; margin-bottom: 14px; padding: 20px; }
-    .faq-q { font-size: 16px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: #4b5563; line-height: 1.6; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Discipline Test | ToolsQuark</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+.progress-wrap{width:100%;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;flex-grow:1;}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:25px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
+.back-home-btn:hover{color:#2563eb;}
+.progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
+.progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
+.question{font-size:24px;font-weight:bold;margin-bottom:20px;}
+.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;}
+.option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
+.selected{border-color:#2563eb;background:#dbeafe;}
+.selected-heavy{border-color:#f97316;background:#fff7ed;}
+.hidden{display:none;}
+.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;}
+.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
+.description{text-align:center;color:#555;margin-bottom:25px;}
+.bar{margin-bottom:18px;}
+.bar-label{margin-bottom:5px;font-weight:bold;}
+.bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
+.bar-fill{height:100%;background:#2563eb;}
+.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;}
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
+.faq-item{margin-bottom:15px;}
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="header-block"><h2>Self-Discipline Test</h2><a href="index.html" class="back-btn">← Back</a></div>
-    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-    <div id="quizInterface"><div class="question-box"><h3 id="questionText">Loading...</h3><div class="options-list" id="optionsWrapper"></div></div></div>
-    <div class="result-box" id="resultInterface">
-      <div class="metric-circle"><div class="metric-value" id="finalScore">0</div><div class="metric-label">TOTAL SCORE</div></div>
-      <h3 class="result-title" id="analysisTitle"></h3><div class="result-interpretation" id="analysisText"></div>
-      <a href="index.html" class="back-btn" style="background:#2563eb; padding:12px 30px; font-size:16px;">Return to Ecosystem</a>
+<div class="container">
+<div class="hero">
+    <h1>Self-Discipline Test</h1>
+    <p>Evaluate your willpower consistency, resistance to instant gratification, and identity alignment with long-term goals.</p>
+</div>
+<div class="card" id="quiz">
+    <div class="quiz-header">
+        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+        <div class="progress-wrap">
+            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+        </div>
     </div>
-  </div>
-
-  <section class="faq-container">
-    <h3 class="faq-title">Frequently Asked Questions (FAQ)</h3>
-    <div class="faq-item">
-      <div class="faq-q">💡 What parameters are generated?</div>
-      <div class="faq-a">This tracks your executive framework consistency, short-term impulse inhibition resilience, and strategic focus parameters.</div>
-    </div>
-  </section>
-
-  <script>
-    const questions = [
-      "Struggled to sustain multi-hour focus matrices on analytical tasks when alternative distractions exist?",
-      "Abandoned long-range fitness, skill-acquisition, or financial regimens within the initial 14-day cycle?",
-      "Allowed instant notifications or micro-dopamine triggers to derail scheduled blocks of deep work?",
-      "Failed to adhere to self-directed chronological sleep schedules or early morning routines?",
-      "Neglected core structural preparation, preferring immediate low-effort comfort optimization?",
-      "Felt that your operational consistency relies heavily on temporary inspiration rather than structured systemization?",
-      "Experienced significant difficulty breaking cyclical unhealthy nutritional or digital habits?",
-      "Abandoned primary objectives completely when facing minor systemic resistance or friction?",
-      "Failed to establish daily target parameters or document your milestone execution metrics?",
-      "Struggled to maintain emotional regulation and behavioral stability under prolonged focus demands?"
-    ];
-    const interpretations = [
-      { bound: 10, title: "Compounded Chaos Hazard (Low Discipline)", text: "Your executive control parameters show systematic vulnerability to short-term temptation vectors. Immediate external structures are recommended." },
-      { bound: 20, title: "Fluctuating Focus Resiliency (Moderate Discipline)", text: "Your execution parameters are functional but vulnerable. Consistency relies heavily on clear short-term environments." },
-      { bound: 30, title: "Elite Executive Core (Exceptional Discipline)", text: "Your internal regulatory frameworks are highly optimized. Long-range focus parameters indicate superior resilience." }
-    ];
-    const options = ["0 - Never", "1 - Sometimes", "2 - Often", "3 - Continuously"];
-    let idx = 0, score = 0;
-    function render() {
-      document.getElementById("progressBar").style.width = (idx / questions.length) * 100 + "%";
-      document.getElementById("questionText").textContent = `${idx + 1}. ${questions[idx]}`;
-      const wrapper = document.getElementById("optionsWrapper"); wrapper.innerHTML = "";
-      options.forEach((opt, w) => {
-        const d = document.createElement("div"); d.className = "option-item"; d.textContent = opt;
-        d.onclick = () => { score += w; idx++; if(idx < questions.length) { render(); } else { showResult(); } };
-        wrapper.appendChild(d);
-      });
-    }
-    function showResult() {
-      document.getElementById("quizInterface").style.display = "none";
-      document.getElementById("resultInterface").style.display = "block";
-      document.getElementById("progressBar").style.width = "100%";
-      document.getElementById("finalScore").textContent = score;
-      let target = interpretations.find(i => score <= i.bound) || interpretations[2];
-      document.getElementById("analysisTitle").textContent = target.title;
-      document.getElementById("analysisText").textContent = target.text;
-    }
-    render();
-  </script>
+    <div class="question" id="question"></div>
+    <div id="answers"></div>
+</div>
+<div class="card hidden" id="result">
+    <div class="score" id="score"></div>
+    <div class="profile" id="profile"></div>
+    <div class="description" id="description"></div>
+    <h3>Assessment Indicators</h3>
+    
+            <div class="bar">
+                <div class="bar-label">Gratification Delay</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:48%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Habit Automation</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:52%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Willpower Depletion</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:61%"></div></div>
+            </div>
+    <h3 style="margin-top:30px;">Behavioral Insights</h3>
+    <div class="insight">Highly disciplined people don't possess heroic willpower; they construct automated habits that bypass decision fatigue entirely.</div><div class="insight">Relying on motivation is unreliable because emotions fluctuate; discipline relies on rules that govern action regardless of mood.</div><div class="insight">Every time you resist a short-term temptation for a long-term goal, you reinforce an empowering self-identity.</div>
+</div>
+<div class="card hidden" id="recommendations">
+    <h3>Recommended Tests</h3>
+    <a href="https://www.toolsquark.com/burnout-recovery-score.html" class="recommend-link"><div class="recommend"><strong>Burnout Recovery Test</strong><br>Measure emotional exhaustion and recovery readiness.</div></a>
+    <a href="https://www.toolsquark.com/sleep-quality-score.html" class="recommend-link"><div class="recommend"><strong>Sleep Quality Test</strong><br>Analyze how stress affects sleep quality.</div></a>
+    <a href="https://www.toolsquark.com/anxiety-level-score.html" class="recommend-link"><div class="recommend"><strong>Anxiety Level Test</strong><br>Identify persistent worry and emotional tension.</div></a>
+    <a href="https://www.toolsquark.com/emotional-fatigue-score.html" class="recommend-link"><div class="recommend"><strong>Emotional Fatigue Test</strong><br>Evaluate mental energy and resilience.</div></a>
+</div>
+<div class="card">
+    <h3>FAQ</h3>
+    
+            <div class="faq-item">
+                <strong>Why does my discipline crash in the evening?</strong><br>Willpower behaves like a muscle; making decisions all day exhausts your self-control, making evening temptations harder to resist.
+            </div>
+            <div class="faq-item">
+                <strong>Can discipline kill spontaneity and fun?</strong><br>No. True discipline buys freedom. Organizing your chores gives you guilt-free time for genuine relaxation.
+            </div>
+            <div class="faq-item">
+                <strong>How do I build self-discipline from scratch?</strong><br>Start small. Automate one tiny daily habit—like making your bed—before tackling complex lifestyle transformations.
+            </div>
+</div>
+<footer>© 2026 ToolsQuark</footer>
+</div>
+<script>
+const questions = [{"question":"When you set an alarm to wake up early for a personal goal, how do you handle the snooze button?","options":["Get up immediately","Snooze once","Snooze multiple times","Turn it off and sleep in"]},{"question":"How consistently do you follow through on the personal goals or resolutions you set for yourself?","options":["Always execute them","Finish most goals","Abandon them halfway","Rarely start them"]},{"question":"When working or studying, how easily do cravings for snacks or digital entertainment derail you?","options":["Ignore cravings easily","Occasionally give in","Frequently distracted","Completely governed by impulses"]},{"question":"How would you describe your personal financial savings and impulse spending habits?","options":["Highly disciplined","Budget occasionally","Struggle to save","Frequent impulse buyer"]},{"question":"When faced with a necessary but deeply boring chore, when do you get around to doing it?","options":["Do it immediately","Schedule for later","Put it off for days","Ignore until it's a crisis"]},{"question":"How healthy are your eating and exercise routines when you are going through a high-stress week?","options":["Stay strict to habits","Slightly slip up","Drop routines quickly","Complete health abandonment"]},{"question":"How often do you find yourself scrolling mindlessly when you explicitly promised yourself you'd be asleep?","options":["Rarely/Never","1-2 times a week","Frequently","Almost every single night"]},{"question":"If a task requires daily effort for months before showing any results, how do you handle it?","options":["Maintain daily effort","Miss occasional days","Lose focus quickly","Give up within a week"]},{"question":"How easily can you say 'no' when friends offer fun plans that conflict with your critical goals?","options":["Say no comfortably","Hesitate but decline","Give in with guilt","Instantly abandon goals"]},{"question":"When you break a self-imposed routine one day, how does that affect your behavior the following day?","options":["Back on track instantly","Slightly harder to start","Triggers a multi-day slide","Abandon the routine completely"]}];
+const resultProfiles = {"low":{"profile":"Highly Disciplined Architect","desc":"You have strong command over your impulses. You delay short-term pleasure easily, automate positive habits, and follow through on long-term goals."},"medium":{"profile":"Fluctuating Willpower Wave","desc":"Your discipline comes in short bursts. You excel when motivated but struggle with consistency when fatigue sets in or temptation increases."},"high":{"profile":"Severe Impulse Dominance","desc":"Instant gratification dominates your daily decisions. You struggle to sustain routines, leaving you trapped in a cycle of broken promises to yourself."}};
+let current=0, totalScore=0, selected=null, isTransitioning=false;
+function loadQuestion(){
+    const q=questions[current];
+    document.getElementById("question").innerText=q.question;
+    const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
+    document.getElementById("progress").style.width=currentPercentage+"%";
+    document.getElementById("progress-percent").innerText=currentPercentage+"%";
+    let html="";
+    q.options.forEach((option,index)=>{
+        html+=`<div class="option" onclick="selectOption(this,${index+1},${index})">${option}</div>`;
+    });
+    document.getElementById("answers").innerHTML=html;
+    isTransitioning = false;
+}
+function selectOption(el,score,optionIndex){
+    if(isTransitioning) return;
+    document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
+    if(optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+    isTransitioning = true;
+    totalScore+=score;
+    setTimeout(() => {
+        current++;
+        if(current<questions.length) loadQuestion(); else showResult();
+    }, 300);
+}
+function showResult(){
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("recommendations").classList.remove("hidden");
+    document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
+    let activeProfile = resultProfiles.high;
+    if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
+    else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
+    document.getElementById("profile").innerText=activeProfile.profile;
+    document.getElementById("description").innerText=activeProfile.desc;
+}
+function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+loadQuestion();
+</script>
 </body>
 </html>

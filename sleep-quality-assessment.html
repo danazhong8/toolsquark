@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Anxiety Test | ToolsQuark</title>
+<title>Sleep Quality Assessment | ToolsQuark</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -43,8 +43,8 @@ footer{text-align:center;margin-top:30px;color:#777;}
 <body>
 <div class="container">
 <div class="hero">
-    <h1>Social Anxiety Test</h1>
-    <p>Examine your fear of negative evaluation, hyper-vigilance in social groups, and post-event cognitive parsing.</p>
+    <h1>Sleep Quality Assessment</h1>
+    <p>Analyze your sleep architecture, latency, and daytime dysfunction to uncover hidden factors disrupting your biological rest.</p>
 </div>
 <div class="card" id="quiz">
     <div class="quiz-header">
@@ -63,19 +63,19 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h3>Assessment Indicators</h3>
     
             <div class="bar">
-                <div class="bar-label">Evaluation Dread</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:69%"></div></div>
+                <div class="bar-label">Sleep Architecture</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:45%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Safety Behaviors</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
+                <div class="bar-label">Latency & Continuity</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:68%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Post-Event Parsing</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:62%"></div></div>
+                <div class="bar-label">Daytime Dysfunction</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:55%"></div></div>
             </div>
     <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Social anxiety is rooted in the fear of exclusion; your brain misinterprets minor social awkwardness as a threat to survival.</div><div class="insight">Safety behaviors (like staring at your phone or staying near walls) offer short-term comfort but reinforce social fears long-term.</div><div class="insight">People pay far less attention to your flaws than you think; this cognitive distortion is known as the spotlight effect.</div>
+    <div class="insight">Poor sleep continuity is often linked to heightened hyperarousal before bedtime rather than pure physical exhaustion.</div><div class="insight">Inconsistent wake-up times disrupt your circadian rhythm far more than occasional late-night sleeping.</div><div class="insight">The psychological anxiety of 'trying to fall asleep' triggers cortisol release, creating a paradox that fuels insomnia.</div>
 </div>
 <div class="card hidden" id="recommendations">
     <h3>Recommended Tests</h3>
@@ -88,20 +88,20 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h3>FAQ</h3>
     
             <div class="faq-item">
-                <strong>Is introversion the same as social anxiety?</strong><br>No. Introverts prefer quiet settings because they recharge alone, but they don't necessarily fear social judgment. Social anxiety is driven by dread.
+                <strong>Is sleeping 8 hours a strict requirement?</strong><br>Not necessarily. Sleep efficiency and deep sleep percentages matter more than raw time. Some flourish on 7 hours, while others need 9.
             </div>
             <div class="faq-item">
-                <strong>Can social anxiety be outgrown naturally?</strong><br>Mild forms settle with age, but stubborn anxiety requires gradual exposure to social triggers to rewire your brain's fear response.
+                <strong>Should I stay in bed if I cannot sleep?</strong><br>No. If awake after 20 minutes, leave the bed. Do a relaxing, low-light activity and return only when sleepy to avoid associating bed with frustration.
             </div>
             <div class="faq-item">
-                <strong>What should I do when experiencing a social panic spike?</strong><br>Shift your focus outward. Describe 3 physical objects in the room to break your internal anxious monitoring loop.
+                <strong>Can blue-light blockers fix my sleep?</strong><br>They help, but reducing overall cognitive stimulation and dimming house lights 1 hour before bed is vastly more effective.
             </div>
 </div>
 <footer>© 2026 ToolsQuark</footer>
 </div>
 <script>
-const questions = [{"question":"How do you feel when you are required to speak, present, or perform in front of a group of people?","options":["Calm/Slightly excited","Moderately nervous","Intense physical dread","Paralyzed/Avoid at all costs"]},{"question":"How intensely do you worry about doing or saying something embarrassing in a social environment?","options":["Hardly ever","Occasionally","Frequently","Constantly obsessing"]},{"question":"Do you actively avoid going to parties, networking events, or group gatherings where you don't know many people?","options":["No, love meeting folks","Rarely avoid","Often avoid","Always avoid completely"]},{"question":"When eating, drinking, or writing while someone stands and watches you, how do you react?","options":["Unbothered","Slightly self-conscious","Hands shake/Nervous","Completely lock up"]},{"question":"How often do you use your smartphone or pretend to be deep in a task specifically to avoid making eye contact?","options":["Never","Rarely","Often","It is my default defense"]},{"question":"If you have to make a phone call to an unfamiliar business or stranger, what is your internal state?","options":["Just dial","Slightly hesitate","Delay/Procrastinate","Terrified; avoid calling"]},{"question":"After a social gathering, how long do you spend replaying your interactions and cringing at your mistakes?","options":["Don't think about it","A few minutes","For hours or days","Weeks later still loop"]},{"question":"How do handle introducing yourself to an authority figure or manager you respect?","options":["Comfortably","Mildly formal/Nervous","Very anxious/Stutter","Completely avoid them"]},{"question":"Do you feel that your chest tightens, your heart races, or you sweat profusely during ordinary small talk?","options":["Never","Rarely","Frequently","Every single time"]},{"question":"How intensely does the fear of being judged or criticized stop you from expressing your true opinions?","options":["Not at all","Slightly guarded","Often stay quiet","Always mask/Stay silent"]}];
-const resultProfiles = {"low":{"profile":"Socially Grounded Individual","desc":"You handle social interactions with realistic ease. You navigate small talk, crowds, and group evaluations without internal panic or avoidance."},"medium":{"profile":"Anxious Evaluation Buffer","desc":"You experience noticeable nervousness in unfamiliar social groups or performative settings. You use safety behaviors but can push through when required."},"high":{"profile":"Severe Social Dread Pattern","desc":"Social interactions trigger intense hyper-vigilance or complete avoidance. Fear of judgment significantly shrinks your social world and limits career growth."}};
+const questions = [{"question":"How long does it typically take you to fall asleep after turning off the lights?","options":["Under 15 minutes","15-30 minutes","31-60 minutes","More than an hour"]},{"question":"How often do you wake up in the middle of the night and struggle to fall back asleep?","options":["Rarely or never","1-2 times a week","3-4 times a week","Almost every night"]},{"question":"How regularly do you wake up feeling unrefreshed, stiff, or tired in the morning?","options":["Never","Occasionally","Frequently","Every single day"]},{"question":"Do racing thoughts or worry keep your mind active when you try to sleep?","options":["Hardly ever","Some nights","Most nights","Every night without fail"]},{"question":"How often do you feel groggy, sluggish, or struggle to stay awake during daytime tasks?","options":["Rarely","Sometimes during slumps","Often throughout the day","Constantly fighting sleep"]},{"question":"How consistent is your sleeping and waking schedule on weekends compared to weekdays?","options":["Highly consistent","Slightly varies (+/- 1hr)","Very erratic","Completely different"]},{"question":"Do you experience physical symptoms like night sweats, gasping, or restless legs?","options":["Never","Rarely","Sometimes","Frequently"]},{"question":"How frequently do you rely on sleep aids, alcohol, or supplements to fall asleep?","options":["Never","A few times a month","Multiple times a week","Depend on them daily"]},{"question":"Does a poor night's sleep drastically affect your emotional stability or mood the next day?","options":["Not really","Slightly irritable","Noticeable mood drops","Extremely volatile"]},{"question":"How often do you scroll on your phone or watch screens while lying in bed waiting for sleep?","options":["Never","Rarely","Often","Always until I drop off"]}];
+const resultProfiles = {"low":{"profile":"Optimal Circadian Rhythm","desc":"Your sleep architecture is highly efficient. You fall asleep quickly, enjoy deep restorative phases, and wake up feeling refreshed with minimal daytime fatigue."},"medium":{"profile":"Fragmented Rest Pattern","desc":"You experience occasional sleep latency issues or frequent nighttime awakenings. Your sleep quality is heavily impacted by daily stress or inconsistent sleep hygiene."},"high":{"profile":"Severe Sleep Disruption","desc":"Your sleep patterns indicate chronic deficit or intense pre-bed hyperarousal. High daytime fatigue is likely impacting your cognitive function. Consider consulting a sleep specialist."}};
 let current=0, totalScore=0, selected=null, isTransitioning=false;
 function loadQuestion(){
     const q=questions[current];

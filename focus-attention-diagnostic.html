@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Anxiety Test | ToolsQuark</title>
+<title>Focus & Attention Diagnostic | ToolsQuark</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -43,8 +43,8 @@ footer{text-align:center;margin-top:30px;color:#777;}
 <body>
 <div class="container">
 <div class="hero">
-    <h1>Social Anxiety Test</h1>
-    <p>Examine your fear of negative evaluation, hyper-vigilance in social groups, and post-event cognitive parsing.</p>
+    <h1>Focus & Attention Diagnostic</h1>
+    <p>Identify attention fragmentation patterns, deep work entry barriers, and susceptibility to environmental distractions.</p>
 </div>
 <div class="card" id="quiz">
     <div class="quiz-header">
@@ -63,19 +63,19 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h3>Assessment Indicators</h3>
     
             <div class="bar">
-                <div class="bar-label">Evaluation Dread</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:69%"></div></div>
+                <div class="bar-label">Sustained Attention</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:51%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Safety Behaviors</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
+                <div class="bar-label">Inhibition Control</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:43%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Post-Event Parsing</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:62%"></div></div>
+                <div class="bar-label">Cognitive Switching</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
             </div>
     <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Social anxiety is rooted in the fear of exclusion; your brain misinterprets minor social awkwardness as a threat to survival.</div><div class="insight">Safety behaviors (like staring at your phone or staying near walls) offer short-term comfort but reinforce social fears long-term.</div><div class="insight">People pay far less attention to your flaws than you think; this cognitive distortion is known as the spotlight effect.</div>
+    <div class="insight">Multitasking is a cognitive myth; the brain actually engages in rapid task-switching, which incurs a high cognitive toll.</div><div class="insight">Attention is a limited metabolic resource; working without rhythmic breaks depletes your prefrontal cortex capabilities.</div><div class="insight">Structuring an distraction-free working environment is far more reliable than relying on pure willpower to focus.</div>
 </div>
 <div class="card hidden" id="recommendations">
     <h3>Recommended Tests</h3>
@@ -88,20 +88,20 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h3>FAQ</h3>
     
             <div class="faq-item">
-                <strong>Is introversion the same as social anxiety?</strong><br>No. Introverts prefer quiet settings because they recharge alone, but they don't necessarily fear social judgment. Social anxiety is driven by dread.
+                <strong>Does a low focus score mean I have ADHD?</strong><br>Not necessarily. Modern lifestyle factors like sleep deprivation, digital notification overload, and chronic stress mimic focus deficits closely.
             </div>
             <div class="faq-item">
-                <strong>Can social anxiety be outgrown naturally?</strong><br>Mild forms settle with age, but stubborn anxiety requires gradual exposure to social triggers to rewire your brain's fear response.
+                <strong>How long can an average adult maintain deep focus?</strong><br>Typically 45 to 90 minutes. Trying to push past this without strategic cognitive rest results in a steep decline in efficiency.
             </div>
             <div class="faq-item">
-                <strong>What should I do when experiencing a social panic spike?</strong><br>Shift your focus outward. Describe 3 physical objects in the room to break your internal anxious monitoring loop.
+                <strong>What is the best way to train my focus?</strong><br>Practice monotasking. Start with short, dedicated blocks (like the Pomodoro technique) and gradually extend your deep work duration.
             </div>
 </div>
 <footer>© 2026 ToolsQuark</footer>
 </div>
 <script>
-const questions = [{"question":"How do you feel when you are required to speak, present, or perform in front of a group of people?","options":["Calm/Slightly excited","Moderately nervous","Intense physical dread","Paralyzed/Avoid at all costs"]},{"question":"How intensely do you worry about doing or saying something embarrassing in a social environment?","options":["Hardly ever","Occasionally","Frequently","Constantly obsessing"]},{"question":"Do you actively avoid going to parties, networking events, or group gatherings where you don't know many people?","options":["No, love meeting folks","Rarely avoid","Often avoid","Always avoid completely"]},{"question":"When eating, drinking, or writing while someone stands and watches you, how do you react?","options":["Unbothered","Slightly self-conscious","Hands shake/Nervous","Completely lock up"]},{"question":"How often do you use your smartphone or pretend to be deep in a task specifically to avoid making eye contact?","options":["Never","Rarely","Often","It is my default defense"]},{"question":"If you have to make a phone call to an unfamiliar business or stranger, what is your internal state?","options":["Just dial","Slightly hesitate","Delay/Procrastinate","Terrified; avoid calling"]},{"question":"After a social gathering, how long do you spend replaying your interactions and cringing at your mistakes?","options":["Don't think about it","A few minutes","For hours or days","Weeks later still loop"]},{"question":"How do handle introducing yourself to an authority figure or manager you respect?","options":["Comfortably","Mildly formal/Nervous","Very anxious/Stutter","Completely avoid them"]},{"question":"Do you feel that your chest tightens, your heart races, or you sweat profusely during ordinary small talk?","options":["Never","Rarely","Frequently","Every single time"]},{"question":"How intensely does the fear of being judged or criticized stop you from expressing your true opinions?","options":["Not at all","Slightly guarded","Often stay quiet","Always mask/Stay silent"]}];
-const resultProfiles = {"low":{"profile":"Socially Grounded Individual","desc":"You handle social interactions with realistic ease. You navigate small talk, crowds, and group evaluations without internal panic or avoidance."},"medium":{"profile":"Anxious Evaluation Buffer","desc":"You experience noticeable nervousness in unfamiliar social groups or performative settings. You use safety behaviors but can push through when required."},"high":{"profile":"Severe Social Dread Pattern","desc":"Social interactions trigger intense hyper-vigilance or complete avoidance. Fear of judgment significantly shrinks your social world and limits career growth."}};
+const questions = [{"question":"When working on a complex task, how long can you go before checking an unrelated app or tab?","options":["Over an hour","30-60 minutes","10-30 minutes","Less than 10 minutes"]},{"question":"How frequently do you find yourself reading a paragraph over and over because your mind drifted off?","options":["Rarely","Occasionally","Frequently","All the time"]},{"question":"When someone is speaking to you directly, how often do you catch yourself zoning out completely?","options":["Never","Rarely","Often","Almost every conversation"]},{"question":"How easily do unexpected background noises or movements break your train of thought?","options":["Hardly notice them","Notice but recover","Easily distracted","Completely derails focus"]},{"question":"Do you have a habit of abandoning half-finished projects or tasks to jump onto a shinier new idea?","options":["Never","Rarely","Often","Always leave loops open"]},{"question":"How organized do your inner thoughts feel when you sit down to plan a multi-step project?","options":["Clear and orderly","Slightly cluttered","Disorganized/Vague","Overwhelmingly chaotic"]},{"question":"How often do you misplace daily essentials like keys, wallets, glasses, or your phone?","options":["Almost never","Occasionally","Frequently","Multiple times a day"]},{"question":"Do you frequently use background music, videos, or podcasts because silence makes you restless?","options":["No, love silence","Sometimes","Often prefer it","Must have background noise"]},{"question":"How do you feel when faced with a task that requires long, slow, boring attention with no instant payoff?","options":["Can push through","Procrastinate a bit","Find it very painful","Avoid it at all costs"]},{"question":"When you get interrupted mid-task, how long does it take you to return to your previous depth of focus?","options":["Returns instantly","A few minutes","Takes major effort","Never fully get back"]}];
+const resultProfiles = {"low":{"profile":"Deep Work Master","desc":"You possess excellent cognitive control. You enter focus states smoothly, maintain deep engagement, and shield your working mind from distractions."},"medium":{"profile":"Fragmented Focus Continuum","desc":"Your attention span is vulnerable to digital and environmental interruptions. You struggle to sustain long focus periods without checking secondary tasks."},"high":{"profile":"Hyper-Fragmented Attention Alert","desc":"Your attention capacity is highly scattered. Entering a state of deep work feels almost impossible, and constant task-switching is causing mental exhaustion."}};
 let current=0, totalScore=0, selected=null, isTransitioning=false;
 function loadQuestion(){
     const q=questions[current];

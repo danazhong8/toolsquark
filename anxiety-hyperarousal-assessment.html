@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Anxiety Test | ToolsQuark</title>
+<title>Anxiety & Hyperarousal Assessment | ToolsQuark</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -43,8 +43,8 @@ footer{text-align:center;margin-top:30px;color:#777;}
 <body>
 <div class="container">
 <div class="hero">
-    <h1>Social Anxiety Test</h1>
-    <p>Examine your fear of negative evaluation, hyper-vigilance in social groups, and post-event cognitive parsing.</p>
+    <h1>Anxiety & Hyperarousal Assessment</h1>
+    <p>Map your sympathetic nervous system hyperarousal, scanning habits, and physical tension loops.</p>
 </div>
 <div class="card" id="quiz">
     <div class="quiz-header">
@@ -63,19 +63,19 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h3>Assessment Indicators</h3>
     
             <div class="bar">
-                <div class="bar-label">Evaluation Dread</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:69%"></div></div>
+                <div class="bar-label">Somatic Tension</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Safety Behaviors</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
+                <div class="bar-label">Threat Scanning</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:84%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Post-Event Parsing</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:62%"></div></div>
+                <div class="bar-label">Cognitive Agitation</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:66%"></div></div>
             </div>
     <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Social anxiety is rooted in the fear of exclusion; your brain misinterprets minor social awkwardness as a threat to survival.</div><div class="insight">Safety behaviors (like staring at your phone or staying near walls) offer short-term comfort but reinforce social fears long-term.</div><div class="insight">People pay far less attention to your flaws than you think; this cognitive distortion is known as the spotlight effect.</div>
+    <div class="insight">Hyperarousal means your threat-detection system is stuck 'on', treating ordinary daily worries like physical dangers.</div><div class="insight">Physical symptoms like rapid shallow breathing tell your brain it's in danger, locking you in a high-anxiety feedback loop.</div><div class="insight">Anxiety cannot survive long in a relaxed body; grounding your physical state breaks the high-arousal mental cycle.</div>
 </div>
 <div class="card hidden" id="recommendations">
     <h3>Recommended Tests</h3>
@@ -88,20 +88,20 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h3>FAQ</h3>
     
             <div class="faq-item">
-                <strong>Is introversion the same as social anxiety?</strong><br>No. Introverts prefer quiet settings because they recharge alone, but they don't necessarily fear social judgment. Social anxiety is driven by dread.
+                <strong>What is the difference between anxiety and fear?</strong><br>Fear is a response to an immediate, real threat (like a bear). Anxiety is tension focused on an unpredictable, imagined future threat.
             </div>
             <div class="faq-item">
-                <strong>Can social anxiety be outgrown naturally?</strong><br>Mild forms settle with age, but stubborn anxiety requires gradual exposure to social triggers to rewire your brain's fear response.
+                <strong>Why does anxiety make me physically exhausted?</strong><br>Staying in a state of high threat-arousal burns massive amounts of physical energy, leading to deep somatic exhaustion.
             </div>
             <div class="faq-item">
-                <strong>What should I do when experiencing a social panic spike?</strong><br>Shift your focus outward. Describe 3 physical objects in the room to break your internal anxious monitoring loop.
+                <strong>Can cutting down caffeine reduce my anxiety spikes?</strong><br>Yes. Caffeine mimics adrenaline production, which directly triggers hyperarousal in a highly sensitive nervous system.
             </div>
 </div>
 <footer>© 2026 ToolsQuark</footer>
 </div>
 <script>
-const questions = [{"question":"How do you feel when you are required to speak, present, or perform in front of a group of people?","options":["Calm/Slightly excited","Moderately nervous","Intense physical dread","Paralyzed/Avoid at all costs"]},{"question":"How intensely do you worry about doing or saying something embarrassing in a social environment?","options":["Hardly ever","Occasionally","Frequently","Constantly obsessing"]},{"question":"Do you actively avoid going to parties, networking events, or group gatherings where you don't know many people?","options":["No, love meeting folks","Rarely avoid","Often avoid","Always avoid completely"]},{"question":"When eating, drinking, or writing while someone stands and watches you, how do you react?","options":["Unbothered","Slightly self-conscious","Hands shake/Nervous","Completely lock up"]},{"question":"How often do you use your smartphone or pretend to be deep in a task specifically to avoid making eye contact?","options":["Never","Rarely","Often","It is my default defense"]},{"question":"If you have to make a phone call to an unfamiliar business or stranger, what is your internal state?","options":["Just dial","Slightly hesitate","Delay/Procrastinate","Terrified; avoid calling"]},{"question":"After a social gathering, how long do you spend replaying your interactions and cringing at your mistakes?","options":["Don't think about it","A few minutes","For hours or days","Weeks later still loop"]},{"question":"How do handle introducing yourself to an authority figure or manager you respect?","options":["Comfortably","Mildly formal/Nervous","Very anxious/Stutter","Completely avoid them"]},{"question":"Do you feel that your chest tightens, your heart races, or you sweat profusely during ordinary small talk?","options":["Never","Rarely","Frequently","Every single time"]},{"question":"How intensely does the fear of being judged or criticized stop you from expressing your true opinions?","options":["Not at all","Slightly guarded","Often stay quiet","Always mask/Stay silent"]}];
-const resultProfiles = {"low":{"profile":"Socially Grounded Individual","desc":"You handle social interactions with realistic ease. You navigate small talk, crowds, and group evaluations without internal panic or avoidance."},"medium":{"profile":"Anxious Evaluation Buffer","desc":"You experience noticeable nervousness in unfamiliar social groups or performative settings. You use safety behaviors but can push through when required."},"high":{"profile":"Severe Social Dread Pattern","desc":"Social interactions trigger intense hyper-vigilance or complete avoidance. Fear of judgment significantly shrinks your social world and limits career growth."}};
+const questions = [{"question":"How often do you experience a sudden racing heart, shallow breathing, or chest tightness for no clear reason?","options":["Almost never","Occasionally","Frequently","Multiple times a day"]},{"question":"How continuously does your mind scan for potential problems or disasters in your daily environment?","options":["Rarely/Never","Mildly watchful","Frequently scanning","Constantly trapped in worry"]},{"question":"How easily do unexpected noises, sudden movements, or alerts startle or scare you?","options":["Hardly notice","Normal response","Startle very easily","Jump out of my skin"]},{"question":"Do you experience persistent muscle tightness, particularly in your neck, shoulders, or back?","options":["No, feel relaxed","Occasional tightness","Frequent chronic knots","Constant physical pain"]},{"question":"How difficult is it for you to calm your racing thoughts down when a minor thing goes wrong?","options":["Calm down quickly","Takes some time","Very difficult to stop","Loops completely out of control"]},{"question":"How frequently do you feel restless, on edge, or physically unable to sit completely still?","options":["Never","Rarely","Often","Almost constantly"]},{"question":"Do you experience sudden hot flashes, cold sweats, or shaking hands when facing uncertain situations?","options":["Never","Rarely","Frequently","Every time uncertainty arises"]},{"question":"How much does worry about future possibilities interfere with your ability to enjoy your present moment?","options":["Not at all","Slightly dampens it","Noticeably spoils it","Completely ruins the present"]},{"question":"How frequently do digestive issues, like stomach knots or nausea, flare up when you feel stressed?","options":["Never","Rarely","Frequently","It is a chronic issue"]},{"question":"Do you find yourself avoiding specific places, topics, or news because they trigger an anxious physical spiral?","options":["Never avoid","Rarely avoid","Often avoid","Strictly isolate/Avoid completely"]}];
+const resultProfiles = {"low":{"profile":"Calm & Regulated Baseline","desc":"Your nervous system stays grounded. You handle life's uncertainties without triggering physical panic loops or chronic cognitive worry cycles."},"medium":{"profile":"Hyper-Vigilant Baseline","desc":"Your system runs slightly hot. You carry constant physical tension, worry about the future, and startle easily under unexpected pressure."},"high":{"profile":"Severe Hyperarousal Loop","desc":"You are stuck in chronic fight-or-flight hyperarousal. Constant physical panic, scanning for threats, and mental dread severely disrupt your daily life."}};
 let current=0, totalScore=0, selected=null, isTransitioning=false;
 function loadQuestion(){
     const q=questions[current];

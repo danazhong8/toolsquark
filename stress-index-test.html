@@ -3,632 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Stress Index Test | Free Stress Assessment Tool</title>
-
-<meta name="description" content="Measure your current stress level, emotional fatigue, mental pressure, and burnout risk with this free stress index test.">
-
-<meta name="keywords" content="stress test, stress index test, burnout test, anxiety test, mental health assessment">
-
+<title>Stress Index Test | ToolsQuark</title>
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f5f7fb;
-color:#222;
-line-height:1.6;
-padding:20px;
-}
-
-.container{
-max-width:800px;
-margin:auto;
-}
-
-.hero{
-background:linear-gradient(135deg,#2563eb,#4f46e5);
-color:white;
-padding:40px 30px;
-border-radius:25px;
-margin-bottom:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-}
-
-.hero h1{
-font-size:36px;
-margin-bottom:15px;
-}
-
-.hero p{
-font-size:17px;
-opacity:.95;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:20px;
-margin-bottom:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.progress-wrap{
-width:100%;
-height:10px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-margin-bottom:25px;
-}
-
-.progress{
-height:100%;
-width:10%;
-background:#2563eb;
-transition:.3s;
-}
-
-.question{
-font-size:24px;
-font-weight:bold;
-margin-bottom:20px;
-}
-
-.option{
-padding:16px;
-border:2px solid #e5e7eb;
-border-radius:15px;
-margin-bottom:12px;
-cursor:pointer;
-transition:.2s;
-}
-
-.option:hover{
-border-color:#2563eb;
-background:#eff6ff;
-}
-
-.selected{
-border-color:#2563eb;
-background:#dbeafe;
-}
-
-button{
-width:100%;
-padding:16px;
-border:none;
-border-radius:15px;
-background:#2563eb;
-color:white;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-}
-
-button:hover{
-background:#1d4ed8;
-}
-
-.hidden{
-display:none;
-}
-
-.score{
-font-size:70px;
-font-weight:bold;
-text-align:center;
-color:#2563eb;
-}
-
-.profile{
-text-align:center;
-font-size:30px;
-font-weight:bold;
-margin-top:10px;
-margin-bottom:15px;
-}
-
-.description{
-text-align:center;
-color:#555;
-margin-bottom:25px;
-}
-
-.bar{
-margin-bottom:18px;
-}
-
-.bar-label{
-margin-bottom:5px;
-font-weight:bold;
-}
-
-.bar-bg{
-height:10px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-}
-
-.bar-fill{
-height:100%;
-background:#2563eb;
-}
-
-.insight{
-background:#f8fafc;
-padding:15px;
-border-radius:12px;
-margin-bottom:12px;
-}
-
-.recommend{
-background:#eff6ff;
-padding:15px;
-border-radius:15px;
-margin-bottom:10px;
-}
-
-.faq-item{
-margin-bottom:15px;
-}
-
-footer{
-text-align:center;
-margin-top:30px;
-color:#777;
-}
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:28px;
-}
-
-.question{
-font-size:20px;
-}
-
-.score{
-font-size:55px;
-}
-
-.profile{
-font-size:24px;
-}
-
-}
-
-/* ==========================================================================
-   RESPONSIVE UX STYLES
-   ========================================================================= */
-.quiz-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 25px;
-}
-
-.back-home-btn {
-    font-size: 15px;
-    color: #64748b;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    white-space: nowrap;
-    flex-shrink: 0;
-    cursor: pointer;
-    font-weight: 500;
-    transition: color 0.2s;
-    background: transparent;
-    border: none;
-    padding: 0;
-    width: auto;
-    margin-right: 20px;
-}
-.back-home-btn:hover {
-    color: #2563eb;
-    background: transparent;
-}
-
-.progress-wrap.enhanced-progress {
-    height: 18px;
-    margin-bottom: 0px;
-    flex-grow: 1;
-    position: relative;
-    background: #e5e7eb;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress.enhanced-bar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
-    background: #2563eb;
-    transition: width 0.3s ease;
-}
-
-.progress-text {
-    position: absolute;
-    right: 10px;
-    color: white;
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 1;
-    white-space: nowrap;
-}
-
-.option.enhanced-option {
-    margin-bottom: 16px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.01);
-    transition: all 0.2s ease;
-}
-.option.enhanced-option:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
-}
-.option.enhanced-option:active {
-    transform: scale(0.995);
-}
-.option.enhanced-option.selected-heavy {
-    border-color: #f97316;
-    background: #fff7ed;
-}
-
-/* Enhanced clickable links for recommendations */
-.recommend-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.recommend-link:hover .recommend {
-    background: #e0f2fe;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05);
-}
-.recommend-link:active {
-    transform: scale(0.995);
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+.progress-wrap{width:100%;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;flex-grow:1;}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:25px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
+.back-home-btn:hover{color:#2563eb;}
+.progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
+.progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
+.question{font-size:24px;font-weight:bold;margin-bottom:20px;}
+.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;}
+.option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
+.selected{border-color:#2563eb;background:#dbeafe;}
+.selected-heavy{border-color:#f97316;background:#fff7ed;}
+.hidden{display:none;}
+.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;}
+.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
+.description{text-align:center;color:#555;margin-bottom:25px;}
+.bar{margin-bottom:18px;}
+.bar-label{margin-bottom:5px;font-weight:bold;}
+.bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
+.bar-fill{height:100%;background:#2563eb;}
+.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;}
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
+.faq-item{margin-bottom:15px;}
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
 </style>
-
 </head>
 <body>
-
-
 <div class="container">
-
 <div class="hero">
-<h1>Stress Index Test</h1>
-
-<p>
-Measure your current stress level, emotional fatigue,
-mental pressure, and burnout risk with this behavioral assessment.
-</p>
+    <h1>Stress Index Test</h1>
+    <p>Evaluate your overall allostatic load, nervous system reactivity, and emotional coping thresholds under modern pressures.</p>
 </div>
-
 <div class="card" id="quiz">
-
-<div class="quiz-header">
-    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-    <div class="progress-wrap enhanced-progress">
-        <div class="progress enhanced-bar" id="progress">
-            <span class="progress-text" id="progress-percent">10%</span>
+    <div class="quiz-header">
+        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+        <div class="progress-wrap">
+            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
         </div>
     </div>
+    <div class="question" id="question"></div>
+    <div id="answers"></div>
 </div>
-
-<div class="question" id="question"></div>
-
-<div id="answers"></div>
-
-<button onclick="nextQuestion()" class="hidden">Continue</button>
-
-</div>
-
 <div class="card hidden" id="result">
-
-<div class="score" id="score"></div>
-
-<div class="profile" id="profile"></div>
-
-<div class="description" id="description"></div>
-
-<h3>Stress Indicators</h3>
-
-<div class="bar">
-<div class="bar-label">Mental Fatigue</div>
-<div class="bar-bg">
-<div class="bar-fill" style="width:75%"></div>
+    <div class="score" id="score"></div>
+    <div class="profile" id="profile"></div>
+    <div class="description" id="description"></div>
+    <h3>Assessment Indicators</h3>
+    
+            <div class="bar">
+                <div class="bar-label">Allostatic Load</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Nervous Reactivity</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:74%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Coping Reserve</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:48%"></div></div>
+            </div>
+    <h3 style="margin-top:30px;">Behavioral Insights</h3>
+    <div class="insight">Stress isn't inherently evil; acute stress builds resilience, while unmanaged chronic stress degrades long-term physiological health.</div><div class="insight">A high allostatic load signals that your body is spending valuable energy survival-fighting instead of recovering.</div><div class="insight">Somatic regulation techniques, like physiological sighs, reset your nervous system much faster than intellectual rationalization.</div>
 </div>
-</div>
-
-<div class="bar">
-<div class="bar-label">Emotional Pressure</div>
-<div class="bar-bg">
-<div class="bar-fill" style="width:68%"></div>
-</div>
-</div>
-
-<div class="bar">
-<div class="bar-label">Burnout Risk</div>
-<div class="bar-bg">
-<div class="bar-fill" style="width:72%"></div>
-</div>
-</div>
-
-<h3 style="margin-top:30px;">Behavioral Insights</h3>
-
-<div class="insight">
-Persistent stress may reduce emotional resilience and increase mental fatigue over time.
-</div>
-
-<div class="insight">
-High-pressure thinking patterns can affect concentration, sleep quality, and recovery.
-</div>
-
-<div class="insight">
-Regular exercise, quality sleep, and recovery routines may significantly improve stress balance.
-</div>
-
-
-</div>
-
 <div class="card hidden" id="recommendations">
-
-<h3>Recommended Tests</h3>
-
-<a href="https://www.toolsquark.com/burnout-recovery-score.html" class="recommend-link">
-    <div class="recommend">
-    <strong>Burnout Recovery Test</strong><br>
-    Measure emotional exhaustion and recovery readiness.
-    </div>
-</a>
-
-<a href="https://www.toolsquark.com/sleep-quality-score.html" class="recommend-link">
-    <div class="recommend">
-    <strong>Sleep Quality Test</strong><br>
-    Analyze how stress affects sleep quality.
-    </div>
-</a>
-
-<a href="https://www.toolsquark.com/anxiety-level-score.html" class="recommend-link">
-    <div class="recommend">
-    <strong>Anxiety Level Test</strong><br>
-    Identify persistent worry and emotional tension.
-    </div>
-</a>
-
-<a href="https://www.toolsquark.com/emotional-fatigue-score.html" class="recommend-link">
-    <div class="recommend">
-    <strong>Emotional Fatigue Test</strong><br>
-    Evaluate mental energy and resilience.
-    </div>
-</a>
-
+    <h3>Recommended Tests</h3>
+    <a href="https://www.toolsquark.com/burnout-recovery-score.html" class="recommend-link"><div class="recommend"><strong>Burnout Recovery Test</strong><br>Measure emotional exhaustion and recovery readiness.</div></a>
+    <a href="https://www.toolsquark.com/sleep-quality-score.html" class="recommend-link"><div class="recommend"><strong>Sleep Quality Test</strong><br>Analyze how stress affects sleep quality.</div></a>
+    <a href="https://www.toolsquark.com/anxiety-level-score.html" class="recommend-link"><div class="recommend"><strong>Anxiety Level Test</strong><br>Identify persistent worry and emotional tension.</div></a>
+    <a href="https://www.toolsquark.com/emotional-fatigue-score.html" class="recommend-link"><div class="recommend"><strong>Emotional Fatigue Test</strong><br>Evaluate mental energy and resilience.</div></a>
 </div>
-
 <div class="card">
-
-<h3>FAQ</h3>
-
-<div class="faq-item">
-<strong>Is this a medical diagnosis?</strong><br>
-No. This assessment is intended for educational and self-awareness purposes only.
+    <h3>FAQ</h3>
+    
+            <div class="faq-item">
+                <strong>Can I experience high stress without feeling anxious?</strong><br>Yes. Stress often manifests physically first—via jaw clenching, tight shoulders, digestive issues, or chronic low energy.
+            </div>
+            <div class="faq-item">
+                <strong>What is the fastest way to drop my stress index?</strong><br>Engage the parasympathetic nervous system directly via deep, extended-exhalation breathing or taking a brief walk in nature.
+            </div>
+            <div class="faq-item">
+                <strong>Is all stress caused by external work pressures?</strong><br>No. Internal expectations, poor nutrition, lack of sleep, and unexpressed emotions generate massive internal stress loads.
+            </div>
 </div>
-
-<div class="faq-item">
-<strong>Can I retake the test?</strong><br>
-Yes. Many users repeat the assessment weekly to monitor stress trends.
+<footer>© 2026 ToolsQuark</footer>
 </div>
-
-<div class="faq-item">
-<strong>How accurate is it?</strong><br>
-The questions are based on common indicators associated with stress and emotional fatigue.
-</div>
-
-</div>
-
-<footer>
-© 2026 Stress Index Test
-</footer>
-
-</div>
-
 <script>
-
-const questions = [
-
-{
-question:"How often do you feel mentally exhausted during the day?",
-options:["Rarely","Sometimes","Frequently","Almost every day"]
-},
-
-{
-question:"Do you struggle to relax during free time?",
-options:["Never","Occasionally","Often","Constantly"]
-},
-
-{
-question:"How often does stress affect your sleep?",
-options:["Never","Sometimes","Regularly","Almost every night"]
-},
-
-{
-question:"Do responsibilities feel overwhelming?",
-options:["Rarely","Sometimes","Frequently","Almost constantly"]
-},
-
-{
-question:"How difficult is it to stay focused under pressure?",
-options:["Easy","Manageable","Difficult","Very difficult"]
-},
-
-{
-question:"Do small problems easily frustrate you?",
-options:["Rarely","Occasionally","Frequently","Very often"]
-},
-
-{
-question:"How often do you feel emotionally drained?",
-options:["Rarely","Sometimes","Frequently","Almost daily"]
-},
-
-{
-question:"Do you keep thinking about problems repeatedly?",
-options:["Never","Occasionally","Often","Almost constantly"]
-},
-
-{
-question:"Do you feel pressure to stay productive?",
-options:["Rarely","Sometimes","Frequently","All the time"]
-},
-
-{
-question:"Is stress affecting your happiness or relationships?",
-options:["Not at all","Slightly","Moderately","Severely"]
-}
-
-];
-
-let current=0;
-let totalScore=0;
-let selected=null;
-let isTransitioning=false; 
-
+const questions = [{"question":"How frequently have you felt upset or agitated because of something unexpected happening?","options":["Almost never","Sometimes","Fairly often","Very often"]},{"question":"How often do you feel you lack control over the truly important responsibilities in your life?","options":["Never","Rarely","Sometimes","All the time"]},{"question":"Have you noticed yourself clenching your jaw, grinding your teeth, or holding tension in your shoulders?","options":["Never notice this","Rarely","Frequently","Almost constantly"]},{"question":"How easily do minor, everyday inconveniences (like traffic or long lines) make you feel angry?","options":["Stay completely calm","Slightly annoyed","Noticeably irritated","Explosive frustration"]},{"question":"How regularly do you find yourself skipping meals or overeating due to emotional pressure?","options":["Never","Occasionally","Often","Daily stress-eating/starving"]},{"question":"Do you experience regular digestive issues, unexplainable fatigue, or tension headaches?","options":["No, healthy","Rarely","Frequently flares up","Chronic daily symptoms"]},{"question":"How often do you feel overwhelmed, like you simply cannot cope with all your current duties?","options":["Never","Rarely","Often","Constantly drowning"]},{"question":"How successful are you at turning off anxious thoughts and relaxing during your weekends or evenings?","options":["Highly successful","Moderately successful","Struggle to relax","Completely impossible"]},{"question":"How frequently do you find yourself snapping at family members, friends, or coworkers over minor things?","options":["Never","Rarely","Often","Almost daily"]},{"question":"Do you feel that the overall demands on your time are increasing while your energy reserves shrink?","options":["No, balanced","Slightly out of balance","Yes, noticeably","Completely unsustainable"]}];
+const resultProfiles = {"low":{"profile":"Regulated Nervous System","desc":"Your nervous system handles daily demands smoothly. You recover quickly from acute stressors and maintain deep psychological resilience."},"medium":{"profile":"Elevated Tension Plateau","desc":"Your stress load is flattening your adaptive reserves. You are managing, but physical tension and emotional irritability are noticeably rising."},"high":{"profile":"Allostatic Overload Alert","desc":"Your system is stuck in an active fight-or-flight feedback loop. High stress is exhausting your physical health and emotional capacity. Restoration is a priority."}};
+let current=0, totalScore=0, selected=null, isTransitioning=false;
 function loadQuestion(){
-
-const q=questions[current];
-
-document.getElementById("question").innerText=q.question;
-
-const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
-document.getElementById("progress").style.width=currentPercentage+"%";
-document.getElementById("progress-percent").innerText=currentPercentage+"%";
-
-let html="";
-
-q.options.forEach((option,index)=>{
-
-html+=`
-<div class="option enhanced-option"
-onclick="selectOption(this,${index+1},${index})">
-${option}
-</div>
-`;
-
-});
-
-document.getElementById("answers").innerHTML=html;
-isTransitioning = false; 
-
+    const q=questions[current];
+    document.getElementById("question").innerText=q.question;
+    const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
+    document.getElementById("progress").style.width=currentPercentage+"%";
+    document.getElementById("progress-percent").innerText=currentPercentage+"%";
+    let html="";
+    q.options.forEach((option,index)=>{
+        html+=`<div class="option" onclick="selectOption(this,${index+1},${index})">${option}</div>`;
+    });
+    document.getElementById("answers").innerHTML=html;
+    isTransitioning = false;
 }
-
 function selectOption(el,score,optionIndex){
-if(isTransitioning) return; 
-
-document.querySelectorAll(".option")
-.forEach(item=>{
-    item.classList.remove("selected");
-    item.classList.remove("selected-heavy");
-});
-
-if(optionIndex >= 2) {
-    el.classList.add("selected-heavy");
-} else {
-    el.classList.add("selected");
+    if(isTransitioning) return;
+    document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
+    if(optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+    isTransitioning = true;
+    totalScore+=score;
+    setTimeout(() => {
+        current++;
+        if(current<questions.length) loadQuestion(); else showResult();
+    }, 300);
 }
-
-selected=score;
-totalScore+=selected;
-selected=null;
-isTransitioning = true;
-
-setTimeout(() => {
-    current++;
-    if(current<questions.length){
-        loadQuestion();
-    }else{
-        showResult();
-    }
-}, 300);
-
-}
-
-function nextQuestion(){
-if(selected===null){
-alert("Please select an answer.");
-return;
-}
-totalScore+=selected;
-selected=null;
-current++;
-if(current<questions.length){
-loadQuestion();
-}else{
-showResult();
-}
-}
-
 function showResult(){
-
-document.getElementById("quiz").classList.add("hidden");
-
-document.getElementById("result").classList.remove("hidden");
-
-document.getElementById("recommendations").classList.remove("hidden");
-
-document.getElementById("score").innerText=totalScore+"/40";
-
-let profile="";
-let desc="";
-
-if(totalScore<=16){
-
-profile="Balanced Stress Profile";
-
-desc="You currently maintain healthy emotional balance and demonstrate strong resilience under pressure.";
-
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("recommendations").classList.remove("hidden");
+    document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
+    let activeProfile = resultProfiles.high;
+    if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
+    else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
+    document.getElementById("profile").innerText=activeProfile.profile;
+    document.getElementById("description").innerText=activeProfile.desc;
 }
-else if(totalScore<=28){
-
-profile="Moderate Pressure Accumulator";
-
-desc="You experience noticeable stress and mental fatigue. Long-term pressure may begin affecting sleep, focus, and emotional stability.";
-
-}
-else{
-
-profile="High Stress & Burnout Risk";
-
-desc="Your results indicate elevated stress levels and possible emotional exhaustion. Recovery strategies may be beneficial.";
-
-}
-
-document.getElementById("profile").innerText=profile;
-document.getElementById("description").innerText=desc;
-
-}
-
-function handleBackHome() {
-    const confirmLeave = confirm("Are you sure you want to leave?\nYour current test progress will not be saved.");
-    if (confirmLeave) {
-        // Automatically link back to your root homepage domain
-        window.location.href = "https://www.toolsquark.com/";
-    }
-}
-
+function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 loadQuestion();
-
 </script>
-
 </body>
 </html>
