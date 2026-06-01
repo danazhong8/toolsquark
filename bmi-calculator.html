@@ -13,8 +13,9 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
 
-.calc-header{display:flex;justify-content:flex-start;align-items:center;width:100%;margin-bottom:25px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;}
+/* 导航头部样式优化：置于卡片上方，确保绝对不发生元素冲突 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
 
 .input-group{margin-bottom:20px;}
@@ -22,17 +23,18 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
 .input-group input:focus{border-color:#2563eb;background:#eff6ff;}
 
-button{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
-button:hover{background:#1d4ed8;}
+/* 立即计算主按钮 */
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
+.calc-submit-btn:hover{background:#1d4ed8;}
 
-/* 结果框优化 */
+/* 智能结果展示框 */
 .result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
 .result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
 .normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
 .result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
 .result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
 
-/* 新增：动态建议区块样式 */
+/* 动态专业建议区块 */
 .suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
 .suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
 .suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
@@ -52,13 +54,14 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h1>BMI Calculator</h1>
     <p>Accurately calculate your Body Mass Index (BMI) based on your weight and height to understand your health status.</p>
 </div>
+
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
+
 <div class="card">
-    <div class="calc-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-    </div>
-    
     <div id="inputs-area"></div>
-    <button onclick="calculateNow()">Calculate Now</button>
+    <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
     
     <div id="result-area" class="result-box" style="display:none;">
         <div class="normal-range-badge">Normal Range: {{NORMAL_RANGE}}</div>
@@ -103,7 +106,7 @@ const inputConfigs = [{"id":"weight","label":"Your Weight","unit":"kg","placehol
 const calcFormulaText = `fields.weight / ((fields.height / 100) * (fields.height / 100))`;
 const interpretationRules = {{INTERPRETATION_RULES}};
 
-// 1. 动态生成输入框结构
+// 1. 动态安全填充输入框
 const inputsArea = document.getElementById('inputs-area');
 let html = "";
 inputConfigs.forEach(cfg => {
@@ -115,7 +118,7 @@ inputConfigs.forEach(cfg => {
 });
 inputsArea.innerHTML = html;
 
-// 2. 核心数学计算与区间判定
+// 2. 运算与建议匹配引擎
 function calculateNow() {
     let args = {};
     let missing = false;
@@ -135,7 +138,6 @@ function calculateNow() {
         const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
         const finalResult = formulaFunc(args);
         
-        // 动态匹配解读结果与建议
         let matchedRule = null;
         for (let rule of interpretationRules) {
             if (finalResult >= rule.min && finalResult < rule.max) {
@@ -144,7 +146,6 @@ function calculateNow() {
             }
         }
         
-        // 如果超出常规区间，默认给最后一个
         if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
         
         document.getElementById('result-area').style.display = 'block';
