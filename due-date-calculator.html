@@ -10,12 +10,22 @@
     .calc-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 24px; border-radius: 12px; color: #fff; margin-bottom: 24px; text-align: center; }
     .calc-header h1 { margin: 0; font-size: 24px; font-weight: 700; }
     .calc-header p { margin: 8px 0 0; font-size: 14px; opacity: 0.9; }
-    .btn-submit { display: block; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: background 0.2s; }
+    
+    .range-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+    .input-group { margin-bottom: 18px; }
+    .input-group label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px; }
+    .input-wrapper { display: flex; align-items: center; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; overflow: hidden; }
+    .input-wrapper input { flex: 1; border: none; padding: 10px 12px; font-size: 15px; outline: none; }
+    .input-unit { background: #f3f4f6; color: #6b7280; padding: 10px 14px; font-size: 13px; border-left: 1px solid #e5e7eb; min-width: 45px; text-align: center; }
+    
+    .btn-submit { display: block; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 24px; transition: background 0.2s; }
     .btn-submit:hover { background: #2563eb; }
-    .result-box { display: none; margin-top: 24px; padding: 24px; border: 2px dashed #3b82f6; border-radius: 12px; background: #eff6ff; text-align: center; }
-    .result-value { font-size: 42px; font-weight: 800; color: #3b82f6; margin: 12px 0; }
-    .result-title { font-size: 18px; font-weight: 700; color: #1e3a8a; }
-    .result-desc { font-size: 14px; color: #4b5563; line-height: 1.6; margin-top: 8px; text-align: left; }
+    
+    .result-box { display: none; margin-top: 24px; padding: 24px; border: 2px dashed #3b82f6; border-radius: 12px; background: #eff6ff; }
+    .result-value { font-size: 42px; font-weight: 800; color: #3b82f6; margin: 12px 0; text-align: center; }
+    .result-title { font-size: 18px; font-weight: 700; color: #1e3a8a; text-align: center; }
+    .result-desc { font-size: 14px; color: #4b5563; line-height: 1.6; margin-top: 12px; border-top: 1px solid #dbeafe; padding-top: 12px; }
+    
     .faq-section { margin-top: 32px; border-top: 1px solid #e5e7eb; padding-top: 24px; }
     .faq-title { font-size: 16px; font-weight: 700; color: #1f2937; margin-bottom: 16px; }
     .faq-item { margin-bottom: 16px; }
@@ -35,9 +45,9 @@
       <p>Estimate your standard clinical estimated due date (EDD) based on your last menstrual period timeline.</p>
     </div>
 
-    <div id="inputsForm">
-      undefined
-    </div>
+    <div class="range-badge">Normal Range: Approx. 280 Days / 40 Weeks</div>
+
+    <div id="inputsForm"></div>
 
     <button class="btn-submit" onclick="performCalculation()">Calculate Now</button>
 
@@ -45,7 +55,7 @@
       <div class="result-title">Calculation Success</div>
       <div id="resultVal" class="result-value">--</div>
       <div class="result-desc">
-        <strong>Professional Interpretation:</strong><br>
+        <strong>Professional Interpretation & Suggestion:</strong><br>
         {{RESULT_DESC}}
       </div>
     </div>
@@ -57,22 +67,54 @@
   </div>
 
   <script>
+    // 💡 核心解法：将打包进来的纯文本字符串，在前端通过 JSON.parse 转换为真正无损的配置数组
+    const inputConfigs = JSON.parse(`undefined`);
+    const formContainer = document.getElementById("inputsForm");
+
+    // 动态无损渲染表单输入域
+    inputConfigs.forEach(cfg => {
+      const group = document.createElement("div");
+      group.className = "input-group";
+      group.innerHTML = `
+        <label for="${cfg.id}">${cfg.label}</label>
+        <div class="input-wrapper">
+          <input type="number" id="${cfg.id}" placeholder="${cfg.placeholder || ''}">
+          <div class="input-unit">${cfg.unit}</div>
+        </div>
+      `;
+      formContainer.appendChild(group);
+    });
+
     function performCalculation() {
       try {
-        // 💡 终极安全动态函数：直接执行纯字符串计算公式，避开一切环境转义机制
-        const result = eval(`undefined`);
+        // 收集表单输入数据
+        const fields = {};
+        let isValid = true;
         
-        if (isNaN(result) || result === null || result === undefined) {
-          alert("Please fill in all input boxes with valid numbers.");
+        inputConfigs.forEach(cfg => {
+          const val = parseFloat(document.getElementById(cfg.id).value);
+          if (isNaN(val)) {
+            isValid = false;
+          }
+          fields[cfg.id] = val;
+        });
+
+        if (!isValid) {
+          alert("Please fill in all inputs with valid numeric values.");
           return;
         }
+
+        // 动态执行精简单行计算公式
+        const calcFormulaText = `undefined`;
+        const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
+        const result = formulaFunc(fields);
         
-        // 完美的数值平滑美化展示
-        document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 2 });
+        // 动态回显完美的结果看板
+        document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
         document.getElementById("resultBox").style.display = "block";
         document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth' });
       } catch (err) {
-        alert("Please ensure all fields are filled properly.");
+        alert("An error occurred during calculation. Please check your input fields.");
         console.error(err);
       }
     }
