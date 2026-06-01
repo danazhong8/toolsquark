@@ -38,7 +38,12 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .faq-item{margin-bottom:15px;}
 footer{text-align:center;margin-top:30px;color:#777;}
 @media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
-</style>
+<style>
+/* 强制去除所有推荐标题后的冒号 */
+.recommend strong::after {
+    content: "" !important;
+}
+</style></style>
 </head>
 <body>
 <div class="container">
