@@ -1,465 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Body Fat Calculator - ToolsQuark</title>
-  <meta name="description" content="Free online Body Fat Calculator. Calculate your estimated body fat percentage using the accurate U.S. Navy circumference method.">
-  <meta name="keywords" content="Body Fat Calculator, Body Fat Percentage, BFP Calculator, Navy Body Fat Formula, Fitness Tools">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Fat Calculator | ToolsQuark</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 40px 20px;
-      color: #222;
-    }
+/* 独立导航栏样式 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
+.back-home-btn:hover{color:#2563eb;}
 
-    /* 顶层大首页返回面包屑导航 */
-    .site-header-nav {
-      width: 100%;
-      max-width: 440px;
-      margin-bottom: 15px;
-      display: flex;
-      justify-content: flex-start;
-    }
-    
-    .site-header-nav a {
-      font-size: 14px;
-      color: #6b7280;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-    
-    .site-header-nav a:hover {
-      color: #2563eb;
-    }
+/* 输入框样式 */
+.input-group{margin-bottom:20px;}
+.input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
+.input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
+.input-group input:focus{border-color:#2563eb;background:#eff6ff;}
 
-    /* 计算器卡片主容器 */
-    .container {
-      width: 100%;
-      max-width: 440px;
-      background: #fff;
-      border-radius: 20px;
-      padding: 30px 24px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-      margin-bottom: 30px;
-    }
+/* 立即计算主按钮 */
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
+.calc-submit-btn:hover{background:#1d4ed8;}
 
-    .title {
-      text-align: center;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #111827;
-    }
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
+.result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
+.result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
 
-    .subtitle {
-      text-align: center;
-      color: #6b7280;
-      font-size: 14px;
-      margin-bottom: 25px;
-      line-height: 1.5;
-    }
+/* 动态专业建议区块 */
+.suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
+.suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
+.suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
 
-    .input-group {
-      margin-bottom: 16px;
-    }
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
 
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #374151;
-    }
-
-    /* 性别单选按钮样式优化 */
-    .gender-group {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .gender-label {
-      flex: 1;
-      display: block;
-      text-align: center;
-      padding: 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #4b5563;
-      transition: 0.2s;
-    }
-
-    .gender-group input[type="radio"] {
-      display: none;
-    }
-
-    .gender-group input[type="radio"]:checked + .gender-label {
-      background: #111827;
-      color: #fff;
-      border-color: #111827;
-    }
-
-    input[type="number"] {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 12px;
-      font-size: 16px;
-      outline: none;
-      background-color: #fff;
-      transition: 0.3s;
-    }
-
-    input[type="number"]:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-    }
-
-    /* 动态女性臀围输入框显隐动画特效 */
-    #hipGroup {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background: #111827;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 5px;
-    }
-
-    button:hover {
-      background: #374151;
-    }
-
-    /* 结果展现面板 */
-    .result-box {
-      margin-top: 25px;
-      background: #f9fafb;
-      border-radius: 16px;
-      padding: 22px;
-      border: 1px solid #e5e7eb;
-      display: none; /* 初始隐藏 */
-    }
-
-    .result-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px dashed #e5e7eb;
-    }
-
-    .result-row:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .result-label {
-      font-size: 15px;
-      font-weight: 600;
-      color: #4b5563;
-    }
-
-    .result-value {
-      font-size: 24px;
-      font-weight: bold;
-      color: #2563eb;
-    }
-
-    .result-value.category {
-      font-size: 18px;
-      color: #10b981;
-    }
-
-    .card-footer {
-      margin-top: 25px;
-      text-align: center;
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    /* 说明与SEO优化文档卡片 */
-    .content-section {
-      width: 100%;
-      max-width: 650px;
-      margin: 10px auto 0 auto;
-      padding: 30px 24px;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-    }
-
-    .section-block {
-      margin-bottom: 35px;
-    }
-
-    .section-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .content-section h2 {
-      font-size: 20px;
-      color: #111827;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-left: 4px solid #2563eb;
-      padding-left: 10px;
-    }
-
-    .content-section h3 {
-      font-size: 15px;
-      margin-top: 18px;
-      margin-bottom: 6px;
-      color: #1f2937;
-      font-weight: 600;
-    }
-
-    .content-section p, .content-section li {
-      font-size: 14px;
-      color: #4b5563;
-      line-height: 1.7;
-    }
-
-    .content-section ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    .content-section li {
-      margin-bottom: 6px;
-    }
-
-    /* 完美沉底的全局全英文页脚 */
-    .site-footer {
-      text-align: center;
-      margin-top: auto;
-      padding-top: 50px;
-      padding-bottom: 15px;
-      width: 100%;
-      max-width: 650px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 12px;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: #6b7280;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #111827;
-      text-decoration: underline;
-    }
-
-    .copyright {
-      color: #9ca3af;
-      font-size: 12px;
-    }
-
-    @media (max-width: 480px) {
-      body { padding: 25px 15px; }
-      .container { padding: 24px 18px; }
-      .title { font-size: 28px; }
-      .content-section { padding: 20px 16px; }
-    }
-  </style>
+.faq-item{margin-bottom:15px;}
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
+</style>
 </head>
 <body>
+<div class="container">
+<div class="hero">
+    <h1>Body Fat Calculator</h1>
+    <p>Estimate your body fat percentage using the highly accurate U.S. Navy circumference method and understand your body composition.</p>
+</div>
 
-  <div class="site-header-nav">
-    <a href="index.html">← ToolsQuark Home</a>
-  </div>
+<!-- 返回主页导航栏 -->
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
 
-  <div class="container">
-    <h1 class="title">Body Fat Calculator</h1>
-    <p class="subtitle">Estimate your body fat percentage using the standardized U.S. Navy anthropometric equations.</p>
+<div class="card">
+    <!-- 专属数据渲染槽 -->
+    <div id="inputs-area"></div>
+    <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
+    
+    <!-- 智能解说区域 -->
+    <div id="result-area" class="result-box" style="display:none;">
+        <div class="normal-range-badge">Normal Range: Male: 14% - 24% | Female: 21% - 31%</div>
+        <div class="result-val" id="calc-output">0.00</div>
+        <div class="result-status" id="calc-status"></div>
+        <div class="result-desc" id="calc-desc"></div>
+        <div class="suggestion-box">
+            <h4>💡 Professional Suggestions:</h4>
+            <p id="calc-suggestion"></p>
+        </div>
+    </div>
+</div>
 
+<div class="card">
+    <h3>Recommended Tools</h3>
+    <a href="https://www.toolsquark.com/bmi-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+    </a>
+    <a href="https://www.toolsquark.com/bmr-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+    </a>
+    <a href="https://www.toolsquark.com/simple-interest-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>Simple Interest Calculator</strong><br>Estimate your financial investment returns instantly.</div>
+    </a>
+</div>
+
+<div class="card">
+    <h3>FAQ</h3>
+    
+            <div class="faq-item">
+                <strong>How do I take the measurements accurately?</strong><br>Measure your neck just below the larynx, keeping the tape flat. Measure your waist horizontally at the narrowest point for females, or precisely at the navel line for males. Ensure the tape is snug but never compressing the skin.
+            </div>
+            <div class="faq-item">
+                <strong>Why does the formula require gender selection?</strong><br>Biological fat distribution differs fundamentally between genders. Females naturally carry essential reproductive adipose tissue around the hip and pelvic regions, which requires distinct logarithmic constants to analyze accurately.
+            </div>
+            <div class="faq-item">
+                <strong>What is the difference between BMI and Body Fat Percentage?</strong><br>BMI simply looks at the ratio of your overall weight to your height, completely ignoring what that weight consists of. Body Fat Percentage isolates adipose tissue from muscle, bone, and water, making it a far superior health marker for athletic individuals.
+            </div>
+</div>
+<footer>© 2026 ToolsQuark</footer>
+</div>
+
+<script>
+// 接收打包注入的底层配置
+const inputConfigs = [{"id":"gender","label":"Gender (Select 1 for Male, 2 for Female)","unit":"ID","placeholder":"1"},{"id":"weight","label":"Weight","unit":"kg","placeholder":"70"},{"id":"height","label":"Height","unit":"cm","placeholder":"175"},{"id":"neck","label":"Neck Circumference","unit":"cm","placeholder":"38"},{"id":"waist","label":"Waist Circumference","unit":"cm","placeholder":"85"},{"id":"hip","label":"Hip Circumference (Females Only, input 0 if Male)","unit":"cm","placeholder":"0"}];
+const interpretationRules = [{"min":0,"max":6,"status":"Essential Fat Only","desc":"Your body fat percentage is matching essential fat limits. This level is typical for elite bodybuilders on competition days but is clinically unsustainable and highly risky for long-term physiological health.","suggestion":"Prioritize health over strict aesthetics immediately. Prolonged ultra-low body fat can severely disrupt endocrine performance, suppress hormone production, and weaken bone density. Consider gradually increasing dietary healthy fats (avocados, nuts, olive oil)."},{"min":6,"max":14,"status":"Athletic / Lean Profile","desc":"Excellent body composition! Your body possesses a high ratio of lean muscle to fat tissue. Vascularity and clear muscular definition (including abdominal shape) are highly visible at this tier.","suggestion":"Superb work! Maintain this balance by structuring your nutrition around rich proteins to feed lean mass. If you feel low on daily energy or experience cold intolerance, consider slightly increasing clean carbohydrate portions on high-intensity training days."},{"min":14,"max":25,"status":"Fitness / Healthy Standard","desc":"Congratulations! Your score sits securely within the ideal, healthy medical spectrum. Your visceral organs are properly protected, and your profile represents a great biological balance.","suggestion":"Keep up the fantastic lifestyle choices! To optimize your body composition further, continue with a well-rounded regimen of progressive resistance training mixed with consistent cardiovascular exercise (at least 150 minutes per week)."},{"min":25,"max":32,"status":"Overweight Borderline","desc":"Your body fat score has drifted slightly above the optimal fitness threshold. This state is often accompanied by increased subcutaneous fat distribution around the core and lower body regions.","suggestion":"Incorporate a subtle, sustainable caloric deficit (around 300 kcal below your maintenance limit). Focus on swapping processed carbohydrates for high-fiber whole foods and greens, and prioritize resistance workouts to retain your metabolic lean muscle mass."},{"min":32,"max":999,"status":"High Adipose Accumulation Alert","desc":"Your measurement reflects a significant volume of adipose storage. From a clinical perspective, high body fat percentages are heavily linked with increased systemic inflammation and vascular strain.","suggestion":"We highly recommend adopting a structured lifestyle intervention. Begin with gentle, joint-friendly aerobic movements (such as swimming, brisk walking, or elliptical machines) to burn energy without strain, and implement portion control with whole foods."}];
+
+// 1. 动态生成输入框结构
+const inputsArea = document.getElementById('inputs-area');
+let html = "";
+inputConfigs.forEach(cfg => {
+    html += `
     <div class="input-group">
-      <label>Gender</label>
-      <div class="gender-group">
-        <input type="radio" name="gender" id="male" value="male" checked onclick="toggleGenderInputs()">
-        <label for="male" class="gender-label">Male</label>
-        
-        <input type="radio" name="gender" id="female" value="female" onclick="toggleGenderInputs()">
-        <label for="female" class="gender-label">Female</label>
-      </div>
-    </div>
+        <label>${cfg.label} (${cfg.unit})</label>
+        <input type="number" id="input_${cfg.id}" placeholder="e.g. ${cfg.placeholder}">
+    </div>`;
+});
+inputsArea.innerHTML = html;
 
-    <div class="input-group">
-      <label for="height">Height (cm)</label>
-      <input type="number" id="height" placeholder="e.g. 175" min="100" max="250">
-    </div>
-
-    <div class="input-group">
-      <label for="neck">Neck Circumference (cm)</label>
-      <input type="number" id="neck" placeholder="e.g. 38" min="20" max="60">
-    </div>
-
-    <div class="input-group">
-      <label for="waist">Waist Circumference (cm)</label>
-      <input type="number" id="waist" placeholder="e.g. 85" min="40" max="180">
-    </div>
-
-    <div class="input-group" id="hipGroup">
-      <label for="hip">Hip Circumference (cm)</label>
-      <input type="number" id="hip" placeholder="e.g. 95" min="40" max="180">
-    </div>
-
-    <button onclick="calculateBodyFat()">Calculate Body Fat</button>
-
-    <div class="result-box" id="resultBox">
-      <div class="result-row">
-        <span class="result-label">Body Fat Percentage:</span>
-        <span class="result-value" id="bfpValue">0.0%</span>
-      </div>
-      <div class="result-row">
-        <span class="result-label">Category:</span>
-        <span class="result-value category" id="bfpCategory">Normal</span>
-      </div>
-    </div>
-
-    <div class="card-footer">
-      Private Client-Side Physical Analysis Tool
-    </div>
-  </div>
-
-  <main class="content-section">
-    <section class="section-block">
-      <h2>How to Measure Correctly</h2>
-      <p>For high accuracy, follow strict measurement protocols with a flexible tape measure:</p>
-      <ul>
-        <li><strong>Neck:</strong> Measure just below the larynx, sloping slightly downward to the front.</li>
-        <li><strong>Waist:</strong> Measure horizontally around your natural waistline (for men, at the navel level; for women, at the narrowest point above the navel).</li>
-        <li><strong>Hips (Women Only):</strong> Measure around the largest horizontal circumference of the buttocks.</li>
-      </ul>
-    </section>
-
-    <section class="section-block">
-      <h2>Body Fat Categories (ACE Standards)</h2>
-      <p>According to the American Council on Exercise (ACE), body fat distributions fall into the following structural classifications:</p>
-      <h3>For Men:</h3>
-      <p>Essential Fat: 2-5% | Athletes: 6-13% | Fitness: 14-17% | Acceptable: 18-24% | Obesity: 25%+</p>
-      <h3>For Women:</h3>
-      <p>Essential Fat: 10-13% | Athletes: 14-20% | Fitness: 21-24% | Acceptable: 25-31% | Obesity: 32%+</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="about.html">About Us</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-    </div>
-    <div class="copyright">
-      © 2026 ToolsQuark. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    // 监听性别单选，动态切出或隐藏臀围（Hips）
-    function toggleGenderInputs() {
-      const isFemale = document.getElementById("female").checked;
-      const hipGroup = document.getElementById("hipGroup");
-      if (isFemale) {
-        hipGroup.style.display = "block";
-        setTimeout(() => hipGroup.style.opacity = "1", 10);
-      } else {
-        hipGroup.style.opacity = "0";
-        setTimeout(() => hipGroup.style.display = "none", 300);
-      }
-    }
-
-    function calculateBodyFat() {
-      const isMale = document.getElementById("male").checked;
-      const height = parseFloat(document.getElementById("height").value);
-      const neck = parseFloat(document.getElementById("neck").value);
-      const waist = parseFloat(document.getElementById("waist").value);
-      const hip = parseFloat(document.getElementById("hip").value);
-
-      if (!height || !neck || !waist || height <= 0 || neck <= 0 || waist <= 0 || (!isMale && (!hip || hip <= 0))) {
-        alert("Please enter valid positive measurements for all fields.");
+// 2. 核心数学运算引擎
+function calculateNow() {
+    let args = {};
+    let missing = false;
+    
+    inputConfigs.forEach(cfg => {
+        const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);
+        if (isNaN(val)) missing = true;
+        args[cfg.id] = val;
+    });
+    
+    if (missing) {
+        alert("Please fill in all input fields correctly.");
         return;
-      }
-
-      let bfp = 0;
-
-      // 经典美国海军体脂公式矩阵运算（使用对数公式 Log10）
-      if (isMale) {
-        if (waist <= neck) {
-          alert("Waist measurement must be larger than neck measurement.");
-          return;
-        }
-        bfp = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
-      } else {
-        if ((waist + hip) <= neck) {
-          alert("Waist and hip parameters are physically inconsistent with neck metrics.");
-          return;
-        }
-        bfp = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
-      }
-
-      // 极端异常防御机制
-      if (bfp < 2) bfp = 2;
-      if (bfp > 60) bfp = 60;
-
-      const roundedBFP = bfp.toFixed(1);
-      document.getElementById("bfpValue").textContent = `${roundedBFP}%`;
-
-      // 评估分级类别（ACE 分类矩阵）
-      let category = "Normal";
-      if (isMale) {
-        if (bfp < 6) category = "Essential Fat";
-        else if (bfp < 14) category = "Athletes";
-        else if (bfp < 18) category = "Fitness";
-        else if (bfp < 25) category = "Acceptable";
-        else category = "Obesity";
-      } else {
-        if (bfp < 14) category = "Essential Fat";
-        else if (bfp < 21) category = "Athletes";
-        else if (bfp < 25) category = "Fitness";
-        else if (bfp < 32) category = "Acceptable";
-        else category = "Obesity";
-      }
-
-      document.getElementById("bfpCategory").textContent = category;
-      document.getElementById("resultBox").style.display = "block";
     }
-  </script>
+    
+    try {
+        // 安全获取后端公式并直接执行
+        const formulaFunc = new Function('fields', 'return fields.gender === 1 ? (495 / (1.0324 - 0.19077 * Math.log10(fields.waist - fields.neck) + 0.15456 * Math.log10(fields.height))) - 450 : (495 / (1.29579 - 0.35004 * Math.log10(fields.waist + fields.hip - fields.neck) + 0.22100 * Math.log10(fields.height))) - 450');
+        const finalResult = formulaFunc(args);
+        
+        let matchedRule = null;
+        for (let rule of interpretationRules) {
+            if (finalResult >= rule.min && finalResult < rule.max) {
+                matchedRule = rule;
+                break;
+            }
+        }
+        
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
+        
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('calc-output').innerText = finalResult.toFixed(2);
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
+        
+    } catch (e) {
+        alert("Calculation error. Please check inputs.");
+    }
+}
+
+function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+</script>
 </body>
 </html>
