@@ -5,29 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Age Calculator - ToolsQuark</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
-    .calc-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+    .calc-container { max-width: 600px; margin: 40px auto; }
     
-    /* 💡 Symmetrical Alignment: Header Container housing the embedded Home button */
-    .calc-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 24px 24px 28px 24px; border-radius: 12px; color: #fff; margin-bottom: 24px; position: relative; text-align: center; }
+    /* Premium Blue Header Box matching image style specifications */
+    .calc-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 32px 24px; border-radius: 20px; color: #fff; text-align: left; box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
+    .calc-header h1 { margin: 0; font-size: 28px; font-weight: 700; }
+    .calc-header p { margin: 12px 0 0; font-size: 15px; opacity: 0.9; line-height: 1.5; }
     
-    /* 💡 Integrated Layout Fix: Seamless internal positioning for the Back link */
-    .nav-back-box { text-align: left; margin-bottom: 12px; }
-    .nav-back { display: inline-flex; align-items: center; color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 13px; background: rgba(255, 255, 255, 0.15); padding: 5px 12px; border-radius: 20px; transition: all 0.2s; font-weight: 500; }
-    .nav-back:hover { background: rgba(255, 255, 255, 0.25); color: #fff; }
-
-    .calc-header h1 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px; }
-    .calc-header p { margin: 10px 0 0; font-size: 14px; opacity: 0.9; line-height: 1.5; }
+    /* Home link matching image position below the blue banner block */
+    .nav-back { display: inline-block; margin: 16px 0 16px 8px; color: #6b7280; text-decoration: none; font-size: 14px; text-align: left; transition: color 0.2s; }
+    .nav-back:hover { color: #3b82f6; }
     
-    .range-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 24px; text-align: left; }
+    /* Main Content Box white card background container */
+    .calc-content-card { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    
+    .range-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 22px; text-align: left; }
     .input-group { margin-bottom: 20px; text-align: left; }
     .input-group label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
-    .input-wrapper { display: flex; align-items: center; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; overflow: hidden; transition: border-color 0.2s; }
-    .input-wrapper:focus-within { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+    .input-wrapper { display: flex; align-items: center; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; overflow: hidden; }
     .input-wrapper input { flex: 1; border: none; padding: 12px 14px; font-size: 15px; outline: none; width: 100%; color: #1f2937; }
     .input-unit { background: #f3f4f6; color: #4b5563; padding: 12px 16px; font-size: 13px; border-left: 1px solid #e5e7eb; min-width: 45px; text-align: center; font-weight: 600; }
     
-    .btn-submit { display: block; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 28px; transition: background 0.2s; }
+    .btn-submit { display: block; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 24px; transition: background 0.2s; }
     .btn-submit:hover { background: #2563eb; }
     
     .result-box { display: none; margin-top: 26px; padding: 24px; border: 2px dashed #3b82f6; border-radius: 12px; background: #eff6ff; }
@@ -47,43 +47,46 @@
   <div class="calc-container">
     
     <div class="calc-header">
-      <div class="nav-back-box">
-        <a href="/" class="nav-back">← Home</a>
-      </div>
       <h1>Age Calculator</h1>
       <p>Calculate your exact chronological age in years, months, and days based on your calendar birth parameters instantly.</p>
     </div>
 
     <div style="text-align: left;">
-      <div class="range-badge">Normal Range: Lifespan Track Profile</div>
+      <a href="/" class="nav-back">&larr; Home</a>
     </div>
 
-    <div id="inputsForm"></div>
+    <div class="calc-content-card">
+      <div style="text-align: left;">
+        <div class="range-badge">Normal Range: Lifespan Track Profile</div>
+      </div>
 
-    <button class="btn-submit" onclick="performCalculation()">Calculate Now</button>
+      <div id="inputsForm"></div>
 
-    <div id="resultBox" class="result-box">
-      <div class="result-title">Calculation Success</div>
-      <div id="resultVal" class="result-value">--</div>
-      <div class="result-desc">
-        <strong>Professional Interpretation & Suggestion:</strong><br>
-        Your chronological milestone has been processed successfully. Sustaining conscious lifestyle choices, structural physical habits, and optimal circadian rhythms systematically preserves cellular longevity across adult lifespan timelines.
+      <button class="btn-submit" onclick="performCalculation()">Calculate Now</button>
+
+      <div id="resultBox" class="result-box">
+        <div class="result-title">Calculation Success</div>
+        <div id="resultVal" class="result-value">--</div>
+        <div class="result-desc">
+          <strong>Professional Interpretation & Suggestion:</strong><br>
+          Your biological chronological milestone is processed. Systemic human health benefits from tracking dynamic metrics to align target lifestyle habits with aging windows.
+        </div>
+      </div>
+
+      <div class="faq-section">
+        <div class="faq-title">Frequently Asked Questions</div>
+        <div class='faq-item'><strong>Does this calculator account for leap years?</strong><p>Yes, the standard system JavaScript Date framework inherently normalizes leap year distributions across historical records.</p></div><div class='faq-item'><strong>Why does biological age differ from chronological age?</strong><p>Chronological age tracks calendar years, whereas biological age reflects true internal cellular wear accelerated by stress profiles.</p></div>
       </div>
     </div>
 
-    <div class="faq-section">
-      <div class="faq-title">Frequently Asked Questions</div>
-      <div class='faq-item'><strong>Does this calculator account for leap years?</strong><p>Yes, the native system JavaScript Date framework inherently normalizes leap year shifts smoothly across all historical metrics.</p></div><div class='faq-item'><strong>Why does biological age sometimes differ from chronological age?</strong><p>Chronological age simply counts calendar intervals. In contrast, biological age measures genuine organic and systemic wear, heavily accelerated by chronic stress profiles, systemic inflammation, and sleep debt.</p></div>
-    </div>
   </div>
 
   <script>
-    // 💡 Secure Retrieval Channel: Decode the Base64 configuration string passed from node
+    // Robust Base64 Decoding Pipeline
     const rawB64 = `W3siaWQiOiJiaXJ0aFllYXIiLCJsYWJlbCI6IkJpcnRoIFllYXIgKFlZWVkpIiwidW5pdCI6InllYXIiLCJwbGFjZWhvbGRlciI6IjE5OTUifSx7ImlkIjoiYmlydGhNb250aCIsImxhYmVsIjoiQmlydGggTW9udGggKDEtMTIpIiwidW5pdCI6Im1vbnRoIiwicGxhY2Vob2xkZXIiOiI2In0seyJpZCI6ImJpcnRoRGF5IiwibGFiZWwiOiJCaXJ0aCBEYXkgKDEtMzEpIiwidW5pdCI6ImRheSIsInBsYWNlaG9sZGVyIjoiMTUifV0=`;
     const inputConfigs = JSON.parse(decodeURIComponent(escape(window.atob(rawB64))));
     const formContainer = document.getElementById("inputsForm");
 
-    // Dynamic Element Factory: Safely construct input grids 
     if (Array.isArray(inputConfigs)) {
       inputConfigs.forEach(cfg => {
         const group = document.createElement("div");
@@ -114,21 +117,19 @@
         });
 
         if (!isValid) {
-          alert("Please fill in all inputs with valid numeric metrics before calculating.");
+          alert("Please fill out all input parameters accurately before generating calculation output.");
           return;
         }
 
-        // Formula execution loop
         const calcFormulaText = `new Date().getFullYear() - fields.birthYear - (new Date().getMonth() + 1 < fields.birthMonth || (new Date().getMonth() + 1 === fields.birthMonth && new Date().getDate() < fields.birthDay) ? 1 : 0)`;
         const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
         const result = formulaFunc(fields);
         
-        // Populate and display result elements
         document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
         document.getElementById("resultBox").style.display = "block";
         document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth' });
       } catch (err) {
-        alert("An error occurred during calculation. Please check your field parameters.");
+        alert("Calculation exception discovered within field parameters.");
         console.error(err);
       }
     }
