@@ -5,103 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolsQuark | 100% Free Health & Wellness Tools</title>
     <style>
-        :root {
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --text-muted: #64748b;
-            --bg: #fcfcfc;
-            --sidebar-width: 240px;
-        }
-
+        :root { --primary: #0f172a; --accent: #2563eb; --bg: #fcfcfc; --border: #e2e8f0; }
         * { box-sizing: border-box; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: var(--bg); color: var(--primary); line-height: 1.6; margin: 0; display: flex; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); margin: 0; display: flex; }
 
-        /* 顶部导航栏 (移动端适配) */
-        .navbar { height: 60px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; padding: 0 40px; justify-content: space-between; position: fixed; width: 100%; top: 0; background: rgba(255,255,255,0.95); z-index: 100; }
-        .logo { font-weight: 800; font-size: 1.5rem; color: var(--accent); text-decoration: none; }
+        /* 顶部导航 */
+        .navbar { height: 60px; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 40px; position: fixed; width: 100%; background: #fff; z-index: 100; justify-content: space-between; }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--accent); text-decoration: none; }
 
         /* 侧边栏 */
-        .sidebar { width: var(--sidebar-width); height: calc(100vh - 60px); position: sticky; top: 60px; border-right: 1px solid #e2e8f0; padding: 40px 20px; flex-shrink: 0; background: #fff; }
-        .sidebar h3 { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; letter-spacing: 0.1em; }
-        .sidebar li a { text-decoration: none; color: var(--primary); display: block; padding: 10px 0; font-weight: 500; }
+        .sidebar { width: 240px; height: calc(100vh - 60px); position: sticky; top: 60px; border-right: 1px solid var(--border); padding: 40px 20px; background: #fff; }
+        .sidebar li { list-style: none; margin-bottom: 15px; }
+        .sidebar a { text-decoration: none; color: var(--primary); font-weight: 500; }
 
-        /* 主内容 */
+        /* 内容区 */
         .main-content { flex: 1; padding: 100px 50px 60px; max-width: 900px; }
         
-        /* Header 升级 */
-        .hero { margin-bottom: 60px; text-align: center; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
-        .trust-badges { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
-        .badge { background: #eff6ff; color: var(--accent); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9rem; }
+        /* 搜索框 */
+        .search-box { width: 100%; padding: 15px 20px; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; margin-bottom: 40px; }
+        .search-box:focus { outline: none; border-color: var(--accent); }
 
-        /* 分类与卡片 */
-        .category-section { margin-bottom: 80px; }
-        .category-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
-        .seo-description { color: var(--text-muted); margin-bottom: 30px; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-        .tool-card { background: #fff; border: 1px solid #e2e8f0; padding: 24px; border-radius: 8px; text-decoration: none; color: inherit; transition: 0.2s; }
+        /* 信任标识 */
+        .trust-badges { display: flex; gap: 15px; margin-bottom: 40px; }
+        .badge { background: #eff6ff; color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+
+        /* 工具网格 */
+        .category-section { margin-bottom: 60px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+        .tool-card { background: #fff; border: 1px solid var(--border); padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; transition: 0.2s; }
         .tool-card:hover { border-color: var(--accent); }
-        .tool-name { font-weight: 600; color: var(--accent); display: block; margin-bottom: 5px; }
-
-        /* FAQ 板块 */
-        .faq-section { background: #f8fafc; padding: 40px; border-radius: 12px; margin-top: 60px; }
-        .faq-item { margin-bottom: 20px; }
-        .faq-question { font-weight: 700; margin-bottom: 5px; }
-
-        @media (max-width: 768px) { body { flex-direction: column; } .sidebar { display: none; } .main-content { padding: 80px 20px; } }
+        .tool-name { font-weight: 600; display: block; color: var(--accent); }
+        
+        .faq-section { background: #f8fafc; padding: 30px; border-radius: 8px; margin-top: 50px; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#" class="logo">ToolsQuark</a>
-        <div><a href="#about" style="text-decoration:none; color:var(--primary)">About</a></div>
-    </nav>
+<nav class="navbar"><a href="#" class="logo">ToolsQuark</a></nav>
 
-    <nav class="sidebar">
-        <h3>Menu</h3>
-        <ul>
-            <li><a href="#mental">Mental Health</a></li>
-            <li><a href="#physical">Physical Health</a></li>
-            <li><a href="#lifestyle">Lifestyle</a></li>
-        </ul>
-    </nav>
+<nav class="sidebar">
+    <ul>
+        <li><a href="#mental">Mental Health</a></li>
+        <li><a href="#physical">Physical Health</a></li>
+        <li><a href="#lifestyle">Lifestyle</a></li>
+    </ul>
+</nav>
 
-    <main class="main-content">
-        <header class="hero">
-            <h1>Free Health & Wellness Tools</h1>
-            <p>Data-driven insights for a better, healthier life.</p>
-            <div class="trust-badges">
-                <span class="badge">✓ 100% Free</span>
-                <span class="badge">✓ No Registration</span>
-                <span class="badge">✓ Privacy First</span>
-            </div>
-        </header>
+<main class="main-content">
+    <h1>Health & Wellness Tools</h1>
+    <div class="trust-badges">
+        <span class="badge">✓ 100% Free</span>
+        <span class="badge">✓ No Registration</span>
+        <span class="badge">✓ Privacy First</span>
+    </div>
 
-        <section id="mental" class="category-section">
-            <h2 class="category-title">Mental Health & Behavioral Diagnostics</h2>
-            <p class="seo-description">Empower your mental well-being with our expert-designed diagnostics.</p>
-            <div class="tools-grid">
-                <a href="#" class="tool-card"><span class="tool-name">Stress Test</span><span class="tool-desc">Analyze your stress levels.</span></a>
-                <a href="#" class="tool-card"><span class="tool-name">Anxiety Test</span><span class="tool-desc">Understand your anxiety patterns.</span></a>
-            </div>
-        </section>
+    <input type="text" id="searchInput" class="search-box" placeholder="Search for calculators, tests, and trackers..." onkeyup="filterTools()">
 
-        <section class="faq-section">
-            <h2 class="category-title">Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <div class="faq-question">Is it really free?</div>
-                <p>Yes, all tools on ToolsQuark are 100% free to use. No hidden fees, ever.</p>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Do I need to sign up?</div>
-                <p>No registration or account is required. You can access all tools instantly.</p>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Is my information safe?</div>
-                <p>We prioritize your privacy. No data is stored or tracked on our servers; your results stay with you.</p>
-            </div>
-        </section>
-    </main>
+    <section id="mental" class="category-section">
+        <h2>Mental Health Diagnostics</h2>
+        <div class="tools-grid">
+            <a href="#" class="tool-card"><span class="tool-name">Stress Test</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">Anxiety Test</span></a>
+        </div>
+    </section>
+
+    <section id="physical" class="category-section">
+        <h2>Physical Health Calculators</h2>
+        <div class="tools-grid">
+            <a href="#" class="tool-card"><span class="tool-name">BMI Calculator</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">TDEE Calculator</span></a>
+        </div>
+    </section>
+
+    <section id="lifestyle" class="category-section">
+        <h2>Lifestyle & Productivity</h2>
+        <div class="tools-grid">
+            <a href="#" class="tool-card"><span class="tool-name">Sleep Calculator</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">Habit Tracker</span></a>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h3>Frequently Asked Questions</h3>
+        <p><strong>Is data stored?</strong> No, we prioritize privacy. All calculations happen in your browser.</p>
+        <p><strong>Do I need to sign up?</strong> Absolutely not. Enjoy all features for free.</p>
+    </section>
+</main>
+
+<script>
+    function filterTools() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('tool-card');
+        for (let card of cards) {
+            card.style.display = card.innerText.toLowerCase().includes(input) ? "" : "none";
+        }
+    }
+</script>
 </body>
 </html>
