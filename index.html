@@ -3,102 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolsQuark | 100% Free Health & Wellness Tools</title>
+    <title>ToolsQuark | Free Health Diagnostics & Calculators</title>
     <style>
-        :root { --primary: #0f172a; --accent: #2563eb; --bg: #fcfcfc; --border: #e2e8f0; }
-        * { box-sizing: border-box; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); margin: 0; display: flex; }
-
-        /* 顶部导航 */
-        .navbar { height: 60px; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 40px; position: fixed; width: 100%; background: #fff; z-index: 100; justify-content: space-between; }
-        .logo { font-weight: 800; font-size: 1.4rem; color: var(--accent); text-decoration: none; }
-
-        /* 侧边栏 */
-        .sidebar { width: 240px; height: calc(100vh - 60px); position: sticky; top: 60px; border-right: 1px solid var(--border); padding: 40px 20px; background: #fff; }
-        .sidebar li { list-style: none; margin-bottom: 15px; }
-        .sidebar a { text-decoration: none; color: var(--primary); font-weight: 500; }
-
-        /* 内容区 */
-        .main-content { flex: 1; padding: 100px 50px 60px; max-width: 900px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+        body { background: #f8fafc; color: #111827; line-height: 1.6; }
         
-        /* 搜索框 */
-        .search-box { width: 100%; padding: 15px 20px; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; margin-bottom: 40px; }
-        .search-box:focus { outline: none; border-color: var(--accent); }
+        /* 顶部导航栏 */
+        .navbar { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: 800; color: #2563eb; text-decoration: none; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: #4b5563; font-weight: 500; font-size: 14px; }
+        .nav-links a:hover { color: #2563eb; }
 
-        /* 信任标识 */
-        .trust-badges { display: flex; gap: 15px; margin-bottom: 40px; }
-        .badge { background: #eff6ff; color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .hero { text-align: center; margin-bottom: 50px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        
+        .search-container { max-width: 600px; margin: 0 auto 50px auto; }
+        .search-input { width: 100%; padding: 18px; border: 1px solid #d1d5db; border-radius: 12px; font-size: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
 
-        /* 工具网格 */
         .category-section { margin-bottom: 60px; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
-        .tool-card { background: #fff; border: 1px solid var(--border); padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; transition: 0.2s; }
-        .tool-card:hover { border-color: var(--accent); }
-        .tool-name { font-weight: 600; display: block; color: var(--accent); }
+        .category-title { font-size: 1.5rem; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
         
-        .faq-section { background: #f8fafc; padding: 30px; border-radius: 8px; margin-top: 50px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .tool-card { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; }
+        .tool-card:hover { border-color: #2563eb; transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .tool-name { font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+        .tool-desc { font-size: 0.9rem; color: #6b7280; }
+
+        .about-section { background: white; padding: 40px; border-radius: 16px; border: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
 
-<nav class="navbar"><a href="#" class="logo">ToolsQuark</a></nav>
-
-<nav class="sidebar">
-    <ul>
-        <li><a href="#mental">Mental Health</a></li>
-        <li><a href="#physical">Physical Health</a></li>
-        <li><a href="#lifestyle">Lifestyle</a></li>
-    </ul>
+<nav class="navbar">
+    <a href="#" class="logo">ToolsQuark</a>
+    <div class="nav-links">
+        <a href="#mental">Mental</a>
+        <a href="#physical">Physical</a>
+        <a href="#lifestyle">Lifestyle</a>
+        <a href="#about">About</a>
+    </div>
 </nav>
 
-<main class="main-content">
-    <h1>Health & Wellness Tools</h1>
-    <div class="trust-badges">
-        <span class="badge">✓ 100% Free</span>
-        <span class="badge">✓ No Registration</span>
-        <span class="badge">✓ Privacy First</span>
+<div class="container">
+    <header class="hero">
+        <h1>ToolsQuark</h1>
+        <p>100% Free. No Registration Required. Privacy-First Health Diagnostics.</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search tools (e.g. BMI, Anxiety, Sleep)..." oninput="filterTools()">
     </div>
 
-    <input type="text" id="searchInput" class="search-box" placeholder="Search for calculators, tests, and trackers..." onkeyup="filterTools()">
-
     <section id="mental" class="category-section">
-        <h2>Mental Health Diagnostics</h2>
+        <h2 class="category-title">Mental Health Diagnostics</h2>
         <div class="tools-grid">
-            <a href="#" class="tool-card"><span class="tool-name">Stress Test</span></a>
-            <a href="#" class="tool-card"><span class="tool-name">Anxiety Test</span></a>
+            <a href="#" class="tool-card"><div class="tool-name">Anxiety Test</div><div class="tool-desc">Evidence-based assessment for anxiety symptoms.</div></a>
+            <a href="#" class="tool-card"><div class="tool-name">Stress Test</div><div class="tool-desc">Identify current stress levels and triggers.</div></a>
+            <a href="#" class="tool-card"><div class="tool-name">Burnout Test</div><div class="tool-desc">Evaluate emotional and physical exhaustion.</div></a>
         </div>
     </section>
 
     <section id="physical" class="category-section">
-        <h2>Physical Health Calculators</h2>
+        <h2 class="category-title">Physical Health Calculators</h2>
         <div class="tools-grid">
-            <a href="#" class="tool-card"><span class="tool-name">BMI Calculator</span></a>
-            <a href="#" class="tool-card"><span class="tool-name">TDEE Calculator</span></a>
+            <a href="#" class="tool-card"><div class="tool-name">BMI Calculator</div><div class="tool-desc">Calculate body mass index efficiently.</div></a>
+            <a href="#" class="tool-card"><div class="tool-name">TDEE Calculator</div><div class="tool-desc">Understand your total energy expenditure.</div></a>
+            <a href="#" class="tool-card"><div class="tool-name">Water Intake</div><div class="tool-desc">Daily hydration guidance.</div></a>
         </div>
     </section>
 
     <section id="lifestyle" class="category-section">
-        <h2>Lifestyle & Productivity</h2>
+        <h2 class="category-title">Lifestyle & Productivity</h2>
         <div class="tools-grid">
-            <a href="#" class="tool-card"><span class="tool-name">Sleep Calculator</span></a>
-            <a href="#" class="tool-card"><span class="tool-name">Habit Tracker</span></a>
+            <a href="#" class="tool-card"><div class="tool-name">Sleep Calculator</div><div class="tool-desc">Optimize your sleep cycles.</div></a>
+            <a href="#" class="tool-card"><div class="tool-name">Habit Tracker</div><div class="tool-desc">Monitor your daily progress.</div></a>
         </div>
     </section>
 
-    <section class="faq-section">
-        <h3>Frequently Asked Questions</h3>
-        <p><strong>Is data stored?</strong> No, we prioritize privacy. All calculations happen in your browser.</p>
-        <p><strong>Do I need to sign up?</strong> Absolutely not. Enjoy all features for free.</p>
+    <section id="about" class="about-section">
+        <h2 class="category-title">About ToolsQuark</h2>
+        <p>ToolsQuark is a free, privacy-focused platform dedicated to providing accessible, data-driven health and wellness tools. We believe in empowering individuals to take charge of their well-being through clear, instant, and secure self-assessment methods. Our calculators and tests are designed to be intuitive and require no data storage, ensuring your privacy is always protected.</p>
     </section>
-</main>
+</div>
 
 <script>
     function filterTools() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('tool-card');
-        for (let card of cards) {
-            card.style.display = card.innerText.toLowerCase().includes(input) ? "" : "none";
-        }
+        const query = document.getElementById("searchInput").value.toLowerCase();
+        document.querySelectorAll(".tool-card").forEach(card => {
+            const text = (card.querySelector(".tool-name").textContent + card.querySelector(".tool-desc").textContent).toLowerCase();
+            card.style.display = text.includes(query) ? "flex" : "none";
+        });
     }
 </script>
 </body>
