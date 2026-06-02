@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tools | ToolsQuark</title>
+    <style>
+        :root { --primary: #0f172a; --accent: #2563eb; --text-muted: #64748b; --bg: #f8fafc; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; }
+        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        
+        .header { margin-bottom: 50px; }
+        .header h1 { font-size: 2.5rem; font-weight: 800; }
+        
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .tool-card { background: white; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; display: block; }
+        .tool-card:hover { border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(-3px); }
+        .tool-name { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .tool-desc { font-size: 0.9rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav style="margin-bottom: 20px; font-size: 0.9rem;">
+        <a href="index.html" style="color: var(--accent); text-decoration: none;">← Back to Home</a>
+    </nav>
+
+    <header class="header">
+        <h1>Health Tools</h1>
+        <p style="color: var(--text-muted);">Quantitative assessment tools to help you manage your physical condition through data science.</p>
+    </header>
+
+    <div class="tools-grid">
+        <a href="tools/bmi-calculator.html" class="tool-card"><span class="tool-name">BMI Calculator</span><span class="tool-desc">Standard body mass index assessment.</span></a>
+        <a href="tools/tdee-calculator.html" class="tool-card"><span class="tool-name">TDEE Calculator</span><span class="tool-desc">Map your total daily energy expenditure.</span></a>
+        <a href="tools/bmr-calculator.html" class="tool-card"><span class="tool-name">BMR Calculator</span><span class="tool-desc">Determine your basal metabolic rate.</span></a>
+        <a href="tools/body-fat-calculator.html" class="tool-card"><span class="tool-name">Body Fat Calculator</span><span class="tool-desc">Estimate your body fat percentage.</span></a>
+        <a href="tools/lean-body-mass-calculator.html" class="tool-card"><span class="tool-name">Lean Body Mass Calculator</span><span class="tool-desc">Calculate your weight excluding body fat.</span></a>
+        <a href="tools/waist-to-height-ratio-calculator.html" class="tool-card"><span class="tool-name">Waist-to-Height Ratio Calculator</span><span class="tool-desc">Assess body fat distribution.</span></a>
+        <a href="tools/healthy-weight-range-calculator.html" class="tool-card"><span class="tool-name">Healthy Weight Range Calculator</span><span class="tool-desc">Find your ideal weight zone.</span></a>
+        <a href="tools/water-intake-calculator.html" class="tool-card"><span class="tool-name">Water Intake Calculator</span><span class="tool-desc">Personalized daily hydration metrics.</span></a>
+        <a href="tools/due-date-calculator.html" class="tool-card"><span class="tool-name">Due Date Calculator</span><span class="tool-desc">Calculate your pregnancy due date.</span></a>
+        <a href="tools/period-calculator.html" class="tool-card"><span class="tool-name">Period Calculator</span><span class="tool-desc">Track and predict your cycle.</span></a>
+    </div>
+</div>
+
+</body>
+</html>
