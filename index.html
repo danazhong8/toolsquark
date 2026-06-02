@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolsQuark | Free Health Diagnostics & Calculators</title>
+    <title>ToolsQuark | Free Diagnostics & Calculators</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
         body { background: #f8fafc; color: #111827; line-height: 1.6; }
-        
+
         /* 顶部导航栏 */
         .navbar { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 24px; font-weight: 800; color: #2563eb; text-decoration: none; }
@@ -22,14 +22,14 @@
         .search-input { width: 100%; padding: 18px; border: 1px solid #d1d5db; border-radius: 12px; font-size: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
 
         .category-section { margin-bottom: 60px; }
-        .category-title { font-size: 1.5rem; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+        .category-title { font-size: 1.5rem; margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
         
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .tool-card { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; }
         .tool-card:hover { border-color: #2563eb; transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
         .tool-name { font-weight: 700; color: #1e293b; margin-bottom: 8px; }
         .tool-desc { font-size: 0.9rem; color: #6b7280; }
-
+        
         .about-section { background: white; padding: 40px; border-radius: 16px; border: 1px solid #e2e8f0; }
     </style>
 </head>
@@ -38,10 +38,10 @@
 <nav class="navbar">
     <a href="#" class="logo">ToolsQuark</a>
     <div class="nav-links">
-        <a href="#mental">Mental</a>
-        <a href="#physical">Physical</a>
-        <a href="#lifestyle">Lifestyle</a>
-        <a href="#about">About</a>
+        <a href="#physical">Health Tools</a>
+        <a href="#mental">Mental Health Tools</a>
+        <a href="#lifestyle">Lifestyle Tools</a>
+        <a href="#about">About Us</a>
     </div>
 </nav>
 
@@ -52,20 +52,11 @@
     </header>
 
     <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="Search tools (e.g. BMI, Anxiety, Sleep)..." oninput="filterTools()">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search tools..." oninput="filterTools()">
     </div>
 
-    <section id="mental" class="category-section">
-        <h2 class="category-title">Mental Health Diagnostics</h2>
-        <div class="tools-grid">
-            <a href="#" class="tool-card"><div class="tool-name">Anxiety Test</div><div class="tool-desc">Evidence-based assessment for anxiety symptoms.</div></a>
-            <a href="#" class="tool-card"><div class="tool-name">Stress Test</div><div class="tool-desc">Identify current stress levels and triggers.</div></a>
-            <a href="#" class="tool-card"><div class="tool-name">Burnout Test</div><div class="tool-desc">Evaluate emotional and physical exhaustion.</div></a>
-        </div>
-    </section>
-
     <section id="physical" class="category-section">
-        <h2 class="category-title">Physical Health Calculators</h2>
+        <h2 class="category-title">Health Tools</h2>
         <div class="tools-grid">
             <a href="#" class="tool-card"><div class="tool-name">BMI Calculator</div><div class="tool-desc">Calculate body mass index efficiently.</div></a>
             <a href="#" class="tool-card"><div class="tool-name">TDEE Calculator</div><div class="tool-desc">Understand your total energy expenditure.</div></a>
@@ -73,17 +64,27 @@
         </div>
     </section>
 
+    <section id="mental" class="category-section">
+        <h2 class="category-title">Mental Health Tools</h2>
+        <div class="tools-grid">
+            <a href="#" class="tool-card"><div class="tool-name">Anxiety Test</div><div class="tool-desc">Evidence-based assessment for anxiety.</div></a>
+            <a href="#" class="tool-card"><div class="tool-name">Stress Test</div><div class="tool-desc">Identify current stress levels.</div></a>
+            <a href="#" class="tool-card"><div class="tool-name">Burnout Test</div><div class="tool-desc">Evaluate emotional exhaustion.</div></a>
+        </div>
+    </section>
+
     <section id="lifestyle" class="category-section">
-        <h2 class="category-title">Lifestyle & Productivity</h2>
+        <h2 class="category-title">Lifestyle Tools</h2>
         <div class="tools-grid">
             <a href="#" class="tool-card"><div class="tool-name">Sleep Calculator</div><div class="tool-desc">Optimize your sleep cycles.</div></a>
             <a href="#" class="tool-card"><div class="tool-name">Habit Tracker</div><div class="tool-desc">Monitor your daily progress.</div></a>
+            <a href="#" class="tool-card"><div class="tool-name">Motivation Score</div><div class="tool-desc">Assess your goal drive.</div></a>
         </div>
     </section>
 
     <section id="about" class="about-section">
-        <h2 class="category-title">About ToolsQuark</h2>
-        <p>ToolsQuark is a free, privacy-focused platform dedicated to providing accessible, data-driven health and wellness tools. We believe in empowering individuals to take charge of their well-being through clear, instant, and secure self-assessment methods. Our calculators and tests are designed to be intuitive and require no data storage, ensuring your privacy is always protected.</p>
+        <h2 class="category-title">About Us</h2>
+        <p>ToolsQuark is a free, privacy-focused platform providing accessible, data-driven health and wellness tools. We believe in empowering individuals to take charge of their well-being through instant, secure self-assessment methods. All tools are free and require no data storage.</p>
     </section>
 </div>
 
@@ -92,7 +93,7 @@
         const query = document.getElementById("searchInput").value.toLowerCase();
         document.querySelectorAll(".tool-card").forEach(card => {
             const text = (card.querySelector(".tool-name").textContent + card.querySelector(".tool-desc").textContent).toLowerCase();
-            card.style.display = text.includes(query) ? "flex" : "none";
+            card.style.display = text.includes(query) ? "block" : "none";
         });
     }
 </script>
