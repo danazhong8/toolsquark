@@ -48,7 +48,7 @@
         .tool-desc { font-size: 0.95rem; color: var(--text-muted); }
 
         .view-all-btn { display: inline-block; margin-top: 25px; padding: 12px 24px; background: var(--accent); color: white; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; }
-        .faq-section { margin-top: 80px; }
+        .faq-section, .about-section { margin-top: 80px; }
         .faq-item { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb; margin-bottom: 20px; }
     </style>
 </head>
@@ -73,15 +73,34 @@
         <input type="text" id="searchInput" class="search-input" placeholder="Search calculators, tests, and trackers..." oninput="filterTools()">
     </div>
 
+    <section id="physical" class="category-section">
+        <h2 class="category-title" onclick="location.href='#physical'">Health Tools</h2>
+        <div class="tools-grid" id="physical-list">
+            <a href="#" class="tool-card"><span class="tool-name">BMI Calculator</span><span class="tool-desc">Standard body mass index assessment.</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">TDEE Calculator</span><span class="tool-desc">Map your total daily energy expenditure.</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">Water Intake</span><span class="tool-desc">Personalized daily hydration metrics.</span></a>
+        </div>
+        <button class="view-all-btn" onclick="showAll('physical-list', this)">View All Health Tools +</button>
+    </section>
+
     <section id="mental" class="category-section">
         <h2 class="category-title" onclick="location.href='#mental'">Mental Health Tools</h2>
         <div class="tools-grid" id="mental-list">
             <a href="#" class="tool-card"><span class="tool-name">Stress Test</span><span class="tool-desc">Analyze current stress triggers.</span></a>
             <a href="#" class="tool-card"><span class="tool-name">Anxiety Test</span><span class="tool-desc">Evidence-based anxiety screening.</span></a>
             <a href="#" class="tool-card"><span class="tool-name">Burnout Test</span><span class="tool-desc">Evaluate emotional exhaustion levels.</span></a>
-            <a href="#" class="tool-card hidden-tool" style="display:none;"><span class="tool-name">More Tool 1</span><span class="tool-desc">Additional description here.</span></a>
         </div>
         <button class="view-all-btn" onclick="showAll('mental-list', this)">View All Mental Health Tools +</button>
+    </section>
+
+    <section id="lifestyle" class="category-section">
+        <h2 class="category-title" onclick="location.href='#lifestyle'">Lifestyle Tools</h2>
+        <div class="tools-grid" id="lifestyle-list">
+            <a href="#" class="tool-card"><span class="tool-name">Sleep Calculator</span><span class="tool-desc">Optimize your sleep cycles.</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">Habit Tracker</span><span class="tool-desc">Build consistency in your routines.</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">Motivation Score</span><span class="tool-desc">Assess your goal drive & alignment.</span></a>
+        </div>
+        <button class="view-all-btn" onclick="showAll('lifestyle-list', this)">View All Lifestyle Tools +</button>
     </section>
 
     <section id="faq" class="faq-section">
@@ -90,6 +109,11 @@
             <h3>How should I interpret my test results?</h3>
             <p style="color: var(--text-muted);">Our diagnostics provide a baseline indication. Results are self-awareness indicators, not clinical diagnoses. Please consult a professional for medical advice.</p>
         </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2 class="category-title">About Us</h2>
+        <p style="color: var(--text-muted);">ToolsQuark is a free, privacy-focused platform. We provide data-driven insights to help you take charge of your wellness journey. No data is stored, and no registration is ever required.</p>
     </section>
 </div>
 
