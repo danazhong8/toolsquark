@@ -35,25 +35,27 @@
         .search-container { max-width: 600px; margin: 0 auto 60px auto; }
         .search-input { width: 100%; padding: 20px; border: 2px solid #e2e8f0; border-radius: 16px; font-size: 16px; }
 
-        /* 分类与卡片 - 增加交互样式 */
+        /* 分类标题：加粗的 → */
         .category-section { margin-bottom: 80px; }
         .category-title { 
             font-size: 1.75rem; font-weight: 800; margin-bottom: 30px; 
             cursor: pointer; display: flex; align-items: center; 
         }
         .category-title::after { 
-            content: '》'; font-size: 1.2rem; margin-left: 10px; 
-            color: var(--accent); transition: 0.2s; 
+            content: '→'; font-size: 1.5rem; margin-left: 10px; 
+            font-weight: 900; color: var(--accent); transition: 0.2s; 
         }
         .category-title:hover::after { transform: translateX(5px); }
         
+        /* 无箭头的标题类（用于 FAQ 和 About） */
+        .no-arrow::after { content: none !important; }
+
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
         .tool-card { background: white; padding: 30px; border-radius: 16px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; }
         .tool-card:hover { border-color: var(--accent); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); transform: translateY(-5px); }
         .tool-name { font-weight: 700; display: block; font-size: 1.1rem; margin-bottom: 8px; }
         .tool-desc { font-size: 0.95rem; color: var(--text-muted); }
 
-        /* 引导按钮 */
         .view-all-btn { display: inline-block; margin-top: 25px; padding: 12px 24px; background: var(--accent); color: white; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; }
 
         .faq-section { margin-top: 80px; }
@@ -117,7 +119,7 @@
     </section>
 
     <section id="faq" class="faq-section">
-        <h2 class="category-title" style="cursor: default;">Frequently Asked Questions</h2>
+        <h2 class="category-title no-arrow" style="cursor: default;">Frequently Asked Questions</h2>
         <div class="faq-grid">
             <div class="faq-item">
                 <h3>如何解读测试结果？</h3>
@@ -131,7 +133,7 @@
     </section>
 
     <section id="about" class="about-section">
-        <h2 class="category-title">About Us</h2>
+        <h2 class="category-title no-arrow">About Us</h2>
         <p style="color: var(--text-muted);">ToolsQuark is a free, privacy-focused platform. We provide data-driven insights to help you take charge of your wellness journey. No data is stored, and no registration is ever required.</p>
     </section>
 </div>
