@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Tools | ToolsQuark</title>
+    <style>
+        :root { --primary: #0f172a; --accent: #2563eb; --text-muted: #64748b; --bg: #f8fafc; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; }
+        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        .header { margin-bottom: 50px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .tool-card { background: white; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; display: block; }
+        .tool-card:hover { border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(-3px); }
+        .tool-name { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .tool-desc { font-size: 0.9rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav style="margin-bottom: 20px; font-size: 0.9rem;">
+        <a href="index.html" style="color: var(--accent); text-decoration: none;">← Back to Home</a>
+    </nav>
+
+    <header class="header">
+        <h1>Mental Health Tools</h1>
+        <p style="color: var(--text-muted);">Scientific assessment tools to help you understand and improve your psychological well-being.</p>
+    </header>
+
+    <div class="tools-grid">
+        <a href="tools/stress-index-test.html" class="tool-card"><span class="tool-name">Stress Index Test</span><span class="tool-desc">Measure your current stress load.</span></a>
+        <a href="tools/anxiety-hyperarousal-assessment.html" class="tool-card"><span class="tool-name">Anxiety Hyperarousal Assessment</span><span class="tool-desc">Evaluate hyperarousal symptoms.</span></a>
+        <a href="tools/social-anxiety-test.html" class="tool-card"><span class="tool-name">Social Anxiety Test</span><span class="tool-desc">Assess social interaction anxiety.</span></a>
+        <a href="tools/occupational-burnout-level-test.html" class="tool-card"><span class="tool-name">Occupational Burnout Level Test</span><span class="tool-desc">Detect signs of work-related burnout.</span></a>
+        <a href="tools/cognitive-overthinking-test.html" class="tool-card"><span class="tool-name">Cognitive Overthinking Test</span><span class="tool-desc">Identify habitual overthinking patterns.</span></a>
+        <a href="tools/focus-attention-diagnostic.html" class="tool-card"><span class="tool-name">Focus Attention Diagnostic</span><span class="tool-desc">Examine your concentration capabilities.</span></a>
+        <a href="tools/loneliness-level-test.html" class="tool-card"><span class="tool-name">Loneliness Level Test</span><span class="tool-desc">Gauge your subjective feeling of isolation.</span></a>
+    </div>
+</div>
+
+</body>
+</html>

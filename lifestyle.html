@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle Tools | ToolsQuark</title>
+    <style>
+        :root { --primary: #0f172a; --accent: #2563eb; --text-muted: #64748b; --bg: #f8fafc; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; }
+        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        .header { margin-bottom: 50px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .tool-card { background: white; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; display: block; }
+        .tool-card:hover { border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(-3px); }
+        .tool-name { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .tool-desc { font-size: 0.9rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav style="margin-bottom: 20px; font-size: 0.9rem;">
+        <a href="index.html" style="color: var(--accent); text-decoration: none;">← Back to Home</a>
+    </nav>
+
+    <header class="header">
+        <h1>Lifestyle Tools</h1>
+        <p style="color: var(--text-muted);">Practical daily trackers and assessments to optimize your productivity, habits, and overall lifestyle.</p>
+    </header>
+
+    <div class="tools-grid">
+        <a href="tools/sleep-calculator.html" class="tool-card"><span class="tool-name">Sleep Calculator</span><span class="tool-desc">Plan your ideal sleep cycles.</span></a>
+        <a href="tools/sleep-quality-assessment.html" class="tool-card"><span class="tool-name">Sleep Quality Assessment</span><span class="tool-desc">Evaluate your nightly rest quality.</span></a>
+        <a href="tools/daily-steps-goal-calculator.html" class="tool-card"><span class="tool-name">Daily Steps Goal Calculator</span><span class="tool-desc">Set personalized activity targets.</span></a>
+        <a href="tools/steps-to-calories-converter.html" class="tool-card"><span class="tool-name">Steps to Calories Converter</span><span class="tool-desc">Calculate calories burned via walking.</span></a>
+        <a href="tools/age-calculator.html" class="tool-card"><span class="tool-name">Age Calculator</span><span class="tool-desc">Precise time-lived calculation.</span></a>
+        <a href="tools/procrastination-test.html" class="tool-card"><span class="tool-name">Procrastination Test</span><span class="tool-desc">Identify your delay tendencies.</span></a>
+        <a href="tools/self-discipline-test.html" class="tool-card"><span class="tool-name">Self-Discipline Test</span><span class="tool-desc">Measure your self-regulation capability.</span></a>
+        <a href="tools/smartphone-addiction-test.html" class="tool-card"><span class="tool-name">Smartphone Addiction Test</span><span class="tool-desc">Assess your digital screen usage.</span></a>
+        <a href="tools/social-media-addiction-index.html" class="tool-card"><span class="tool-name">Social Media Addiction Index</span><span class="tool-desc">Evaluate your social platform habits.</span></a>
+    </div>
+</div>
+
+</body>
+</html>
