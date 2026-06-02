@@ -35,7 +35,7 @@
         .search-container { max-width: 600px; margin: 0 auto 60px auto; }
         .search-input { width: 100%; padding: 20px; border: 2px solid #e2e8f0; border-radius: 16px; font-size: 16px; }
 
-        /* 分类标题：加粗的 → */
+        /* Category Title: Bold arrow → */
         .category-section { margin-bottom: 80px; }
         .category-title { 
             font-size: 1.75rem; font-weight: 800; margin-bottom: 30px; 
@@ -47,7 +47,7 @@
         }
         .category-title:hover::after { transform: translateX(5px); }
         
-        /* 无箭头的标题类（用于 FAQ 和 About） */
+        /* Titles without arrows (for FAQ and About) */
         .no-arrow::after { content: none !important; }
 
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
@@ -95,17 +95,17 @@
             <a href="#" class="tool-card"><span class="tool-name">TDEE Calculator</span><span class="tool-desc">Map your total daily energy expenditure.</span></a>
             <a href="#" class="tool-card"><span class="tool-name">Water Intake</span><span class="tool-desc">Personalized daily hydration metrics.</span></a>
         </div>
-        <button class="view-all-btn">查看更多健康工具 +</button>
+        <button class="view-all-btn">View All Health Tools +</button>
     </section>
 
     <section id="mental" class="category-section">
-        <h2 class="category-title" onclick="location.href='#mental'">心理健康工具</h2>
+        <h2 class="category-title" onclick="location.href='#mental'">Mental Health Tools</h2>
         <div class="tools-grid">
-            <a href="#" class="tool-card"><span class="tool-name">压力测试</span><span class="tool-desc">分析当前的压力诱因。</span></a>
-            <a href="#" class="tool-card"><span class="tool-name">焦虑测试</span><span class="tool-desc">基于实证的焦虑筛查。</span></a>
-            <a href="#" class="tool-card"><span class="tool-name">倦怠测试</span><span class="tool-desc">评估情绪耗竭程度。</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">Stress Test</span><span class="tool-desc">Analyze current stress triggers.</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">Anxiety Test</span><span class="tool-desc">Evidence-based anxiety screening.</span></a>
+            <a href="#" class="tool-card"><span class="tool-name">Burnout Test</span><span class="tool-desc">Evaluate emotional exhaustion levels.</span></a>
         </div>
-        <button class="view-all-btn">查看更多心理健康工具 +</button>
+        <button class="view-all-btn">View All Mental Health Tools +</button>
     </section>
 
     <section id="lifestyle" class="category-section">
@@ -115,19 +115,27 @@
             <a href="#" class="tool-card"><span class="tool-name">Habit Tracker</span><span class="tool-desc">Build consistency in your routines.</span></a>
             <a href="#" class="tool-card"><span class="tool-name">Motivation Score</span><span class="tool-desc">Assess your goal drive & alignment.</span></a>
         </div>
-        <button class="view-all-btn">查看更多生活方式工具 +</button>
+        <button class="view-all-btn">View All Lifestyle Tools +</button>
     </section>
 
     <section id="faq" class="faq-section">
-        <h2 class="category-title no-arrow" style="cursor: default;">Frequently Asked Questions</h2>
-        <div class="faq-grid">
+        <h2 class="category-title no-arrow" style="cursor: default;">Features & Commitments</h2>
+        <div class="faq-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
             <div class="faq-item">
-                <h3>如何解读测试结果？</h3>
-                <p style="color: var(--text-muted);">本站工具提供的结果仅供参考，不作为临床诊断依据。如果您感到长期困扰，建议寻求专业医疗机构或心理咨询师的帮助。</p>
+                <h3>Health Calculator Section</h3>
+                <p style="color: var(--text-muted);">Focuses on the quantitative assessment of physiological indicators, providing tools like <strong>BMI, TDEE, Body Fat, Daily Water Intake, and Sleep Cycle</strong> calculations. Helps you manage your physical condition through data-driven science.</p>
             </div>
             <div class="faq-item">
-                <h3>数据是否会被存储？</h3>
-                <p style="color: var(--text-muted);">隐私是我们的最高优先级。我们不会在服务器端存储您的任何健康数据，所有计算过程均在您的浏览器本地完成。</p>
+                <h3>Mental Health Assessment Section</h3>
+                <p style="color: var(--text-muted);">Based on a scientifically validated psychological assessment system, covering <strong>Stress, Anxiety, Burnout, Social Anxiety, and Overthinking</strong> tests. Helps you monitor psychological fluctuations and regulate your emotional state.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Lifestyle Tools Section</h3>
+                <p style="color: var(--text-muted);">Dedicated to cultivating positive habits, offering <strong>Sleep Optimization, Habit Tracking, and Motivation Score</strong> tools. From habit building to goal-driven actions, we help elevate your overall quality of life.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Privacy & Free Commitment</h3>
+                <p style="color: var(--text-muted);">We are committed to being <strong>100% free and registration-free</strong>. All calculations and tests are processed locally in your browser in real-time; we do not store or track any personal privacy data, ensuring your assessment process is completely secure.</p>
             </div>
         </div>
     </section>
