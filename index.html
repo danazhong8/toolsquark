@@ -73,33 +73,7 @@
         .faq-item h3 { margin-bottom: 10px; }
 
         .about-section { background: white; padding: 50px; border-radius: 24px; border: 1px solid #e2e8f0; margin-top: 40px; }
-    /* --- 新增：视觉引导样式 --- */
-
-/* 分类标题样式：增加点击手势提示 */
-.category-title { 
-    cursor: pointer; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-.category-title:hover { color: #2563eb; }
-
-/* “查看更多”按钮样式 */
-.view-all-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #e2e8f0;
-    color: #475569;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: 0.3s;
-    cursor: pointer;
-    border: none;
-}
-.view-all-btn:hover { background: #2563eb; color: white; }
-</style>
+    </style>
 </head>
 <body>
 
@@ -130,19 +104,6 @@
     <section id="physical" class="category-section">
         <h2 class="category-title">Health Tools</h2>
         <div class="tools-grid">
-<section id="mental" class="category-section">
-    <h2 class="category-title" onclick="location.href='#mental'">Mental Health Tools <span>&rarr;</span></h2>
-    
-    <div class="tools-grid" id="mental-list">
-        <a href="#" class="tool-card"><span class="tool-name">Stress Test</span>...</a>
-        <a href="#" class="tool-card"><span class="tool-name">Anxiety Test</span>...</a>
-        <a href="#" class="tool-card"><span class="tool-name">Burnout Test</span>...</a>
-        
-        <a href="#" class="tool-card" style="display:none;"><span class="tool-name">More Tool 1</span>...</a>
-    </div>
-    
-    <button class="view-all-btn" onclick="showAll('mental-list', this)">View All Mental Health Tools +</button>
-</section>
             <a href="#" class="tool-card"><span class="tool-name">BMI Calculator</span><span class="tool-desc">Standard body mass index assessment.</span></a>
             <a href="#" class="tool-card"><span class="tool-name">TDEE Calculator</span><span class="tool-desc">Map your total daily energy expenditure.</span></a>
             <a href="#" class="tool-card"><span class="tool-name">Water Intake</span><span class="tool-desc">Personalized daily hydration metrics.</span></a>
@@ -188,22 +149,7 @@
 </div>
 
 <script>
-    function filterTools() <script>
-    // 原有的 filterTools 函数保持不变...
-
-    // 新增：展开隐藏工具的逻辑
-    function showAll(listId, btn) {
-        // 找到该容器下所有被隐藏的卡片
-        const cards = document.querySelectorAll(`#${listId} .tool-card`);
-        cards.forEach(card => {
-            if (card.style.display === 'none') {
-                card.style.display = 'block'; // 或 'flex'，取决于你的布局
-            }
-        });
-        // 隐藏“查看更多”按钮
-        btn.style.display = 'none';
-    }
-</script>{
+    function filterTools() {
         const query = document.getElementById("searchInput").value.toLowerCase();
         document.querySelectorAll(".tool-card").forEach(card => {
             const text = (card.querySelector(".tool-name").textContent + card.querySelector(".tool-desc").textContent).toLowerCase();
