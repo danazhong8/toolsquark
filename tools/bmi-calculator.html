@@ -66,7 +66,29 @@
 </head>
 <body>
 
-</div>
+  <div class="container">
+    
+    <div class="hero">
+      <h1>BMI Calculator</h1>
+      <p>Calculate your Body Mass Index (BMI) instantly to evaluate your body weight relative to your height and understand your general health status.</p>
+    </div>
+
+    <div class="card">
+      <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+
+      <div id="inputsForm"></div>
+
+      <button class="btn-submit" onclick="performCalculation()">Calculate Now</button>
+
+      <div id="resultBox" class="result-box">
+        <div class="result-title">Calculation Success</div>
+        <div id="resultVal" class="result-value">--</div>
+        <div class="result-desc">
+          <strong>Professional Interpretation:</strong><br>
+          Your Body Mass Index (BMI) has been successfully calculated. A standard healthy BMI ranges from 18.5 to 24.9. Please note that while BMI is a highly efficient clinical screening tool for weight categories, it does not directly measure body fat percentage or muscle tissue distribution.
+        </div>
+      </div>
+    </div>
 <div class="card">
     <h3>Recommended Tools</h3>
     <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
@@ -79,8 +101,6 @@
         <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
     </a>
 </div>
-    </div>
-
     <div class="card">
       <h3>FAQ</h3>
       <div class='faq-item'><strong>What are the standard BMI weight classifications?</strong><p>According to global health criteria: Underweight is defined as below 18.5, Healthy Weight spans 18.5–24.9, Overweight covers 25–29.9, and Obesity is categorized at 30 or above.</p></div><div class='faq-item'><strong>Why can BMI sometimes be inaccurate for athletes?</strong><p>BMI calculates purely based on total weight and height parameters. Because muscle mass is significantly denser than fat tissue, highly muscular individuals or athletes may be categorized as 'overweight' despite having low body fat levels.</p></div>
