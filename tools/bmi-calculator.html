@@ -3,70 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BMI Calculator - ToolsQuark</title>
+  <title>BMI Calculator | ToolsQuark</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f6f9; margin: 0; padding: 24px; color: #1f2937; -webkit-font-smoothing: antialiased; }
-    .calc-container { max-width: 640px; margin: 30px auto; }
+    /* 完全对齐 template.html 的全局基础样式与色彩 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f5f7fb; color: #222; line-height: 1.6; padding: 20px; }
     
-    /* Premium Indigo-Blue Gradient Header Box */
-    .calc-header { background: linear-gradient(135deg, #4f46e5, #2563eb); padding: 36px 30px; border-radius: 24px; color: #fff; text-align: left; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.15), 0 4px 10px -5px rgba(37, 99, 235, 0.1); }
-    .calc-header h1 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -0.025em; }
-    .calc-header p { margin: 14px 0 0; font-size: 15px; opacity: 0.85; line-height: 1.6; font-weight: 400; }
+    /* 容器最大宽度对齐 template 的 800px 级别 */
+    .container { max-width: 800px; margin: auto; }
     
-    /* Home link below the blue banner block */
-    .nav-back { display: inline-block; margin: 20px 0 16px 4px; color: #9ca3af; text-decoration: none; font-size: 14px; text-align: left; transition: color 0.2s ease; font-weight: 500; }
-    .nav-back:hover { color: #2563eb; }
+    /* 头部 Banner 渐变及阴影完全同步 .hero 样式 */
+    .hero { background: linear-gradient(135deg, #2563eb, #4f46e5); color: white; padding: 40px 30px; border-radius: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0, 0, 0, .15); text-align: left; }
+    .hero h1 { font-size: 36px; margin-bottom: 15px; font-weight: bold; }
+    .hero p { font-size: 17px; opacity: .95; }
     
-    /* Main Content Card Box */
-    .calc-content-card { background: #fff; padding: 36px; border-radius: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+    /* 内容卡片完全同步 .card 样式 */
+    .card { background: white; padding: 25px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, .08); text-align: left; }
     
-    .range-badge { display: inline-block; background: #eff6ff; color: #2563eb; padding: 6px 16px; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 26px; text-align: left; border: 1px solid #bfdbfe; }
-    .input-group { margin-bottom: 24px; text-align: left; }
-    .input-group label { display: block; font-size: 14px; font-weight: 600; color: #4b5563; margin-bottom: 10px; }
+    /* 导航返回按钮样式同步 .back-home-btn */
+    .back-home-btn { font-size: 15px; color: #64748b; text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap; cursor: pointer; font-weight: 500; background: transparent; border: none; padding: 0; margin-bottom: 20px; }
+    .back-home-btn:hover { color: #2563eb; }
     
-    /* Refined Modern Input Wrapper */
-    .input-wrapper { display: flex; align-items: center; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; overflow: hidden; transition: all 0.2s ease-in-out; position: relative; }
-    .input-wrapper:focus-within { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12); }
-    .input-wrapper input { flex: 1; border: none; padding: 14px 16px; font-size: 16px; outline: none; width: 100%; color: #111827; font-weight: 400; background: transparent; }
+    /* H3 标题样式同步 */
+    h3 { font-size: 18px; font-weight: bold; color: #222; margin-bottom: 15px; }
+    
+    /* 正常范围范围标签样式微调，使其自然融入卡片 */
+    .range-badge { display: inline-block; background: #eff6ff; color: #2563eb; padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 20px; border: 1px solid #bfdbfe; }
+    
+    /* 输入表单项布局 */
+    .input-group { margin-bottom: 20px; }
+    .input-group label { display: block; font-size: 15px; font-weight: bold; color: #333; margin-bottom: 8px; }
+    
+    /* 输入框容器及交互态对齐 */
+    .input-wrapper { display: flex; align-items: center; border: 2px solid #e5e7eb; border-radius: 15px; background: #fff; overflow: hidden; transition: .2s; position: relative; }
+    .input-wrapper:hover { border-color: #2563eb; }
+    .input-wrapper:focus-within { border-color: #2563eb; background: #eff6ff; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08); }
+    .input-wrapper input { flex: 1; border: none; padding: 14px 16px; font-size: 16px; outline: none; width: 100%; color: #222; background: transparent; }
     .input-wrapper input::placeholder { color: #9ca3af; }
+    .input-unit { color: #64748b; padding: 0 16px; font-size: 14px; font-weight: bold; background: transparent; pointer-events: none; }
     
-    /* Floating minimalistic unit token instead of the heavy gray box */
-    .input-unit { color: #6b7280; padding: 0 18px; font-size: 14px; text-align: center; font-weight: 500; background: transparent; pointer-events: none; }
+    /* 提交动作按钮，融合 template 主色调与动效 */
+    .btn-submit { display: block; width: 100%; background: #2563eb; color: #fff; border: none; padding: 16px; border-radius: 15px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: .2s; }
+    .btn-submit:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15); }
     
-    .btn-submit { display: block; width: 100%; background: #2563eb; color: #fff; border: none; padding: 15px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 28px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
-    .btn-submit:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25); }
-    .btn-submit:active { transform: translateY(0); }
+    /* 结果反馈面板样式同步 .insight 概念 */
+    .result-box { display: none; margin-top: 25px; padding: 20px; border-radius: 15px; background: #eff6ff; border: 2px dashed #bfdbfe; }
+    .result-title { font-size: 15px; font-weight: bold; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+    .result-value { font-size: 55px; font-weight: bold; color: #2563eb; margin: 5px 0; letter-spacing: -0.02em; }
+    .result-desc { font-size: 15px; color: #555; line-height: 1.6; margin-top: 12px; border-top: 1px solid #dbeafe; padding-top: 12px; }
+    .result-desc strong { color: #222; }
     
-    /* Smooth Result Dashboard */
-    .result-box { display: none; margin-top: 32px; padding: 26px; border: 1px dashed #bfdbfe; border-radius: 16px; background: #f8fafc; transition: all 0.3s ease; }
-    .result-title { font-size: 16px; font-weight: 600; color: #475569; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; }
-    .result-value { font-size: 48px; font-weight: 800; color: #2563eb; margin: 12px 0; text-align: center; letter-spacing: -0.03em; }
-    .result-desc { font-size: 14px; color: #4b5563; line-height: 1.65; margin-top: 16px; border-top: 1px solid #e2e8f0; padding-top: 16px; text-align: left; }
-    .result-desc strong { color: #1f2937; display: inline-block; margin-bottom: 4px; }
+    /* FAQ 模块结构完全同步 template 的布局 */
+    .faq-item { margin-bottom: 15px; }
+    .faq-item strong { display: block; font-size: 16px; color: #222; margin-bottom: 4px; font-weight: bold; }
+    .faq-item p { margin: 0; font-size: 15px; color: #555; }
     
-    /* Decoupled FAQ Flow Layout matching reference image */
-    .faq-section { margin-top: 40px; border-top: 1px solid #f1f5f9; padding-top: 28px; }
-    .faq-title { font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 22px; text-align: left; letter-spacing: -0.01em; }
-    .faq-item { margin-bottom: 24px; text-align: left; }
-    .faq-item strong { display: block; font-size: 15px; color: #1f2937; margin-bottom: 8px; font-weight: 600; line-height: 1.4; }
-    .faq-item p { margin: 0; font-size: 14px; color: #4b5563; line-height: 1.65; }
+    footer { text-align: center; margin-top: 30px; color: #777; font-size: 14px; }
+    @media(max-width:768px){ .hero h1{ font-size:28px; } .result-value { font-size:45px; } }
   </style>
 </head>
 <body>
 
-  <div class="calc-container">
+  <div class="container">
     
-    <div class="calc-header">
+    <div class="hero">
       <h1>BMI Calculator</h1>
       <p>Calculate your Body Mass Index (BMI) instantly to evaluate your body weight relative to your height and understand your general health status.</p>
     </div>
 
-    <div style="text-align: left;">
-      <a href="/" class="nav-back">&larr; Home</a>
-    </div>
-
-    <div class="calc-content-card">
-      <div style="text-align: left;">
+    <div class="card">
+      <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+      
+      <div>
         <div class="range-badge">Normal Range: Healthy Range: 18.5 - 24.9</div>
       </div>
 
@@ -78,21 +86,22 @@
         <div class="result-title">Calculation Success</div>
         <div id="resultVal" class="result-value">--</div>
         <div class="result-desc">
-          <strong>Professional Interpretation & Suggestion:</strong><br>
+          <strong>Professional Interpretation:</strong><br>
           Your Body Mass Index (BMI) has been successfully calculated. A standard healthy BMI ranges from 18.5 to 24.9. Please note that while BMI is a highly efficient clinical screening tool for weight categories, it does not directly measure body fat percentage or muscle tissue distribution.
         </div>
       </div>
-
-      <div class="faq-section">
-        <div class="faq-title">Frequently Asked Questions</div>
-        <div class='faq-item'><strong>What are the standard BMI weight classifications?</strong><p>According to global health criteria: Underweight is defined as below 18.5, Healthy Weight spans 18.5–24.9, Overweight covers 25–29.9, and Obesity is categorized at 30 or above.</p></div><div class='faq-item'><strong>Why can BMI sometimes be inaccurate for athletes?</strong><p>BMI calculates purely based on total weight and height parameters. Because muscle mass is significantly denser than fat tissue, highly muscular individuals or athletes may be categorized as 'overweight' despite having low body fat levels.</p></div>
-      </div>
     </div>
 
+    <div class="card">
+      <h3>FAQ</h3>
+      <div class='faq-item'><strong>What are the standard BMI weight classifications?</strong><p>According to global health criteria: Underweight is defined as below 18.5, Healthy Weight spans 18.5–24.9, Overweight covers 25–29.9, and Obesity is categorized at 30 or above.</p></div><div class='faq-item'><strong>Why can BMI sometimes be inaccurate for athletes?</strong><p>BMI calculates purely based on total weight and height parameters. Because muscle mass is significantly denser than fat tissue, highly muscular individuals or athletes may be categorized as 'overweight' despite having low body fat levels.</p></div>
+    </div>
+
+    <footer>© 2026 ToolsQuark</footer>
   </div>
 
   <script>
-    // Robust Base64 Decoding Pipeline
+    // 保持底层原有的 Base64 逻辑与公式动态解析逻辑不变
     const rawB64 = `W3siaWQiOiJ3ZWlnaHQiLCJsYWJlbCI6IldlaWdodCIsInVuaXQiOiJrZyIsInBsYWNlaG9sZGVyIjoiNjUifSx7ImlkIjoiaGVpZ2h0IiwibGFiZWwiOiJIZWlnaHQiLCJ1bml0IjoiY20iLCJwbGFjZWhvbGRlciI6IjE3MCJ9XQ==`;
     const inputConfigs = JSON.parse(decodeURIComponent(escape(window.atob(rawB64))));
     const formContainer = document.getElementById("inputsForm");
@@ -110,6 +119,10 @@
         `;
         formContainer.appendChild(group);
       });
+    }
+
+    function handleBackHome(){ 
+      if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; 
     }
 
     function performCalculation() {
