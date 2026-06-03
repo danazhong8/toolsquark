@@ -1,171 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BMI Calculator | ToolsQuark</title>
-  <style>
-    /* 完全对齐 template.html 的全局基础样式与色彩 */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #f5f7fb; color: #222; line-height: 1.6; padding: 20px; }
-    
-    /* 容器最大宽度对齐 template 的 800px 级别 */
-    .container { max-width: 800px; margin: auto; }
-    
-    /* 头部 Banner 渐变及阴影完全同步 .hero 样式 */
-    .hero { background: linear-gradient(135deg, #2563eb, #4f46e5); color: white; padding: 40px 30px; border-radius: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0, 0, 0, .15); text-align: left; }
-    .hero h1 { font-size: 36px; margin-bottom: 15px; font-weight: bold; }
-    .hero p { font-size: 17px; opacity: .95; }
-    
-    /* 内容卡片完全同步 .card 样式 */
-    .card { background: white; padding: 25px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, .08); text-align: left; }
-    
-    /* 导航返回按钮样式同步 .back-home-btn */
-    .back-home-btn { font-size: 15px; color: #64748b; text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap; cursor: pointer; font-weight: 500; background: transparent; border: none; padding: 0; margin-bottom: 20px; }
-    .back-home-btn:hover { color: #2563eb; }
-    
-    /* H3 标题样式同步 */
-    h3 { font-size: 18px; font-weight: bold; color: #222; margin-bottom: 15px; }
-    
-    /* 输入表单项布局 */
-    .input-group { margin-bottom: 20px; }
-    .input-group label { display: block; font-size: 15px; font-weight: bold; color: #333; margin-bottom: 8px; }
-    
-    /* 输入框容器及交互态对齐 */
-    .input-wrapper { display: flex; align-items: center; border: 2px solid #e5e7eb; border-radius: 15px; background: #fff; overflow: hidden; transition: .2s; position: relative; }
-    .input-wrapper:hover { border-color: #2563eb; }
-    .input-wrapper:focus-within { border-color: #2563eb; background: #eff6ff; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08); }
-    .input-wrapper input { flex: 1; border: none; padding: 14px 16px; font-size: 16px; outline: none; width: 100%; color: #222; background: transparent; }
-    .input-wrapper input::placeholder { color: #9ca3af; }
-    .input-unit { color: #64748b; padding: 0 16px; font-size: 14px; font-weight: bold; background: transparent; pointer-events: none; }
-    
-    /* 提交动作按钮，融合 template 主色调与动效 */
-    .btn-submit { display: block; width: 100%; background: #2563eb; color: #fff; border: none; padding: 16px; border-radius: 15px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: .2s; }
-    .btn-submit:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15); }
-    
-    /* 结果反馈面板样式同步 .insight 概念 */
-    .result-box { display: none; margin-top: 25px; padding: 20px; border-radius: 15px; background: #eff6ff; border: 2px dashed #bfdbfe; }
-    .result-title { font-size: 15px; font-weight: bold; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
-    .result-value { font-size: 55px; font-weight: bold; color: #2563eb; margin: 5px 0; letter-spacing: -0.02em; }
-    .result-desc { font-size: 15px; color: #555; line-height: 1.6; margin-top: 12px; border-top: 1px solid #dbeafe; padding-top: 12px; }
-    .result-desc strong { color: #222; }
-    
-    /* FAQ 模块结构完全同步 template 的布局 */
-    .faq-item { margin-bottom: 15px; }
-    .faq-item strong { display: block; font-size: 16px; color: #222; margin-bottom: 4px; font-weight: bold; }
-    .faq-item p { margin: 0; font-size: 15px; color: #555; }
-    
-    footer { text-align: center; margin-top: 30px; color: #777; font-size: 14px; }
-    @media(max-width:768px){ .hero h1{ font-size:28px; } .result-value { font-size:45px; } }
-.recommend-section { margin-top: 36px; border-top: 1px solid #e5e7eb; padding-top: 24px; }
-.recommend-link { text-decoration: none; color: inherit; display: block; margin-bottom: 12px; }
-.recommend { background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb; transition: 0.2s; }
-.recommend:hover { border-color: #3b82f6; background: #f0f7ff; }
-.recommend strong { color: #1e3a8a; display: block; margin-bottom: 4px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator | ToolsQuark</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
+.back-home-btn:hover{color:#2563eb;}
+.input-group{margin-bottom:20px;}
+.input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
+.input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
+.input-group input:focus{border-color:#2563eb;background:#eff6ff;}
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
+.calc-submit-btn:hover{background:#1d4ed8;}
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
+.result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
+.result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
+.suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
+.suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
+.suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+.faq-item{margin-bottom:15px;}
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
+</style>
 </head>
 <body>
-
-  <div class="container">
-    
+<div class="container">
     <div class="hero">
-      <h1>BMI Calculator</h1>
-      <p>Calculate your Body Mass Index (BMI) instantly to evaluate your body weight relative to your height and understand your general health status.</p>
+        <h1>BMI Calculator</h1>
+        <p>Accurately calculate your Body Mass Index (BMI) based on your weight and height.</p>
     </div>
-
+    <div class="calc-navigation">
+        <button class="back-home-btn" onclick="window.location.href='https://www.toolsquark.com/'">← Home</button>
+    </div>
     <div class="card">
-      <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-
-      <div id="inputsForm"></div>
-
-      <button class="btn-submit" onclick="performCalculation()">Calculate Now</button>
-
-      <div id="resultBox" class="result-box">
-        <div class="result-title">Calculation Success</div>
-        <div id="resultVal" class="result-value">--</div>
-        <div class="result-desc">
-          <strong>Professional Interpretation:</strong><br>
-          Your Body Mass Index (BMI) has been successfully calculated. A standard healthy BMI ranges from 18.5 to 24.9. Please note that while BMI is a highly efficient clinical screening tool for weight categories, it does not directly measure body fat percentage or muscle tissue distribution.
+        <div id="inputs-area"></div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
+        <div id="result-area" class="result-box" style="display:none;">
+            <div class="normal-range-badge">Result Evaluation</div>
+            <div class="result-val" id="calc-output">0.00</div>
+            <div class="result-status" id="calc-status"></div>
+            <div class="result-desc" id="calc-desc"></div>
+            <div class="suggestion-box">
+                <h4>💡 Professional Suggestions:</h4>
+                <p id="calc-suggestion"></p>
+            </div>
         </div>
-      </div>
     </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-    </a>
-</div>
     <div class="card">
-      <h3>FAQ</h3>
-      <div class='faq-item'><strong>What are the standard BMI weight classifications?</strong><p>According to global health criteria: Underweight is defined as below 18.5, Healthy Weight spans 18.5–24.9, Overweight covers 25–29.9, and Obesity is categorized at 30 or above.</p></div><div class='faq-item'><strong>Why can BMI sometimes be inaccurate for athletes?</strong><p>BMI calculates purely based on total weight and height parameters. Because muscle mass is significantly denser than fat tissue, highly muscular individuals or athletes may be categorized as 'overweight' despite having low body fat levels.</p></div>
+        <h3>Recommended Tools</h3>
+        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+        </a>
     </div>
-
+    <div class="card">
+        <h3>FAQ</h3>
+        <div class="faq-item">
+            <h4>What is BMI?</h4>
+            <p>BMI is a person's weight in kilograms divided by the square of height in meters.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is BMI accurate?</h4>
+            <p>BMI is a useful screening tool but does not measure body fat directly.</p>
+        </div>
+    </div>
     <footer>© 2026 ToolsQuark</footer>
-  </div>
+</div>
+<script>
+const inputConfigs = [{"id":"weight","label":"Weight","unit":"kg","placeholder":"70"}, {"id":"height","label":"Height","unit":"cm","placeholder":"175"}];
 
-  <script>
-    // 保持底层原有的 Base64 逻辑与公式动态解析逻辑不变
-    const rawB64 = `W3siaWQiOiJ3ZWlnaHQiLCJsYWJlbCI6IldlaWdodCIsInVuaXQiOiJrZyIsInBsYWNlaG9sZGVyIjoiNjUifSx7ImlkIjoiaGVpZ2h0IiwibGFiZWwiOiJIZWlnaHQiLCJ1bml0IjoiY20iLCJwbGFjZWhvbGRlciI6IjE3MCJ9XQ==`;
-    const inputConfigs = JSON.parse(decodeURIComponent(escape(window.atob(rawB64))));
-    const formContainer = document.getElementById("inputsForm");
+const inputsArea = document.getElementById('inputs-area');
+inputConfigs.forEach(cfg => {
+    inputsArea.innerHTML += `
+    <div class="input-group">
+        <label>${cfg.label} (${cfg.unit})</label>
+        <input type="number" id="input_${cfg.id}" placeholder="e.g. ${cfg.placeholder}">
+    </div>`;
+});
 
-    if (Array.isArray(inputConfigs)) {
-      inputConfigs.forEach(cfg => {
-        const group = document.createElement("div");
-        group.className = "input-group";
-        group.innerHTML = `
-          <label for="${cfg.id}">${cfg.label}</label>
-          <div class="input-wrapper">
-            <input type="number" id="${cfg.id}" placeholder="${cfg.placeholder || ''}">
-            <div class="input-unit">${cfg.unit}</div>
-          </div>
-        `;
-        formContainer.appendChild(group);
-      });
+function calculateNow() {
+    const w = parseFloat(document.getElementById('input_weight').value);
+    const h = parseFloat(document.getElementById('input_height').value);
+    if (isNaN(w) || isNaN(h) || h <= 0) {
+        alert("Please enter valid weight and height.");
+        return;
     }
-
-    function handleBackHome(){ 
-      if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; 
+    const bmi = w / Math.pow(h / 100, 2);
+    let result = {status: "", desc: "", suggestion: ""};
+    if (bmi < 18.5) {
+        result = {status: "Underweight", desc: "Your BMI is below 18.5.", suggestion: "You may need to gain some weight. Consult a nutritionist."};
+    } else if (bmi < 24.9) {
+        result = {status: "Normal weight", desc: "Your BMI is in the healthy range.", suggestion: "Keep up the good work with a balanced diet and regular exercise."};
+    } else if (bmi < 29.9) {
+        result = {status: "Overweight", desc: "Your BMI is between 25 and 29.9.", suggestion: "Consider increasing physical activity and monitoring calorie intake."};
+    } else {
+        result = {status: "Obese", desc: "Your BMI is 30 or higher.", suggestion: "It is recommended to seek advice from a healthcare professional."};
     }
-
-    function performCalculation() {
-      try {
-        const fields = {};
-        let isValid = true;
-        
-        inputConfigs.forEach(cfg => {
-          const element = document.getElementById(cfg.id);
-          const val = element ? parseFloat(element.value) : NaN;
-          if (isNaN(val)) {
-            isValid = false;
-          }
-          fields[cfg.id] = val;
-        });
-
-        if (!isValid) {
-          alert("Please fill out all input parameters accurately before generating calculation output.");
-          return;
-        }
-
-        const calcFormulaText = `fields.weight / Math.pow(fields.height / 100, 2)`;
-        const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
-        const result = formulaFunc(fields);
-        
-        document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
-        document.getElementById("resultBox").style.display = "block";
-        document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth' });
-      } catch (err) {
-        alert("Calculation exception discovered within field parameters.");
-        console.error(err);
-      }
-    }
-  </script>
-
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = bmi.toFixed(1);
+    document.getElementById('calc-status').innerText = result.status;
+    document.getElementById('calc-desc').innerText = result.desc;
+    document.getElementById('calc-suggestion').innerText = result.suggestion;
+}
+</script>
 </body>
 </html>

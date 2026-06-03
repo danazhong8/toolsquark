@@ -42,92 +42,84 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Sleep Quality Assessment</h1>
-    <p>Analyze your sleep architecture, latency, and daytime dysfunction to uncover hidden factors disrupting your biological rest.</p>
-</div>
-<div class="card" id="quiz">
-    <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-        <div class="progress-wrap">
-            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+    <div class="hero">
+        <h1>Sleep Quality Assessment</h1>
+        <p>Analyze your sleep architecture, latency, and daytime dysfunction to uncover hidden factors disrupting your biological rest.</p>
+    </div>
+    <div class="card" id="quiz">
+        <div class="quiz-header">
+            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+            <div class="progress-wrap">
+                <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+            </div>
+        </div>
+        <div class="question" id="question"></div>
+        <div id="answers"></div>
+    </div>
+    <div class="card hidden" id="result">
+        <div class="score" id="score"></div>
+        <div class="profile" id="profile"></div>
+        <div class="description" id="description"></div>
+        <h3>Assessment Indicators</h3>
+        <div class="bar">
+            <div class="bar-label">Sleep Architecture</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:45%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Latency & Continuity</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:68%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Daytime Dysfunction</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:55%"></div></div>
+        </div>
+        <h3 style="margin-top:30px;">Behavioral Insights</h3>
+        <div class="insight">Poor sleep continuity is often linked to heightened hyperarousal before bedtime rather than pure physical exhaustion.</div>
+        <div class="insight">Inconsistent wake-up times disrupt your circadian rhythm far more than occasional late-night sleeping.</div>
+        <div class="insight">The psychological anxiety of 'trying to fall asleep' triggers cortisol release, creating a paradox that fuels insomnia.</div>
+    </div>
+    <div class="card hidden" id="recommendations">
+        <h3>Recommended Tests</h3>
+        <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
+            <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
+        </a>
+        <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
+        </a>
+        <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>Recommended Tools</h3>
+        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>FAQ</h3>
+        <div class="faq-item">
+            <strong>Is sleeping 8 hours a strict requirement?</strong><br>Not necessarily. Sleep efficiency and deep sleep percentages matter more than raw time. Some flourish on 7 hours, while others need 9.
+        </div>
+        <div class="faq-item">
+            <strong>Should I stay in bed if I cannot sleep?</strong><br>No. If awake after 20 minutes, leave the bed. Do a relaxing, low-light activity and return only when sleepy to avoid associating bed with frustration.
+        </div>
+        <div class="faq-item">
+            <strong>Can blue-light blockers fix my sleep?</strong><br>They help, but reducing overall cognitive stimulation and dimming house lights 1 hour before bed is vastly more effective.
         </div>
     </div>
-    <div class="question" id="question"></div>
-    <div id="answers"></div>
-</div>
-<div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
-            <div class="bar">
-                <div class="bar-label">Sleep Architecture</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:45%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Latency & Continuity</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:68%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Daytime Dysfunction</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:55%"></div></div>
-            </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Poor sleep continuity is often linked to heightened hyperarousal before bedtime rather than pure physical exhaustion.</div><div class="insight">Inconsistent wake-up times disrupt your circadian rhythm far more than occasional late-night sleeping.</div><div class="insight">The psychological anxiety of 'trying to fall asleep' triggers cortisol release, creating a paradox that fuels insomnia.</div>
-</div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
-    <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
-        <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
-</div>
-<div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Is sleeping 8 hours a strict requirement?</strong><br>Not necessarily. Sleep efficiency and deep sleep percentages matter more than raw time. Some flourish on 7 hours, while others need 9.
-            </div>
-            <div class="faq-item">
-                <strong>Should I stay in bed if I cannot sleep?</strong><br>No. If awake after 20 minutes, leave the bed. Do a relaxing, low-light activity and return only when sleepy to avoid associating bed with frustration.
-            </div>
-            <div class="faq-item">
-                <strong>Can blue-light blockers fix my sleep?</strong><br>They help, but reducing overall cognitive stimulation and dimming house lights 1 hour before bed is vastly more effective.
-            </div>
-</div>
-<footer>© 2026 ToolsQuark</footer>
+    <footer>© 2026 ToolsQuark</footer>
 </div>
 <script>
 const questions = [{"question":"How long does it typically take you to fall asleep after turning off the lights?","options":["Under 15 minutes","15-30 minutes","31-60 minutes","More than an hour"]},{"question":"How often do you wake up in the middle of the night and struggle to fall back asleep?","options":["Rarely or never","1-2 times a week","3-4 times a week","Almost every night"]},{"question":"How regularly do you wake up feeling unrefreshed, stiff, or tired in the morning?","options":["Never","Occasionally","Frequently","Every single day"]},{"question":"Do racing thoughts or worry keep your mind active when you try to sleep?","options":["Hardly ever","Some nights","Most nights","Every night without fail"]},{"question":"How often do you feel groggy, sluggish, or struggle to stay awake during daytime tasks?","options":["Rarely","Sometimes during slumps","Often throughout the day","Constantly fighting sleep"]},{"question":"How consistent is your sleeping and waking schedule on weekends compared to weekdays?","options":["Highly consistent","Slightly varies (+/- 1hr)","Very erratic","Completely different"]},{"question":"Do you experience physical symptoms like night sweats, gasping, or restless legs?","options":["Never","Rarely","Sometimes","Frequently"]},{"question":"How frequently do you rely on sleep aids, alcohol, or supplements to fall asleep?","options":["Never","A few times a month","Multiple times a week","Depend on them daily"]},{"question":"Does a poor night's sleep drastically affect your emotional stability or mood the next day?","options":["Not really","Slightly irritable","Noticeable mood drops","Extremely volatile"]},{"question":"How often do you scroll on your phone or watch screens while lying in bed waiting for sleep?","options":["Never","Rarely","Often","Always until I drop off"]}];
 const resultProfiles = {"low":{"profile":"Optimal Circadian Rhythm","desc":"Your sleep architecture is highly efficient. You fall asleep quickly, enjoy deep restorative phases, and wake up feeling refreshed with minimal daytime fatigue."},"medium":{"profile":"Fragmented Rest Pattern","desc":"You experience occasional sleep latency issues or frequent nighttime awakenings. Your sleep quality is heavily impacted by daily stress or inconsistent sleep hygiene."},"high":{"profile":"Severe Sleep Disruption","desc":"Your sleep patterns indicate chronic deficit or intense pre-bed hyperarousal. High daytime fatigue is likely impacting your cognitive function. Consider consulting a sleep specialist."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+let current=0, totalScore=0, isTransitioning=false;
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;

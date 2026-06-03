@@ -42,92 +42,84 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Self-Discipline Test</h1>
-    <p>Evaluate your willpower consistency, resistance to instant gratification, and identity alignment with long-term goals.</p>
-</div>
-<div class="card" id="quiz">
-    <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-        <div class="progress-wrap">
-            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+    <div class="hero">
+        <h1>Self-Discipline Test</h1>
+        <p>Evaluate your willpower consistency, resistance to instant gratification, and identity alignment with long-term goals.</p>
+    </div>
+    <div class="card" id="quiz">
+        <div class="quiz-header">
+            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+            <div class="progress-wrap">
+                <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+            </div>
+        </div>
+        <div class="question" id="question"></div>
+        <div id="answers"></div>
+    </div>
+    <div class="card hidden" id="result">
+        <div class="score" id="score"></div>
+        <div class="profile" id="profile"></div>
+        <div class="description" id="description"></div>
+        <h3>Assessment Indicators</h3>
+        <div class="bar">
+            <div class="bar-label">Gratification Delay</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:48%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Habit Automation</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:52%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Willpower Depletion</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:61%"></div></div>
+        </div>
+        <h3 style="margin-top:30px;">Behavioral Insights</h3>
+        <div class="insight">Highly disciplined people don't possess heroic willpower; they construct automated habits that bypass decision fatigue entirely.</div>
+        <div class="insight">Relying on motivation is unreliable because emotions fluctuate; discipline relies on rules that govern action regardless of mood.</div>
+        <div class="insight">Every time you resist a short-term temptation for a long-term goal, you reinforce an empowering self-identity.</div>
+    </div>
+    <div class="card hidden" id="recommendations">
+        <h3>Recommended Tests</h3>
+        <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
+            <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
+        </a>
+        <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
+        </a>
+        <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>Recommended Tools</h3>
+        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>FAQ</h3>
+        <div class="faq-item">
+            <strong>Why does my discipline crash in the evening?</strong><br>Willpower behaves like a muscle; making decisions all day exhausts your self-control, making evening temptations harder to resist.
+        </div>
+        <div class="faq-item">
+            <strong>Can discipline kill spontaneity and fun?</strong><br>No. True discipline buys freedom. Organizing your chores gives you guilt-free time for genuine relaxation.
+        </div>
+        <div class="faq-item">
+            <strong>How do I build self-discipline from scratch?</strong><br>Start small. Automate one tiny daily habit—like making your bed—before tackling complex lifestyle transformations.
         </div>
     </div>
-    <div class="question" id="question"></div>
-    <div id="answers"></div>
-</div>
-<div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
-            <div class="bar">
-                <div class="bar-label">Gratification Delay</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:48%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Habit Automation</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:52%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Willpower Depletion</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:61%"></div></div>
-            </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Highly disciplined people don't possess heroic willpower; they construct automated habits that bypass decision fatigue entirely.</div><div class="insight">Relying on motivation is unreliable because emotions fluctuate; discipline relies on rules that govern action regardless of mood.</div><div class="insight">Every time you resist a short-term temptation for a long-term goal, you reinforce an empowering self-identity.</div>
-</div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
-    <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
-        <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
-</div>
-<div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Why does my discipline crash in the evening?</strong><br>Willpower behaves like a muscle; making decisions all day exhausts your self-control, making evening temptations harder to resist.
-            </div>
-            <div class="faq-item">
-                <strong>Can discipline kill spontaneity and fun?</strong><br>No. True discipline buys freedom. Organizing your chores gives you guilt-free time for genuine relaxation.
-            </div>
-            <div class="faq-item">
-                <strong>How do I build self-discipline from scratch?</strong><br>Start small. Automate one tiny daily habit—like making your bed—before tackling complex lifestyle transformations.
-            </div>
-</div>
-<footer>© 2026 ToolsQuark</footer>
+    <footer>© 2026 ToolsQuark</footer>
 </div>
 <script>
 const questions = [{"question":"When you set an alarm to wake up early for a personal goal, how do you handle the snooze button?","options":["Get up immediately","Snooze once","Snooze multiple times","Turn it off and sleep in"]},{"question":"How consistently do you follow through on the personal goals or resolutions you set for yourself?","options":["Always execute them","Finish most goals","Abandon them halfway","Rarely start them"]},{"question":"When working or studying, how easily do cravings for snacks or digital entertainment derail you?","options":["Ignore cravings easily","Occasionally give in","Frequently distracted","Completely governed by impulses"]},{"question":"How would you describe your personal financial savings and impulse spending habits?","options":["Highly disciplined","Budget occasionally","Struggle to save","Frequent impulse buyer"]},{"question":"When faced with a necessary but deeply boring chore, when do you get around to doing it?","options":["Do it immediately","Schedule for later","Put it off for days","Ignore until it's a crisis"]},{"question":"How healthy are your eating and exercise routines when you are going through a high-stress week?","options":["Stay strict to habits","Slightly slip up","Drop routines quickly","Complete health abandonment"]},{"question":"How often do you find yourself scrolling mindlessly when you explicitly promised yourself you'd be asleep?","options":["Rarely/Never","1-2 times a week","Frequently","Almost every single night"]},{"question":"If a task requires daily effort for months before showing any results, how do you handle it?","options":["Maintain daily effort","Miss occasional days","Lose focus quickly","Give up within a week"]},{"question":"How easily can you say 'no' when friends offer fun plans that conflict with your critical goals?","options":["Say no comfortably","Hesitate but decline","Give in with guilt","Instantly abandon goals"]},{"question":"When you break a self-imposed routine one day, how does that affect your behavior the following day?","options":["Back on track instantly","Slightly harder to start","Triggers a multi-day slide","Abandon the routine completely"]}];
 const resultProfiles = {"low":{"profile":"Highly Disciplined Architect","desc":"You have strong command over your impulses. You delay short-term pleasure easily, automate positive habits, and follow through on long-term goals."},"medium":{"profile":"Fluctuating Willpower Wave","desc":"Your discipline comes in short bursts. You excel when motivated but struggle with consistency when fatigue sets in or temptation increases."},"high":{"profile":"Severe Impulse Dominance","desc":"Instant gratification dominates your daily decisions. You struggle to sustain routines, leaving you trapped in a cycle of broken promises to yourself."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+let current=0, totalScore=0, isTransitioning=false;
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;

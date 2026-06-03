@@ -42,92 +42,84 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Procrastination Test</h1>
-    <p>Unpack your delay mechanisms, emotional regulation short-circuits, and perfectionism barriers to task execution.</p>
-</div>
-<div class="card" id="quiz">
-    <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-        <div class="progress-wrap">
-            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+    <div class="hero">
+        <h1>Procrastination Test</h1>
+        <p>Unpack your delay mechanisms, emotional regulation short-circuits, and perfectionism barriers to task execution.</p>
+    </div>
+    <div class="card" id="quiz">
+        <div class="quiz-header">
+            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+            <div class="progress-wrap">
+                <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+            </div>
+        </div>
+        <div class="question" id="question"></div>
+        <div id="answers"></div>
+    </div>
+    <div class="card hidden" id="result">
+        <div class="score" id="score"></div>
+        <div class="profile" id="profile"></div>
+        <div class="description" id="description"></div>
+        <h3>Assessment Indicators</h3>
+        <div class="bar">
+            <div class="bar-label">Emotional Avoidance</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Temporal Discounting</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Perfectionism Block</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:58%"></div></div>
+        </div>
+        <h3 style="margin-top:30px;">Behavioral Insights</h3>
+        <div class="insight">Procrastination is an emotional regulation problem, not a time management flaw; you are avoiding the bad feelings a task triggers.</div>
+        <div class="insight">Perfectionism often drives delay; if you fear your output won't be perfect, your brain uses procrastination as a shield.</div>
+        <div class="insight">Lowering the entry barrier—like committing to working on a project for just 2 minutes—bypasses deep amygdala resistance.</div>
+    </div>
+    <div class="card hidden" id="recommendations">
+        <h3>Recommended Tests</h3>
+        <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
+            <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
+        </a>
+        <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
+        </a>
+        <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>Recommended Tools</h3>
+        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>FAQ</h3>
+        <div class="faq-item">
+            <strong>Why do I work better under tight deadline pressure?</strong><br>The intense fear of immediate failure overrides your emotional avoidance. However, this creates extreme stress and hurts overall quality.
+        </div>
+        <div class="faq-item">
+            <strong>Is procrastination just laziness?</strong><br>No. Lazy people simply don't care to do the work. Procrastinators desperately want to do the work but are blocked by internal anxiety.
+        </div>
+        <div class="faq-item">
+            <strong>How do I overcome a massive, daunting task?</strong><br>Micro-segment it. Break the project down until the first individual step feels too ridiculously simple to avoid.
         </div>
     </div>
-    <div class="question" id="question"></div>
-    <div id="answers"></div>
-</div>
-<div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
-            <div class="bar">
-                <div class="bar-label">Emotional Avoidance</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Temporal Discounting</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Perfectionism Block</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:58%"></div></div>
-            </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Procrastination is an emotional regulation problem, not a time management flaw; you are avoiding the bad feelings a task triggers.</div><div class="insight">Perfectionism often drives delay; if you fear your output won't be perfect, your brain uses procrastination as a shield.</div><div class="insight">Lowering the entry barrier—like committing to working on a project for just 2 minutes—bypasses deep amygdala resistance.</div>
-</div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
-    <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
-        <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
-</div>
-<div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Why do I work better under tight deadline pressure?</strong><br>The intense fear of immediate failure overrides your emotional avoidance. However, this creates extreme stress and hurts overall quality.
-            </div>
-            <div class="faq-item">
-                <strong>Is procrastination just laziness?</strong><br>No. Lazy people simply don't care to do the work. Procrastinators desperately want to do the work but are blocked by internal anxiety.
-            </div>
-            <div class="faq-item">
-                <strong>How do I overcome a massive, daunting task?</strong><br>Micro-segment it. Break the project down until the first individual step feels too ridiculously simple to avoid.
-            </div>
-</div>
-<footer>© 2026 ToolsQuark</footer>
+    <footer>© 2026 ToolsQuark</footer>
 </div>
 <script>
 const questions = [{"question":"When assigned a large project with a distant deadline, when do you typically begin real work?","options":["Immediately","In comfortable stages","A bit close to deadline","At the absolute final minute"]},{"question":"How often do you clean your desk, organize emails, or do low-priority chores to avoid a critical task?","options":["Rarely","Occasionally","Frequently","Every single time"]},{"question":"Do you find yourself waiting for the 'perfect mood' or 'inspired moment' before starting difficult work?","options":["No, just start","Sometimes wait","Often wait in vain","Always dependent on mood"]},{"question":"How frequently do you feel deep guilt, self-loathing, or anxiety because you are delaying a task?","options":["Never","Rarely","Often","Constantly living with guilt"]},{"question":"When you look at your daily to-do list, how do you select which tasks to execute first?","options":["By objective priority","Mix of easy/hard","Only the easy tasks","Paralyzed; look at none"]},{"question":"How often do you miss deadlines or ask for extensions due to poor initiation planning?","options":["Never","Rarely","Occasionally","Frequently"]},{"question":"Does the fear of doing a job poorly or imperfectly make you avoid beginning it at all?","options":["Not at all","Slightly loops me","Strongly paralyzes me","It is my primary barrier"]},{"question":"How often do you say 'I will do this tomorrow' for a task you could easily finish right now?","options":["Rarely","Sometimes","Most days","It is my life motto"]},{"question":"When you finally force yourself to sit down and do the avoided task, how does the actual experience feel?","options":["Satisfying","Easier than expected","Mildly annoying","Utterly agonizing"]},{"question":"How much has procrastination damaged your professional reputation or personal growth goals?","options":["No damage","Minor setbacks","Noticeable consequences","Severe ongoing damage"]}];
 const resultProfiles = {"low":{"profile":"Proactive Task Executor","desc":"You possess high emotional regulation and clear agency. You initiate unpleasant tasks promptly and manage internal resistance effectively."},"medium":{"profile":"Deadline-Driven Delayer","desc":"You frequently delay complex or emotionally taxing projects until the final window. You deliver, but experience high stress and panic spirals."},"high":{"profile":"Chronic Avoidance Gridlock","desc":"Procrastination is paralyzing your professional and personal life. Severe avoidance loop cycles cause constant guilt, anxiety, and missed windows."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+let current=0, totalScore=0, isTransitioning=false;
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;

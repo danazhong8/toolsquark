@@ -38,12 +38,7 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .faq-item{margin-bottom:15px;}
 footer{text-align:center;margin-top:30px;color:#777;}
 @media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
-<style>
-/* 强制去除所有推荐标题后的冒号 */
-.recommend strong::after {
-    content: "" !important;
-}
-</style></style>
+</style>
 </head>
 <body>
 <div class="container">
@@ -96,7 +91,6 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </div>
 <div class="card">
     <h3>FAQ</h3>
-    
             <div class="faq-item">
                 <strong>What is the difference between anxiety and fear?</strong><br>Fear is a response to an immediate, real threat (like a bear). Anxiety is tension focused on an unpredictable, imagined future threat.
             </div>
@@ -140,7 +134,6 @@ function selectOption(el,score,optionIndex){
 function showResult(){
     document.getElementById("quiz").classList.add("hidden");
     document.getElementById("result").classList.remove("hidden");
-    document.getElementById("recommendations").classList.remove("hidden");
     document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
     let activeProfile = resultProfiles.high;
     if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;

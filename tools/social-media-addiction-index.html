@@ -42,92 +42,84 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Social Media Addiction Index</h1>
-    <p>Assess how digital validation metrics, algorithmic feeds, and the fear of missing out (FOMO) influence your self-worth.</p>
-</div>
-<div class="card" id="quiz">
-    <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-        <div class="progress-wrap">
-            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+    <div class="hero">
+        <h1>Social Media Addiction Index</h1>
+        <p>Assess how digital validation metrics, algorithmic feeds, and the fear of missing out (FOMO) influence your self-worth.</p>
+    </div>
+    <div class="card" id="quiz">
+        <div class="quiz-header">
+            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+            <div class="progress-wrap">
+                <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+            </div>
+        </div>
+        <div class="question" id="question"></div>
+        <div id="answers"></div>
+    </div>
+    <div class="card hidden" id="result">
+        <div class="score" id="score"></div>
+        <div class="profile" id="profile"></div>
+        <div class="description" id="description"></div>
+        <h3>Assessment Indicators</h3>
+        <div class="bar">
+            <div class="bar-label">Validation Seeking</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:74%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">FOMO Friction</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Algorithmic Capture</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:69%"></div></div>
+        </div>
+        <h3 style="margin-top:30px;">Behavioral Insights</h3>
+        <div class="insight">Social media algorithms are precisely optimized for outrage and social comparison, exploiting basic human evolutionary vulnerabilities.</div>
+        <div class="insight">The 'Fear of Missing Out' (FOMO) is amplified by curated highlights that mask the ordinary reality of others' lives.</div>
+        <div class="insight">Shifting from a passive content consumer to an active offline creator naturally neutralizes platform manipulation hooks.</div>
+    </div>
+    <div class="card hidden" id="recommendations">
+        <h3>Recommended Tests</h3>
+        <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
+            <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
+        </a>
+        <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
+        </a>
+        <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>Recommended Tools</h3>
+        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>FAQ</h3>
+        <div class="faq-item">
+            <strong>Why is social media so hard to close down?</strong><br>Infinite scroll mechanisms eliminate natural stopping cues, making your brain wait indefinitely for the next dopaminergic hit.
+        </div>
+        <div class="faq-item">
+            <strong>Does deleting apps solve the problem?</strong><br>It provides short-term space, but addressing the underlying emotional void—like boredom or social awkwardness—is vital for permanent change.
+        </div>
+        <div class="faq-item">
+            <strong>Can social media use be purely healthy?</strong><br>Yes. When used intentionally to schedule offline interactions or learn specific skills, its negative mental impacts drop drastically.
         </div>
     </div>
-    <div class="question" id="question"></div>
-    <div id="answers"></div>
-</div>
-<div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
-            <div class="bar">
-                <div class="bar-label">Validation Seeking</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:74%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">FOMO Friction</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Algorithmic Capture</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:69%"></div></div>
-            </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Social media algorithms are precisely optimized for outrage and social comparison, exploiting basic human evolutionary vulnerabilities.</div><div class="insight">The 'Fear of Missing Out' (FOMO) is amplified by curated highlights that mask the ordinary reality of others' lives.</div><div class="insight">Shifting from a passive content consumer to an active offline creator naturally neutralizes platform manipulation hooks.</div>
-</div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
-    <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
-        <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
-</div>
-<div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Why is social media so hard to close down?</strong><br>Infinite scroll mechanisms eliminate natural stopping cues, making your brain wait indefinitely for the next dopaminergic hit.
-            </div>
-            <div class="faq-item">
-                <strong>Does deleting apps solve the problem?</strong><br>It provides short-term space, but addressing the underlying emotional void—like boredom or social awkwardness—is vital for permanent change.
-            </div>
-            <div class="faq-item">
-                <strong>Can social media use be purely healthy?</strong><br>Yes. When used intentionally to schedule offline interactions or learn specific skills, its negative mental impacts drop drastically.
-            </div>
-</div>
-<footer>© 2026 ToolsQuark</footer>
+    <footer>© 2026 ToolsQuark</footer>
 </div>
 <script>
 const questions = [{"question":"How often do you feel a pang of jealousy or inadequacy while viewing other people's curated posts?","options":["Never","Rarely","Often","Almost every time I log in"]},{"question":"When you post a photo or update, how intensely do you track the accumulation of likes and comments?","options":["Don't check at all","Check once or twice","Check every few minutes","Anxiously watch the metrics"]},{"question":"Do you find yourself scrolling social media timelines while walking, working, or watching a movie?","options":["Never","Rarely","Frequently","Subconsciously continuous"]},{"question":"How does it feel to see social gatherings on stories that you were not invited to join?","options":["Indifferent/Happy for them","Slightly left out","Deeply hurt and anxious","Triggers a spiral of self-doubt"]},{"question":"How often do you check social media platforms right before sleeping or immediately when waking up?","options":["Rarely","Frequently before bed","Frequently both times","It is my default loop"]},{"question":"Do you feel like your attention span has shrunk significantly due to short-form video feeds?","options":["No change","Slightly shorter","Noticeably fragmented","Cannot focus on long content"]},{"question":"Have you ever neglected critical real-life duties or chores just to continue browsing updates?","options":["Never","Rarely","Often","Constantly put off duties"]},{"question":"How often do you formulate real-world experiences primarily around how they will look online?","options":["Never","Occasionally","Frequently","Almost always"]},{"question":"If a platform goes down for an hour, how does that affect your psychological state?","options":["Unbothered","Slightly annoyed","Bored and restless","Highly anxious and disconnected"]},{"question":"Do you feel that you know more about internet acquaintances' lives than your immediate family's daily affairs?","options":["No","Maybe a bit","Definitely yes","Completely disconnected offline"]}];
 const resultProfiles = {"low":{"profile":"Intentional Networker","desc":"You control your social media usage rather than letting it control you. You rarely compare your life to online feeds and use platforms mindfully."},"medium":{"profile":"Comparison & Loop Trap","desc":"You are highly vulnerable to endless algorithmic feeds and occasionally suffer from lifestyle comparison anxiety. Your self-esteem tracks digital interactions."},"high":{"profile":"Severe Algorithmic Capture","desc":"Your daily mood and identity are deeply tied to online engagement metrics. Deep FOMO and compulsive timeline refreshing significantly strain your reality."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+let current=0, totalScore=0, isTransitioning=false;
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;

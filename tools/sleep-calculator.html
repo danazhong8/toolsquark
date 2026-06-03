@@ -12,38 +12,26 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero h1{font-size:36px;margin-bottom:15px;}
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-
-/* 独立导航栏样式 */
 .calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
 .back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
-
-/* 输入框样式 */
 .input-group{margin-bottom:20px;}
 .input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
 .input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
 .input-group input:focus{border-color:#2563eb;background:#eff6ff;}
-
-/* 立即计算主按钮 */
 .calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
 .calc-submit-btn:hover{background:#1d4ed8;}
-
-/* 智能结果展示框 */
 .result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
 .result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
 .normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
 .result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
 .result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
-
-/* 动态专业建议区块 */
 .suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
 .suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
 .suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
-
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
 .recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
-
 .faq-item{margin-bottom:15px;}
 footer{text-align:center;margin-top:30px;color:#777;}
 @media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
@@ -55,18 +43,12 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h1>Sleep Calculator</h1>
     <p>Calculate your optimal wake-up times or bedtime schedules based on standard 90-minute human sleep cycles.</p>
 </div>
-
-<!-- 返回主页导航栏 -->
 <div class="calc-navigation">
     <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
 </div>
-
 <div class="card">
-    <!-- 专属数据渲染槽 -->
     <div id="inputs-area"></div>
     <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
-    
-    <!-- 智能解说区域 -->
     <div id="result-area" class="result-box" style="display:none;">
         <div class="normal-range-badge">Normal Range: 7.5 - 9.0 Hours (5-6 Cycles)</div>
         <div class="result-val" id="calc-output">0.00</div>
@@ -78,7 +60,6 @@ footer{text-align:center;margin-top:30px;color:#777;}
         </div>
     </div>
 </div>
-
 <div class="card">
     <h3>Recommended Tools</h3>
     <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
@@ -91,10 +72,8 @@ footer{text-align:center;margin-top:30px;color:#777;}
         <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
     </a>
 </div>
-
 <div class="card">
     <h3>FAQ</h3>
-    
             <div class="faq-item">
                 <strong>What is a sleep cycle?</strong><br>A complete sleep cycle lasts roughly 90 minutes and progresses through light sleep, deep sleep, and REM (dreaming) stages.
             </div>
@@ -104,13 +83,10 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </div>
 <footer>© 2026 ToolsQuark</footer>
 </div>
-
 <script>
-// 接收打包注入的底层配置
 const inputConfigs = [{"id":"cycles","label":"Target Sleep Cycles (Enter 4, 5, or 6)","unit":"cycles","placeholder":"5"}];
 const interpretationRules = [{"min":0,"max":375,"status":"Restricted Sleep Window","desc":"An output below 6 hours means you are navigating a state of acute sleep restriction, which cuts short your vital REM and deep sleep stages.","suggestion":"Avoid relying on this short window chronically. If you must sleep this little tonight, maximize your sleep hygiene: cut off screens 30 minutes before bed and keep your room entirely dark."},{"min":375,"max":555,"status":"Ideal Sleep Architecture","desc":"This setup yields 5 to 6 full cycles, enabling your brain to complete structural memory consolidation and physical tissue repair flawlessly.","suggestion":"This is your biological sweet spot. Try to keep your wake-up times consistent even on weekends to preserve your circadian rhythm alignment."},{"min":555,"max":9999,"status":"Extended Sleep Window","desc":"This represents over 9 hours of sleep, which is excellent for intense athletic recovery or clearing a chronic sleep debt.","suggestion":"Ensure this extended sleep doesn't leave you groggy. If you constantly need more than 9 hours to feel functional, evaluate your overall sleep quality or consult a specialist."}];
 
-// 1. 动态生成输入框结构
 const inputsArea = document.getElementById('inputs-area');
 let html = "";
 inputConfigs.forEach(cfg => {
@@ -122,27 +98,21 @@ inputConfigs.forEach(cfg => {
 });
 inputsArea.innerHTML = html;
 
-// 2. 核心数学运算引擎
 function calculateNow() {
     let args = {};
     let missing = false;
-    
     inputConfigs.forEach(cfg => {
         const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);
         if (isNaN(val)) missing = true;
         args[cfg.id] = val;
     });
-    
     if (missing) {
         alert("Please fill in all input fields correctly.");
         return;
     }
-    
     try {
-        // 安全获取后端公式并直接执行
         const formulaFunc = new Function('fields', 'return (fields.cycles * 90) + 15');
         const finalResult = formulaFunc(args);
-        
         let matchedRule = null;
         for (let rule of interpretationRules) {
             if (finalResult >= rule.min && finalResult < rule.max) {
@@ -150,20 +120,16 @@ function calculateNow() {
                 break;
             }
         }
-        
         if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
-        
         document.getElementById('result-area').style.display = 'block';
         document.getElementById('calc-output').innerText = finalResult.toFixed(2);
         document.getElementById('calc-status').innerText = matchedRule.status;
         document.getElementById('calc-desc').innerText = matchedRule.desc;
         document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
-        
     } catch (e) {
         alert("Calculation error. Please check inputs.");
     }
 }
-
 function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 </script>
 </body>

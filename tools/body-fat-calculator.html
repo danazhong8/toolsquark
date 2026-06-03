@@ -12,38 +12,26 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero h1{font-size:36px;margin-bottom:15px;}
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-
-/* 独立导航栏样式 */
 .calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
 .back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
-
-/* 输入框样式 */
 .input-group{margin-bottom:20px;}
 .input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
 .input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
 .input-group input:focus{border-color:#2563eb;background:#eff6ff;}
-
-/* 立即计算主按钮 */
 .calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
 .calc-submit-btn:hover{background:#1d4ed8;}
-
-/* 智能结果展示框 */
 .result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
 .result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
 .normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
 .result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
 .result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
-
-/* 动态专业建议区块 */
 .suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
 .suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
 .suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
-
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
 .recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
-
 .faq-item{margin-bottom:15px;}
 footer{text-align:center;margin-top:30px;color:#777;}
 @media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
@@ -51,69 +39,57 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Body Fat Calculator</h1>
-    <p>Estimate your body fat percentage using the highly accurate U.S. Navy circumference method and understand your body composition.</p>
-</div>
-
-<!-- 返回主页导航栏 -->
-<div class="calc-navigation">
-    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-</div>
-
-<div class="card">
-    <!-- 专属数据渲染槽 -->
-    <div id="inputs-area"></div>
-    <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
-    
-    <!-- 智能解说区域 -->
-    <div id="result-area" class="result-box" style="display:none;">
-        <div class="normal-range-badge">Normal Range: Male: 14% - 24% | Female: 21% - 31%</div>
-        <div class="result-val" id="calc-output">0.00</div>
-        <div class="result-status" id="calc-status"></div>
-        <div class="result-desc" id="calc-desc"></div>
-        <div class="suggestion-box">
-            <h4>💡 Professional Suggestions:</h4>
-            <p id="calc-suggestion"></p>
+    <div class="hero">
+        <h1>Body Fat Calculator</h1>
+        <p>Estimate your body fat percentage using the highly accurate U.S. Navy circumference method and understand your body composition.</p>
+    </div>
+    <div class="calc-navigation">
+        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+    </div>
+    <div class="card">
+        <div id="inputs-area"></div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
+        <div id="result-area" class="result-box" style="display:none;">
+            <div class="normal-range-badge">Normal Range: Male: 14% - 24% | Female: 21% - 31%</div>
+            <div class="result-val" id="calc-output">0.00</div>
+            <div class="result-status" id="calc-status"></div>
+            <div class="result-desc" id="calc-desc"></div>
+            <div class="suggestion-box">
+                <h4>💡 Professional Suggestions:</h4>
+                <p id="calc-suggestion"></p>
+            </div>
         </div>
     </div>
+    <div class="card">
+        <h3>Recommended Tools</h3>
+        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>FAQ</h3>
+        <div class="faq-item">
+            <strong>How do I take the measurements accurately?</strong><br>Measure your neck just below the larynx, keeping the tape flat. Measure your waist horizontally at the narrowest point for females, or precisely at the navel line for males. Ensure the tape is snug but never compressing the skin.
+        </div>
+        <div class="faq-item">
+            <strong>Why does the formula require gender selection?</strong><br>Biological fat distribution differs fundamentally between genders. Females naturally carry essential reproductive adipose tissue around the hip and pelvic regions, which requires distinct logarithmic constants to analyze accurately.
+        </div>
+        <div class="faq-item">
+            <strong>What is the difference between BMI and Body Fat Percentage?</strong><br>BMI simply looks at the ratio of your overall weight to your height, completely ignoring what that weight consists of. Body Fat Percentage isolates adipose tissue from muscle, bone, and water, making it a far superior health marker for athletic individuals.
+        </div>
+    </div>
+    <footer>© 2026 ToolsQuark</footer>
 </div>
-
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-    </a>
-</div>
-
-<div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>How do I take the measurements accurately?</strong><br>Measure your neck just below the larynx, keeping the tape flat. Measure your waist horizontally at the narrowest point for females, or precisely at the navel line for males. Ensure the tape is snug but never compressing the skin.
-            </div>
-            <div class="faq-item">
-                <strong>Why does the formula require gender selection?</strong><br>Biological fat distribution differs fundamentally between genders. Females naturally carry essential reproductive adipose tissue around the hip and pelvic regions, which requires distinct logarithmic constants to analyze accurately.
-            </div>
-            <div class="faq-item">
-                <strong>What is the difference between BMI and Body Fat Percentage?</strong><br>BMI simply looks at the ratio of your overall weight to your height, completely ignoring what that weight consists of. Body Fat Percentage isolates adipose tissue from muscle, bone, and water, making it a far superior health marker for athletic individuals.
-            </div>
-</div>
-<footer>© 2026 ToolsQuark</footer>
-</div>
-
 <script>
-// 接收打包注入的底层配置
 const inputConfigs = [{"id":"gender","label":"Gender (Select 1 for Male, 2 for Female)","unit":"ID","placeholder":"1"},{"id":"weight","label":"Weight","unit":"kg","placeholder":"70"},{"id":"height","label":"Height","unit":"cm","placeholder":"175"},{"id":"neck","label":"Neck Circumference","unit":"cm","placeholder":"38"},{"id":"waist","label":"Waist Circumference","unit":"cm","placeholder":"85"},{"id":"hip","label":"Hip Circumference (Females Only, input 0 if Male)","unit":"cm","placeholder":"0"}];
 const interpretationRules = [{"min":0,"max":6,"status":"Essential Fat Only","desc":"Your body fat percentage is matching essential fat limits. This level is typical for elite bodybuilders on competition days but is clinically unsustainable and highly risky for long-term physiological health.","suggestion":"Prioritize health over strict aesthetics immediately. Prolonged ultra-low body fat can severely disrupt endocrine performance, suppress hormone production, and weaken bone density. Consider gradually increasing dietary healthy fats (avocados, nuts, olive oil)."},{"min":6,"max":14,"status":"Athletic / Lean Profile","desc":"Excellent body composition! Your body possesses a high ratio of lean muscle to fat tissue. Vascularity and clear muscular definition (including abdominal shape) are highly visible at this tier.","suggestion":"Superb work! Maintain this balance by structuring your nutrition around rich proteins to feed lean mass. If you feel low on daily energy or experience cold intolerance, consider slightly increasing clean carbohydrate portions on high-intensity training days."},{"min":14,"max":25,"status":"Fitness / Healthy Standard","desc":"Congratulations! Your score sits securely within the ideal, healthy medical spectrum. Your visceral organs are properly protected, and your profile represents a great biological balance.","suggestion":"Keep up the fantastic lifestyle choices! To optimize your body composition further, continue with a well-rounded regimen of progressive resistance training mixed with consistent cardiovascular exercise (at least 150 minutes per week)."},{"min":25,"max":32,"status":"Overweight Borderline","desc":"Your body fat score has drifted slightly above the optimal fitness threshold. This state is often accompanied by increased subcutaneous fat distribution around the core and lower body regions.","suggestion":"Incorporate a subtle, sustainable caloric deficit (around 300 kcal below your maintenance limit). Focus on swapping processed carbohydrates for high-fiber whole foods and greens, and prioritize resistance workouts to retain your metabolic lean muscle mass."},{"min":32,"max":999,"status":"High Adipose Accumulation Alert","desc":"Your measurement reflects a significant volume of adipose storage. From a clinical perspective, high body fat percentages are heavily linked with increased systemic inflammation and vascular strain.","suggestion":"We highly recommend adopting a structured lifestyle intervention. Begin with gentle, joint-friendly aerobic movements (such as swimming, brisk walking, or elliptical machines) to burn energy without strain, and implement portion control with whole foods."}];
 
-// 1. 动态生成输入框结构
 const inputsArea = document.getElementById('inputs-area');
 let html = "";
 inputConfigs.forEach(cfg => {
@@ -125,27 +101,21 @@ inputConfigs.forEach(cfg => {
 });
 inputsArea.innerHTML = html;
 
-// 2. 核心数学运算引擎
 function calculateNow() {
     let args = {};
     let missing = false;
-    
     inputConfigs.forEach(cfg => {
         const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);
         if (isNaN(val)) missing = true;
         args[cfg.id] = val;
     });
-    
     if (missing) {
         alert("Please fill in all input fields correctly.");
         return;
     }
-    
     try {
-        // 安全获取后端公式并直接执行
         const formulaFunc = new Function('fields', 'return fields.gender === 1 ? (495 / (1.0324 - 0.19077 * Math.log10(fields.waist - fields.neck) + 0.15456 * Math.log10(fields.height))) - 450 : (495 / (1.29579 - 0.35004 * Math.log10(fields.waist + fields.hip - fields.neck) + 0.22100 * Math.log10(fields.height))) - 450');
         const finalResult = formulaFunc(args);
-        
         let matchedRule = null;
         for (let rule of interpretationRules) {
             if (finalResult >= rule.min && finalResult < rule.max) {
@@ -153,20 +123,16 @@ function calculateNow() {
                 break;
             }
         }
-        
         if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
-        
         document.getElementById('result-area').style.display = 'block';
         document.getElementById('calc-output').innerText = finalResult.toFixed(2);
         document.getElementById('calc-status').innerText = matchedRule.status;
         document.getElementById('calc-desc').innerText = matchedRule.desc;
         document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
-        
     } catch (e) {
         alert("Calculation error. Please check inputs.");
     }
 }
-
 function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 </script>
 </body>

@@ -42,92 +42,84 @@ footer{text-align:center;margin-top:30px;color:#777;}
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Smartphone Addiction Test</h1>
-    <p>Measure your psychological reliance on mobile devices, phantom vibration patterns, and compulsive checking habits.</p>
-</div>
-<div class="card" id="quiz">
-    <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-        <div class="progress-wrap">
-            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+    <div class="hero">
+        <h1>Smartphone Addiction Test</h1>
+        <p>Measure your psychological reliance on mobile devices, phantom vibration patterns, and compulsive checking habits.</p>
+    </div>
+    <div class="card" id="quiz">
+        <div class="quiz-header">
+            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+            <div class="progress-wrap">
+                <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+            </div>
+        </div>
+        <div class="question" id="question"></div>
+        <div id="answers"></div>
+    </div>
+    <div class="card hidden" id="result">
+        <div class="score" id="score"></div>
+        <div class="profile" id="profile"></div>
+        <div class="description" id="description"></div>
+        <h3>Assessment Indicators</h3>
+        <div class="bar">
+            <div class="bar-label">Compulsive Checking</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Phantom Anxiety</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:64%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Withdrawal Tolerance</div>
+            <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
+        </div>
+        <h3 style="margin-top:30px;">Behavioral Insights</h3>
+        <div class="insight">The urge to check notifications is driven by variable reward schedules, similar to mechanisms found in casual gambling.</div>
+        <div class="insight">Phantom vibration syndrome highlights how deeply digital alerts have rewired our somatic sensory processing.</div>
+        <div class="insight">Replacing screen time requires friction; simply hiding your phone in another room increases focus by reducing cognitive load.</div>
+    </div>
+    <div class="card hidden" id="recommendations">
+        <h3>Recommended Tests</h3>
+        <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
+            <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
+        </a>
+        <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
+        </a>
+        <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>Recommended Tools</h3>
+        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+        </a>
+    </div>
+    <div class="card">
+        <h3>FAQ</h3>
+        <div class="faq-item">
+            <strong>Is high screen time automatically an addiction?</strong><br>No. If your screen use is purely for active work or creation, it differs from passive, compulsive scrolling driven by boredom or escape.
+        </div>
+        <div class="faq-item">
+            <strong>Why do I feel anxious when my phone battery is low?</strong><br>This is known as 'Nomophobia'. It triggers a survival-like anxiety rooted in the fear of being digitally disconnected or isolated.
+        </div>
+        <div class="faq-item">
+            <strong>Will a digital detox fix my habits permanently?</strong><br>Temporary detoxes provide clarity, but long-term success relies on setting rigid digital boundaries, like screen-free bedrooms.
         </div>
     </div>
-    <div class="question" id="question"></div>
-    <div id="answers"></div>
-</div>
-<div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
-            <div class="bar">
-                <div class="bar-label">Compulsive Checking</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Phantom Anxiety</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:64%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Withdrawal Tolerance</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
-            </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">The urge to check notifications is driven by variable reward schedules, similar to mechanisms found in casual gambling.</div><div class="insight">Phantom vibration syndrome highlights how deeply digital alerts have rewired our somatic sensory processing.</div><div class="insight">Replacing screen time requires friction; simply hiding your phone in another room increases focus by reducing cognitive load.</div>
-</div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
-    <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
-        <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
-</div>
-<div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Is high screen time automatically an addiction?</strong><br>No. If your screen use is purely for active work or creation, it differs from passive, compulsive scrolling driven by boredom or escape.
-            </div>
-            <div class="faq-item">
-                <strong>Why do I feel anxious when my phone battery is low?</strong><br>This is known as 'Nomophobia'. It triggers a survival-like anxiety rooted in the fear of being digitally disconnected or isolated.
-            </div>
-            <div class="faq-item">
-                <strong>Will a digital detox fix my habits permanently?</strong><br>Temporary detoxes provide clarity, but long-term success relies on setting rigid digital boundaries, like screen-free bedrooms.
-            </div>
-</div>
-<footer>© 2026 ToolsQuark</footer>
+    <footer>© 2026 ToolsQuark</footer>
 </div>
 <script>
 const questions = [{"question":"What is the very first thing you do within 5 minutes of waking up in the morning?","options":["Stretch/Wash up","Briefly check time/alarms","Check notifications/emails","Start endless browsing"]},{"question":"How do you feel when you accidentally leave your phone at home for a few hours?","options":["Relieved or indifferent","Slightly uneasy","Anxious and distracted","Panicked; must go back"]},{"question":"How often do you catch yourself scrolling through apps without remembering why you opened them?","options":["Rarely","Occasionally","Frequently","All the time"]},{"question":"Do you find yourself checking your phone during face-to-face conversations or meals with loved ones?","options":["Never","Only if it rings","Sometimes during lulls","Constantly out of habit"]},{"question":"Have you tried to cut down your screen time but consistently failed to stick to it?","options":["Never needed to","Tried once and succeeded","Failed a few times","Given up trying entirely"]},{"question":"How frequently do you experience 'phantom vibrations' (thinking your phone buzzed when it didn't)?","options":["Never","Rarely","Sometimes","Very frequently"]},{"question":"Do you take your smartphone with you into the bathroom every single time?","options":["Hardly ever","Occasionally","Most of the time","Always without exception"]},{"question":"How much does your late-night phone usage delay your planned sleep schedule?","options":["Not at all","By 15-30 minutes","By 1-2 hours","Massively disrupts sleep"]},{"question":"Do you use your phone as a primary escape mechanism when feeling stressed, awkward, or lonely?","options":["No","Rarely","Yes, quite often","It is my default reaction"]},{"question":"Has anyone close to you complained about how much time you spend on your device?","options":["Never","Once or twice","Regularly","Constantly causes arguments"]}];
 const resultProfiles = {"low":{"profile":"Mindful Device User","desc":"You view your smartphone as a utility tool rather than an emotional escape hatch. You comfortably set boundaries and experience no distress when disconnected."},"medium":{"profile":"Habitual Screen Consumer","desc":"Your phone is creeping into your passive routines. You frequently find yourself scrolling mindlessly when bored, causing minor focus or time management issues."},"high":{"profile":"Severe Digital Dependency","desc":"You display clear compulsive habits and severe withdrawal anxiety. The device significantly interferes with your real-world relationships, sleep, and deep focus capabilities."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+let current=0, totalScore=0, isTransitioning=false;
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;

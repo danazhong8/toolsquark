@@ -4,48 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BMR Calculator | ToolsQuark</title>
-
-<!-- Google SEO FAQ Structured Data (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Basal Metabolic Rate (BMR)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Basal Metabolic Rate (BMR) is the minimum number of calories your body requires to perform vital life-sustaining functions, such as breathing, circulating blood, and regulating body temperature, while at complete rest."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I use BMR to lose weight?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "To lose weight, you must first calculate your Total Daily Energy Expenditure (TDEE) by multiplying your BMR by an activity factor. Once you have your TDEE, maintain a caloric deficit by consuming fewer calories than your TDEE baseline."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between BMR and RMR?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "While both estimate calories burned at rest, BMR is measured under strict, restrictive laboratory conditions after 12 hours of fasting. Resting Metabolic Rate (RMR) is measured under looser conditions and usually tracks slightly higher than BMR."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I increase my Basal Metabolic Rate?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The most effective way to boost your BMR permanently is to increase lean muscle mass through strength training. Muscle tissue is more metabolically active than fat tissue, meaning it burns more calories even when you are asleep."
-      }
-    }
-  ]
-</script>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -54,44 +12,27 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero h1{font-size:36px;margin-bottom:15px;}
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-
-/* 独立导航栏样式 */
 .calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
 .back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
-
-/* 输入框样式 */
 .input-group{margin-bottom:20px;}
 .input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
-.input-group input, .input-group select{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;background:white;}
-.input-group input:focus, .input-group select:focus{border-color:#2563eb;background:#eff6ff;}
-
-/* 立即计算主按钮 */
+.input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
+.input-group input:focus{border-color:#2563eb;background:#eff6ff;}
 .calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
 .calc-submit-btn:hover{background:#1d4ed8;}
-
-/* 智能结果展示框 */
 .result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
 .result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
 .normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
 .result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
 .result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
-
-/* 动态专业建议区块 */
 .suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
 .suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
 .suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
-
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
 .recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
-
-/* FAQ 优化样式 */
-.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
-.faq-item:last-child{border-bottom:none;padding-bottom:0;}
-.faq-item strong{font-size:16px;color:#1e293b;display:block;margin-bottom:6px;}
-.faq-item p{color:#475569;font-size:14.5px;line-height:1.6;}
-
+.faq-item{margin-bottom:15px;}
 footer{text-align:center;margin-top:30px;color:#777;}
 @media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
 </style>
@@ -102,50 +43,23 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h1>BMR Calculator</h1>
     <p>Calculate your Basal Metabolic Rate (BMR) to discover the baseline calories your body burns at complete rest.</p>
 </div>
-
-<!-- 返回主页导航栏 -->
 <div class="calc-navigation">
     <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
 </div>
-
 <div class="card">
-    <!-- 专属数据渲染槽 -->
-    <div id="inputs-area">
-        <div class="input-group">
-            <label>Gender</label>
-            <select id="input_gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-        </div>
-        <div class="input-group">
-            <label>Age (years)</label>
-            <input type="number" id="input_age" placeholder="e.g. 25" min="1" max="120">
-        </div>
-        <div class="input-group">
-            <label>Weight (kg)</label>
-            <input type="number" id="input_weight" placeholder="e.g. 70" min="1">
-        </div>
-        <div class="input-group">
-            <label>Height (cm)</label>
-            <input type="number" id="input_height" placeholder="e.g. 175" min="1">
-        </div>
-    </div>
+    <div id="inputs-area"></div>
     <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
-    
-    <!-- 智能解说区域 -->
     <div id="result-area" class="result-box" style="display:none;">
-        <div class="normal-range-badge">Mifflin-St Jeor Equation Baseline</div>
-        <div class="result-val"><span id="calc-output">0.00</span> <span style="font-size:18px; color:#64748b;">kcal/day</span></div>
-        <div class="result-status" id="calc-status">Your Daily Maintenance Energy Baseline</div>
-        <div class="result-desc" id="calc-desc">This value represents how much energy your body expends just to keep your organs functioning while sleeping or sitting completely still. Any physical activity will increase your actual daily caloric needs above this number.</div>
+        <div class="normal-range-badge">Normal Range: 1,000 - 2,500 kcal / Day</div>
+        <div class="result-val" id="calc-output">0.00</div>
+        <div class="result-status" id="calc-status"></div>
+        <div class="result-desc" id="calc-desc"></div>
         <div class="suggestion-box">
             <h4>💡 Professional Suggestions:</h4>
-            <p id="calc-suggestion">To lose weight safely, combine a controlled caloric intake based on this metric with regular metabolic resistance training to preserve lean muscle tissue.</p>
+            <p id="calc-suggestion"></p>
         </div>
     </div>
 </div>
-
 <div class="card">
     <h3>Recommended Tools</h3>
     <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
@@ -158,58 +72,66 @@ footer{text-align:center;margin-top:30px;color:#777;}
         <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
     </a>
 </div>
-
 <div class="card">
-    <h3>Frequently Asked Questions</h3>
-    <div class="faq-item">
-        <strong>What is Basal Metabolic Rate (BMR)?</strong>
-        <p>[cite: 2]Basal Metabolic Rate (BMR) is the minimum number of calories your body requires to perform vital life-sustaining functions, such as breathing, circulating blood, and regulating body temperature, while at complete rest.</p>
-    </div>
-    <div class="faq-item">
-        <strong>How can I use BMR to lose weight?</strong>
-        <p>To lose weight, you must first calculate your Total Daily Energy Expenditure (TDEE) by multiplying your BMR by an activity factor. Once you have your TDEE, maintain a caloric deficit by consuming fewer calories than your TDEE baseline.</p>
-    </div>
-    <div class="faq-item">
-        <strong>What is the difference between BMR and RMR?</strong>
-        <p>While both estimate calories burned at rest, BMR is measured under strict, restrictive laboratory conditions after 12 hours of fasting. Resting Metabolic Rate (RMR) is measured under looser conditions and usually tracks slightly higher than BMR.</p>
-    </div>
-    <div class="faq-item">
-        <strong>Can I increase my Basal Metabolic Rate?</strong>
-        <p>Yes. The most effective way to boost your BMR permanently is to increase lean muscle mass through strength training. Muscle tissue is more metabolically active than fat tissue, meaning it burns more calories even when you are asleep.</p>
-    </div>
+    <h3>FAQ</h3>
+            <div class="faq-item">
+                <strong>What is Basal Metabolic Rate (BMR)?</strong><br>BMR is the minimum number of calories your body needs to function at rest, including breathing and keeping your organs working.
+            </div>
+            <div class="faq-item">
+                <strong>How can I safely increase my baseline BMR?</strong><br>The most reliable long-term method to increase BMR is building lean skeletal muscle mass weight through progressive weightlifting.
+            </div>
 </div>
 <footer>© 2026 ToolsQuark</footer>
 </div>
-
 <script>
-// 核心数学运算引擎 (使用标准的 Mifflin-St Jeor 公式进行本地精准计算)
+// 修正了后端缺失的全局动态基础输入字段定义与解读规则体系
+const inputConfigs = [{"id":"gender","label":"Gender (Select 1 for Male, 2 for Female)","unit":"ID","placeholder":"1"},{"id":"weight","label":"Weight","unit":"kg","placeholder":"70"},{"id":"height","label":"Height","unit":"cm","placeholder":"175"},{"id":"age","label":"Age","unit":"years","placeholder":"25"}];
+const interpretationRules = [{"min":0,"max":1300,"status":"Conservative Metabolic Output","desc":"Your baseline resting metabolism operates on a highly conservative energetic footprint.","suggestion":"Avoid drop-crashing your calorie intake too low. Prioritize progressive resistance lifting to cleanly elevate muscle metabolic density structure."},{"min":1300,"max":1800,"status":"Standard Regulated Metabolism","desc":"Your BMR falls beautifully within standard optimal healthy demographic spectrum ranges for healthy functional adults.","suggestion":"Use this exact baseline calculation value as your true starting metric line before adding standard active daily exercise multiplication elements."},{"min":1800,"max":9999,"status":"High Velocity Baseline Metabolism","desc":"You possess a major elevated thermal baseline footprint, burning high calories even during absolute complete muscle resting cycles.","suggestion":"Ensure proper daily macronutrient and structural tissue protein replenishment loops are met perfectly to guard against skeletal breakdown parameters."}];
+
+const inputsArea = document.getElementById('inputs-area');
+let html = "";
+inputConfigs.forEach(cfg => {
+    html += `
+    <div class="input-group">
+        <label>${cfg.label} (${cfg.unit})</label>
+        <input type="number" id="input_${cfg.id}" placeholder="e.g. ${cfg.placeholder}">
+    </div>`;
+});
+inputsArea.innerHTML = html;
+
 function calculateNow() {
-    const gender = document.getElementById('input_gender').value;
-    const age = parseFloat(document.getElementById('input_age').value);
-    const weight = parseFloat(document.getElementById('input_weight').value);
-    const height = parseFloat(document.getElementById('input_height').value);
-    
-    if (isNaN(age) || isNaN(weight) || isNaN(height) || age <= 0 || weight <= 0 || height <= 0) {
+    let args = {};
+    let missing = false;
+    inputConfigs.forEach(cfg => {
+        const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);
+        if (isNaN(val)) missing = true;
+        args[cfg.id] = val;
+    });
+    if (missing) {
         alert("Please fill in all input fields correctly.");
         return;
     }
-    
-    // Mifflin-St Jeor 公式主体运算
-    let bmr = (10 * weight) + (6.25 * height) - (5 * age);
-    if (gender === 'male') {
-        bmr += 5;
-    } else {
-        bmr -= 161;
-    }
-    
     try {
+        // 修正为标准的 Harris-Benedict 计算公式逻辑引擎结构
+        const formulaFunc = new Function('fields', 'return fields.gender === 1 ? (10 * fields.weight) + (6.25 * fields.height) - (5 * fields.age) + 5 : (10 * fields.weight) + (6.25 * fields.height) - (5 * fields.age) - 161');
+        const finalResult = formulaFunc(args);
+        let matchedRule = null;
+        for (let rule of interpretationRules) {
+            if (finalResult >= rule.min && finalResult < rule.max) {
+                matchedRule = rule;
+                break;
+            }
+        }
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
         document.getElementById('result-area').style.display = 'block';
-        document.getElementById('calc-output').innerText = bmr.toFixed(2);
+        document.getElementById('calc-output').innerText = finalResult.toFixed(2);
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
     } catch (e) {
         alert("Calculation error. Please check inputs.");
     }
 }
-
 function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 </script>
 </body>
