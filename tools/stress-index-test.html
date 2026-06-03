@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stress Index Test | ToolsQuark</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I experience high stress without feeling anxious?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Stress often manifests physically first—via jaw clenching, tight shoulders, digestive issues, or chronic low energy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the fastest way to drop my stress index?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Engage the parasympathetic nervous system directly via deep, extended-exhalation breathing or taking a brief walk in nature."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is all stress caused by external work pressures?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Internal expectations, poor nutrition, lack of sleep, and unexpressed emotions generate massive internal stress loads."
+      }
+    }
+  ]
+</script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -12,32 +45,57 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero h1{font-size:36px;margin-bottom:15px;}
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-.progress-wrap{width:100%;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;flex-grow:1;}
-.quiz-header{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:25px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
+
+/* 独立导航与进度条组合样式 - 与 BMR 视觉基调完美统一 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
+
+.quiz-header{display:flex;align-items:center;width:100%;margin-bottom:25px;gap:15px;}
+.progress-wrap{flex:1;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;}
 .progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
 .progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
-.question{font-size:24px;font-weight:bold;margin-bottom:20px;}
-.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;}
+
+/* 问题与选项样式 */
+.question{font-size:24px;font-weight:bold;margin-bottom:20px;color:#1e293b;}
+.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;background:white;}
 .option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
 .selected{border-color:#2563eb;background:#dbeafe;}
 .selected-heavy{border-color:#f97316;background:#fff7ed;}
 .hidden{display:none;}
-.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;}
-.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
-.description{text-align:center;color:#555;margin-bottom:25px;}
-.bar{margin-bottom:18px;}
-.bar-label{margin-bottom:5px;font-weight:bold;}
+
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;text-align:center;}
+.score{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.profile{font-size:26px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.description{color:#374151;font-size:15px;margin-bottom:20px;text-align:justify;line-height:1.6;}
+
+/* 动态多维度量化柱 */
+.indicator-section{text-align:left;margin-top:20px;margin-bottom:25px;}
+.indicator-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;border-bottom:1px solid #dbeafe;padding-bottom:5px;}
+.bar{margin-bottom:15px;}
+.bar-label{margin-bottom:6px;font-size:14px;font-weight:bold;color:#475569;}
 .bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
-.bar-fill{height:100%;background:#2563eb;}
-.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;}
+.bar-fill{height:100%;background:#2563eb;border-radius:20px;}
+
+/* 动态洞察区块 */
+.insight-section{text-align:left;margin-bottom:10px;}
+.insight-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;}
+.insight{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;margin-bottom:12px;font-size:14.5px;color:#374151;line-height:1.5;}
+
+/* 推荐工具样式 */
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
-.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
-.faq-item{margin-bottom:15px;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+
+/* FAQ 优化样式 */
+.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
+.faq-item:last-child{border-bottom:none;padding-bottom:0;}
+.faq-item strong{font-size:16px;color:#1e293b;display:block;margin-bottom:6px;}
+.faq-item p{color:#475569;font-size:14.5px;line-height:1.6;}
+
 footer{text-align:center;margin-top:30px;color:#777;}
-@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
+@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:40px;}.profile{font-size:22px;}}
 </style>
 </head>
 <body>
@@ -46,9 +104,13 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <h1>Stress Index Test</h1>
     <p>Evaluate your overall allostatic load, nervous system reactivity, and emotional coping thresholds under modern pressures.</p>
 </div>
+
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
+
 <div class="card" id="quiz">
     <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
         <div class="progress-wrap">
             <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
         </div>
@@ -56,12 +118,15 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <div class="question" id="question"></div>
     <div id="answers"></div>
 </div>
+
 <div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
+    <div class="result-box">
+        <div class="score" id="score">0/40</div>
+        <div class="profile" id="profile">--</div>
+        <div class="description" id="description">--</div>
+        
+        <div class="indicator-section">
+            <h3>Assessment Indicators</h3>
             <div class="bar">
                 <div class="bar-label">Allostatic Load</div>
                 <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
@@ -74,60 +139,55 @@ footer{text-align:center;margin-top:30px;color:#777;}
                 <div class="bar-label">Coping Reserve</div>
                 <div class="bar-bg"><div class="bar-fill" style="width:48%"></div></div>
             </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Stress isn't inherently evil; acute stress builds resilience, while unmanaged chronic stress degrades long-term physiological health.</div><div class="insight">A high allostatic load signals that your body is spending valuable energy survival-fighting instead of recovering.</div><div class="insight">Somatic regulation techniques, like physiological sighs, reset your nervous system much faster than intellectual rationalization.</div>
+        </div>
+
+        <div class="insight-section">
+            <h3>Behavioral Insights</h3>
+            <div class="insight">Stress isn't inherently evil; acute stress builds resilience, while unmanaged chronic stress degrades long-term physiological health.</div>
+            <div class="insight">A high allostatic load signals that your body is spending valuable energy survival-fighting instead of recovering.</div>
+            <div class="insight">Somatic regulation techniques, like physiological sighs, reset your nervous system much faster than intellectual rationalization.</div>
+        </div>
+    </div>
 </div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
+
+<div class="card">
+    <h3>Recommended Tools</h3>
     <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
         <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
     </a>
-    
     <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
         <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
     </a>
     <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
         <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
     </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
 </div>
+
 <div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Can I experience high stress without feeling anxious?</strong><br>Yes. Stress often manifests physically first—via jaw clenching, tight shoulders, digestive issues, or chronic low energy.
-            </div>
-            <div class="faq-item">
-                <strong>What is the fastest way to drop my stress index?</strong><br>Engage the parasympathetic nervous system directly via deep, extended-exhalation breathing or taking a brief walk in nature.
-            </div>
-            <div class="faq-item">
-                <strong>Is all stress caused by external work pressures?</strong><br>No. Internal expectations, poor nutrition, lack of sleep, and unexpressed emotions generate massive internal stress loads.
-            </div>
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+        <strong>Can I experience high stress without feeling anxious?</strong>
+        <p>Yes. Stress often manifests physically first—via jaw clenching, tight shoulders, digestive issues, or chronic low energy.</p>
+    </div>
+    <div class="faq-item">
+        <strong>What is the fastest way to drop my stress index?</strong>
+        <p>Engage the parasympathetic nervous system directly via deep, extended-exhalation breathing or taking a brief walk in nature.</p>
+    </div>
+    <div class="faq-item">
+        <strong>Is all stress caused by external work pressures?</strong>
+        <p>No. Internal expectations, poor nutrition, lack of sleep, and unexpressed emotions generate massive internal stress loads.</p>
+    </div>
 </div>
+
 <footer>© 2026 ToolsQuark</footer>
 </div>
+
 <script>
 const questions = [{"question":"How frequently have you felt upset or agitated because of something unexpected happening?","options":["Almost never","Sometimes","Fairly often","Very often"]},{"question":"How often do you feel you lack control over the truly important responsibilities in your life?","options":["Never","Rarely","Sometimes","All the time"]},{"question":"Have you noticed yourself clenching your jaw, grinding your teeth, or holding tension in your shoulders?","options":["Never notice this","Rarely","Frequently","Almost constantly"]},{"question":"How easily do minor, everyday inconveniences (like traffic or long lines) make you feel angry?","options":["Stay completely calm","Slightly annoyed","Noticeably irritated","Explosive frustration"]},{"question":"How regularly do you find yourself skipping meals or overeating due to emotional pressure?","options":["Never","Occasionally","Often","Daily stress-eating/starving"]},{"question":"Do you experience regular digestive issues, unexplainable fatigue, or tension headaches?","options":["No, healthy","Rarely","Frequently flares up","Chronic daily symptoms"]},{"question":"How often do you feel overwhelmed, like you simply cannot cope with all your current duties?","options":["Never","Rarely","Often","Constantly drowning"]},{"question":"How successful are you at turning off anxious thoughts and relaxing during your weekends or evenings?","options":["Highly successful","Moderately successful","Struggle to relax","Completely impossible"]},{"question":"How frequently do you find yourself snapping at family members, friends, or coworkers over minor things?","options":["Never","Rarely","Often","Almost daily"]},{"question":"Do you feel that the overall demands on your time are increasing while your energy reserves shrink?","options":["No, balanced","Slightly out of balance","Yes, noticeably","Completely unsustainable"]}];
 const resultProfiles = {"low":{"profile":"Regulated Nervous System","desc":"Your nervous system handles daily demands smoothly. You recover quickly from acute stressors and maintain deep psychological resilience."},"medium":{"profile":"Elevated Tension Plateau","desc":"Your stress load is flattening your adaptive reserves. You are managing, but physical tension and emotional irritability are noticeably rising."},"high":{"profile":"Allostatic Overload Alert","desc":"Your system is stuck in an active fight-or-flight feedback loop. High stress is exhausting your physical health and emotional capacity. Restoration is a priority."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+
+let current=0, totalScore=0, isTransitioning=false;
+
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;
@@ -141,6 +201,7 @@ function loadQuestion(){
     document.getElementById("answers").innerHTML=html;
     isTransitioning = false;
 }
+
 function selectOption(el,score,optionIndex){
     if(isTransitioning) return;
     document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
@@ -152,17 +213,19 @@ function selectOption(el,score,optionIndex){
         if(current<questions.length) loadQuestion(); else showResult();
     }, 300);
 }
+
 function showResult(){
     document.getElementById("quiz").classList.add("hidden");
     document.getElementById("result").classList.remove("hidden");
-    document.getElementById("recommendations").classList.remove("hidden");
     document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
     let activeProfile = resultProfiles.high;
     if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
     else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
     document.getElementById("profile").innerText=activeProfile.profile;
     document.getElementById("description").innerText=activeProfile.desc;
+    document.getElementById("result").scrollIntoView({ behavior: 'smooth' });
 }
+
 function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 loadQuestion();
 </script>
