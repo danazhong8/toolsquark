@@ -1,157 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Period Calculator - ToolsQuark</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
-    .calc-container { max-width: 600px; margin: 40px auto; }
-    
-    /* Premium Blue Header Box matching image style specifications */
-    .calc-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 32px 24px; border-radius: 20px; color: #fff; text-align: left; box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
-    .calc-header h1 { margin: 0; font-size: 28px; font-weight: 700; }
-    .calc-header p { margin: 12px 0 0; font-size: 15px; opacity: 0.9; line-height: 1.5; }
-    
-    /* Home link matching image position below the blue banner block */
-    .nav-back { display: inline-block; margin: 16px 0 16px 8px; color: #6b7280; text-decoration: none; font-size: 14px; text-align: left; transition: color 0.2s; }
-    .nav-back:hover { color: #3b82f6; }
-    
-    /* Main Content Box white card background container */
-    .calc-content-card { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-    
-    .range-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 22px; text-align: left; }
-    .input-group { margin-bottom: 20px; text-align: left; }
-    .input-group label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
-    .input-wrapper { display: flex; align-items: center; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; overflow: hidden; }
-    .input-wrapper input { flex: 1; border: none; padding: 12px 14px; font-size: 15px; outline: none; width: 100%; color: #1f2937; }
-    .input-unit { background: #f3f4f6; color: #4b5563; padding: 12px 16px; font-size: 13px; border-left: 1px solid #e5e7eb; min-width: 45px; text-align: center; font-weight: 600; }
-    
-    .btn-submit { display: block; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 24px; transition: background 0.2s; }
-    .btn-submit:hover { background: #2563eb; }
-    
-    .result-box { display: none; margin-top: 26px; padding: 24px; border: 2px dashed #3b82f6; border-radius: 12px; background: #eff6ff; }
-    .result-value { font-size: 44px; font-weight: 800; color: #3b82f6; margin: 10px 0; text-align: center; }
-    .result-title { font-size: 18px; font-weight: 700; color: #1e3a8a; text-align: center; }
-    .result-desc { font-size: 14px; color: #4b5563; line-height: 1.6; margin-top: 12px; border-top: 1px solid #dbeafe; padding-top: 12px; text-align: left; }
-    
-    .faq-section { margin-top: 36px; border-top: 1px solid #e5e7eb; padding-top: 24px; }
-    .faq-title { font-size: 16px; font-weight: 700; color: #1f2937; margin-bottom: 18px; text-align: left; }
-    .faq-item { margin-bottom: 18px; text-align: left; }
-    .faq-item strong { display: block; font-size: 14px; color: #374151; margin-bottom: 6px; }
-    .faq-item p { margin: 0; font-size: 13px; color: #6b7280; line-height: 1.6; }
-.recommend-section { margin-top: 36px; padding-bottom: 24px; }
-.recommend-link { text-decoration: none; color: inherit; display: block; margin-bottom: 12px; }
-.recommend { background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb; transition: 0.2s; }
-.recommend:hover { border-color: #3b82f6; background: #f0f7ff; }
-.recommend strong { color: #1e3a8a; display: block; margin-bottom: 4px; font-size: 14px; }
-.recommend { font-size: 13px; color: #4b5563; }
-  </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Period Calculator - ToolsQuark</title>
 
-  <div class="calc-container">
-    
-    <div class="calc-header">
-      <h1>Period Calculator</h1>
-      <p>Analyze your personal menstrual configuration to map your baseline hormonal and cycle horizons.</p>
-    </div>
-
-    <div style="text-align: left;">
-      <a href="/" class="nav-back">&larr; Home</a>
-    </div>
-
-    <div class="calc-content-card">
-      <div style="text-align: left;">
-        <div class="range-badge">Normal Range: Standard Cycle: 21 - 35 Days</div>
-      </div>
-
-      <div id="inputsForm"></div>
-
-      <button class="btn-submit" onclick="performCalculation()">Calculate Now</button>
-
-      <div id="resultBox" class="result-box">
-        <div class="result-title">Calculation Success</div>
-        <div id="resultVal" class="result-value">--</div>
-        <div class="result-desc">
-          <strong>Professional Interpretation & Suggestion:</strong><br>
-          Your non-bleeding follicular and luteal window profile has been structured. Consistency logs protect the early tracking of endocrine balance variations.
-        </div>
-      </div>
-<div class="recommend-section">
-          <div class="faq-title">Recommended Tools</div>
-          <a href="bmi-calculator.html" class="recommend-link">
-              <div class="recommend"><strong>BMI Calculator</strong>Standard body mass index assessment.</div>
-          </a>
-          <a href="bmr-calculator.html" class="recommend-link">
-              <div class="recommend"><strong>BMR Calculator</strong>Standard basal metabolic rate estimation.</div>
-          </a>
-          <a href="water-intake-calculator.html" class="recommend-link">
-              <div class="recommend"><strong>Water Intake Calculator</strong>Standard daily water intake estimation.</div>
-          </a>
-      </div>
-
-      <div class="faq-section">
-        <div class="faq-title">Frequently Asked Questions</div>
-        <div class='faq-item'><strong>When does peak ovulation typically occur?</strong><p>Biological ovulation reliably takes place exactly 14 days before your next menstrual cycle phase begins.</p></div><div class='faq-item'><strong>How can acute lifestyle stress delay a calendar period?</strong><p>High cortisol surges directly suppress upstream hypothalamic signaling, temporarily delaying regular hormonal cycles.</p></div>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    // Robust Base64 Decoding Pipeline
-    const rawB64 = `W3siaWQiOiJjeWNsZUxlbmd0aCIsImxhYmVsIjoiQXZlcmFnZSBDeWNsZSBMZW5ndGgiLCJ1bml0IjoiZGF5cyIsInBsYWNlaG9sZGVyIjoiMjgifSx7ImlkIjoicGVyaW9kTGVuZ3RoIiwibGFiZWwiOiJCbGVlZGluZyBEdXJhdGlvbiIsInVuaXQiOiJkYXlzIiwicGxhY2Vob2xkZXIiOiI1In1d`;
-    const inputConfigs = JSON.parse(decodeURIComponent(escape(window.atob(rawB64))));
-    const formContainer = document.getElementById("inputsForm");
-
-    if (Array.isArray(inputConfigs)) {
-      inputConfigs.forEach(cfg => {
-        const group = document.createElement("div");
-        group.className = "input-group";
-        group.innerHTML = `
-          <label for="${cfg.id}">${cfg.label}</label>
-          <div class="input-wrapper">
-            <input type="number" id="${cfg.id}" placeholder="${cfg.placeholder || ''}">
-            <div class="input-unit">${cfg.unit}</div>
-          </div>
-        `;
-        formContainer.appendChild(group);
-      });
-    }
-
-    function performCalculation() {
-      try {
-        const fields = {};
-        let isValid = true;
-        
-        inputConfigs.forEach(cfg => {
-          const element = document.getElementById(cfg.id);
-          const val = element ? parseFloat(element.value) : NaN;
-          if (isNaN(val)) {
-            isValid = false;
-          }
-          fields[cfg.id] = val;
-        });
-
-        if (!isValid) {
-          alert("Please fill out all input parameters accurately before generating calculation output.");
-          return;
-        }
-
-        const calcFormulaText = `fields.cycleLength - fields.periodLength`;
-        const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
-        const result = formulaFunc(fields);
-        
-        document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
-        document.getElementById("resultBox").style.display = "block";
-        document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth' });
-      } catch (err) {
-        alert("Calculation exception discovered within field parameters.");
-        console.error(err);
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When does peak ovulation typically occur?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Biological ovulation reliably takes place approximately 14 days before your next menstrual cycle phase begins, though this can vary slightly based on individual cycle consistency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can acute lifestyle stress delay a calendar period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "High cortisol surges triggered by psychological or physical stress can directly suppress upstream hypothalamic signaling, which temporarily disrupts and delays regular hormonal ovulation cycles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is considered a normal menstrual cycle length?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard medical menstrual cycle typically ranges between 21 to 35 days for healthy adults, with bleeding lasting anywhere from 2 to 7 days."
       }
     }
-  </script>
+  ]
+</script>
 
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+
+/* 独立导航栏样式 - 与 BMR Calculator 完美对齐 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
+.back-home-btn:hover{color:#2563eb;}
+
+/* 输入框组合样式 */
+.input-group{margin-bottom:20px;}
+.input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
+.input-wrapper{display:flex;align-items:center;border:2px solid #e5e7eb;border-radius:12px;overflow:hidden;background:white;transition:.2s;}
+.input-wrapper:focus-within{border-color:#2563eb;background:#eff6ff;}
+.input-wrapper input{flex:1;border:none;padding:14px;font-size:16px;outline:none;width:100%;background:transparent;}
+.input-unit{background:#f3f4f6;color:#4b5563;padding:14px 18px;font-size:13px;border-left:2px solid #e5e7eb;min-width:65px;text-align:center;font-weight:bold;}
+
+/* 立即计算主按钮 */
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
+.calc-submit-btn:hover{background:#1d4ed8;}
+
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
+.result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
+.result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;line-height:1.6;}
+
+/* 动态专业建议区块 */
+.suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
+.suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
+.suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
+
+/* 推荐工具样式 */
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+
+/* FAQ 优化样式 */
+.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
+.faq-item:last-child{border-bottom:none;padding-bottom:0;}
+.faq-item strong{font-size:16px;color:#1e293b;display:block;margin-bottom:6px;}
+.faq-item p{color:#475569;font-size:14.5px;line-height:1.6;}
+
+footer{text-align:center;margin-top:30px;color:#777;}
+@media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="hero">
+    <h1>Period Calculator</h1>
+    <p>Analyze your personal menstrual configuration to map your baseline hormonal and cycle horizons.</p>
+</div>
+
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
+
+<div class="card">
+    <div id="inputsForm"></div>
+    <button class="calc-submit-btn" onclick="performCalculation()">Calculate Now</button>
+    
+    <div id="resultBox" class="result-box" style="display:none;">
+        <div class="normal-range-badge">Normal Range: Standard Cycle: 21 - 35 Days</div>
+        <div class="result-val"><span id="resultVal">--</span> <span style="font-size:18px; color:#64748b;">Days (Non-Bleeding Window)</span></div>
+        <div class="result-status">Calculation Success</div>
+        <div class="result-desc">Your non-bleeding follicular and luteal window profile has been structured. Consistency logs protect the early tracking of endocrine balance variations.</div>
+        <div class="suggestion-box">
+            <h4>💡 Professional Suggestions:</h4>
+            <p>Maintaining a digital log of your cycle variations helps detect subtle hormonal shifts early. For precise cycle tracking, integrate clinical tracking parameters over a consecutive 90-day window.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Recommended Tools</h3>
+    <a href="bmi-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMI Calculator</strong><br>Standard body mass index assessment.</div>
+    </a>
+    <a href="bmr-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>BMR Calculator</strong><br>Standard basal metabolic rate estimation.</div>
+    </a>
+    <a href="water-intake-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+    </a>
+</div>
+
+<div class="card">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+        <strong>When does peak ovulation typically occur?</strong>
+        <p>Biological ovulation reliably takes place exactly 14 days before your next menstrual cycle phase begins. However, stress or sleep changes can shift this day.</p>
+    </div>
+    <div class="faq-item">
+        <strong>How can acute lifestyle stress delay a calendar period?</strong>
+        <p>High cortisol surges directly suppress upstream hypothalamic signaling, temporarily delaying regular hormonal cycles and affecting your ovulation timeline.</p>
+    </div>
+    <div class="faq-item">
+        <strong>What is considered a normal menstrual cycle length?</strong>
+        <p>A standard medical menstrual cycle typically ranges between 21 to 35 days for healthy adults, with a bleeding duration lasting between 2 to 7 days.</p>
+    </div>
+</div>
+<footer>© 2026 ToolsQuark</footer>
+</div>
+
+<script>
+// Base64 解码与动态表单生成管道
+const rawB64 = `W3siaWQiOiJjeWNsZUxlbmd0aCIsImxhYmVsIjoiQXZlcmFnZSBDeWNsZSBMZW5ndGgiLCJ1bml0IjoiZGF5cyIsInBsYWNlaG9sZGVyIjoiMjgifSx7ImlkIjoicGVyaW9kTGVuZ3RoIiwibGFiZWwiOiJCbGVlZGluZyBEdXJhdGlvbiIsInVuaXQiOiJkYXlzIiwicGxhY2Vob2xkZXIiOiI1In1d`;
+const inputConfigs = JSON.parse(decodeURIComponent(escape(window.atob(rawB64))));
+const formContainer = document.getElementById("inputsForm");
+
+if (Array.isArray(inputConfigs)) {
+  inputConfigs.forEach(cfg => {
+    const group = document.createElement("div");
+    group.className = "input-group";
+    group.innerHTML = `
+      <label for="${cfg.id}">${cfg.label}</label>
+      <div class="input-wrapper">
+        <input type="number" id="${cfg.id}" placeholder="${cfg.placeholder || ''}">
+        <div class="input-unit">${cfg.unit}</div>
+      </div>
+    `;
+    formContainer.appendChild(group);
+  });
+}
+
+// 核心经期数据运算引擎
+function performCalculation() {
+  try {
+    const fields = {};
+    let isValid = true;
+    
+    inputConfigs.forEach(cfg => {
+      const element = document.getElementById(cfg.id);
+      const val = element ? parseFloat(element.value) : NaN;
+      if (isNaN(val)) {
+        isValid = false;
+      }
+      fields[cfg.id] = val;
+    });
+
+    if (!isValid) {
+      alert("Please fill out all input parameters accurately before generating calculation output.");
+      return;
+    }
+
+    const calcFormulaText = `fields.cycleLength - fields.periodLength`;
+    const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
+    const result = formulaFunc(fields);
+    
+    document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
+    document.getElementById("resultBox").style.display = "block";
+    document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth' });
+  } catch (err) {
+    alert("Calculation exception discovered within field parameters.");
+    console.error(err);
+  }
+}
+
+function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+</script>
 </body>
 </html>
