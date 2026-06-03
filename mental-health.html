@@ -3,41 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Health Tools | ToolsQuark</title>
+    <title>Free Online Mental Health Tests & Anxiety Screeners | ToolsQuark</title>
+    <meta name="description" content="Access 100% free, scientifically backed mental health tools. Screen for stress, anxiety, burnout, and overthinking patterns privately in your browser.">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Free Online Mental Health Assessment Tools",
+      "description": "A curated collection of safe, private, and browser-localized psychological self-awareness indicators.",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "url": "https://www.toolsquark.com/tools/stress-index-test.html" },
+        { "@type": "ListItem", "position": 2, "url": "https://www.toolsquark.com/tools/anxiety-hyperarousal-assessment.html" },
+        { "@type": "ListItem", "position": 3, "url": "https://www.toolsquark.com/tools/social-anxiety-test.html" },
+        { "@type": "ListItem", "position": 4, "url": "https://www.toolsquark.com/tools/occupational-burnout-level-test.html" },
+        { "@type": "ListItem", "position": 5, "url": "https://www.toolsquark.com/tools/cognitive-overthinking-test.html" },
+        { "@type": "ListItem", "position": 6, "url": "https://www.toolsquark.com/tools/focus-attention-diagnostic.html" },
+        { "@type": "ListItem", "position": 7, "url": "https://www.toolsquark.com/tools/loneliness-level-test.html" }
+      ]
+    }
+    </script>
+
     <style>
-        :root { --primary: #0f172a; --accent: #2563eb; --text-muted: #64748b; --bg: #f8fafc; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; }
-        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        :root { 
+            --primary: #0f172a; 
+            --accent: #2563eb; 
+            --accent-light: #eff6ff;
+            --text-muted: #64748b; 
+            --bg: #f8fafc; 
+            --popular: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        
+        .container { max-width: 1050px; margin: 40px auto 60px auto; padding: 0 20px; }
+        .breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; display: flex; align-items: center; gap: 6px; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        
         .header { margin-bottom: 50px; }
+        .header h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(to right, #0f172a, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .header p { color: var(--text-muted); font-size: 1.05rem; max-width: 700px; }
+        
+        .sub-category-title { font-size: 1.4rem; font-weight: 800; margin: 45px 0 20px 0; color: #1e293b; display: flex; align-items: center; gap: 10px; border-left: 4px solid var(--accent); padding-left: 12px; }
+        
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-        .tool-card { background: white; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; display: block; }
-        .tool-card:hover { border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(-3px); }
-        .tool-name { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 5px; }
-        .tool-desc { font-size: 0.9rem; color: var(--text-muted); }
+        .tool-card { background: white; padding: 28px; border-radius: 20px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .tool-card:hover { border-color: var(--accent); box-shadow: 0 20px 25px -5px rgba(37,99,235,0.05), 0 10px 10px -5px rgba(0,0,0,0.02); transform: translateY(-4px); }
+        
+        .tool-card.popular-choice { border-color: #fbd38d; background: linear-gradient(180deg, #fffaf0 0%, #ffffff 100%); }
+        .tool-card.popular-choice:hover { border-color: var(--popular); box-shadow: 0 20px 25px -5px rgba(245,158,11,0.08); }
+        
+        .card-badge { position: absolute; top: 15px; right: 20px; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+        .badge-popular { background: #fef3c7; color: #d97706; }
+        .badge-time { background: #f1f5f9; color: #475569; }
+
+        .tool-meta { margin-bottom: 12px; }
+        .tool-name { font-weight: 800; display: block; font-size: 1.15rem; color: #1e293b; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .tool-desc { font-size: 0.95rem; color: var(--text-muted); font-weight: 400; line-height: 1.5; }
+        
+        .card-footer { margin-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+        .card-footer .go-link { opacity: 0; transition: 0.2s; transform: translateX(-5px); }
+        .tool-card:hover .card-footer .go-link { opacity: 1; transform: translateX(0); }
+        .tool-card.popular-choice .card-footer { color: #d97706; }
+
+        .e-e-a-t-section { margin-top: 80px; background: white; padding: 45px; border-radius: 24px; border: 1px solid #e2e8f0; }
+        .e-e-a-t-section h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 15px; color: #1e293b; }
+        .e-e-a-t-section p { color: var(--text-muted); font-size: 0.96rem; line-height: 1.7; margin-bottom: 15px; }
+        .disclaimer-box { font-size: 0.9rem; font-style: italic; border-left: 3px solid #cbd5e1; padding-left: 15px; color: #64748b; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <nav style="margin-bottom: 20px; font-size: 0.9rem;">
-        <a href="index.html" style="color: var(--accent); text-decoration: none;">← Back to Home</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Mental Health Tools</span>
+    </div>
 
     <header class="header">
-        <h1>Mental Health Tools</h1>
-        <p style="color: var(--text-muted);">Scientific assessment tools to help you understand and improve your psychological well-being.</p>
+        <h1>Private Mental Wellness Screeners</h1>
+        <p>Life can get loud. Hit pause and check in with your mind. Our assessments are processed entirely locally—meaning your thoughts stay 100% your own.</p>
     </header>
 
+    <h2 class="sub-category-title">🌊 Mood & Emotional Check-ins</h2>
     <div class="tools-grid">
-        <a href="tools/stress-index-test.html" class="tool-card"><span class="tool-name">Stress Index Test</span><span class="tool-desc">Measure your current stress load.</span></a>
-        <a href="tools/anxiety-hyperarousal-assessment.html" class="tool-card"><span class="tool-name">Anxiety Hyperarousal Assessment</span><span class="tool-desc">Evaluate hyperarousal symptoms.</span></a>
-        <a href="tools/social-anxiety-test.html" class="tool-card"><span class="tool-name">Social Anxiety Test</span><span class="tool-desc">Assess social interaction anxiety.</span></a>
-        <a href="tools/occupational-burnout-level-test.html" class="tool-card"><span class="tool-name">Occupational Burnout Level Test</span><span class="tool-desc">Detect signs of work-related burnout.</span></a>
-        <a href="tools/cognitive-overthinking-test.html" class="tool-card"><span class="tool-name">Cognitive Overthinking Test</span><span class="tool-desc">Identify habitual overthinking patterns.</span></a>
-        <a href="tools/focus-attention-diagnostic.html" class="tool-card"><span class="tool-name">Focus Attention Diagnostic</span><span class="tool-desc">Examine your concentration capabilities.</span></a>
-        <a href="tools/loneliness-level-test.html" class="tool-card"><span class="tool-name">Loneliness Level Test</span><span class="tool-desc">Gauge your subjective feeling of isolation.</span></a>
+        <a href="tools/stress-index-test.html" class="tool-card popular-choice">
+            <span class="card-badge badge-popular">🔥 High Daily Traffic</span>
+            <div class="tool-meta">
+                <span class="tool-name">🧠 Stress Index Test</span>
+                <span class="tool-desc">Feeling overwhelmed or hyper-reactive lately? Take 2 minutes to accurately decode your current mental pressure load.</span>
+            </div>
+            <div class="card-footer"><span>Measure My Stress</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/anxiety-hyperarousal-assessment.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 3 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🌪️ Anxiety & Tension Screener</span>
+                <span class="tool-desc">Are your nerves constantly on edge? Evaluate the somatic and biological markers of subconscious over-alertness.</span>
+            </div>
+            <div class="card-footer"><span>Screen My Nerves</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/cognitive-overthinking-test.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 2 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🌀 Cognitive Overthinking Test</span>
+                <span class="tool-desc">Can't turn your brain off at 3 AM? Map out and identify habitual mental loops and paralysis analysis patterns.</span>
+            </div>
+            <div class="card-footer"><span>Break The Loop</span><span class="go-link">→</span></div>
+        </a>
     </div>
+
+    <h2 class="sub-category-title">💼 Career & Cognitive Pacing</h2>
+    <div class="tools-grid">
+        <a href="tools/occupational-burnout-level-test.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 3 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">😩 Occupational Burnout Test</span>
+                <span class="tool-desc">Is it just an off-day, or is it true exhaustion? Detect early signs of chronic, work-related mental fatigue.</span>
+            </div>
+            <div class="card-footer"><span>Diagnose Burnout</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/focus-attention-diagnostic.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 4 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🎯 Focus & Attention Tracker</span>
+                <span class="tool-desc">Constantly switching tabs? Examine your attention span architecture and cognitive concentration thresholds.</span>
+            </div>
+            <div class="card-footer"><span>Check Concentration</span><span class="go-link">→</span></div>
+        </a>
+    </div>
+
+    <h2 class="sub-category-title">🤝 Social Dynamics & Isolation</h2>
+    <div class="tools-grid">
+        <a href="tools/social-anxiety-test.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 2 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🫣 Social Anxiety Assessment</span>
+                <span class="tool-desc">Does networking or small talk make you sweat? Measure your discomfort thresholds across public environments.</span>
+            </div>
+            <div class="card-footer"><span>Test Comfort Index</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/loneliness-level-test.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 2 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🍂 Loneliness Level Indicator</span>
+                <span class="tool-desc">Surrounded by people but still feeling disconnected? Evaluate your current subjective feelings of social isolation.</span>
+            </div>
+            <div class="card-footer"><span>Measure Connection</span><span class="go-link">→</span></div>
+        </a>
+    </div>
+
+    <section class="e-e-a-t-section">
+        <h2>Evidence-Based Design, Utmost Confidentiality</h2>
+        <p>
+            The psychological indicators provided on ToolsQuark are modeled after globally recognized self-report scale structures—such as industry parameters for work-related exhaustion scoring, somatic anxiety inventories, and peer-reviewed cognitive tension scales. We aim to translate psychometric frameworks into elegant, understandable milestones. Because we process data exclusively via front-end client side script, none of your vulnerable mood logs or inputs can ever be intercepted or stored.
+        </p>
+        <div class="disclaimer-box">
+            <strong>Disclaimer:</strong> ToolsQuark offers self-awareness screening instruments designed purely for informational and lifestyle monitoring purposes. These instruments do not substitute for clinical mental health therapy, professional medical diagnoses, psychiatry, or professional psychological intervention. If you are experiencing prolonged acute distress, please contact a certified mental health counselor immediately.
+        </div>
+    </section>
 </div>
+
+<footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b;">
+    <div style="display: flex; justify-content: center; gap: 20px; font-size: 0.85rem;">
+        <a href="about.html" style="text-decoration: none; color: inherit;">About</a>
+        <a href="privacy.html" style="text-decoration: none; color: inherit;">Privacy Policy</a>
+        <a href="terms.html" style="text-decoration: none; color: inherit;">Terms of Service</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 0.75rem;">&copy; 2026 ToolsQuark. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

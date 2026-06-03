@@ -3,43 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lifestyle Tools | ToolsQuark</title>
+    <title>Free Lifestyle Calculators, Habit Trackers & Sleep Planners | ToolsQuark</title>
+    <meta name="description" content="Optimize your routine with free lifestyle tools. Calculate optimal sleep cycles, evaluate screen time addiction, and optimize daily habit execution easily.">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Free Daily Lifestyle & Productivity Utilities",
+      "description": "A collection of web-based habit monitors, screen addiction indicators, and biometric conversion utilities.",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "url": "https://www.toolsquark.com/tools/sleep-calculator.html" },
+        { "@type": "ListItem", "position": 2, "url": "https://www.toolsquark.com/tools/sleep-quality-assessment.html" },
+        { "@type": "ListItem", "position": 3, "url": "https://www.toolsquark.com/tools/daily-steps-goal-calculator.html" },
+        { "@type": "ListItem", "position": 4, "url": "https://www.toolsquark.com/tools/steps-to-calories-converter.html" },
+        { "@type": "ListItem", "position": 5, "url": "https://www.toolsquark.com/tools/age-calculator.html" },
+        { "@type": "ListItem", "position": 6, "url": "https://www.toolsquark.com/tools/procrastination-test.html" },
+        { "@type": "ListItem", "position": 7, "url": "https://www.toolsquark.com/tools/self-discipline-test.html" },
+        { "@type": "ListItem", "position": 8, "url": "https://www.toolsquark.com/tools/smartphone-addiction-test.html" },
+        { "@type": "ListItem", "position": 9, "url": "https://www.toolsquark.com/tools/social-media-addiction-index.html" }
+      ]
+    }
+    </script>
+
     <style>
-        :root { --primary: #0f172a; --accent: #2563eb; --text-muted: #64748b; --bg: #f8fafc; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; }
-        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        :root { 
+            --primary: #0f172a; 
+            --accent: #2563eb; 
+            --accent-light: #eff6ff;
+            --text-muted: #64748b; 
+            --bg: #f8fafc; 
+            --popular: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        
+        .container { max-width: 1050px; margin: 40px auto 60px auto; padding: 0 20px; }
+        .breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; display: flex; align-items: center; gap: 6px; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        
         .header { margin-bottom: 50px; }
+        .header h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(to right, #0f172a, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .header p { color: var(--text-muted); font-size: 1.05rem; max-width: 700px; }
+        
+        .sub-category-title { font-size: 1.4rem; font-weight: 800; margin: 45px 0 20px 0; color: #1e293b; display: flex; align-items: center; gap: 10px; border-left: 4px solid var(--accent); padding-left: 12px; }
+        
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-        .tool-card { background: white; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; display: block; }
-        .tool-card:hover { border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(-3px); }
-        .tool-name { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 5px; }
-        .tool-desc { font-size: 0.9rem; color: var(--text-muted); }
+        .tool-card { background: white; padding: 28px; border-radius: 20px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .tool-card:hover { border-color: var(--accent); box-shadow: 0 20px 25px -5px rgba(37,99,235,0.05), 0 10px 10px -5px rgba(0,0,0,0.02); transform: translateY(-4px); }
+        
+        .tool-card.popular-choice { border-color: #fbd38d; background: linear-gradient(180deg, #fffaf0 0%, #ffffff 100%); }
+        .tool-card.popular-choice:hover { border-color: var(--popular); box-shadow: 0 20px 25px -5px rgba(245,158,11,0.08); }
+        
+        .card-badge { position: absolute; top: 15px; right: 20px; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+        .badge-popular { background: #fef3c7; color: #d97706; }
+        .badge-time { background: #f1f5f9; color: #475569; }
+
+        .tool-meta { margin-bottom: 12px; }
+        .tool-name { font-weight: 800; display: block; font-size: 1.15rem; color: #1e293b; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .tool-desc { font-size: 0.95rem; color: var(--text-muted); font-weight: 400; line-height: 1.5; }
+        
+        .card-footer { margin-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+        .card-footer .go-link { opacity: 0; transition: 0.2s; transform: translateX(-5px); }
+        .tool-card:hover .card-footer .go-link { opacity: 1; transform: translateX(0); }
+        .tool-card.popular-choice .card-footer { color: #d97706; }
+
+        .e-e-a-t-section { margin-top: 80px; background: white; padding: 45px; border-radius: 24px; border: 1px solid #e2e8f0; }
+        .e-e-a-t-section h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 15px; color: #1e293b; }
+        .e-e-a-t-section p { color: var(--text-muted); font-size: 0.96rem; line-height: 1.7; margin-bottom: 15px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <nav style="margin-bottom: 20px; font-size: 0.9rem;">
-        <a href="index.html" style="color: var(--accent); text-decoration: none;">← Back to Home</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Lifestyle Tools</span>
+    </div>
 
     <header class="header">
-        <h1>Lifestyle Tools</h1>
-        <p style="color: var(--text-muted);">Practical daily trackers and assessments to optimize your productivity, habits, and overall lifestyle.</p>
+        <h1>Habit Optimizers & Daily Trackers</h1>
+        <p>Small calibrations compound over time. Audit your sleep hygiene, master your kinetic energy output, and systematically curb hidden digital addictions.</p>
     </header>
 
+    <h2 class="sub-category-title">💤 Sleep Architecture & Recovery</h2>
     <div class="tools-grid">
-        <a href="tools/sleep-calculator.html" class="tool-card"><span class="tool-name">Sleep Calculator</span><span class="tool-desc">Plan your ideal sleep cycles.</span></a>
-        <a href="tools/sleep-quality-assessment.html" class="tool-card"><span class="tool-name">Sleep Quality Assessment</span><span class="tool-desc">Evaluate your nightly rest quality.</span></a>
-        <a href="tools/daily-steps-goal-calculator.html" class="tool-card"><span class="tool-name">Daily Steps Goal Calculator</span><span class="tool-desc">Set personalized activity targets.</span></a>
-        <a href="tools/steps-to-calories-converter.html" class="tool-card"><span class="tool-name">Steps to Calories Converter</span><span class="tool-desc">Calculate calories burned via walking.</span></a>
-        <a href="tools/age-calculator.html" class="tool-card"><span class="tool-name">Age Calculator</span><span class="tool-desc">Precise time-lived calculation.</span></a>
-        <a href="tools/procrastination-test.html" class="tool-card"><span class="tool-name">Procrastination Test</span><span class="tool-desc">Identify your delay tendencies.</span></a>
-        <a href="tools/self-discipline-test.html" class="tool-card"><span class="tool-name">Self-Discipline Test</span><span class="tool-desc">Measure your self-regulation capability.</span></a>
-        <a href="tools/smartphone-addiction-test.html" class="tool-card"><span class="tool-name">Smartphone Addiction Test</span><span class="tool-desc">Assess your digital screen usage.</span></a>
-        <a href="tools/social-media-addiction-index.html" class="tool-card"><span class="tool-name">Social Media Addiction Index</span><span class="tool-desc">Evaluate your social platform habits.</span></a>
+        <a href="tools/sleep-calculator.html" class="tool-card popular-choice">
+            <span class="card-badge badge-popular">✨ Top Productivity Pick</span>
+            <div class="tool-meta">
+                <span class="tool-name">💤 Sleep Cycle Planner</span>
+                <span class="tool-desc">Stop waking up tired. Calculate precisely when to sleep or wake based on natural 90-minute biological sleep architectures.</span>
+            </div>
+            <div class="card-footer"><span>Calculate Bedtime</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/sleep-quality-assessment.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 2 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🛌 Sleep Quality Audit</span>
+                <span class="tool-desc">Tossing and turning? Evaluate your subjective rest efficiency thresholds and unmask subtle nighttime sleep disruptors.</span>
+            </div>
+            <div class="card-footer"><span>Audit My Rest</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/age-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 1 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">⏳ Precise Age & Time Tracker</span>
+                <span class="tool-desc">Go beyond simple years. Calculate your exact life metrics down to total days, hours, and minutes lived so far.</span>
+            </div>
+            <div class="card-footer"><span>Calculate Life Metrics</span><span class="go-link">→</span></div>
+        </a>
     </div>
+
+    <h2 class="sub-category-title">⏳ Execution & Discipline Architecture</h2>
+    <div class="tools-grid">
+        <a href="tools/procrastination-test.html" class="tool-card popular-choice">
+            <span class="card-badge badge-popular">🔥 Hot Utility</span>
+            <div class="tool-meta">
+                <span class="tool-name">⏳ Procrastination Habit Test</span>
+                <span class="tool-desc">Are you genuinely busy, or just running away? Discover what is creating roadblocks in your execution thresholds.</span>
+            </div>
+            <div class="card-footer"><span>Test Execution Block</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/self-discipline-test.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 3 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🛡️ Self-Discipline Index</span>
+                <span class="tool-desc">Measure your active self-regulation performance. Understand how your impulse resistance holds up against friction.</span>
+            </div>
+            <div class="card-footer"><span>Measure Resistance</span><span class="go-link">→</span></div>
+        </a>
+    </div>
+
+    <h2 class="sub-category-title">🏃‍♂️ Kinematics & Energy Flow</h2>
+    <div class="tools-grid">
+        <a href="tools/daily-steps-goal-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 1 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">👟 Active Steps Targeter</span>
+                <span class="tool-desc">Stop chasing generic milestone formulas. Create a highly customized daily step baseline calibrated to your fitness level.</span>
+            </div>
+            <div class="card-footer"><span>Target My Steps</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/steps-to-calories-converter.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 1 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🏃‍♂️ Steps-to-Calories Converter</span>
+                <span class="tool-desc">Translate your walking mileage into precise active calorie dissipation numbers to back up your body goals.</span>
+            </div>
+            <div class="card-footer"><span>Convert Mileage</span><span class="go-link">→</span></div>
+        </a>
+    </div>
+
+    <h2 class="sub-category-title">📱 Digital Screen Detox Indicators</h2>
+    <div class="tools-grid">
+        <a href="tools/smartphone-addiction-test.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 2 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">📵 Smartphone Dependency Test</span>
+                <span class="tool-desc">Is your phone an extension of your arm? Screen your phantom vibration habits and compulsive check frequencies.</span>
+            </div>
+            <div class="card-footer"><span>Evaluate Screen Bind</span><span class="go-link">→</span></div>
+        </a>
+
+        <a href="tools/social-media-addiction-index.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 3 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🚨 Social Media Addiction Index</span>
+                <span class="tool-desc">Audit your infinite scroll dependency. Gauge the dopaminergic loops trapping your attention span.</span>
+            </div>
+            <div class="card-footer"><span>Check Scroll Lock</span><span class="go-link">→</span></div>
+        </a>
+    </div>
+
+    <section class="e-e-a-t-section">
+        <h2>Quantitative Behavioral Science, Complete Privacy Isolation</h2>
+        <p>
+            All conversion instruments and behavior tracking matrices on ToolsQuark are developed in alignment with open-access kinetic standards and digital hygiene screening scale rules. From calculating metabolic steps equivalents to tracking dopamine scrolling loops, we offer objective behavioral mirrors. Our zero-server logic ensures no screen logs, ages, or routine tracking data ever slips beyond your device boundaries.
+        </p>
+    </section>
 </div>
+
+<footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b;">
+    <div style="display: flex; justify-content: center; gap: 20px; font-size: 0.85rem;">
+        <a href="about.html" style="text-decoration: none; color: inherit;">About</a>
+        <a href="privacy.html" style="text-decoration: none; color: inherit;">Privacy Policy</a>
+        <a href="terms.html" style="text-decoration: none; color: inherit;">Terms of Service</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 0.75rem;">&copy; 2026 ToolsQuark. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
