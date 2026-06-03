@@ -1,361 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Age Calculator - ToolsQuark</title>
-  <style>
-    :root {
-      --primary-color: #3b82f6;
-      --primary-hover: #2563eb;
-      --bg-color: #f8fafc;
-      --text-main: #1f2937;
-      --text-muted: #6b7280;
-      --card-bg: #ffffff;
-      --border-color: #e2e8f0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator | ToolsQuark</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
+.container{max-width:800px;margin:auto;}
+.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
+.hero h1{font-size:36px;margin-bottom:15px;}
+.hero p{font-size:17px;opacity:.95;}
+.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
 
-    body { 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-      background-color: var(--bg-color); 
-      margin: 0; 
-      padding: 0 16px; 
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
+/* Form & Header Synchronized */
+.quiz-header{display:flex;justify-content:flex-start;align-items:center;width:100%;margin-bottom:25px;border-bottom:1px solid #e5e7eb;padding-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
+.back-home-btn:hover{color:#2563eb;}
+.form-title-badge{font-size:14px;color:#2563eb;font-weight:bold;background:#eff6ff;padding:4px 12px;border-radius:15px;}
 
-    .calc-container { 
-      max-width: 1000px; 
-      margin: 40px auto; 
-    }
+/* Inputs Styling aligned to standard controls */
+.input-group { margin-bottom: 20px; text-align: left; }
+.input-group label { display: block; font-size: 15px; font-weight: bold; color: #374151; margin-bottom: 8px; }
+.input-wrapper { display: flex; align-items: center; border: 2px solid #e5e7eb; border-radius: 15px; background: #fff; overflow: hidden; transition: 0.2s; }
+.input-wrapper:focus-within { border-color: #2563eb; background: #eff6ff; }
+.input-wrapper input { flex: 1; border: none; padding: 14px; font-size: 16px; outline: none; width: 100%; color: #222; }
+.input-wrapper input::-webkit-outer-spin-button,
+.input-wrapper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.input-wrapper input[type=number] { -moz-appearance: textfield; }
+.input-unit { background: #f3f4f6; color: #4b5563; padding: 14px 18px; font-size: 14px; border-left: 2px solid #e5e7eb; min-width: 65px; text-align: center; font-weight: bold; }
 
-    /* Header Styling */
-    .calc-header { 
-      background: linear-gradient(135deg, #2563eb, #1d4ed8); 
-      padding: 36px 30px; 
-      border-radius: 24px; 
-      color: #fff; 
-      text-align: left; 
-      box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.15); 
-      margin-bottom: 8px;
-    }
-    .calc-header h1 { margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
-    .calc-header p { margin: 12px 0 0; font-size: 15px; opacity: 0.9; line-height: 1.6; max-width: 700px; }
+/* Submition Action Button matching standard core themes */
+.btn-submit { display: block; width: 100%; background: #2563eb; color: #fff; border: none; padding: 16px; border-radius: 15px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 24px; transition: .2s; box-shadow: 0 4px 12px rgba(37,99,235,0.15); }
+.btn-submit:hover { background: #4f46e5; transform: translateY(-1px); box-shadow: 0 6px 15px rgba(37,99,235,0.2); }
 
-    /* Navigation */
-    .nav-back { 
-      display: inline-flex; 
-      align-items: center; 
-      margin: 12px 0 20px 4px; 
-      color: var(--text-muted); 
-      text-decoration: none; 
-      font-size: 14px; 
-      font-weight: 500;
-      transition: color 0.2s; 
-    }
-    .nav-back:hover { color: var(--primary-color); }
+/* Results Framework matching layout score metrics */
+.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;line-height:1.1;margin-bottom:10px;}
+.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
+.description{text-align:center;color:#555;margin-bottom:25px;padding-bottom:15px;border-bottom:1px solid #e5e7eb;}
+.hidden{display:none;}
 
-    /* Layout Main Grid */
-    .calc-main-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
+/* Indicators and Bars styling */
+.bar{margin-bottom:18px;}
+.bar-label{margin-bottom:5px;font-weight:bold;font-size:14px;}
+.bar-bg{height:12px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
+.bar-fill{height:100%;background:#2563eb;transition: width 0.5s ease-in-out;}
+.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;font-size:14px;color:#4b5563;}
 
-    @media (min-width: 768px) {
-      .calc-main-layout {
-        grid-template-columns: 1.2fr 1fr;
-      }
-    }
+/* Recommendations & Cards elements */
+.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
+.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
+.faq-item{margin-bottom:20px;}
+.faq-item strong{font-size:16px;color:#222;display:block;margin-bottom:5px;}
+.faq-item p{color:#555;font-size:14px;}
 
-    /* Base Card Layout */
-    .calc-content-card { 
-      background: var(--card-bg); 
-      padding: 32px; 
-      border-radius: 20px; 
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03);
-      border: 1px solid var(--border-color);
-      height: fit-content;
-    }
-
-    .range-badge { 
-      display: inline-block; 
-      background: #eff6ff; 
-      color: #1d4ed8; 
-      padding: 6px 14px; 
-      border-radius: 99px; 
-      font-size: 13px; 
-      font-weight: 600; 
-      margin-bottom: 24px; 
-    }
-
-    /* Form Components */
-    .input-group { margin-bottom: 20px; text-align: left; }
-    .input-group label { display: block; font-size: 14px; font-weight: 600; color: #4b5563; margin-bottom: 8px; }
-    .input-wrapper { 
-      display: flex; 
-      align-items: center; 
-      border: 1px solid #cbd5e1; 
-      border-radius: 10px; 
-      background: #fff; 
-      overflow: hidden; 
-      transition: all 0.2s;
-    }
-    .input-wrapper:focus-within {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-    }
-    .input-wrapper input { 
-      flex: 1; 
-      border: none; 
-      padding: 14px 16px; 
-      font-size: 16px; 
-      outline: none; 
-      width: 100%; 
-      color: var(--text-main); 
-    }
-    
-    /* Remove Native Input Spinners */
-    .input-wrapper input::-webkit-outer-spin-button,
-    .input-wrapper input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    .input-wrapper input[type=number] { -moz-appearance: textfield; }
-
-    .input-unit { 
-      background: #f8fafc; 
-      color: #64748b; 
-      padding: 14px 18px; 
-      font-size: 13px; 
-      border-left: 1px solid #e2e8f0; 
-      min-width: 50px; 
-      text-align: center; 
-      font-weight: 600; 
-      text-transform: uppercase;
-    }
-
-    .btn-submit { 
-      display: block; 
-      width: 100%; 
-      background: var(--primary-color); 
-      color: #fff; 
-      border: none; 
-      padding: 15px; 
-      border-radius: 10px; 
-      font-size: 16px; 
-      font-weight: 700; 
-      cursor: pointer; 
-      margin-top: 24px; 
-      transition: background 0.2s, transform 0.1s; 
-    }
-    .btn-submit:hover { background: var(--primary-hover); }
-    .btn-submit:active { transform: scale(0.99); }
-
-    /* Result Showcase Box */
-    .result-box { 
-      display: none; 
-      padding: 28px; 
-      border: 2px dashed #3b82f6; 
-      border-radius: 16px; 
-      background: #f0f7ff; 
-      animation: fadeIn 0.4s ease-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .result-title { font-size: 16px; font-weight: 700; color: #1e40af; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;}
-    .result-value { font-size: 56px; font-weight: 800; color: #1d4ed8; margin: 12px 0; text-align: center; line-height: 1; }
-    .result-desc { 
-      font-size: 14px; 
-      color: #334155; 
-      line-height: 1.6; 
-      margin-top: 16px; 
-      border-top: 1px solid #dbeafe; 
-      padding-top: 16px; 
-    }
-
-    /* Section Headers */
-    .section-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-top: 0;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* Recommendations Layout */
-    .recommend-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media (min-width: 640px) {
-      .recommend-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .recommend-link { text-decoration: none; color: inherit; display: block; }
-    .recommend { 
-      background: #fff; 
-      padding: 18px; 
-      border-radius: 12px; 
-      border: 1px solid var(--border-color); 
-      transition: all 0.2s; 
-      height: calc(100% - 36px);
-    }
-    .recommend:hover { 
-      border-color: var(--primary-color); 
-      background: #f8fafc;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-    .recommend strong { color: #1e3a8a; display: block; margin-bottom: 6px; font-size: 15px; }
-    .recommend p { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5; }
-
-    /* FAQ System */
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    @media (min-width: 640px) {
-      .faq-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-    }
-    .faq-item { text-align: left; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #f1f5f9;}
-    .faq-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 8px; line-height: 1.4;}
-    .faq-item p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
-
-    footer { text-align: center; margin: 40px 0 20px; color: var(--text-muted); font-size: 14px; }
-  </style>
+footer{text-align:center;margin-top:30px;color:#777;font-size:14px;}
+@media(max-width:768px){.hero h1{font-size:28px;}.score{font-size:55px;}.profile{font-size:24px;}}
+</style>
 </head>
 <body>
-  <div class="calc-container">
-    <!-- Top Header Profile -->
-    <div class="calc-header">
-      <h1>Age Calculator</h1>
-      <p>Calculate your exact chronological age in years, months, and days based on your calendar birth parameters instantly.</p>
-    </div>
-    
-    <div style="text-align: left;">
-      <a href="https://www.toolsquark.com/" class="nav-back">← Back to Home</a>
+<div class="container">
+    <!-- Hero Block Synchronized style -->
+    <div class="hero">
+        <h1>Age Calculator</h1>
+        <p>Calculate your exact chronological age in years, months, and days based on your calendar birth parameters instantly.</p>
     </div>
 
-    <!-- Main Workspace Setup (Dynamic Multi-Column Split) -->
-    <div class="calc-main-layout">
-      <!-- Left Column: User Input Action Module -->
-      <div class="calc-content-card">
-        <div class="range-badge">Normal Range: Lifespan Track Profile</div>
-        <div id="inputsForm"></div>
-        <button class="btn-submit" onclick="performCalculation()">Calculate Now</button>
-      </div>
-
-      <!-- Right Column: Interactive Real-Time Display Frame -->
-      <div class="calc-content-card" style="background: #fafafa; border-style: dashed; display: flex; flex-direction: column; justify-content: center; min-height: 250px;">
-        <div id="placeholderText" style="text-align: center; color: var(--text-muted); padding: 20px;">
-          <p style="margin: 0; font-size: 15px; font-weight: 500;">Ready for Calculation</p>
-          <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.8;">Fill in your parameters and click "Calculate Now" to view metrics breakdown.</p>
+    <!-- Active Main Input Action Card -->
+    <div class="card" id="calculator-panel">
+        <div class="quiz-header">
+            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+            <div class="form-title-badge">Lifespan Profile Track</div>
         </div>
         
-        <div id="resultBox" class="result-box">
-          <div class="result-title">Calculation Success</div>
-          <div id="resultVal" class="result-value">--</div>
-          <div class="result-desc">
-            <strong style="color: #1e3a8a;">Professional Interpretation:</strong><br>
+        <div id="inputsForm"></div>
+        <button class="btn-submit" onclick="performCalculation()">Calculate Now</button>
+    </div>
+
+    <!-- Results Visualization Frame Dashboard (Initially Hidden) -->
+    <div class="card hidden" id="result-panel">
+        <div class="score" id="resultVal">--</div>
+        <div class="profile">Years Old</div>
+        <div class="description" id="resultDesc">
             Your biological chronological milestone is processed. Systemic human health benefits from tracking dynamic metrics to align target lifestyle habits with aging windows.
-          </div>
         </div>
-      </div>
+        
+        <h3>Chronological Indicators</h3>
+        <div class="bar" style="margin-top: 15px;">
+            <div class="bar-label">Completed Life Milestone Ratio</div>
+            <div class="bar-bg"><div class="bar-fill" id="bar-milestone" style="width:0%"></div></div>
+        </div>
+        <div class="bar">
+            <div class="bar-label">Current Calendar Year Progress</div>
+            <div class="bar-bg"><div class="bar-fill" id="bar-year-progress" style="width:0%"></div></div>
+        </div>
+
+        <h3 style="margin-top:30px; margin-bottom:15px;">Dynamic Aging Insights</h3>
+        <div class="insight">Chronological age tracks calendar years, whereas biological age reflects true internal cellular wear accelerated by lifestyle profiles.</div>
+        <div class="insight">The standard system JavaScript Date framework inherently normalizes leap year distributions across historical records for exact tracking.</div>
     </div>
 
-    <!-- Bottom Matrix: Recommendations Carousel Section -->
-    <div class="calc-content-card" style="margin-bottom: 24px;">
-        <h3 class="section-title">Recommended Health Tools</h3>
-        <div class="recommend-grid">
-          <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-              <div class="recommend"><strong>BMI Calculator</strong><p>Quickly calculate your Body Mass Index and health status.</p></div>
-          </a>
-          <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-              <div class="recommend"><strong>BMR Calculator</strong><p>Check your Basal Metabolic Rate and daily calorie needs.</p></div>
-          </a>
-          <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-              <div class="recommend"><strong>Water Intake Calculator</strong><p>Standard daily water intake estimation.</p></div>
-          </a>
-        </div>
+    <!-- Recommended Tools Synchronized Module -->
+    <div class="card">
+        <h3>Recommended Tools</h3>
+        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
+        </a>
+        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
+        </a>
     </div>
 
-    <!-- Bottom Matrix: Professional Explanatory FAQ Grid -->
-    <div class="calc-content-card">
-      <h3 class="section-title">Frequently Asked Questions</h3>
-      <div class="faq-grid">
-        <div class='faq-item'>
-          <strong>Does this calculator account for leap years?</strong>
-          <p>Yes, the standard system JavaScript Date framework inherently normalizes leap year distributions across historical records.</p>
+    <!-- FAQ Synchronized Module -->
+    <div class="card">
+        <h3>FAQ</h3>
+        <div class="faq-item">
+            <strong>Does this calculator account for leap years?</strong>
+            <p>Yes, the standard system JavaScript Date framework inherently normalizes leap year distributions across historical records smoothly.</p>
         </div>
-        <div class='faq-item'>
-          <strong>Why does biological age differ from chronological age?</strong>
-          <p>Chronological age tracks calendar years, whereas biological age reflects true internal cellular wear accelerated by stress profiles.</p>
+        <div class="faq-item">
+            <strong>Why does biological age differ from chronological age?</strong>
+            <p>Chronological age tracks calendar years, whereas biological age reflects true internal cellular wear accelerated by stress profiles and metadata elements.</p>
         </div>
-      </div>
     </div>
 
     <footer>© 2026 ToolsQuark</footer>
-  </div>
+</div>
 
-  <script>
-    // System base operational script parameters
-    const rawB64 = `W3siaWQiOiJiaXJ0aFllYXIiLCJsYWJlbCI6IkJpcnRoIFllYXIgKFlZWVkpIiwidW5pdCI6InllYXIiLCJwbGFjZWhvbGRlciI6IjE5OTUifSx7ImlkIjoiYmlydGhNb250aCIsImxhYmVsIjoiQmlydGggTW9udGggKDEtMTIpIiwidW5pdCI6Im1vbnRoIiwicGxhY2Vob2xkZXIiOiI2In0seyJpZCI6ImJpcnRoRGF5IiwibGFiZWwiOiJCaXJ0aCBEYXkgKDEtMzEpIiwidW5pdCI6ImRheSIsInBsYWNlaG9sZGVyIjoiMTUifV0=`;
-    const inputConfigs = JSON.parse(decodeURIComponent(escape(window.atob(rawB64))));
-    const formContainer = document.getElementById("inputsForm");
+<script>
+const rawB64 = `W3siaWQiOiJiaXJ0aFllYXIiLCJsYWJlbCI6IkJpcnRoIFllYXIgKFlZWVkpIiwidW5pdCI6InllYXIiLCJwbGFjZWhvbGRlciI6IjE5OTUifSx7ImlkIjoiYmlydGhNb250aCIsImxhYmVsIjoiQmlydGggTW9udGggKDEtMTIpIiwidW5pdCI6Im1vbnRoIiwicGxhY2Vob2xkZXIiOiI2In0seyJpZCI6ImJpcnRoRGF5IiwibGFiZWwiOiJCaXJ0aCBEYXkgKDEtMzEpIiwidW5pdCI6ImRheSIsInBsYWNlaG9sZGVyIjoiMTUifV0=`;
+const inputConfigs = JSON.parse(decodeURIComponent(escape(window.atob(rawB64))));
+const formContainer = document.getElementById("inputsForm");
 
-    if (Array.isArray(inputConfigs)) {
-      inputConfigs.forEach(cfg => {
-        const group = document.createElement("div");
-        group.className = "input-group";
-        group.innerHTML = `
-          <label for="${cfg.id}">${cfg.label}</label>
-          <div class="input-wrapper">
-            <input type="number" id="${cfg.id}" placeholder="${cfg.placeholder || ''}">
-            <div class="input-unit">${cfg.unit}</div>
-          </div>
-        `;
-        formContainer.appendChild(group);
-      });
+if (Array.isArray(inputConfigs)) {
+  inputConfigs.forEach(cfg => {
+    const group = document.createElement("div");
+    group.className = "input-group";
+    group.innerHTML = `
+      <label for="${cfg.id}">${cfg.label}</label>
+      <div class="input-wrapper">
+        <input type="number" id="${cfg.id}" placeholder="${cfg.placeholder || ''}">
+        <div class="input-unit">${cfg.unit}</div>
+      </div>
+    `;
+    formContainer.appendChild(group);
+  });
+}
+
+function performCalculation() {
+  try {
+    const fields = {};
+    let isValid = true;
+    inputConfigs.forEach(cfg => {
+      const element = document.getElementById(cfg.id);
+      const val = element ? parseFloat(element.value) : NaN;
+      if (isNaN(val)) isValid = false;
+      fields[cfg.id] = val;
+    });
+    if (!isValid) {
+      alert("Please fill out all input parameters accurately before generating calculation output.");
+      return;
     }
+    
+    const now = new Date();
+    const calcFormulaText = `now.getFullYear() - fields.birthYear - (now.getMonth() + 1 < fields.birthMonth || (now.getMonth() + 1 === fields.birthMonth && now.getDate() < fields.birthDay) ? 1 : 0)`;
+    const formulaFunc = new Function('fields', 'now', 'return ' + calcFormulaText);
+    const result = formulaFunc(fields, now);
+    
+    // Smooth transition to results frame panel just like the quiz layout
+    document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
+    document.getElementById("result-panel").classList.remove("hidden");
+    
+    // Dynamic progress calculations for indicators bars
+    const lifeExpectancyRatio = Math.min(Math.max(Math.round((result / 85) * 100), 0), 100);
+    const yearProgressRatio = Math.round(((now.getMonth() + 1) / 12) * 100);
+    
+    setTimeout(() => {
+        document.getElementById("bar-milestone").style.width = lifeExpectancyRatio + "%";
+        document.getElementById("bar-year-progress").style.width = yearProgressRatio + "%";
+    }, 100);
 
-    function performCalculation() {
-      try {
-        const fields = {};
-        let isValid = true;
-        inputConfigs.forEach(cfg => {
-          const element = document.getElementById(cfg.id);
-          const val = element ? parseFloat(element.value) : NaN;
-          if (isNaN(val)) isValid = false;
-          fields[cfg.id] = val;
-        });
-        if (!isValid) {
-          alert("Please fill out all input parameters accurately before generating calculation output.");
-          return;
-        }
-        const calcFormulaText = `new Date().getFullYear() - fields.birthYear - (new Date().getMonth() + 1 < fields.birthMonth || (new Date().getMonth() + 1 === fields.birthMonth && new Date().getDate() < fields.birthDay) ? 1 : 0)`;
-        const formulaFunc = new Function('fields', 'return ' + calcFormulaText);
-        const result = formulaFunc(fields);
-        
-        // Dom Interface Interactivity updates
-        document.getElementById("placeholderText").style.display = "none";
-        document.getElementById("resultVal").innerText = Number(result).toLocaleString(undefined, { maximumFractionDigits: 1 });
-        
-        const resultBox = document.getElementById("resultBox");
-        resultBox.style.display = "block";
-        resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } catch (err) {
-        alert("Calculation exception discovered within field parameters.");
-        console.error(err);
-      }
-    }
-  </script>
+    document.getElementById("result-panel").scrollIntoView({ behavior: 'smooth' });
+  } catch (err) {
+    alert("Calculation exception discovered within field parameters.");
+    console.error(err);
+  }
+}
+
+function handleBackHome(){ 
+    if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; 
+}
+</script>
 </body>
 </html>
