@@ -53,7 +53,7 @@ footer{text-align:center;margin-top:30px;color:#777;}
 <div class="container">
 <div class="hero">
     <h1>BMR Calculator</h1>
-    <p>Calculate your Basal Metabolic Rate (BMR) using the Mifflin-St Jeor equation to discover the baseline calories your body burns at complete rest.</p>
+    <p>Calculate your Basal Metabolic Rate (BMR) to discover the baseline calories your body burns at complete rest.</p>
 </div>
 
 <!-- 返回主页导航栏 -->
@@ -68,7 +68,7 @@ footer{text-align:center;margin-top:30px;color:#777;}
     
     <!-- 智能解说区域 -->
     <div id="result-area" class="result-box" style="display:none;">
-        <div class="normal-range-badge">Normal Range: Varies by Age & Weight</div>
+        <div class="normal-range-badge">Normal Range: N/A</div>
         <div class="result-val" id="calc-output">0.00</div>
         <div class="result-status" id="calc-status"></div>
         <div class="result-desc" id="calc-desc"></div>
@@ -81,37 +81,28 @@ footer{text-align:center;margin-top:30px;color:#777;}
 
 <div class="card">
     <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/bmi-calculator.html" class="recommend-link">
+    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
         <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
     </a>
-    <a href="https://www.toolsquark.com/bmr-calculator.html" class="recommend-link">
+    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
         <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
     </a>
-    <a href="https://www.toolsquark.com/simple-interest-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Simple Interest Calculator</strong><br>Estimate your financial investment returns instantly.</div>
+    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
     </a>
 </div>
 
 <div class="card">
     <h3>FAQ</h3>
     
-            <div class="faq-item">
-                <strong>What is Basal Metabolic Rate (BMR)?</strong><br>BMR represents the exact number of calories your body requires to perform its most basic life-sustaining functions—such as breathing, circulating blood, and cell production—while at complete rest, without any digestive activity.
-            </div>
-            <div class="faq-item">
-                <strong>How do I use this score to lose or gain weight?</strong><br>Your BMR is the foundation. First, calculate your TDEE (Total Daily Energy Expenditure) based on your activity level. To safely lose fat, create a modest deficit of 300-500 calories below your TDEE, but never eat less than your bare BMR score.
-            </div>
-            <div class="faq-item">
-                <strong>Why does age affect my BMR score?</strong><br>As the body matures, lean muscle mass naturally tends to decrease while adipose tissue increases. Since muscle is highly metabolically active compared to fat, BMR naturally experiences a gradual decline over decades.
-            </div>
 </div>
 <footer>© 2026 ToolsQuark</footer>
 </div>
 
 <script>
 // 接收打包注入的底层配置
-const inputConfigs = [{"id":"weight","label":"Your Weight","unit":"kg","placeholder":"70"},{"id":"height","label":"Your Height","unit":"cm","placeholder":"175"},{"id":"age","label":"Your Age","unit":"years","placeholder":"30"}];
-const interpretationRules = [{"min":0,"max":1200,"status":"Low Metabolic Rate Profile","desc":"Your calculated Basal Metabolic Rate is relatively conservative. This profile typically means your organs consume less energy at rest, which can sometimes make sustainable weight management more challenging if dietary choices are unbalanced.","suggestion":"Focus on progressively raising your metabolism. Avoid extreme low-calorie crash diets, as they further suppress your BMR. Prioritize lean protein intake and incorporate resistance training (weight lifting, bodyweight exercises) at least twice a week to build active muscle mass, which naturally boosts daily calorie burning."},{"min":1200,"max":1800,"status":"Standard Metabolic Rate Profile","desc":"Your BMR falls squarely within the healthy standard spectrum for active adults. Your body efficiently manages cellular repair, temperature regulation, and vital respiratory functions within a well-balanced caloric budget.","suggestion":"Maintain this healthy biological equilibrium! To align this BMR with your lifestyle goals: if your goal is weight maintenance, multiply this score by your daily activity multiplier (1.2 for sedentary, 1.5 for moderate exercise) to calculate your Total Daily Energy Expenditure (TDEE)."},{"min":1800,"max":9999,"status":"High Metabolic Rate Profile","desc":"Your resting body demands a substantial volume of daily energy just to sustain basic biological functions. This robust metabolic engine is highly advantageous for athletic recovery and natural weight regulation.","suggestion":"Ensure you are feeding your engine with enough high-quality fuel! To protect your hard-earned muscle tissue and prevent chronic fatigue, do not let your daily caloric intake fall below this BMR threshold. Ensure adequate hydration and time your clean carbohydrate intake around your peak physical activities."}];
+const inputConfigs = JSON.parse(`undefined`);
+const interpretationRules = [];
 
 // 1. 动态生成输入框结构
 const inputsArea = document.getElementById('inputs-area');
@@ -143,7 +134,7 @@ function calculateNow() {
     
     try {
         // 安全获取后端公式并直接执行
-        const formulaFunc = new Function('fields', 'return (10 * fields.weight) + (6.25 * fields.height) - (5 * fields.age) + 5');
+        const formulaFunc = new Function('fields', 'return undefined');
         const finalResult = formulaFunc(args);
         
         let matchedRule = null;

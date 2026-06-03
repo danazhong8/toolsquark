@@ -68,7 +68,7 @@ footer{text-align:center;margin-top:30px;color:#777;}
     
     <!-- 智能解说区域 -->
     <div id="result-area" class="result-box" style="display:none;">
-        <div class="normal-range-badge">Normal Range: 18.5 - 24.9</div>
+        <div class="normal-range-badge">Normal Range: N/A</div>
         <div class="result-val" id="calc-output">0.00</div>
         <div class="result-status" id="calc-status"></div>
         <div class="result-desc" id="calc-desc"></div>
@@ -81,34 +81,28 @@ footer{text-align:center;margin-top:30px;color:#777;}
 
 <div class="card">
     <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/bmi-calculator.html" class="recommend-link">
+    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
         <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
     </a>
-    <a href="https://www.toolsquark.com/bmr-calculator.html" class="recommend-link">
+    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
         <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
     </a>
-    <a href="https://www.toolsquark.com/simple-interest-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Simple Interest Calculator</strong><br>Estimate your financial investment returns instantly.</div>
+    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
     </a>
 </div>
 
 <div class="card">
     <h3>FAQ</h3>
     
-            <div class="faq-item">
-                <strong>What is BMI?</strong><br>Body Mass Index (BMI) is a person's weight in kilograms divided by the square of height in meters.
-            </div>
-            <div class="faq-item">
-                <strong>Is BMI accurate for muscle builders?</strong><br>It may overestimate body fat in individuals with a highly muscular build.
-            </div>
 </div>
 <footer>© 2026 ToolsQuark</footer>
 </div>
 
 <script>
 // 接收打包注入的底层配置
-const inputConfigs = [{"id":"weight","label":"Your Weight","unit":"kg","placeholder":"70"},{"id":"height","label":"Your Height","unit":"cm","placeholder":"175"}];
-const interpretationRules = [{"min":0,"max":18.5,"status":"Underweight","desc":"Your BMI is below the healthy threshold. This may indicate insufficient nutrient intake or potential low muscle mass.","suggestion":"Focus on nutritional balance. Gradually increase caloric intake with high-quality proteins and healthy fats. Incorporate light strength training to build muscle safely."},{"min":18.5,"max":25,"status":"Normal Weight","desc":"Congratulations! Your BMI falls within the ideal and healthiest range. Your current weight poses the lowest risk for metabolic conditions.","suggestion":"Keep up the excellent lifestyle! Maintain your current balanced diet and regular physical activity (at least 150 minutes of moderate exercise per week)."},{"min":25,"max":30,"status":"Overweight","desc":"Your BMI is slightly above the healthy spectrum. Carrying extra weight can increase physical fatigue and slightly raise cardiovascular strain.","suggestion":"Consider a mild caloric deficit. Reduce refined sugars and processed carbs. Enhance your routine with regular aerobic exercises like jogging, cycling, or swimming."},{"min":30,"max":999,"status":"Obese Alert","desc":"Your BMI indicates a significant variance from standard ranges. This profile is clinically associated with a higher risk of hypertension, type 2 diabetes, and metabolic syndrome.","suggestion":"Prioritize health management immediately. We highly recommend consulting a physician or a registered dietitian. Focus on structured portion control and joint-friendly exercises like walking or water aerobics."}];
+const inputConfigs = JSON.parse(`undefined`);
+const interpretationRules = [];
 
 // 1. 动态生成输入框结构
 const inputsArea = document.getElementById('inputs-area');
@@ -140,7 +134,7 @@ function calculateNow() {
     
     try {
         // 安全获取后端公式并直接执行
-        const formulaFunc = new Function('fields', 'return fields.weight / ((fields.height / 100) * (fields.height / 100))');
+        const formulaFunc = new Function('fields', 'return undefined');
         const finalResult = formulaFunc(args);
         
         let matchedRule = null;
