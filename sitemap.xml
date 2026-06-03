@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- 首页 -->
   <url>
     <loc>https://toolsquark.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- 健康计算工具类 -->
-  <url><loc>https://toolsquark.com/bmi-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/age-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/bmr-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/due-date-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/period-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/body-fat-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/water-intake-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/sleep-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/tdee-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/waist-height-ratio-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/healthy-weight-range-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/lean-body-mass-calculator.html</loc></url>
-  <url><loc>https://toolsquark.com/step-to-calories-converter.html</loc></url>
-  <url><loc>https://toolsquark.com/daily-steps-goal-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/health.html</loc></url>
+  <url><loc>https://toolsquark.com/mental-health.html</loc></url>
+  <url><loc>https://toolsquark.com/lifestyle.html</loc></url>
 
-  <!-- 心理评估工具类 (已修正文件名与data.js一致) -->
-  <url><loc>https://toolsquark.com/loneliness-level-test.html</loc></url>
-  <url><loc>https://toolsquark.com/sleep-quality-assessment.html</loc></url>
-  <url><loc>https://toolsquark.com/smartphone-addiction-test.html</loc></url>
-  <url><loc>https://toolsquark.com/social-media-addiction-index.html</loc></url>
-  <url><loc>https://toolsquark.com/occupational-burnout-level-test.html</loc></url>
-  <url><loc>https://toolsquark.com/focus-attention-diagnostic.html</loc></url>
-  <url><loc>https://toolsquark.com/cognitive-overthinking-test.html</loc></url>
-  <url><loc>https://toolsquark.com/stress-index-test.html</loc></url>
-  <url><loc>https://toolsquark.com/procrastination-test.html</loc></url>
-  <url><loc>https://toolsquark.com/social-anxiety-test.html</loc></url>
-  <url><loc>https://toolsquark.com/self-discipline-test.html</loc></url>
-  <url><loc>https://toolsquark.com/anxiety-hyperarousal-assessment.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/bmi-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/tdee-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/bmr-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/body-fat-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/lean-body-mass-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/waist-height-ratio-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/healthy-weight-range-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/water-intake-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/due-date-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/period-calculator.html</loc></url>
+
+  <url><loc>https://toolsquark.com/tools/stress-index-test.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/social-anxiety-test.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/occupational-burnout-level-test.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/cognitive-overthinking-test.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/focus-attention-diagnostic.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/loneliness-level-test.html</loc></url>
+
+  <url><loc>https://toolsquark.com/tools/sleep-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/sleep-quality-assessment.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/daily-steps-goal-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/step-to-calories-converter.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/age-calculator.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/procrastination-test.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/self-discipline-test.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/smartphone-addiction-test.html</loc></url>
+  <url><loc>https://toolsquark.com/tools/social-media-addiction-index.html</loc></url>
 
 </urlset>
