@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cognitive Overthinking Test | ToolsQuark</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between problem-solving and overthinking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Problem-solving focuses actively on generating immediate, actionable pathways to change a situation. Overthinking loops repeatedly around historical mistakes or future catastrophes without actionable conclusions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does chronic rumination affect overall health?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chronic rumination traps the central nervous system in an active fight-or-flight feedback loop, elevating evening cortisol levels, disrupting sleep cycles, and compounding mental fatigue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the most effective immediate cognitive block technique?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Implement the '5-Minute Worry Window' rule. Restrict deliberate planning or analysis to a specific, short block of time daily, writing down thoughts to offload working memory."
+      }
+    }
+  ]
+</script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -12,43 +45,72 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero h1{font-size:36px;margin-bottom:15px;}
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-.progress-wrap{width:100%;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;flex-grow:1;}
-.quiz-header{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:25px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
+
+/* 导航栏与进度条样式 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
+
+.quiz-header{display:flex;align-items:center;width:100%;margin-bottom:25px;gap:15px;}
+.progress-wrap{flex:1;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;}
 .progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
 .progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
-.question{font-size:24px;font-weight:bold;margin-bottom:20px;}
-.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;}
+
+/* 问题与选项样式 */
+.question{font-size:24px;font-weight:bold;margin-bottom:20px;color:#1e293b;}
+.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;background:white;}
 .option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
 .selected{border-color:#2563eb;background:#dbeafe;}
 .selected-heavy{border-color:#f97316;background:#fff7ed;}
 .hidden{display:none;}
-.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;}
-.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
-.description{text-align:center;color:#555;margin-bottom:25px;}
-.bar{margin-bottom:18px;}
-.bar-label{margin-bottom:5px;font-weight:bold;}
+
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;text-align:center;}
+.score{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.profile{font-size:26px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.description{color:#374151;font-size:15px;margin-bottom:20px;text-align:justify;line-height:1.6;}
+
+/* 动态量化指标条 */
+.indicator-section{text-align:left;margin-top:20px;margin-bottom:25px;}
+.indicator-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;border-bottom:1px solid #dbeafe;padding-bottom:5px;}
+.bar{margin-bottom:15px;}
+.bar-label{margin-bottom:6px;font-size:14px;font-weight:bold;color:#475569;}
 .bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
-.bar-fill{height:100%;background:#2563eb;}
-.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;}
+.bar-fill{height:100%;background:#2563eb;border-radius:20px;}
+
+/* 动态专业建议区块 */
+.insight-section{text-align:left;margin-bottom:10px;}
+.insight-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;}
+.insight(background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;margin-bottom:12px;font-size:14.5px;color:#374151;line-height:1.5;}
+
+/* 推荐产品卡片 */
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
-.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
-.faq-item{margin-bottom:15px;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+
+/* FAQ 样式 */
+.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
+.faq-item:last-child{border-bottom:none;padding-bottom:0;}
+.faq-item strong{font-size:16px;color:#1e293b;display:block;margin-bottom:6px;}
+.faq-item p{color:#475569;font-size:14.5px;line-height:1.6;}
+
 footer{text-align:center;margin-top:30px;color:#777;}
-@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
+@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:40px;}.profile{font-size:22px;}}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="hero">
     <h1>Cognitive Overthinking Test</h1>
-    <p>Map out your analysis paralysis, rumination loops, and catastrophic forecasting tendencies that stall decision-making.</p>
+    <p>Assess your operational tendency toward excessive rumination, destructive decision paralysis, and retrospective thought loops.</p>
 </div>
+
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
+
 <div class="card" id="quiz">
     <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
         <div class="progress-wrap">
             <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
         </div>
@@ -56,78 +118,76 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <div class="question" id="question"></div>
     <div id="answers"></div>
 </div>
+
 <div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
+    <div class="result-box">
+        <div class="score" id="score">0/40</div>
+        <div class="profile" id="profile">--</div>
+        <div class="description" id="description">--</div>
+        
+        <div class="indicator-section">
+            <h3>Assessment Indicators</h3>
             <div class="bar">
-                <div class="bar-label">Rumination Index</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:76%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Analysis Paralysis</div>
+                <div class="bar-label">Retrospective Rumination</div>
                 <div class="bar-bg"><div class="bar-fill" style="width:68%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Catastrophic Forecast</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:59%"></div></div>
+                <div class="bar-label">Decision Paralysis</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
             </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Overthinking creates an illusion of problem-solving, but it actually drains the emotional energy required for real action.</div><div class="insight">Rumination locks your brain in the past, while anxious forecasting keeps you trapped in an imaginary future.</div><div class="insight">The antidote to overthinking is physical action; grounding your body physically halts toxic cognitive looping patterns.</div>
+            <div class="bar">
+                <div class="bar-label">Anticipatory Catastrophizing</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:61%"></div></div>
+            </div>
+        </div>
+
+        <div class="insight-section">
+            <h3>Behavioral Insights</h3>
+            <div class="insight">Overthinking creates a psychological illusion of control, misleading the brain into treating worrying as an active preparation strategy.</div>
+            <div class="insight">Analysis paralysis is triggered by an unhealthy fear of making an imperfect decision, which ultimately prevents any actual progress.</div>
+            <div class="insight">Shifting from internal verbal worry to external somatic tracking helps break cognitive loops efficiently.</div>
+        </div>
+    </div>
 </div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
+
+<div class="card">
+    <h3>Recommended Tools</h3>
     <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
         <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
     </a>
-    
     <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
         <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
     </a>
     <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
         <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
     </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
 </div>
+
 <div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Is overthinking the same as being highly analytical?</strong><br>No. Analysis leads to clear decisions and actions. Overthinking loops continuously without ever reaching a resolution.
-            </div>
-            <div class="faq-item">
-                <strong>Why does my overthinking get worse at night?</strong><br>Fewer daytime sensory inputs leave your brain alone with its thoughts, while fatigue lowers your prefrontal emotional control.
-            </div>
-            <div class="faq-item">
-                <strong>How do I stop a rumination spiral?</strong><br>Use the 'worry postponement' technique: schedule a strict 15-minute worry window daily, and defer ruminations outside that period.
-            </div>
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+        <strong>What is the difference between problem-solving and overthinking?</strong>
+        <p>Problem-solving focuses actively on generating immediate, actionable pathways to change a situation. Overthinking loops repeatedly around historical mistakes or future catastrophes without actionable conclusions.</p>
+    </div>
+    <div class="faq-item">
+        <strong>How does chronic rumination affect overall health?</strong>
+        <p>Chronic rumination traps the central nervous system in an active fight-or-flight feedback loop, elevating evening cortisol levels, disrupting sleep cycles, and compounding mental fatigue.</p>
+    </div>
+    <div class="faq-item">
+        <strong>What is the most effective immediate cognitive block technique?</strong>
+        <p>Implement the '5-Minute Worry Window' rule. Restrict deliberate planning or analysis to a specific, short block of time daily, writing down thoughts to offload working memory.</p>
+    </div>
 </div>
+
 <footer>© 2026 ToolsQuark</footer>
 </div>
+
 <script>
-const questions = [{"question":"After a social interaction, how often do you over-analyze the words you spoke or your body language?","options":["Rarely/Never","Occasionally","Frequently","For days afterward"]},{"question":"When faced with a minor daily decision (like picking a restaurant), how long do you spend deciding?","options":["Decide instantly","A few minutes","Long time browsing","Paralyzed by choices"]},{"question":"How often do you imagine the absolute worst-case scenario when a minor issue occurs?","options":["Never","Rarely","Often","It is my first thought"]},{"question":"If a friend or supervisor sends a brief text saying 'We need to talk,' what is your immediate assumption?","options":["Normal catch-up","Slightly curious","Worried I did wrong","Convinced my life is ruined"]},{"question":"Do you struggle to fall asleep because your mind replays old embarrassing moments or past mistakes?","options":["Hardly ever","Sometimes","Often","Every single night"]},{"question":"How often do you seek reassurance from multiple people before making a choice you could make alone?","options":["Never","Rarely","Frequently","Always depend on approval"]},{"question":"Do you find yourself constantly trying to read between the lines of normal text messages?","options":["No, take at face value","Occasionally","Often look for intent","Obsess over punctuation/timing"]},{"question":"How deeply does the fear of making the 'wrong' choice hold you back from starting projects?","options":["Doesn't stop me","Slightly delays me","Significantly stalls me","Completely paralyzes me"]},{"question":"When someone treats you with minor coldness, do you automatically assume it is entirely your fault?","options":["No, they have issues","Wonder if I did wrong","Assume blame quickly","Obsess over how I upset them"]},{"question":"How frequently do you think 'What if...' about life decisions you made years ago?","options":["Almost never","Rarely","Often","Constantly mourning past choices"]}];
-const resultProfiles = {"low":{"profile":"Action-Oriented Decider","desc":"You balance thought and execution beautifully. You analyze options realistically, make a firm choice, and rarely look back with toxic regret."},"medium":{"profile":"Analytical Loop Danger","desc":"You tend to get stuck in extended over-analysis, especially regarding social interactions or major life choices. Second-guessing causes unnecessary stress."},"high":{"profile":"Chronic Rumination Spiral","desc":"You are locked in severe analysis paralysis. Constant second-guessing and catastrophic forecasting disrupt your sleep, relationships, and ability to take action."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+const questions = [{"question":"When someone sends you a message that simply reads 'We need to talk,' what is your immediate internal response?","options":["Curious but relaxed","Review recent events","Assume I made a huge error","Panic / Expect disaster"]},{"question":"After making a relatively minor decision, how long do you spend wondering if you chose incorrectly?","options":["Don't think about it","A few minutes","Several hours","Days of endless regret"]},{"question":"How frequently do you find yourself reviewing conversations from years ago and cringing at what you said?","options":["Never","Once in a while","Frequently","Almost every night"]},{"question":"When planning for an upcoming project or vacation, do you get trapped researching every minor edge case?","options":["No, plan baseline","Moderate research","Over-research options","Paralyzed by possibilities"]},{"question":"Do you struggle to fall asleep because your brain suddenly decides to analyze your entire life direction at midnight?","options":["Rarely or never","Occasionally","Often struggles","Every single night"]},{"question":"How often do you read deep, hidden double meanings into brief text messages sent by friends or colleagues?","options":["Never, take literally","Rarely","Frequently over-read","Constantly psychoanalyzing"]},{"question":"When a minor problem occurs, do you find yourself automatically imagining the absolute worst-case outcome?","options":["No, realistic","Briefly concerned","Often catastrophizing","Guaranteed disaster loops"]},{"question":"How easy is it for you to simply 'let go' of a mistake you made at work or school earlier in the day?","options":["Very easy","Takes a little time","Struggles to move on","Obsessively loops for days"]},{"question":"Do you find yourself constantly asking friends or family members for reassurance regarding ordinary decisions?","options":["Never","Rarely","Often need validation","Cannot choose without it"]},{"question":"How often do you feel that your excessive thinking prevents you from taking actual, real-world action?","options":["Not at all","Occasionally delays","Frequently paralyzes","Total absolute paralysis"]}];
+const resultProfiles = {"low":{"profile":"Pragmatic Processing Stream","desc":"Your cognitive pathways favor structured, linear execution. You analyze scenarios efficiently without tumbling into persistent historical loops or anticipatory paralysis."},"medium":{"profile":"Analytical Rumination Trap","desc":"You display a clear tendency to over-analyze critical micro-interactions. Your baseline mental energy is frequently spent handling predictive anxiety."},"high":{"profile":"Severe Cognitive Over-Looping","desc":"Persistent, recursive loops dominate your processing style. Retrospective rumination and anticipatory catastrophizing significantly consume your focus and delay decision-making."}};
+
+let current=0, totalScore=0, isTransitioning=false;
+
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;
@@ -141,6 +201,7 @@ function loadQuestion(){
     document.getElementById("answers").innerHTML=html;
     isTransitioning = false;
 }
+
 function selectOption(el,score,optionIndex){
     if(isTransitioning) return;
     document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
@@ -152,17 +213,19 @@ function selectOption(el,score,optionIndex){
         if(current<questions.length) loadQuestion(); else showResult();
     }, 300);
 }
+
 function showResult(){
     document.getElementById("quiz").classList.add("hidden");
     document.getElementById("result").classList.remove("hidden");
-    document.getElementById("recommendations").classList.remove("hidden");
     document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
     let activeProfile = resultProfiles.high;
     if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
     else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
     document.getElementById("profile").innerText=activeProfile.profile;
     document.getElementById("description").innerText=activeProfile.desc;
+    document.getElementById("result").scrollIntoView({ behavior: 'smooth' });
 }
+
 function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 loadQuestion();
 </script>

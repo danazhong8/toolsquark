@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loneliness Level Assessment | ToolsQuark</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the core difference between being alone and feeling lonely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Being alone is a physical state of solitude that can be peaceful and restorative. Loneliness is a distressing emotional disconnect, occurring when perceived relational quality falls short."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does situational loneliness become chronic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When an individual adopts defensive social behaviors—such as self-sabotaging isolation or expecting rejection—it inadvertently blocks potential connections, hardening into a chronic cycle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the healthiest way to overcome emotional alienation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Prioritize interaction depth over contact volume. Focus on low-stakes, shared-interest environments where you can engage in reciprocal, authentic conversations without performative pressure."
+      }
+    }
+  ]
+</script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -12,43 +45,72 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero h1{font-size:36px;margin-bottom:15px;}
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-.progress-wrap{width:100%;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;flex-grow:1;}
-.quiz-header{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:25px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
+
+/* 导航栏与进度条样式 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
+
+.quiz-header{display:flex;align-items:center;width:100%;margin-bottom:25px;gap:15px;}
+.progress-wrap{flex:1;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;}
 .progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
 .progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
-.question{font-size:24px;font-weight:bold;margin-bottom:20px;}
-.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;}
+
+/* 问题与选项样式 */
+.question{font-size:24px;font-weight:bold;margin-bottom:20px;color:#1e293b;}
+.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;background:white;}
 .option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
 .selected{border-color:#2563eb;background:#dbeafe;}
 .selected-heavy{border-color:#f97316;background:#fff7ed;}
 .hidden{display:none;}
-.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;}
-.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
-.description{text-align:center;color:#555;margin-bottom:25px;}
-.bar{margin-bottom:18px;}
-.bar-label{margin-bottom:5px;font-weight:bold;}
+
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;text-align:center;}
+.score{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.profile{font-size:26px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.description{color:#374151;font-size:15px;margin-bottom:20px;text-align:justify;line-height:1.6;}
+
+/* 动态量化指标条 */
+.indicator-section{text-align:left;margin-top:20px;margin-bottom:25px;}
+.indicator-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;border-bottom:1px solid #dbeafe;padding-bottom:5px;}
+.bar{margin-bottom:15px;}
+.bar-label{margin-bottom:6px;font-size:14px;font-weight:bold;color:#475569;}
 .bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
-.bar-fill{height:100%;background:#2563eb;}
-.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;}
+.bar-fill{height:100%;background:#2563eb;border-radius:20px;}
+
+/* 动态专业建议区块 */
+.insight-section{text-align:left;margin-bottom:10px;}
+.insight-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;}
+.insight{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;margin-bottom:12px;font-size:14.5px;color:#374151;line-height:1.5;}
+
+/* 推荐产品卡片 */
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
-.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
-.faq-item{margin-bottom:15px;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+
+/* FAQ 样式 */
+.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
+.faq-item:last-child{border-bottom:none;padding-bottom:0;}
+.faq-item strong{font-size:16px;color:#1e293b;display:block;margin-bottom:6px;}
+.faq-item p{color:#475569;font-size:14.5px;line-height:1.6;}
+
 footer{text-align:center;margin-top:30px;color:#777;}
-@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
+@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:40px;}.profile{font-size:22px;}}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="hero">
     <h1>Loneliness Level Assessment</h1>
-    <p>Evaluate your subjective feelings of loneliness, social connectedness, and emotional isolation in modern daily life.</p>
+    <p>Analyze your current degree of subjective social isolation, emotional alienation, and peripheral connection quality.</p>
 </div>
+
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
+
 <div class="card" id="quiz">
     <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
         <div class="progress-wrap">
             <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
         </div>
@@ -56,78 +118,76 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <div class="question" id="question"></div>
     <div id="answers"></div>
 </div>
+
 <div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
+    <div class="result-box">
+        <div class="score" id="score">0/40</div>
+        <div class="profile" id="profile">--</div>
+        <div class="description" id="description">--</div>
+        
+        <div class="indicator-section">
+            <h3>Assessment Indicators</h3>
             <div class="bar">
-                <div class="bar-label">Social Isolation</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:62%"></div></div>
+                <div class="bar-label">Intimate Isolation</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:61%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Emotional Loneliness</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div>
+                <div class="bar-label">Social Disconnect</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Belongingness Deficit</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:58%"></div></div>
+                <div class="bar-label">Belonging Deficit</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:66%"></div></div>
             </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Subjective loneliness is often distinct from physical solitude; one can feel isolated even within a crowded social environment.</div><div class="insight">Digital over-connection through social media sometimes substitutes deep interpersonal synchronization, widening the emotional gap.</div><div class="insight">Actively engaging in shared-interest communities or micro-interactions can gradually rebuild your sense of secure belonging.</div>
+        </div>
+
+        <div class="insight-section">
+            <h3>Behavioral Insights</h3>
+            <div class="insight">Loneliness functions as an evolutionary warning system, signaling that social bonds need urgent maintenance.</div>
+            <div class="insight">Surrounding yourself with crowds doesn't fix emotional loneliness; deep, mutual disclosure is what matters.</div>
+            <div class="insight">Overcoming isolation requires vulnerability, even in small doses, to re-establish trusting social connections.</div>
+        </div>
+    </div>
 </div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
+
+<div class="card">
+    <h3>Recommended Tools</h3>
     <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
         <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
     </a>
-    
     <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
         <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
     </a>
     <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
         <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
     </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
 </div>
+
 <div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Is feeling lonely the same as being alone?</strong><br>No. Being alone is a physical state of solitude, which can be peaceful and restoring. Loneliness is the distressing feeling of being disconnected or misunderstood by others.
-            </div>
-            <div class="faq-item">
-                <strong>Can this assessment indicate a depressive disorder?</strong><br>No. This tool measures temporary emotional and social isolation scores. It is strictly for self-reflection and personal growth monitoring.
-            </div>
-            <div class="faq-item">
-                <strong>How can I improve my connectedness score?</strong><br>Try initiating small, quality conversations, joining local hobby clubs, reducing passive scrolling, and prioritizing deep face-to-face interactions.
-            </div>
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+        <strong>What is the core difference between being alone and feeling lonely?</strong>
+        <p>Being alone is a physical state of solitude that can be peaceful and restorative. Loneliness is a distressing emotional disconnect, occurring when perceived relational quality falls short.</p>
+    </div>
+    <div class="faq-item">
+        <strong>How does situational loneliness become chronic?</strong>
+        <p>When an individual adopts defensive social behaviors—such as self-sabotaging isolation or expecting rejection—it inadvertently blocks potential connections, hardening into a chronic cycle.</p>
+    </div>
+    <div class="faq-item">
+        <strong>What is the healthiest way to overcome emotional alienation?</strong>
+        <p>Prioritize interaction depth over contact volume. Focus on low-stakes, shared-interest environments where you can engage in reciprocal, authentic conversations without performative pressure.</p>
+    </div>
 </div>
+
 <footer>© 2026 ToolsQuark</footer>
 </div>
+
 <script>
-const questions = [{"question":"How often do you feel a lack of genuine companionship in your daily life?","options":["Hardly ever","Some of the time","Often","Almost all the time"]},{"question":"Do you feel there is no one you can truly turn to when you are struggling?","options":["I have support","Sometimes feel this way","Often feel this way","Completely isolated"]},{"question":"How frequently do you feel left out or excluded from social gatherings or friend groups?","options":["Never","Rarely","Sometimes","Very frequently"]},{"question":"Do you feel that the people around you do not truly understand your inner thoughts?","options":["They understand me","Slightly misunderstood","Mostly misunderstood","Completely misunderstood"]},{"question":"How often do you feel isolated from the rest of the world while scrolling online?","options":["Rarely","Occasionally","Frequently","Almost every day"]},{"question":"Do you find yourself wishing for deeper, more meaningful conversations instead of small talk?","options":["I have deep talks","Sometimes wish for more","Often feel starved for depth","Constantly feel empty"]},{"question":"How often do you feel hidden, invisible, or ignored in social or professional settings?","options":["Never","Rarely","Often","Almost constantly"]},{"question":"Do you feel a clear lack of a 'sense of belonging' in your current city or community?","options":["I feel at home","Slightly unanchored","Lacking belongingness","Completely rootless"]},{"question":"How often do you feel lonely even when you are physically surrounded by other people?","options":["Hardly ever","Occasionally","Frequently","All the time"]},{"question":"Do you find it difficult to reach out and connect with friends because you feel like a burden?","options":["Not difficult at all","Slightly hesitant","Very difficult","I never reach out"]}];
-const resultProfiles = {"low":{"profile":"Socially Connected Profile","desc":"You have a strong sense of social belonging and emotional support. You feel understood by those around you and maintain healthy, meaningful relational bonds."},"medium":{"profile":"Moderate Isolation Tides","desc":"You experience occasional bouts of disconnection or feel a lack of deep, meaningful intimacy in your current social circle. Small adjustments toward vulnerable sharing could help."},"high":{"profile":"Severe Emotional Isolation Alert","desc":"Your scores reflect a significant distress pattern regarding emotional loneliness. You may feel deeply disconnected, alienated, or unsupported by your environment. Reaching out to warm communities or professional counsel is encouraged."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+const questions = [{"question":"How frequently do you feel lacking in close, meaningful companionship in your day-to-day life?","options":["Hardly ever","Occasionally","Frequently","Almost constantly"]},{"question":"Do you feel that there is no one you can turn to who truly understands your private struggles or core thoughts?","options":["I have a solid support","A few people might","Rarely feel understood","Completely alone in my mind"]},{"question":"How often do you feel left out, isolated, or physically excluded from group plans and social circles around you?","options":["Never feel left out","Rarely","Often","Constantly ostracized"]},{"question":"When you achieve a major milestone or face an emergency, do you lack people to contact immediately?","options":["No, many to call","Have one or two","Hardly anyone","Absolutely nobody"]},{"question":"How frequently do you feel superficial or profoundly empty during casual small talk with acquaintances?","options":["Never empty","Sometimes","Frequently hollow","Every interaction feels empty"]},{"question":"Do you find yourself scrolling through social media feeds feeling acutely disconnected from the active lives of others?","options":["No, content","Slightly envious","Distinctly alienated","Deeply depressed by it"]},{"question":"How often do you feel that your relationships are entirely surface-level, lacking deep emotional resonance?","options":["Not at all surface","A few are","Most are superficial","All are empty / No depth"]},{"question":"Even when you are physically surrounded by crowds or at events, do you still feel fundamentally isolated?","options":["Never","Occasionally","Frequently","Always feel completely alone"]},{"question":"Do you feel that people are around you, yet no one is actually with you on an emotional level?","options":["No, feel connected","Sometimes","Frequently","Constantly feeling empty"]},{"question":"How intensely does a feeling of deep alienation or profound loneliness affect your baseline daily mood?","options":["Doesn't affect me","Mild undercurrent","Frequently dampens mood","Paralyzing emotional weight"]}];
+const resultProfiles = {"low":{"profile":"Secure Social Anchoring","desc":"Your relational ecology provides a healthy foundation. You benefit from intimate avenues of emotional vulnerability and standard communal membership."},"medium":{"profile":"Peripheral Connection Gap","desc":"You are experiencing a noticeable deficit in your core relational network. Your social contact profile may lack deep, reliable mutual disclosure."},"high":{"profile":"Severe Emotional Isolation","desc":"Subjective social isolation is deeply affecting your day-to-day routine. A profound lack of trusted confidants or authentic group membership suggests a high structural loneliness index."}};
+
+let current=0, totalScore=0, isTransitioning=false;
+
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;
@@ -141,6 +201,7 @@ function loadQuestion(){
     document.getElementById("answers").innerHTML=html;
     isTransitioning = false;
 }
+
 function selectOption(el,score,optionIndex){
     if(isTransitioning) return;
     document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
@@ -152,17 +213,19 @@ function selectOption(el,score,optionIndex){
         if(current<questions.length) loadQuestion(); else showResult();
     }, 300);
 }
+
 function showResult(){
     document.getElementById("quiz").classList.add("hidden");
     document.getElementById("result").classList.remove("hidden");
-    document.getElementById("recommendations").classList.remove("hidden");
     document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
     let activeProfile = resultProfiles.high;
     if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
     else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
     document.getElementById("profile").innerText=activeProfile.profile;
     document.getElementById("description").innerText=activeProfile.desc;
+    document.getElementById("result").scrollIntoView({ behavior: 'smooth' });
 }
+
 function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 loadQuestion();
 </script>

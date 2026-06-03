@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Occupational Burnout Level Test | ToolsQuark</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the primary indicator of work burnout?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The primary clinical indicator is emotional exhaustion, characterized by feeling deeply drained, chronically tired, and completely depleted of energy before the workday even begins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does professional burnout differ from regular fatigue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Regular fatigue resolves cleanly after a period of restful sleep or a weekend off. Burnout does not improve with standard rest and is typically accompanied by cynicism and a feeling of reduced efficacy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best immediate recovery action for high burnout?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Establish strict, non-negotiable boundaries around your personal time. Detach completely from professional communications after hours and implement daily micro-rest practices."
+      }
+    }
+  ]
+</script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -12,43 +45,72 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .hero h1{font-size:36px;margin-bottom:15px;}
 .hero p{font-size:17px;opacity:.95;}
 .card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-.progress-wrap{width:100%;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;flex-grow:1;}
-.quiz-header{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:25px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
+
+/* 导航栏与进度条样式 */
+.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
+.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
 .back-home-btn:hover{color:#2563eb;}
+
+.quiz-header{display:flex;align-items:center;width:100%;margin-bottom:25px;gap:15px;}
+.progress-wrap{flex:1;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;}
 .progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
 .progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
-.question{font-size:24px;font-weight:bold;margin-bottom:20px;}
-.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;}
+
+/* 问题与选项样式 */
+.question{font-size:24px;font-weight:bold;margin-bottom:20px;color:#1e293b;}
+.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;background:white;}
 .option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
 .selected{border-color:#2563eb;background:#dbeafe;}
 .selected-heavy{border-color:#f97316;background:#fff7ed;}
 .hidden{display:none;}
-.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;}
-.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
-.description{text-align:center;color:#555;margin-bottom:25px;}
-.bar{margin-bottom:18px;}
-.bar-label{margin-bottom:5px;font-weight:bold;}
+
+/* 智能结果展示框 */
+.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;text-align:center;}
+.score{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
+.profile{font-size:26px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
+.description{color:#374151;font-size:15px;margin-bottom:20px;text-align:justify;line-height:1.6;}
+
+/* 动态量化指标条 */
+.indicator-section{text-align:left;margin-top:20px;margin-bottom:25px;}
+.indicator-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;border-bottom:1px solid #dbeafe;padding-bottom:5px;}
+.bar{margin-bottom:15px;}
+.bar-label{margin-bottom:6px;font-size:14px;font-weight:bold;color:#475569;}
 .bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
-.bar-fill{height:100%;background:#2563eb;}
-.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;}
+.bar-fill{height:100%;background:#2563eb;border-radius:20px;}
+
+/* 动态专业建议区块 */
+.insight-section{text-align:left;margin-bottom:10px;}
+.insight-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;}
+.insight{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;margin-bottom:12px;font-size:14.5px;color:#374151;line-height:1.5;}
+
+/* 推荐产品卡片 */
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
-.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
-.faq-item{margin-bottom:15px;}
+.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+
+/* FAQ 样式 */
+.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
+.faq-item:last-child{border-bottom:none;padding-bottom:0;}
+.faq-item strong{font-size:16px;color:#1e293b;display:block;margin-bottom:6px;}
+.faq-item p{color:#475569;font-size:14.5px;line-height:1.6;}
+
 footer{text-align:center;margin-top:30px;color:#777;}
-@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
+@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:40px;}.profile{font-size:22px;}}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="hero">
     <h1>Occupational Burnout Level Test</h1>
-    <p>Diagnose your professional exhaustion, cynicism patterns, and erosion of personal efficacy in your career path.</p>
+    <p>Measure your emotional exhaustion, professional depersonalization, and reduction in perceived workplace self-efficacy.</p>
 </div>
+
+<div class="calc-navigation">
+    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+</div>
+
 <div class="card" id="quiz">
     <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
         <div class="progress-wrap">
             <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
         </div>
@@ -56,78 +118,76 @@ footer{text-align:center;margin-top:30px;color:#777;}
     <div class="question" id="question"></div>
     <div id="answers"></div>
 </div>
+
 <div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
+    <div class="result-box">
+        <div class="score" id="score">0/40</div>
+        <div class="profile" id="profile">--</div>
+        <div class="description" id="description">--</div>
+        
+        <div class="indicator-section">
+            <h3>Assessment Indicators</h3>
             <div class="bar">
                 <div class="bar-label">Emotional Exhaustion</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:83%"></div></div>
+                <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Depersonalization</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:66%"></div></div>
+                <div class="bar-label">Depersonalization / Cynicism</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:64%"></div></div>
             </div>
             <div class="bar">
-                <div class="bar-label">Efficacy Erosion</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:59%"></div></div>
+                <div class="bar-label">Reduced Accomplishment</div>
+                <div class="bar-bg"><div class="bar-fill" style="width:58%"></div></div>
             </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Burnout is not a sign of individual weakness; it is a systemic mismatch between job demands, control, and rewards.</div><div class="insight">Cynicism or depersonalization acts as an unhealthy psychological shield against chronic work stress.</div><div class="insight">True recovery requires complete mental detachment from work tasks, not just passive resting or sleeping longer hours.</div>
+        </div>
+
+        <div class="insight-section">
+            <h3>Behavioral Insights</h3>
+            <div class="insight">Burnout occurs when the workplace demands chronically exceed available adaptive and systemic biological resources.</div>
+            <div class="insight">Cynicism serves as an unhealthy emotional defense mechanism, creating mental distance to protect an already exhausted mind.</div>
+            <div class="insight">True recovery requires structural modifications to workload or a systemic re-evaluation of organizational alignment.</div>
+        </div>
+    </div>
 </div>
-<div class="card hidden" id="recommendations">
-    <h3>Recommended Tests</h3>
-    
+
+<div class="card">
+    <h3>Recommended Tools</h3>
     <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
         <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
     </a>
-    
     <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
         <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    
-    <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Lean Body Mass Calculator</strong><br>Understand your body composition beyond just total weight.</div>
-    </a>
-    
-   <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
     </a>
     <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
         <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
     </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-</a>
 </div>
+
 <div class="card">
-    <h3>FAQ</h3>
-    
-            <div class="faq-item">
-                <strong>Is burnout different from everyday stress?</strong><br>Yes. Stress involves too much pressure (over-engagement), while burnout involves feeling entirely dried out, empty, and unmotivated (disengagement).
-            </div>
-            <div class="faq-item">
-                <strong>Can a long vacation cure deep burnout?</strong><br>Rarely. Vacations temporarily ease symptoms, but returning to the identical toxic environment or workload brings burnout back quickly.
-            </div>
-            <div class="faq-item">
-                <strong>How can I regain a sense of job efficacy?</strong><br>Focus on carving out clear boundaries, mastering small internal tasks, and demanding role clarity from your leadership.
-            </div>
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+        <strong>What is the primary indicator of work burnout?</strong>
+        <p>The primary clinical indicator is emotional exhaustion, characterized by feeling deeply drained, chronically tired, and completely depleted of energy before the workday even begins.</p>
+    </div>
+    <div class="faq-item">
+        <strong>How does professional burnout differ from regular fatigue?</strong>
+        <p>Regular fatigue resolves cleanly after a period of restful sleep or a weekend off. Burnout does not improve with standard rest and is typically accompanied by cynicism and a feeling of reduced efficacy.</p>
+    </div>
+    <div class="faq-item">
+        <strong>What is the best immediate recovery action for high burnout?</strong>
+        <p>Establish strict, non-negotiable boundaries around your personal time. Detach completely from professional communications after hours and implement daily micro-rest practices.</p>
+    </div>
 </div>
+
 <footer>© 2026 ToolsQuark</footer>
 </div>
+
 <script>
-const questions = [{"question":"How frequently do you feel emotionally drained or utterly empty when your workday ends?","options":["Rarely","A few times a month","Multiple times a week","Every single day"]},{"question":"How do you feel on Monday mornings when you face another full week of work responsibilities?","options":["Energized/Calm","Slightly tired","Dreadful and reluctant","Paralyzed with anxiety"]},{"question":"Have you noticed yourself becoming more cynical, cold, or disconnected toward colleagues or clients?","options":["Not at all","Occasionally","Noticeably yes","Completely calloused"]},{"question":"How often do you question the social value or ultimate purpose of your daily work output?","options":["Never","Rarely","Often","Every single day"]},{"question":"Do you feel that your overall job performance and creative capacity have dropped recently?","options":["No, I'm efficient","Slightly stagnant","Noticeable drops","Can barely get things done"]},{"question":"How easily do you lose your temper or snap over minor issues or changes at your workplace?","options":["Rarely","Occasionally","Frequently","Almost constantly"]},{"question":"Do you find yourself mentally replaying work problems during your personal family time or hobbies?","options":["Never","Rarely","Often","Cannot turn off work brain"]},{"question":"How often do you feel that your contributions are ignored, unappreciated, or undervalued by management?","options":["Seldom","Sometimes","Most of the time","Always unacknowledged"]},{"question":"Do physical symptoms like tension headaches, chronic fatigue, or digestive issues flare up on workdays?","options":["Never","Rarely","Frequently","They are constant now"]},{"question":"When you finish an important work milestone, what is your primary emotional reaction?","options":["Pride/Satisfaction","Mild relief","Empty indifference","Resentment that there's more"]}];
-const resultProfiles = {"low":{"profile":"Resilient Professional Hub","desc":"You retain an engaged, positive connection with your career. Your workplace boundaries are robust, and your sense of achievement remains intact."},"medium":{"profile":"Exhaustion Overload Warning","desc":"You are sliding down the burnout continuum. Energy reserves are chronically depleted, and a layer of cynicism is creeping into daily professional tasks."},"high":{"profile":"Severe Occupational Burnout","desc":"You are experiencing profound exhaustion and systemic depersonalization. Your mental capacity feels completely depleted. Structural changes or professional support are urgent."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
+const questions = [{"question":"How frequently do you feel emotionally drained, depleted, or completely exhausted by the end of a standard workday?","options":["Rarely or never","A few times a month","Multiple times a week","Every single day"]},{"question":"Do you find yourself waking up in the morning feeling tired and dreading the tasks waiting for you at your job?","options":["No, energized","Occasionally","Frequently","Yes, a daily struggle"]},{"question":"Have you become noticeably more cynical, critical, or detached regarding your workplace goals or teammates?","options":["Not at all","Slightly more cautious","Yes, distinctly cynical","Completely checked out"]},{"question":"How often do you feel that despite working long hours, your efforts produce no meaningful impact or value?","options":["Never, feel valued","Occasionally doubt","Often feel ineffective","Constantly feel useless"]},{"question":"Do you find yourself increasingly irritated, impatient, or snappy with coworkers, clients, or managers?","options":["Never","Rarely","Frequently","Almost constantly"]},{"question":"How often do you experience physical stress symptoms like tension headaches, stomach issues, or insomnia due to job anxiety?","options":["Never","A few times a month","Weekly occurrences","Daily recurring pain"]},{"question":"Do you feel like you have less patience for creative problem solving and prefer to do the absolute minimum required?","options":["No, still creative","Only when very tired","Yes, often slide by","Doing baseline minimum"]},{"question":"How frequently do you skip personal events, family time, or hobbies because your work leaves you with zero remaining energy?","options":["Never","Occasionally","Frequently","Always too exhausted"]},{"question":"Do you find it difficult to concentrate on tasks or make clear professional decisions due to a foggy, overwhelmed mind?","options":["Never foggy","Rarely","Often distracted","Completely unfocused"]},{"question":"How often do you feel completely unappreciated or unacknowledged by leadership for the sacrifices you make?","options":["Feel appreciated","Sometimes ignored","Frequently overlooked","Completely invisible"]}];
+const resultProfiles = {"low":{"profile":"Thriving & Engaged","desc":"Your current work alignment is highly sustainable. You maintain adequate emotional resources, standard job efficacy, and low overall professional cynicism."},"medium":{"profile":"Active Strain Status","desc":"You are experiencing noticeable baseline burnout indicators. Chronic workload pressures are taxing your coping structures, prompting increased detachment."},"high":{"profile":"Severe Burnout Horizon","desc":"Systemic exhaustion is evident across emotional, physical, and motivational spectra. Your occupational reserves are depleted, requiring active intervention."}};
+
+let current=0, totalScore=0, isTransitioning=false;
+
 function loadQuestion(){
     const q=questions[current];
     document.getElementById("question").innerText=q.question;
@@ -141,6 +201,7 @@ function loadQuestion(){
     document.getElementById("answers").innerHTML=html;
     isTransitioning = false;
 }
+
 function selectOption(el,score,optionIndex){
     if(isTransitioning) return;
     document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
@@ -152,17 +213,19 @@ function selectOption(el,score,optionIndex){
         if(current<questions.length) loadQuestion(); else showResult();
     }, 300);
 }
+
 function showResult(){
     document.getElementById("quiz").classList.add("hidden");
     document.getElementById("result").classList.remove("hidden");
-    document.getElementById("recommendations").classList.remove("hidden");
     document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
     let activeProfile = resultProfiles.high;
     if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
     else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
     document.getElementById("profile").innerText=activeProfile.profile;
     document.getElementById("description").innerText=activeProfile.desc;
+    document.getElementById("result").scrollIntoView({ behavior: 'smooth' });
 }
+
 function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
 loadQuestion();
 </script>
