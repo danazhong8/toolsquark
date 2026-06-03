@@ -4,6 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Anxiety Test | ToolsQuark</title>
+
+<!-- Google SEO FAQ Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is introversion the same as social anxiety?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Introverts prefer quiet settings because they recharge alone, but they don't necessarily fear social judgment. Social anxiety is driven by an intense dread of negative evaluation and scrutiny."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can social anxiety be outgrown naturally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mild forms may settle with age as social experience increases, but stubborn social anxiety typically requires intentional, gradual exposure to social triggers to rewire the brain's fear response."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do when experiencing a social panic spike?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Shift your focus outward to break the internal anxious monitoring loop. A proven technique is to describe 3 physical objects in the room or practice controlled deep breathing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is this online social anxiety test?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This test is a self-assessment screening tool designed to look for behavioral indicators like evaluation dread and safety behaviors. It is for educational purposes and should not replace a professional clinical diagnosis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are common signs of high social anxiety?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common signs include intense dread before social events, physical symptoms (like rapid heart rate, sweating, or trembling), avoiding eye contact, using safety behaviors (like hiding behind your phone), and long hours of post-event cognitive parsing (overthinking interactions)."
+      }
+    }
+  ]
+</script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
@@ -35,7 +85,10 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;
 .recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
 .recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
 .recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
-.faq-item{margin-bottom:15px;}
+.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
+.faq-item:last-child{border-bottom:none;padding-bottom:0;}
+.faq-item strong{font-size:17px;color:#1e293b;display:block;margin-bottom:5px;}
+.faq-item p{color:#475569;font-size:15px;}
 footer{text-align:center;margin-top:30px;color:#777;}
 @media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
 </style>
@@ -93,10 +146,10 @@ footer{text-align:center;margin-top:30px;color:#777;}
     </a>
     
     <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-    <div class="recommend">
-        <strong>Healthy Weight Range Calculator</strong><br>
-        Determine your ideal weight based on clinical health metrics.
-    </div>
+        <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
+    </a>
+</div> <!-- 修复了此处之前漏掉的闭合div标签 -->
+
 <div class="card">
     <h3>Recommended Tools</h3>
     <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
@@ -109,21 +162,34 @@ footer{text-align:center;margin-top:30px;color:#777;}
         <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
 </a>
 </div>
+
 <div class="card">
-    <h3>FAQ</h3>
+    <h3>Frequently Asked Questions</h3>
     
             <div class="faq-item">
-                <strong>Is introversion the same as social anxiety?</strong><br>No. Introverts prefer quiet settings because they recharge alone, but they don't necessarily fear social judgment. Social anxiety is driven by dread.
+                <strong>Is introversion the same as social anxiety?</strong>
+                <p>No. Introverts prefer quiet settings because they recharge alone, but they don't necessarily fear social judgment. Social anxiety is driven by an intense dread of negative evaluation and scrutiny.</p>
             </div>
             <div class="faq-item">
-                <strong>Can social anxiety be outgrown naturally?</strong><br>Mild forms settle with age, but stubborn anxiety requires gradual exposure to social triggers to rewire your brain's fear response.
+                <strong>Can social anxiety be outgrown naturally?</strong>
+                <p>Mild forms may settle with age as social experience increases, but stubborn social anxiety typically requires intentional, gradual exposure to social triggers to rewire your brain's fear response.</p>
             </div>
             <div class="faq-item">
-                <strong>What should I do when experiencing a social panic spike?</strong><br>Shift your focus outward. Describe 3 physical objects in the room to break your internal anxious monitoring loop.
+                <strong>What should I do when experiencing a social panic spike?</strong>
+                <p>Shift your focus outward to break the internal anxious monitoring loop. A proven technique is to describe 3 physical objects in the room or practice controlled deep breathing.</p>
+            </div>
+            <div class="faq-item">
+                <strong>How accurate is this online social anxiety test?</strong>
+                <p>This test is a self-assessment screening tool designed to look for behavioral indicators like evaluation dread and safety behaviors. It is for educational purposes and should not replace a professional clinical diagnosis.</p>
+            </div>
+            <div class="faq-item">
+                <strong>What are common signs of high social anxiety?</strong>
+                <p>Common signs include intense dread before social events, physical symptoms (like rapid heart rate, sweating, or trembling), avoiding eye contact, using safety behaviors (like hiding behind your phone), and long hours of post-event cognitive parsing (overthinking interactions).</p>
             </div>
 </div>
 <footer>© 2026 ToolsQuark</footer>
 </div>
+
 <script>
 const questions = [{"question":"How do you feel when you are required to speak, present, or perform in front of a group of people?","options":["Calm/Slightly excited","Moderately nervous","Intense physical dread","Paralyzed/Avoid at all costs"]},{"question":"How intensely do you worry about doing or saying something embarrassing in a social environment?","options":["Hardly ever","Occasionally","Frequently","Constantly obsessing"]},{"question":"Do you actively avoid going to parties, networking events, or group gatherings where you don't know many people?","options":["No, love meeting folks","Rarely avoid","Often avoid","Always avoid completely"]},{"question":"When eating, drinking, or writing while someone stands and watches you, how do you react?","options":["Unbothered","Slightly self-conscious","Hands shake/Nervous","Completely lock up"]},{"question":"How often do you use your smartphone or pretend to be deep in a task specifically to avoid making eye contact?","options":["Never","Rarely","Often","It is my default defense"]},{"question":"If you have to make a phone call to an unfamiliar business or stranger, what is your internal state?","options":["Just dial","Slightly hesitate","Delay/Procrastinate","Terrified; avoid calling"]},{"question":"After a social gathering, how long do you spend replaying your interactions and cringing at your mistakes?","options":["Don't think about it","A few minutes","For hours or days","Weeks later still loop"]},{"question":"How do handle introducing yourself to an authority figure or manager you respect?","options":["Comfortably","Mildly formal/Nervous","Very anxious/Stutter","Completely avoid them"]},{"question":"Do you feel that your chest tightens, your heart races, or you sweat profusely during ordinary small talk?","options":["Never","Rarely","Frequently","Every single time"]},{"question":"How intensely does the fear of being judged or criticized stop you from expressing your true opinions?","options":["Not at all","Slightly guarded","Often stay quiet","Always mask/Stay silent"]}];
 const resultProfiles = {"low":{"profile":"Socially Grounded Individual","desc":"You handle social interactions with realistic ease. You navigate small talk, crowds, and group evaluations without internal panic or avoidance."},"medium":{"profile":"Anxious Evaluation Buffer","desc":"You experience noticeable nervousness in unfamiliar social groups or performative settings. You use safety behaviors but can push through when required."},"high":{"profile":"Severe Social Dread Pattern","desc":"Social interactions trigger intense hyper-vigilance or complete avoidance. Fear of judgment significantly shrinks your social world and limits career growth."}};
