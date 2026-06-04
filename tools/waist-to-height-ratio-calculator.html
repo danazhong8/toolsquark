@@ -3,134 +3,414 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Waist-to-Height Ratio Calculator | ToolsQuark</title>
+<title>Accurate Waist-to-Height Ratio Calculator (WHtR) | ToolsQuark</title>
+<meta name="description" content="Stop relying blindly on standard BMI. Calculate your precise Waist-to-Height Ratio (WHtR) to expose hidden visceral fat and evaluate accurate cardiac and metabolic health risks instantly.">
+
+<!-- Structured Data: SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Accurate Waist-to-Height Ratio Calculator",
+  "operatingSystem": "All",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "An advanced health utility implementing the clinical Waist-to-Height Ratio algorithm to identify central adiposity and calculate systemic metabolic vulnerabilities.",
+  "browserRequirements": "Requires JavaScript. Requires HTML5."
+}
+</script>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
-.container{max-width:800px;margin:auto;}
-.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
-.hero h1{font-size:36px;margin-bottom:15px;}
-.hero p{font-size:17px;opacity:.95;}
-.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
-.back-home-btn:hover{color:#2563eb;}
-.input-group{margin-bottom:20px;}
-.input-group label{display:block;font-weight:bold;margin-bottom:8px;color:#374151;}
-.input-group input{width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;outline:none;transition:.2s;}
-.input-group input:focus{border-color:#2563eb;background:#eff6ff;}
-.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:15px;background:#2563eb;color:white;font-size:17px;font-weight:bold;cursor:pointer;transition:.2s;}
-.calc-submit-btn:hover{background:#1d4ed8;}
-.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;margin-top:25px;text-align:center;}
-.result-val{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
-.normal-range-badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:15px;}
-.result-status{font-size:20px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
-.result-desc{color:#374151;font-size:15px;margin-bottom:15px;text-align:justify;}
-.suggestion-box{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;text-align:left;margin-top:15px;}
-.suggestion-box h4{color:#1e293b;margin-bottom:5px;font-size:15px;}
-.suggestion-box p{color:#475569;font-size:14px;line-height:1.5;}
-.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
-.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
-.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
-.faq-item{margin-bottom:15px;}
-footer{text-align:center;margin-top:30px;color:#777;}
-@media(max-width:768px){.hero h1{font-size:28px;}.result-val{font-size:35px;}}
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background: #f8fafc;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --card-bg: #ffffff;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--background); color: var(--text-main); line-height: 1.6; padding: 24px 16px; }
+.container { max-width: 800px; margin: auto; }
+
+/* Breadcrumb Navigation */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; padding-left: 4px; }
+.breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb span.separator { font-size: 12px; opacity: 0.7; }
+.breadcrumb span.current { color: var(--text-main); font-weight: 500; }
+
+/* Hero Banner */
+.hero { background: linear-gradient(135deg, #1e3a8a, #4f46e5); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none; }
+.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
+.hero p { font-size: 16px; opacity: 0.9; max-width: 600px; font-weight: 400; }
+
+/* Card Components */
+.card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid rgba(226, 232, 240, 0.8); }
+.card h2, .card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
+
+/* Input Elements */
+.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+@media (max-width: 560px) { .input-grid { grid-template-columns: 1fr; gap: 16px; } }
+.input-group { margin-bottom: 4px; }
+.input-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #334155; font-size: 14px; }
+.input-wrapper { position: relative; display: flex; align-items: center; }
+.input-wrapper input { width: 100%; padding: 14px 16px; padding-right: 50px; border: 2px solid #e2e8f0; border-radius: var(--radius-md); font-size: 16px; font-weight: 500; color: var(--text-main); outline: none; background: #fafafa; transition: all 0.2s; }
+.input-wrapper input:focus { border-color: var(--primary); background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+.input-unit { position: absolute; right: 16px; font-size: 14px; font-weight: 600; color: var(--text-muted); pointer-events: none; }
+
+/* Action CTA Button */
+.calc-submit-btn { width: 100%; padding: 16px; border: none; border-radius: var(--radius-md); background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; font-size: 17px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.calc-submit-btn:hover { background: linear-gradient(135deg, #1d4ed8, #1e40af); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3); }
+
+/* Premium Visual Result Area */
+.result-box { background: linear-gradient(180deg, #f8fafc, #eff6ff); border: 1px solid #bfdbfe; padding: 32px 24px; border-radius: var(--radius-lg); margin-top: 32px; display: none; text-align: center; }
+.result-box.active { display: block; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+.result-header { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.result-val-container { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 20px; }
+.result-val { font-size: 64px; font-weight: 800; color: #1e3a8a; letter-spacing: -0.03em; line-height: 1; }
+
+/* Gradient Visual Gauge Scale */
+.gauge-container { position: relative; height: 12px; background: linear-gradient(to right, #3b82f6 0%, #10b981 35%, #f59e0b 60%, #ef4444 100%); border-radius: 6px; margin: 30px 10px 45px 10px; }
+.gauge-pointer { position: absolute; top: -6px; left: 0%; width: 24px; height: 24px; background: #ffffff; border: 4px solid var(--primary); border-radius: 50%; box-shadow: var(--shadow-sm); transform: translateX(-12px); transition: left 1s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.gauge-labels { display: flex; justify-content: space-between; position: absolute; width: 100%; bottom: -24px; font-size: 11px; font-weight: 600; color: var(--text-muted); }
+
+.result-status { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.01em; }
+.result-desc { color: #475569; font-size: 15px; margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; text-align: justify; }
+
+.suggestion-box { background: #ffffff; border-radius: var(--radius-md); padding: 20px; border-left: 4px solid var(--primary); text-align: left; box-shadow: var(--shadow-sm); }
+.suggestion-box h4 { color: #1e293b; margin-bottom: 6px; font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.suggestion-box p { color: #475569; font-size: 14px; line-height: 1.58; }
+
+/* Smart Cross-Selling Funnel Cards */
+.cross-sell-wrapper { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 24px; text-align: left; }
+@media (min-width: 600px) { .cross-sell-wrapper { grid-template-columns: 1fr 1fr; } }
+.cross-sell-card { background: linear-gradient(135deg, #f8fafc, #f0fdf4); border: 1px dashed #bbf7d0; padding: 20px; border-radius: var(--radius-md); text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s; }
+.cross-sell-card.alt-funnel { background: linear-gradient(135deg, #f8fafc, #eff6ff); border: 1px dashed #bfdbfe; }
+.cross-sell-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-style: solid; }
+.cross-sell-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-bottom: 12px; align-self: flex-start; }
+.cross-sell-card:not(.alt-funnel) .cross-sell-tag { background: #dcfce7; color: #166534; }
+.cross-sell-card.alt-funnel .cross-sell-tag { background: #dbeafe; color: #1e40af; }
+.cross-sell-title { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
+.cross-sell-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 14px; }
+.cross-sell-action { font-size: 13px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 4px; }
+
+/* Native Recommendation Grid */
+.recommend-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 600px) { .recommend-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.recommend-link { text-decoration: none; color: inherit; }
+.recommend-item { background: #fafafa; padding: 18px; border-radius: var(--radius-md); border: 1px solid #e2e8f0; transition: all 0.2s; height: 100%; }
+.recommend-link:hover .recommend-item { background: #ffffff; border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 4px; }
+.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+/* FAQ Accordion Architecture */
+.faq-item { border-bottom: 1px solid #e2e8f0; padding: 18px 0; }
+.faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 8px; }
+.faq-item p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+
+/* YMYL Quality Core Framework Layer */
+.ymyl-backing { border-top: 1px solid #e2e8f0; margin-top: 40px; padding-top: 24px; text-align: center; }
+.clinical-references { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; text-align: justify; background: #f8fafc; padding: 16px; border-radius: var(--radius-md); }
+.clinical-references strong { color: #475569; }
+.medical-disclaimer { font-size: 12px; color: #94a3b8; line-height: 1.55; text-align: justify; font-style: italic; }
+footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--text-muted); font-size: 14px; border-top: 1px solid #e2e8f0; }
+
+@media(max-width:768px){ .hero { padding: 36px 20px; } .hero h1 { font-size: 28px; } .card { padding: 24px; } }
 </style>
 </head>
 <body>
 <div class="container">
-    <div class="hero">
-        <h1>Waist-to-Height Ratio Calculator</h1>
-        <p>Determine your Waist-to-Height Ratio (WHtR), a superior clinical marker for screening cardiovascular and visceral fat risks.</p>
-    </div>
-    <div class="calc-navigation">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-    </div>
-    <div class="card">
-        <div id="inputs-area"></div>
-        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
-        <div id="result-area" class="result-box" style="display:none;">
-            <div class="normal-range-badge">Normal Range: 0.40 - 0.49 (Healthy Range)</div>
-            <div class="result-val" id="calc-output">0.00</div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a href="https://www.toolsquark.com/">Home</a>
+        <span class="separator">/</span>
+        <a href="https://www.toolsquark.com/health/">Health Tools</a>
+        <span class="separator">/</span>
+        <span class="current">Waist-to-Height Ratio Calculator</span>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Expose Hidden Visceral Risk</h1>
+        <p>A flat scale weight can camouflage danger. Central abdominal fat surrounding critical internal organs acts as an active endocrine threat. Identify your precise health risk tier using the Waist-to-Height Ratio (WHtR).</p>
+    </header>
+
+    <!-- Main Calculator Card -->
+    <main class="card">
+        <h2>Enter Body Proportions</h2>
+        <form id="whtr-calc-form" onsubmit="event.preventDefault(); calculateNow();">
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="input_waist">Waist Circumference</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_waist" step="0.1" placeholder="e.g. 80" required>
+                        <span class="input-unit">cm</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="input_height">Total Height</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_height" step="0.1" placeholder="e.g. 175" required>
+                        <span class="input-unit">cm</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="calc-submit-btn">
+                <span>Evaluate Visceral Health Index</span> →
+            </button>
+        </form>
+
+        <!-- Premium Smooth Result Container -->
+        <div id="result-area" class="result-box">
+            <div class="result-header">Your Proportional Ratio</div>
+            <div class="result-val-container">
+                <span class="result-val" id="calc-output">0.00</span>
+            </div>
+            
+            <!-- Realtime Adaptive Gauge Scale -->
+            <div class="gauge-container">
+                <div class="gauge-pointer" id="gauge-indicator"></div>
+                <div class="gauge-labels">
+                    <span>Underweight</span>
+                    <span>Healthy Zone</span>
+                    <span>Increased Risk</span>
+                    <span>High Adiposity</span>
+                </div>
+            </div>
+
             <div class="result-status" id="calc-status"></div>
             <div class="result-desc" id="calc-desc"></div>
+            
             <div class="suggestion-box">
-                <h4>💡 Professional Suggestions:</h4>
+                <h4>💡 Clinical Optimization Strategy:</h4>
                 <p id="calc-suggestion"></p>
             </div>
+
+            <!-- Dynamic Cross-Selling Cross-Road Optimization Context -->
+            <div class="cross-sell-wrapper" id="funnel-cards-area">
+                <!-- Dynamically populated via JS mapping -->
+            </div>
         </div>
-    </div>
-    <div class="card">
-        <h3>Recommended Tools</h3>
-        <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-            <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-        </a>
-        <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-            <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-        </a>
-        <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-            <div class="recommend"><strong>Water Intake Calculator</strong><br>Standard daily water intake estimation.</div>
-        </a>
-    </div>
-    <div class="card">
-        <h3>FAQ</h3>
+    </main>
+
+    <!-- Crosslink Ecosystem Node -->
+    <section class="card">
+        <h3>Comprehensive Metabolic Toolset</h3>
+        <div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>BMI Calculator</strong>
+                    <p>Map out macro-scale population risk brackets against global targets.</p>
+                </div>
+            </a>
+            <a href="https://www.toolsquark.com/tools/body-fat-calculator.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Body Fat Calculator</strong>
+                    <p>Isolate structural fat weights using U.S. Navy metrics.</p>
+                </div>
+            </a>
+            <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>BMR Calculator</strong>
+                    <p>Determine baseline daily expenditure calorie minimums.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Deep Value Context FAQ -->
+    <section class="card">
+        <h3>Frequently Asked Questions</h3>
         <div class="faq-item">
-            <strong>Why is WHtR better than BMI?</strong><br>BMI ignores where fat is stored. WHtR targets central abdominal fat, which is the most dangerous type of fat affecting vital organs.
+            <strong>Why do modern cardiologists prefer WHtR over standard BMI?</strong>
+            <p>Body Mass Index (BMI) simply computes a mathematical ratio between total weight and height, making no distinction between a heavy framework of dense muscle mass and dangerous fat deposits. Waist-to-Height Ratio (WHtR) specifically measures central abdominal fat. Abdominal fat accumulation is highly harmful because it acts as an active organ that releases inflammatory chemicals, posing a direct threat to cardiovascular and metabolic functions.</p>
         </div>
         <div class="faq-item">
-            <strong>Where exactly should I measure my waist?</strong><br>Measure horizontally at the midpoint between your lowest rib and the top of your hip bone, usually right across the belly button line.
+            <strong>Where exactly should I measure my waist for medical accuracy?</strong>
+            <p>For an accurate baseline, locate the midpoint between the lower edge of your last measurable rib and the upper border of your hip bone. Wrap a flexible measuring tape horizontally around this point, which typically aligns directly with the navel line. Keep the tape flat against the skin without pulling tight, and record the reading at the end of a normal, relaxed exhalation.</p>
         </div>
-    </div>
-    <footer>© 2026 ToolsQuark</footer>
+        <div class="faq-item">
+            <strong>What is the universal diagnostic rule of thumb for WHtR?</strong>
+            <p>A widely accepted medical guideline states that individuals should aim to keep their waist circumference to less than half their height. In mathematical terms, this translates to maintaining a WHtR score below 0.50. Crossing this specific limit signals an increased statistical risk of developing metabolic complications, type 2 diabetes, and early vascular fatigue.</p>
+        </div>
+    </section>
+
+    <!-- YMYL Quality Core Framework Layer -->
+    <section class="ymyl-backing">
+        <div class="clinical-references">
+            <strong>Academic Reference Standards:</strong> The interpretive ranges and diagnostic metrics used by this tracking system are based on guidelines from the World Health Organization (WHO) and the National Institute for Health and Care Excellence (NICE). Medical studies indicate that keeping your waist circumference to less than half your height serves as a highly effective early screening tool for central metabolic issues.
+        </div>
+        <div class="medical-disclaimer">
+            <strong>Clinical Disclaimer:</strong> The values derived by this web utility are meant for educational and self-monitoring indicators only. This calculation does not constitute formal medical diagnosis, diagnostic imaging, or direct clinical advice. Always consult a certified primary physician or qualified metabolic practitioner before introducing aggressive caloric restrictions or high-intensity athletic lifestyle overhauls.
+        </div>
+    </section>
+
+    <!-- Footer Node -->
+    <footer>
+        <p>© 2026 ToolsQuark. Built for Clinical Integrity.</p>
+    </footer>
 </div>
+
 <script>
-const inputConfigs = [{"id":"waist","label":"Waist Circumference","unit":"cm","placeholder":"80"},{"id":"height","label":"Height","unit":"cm","placeholder":"175"}];
-const interpretationRules = [{"min":0,"max":0.4,"status":"Extremely Slim / Underweight Profile","desc":"Your ratio is exceptionally low, which may correlate with lower muscle mass or overall underweight status.","suggestion":"Focus on nutrient-dense dietary tracking and strength training to build functional body mass and core muscular framework safely."},{"min":0.4,"max":0.5,"status":"Healthy Viscerally Balanced Range","desc":"Ideal score! This metric indicates a highly safe level of visceral abdominal fat storage, minimizing metabolic risks.","suggestion":"Superb body composition marker. Maintain your current active lifestyle and dietary patterns to protect this cardiovascular baseline."},{"min":0.5,"max":0.6,"status":"Increased Metabolic Risk Threshold","desc":"Your ratio has crossed the healthy limit. A ratio over 0.50 mathematically signals early visceral fat accumulation around major internal organs.","suggestion":"Prioritize dropping abdominal fat. Cut out refined liquid carbohydrates (sodas, beer) and introduce moderate cardio alongside structural portion control."},{"min":0.6,"max":99,"status":"High Visceral Adiposity Alert","desc":"Your WHtR indicates elevated abdominal fat distribution, which clinically correlates with vascular stress and insulin resistance.","suggestion":"Take immediate proactive steps. We strongly advice consulting a healthcare practitioner to review metabolic health markers while optimizing daily nutrition."}];
+// Global Diagnostic Matrix Configuration
+const interpretationRules = [
+    { min: 0, max: 0.40, status: "Extremely Slim / Underweight Profile", desc: "Your calculated waist-to-height ratio is exceptionally low. While this indicates a lack of abdominal fat accumulation, it may point to a lower amount of functional muscle mass or an underweight status that requires structural focus.", suggestion: "Focus on consuming nutrient-dense whole foods and implementing structured progressive resistance lifting. This will help build safe, functional skeletal weight and strengthen your lean structural framework.", funnel: "lbm" },
+    { min: 0.40, max: 0.50, status: "Healthy Viscerally Balanced Range", desc: "Ideal metabolic score! Your proportional calculation sits right in the optimal physiological zone. This confirms you have a safe level of visceral abdominal fat storage, minimizing cardiovascular and metabolic health liabilities.", suggestion: "Superb work keeping your proportions balanced. Maintain your healthy habits, active lifestyle, and balanced whole-food nutrition to protect this excellent cardiovascular baseline.", funnel: "bodyfat" },
+    { min: 0.50, max: 0.60, status: "Increased Metabolic Risk Threshold", desc: "Your proportion has crossed the healthy physiological limit. A ratio over 0.50 indicates early visceral fat accumulation around major internal organs, which can contribute to insulin resistance.", suggestion: "Prioritize reducing central abdominal fat. Focus on eliminating processed, liquid carbohydrates (such as sugary drinks or soda), integrate steady cardio exercise, and apply mindful portion control to your daily routine.", funnel: "bmr" },
+    { min: 0.60, max: 99.0, status: "High Visceral Adiposity Alert", desc: "Your measurement shows elevated abdominal fat distribution. Clinically, a ratio in this tier correlates with increased vascular strain, elevated systemic inflammation, and a higher risk of developing metabolic issues.", suggestion: "Take proactive, structured steps to manage your health. We highly recommend consulting a qualified healthcare professional to check your metabolic markers while optimizing your daily nutrition.", funnel: "bmr" }
+];
 
-const inputsArea = document.getElementById('inputs-area');
-let html = "";
-inputConfigs.forEach(cfg => {
-    html += `
-    <div class="input-group">
-        <label>${cfg.label} (${cfg.unit})</label>
-        <input type="number" id="input_${cfg.id}" placeholder="e.g. ${cfg.placeholder}">
-    </div>`;
-});
-inputsArea.innerHTML = html;
+// Number Interpolation Ease-Tween
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const ease = progress * (2 - progress);
+        obj.innerHTML = (ease * (end - start) + start).toFixed(2);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
 
+// Primary Calculation Function
 function calculateNow() {
-    let args = {};
-    let missing = false;
-    inputConfigs.forEach(cfg => {
-        const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);
-        if (isNaN(val)) missing = true;
-        args[cfg.id] = val;
-    });
-    if (missing) {
-        alert("Please fill in all input fields correctly.");
+    const waist = parseFloat(document.getElementById('input_waist').value);
+    const height = parseFloat(document.getElementById('input_height').value);
+
+    if (isNaN(waist) || isNaN(height) || waist <= 0 || height <= 0) {
+        alert("Please ensure all physical parameters are entered correctly.");
         return;
     }
-    try {
-        const formulaFunc = new Function('fields', 'return fields.waist / fields.height');
-        const finalResult = formulaFunc(args);
-        let matchedRule = null;
-        for (let rule of interpretationRules) {
-            if (finalResult >= rule.min && finalResult < rule.max) {
-                matchedRule = rule;
-                break;
-            }
+
+    // Process WHtR Equation
+    const whtr = waist / height;
+
+    // Safety Constraint Trim
+    let evaluatedResult = whtr;
+    if (evaluatedResult < 0.1) evaluatedResult = 0.1;
+    if (evaluatedResult > 1.5) evaluatedResult = 1.5;
+
+    // Match Corresponding Assessment Tier
+    let matched = null;
+    for (let rule of interpretationRules) {
+        if (evaluatedResult >= rule.min && evaluatedResult < rule.max) {
+            matched = rule;
+            break;
         }
-        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
-        document.getElementById('result-area').style.display = 'block';
-        document.getElementById('calc-output').innerText = finalResult.toFixed(2);
-        document.getElementById('calc-status').innerText = matchedRule.status;
-        document.getElementById('calc-desc').innerText = matchedRule.desc;
-        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
-    } catch (e) {
-        alert("Calculation error. Please check inputs.");
     }
+    if (!matched) matched = interpretationRules[interpretationRules.length - 1];
+
+    // Trigger Result Container Smooth Reveal
+    const resultArea = document.getElementById('result-area');
+    resultArea.classList.add('active');
+
+    // Dynamic Number Animation
+    const outputNode = document.getElementById('calc-output');
+    animateValue(outputNode, 0, whtr, 800);
+
+    // Update Gauge Pointer Alignment (Scale mapped 0.30 to 0.70 dynamically)
+    let percentPos = ((whtr - 0.30) / 0.40) * 100;
+    if (percentPos < 0) percentPos = 0;
+    if (percentPos > 100) percentPos = 100;
+    document.getElementById('gauge-indicator').style.left = `${percentPos}%`;
+
+    // Update Dynamic UI Content
+    document.getElementById('calc-status').innerText = matched.status;
+    document.getElementById('calc-desc').innerText = matched.desc;
+    document.getElementById('calc-suggestion').innerText = matched.suggestion;
+
+    // Trigger Smart Cross-Selling Funnel Pipeline
+    renderCrossSellCards(matched.funnel);
+
+    // Smoothly roll display layout directly to results viewpoint
+    resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
-function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+
+// Cross-Selling Routing Component Engine
+function renderCrossSellCards(targetFunnelType) {
+    const targetArea = document.getElementById('funnel-cards-area');
+    let cardsHTML = '';
+
+    if (targetFunnelType === 'bmr') {
+        cardsHTML = `
+            <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="cross-sell-card">
+                <div>
+                    <span class="cross-sell-tag">Action Strategy</span>
+                    <div class="cross-sell-title">Target Your Core Caloric Deficit</div>
+                    <div class="cross-sell-desc">To trim central abdominal visceral fat, creating a sustainable energy deficit is essential. Calculate your exact resting metabolic baseline to build a proper plan.</div>
+                </div>
+                <div class="cross-sell-action">Find Metabolic Baseline →</div>
+            </a>
+            <a href="https://www.toolsquark.com/tools/body-fat-calculator.html" class="cross-sell-card alt-funnel">
+                <div>
+                    <span class="cross-sell-tag">Advanced Analysis</span>
+                    <div class="cross-sell-title">Map Total Body Fat Tiers</div>
+                    <div class="cross-sell-desc">Combine your waist proportion with the U.S. Navy circumference model to track your overall body fat percentage and monitor your structural fat distribution.</div>
+                </div>
+                <div class="cross-sell-action">Analyze Body Fat % →</div>
+            </a>
+        `;
+    } else if (targetFunnelType === 'lbm') {
+        cardsHTML = `
+            <a href="https://www.toolsquark.com/tools/lean-body-mass-calculator.html" class="cross-sell-card">
+                <div>
+                    <span class="cross-sell-tag">Highly Recommended</span>
+                    <div class="cross-sell-title">Isolate Skeletal Muscle Mass</div>
+                    <div class="cross-sell-desc">A low ratio can sometimes indicate a need for more muscle development. Isolate your true functional tissue mass from total fat weight to track your progress accurately.</div>
+                </div>
+                <div class="cross-sell-action">Isolate Lean Framework →</div>
+            </a>
+            <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="cross-sell-card alt-funnel">
+                <div>
+                    <span class="cross-sell-tag">Standard Check</span>
+                    <div class="cross-sell-title">Compare Total Weight Tier</div>
+                    <div class="cross-sell-desc">Cross-reference your specific waist measurements with the standard body mass index to evaluate your overall physical metrics from multiple angles.</div>
+                </div>
+                <div class="cross-sell-action">Cross-Check BMI Index →</div>
+            </a>
+        `;
+    } else { // HealthyZone Route mapping -> target deep body fat partition
+        cardsHTML = `
+            <a href="https://www.toolsquark.com/tools/body-fat-calculator.html" class="cross-sell-card">
+                <div>
+                    <span class="cross-sell-tag">Composition Profile</span>
+                    <div class="cross-sell-title">Map Out Total Adipose Volume</div>
+                    <div class="cross-sell-desc">Your waist proportion is in an excellent place. Dive deeper into your body composition by measuring your overall fat-to-muscle distribution.</div>
+                </div>
+                <div class="cross-sell-action">Analyze Body Fat % →</div>
+            </a>
+            <a href="https://www.toolsquark.com/tools/lean-body-mass-calculator.html" class="cross-sell-card alt-funnel">
+                <div>
+                    <span class="cross-sell-tag">Performance Tracking</span>
+                    <div class="cross-sell-title">Isolate Your Active Lean Mass</div>
+                    <div class="cross-sell-desc">Keep your metabolism working efficiently. Calculate the exact weight of your muscles, bones, and organs to monitor your physical development over time.</div>
+                </div>
+                <div class="cross-sell-action">Track Active Muscle Mass →</div>
+            </a>
+        `;
+    }
+    targetArea.innerHTML = cardsHTML;
+}
 </script>
 </body>
 </html>
