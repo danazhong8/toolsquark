@@ -66,6 +66,7 @@
     --text-main: #0f172a;
     --text-muted: #64748b;
     --card-bg: #ffffff;
+    --border-color: #e2e8f0;
     --radius-lg: 24px;
     --radius-md: 16px;
     --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
@@ -111,10 +112,11 @@ body {
 
 /* Interactive Selection Options Components */
 .question { font-size: 22px; font-weight: 800; margin-bottom: 24px; color: #0f172a; line-height: 1.35; letter-spacing: -0.01em; }
-.option { padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: var(--radius-md); margin-bottom: 12px; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); font-size: 15.5px; font-weight: 500; color: #334155; }
+.option { width: 100%; text-align: left; background: var(--card-bg); font-family: inherit; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: var(--radius-md); margin-bottom: 12px; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); font-size: 15.5px; font-weight: 500; color: #334155; display: block; }
 .option:hover { border-color: var(--primary); background: #f0f6ff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.06); }
-.selected { border-color: var(--primary); background: #e0f2fe; color: #0369a1; font-weight: 600; }
-.selected-heavy { border-color: var(--warning); background: var(--warning-bg); color: #c2410c; font-weight: 600; }
+.option:focus-visible { outline: 3px solid var(--primary); border-color: var(--primary); }
+.selected { border-color: var(--primary) !important; background: #e0f2fe !important; color: #0369a1 !important; font-weight: 600; }
+.selected-heavy { border-color: var(--warning) !important; background: var(--warning-bg) !important; color: #c2410c !important; font-weight: 600; }
 
 /* Results Metrics Displays */
 .score { font-size: 64px; font-weight: 800; text-align: center; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
@@ -174,8 +176,8 @@ footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--t
         <p>Analyze your sleep architecture, latency, and daytime dysfunction to uncover hidden factors disrupting your biological rest[cite: 13].</p>
     </header>
 
-    <!-- Core Interactive Quiz Node -->
-    <main class="card" id="quiz">
+    <!-- Core Interactive Quiz Node - Configured with ARIA Live updates -->
+    <main class="card" id="quiz" aria-live="polite">
         <div class="quiz-header">
             <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
             <div class="progress-wrap">
@@ -184,7 +186,7 @@ footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--t
                 </div>
             </div>
         </div>
-        <div class="question" id="question">Loading parameters...</div>
+        <h2 class="question" id="question">Loading parameters...</h2>
         <div id="answers"></div>
     </main>
 
@@ -288,7 +290,7 @@ footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--t
             <strong>Zero Server Logs:</strong> Your behavioral feedback data is calculated entirely client-side using native script mechanisms[cite: 13]. No data profiles are read, saved, cached, or transferred across our remote web clusters[cite: 13].
         </div>
         <div class="medical-disclaimer">
-            <strong>Clinical Diagnostics Disclaimer:</strong> This questionnaire provides qualitative informational estimations for wellness literacy tracking and structural self-auditing purposes[cite: 13]. It does not constitute, provide, or substitute for formal medical advice, clinical diagnostics, or intervention strategies targeting medical parasomnias, neurological sleep apnea conditions, or psychological insomnia pathologies.
+            <strong>Clinical Diagnostics Disclaimer:</strong> This questionnaire provides qualitative informational estimations for wellness literacy tracking and structural self-auditing purposes[cite: 13]. It does not constitute, provide, or substitute for formal medical advice, clinical diagnostics, or intervention strategies targeting medical parasomnias, neurological sleep apnea conditions, or psychological insomnia pathologies[cite: 13].
         </div>
     </section>
 
@@ -338,7 +340,7 @@ function loadQuestion(){
     
     let html="";
     q.options.forEach((option,index)=>{
-        html+=`<div class="option" onclick="selectOption(this,${index+1},${index})">${option}</div>`;
+        html+=`<button class="option" onclick="selectOption(this,${index+1},${index})">${option}</button>`;
     });
     document.getElementById("answers").innerHTML=html;
     isTransitioning = false;
