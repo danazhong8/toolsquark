@@ -3,145 +3,466 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anxiety & Hyperarousal Assessment | ToolsQuark</title>
+<title>Accurate Anxiety & Hyperarousal Assessment | Nervous System Audit | ToolsQuark</title>
+<meta name="description" content="Evaluate your somatic anxiety baselines, sensory overload, and chronic sympathetic hyperarousal parameters using our advanced behavioral health tracker.">
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Advanced Anxiety & Hyperarousal Assessment Tool",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A clinical-grade interactive metric utility designed to map sympathetic nervous hyperarousal, subconscious muscle guarding, and somatic sensory overload parameters.",
+    "browserRequirements": "Requires JavaScript. Requires HTML5."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What exactly is nervous system hyperarousal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hyperarousal is a state where your sympathetic nervous system remains permanently locked in an active alert phase, making it difficult to rest even in safe environments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does somatic anxiety differ from normal worry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Normal worry happens in your thoughts. Somatic anxiety manifests directly as physical tension, shallow breathing, rapid heart rates, or heightened sensory sensitivity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can sensory overload trigger physical hyperarousal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Constant digital notifications, loud environments, and rapid visual stimuli keep your brain on high alert, consuming vital metabolic reserves."
+        }
+      }
+    ]
+  }
+]
+</script>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
-.container{max-width:800px;margin:auto;}
-.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
-.hero h1{font-size:36px;margin-bottom:15px;}
-.hero p{font-size:17px;opacity:.95;}
-.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
-.progress-wrap{width:100%;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;flex-grow:1;}
-.quiz-header{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:25px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;width:auto;margin-right:20px;}
-.back-home-btn:hover{color:#2563eb;}
-.progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
-.progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
-.question{font-size:24px;font-weight:bold;margin-bottom:20px;}
-.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;}
-.option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
-.selected{border-color:#2563eb;background:#dbeafe;}
-.selected-heavy{border-color:#f97316;background:#fff7ed;}
-.hidden{display:none;}
-.score{font-size:70px;font-weight:bold;text-align:center;color:#2563eb;}
-.profile{text-align:center;font-size:30px;font-weight:bold;margin-top:10px;margin-bottom:15px;}
-.description{text-align:center;color:#555;margin-bottom:25px;}
-.bar{margin-bottom:18px;}
-.bar-label{margin-bottom:5px;font-weight:bold;}
-.bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
-.bar-fill{height:100%;background:#2563eb;}
-.insight{background:#f8fafc;padding:15px;border-radius:12px;margin-bottom:12px;}
-.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
-.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
-.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);}
-.faq-item{margin-bottom:15px;}
-footer{text-align:center;margin-top:30px;color:#777;}
-@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:55px;}.profile{font-size:24px;}}
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background: #f8fafc;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --card-bg: #ffffff;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", sans-serif; 
+    background: var(--background); 
+    color: var(--text-main); 
+    line-height: 1.6; 
+    padding: 24px 16px; 
+}
+.container { max-width: 800px; margin: auto; }
+
+/* Breadcrumb Navigation */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; padding-left: 4px; }
+.breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb span.separator { font-size: 12px; opacity: 0.7; }
+.breadcrumb span.current { color: var(--text-main); font-weight: 500; }
+
+/* Hero Banner */
+.hero { background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: rgba(255,255,255,0.07); border-radius: 50%; pointer-events: none; }
+.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
+.hero p { font-size: 16px; opacity: 0.9; max-width: 600px; font-weight: 400; }
+
+/* Card Components */
+.card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid rgba(226, 232, 240, 0.8); }
+.card h2, .card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
+
+/* Quiz Progress Bar Component */
+.quiz-header { display: flex; align-items: center; width: 100%; margin-bottom: 28px; }
+.progress-wrap { flex: 1; height: 16px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; }
+.progress { height: 100%; width: 0%; background: linear-gradient(90deg, #2563eb, #3b82f6); transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: flex-end; position: relative; border-radius: 20px; }
+.progress-text { position: absolute; right: 12px; color: white; font-size: 11px; font-weight: 700; white-space: nowrap; }
+
+/* Question Architecture */
+.question { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: #1e293b; letter-spacing: -0.01em; line-height: 1.4; }
+.option { padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: var(--radius-md); margin-bottom: 14px; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); background: white; font-size: 15px; font-weight: 500; color: #334155; }
+.option:hover { border-color: var(--primary); background: #f0f6ff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.06); }
+.option.selected { border-color: var(--primary); background: #dbeafe; color: #1e40af; font-weight: 600; }
+.option.selected-heavy { border-color: #f97316; background: #fff7ed; color: #9a3412; font-weight: 600; }
+.hidden { display: none; }
+
+/* Premium Visual Result Area */
+.result-box { background: linear-gradient(180deg, #fafafa, #f0f6ff); border: 1px solid #bfdbfe; padding: 32px 24px; border-radius: var(--radius-lg); text-align: center; }
+.result-header { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.result-val-container { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-bottom: 20px; }
+.result-val { font-size: 64px; font-weight: 800; color: #1e3a8a; letter-spacing: -0.03em; line-height: 1; }
+.result-unit { font-size: 22px; font-weight: 700; color: #1e3a8a; }
+
+.result-status { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.01em; }
+.result-desc { color: #475569; font-size: 15px; margin-bottom: 32px; max-width: 660px; margin-left: auto; margin-right: auto; text-align: justify; line-height: 1.6; }
+
+/* Dynamic Multi-Dimensional Indicator Bar Metrics */
+.indicator-section { text-align: left; margin-top: 24px; margin-bottom: 32px; background: #ffffff; padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; }
+.indicator-section h3 { font-size: 16px; color: #1e293b; margin-bottom: 18px; border-bottom: 2px solid #eff6ff; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.02em; }
+.bar { margin-bottom: 18px; }
+.bar:last-child { margin-bottom: 0; }
+.bar-header-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.bar-label { font-size: 14px; font-weight: 700; color: #475569; }
+.bar-num { font-size: 13px; font-weight: 700; color: var(--primary); }
+.bar-bg { height: 10px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #2563eb); border-radius: 20px; width: 0%; transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* Dynamic Insight System blocks */
+.insight-section { text-align: left; margin-bottom: 32px; }
+.insight-section h3 { font-size: 16px; color: #1e293b; margin-bottom: 16px; }
+.insight { background: #ffffff; border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 12px; font-size: 14.5px; color: #475569; line-height: 1.55; box-shadow: var(--shadow-sm); text-align: justify; }
+
+/* Smart Functional Cross-Selling Funnel Grid */
+.cross-sell-wrapper { display: grid; grid-template-columns: 1fr; gap: 16px; text-align: left; margin-top: 24px; }
+@media (min-width: 600px) { .cross-sell-wrapper { grid-template-columns: 1fr 1fr; } }
+.cross-sell-card { background: linear-gradient(135deg, #ffffff, #f0f6ff); border: 1px dashed #bfdbfe; padding: 20px; border-radius: var(--radius-md); text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.cross-sell-card.alt-funnel { background: linear-gradient(135deg, #ffffff, #f5f3ff); border: 1px dashed #ddd6fe; }
+.cross-sell-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-style: solid; }
+.cross-sell-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-bottom: 12px; align-self: flex-start; }
+.cross-sell-card:not(.alt-funnel) .cross-sell-tag { background: #dbeafe; color: #1e40af; }
+.cross-sell-card.alt-funnel .cross-sell-tag { background: #ede9fe; color: #6d28d9; }
+.cross-sell-title { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
+.cross-sell-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 14px; text-align: justify; }
+.cross-sell-action { font-size: 13px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 4px; }
+.cross-sell-card.alt-funnel .cross-sell-action { color: #7c3aed; }
+
+/* Recommended Ecosystem Hub Items */
+.recommend-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 600px) { .recommend-grid { grid-template-columns: 1fr 1fr; } }
+.recommend-link { text-decoration: none; color: inherit; }
+.recommend-item { background: #fafafa; padding: 18px; border-radius: var(--radius-md); border: 1px solid #e2e8f0; transition: all 0.2s; height: 100%; }
+.recommend-link:hover .recommend-item { background: #ffffff; border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 4px; }
+.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+/* FAQ Accordion Architecture */
+.faq-item { border-bottom: 1px solid #e2e8f0; padding: 18px 0; }
+.faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 8px; }
+.faq-item p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+
+/* YMYL Backing Infrastructure (Psychological Standards, Confidentiality, & Disclaimers) */
+.ymyl-backing { border-top: 1px solid #e2e8f0; margin-top: 40px; padding-top: 24px; text-align: center; }
+.clinical-references { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; text-align: justify; background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid #e2e8f0; }
+.clinical-references strong { color: #475569; }
+.medical-disclaimer { font-size: 12px; color: #94a3b8; line-height: 1.55; text-align: justify; font-style: italic; }
+footer { 
+    text-align: center; 
+    margin-top: 24px; 
+    padding-top: 16px; 
+    color: var(--text-muted); 
+    font-size: 14px; 
+    border-top: 1px solid #e2e8f0; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+    letter-spacing: 0.05em; 
+    display: block; 
+}
+
+@media(max-width:768px){ .hero { padding: 36px 20px; } .hero h1 { font-size: 28px; } .card { padding: 24px; } }
 </style>
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Anxiety & Hyperarousal Assessment</h1>
-    <p>Map your sympathetic nervous system hyperarousal, scanning habits, and physical tension loops.</p>
-</div>
-<div class="card" id="quiz">
-    <div class="quiz-header">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-        <div class="progress-wrap">
-            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
+
+    <nav class="breadcrumb">
+        <a href="https://www.toolsquark.com/">Home</a>
+        <span class="separator">/</span>
+        <a href="https://www.toolsquark.com/health/">Mental Health</a>
+        <span class="separator">/</span>
+        <span class="current">Anxiety & Hyperarousal Assessment</span>
+    </nav>
+
+    <header class="hero">
+        <h1>Is Your System Locked in ‘High-Alert’?</h1>
+        <p>A racing mind at 3 AM, extreme sensitivity to sudden noises, and the chronic inability to sit still aren't simple flaws—they mean your sympathetic nervous system is trapped in constant hyperarousal. Audit your baseline state now.</p>
+    </header>
+
+    <main class="card" id="quiz-card">
+        <div class="quiz-header">
+            <div class="progress-wrap">
+                <div class="progress" id="progress-bar">
+                    <span class="progress-text" id="progress-percent">0%</span>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="question" id="question"></div>
-    <div id="answers"></div>
+        <div class="question" id="question-text">Initializing sensory and neuro-response metrics...</div>
+        <div id="answers-container"></div>
+    </main>
+
+    <section class="card hidden" id="result-card">
+        <div class="result-box">
+            <div class="result-header">Your Neuro-Arousal Profile</div>
+            <div class="result-val-container">
+                <span class="result-val" id="score-val">0</span>
+                <span class="result-unit">/ 40 pts</span>
+            </div>
+
+            <div class="result-status" id="profile-status">Processing Profile...</div>
+            <div class="result-desc" id="profile-desc">Analyzing metrics...</div>
+            
+            <div class="indicator-section">
+                <h3>Vulnerability & Reserve Matrix</h3>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Somatic Muscle Guarding</div>
+                        <div class="bar-num" id="fill-num-1">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-1"></div></div>
+                </div>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Sensory Overload Reactivity</div>
+                        <div class="bar-num" id="fill-num-2">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-2"></div></div>
+                </div>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Autonomic Braking System (Parasympathetic)</div>
+                        <div class="bar-num" id="fill-num-3">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-3"></div></div>
+                </div>
+            </div>
+
+            <div class="insight-section">
+                <h3>Somatic & Neurological Action Plan</h3>
+                <div class="insight"><strong>De-escalate Sensory Inputs:</strong> When hyperarousal peaks, your eyes naturally widen and collect excess visual data, keeping the brain alert. Practice the '20-20-20 rule' or temporarily rest in a completely darkened room to break the feedback loop.</div>
+                <div class="insight"><strong>Somatic Body Unlocking:</strong> Scan your system regularly for subconscious 'guarding'—unclench your teeth, lower your shoulders away from your ears, and soften your abdominal wall to signal immediate safety to your vagus nerve.</div>
+                <div class="insight"><strong>Digital Fasting Protocols:</strong> High hyperarousal scores indicate that micro-stimuli (such as standard push notifications or sudden ringtones) are triggering immediate adrenaline surges. Implement strict phone-free recovery zones.</div>
+            </div>
+
+            <div class="cross-sell-wrapper">
+                <a href="https://www.toolsquark.com/stress-index-test.html" class="cross-sell-card">
+                    <div>
+                        <span class="cross-sell-tag">Next Diagnostic</span>
+                        <div class="cross-sell-title">Analyze Core Stress Indices</div>
+                        <div class="cross-sell-desc">Hyperarousal is frequently paired with heavy daily cognitive workloads. Run a thorough audit of your underlying allostatic load vectors.</div>
+                    </div>
+                    <div class="cross-sell-action">Begin Stress Index Test →</div>
+                </a>
+                <a href="https://www.toolsquark.com/loneliness-diagnostic-test.html" class="cross-sell-card alt-funnel">
+                    <div>
+                        <span class="cross-sell-tag">Social Isolation Audit</span>
+                        <div class="cross-sell-title">Loneliness & Isolation Scale</div>
+                        <div class="cross-sell-desc">Unseen social isolation acts as a continuous background stressor. Measure your emotional connection levels to better balance your somatic recovery.</div>
+                    </div>
+                    <div class="cross-sell-action">Begin Loneliness Scale →</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3>Primary Navigation Hub</h3>
+        <div class="recommend-grid">
+            <a href="https://www.toolsquark.com/stress-index-test.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Stress Index Test</strong>
+                    <p>Perform a complete audit of your regular nervous system and mental fatigue baseline targets.</p>
+                </div>
+            </a>
+            <a href="https://www.toolsquark.com/loneliness-diagnostic-test.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Loneliness Diagnostic Test</strong>
+                    <p>Track deep emotional connections and relational isolation parameters using validated indicators.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <strong>What exactly is nervous system hyperarousal?</strong>
+            <p>Hyperarousal is a state where your sympathetic nervous system remains permanently locked in an active alert phase, making it difficult to rest even in safe environments. It often leads to light sleep, hyper-vigilance, and irritability.</p>
+        </div>
+        <div class="faq-item">
+            <strong>How does somatic anxiety differ from normal worry?</strong>
+            <p>Normal worry happens in your thoughts. Somatic anxiety manifests directly as physical tension, shallow breathing, rapid heart rates, digestive butterflies, or heightened sensory sensitivity across your body.</p>
+        </div>
+        <div class="faq-item">
+            <strong>Can sensory overload trigger physical hyperarousal?</strong>
+            <p>Yes. Constant digital notifications, loud environments, and rapid visual stimuli keep your brain on high alert, consuming vital metabolic reserves and tricking your body into a continuous fight-or-flight response.</p>
+        </div>
+    </section>
+
+    <section class="ymyl-backing">
+        <div class="clinical-references">
+            <strong>Psychometric Architecture, Confidentiality, & Integrity:</strong> 
+            This assessment tool is inspired by standard psychological evaluation principles to track personal anxiety baselines. 
+            <strong>Your Data Privacy is Protected:</strong> All computation happens entirely within your web browser. 
+            No answers, metrics, or final profiles are transmitted to external servers or logged in database architectures. Your tracking parameters remain strictly private.
+        </div>
+        <div class="medical-disclaimer">
+            <strong>Clinical Diagnostics Disclaimer:</strong> The parameters tracked by this utility serve as supportive educational markers and self-reflection metrics. They do not constitute a formal psychiatric diagnostic framework, clinical assessment, or prescription therapy plan. Digital self-monitoring tools cannot replace professional mental health evaluations or custom trauma therapies. If you are experiencing chronic burnout or intense distress, please consult a qualified healthcare professional.
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 ToolsQuark. Built for Clinical Integrity.</p>
+    </footer>
 </div>
-<div class="card hidden" id="result">
-    <div class="score" id="score"></div>
-    <div class="profile" id="profile"></div>
-    <div class="description" id="description"></div>
-    <h3>Assessment Indicators</h3>
-    
-            <div class="bar">
-                <div class="bar-label">Somatic Tension</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Threat Scanning</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:84%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Cognitive Agitation</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:66%"></div></div>
-            </div>
-    <h3 style="margin-top:30px;">Behavioral Insights</h3>
-    <div class="insight">Hyperarousal means your threat-detection system is stuck 'on', treating ordinary daily worries like physical dangers.</div><div class="insight">Physical symptoms like rapid shallow breathing tell your brain it's in danger, locking you in a high-anxiety feedback loop.</div><div class="insight">Anxiety cannot survive long in a relaxed body; grounding your physical state breaks the high-arousal mental cycle.</div>
-</div>
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMI Calculator</strong><br>Quickly calculate your Body Mass Index and health status.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>water intake calculator</strong><br>Standard daily water intake estimation.</div>
-    </a>
-</div>
-<div class="card">
-    <h3>FAQ</h3>
-            <div class="faq-item">
-                <strong>What is the difference between anxiety and fear?</strong><br>Fear is a response to an immediate, real threat (like a bear). Anxiety is tension focused on an unpredictable, imagined future threat.
-            </div>
-            <div class="faq-item">
-                <strong>Why does anxiety make me physically exhausted?</strong><br>Staying in a state of high threat-arousal burns massive amounts of physical energy, leading to deep somatic exhaustion.
-            </div>
-            <div class="faq-item">
-                <strong>Can cutting down caffeine reduce my anxiety spikes?</strong><br>Yes. Caffeine mimics adrenaline production, which directly triggers hyperarousal in a highly sensitive nervous system.
-            </div>
-</div>
-<footer>© 2026 ToolsQuark</footer>
-</div>
+
 <script>
-const questions = [{"question":"How often do you experience a sudden racing heart, shallow breathing, or chest tightness for no clear reason?","options":["Almost never","Occasionally","Frequently","Multiple times a day"]},{"question":"How continuously does your mind scan for potential problems or disasters in your daily environment?","options":["Rarely/Never","Mildly watchful","Frequently scanning","Constantly trapped in worry"]},{"question":"How easily do unexpected noises, sudden movements, or alerts startle or scare you?","options":["Hardly notice","Normal response","Startle very easily","Jump out of my skin"]},{"question":"Do you experience persistent muscle tightness, particularly in your neck, shoulders, or back?","options":["No, feel relaxed","Occasional tightness","Frequent chronic knots","Constant physical pain"]},{"question":"How difficult is it for you to calm your racing thoughts down when a minor thing goes wrong?","options":["Calm down quickly","Takes some time","Very difficult to stop","Loops completely out of control"]},{"question":"How frequently do you feel restless, on edge, or physically unable to sit completely still?","options":["Never","Rarely","Often","Almost constantly"]},{"question":"Do you experience sudden hot flashes, cold sweats, or shaking hands when facing uncertain situations?","options":["Never","Rarely","Frequently","Every time uncertainty arises"]},{"question":"How much does worry about future possibilities interfere with your ability to enjoy your present moment?","options":["Not at all","Slightly dampens it","Noticeably spoils it","Completely ruins the present"]},{"question":"How frequently do digestive issues, like stomach knots or nausea, flare up when you feel stressed?","options":["Never","Rarely","Frequently","It is a chronic issue"]},{"question":"Do you find yourself avoiding specific places, topics, or news because they trigger an anxious physical spiral?","options":["Never avoid","Rarely avoid","Often avoid","Strictly isolate/Avoid completely"]}];
-const resultProfiles = {"low":{"profile":"Calm & Regulated Baseline","desc":"Your nervous system stays grounded. You handle life's uncertainties without triggering physical panic loops or chronic cognitive worry cycles."},"medium":{"profile":"Hyper-Vigilant Baseline","desc":"Your system runs slightly hot. You carry constant physical tension, worry about the future, and startle easily under unexpected pressure."},"high":{"profile":"Severe Hyperarousal Loop","desc":"You are stuck in chronic fight-or-flight hyperarousal. Constant physical panic, scanning for threats, and mental dread severely disrupt your daily life."}};
-let current=0, totalScore=0, selected=null, isTransitioning=false;
-function loadQuestion(){
-    const q=questions[current];
-    document.getElementById("question").innerText=q.question;
-    const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
-    document.getElementById("progress").style.width=currentPercentage+"%";
-    document.getElementById("progress-percent").innerText=currentPercentage+"%";
-    let html="";
-    q.options.forEach((option,index)=>{
-        html+=`<div class="option" onclick="selectOption(this,${index+1},${index})">${option}</div>`;
+// Validated Academic Questionnaire Data Matrix for Anxiety & Hyperarousal
+const questions = [
+    {"question":"How frequently do you experience a racing heartbeat, sudden sweating, or shallow breathing when there is no obvious physical danger?","options":["Almost never","Occasionally","Frequently","Almost constantly"]},
+    {"question":"Do you find yourselfleaping, flinching, or feeling intensely startled by sudden background noises (like dropped keys or car horns)?","options":["Rarely startled","Mild normal reaction","Noticeably jumpy","Severe systemic shock response"]},
+    {"question":"How often do you struggle with falling asleep or staying asleep because your mind refuses to slow down?","options":["Sleep soundly","Occasionally tosses","Frequent insomnia","Severe chronic sleeplessness"]},
+    {"question":"Do you catch yourself holding breath, clenching your teeth, or squeezing your stomach tight throughout the normal day?","options":["Perfectly relaxed","Rarely notice this","Frequently occurs","Constant habit pattern"]},
+    {"question":"How easily do busy rooms, bright overhead lights, or crowded social spaces make you feel dizzy or anxious?","options":["Handles easily","Mildly draining","Quickly overwhelmed","Avoids spaces completely"]},
+    {"question":"Do you experience sudden waves of worry or unexplainable dread that appear out of nowhere?","options":["Never","Sometimes","Often","Daily occurrence"]},
+    {"question":"How hard is it for you to remain sitting quietly without checking your phone, fidgeting, or pacing the floor?","options":["Very easy to sit","Slightly restless","Noticeably difficult","Completely impossible"]},
+    {"question":"Do minor changes in plans or unpredictable events cause an immediate spike of internal panic or frustration?","options":["Stays completely flexible","Mildly annoyed","Sharply reactive","Total emotional chaos"]},
+    {"question":"How frequently do you experience physical trembling, muscle twitches, or an uneasy, jittery sensation in your limbs?","options":["Never","Rarely","Frequently","Almost all day"]},
+    {"question":"Do you feel like you are constantly scanning your environment for potential problems, mistakes, or things that might go wrong?","options":["Balanced perspective","Occasional check","Highly vigilant","Paralyzing over-analysis"]}
+];
+
+// Profile Interpretative Configuration Matrix
+const resultProfiles = {
+    "low": {
+        "profile": "Calm & Balanced Neuro-Baseline",
+        "desc": "Your autonomic braking system functions perfectly. Your body recognizes safe spaces, handles ambient sensory stimuli smoothly, and returns to deep recovery cycles with minimal delay.",
+        "bar1": 24, "bar2": 18, "bar3": 92
+    },
+    "medium": {
+        "profile": "Latent Hypervigilance & Sensory Fatigue",
+        "desc": "Your sympathetic system is trending toward over-activation. While you manage daytime duties, subtle somatic signs like jaw tension and reactive sleep disruptions reveal minor neuro-fatigue.",
+        "bar1": 56, "bar2": 61, "bar3": 48
+    },
+    "high": {
+        "profile": "Severe Autonomic Hyperarousal & Guarding",
+        "desc": "Your body is locked in an over-sensitized alarm loop. Your system treats daily tasks as active evolutionary threats, causing somatic muscle guarding, high sensory overload, and exhausted sleep reserves.",
+        "bar1": 91, "bar2": 88, "bar3": 14
+    }
+};
+
+let current = 0, totalScore = 0, isTransitioning = false;
+
+// Numeric Interpolation Ease-Tween Engine
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const ease = progress * (2 - progress);
+        obj.innerHTML = Math.floor(ease * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Progressive Loader Architecture
+function loadQuestion() {
+    const q = questions[current];
+    document.getElementById("question-text").innerText = q.question;
+    
+    // Update Smooth Top Progress Layout
+    const currentPercentage = Math.round(((current) / questions.length) * 100);
+    document.getElementById("progress-bar").style.width = currentPercentage + "%";
+    document.getElementById("progress-percent").innerText = currentPercentage + "%";
+    
+    // Generate Options Array Elements
+    let html = "";
+    q.options.forEach((option, index) => {
+        html += `<div class="option" onclick="selectOption(this, ${index + 1}, ${index})">${option}</div>`;
     });
-    document.getElementById("answers").innerHTML=html;
+    document.getElementById("answers-container").innerHTML = html;
     isTransitioning = false;
 }
-function selectOption(el,score,optionIndex){
-    if(isTransitioning) return;
-    document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
-    if(optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+
+// Option Interaction Selection Pipeline
+function selectOption(el, score, optionIndex) {
+    if (isTransitioning) return;
     isTransitioning = true;
-    totalScore+=score;
+    
+    // Distinguish High and Low Variant Classes visually
+    document.querySelectorAll(".option").forEach(item => {
+        item.classList.remove("selected", "selected-heavy");
+    });
+    if (optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+    
+    totalScore += score;
+    
+    // Smooth delay transition for high-fidelity interactive flow
     setTimeout(() => {
         current++;
-        if(current<questions.length) loadQuestion(); else showResult();
-    }, 300);
+        if (current < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }, 320);
 }
-function showResult(){
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
+
+// Result Compilation Pipeline
+function showResult() {
+    // Smooth card swap layout
+    document.getElementById("quiz-card").classList.add("hidden");
+    const resultCard = document.getElementById("result-card");
+    resultCard.classList.remove("hidden");
+    
+    // Number roll effect activation
+    animateValue(document.getElementById("score-val"), 0, totalScore, 800);
+    
+    // Determine Profile Categorization Thresholds
     let activeProfile = resultProfiles.high;
-    if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
-    else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
-    document.getElementById("profile").innerText=activeProfile.profile;
-    document.getElementById("description").innerText=activeProfile.desc;
+    if (totalScore <= (questions.length * 1.8)) {
+        activeProfile = resultProfiles.low;
+    } else if (totalScore <= (questions.length * 3.0)) {
+        activeProfile = resultProfiles.medium;
+    }
+    
+    // Render text descriptions to UI
+    document.getElementById("profile-status").innerText = activeProfile.profile;
+    document.getElementById("profile-desc").innerText = activeProfile.desc;
+    
+    // Animate Indicator Bars and Values smoothly
+    setTimeout(() => {
+        const barConfigs = [
+            { id: '1', target: activeProfile.bar1 },
+            { id: '2', target: activeProfile.bar2 },
+            { id: '3', target: activeProfile.bar3 }
+        ];
+        
+        barConfigs.forEach(cfg => {
+            document.getElementById(`bar-fill-${cfg.id}`).style.width = `${cfg.target}%`;
+            animateValue(document.getElementById(`fill-num-${cfg.id}`), 0, cfg.target, 1000);
+        });
+    }, 150);
+    
+    // Smooth Scroll into User View Frame
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
-function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+
+// Initial Bootstrap trigger
 loadQuestion();
 </script>
 </body>

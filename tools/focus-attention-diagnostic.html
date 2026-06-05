@@ -3,230 +3,480 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Focus & Attention Diagnostic | ToolsQuark</title>
+<title>Accurate Focus & Attention Diagnostic | Executive Function Audit | ToolsQuark</title>
+<meta name="description" content="Evaluate your cognitive control parameters, task initiation friction, and stability when filtering environmental and digital noise using our advanced focus tracker.">
 
+<!-- Structured Data: SoftwareApplication + FAQPage Combined -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is executive dysfunction in attention planning?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Executive dysfunction refers to a structural failure in the brain's ability to initiate tasks, allocate working memory efficiently, organize long-term workflows, and filter out environmental noise."
-      }
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Advanced Focus & Attention Diagnostic Utility",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     },
-    {
-      "@type": "Question",
-      "name": "How does multi-tasking impact deep cognitive work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "True multitasking is a neurological impossibility for deep cognition. Instead, the brain rapidly switches tasks, leaving an attentive residue that compromises performance quality."
+    "description": "A cognitive diagnostic metric utility designed to quantify sustained attention stability, task initiation latency, and impulse noise filtering metrics.",
+    "browserRequirements": "Requires JavaScript. Requires HTML5."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is executive dysfunction in attention planning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Executive dysfunction refers to a structural failure in the brain's ability to initiate tasks, allocate working memory efficiently, organize long-term workflows, and filter out environmental noise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does multi-tasking impact deep cognitive work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "True multitasking is a neurological impossibility for deep cognition. Instead, the brain rapidly switches tasks, leaving an attentive residue that compromises performance quality."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What environment baseline boosts task initiation speed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clear working memory overhead by utilizing micro-lists, placing digital triggers entirely out of sight, and establishing fixed, quiet time blocks to lower task friction."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What environment baseline boosts task initiation speed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Clear working memory overhead by utilizing micro-lists, placing digital triggers entirely out of sight, and establishing fixed, quiet time blocks to lower task friction."
-      }
-    }
-  ]
+    ]
+  }
+]
 </script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
-.container{max-width:800px;margin:auto;}
-.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
-.hero h1{font-size:36px;margin-bottom:15px;}
-.hero p{font-size:17px;opacity:.95;}
-.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background: #f8fafc;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --card-bg: #ffffff;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
 
-/* 导航栏与进度条样式 */
-.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
-.back-home-btn:hover{color:#2563eb;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", sans-serif; 
+    background: var(--background); 
+    color: var(--text-main); 
+    line-height: 1.6; 
+    padding: 24px 16px; 
+}
+.container { max-width: 800px; margin: auto; }
 
-.quiz-header{display:flex;align-items:center;width:100%;margin-bottom:25px;gap:15px;}
-.progress-wrap{flex:1;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;}
-.progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
-.progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
+/* Breadcrumb Layer */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; padding-left: 4px; }
+.breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb span.separator { font-size: 12px; opacity: 0.7; }
+.breadcrumb span.current { color: var(--text-main); font-weight: 500; }
 
-/* 问题与选项样式 */
-.question{font-size:24px;font-weight:bold;margin-bottom:20px;color:#1e293b;}
-.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;background:white;}
-.option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
-.selected{border-color:#2563eb;background:#dbeafe;}
-.selected-heavy{border-color:#f97316;background:#fff7ed;}
-.hidden{display:none;}
+/* Hero Banner Layout */
+.hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none; }
+.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
+.hero p { font-size: 16px; opacity: 0.9; max-width: 620px; font-weight: 400; }
 
-/* 智能结果展示框 */
-.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;text-align:center;}
-.score{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
-.profile{font-size:26px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
-.description{color:#374151;font-size:15px;margin-bottom:20px;text-align:justify;line-height:1.6;}
+/* Card Panels */
+.card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid rgba(226, 232, 240, 0.8); }
+.card h2, .card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
 
-/* 动态量化指标条 */
-.indicator-section{text-align:left;margin-top:20px;margin-bottom:25px;}
-.indicator-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;border-bottom:1px solid #dbeafe;padding-bottom:5px;}
-.bar{margin-bottom:15px;}
-.bar-label{margin-bottom:6px;font-size:14px;font-weight:bold;color:#475569;}
-.bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
-.bar-fill{height:100%;background:#2563eb;border-radius:20px;}
+/* Diagnostic Header Components */
+.quiz-header { display: flex; align-items: center; width: 100%; margin-bottom: 28px; }
+.progress-wrap { flex: 1; height: 16px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; }
+.progress { height: 100%; width: 0%; background: linear-gradient(90deg, #1e3a8a, #2563eb); transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: flex-end; position: relative; border-radius: 20px; }
+.progress-text { position: absolute; right: 12px; color: white; font-size: 11px; font-weight: 700; white-space: nowrap; }
 
-/* 动态专业建议区块 */
-.insight-section{text-align:left;margin-bottom:10px;}
-.insight-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;}
-.insight{background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;margin-bottom:12px;font-size:14.5px;color:#374151;line-height:1.5;}
+/* Interactive Selection System */
+.question { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: #1e293b; letter-spacing: -0.01em; line-height: 1.4; }
+.option { padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: var(--radius-md); margin-bottom: 14px; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); background: white; font-size: 15px; font-weight: 500; color: #334155; }
+.option:hover { border-color: var(--primary); background: #f0f6ff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.06); }
+.option.selected { border-color: var(--primary); background: #dbeafe; color: #1e40af; font-weight: 600; }
+.option.selected-heavy { border-color: #ef4444; background: #fef2f2; color: #991b1b; font-weight: 600; }
+.hidden { display: none; }
 
-/* 推荐产品卡片 */
-.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
-.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
-.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+/* Premium Metrics Result Box */
+.result-box { background: linear-gradient(180deg, #fafafa, #f8fafc); border: 1px solid #cbd5e1; padding: 32px 24px; border-radius: var(--radius-lg); text-align: center; }
+.result-header { font-size: 14px; font-weight: 700; color: #1e3a8a; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.result-val-container { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-bottom: 20px; }
+.result-val { font-size: 64px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em; line-height: 1; }
+.result-unit { font-size: 22px; font-weight: 700; color: #475569; }
 
-/* FAQ 样式 */
-.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
-.faq-item:last-child{border-bottom:none;padding-bottom:0;}
-.faq-item strong{font-size:16px;color:#1e293b;display:block;margin-bottom:6px;}
-.faq-item p{color:#475569;font-size:14.5px;line-height:1.6;}
+/* Status Headings */
+.result-status { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.01em; }
+.result-desc { color: #475569; font-size: 15px; margin-bottom: 32px; max-width: 660px; margin-left: auto; margin-right: auto; text-align: justify; line-height: 1.6; }
 
-footer{text-align:center;margin-top:30px;color:#777;}
-@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:40px;}.profile{font-size:22px;}}
+/* Dynamic Quantitative Metric Bars */
+.indicator-section { text-align: left; margin-top: 24px; margin-bottom: 32px; background: #ffffff; padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; }
+.indicator-section h3 { font-size: 16px; color: #1e293b; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.02em; }
+.bar { margin-bottom: 18px; }
+.bar:last-child { margin-bottom: 0; }
+.bar-header-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.bar-label { font-size: 14px; font-weight: 700; color: #475569; }
+.bar-num { font-size: 13px; font-weight: 700; color: var(--primary); }
+.bar-bg { height: 10px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #475569, #0f172a); border-radius: 20px; width: 0%; transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+#bar-fill-1 { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+#bar-fill-2 { background: linear-gradient(90deg, #f97316, #c2410c); }
+#bar-fill-3 { background: linear-gradient(90deg, #ef4444, #b91c1c); }
+
+/* Dynamic Behavioral Insight Architecture */
+.insight-section { text-align: left; margin-bottom: 32px; }
+.insight-section h3 { font-size: 16px; color: #1e293b; margin-bottom: 16px; }
+.insight { background: #ffffff; border-left: 4px solid #475569; padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 12px; font-size: 14.5px; color: #475569; line-height: 1.55; box-shadow: var(--shadow-sm); text-align: justify; }
+
+/* Structured Functional Cross-Selling Funnel Grid */
+.cross-sell-wrapper { display: grid; grid-template-columns: 1fr; gap: 16px; text-align: left; margin-top: 24px; }
+@media (min-width: 600px) { .cross-sell-wrapper { grid-template-columns: 1fr 1fr; } }
+.cross-sell-card { background: linear-gradient(135deg, #ffffff, #f8fafc); border: 1px dashed #cbd5e1; padding: 20px; border-radius: var(--radius-md); text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.cross-sell-card.alt-funnel { background: linear-gradient(135deg, #ffffff, #f0f6ff); border: 1px dashed #bfdbfe; }
+.cross-sell-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-style: solid; }
+.cross-sell-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-bottom: 12px; align-self: flex-start; }
+.cross-sell-card:not(.alt-funnel) .cross-sell-tag { background: #e2e8f0; color: #334155; }
+.cross-sell-card.alt-funnel .cross-sell-tag { background: #dbeafe; color: #1e40af; }
+.cross-sell-title { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
+.cross-sell-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 14px; text-align: justify; }
+.cross-sell-action { font-size: 13px; font-weight: 600; color: #475569; display: flex; align-items: center; gap: 4px; }
+.cross-sell-card.alt-funnel .cross-sell-action { color: var(--primary); }
+
+/* Ecosystem Hub Recommendation Links */
+.recommend-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 600px) { .recommend-grid { grid-template-columns: 1fr 1fr; } }
+.recommend-link { text-decoration: none; color: inherit; }
+.recommend-item { background: #fafafa; padding: 18px; border-radius: var(--radius-md); border: 1px solid #e2e8f0; transition: all 0.2s; height: 100%; }
+.recommend-link:hover .recommend-item { background: #ffffff; border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 4px; }
+.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+/* FAQ Accordion Layout */
+.faq-item { border-bottom: 1px solid #e2e8f0; padding: 18px 0; }
+.faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 8px; }
+.faq-item p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+
+/* YMYL Backing Infrastructure Layer */
+.ymyl-backing { border-top: 1px solid #e2e8f0; margin-top: 40px; padding-top: 24px; text-align: center; }
+.clinical-references { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; text-align: justify; background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid #e2e8f0; }
+.clinical-references strong { color: #475569; }
+.medical-disclaimer { font-size: 12px; color: #94a3b8; line-height: 1.55; text-align: justify; font-style: italic; }
+
+footer { 
+    text-align: center; 
+    margin-top: 24px; 
+    padding-top: 16px; 
+    color: var(--text-muted); 
+    font-size: 14px; 
+    border-top: 1px solid #e2e8f0; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+    letter-spacing: 0.05em; 
+    display: block; 
+}
+
+@media(max-width:768px){ .hero { padding: 36px 20px; } .hero h1 { font-size: 28px; } .card { padding: 24px; } }
 </style>
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Focus & Attention Diagnostic</h1>
-    <p>Assess your executive function capacity, task initiation friction, and stability when filtering out digital environmental noise.</p>
-</div>
 
-<div class="calc-navigation">
-    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-</div>
+    <!-- Breadcrumb Architecture -->
+    <nav class="breadcrumb">
+        <a href="https://www.toolsquark.com/">Home</a>
+        <span class="separator">/</span>
+        <a href="https://www.toolsquark.com/health/">Cognitive Metrics</a>
+        <span class="separator">/</span>
+        <span class="current">Focus & Attention Diagnostic</span>
+    </nav>
 
-<div class="card" id="quiz">
-    <div class="quiz-header">
-        <div class="progress-wrap">
-            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
-        </div>
-    </div>
-    <div class="question" id="question"></div>
-    <div id="answers"></div>
-</div>
+    <!-- Header Block -->
+    <header class="hero">
+        <h1>Assess Your Executive Control Function</h1>
+        <p>Measure your working memory stability, task initiation latency scales, and neurological resilience when isolating deep processing spaces from incoming environmental noise loops.</p>
+    </header>
 
-<div class="card hidden" id="result">
-    <div class="result-box">
-        <div class="score" id="score">0/40</div>
-        <div class="profile" id="profile">--</div>
-        <div class="description" id="description">--</div>
-        
-        <div class="indicator-section">
-            <h3>Assessment Indicators</h3>
-            <div class="bar">
-                <div class="bar-label">Sustained Attention Stability</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Task Initiation Speed</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:58%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Impulse Noise Filtering</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:64%"></div></div>
+    <!-- Quiz Engine Interface -->
+    <main class="card" id="quiz-card">
+        <div class="quiz-header">
+            <div class="progress-wrap">
+                <div class="progress" id="progress-bar">
+                    <span class="progress-text" id="progress-percent">0%</span>
+                </div>
             </div>
         </div>
+        <div class="question" id="question-text">Initializing executive diagnostic parameters...</div>
+        <div id="answers-container"></div>
+    </main>
 
-        <div class="insight-section">
-            <h3>Behavioral Insights</h3>
-            <div class="insight">Focus is an active energy management tool, heavily governed by rapid dopamine baseline fluctuations.</div>
-            <div class="insight">Digital multitasking compromises cognitive depth, forcing the prefrontal cortex into continuous, exhausting re-indexing loops.</div>
-            <div class="insight">Structuring fixed, predictable work settings lowers the baseline friction required to begin complex tasks.</div>
+    <!-- Premium Metrics Result Box (Hidden on Init) -->
+    <section class="card hidden" id="result-card">
+        <div class="result-box">
+            <div class="result-header">Your Executive Focus Index</div>
+            <div class="result-val-container">
+                <span class="result-val" id="score-val">0</span>
+                <span class="result-unit">/ 40 pts</span>
+            </div>
+
+            <div class="result-status" id="profile-status">Processing Analytics...</div>
+            <div class="result-desc" id="profile-desc">Compiling systemic behavioral vectors...</div>
+            
+            <!-- Dynamically Loaded Vector Bars -->
+            <div class="indicator-section">
+                <h3>Vulnerability Dimension Breakdowns</h3>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Sustained Attention Stability</div>
+                        <div class="bar-num" id="fill-num-1">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-1"></div></div>
+                </div>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Task Initiation Latency</div>
+                        <div class="bar-num" id="fill-num-2">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-2"></div></div>
+                </div>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Impulse Noise Filtering Deficit</div>
+                        <div class="bar-num" id="fill-num-3">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-3"></div></div>
+                </div>
+            </div>
+
+            <!-- Behavioral Insights System Blocks -->
+            <div class="insight-section">
+                <h3>Strategic Attention Restoration Framework</h3>
+                <div class="insight"><strong>Deconstruct Attention Residue:</strong> Rapid context switching damages focus. Every time your eyes dart to a phone alert or side browser window, your brain leaves an active residue behind, heavily draining your working memory overhead.</div>
+                <div class="insight"><strong>Systematically Minimize Entry Friction:</strong> Task initiation paralysis is triggered by abstract scale expectations. Reframe deep tasks as explicit micro-deliverables to lower the neurological baseline friction required to start.</div>
+                <div class="insight"><strong>Anchor Predictable Spatial Triggers:</strong> Build strict environmental patterns. Declutter your visual field completely and remove active digital distraction loops to allow your prefrontal cortex to access linear flow efficiently.</div>
+            </div>
+
+            <!-- Cross-Selling Direct Action Routes Grid -->
+            <div class="cross-sell-wrapper">
+                <a href="https://www.toolsquark.com/loneliness-level-test.html" class="cross-sell-card">
+                    <div>
+                        <span class="cross-sell-tag">Relational Check</span>
+                        <div class="cross-sell-title">Loneliness Level Assessment</div>
+                        <div class="cross-sell-desc">Extended attention diffusion and digital over-switching patterns are often closely tied to structural social isolation and peripheral attachment loops.</div>
+                    </div>
+                    <div class="cross-sell-action">Audit Loneliness Index →</div>
+                </a>
+                <a href="https://www.toolsquark.com/cognitive-overthinking-test.html" class="cross-sell-card alt-funnel">
+                    <div>
+                        <span class="cross-sell-tag">Cognitive Check</span>
+                        <div class="cross-sell-title">Cognitive Overthinking Test</div>
+                        <div class="cross-sell-desc">Severe concentration drop-offs frequently point to background rumination cycles. Map your hidden mental loop parameters cleanly.</div>
+                    </div>
+                    <div class="cross-sell-action">Analyze Overthinking →</div>
+                </a>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
-        <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
-    </a>
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-</div>
+    <!-- Crosslink Navigation Ecosystem Hub -->
+    <section class="card">
+        <h3>Ecosystem Navigation Hub</h3>
+        <div class="recommend-grid">
+            <a href="https://www.toolsquark.com/loneliness-level-test.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Loneliness Level Assessment</strong>
+                    <p>Evaluate your subjective relational quality, intimate support voids, and emotional alienation parameters accurately.</p>
+                </div>
+            </a>
+            <a href="https://www.toolsquark.com/cognitive-overthinking-test.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Cognitive Overthinking Test</strong>
+                    <p>Evaluate your mental tendencies toward excessive rumination, destructive decision paralysis, and anticipatory catastrophizing.</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
-<div class="card">
-    <h3>Frequently Asked Questions</h3>
-    <div class="faq-item">
-        <strong>What is executive dysfunction in attention planning?</strong>
-        <p>Executive dysfunction refers to a structural failure in the brain's ability to initiate tasks, allocate working memory efficiently, organize long-term workflows, and filter out environmental noise.</p>
-    </div>
-    <div class="faq-item">
-        <strong>How does multi-tasking impact deep cognitive work?</strong>
-        <p>True multitasking is a neurological impossibility for deep cognition. Instead, the brain rapidly switches tasks, leaving an attentive residue that compromises performance quality.</p>
-    </div>
-    <div class="faq-item">
-        <strong>What environment baseline boosts task initiation speed?</strong>
-        <p>Clear working memory overhead by utilizing micro-lists, placing digital triggers entirely out of sight, and establishing fixed, quiet time blocks to lower task friction.</p>
-    </div>
-</div>
+    <!-- FAQ Section Layout -->
+    <section class="card">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <strong>What is executive dysfunction in attention planning?</strong>
+            <p>Executive dysfunction refers to a structural failure in the brain's ability to initiate tasks, allocate working memory efficiently, organize long-term workflows, and filter out environmental noise.[cite: 13]</p>
+        </div>
+        <div class="faq-item">
+            <strong>How does multi-tasking impact deep cognitive work?</strong>
+            <p>True multitasking is a neurological impossibility for deep cognition. Instead, the brain rapidly switches tasks, leaving an attentive residue that compromises performance quality.[cite: 13]</p>
+        </div>
+        <div class="faq-item">
+            <strong>What environment baseline boosts task initiation speed?</strong>
+            <p>Clear working memory overhead by utilizing micro-lists, placing digital triggers entirely out of sight, and establishing fixed, quiet time blocks to lower task friction.[cite: 13]</p>
+        </div>
+    </section>
 
-<footer>© 2026 ToolsQuark</footer>
+    <!-- YMYL Transparency Framework Layer -->
+    <section class="ymyl-backing">
+        <div class="clinical-references">
+            <strong>Psychometric Reliability, Data Sovereignty, & Integrity:</strong> 
+            This baseline application measures executive coordination, focus maintenance vectors, and context-switching thresholds to map relative workflow performance limits.
+            <strong>Zero Server Transmission:</strong> All calculations operate strictly inside your device container via safe web standard browser processes. Individual inputs, question decisions, and scoring outputs are never logged, distributed, or stored on standard cloud servers. Your personal space remains secure.
+        </div>
+        <div class="medical-disclaimer">
+            <strong>Clinical Evaluation Disclaimer:</strong> The findings output by this diagnostic application serve exclusively for baseline educational assessment and productivity environment tracking. This configuration does not construct an absolute medical diagnosis of Attention Deficit Hyperactivity Disorder (ADHD), clinical neurodivergence, or executive illnesses. If your cognitive attention drops produce prolonged workplace dysfunction or severe cognitive distress, connect immediately with an authorized neuro-psychologist or health consultant.
+        </div>
+    </section>
+
+    <!-- Footer Block Node -->
+    <footer>
+        <p>© 2026 ToolsQuark. Designed for Cognitive Integrity.</p>
+    </footer>
 </div>
 
 <script>
-const questions = [{"question":"When you sit down to perform a highly critical task, how long can you work before checking your phone or switching tabs?","options":["More than 45 mins","About 20-30 mins","Less than 10 mins","Can't even start without switching"]},{"question":"How often do you find yourself reading a page or paragraph only to realize you haven't processed a single word?","options":["Rarely","Occasionally","Frequently","Almost constantly"]},{"question":"When a notification sounds while you are in deep work, what is your standard impulse response?","options":["Ignore comfortably","Check briefly after finishing","Instantly check and lose track","Completely derails focus"]},{"question":"Do you struggle significantly with initiating tasks that do not possess an immediate, urgent deadline?","options":["No, proactive","Mild procrastination","Severe procrastination","Complete avoidance loops"]},{"question":"How frequently do you leave a trail of multiple half-finished projects or browser windows open simultaneously?","options":["Never, linear focus","A few related windows","Dozens of disjointed tabs","Complete digital chaos"]},{"question":"When people are speaking directly to you, how often does your mind drift away to unrelated thoughts?","options":["Hardly ever","Occasionally","Frequently","Almost every conversation"]},{"question":"How easy is it for you to organize a complex task into manageable, step-by-step sequential steps?","options":["Very easy","Takes deliberate effort","Highly confusing","Paralyzed by complexity"]},{"question":"Do you find yourself regularly misplacing vital items like keys, wallets, or document files?","options":["Never","Rarely","Often","Constantly searching"]},{"question":"How frequently do you make careless, overlook errors in routine technical documents or household planning?","options":["Hardly ever","Occasionally","Frequently","Default pattern"]},{"question":"How exhausted do you feel mentally after trying to maintain steady concentration for a standard two-hour window?","options":["Energized / Normal","Mildly tired","Extremely drained","Completely wiped out"]}];
-const resultProfiles = {"low":{"profile":"Sustained Focus Executive","desc":"Your executive baseline controls environmental noise efficiently. You display adequate working memory stability and standard, healthy task initiation velocity."},"medium":{"profile":"Attentive Fragmentation Trap","desc":"Your focus profile is prone to frequent digital switching.Attentive residue from incoming alerts noticeably depletes your daily deep work capacity."},"high":{"profile":"Severe Attention Diffusion","desc":"High distraction vulnerability impairs your systematic workflow. Task initiation friction and constant cognitive drift suggest a severe executive planning bottleneck."}};
+// Standardized Questionnaire Grid for Focus Dynamics & Executive Functions[cite: 13]
+const questions = [
+    {"question":"When you sit down to perform a highly critical task, how long can you work before checking your phone or switching tabs?","options":["More than 45 minutes cleanly","About 20-30 minutes","Less than 10 minutes","Can't even initiate without switching"]},
+    {"question":"How often do you find yourself reading a document or page only to realize you haven't processed a single word?","options":["Rarely or never","Occasionally under high stress","Frequently during standard hours","Almost constantly every day"]},
+    {"question":"When a sudden digital notification sounds while you are inside a deep work window, what is your default impulse response?","options":["Ignore it comfortably","Check briefly after completing a block","Instantly toggle and lose flow","Completely derails my entire day"]},
+    {"question":"Do you struggle significantly with initiating tasks that do not possess an immediate, high-urgency deadline?","options":["No, proactively map steps","Mild periodic procrastination","Severe constant delay loops","Complete execution paralysis"]},
+    {"question":"How frequently do you leave a trail of multiple half-finished projects, scripts, or dozens of browser tabs open simultaneously?","options":["Never, strictly linear focus","A few highly related windows","Dozens of disjointed tabs","Complete digital chaos / Overload"]},
+    {"question":"When someone is speaking directly to you, how often does your mind drift away entirely to unrelated thoughts?","options":["Hardly ever, highly present","Occasionally during dry topics","Frequently drifting out","Almost every conversation"]},
+    {"question":"How easy is it for you to organize a complex, multi-layered workflow into clear sequential blocks?","options":["Extremely clear and easy","Takes deliberate structural effort","Highly confusing / Messy","Paralyzed by task scope complexity"]},
+    {"question":"Do you find yourself regularly misplacing vital daily objects like keys, technical files, or data tools?","options":["Never or tracking safely","Rarely under messy weeks","Often losing items","Constantly searching in panic"]},
+    {"question":"How frequently do you make careless, overlooked mistakes in routine analytical work or household logistics?","options":["Hardly ever, high checking","Occasionally when rushed","Frequently overlook details","Default performance pattern"]},
+    {"question":"How exhausted do you feel mentally after trying to maintain steady concentration for a standard two-hour window?","options":["Energized or perfectly normal","Mildly tired but steady","Extremely drained and foggy","Completely wiped out / Empty"]}
+];
 
-let current=0, totalScore=0, isTransitioning=false;
+// Profile Interpretative Configuration Matrix[cite: 13]
+const resultProfiles = {
+    "low": {
+        "profile": "Sustained Focus Executive & High Cognitive Control",
+        "desc": "Your prefrontal cortex isolates tasks efficiently. You display strong executive control over environmental noise vectors, clean working memory stabilization, and healthy task initiation metrics.",
+        "bar1": 22, "bar2": 18, "bar3": 15
+    },
+    "medium": {
+        "profile": "Attentive Fragmentation Trap & Switch Fatigue",
+        "desc": "Your baseline focus profile is vulnerable to digital multitasking feedback loops. Accumulating attention residue from incoming context switches noticeably depletes your daily deep processing reserves.",
+        "bar1": 64, "bar2": 55, "bar3": 60
+    },
+    "high": {
+        "profile": "Severe Attention Diffusion & Cognitive Overload",
+        "desc": "High distraction vulnerability impairs your structural workflow stability. Intense task initiation friction and continuous tracking drift point to a severe bottleneck within your current execution environments.",
+        "bar1": 88, "bar2": 92, "bar3": 85
+    }
+};
 
-function loadQuestion(){
-    const q=questions[current];
-    document.getElementById("question").innerText=q.question;
-    const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
-    document.getElementById("progress").style.width=currentPercentage+"%";
-    document.getElementById("progress-percent").innerText=currentPercentage+"%";
-    let html="";
-    q.options.forEach((option,index)=>{
-        html+=`<div class="option" onclick="selectOption(this,${index+1},${index})">${option}</div>`;
+let current = 0, totalScore = 0, isTransitioning = false;
+
+// Numeric Interpolation Ease-Tween Engine
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const ease = progress * (2 - progress);
+        obj.innerHTML = Math.floor(ease * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Progressive Loader Architecture
+function loadQuestion() {
+    const q = questions[current];
+    document.getElementById("question-text").innerText = q.question;
+    
+    // Update Progress Bar
+    const currentPercentage = Math.round(((current) / questions.length) * 100);
+    document.getElementById("progress-bar").style.width = currentPercentage + "%";
+    document.getElementById("progress-percent").innerText = currentPercentage + "%";
+    
+    // Generate Options Array Elements
+    let html = "";
+    q.options.forEach((option, index) => {
+        html += `<div class="option" onclick="selectOption(this, ${index + 1}, ${index})">${option}</div>`;
     });
-    document.getElementById("answers").innerHTML=html;
+    document.getElementById("answers-container").innerHTML = html;
     isTransitioning = false;
 }
 
-function selectOption(el,score,optionIndex){
-    if(isTransitioning) return;
-    document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
-    if(optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+// Option Interaction Selection Pipeline
+function selectOption(el, score, optionIndex) {
+    if (isTransitioning) return;
     isTransitioning = true;
-    totalScore+=score;
+    
+    document.querySelectorAll(".option").forEach(item => {
+        item.classList.remove("selected", "selected-heavy");
+    });
+    if (optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+    
+    totalScore += score;
+    
+    // Timed fade delay for sleek interactive workflow
     setTimeout(() => {
         current++;
-        if(current<questions.length) loadQuestion(); else showResult();
-    }, 300);
+        if (current < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }, 320);
 }
 
-function showResult(){
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
+// Result Compilation Pipeline
+function showResult() {
+    document.getElementById("quiz-card").classList.add("hidden");
+    const resultCard = document.getElementById("result-card");
+    resultCard.classList.remove("hidden");
+    
+    // Number roll activation
+    animateValue(document.getElementById("score-val"), 0, totalScore, 800);
+    
+    // Scoring rules matrix mapping[cite: 13]
     let activeProfile = resultProfiles.high;
-    if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
-    else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
-    document.getElementById("profile").innerText=activeProfile.profile;
-    document.getElementById("description").innerText=activeProfile.desc;
-    document.getElementById("result").scrollIntoView({ behavior: 'smooth' });
+    if (totalScore <= (questions.length * 1.8)) {
+        activeProfile = resultProfiles.low;
+    } else if (totalScore <= (questions.length * 3.0)) {
+        activeProfile = resultProfiles.medium;
+    }
+    
+    // Render text data fields
+    document.getElementById("profile-status").innerText = activeProfile.profile;
+    document.getElementById("profile-desc").innerText = activeProfile.desc;
+    
+    // Activate dynamic indicator graphics
+    setTimeout(() => {
+        const barConfigs = [
+            { id: '1', target: activeProfile.bar1 },
+            { id: '2', target: activeProfile.bar2 },
+            { id: '3', target: activeProfile.bar3 }
+        ];
+        
+        barConfigs.forEach(cfg => {
+            document.getElementById(`bar-fill-${cfg.id}`).style.width = `${cfg.target}%`;
+            animateValue(document.getElementById(`fill-num-${cfg.id}`), 0, cfg.target, 1000);
+        });
+    }, 150);
+    
+    // Scroll handling execution
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+// Fire sequence
 loadQuestion();
 </script>
 </body>

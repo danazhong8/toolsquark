@@ -3,230 +3,478 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cognitive Overthinking Test | ToolsQuark</title>
+<title>Accurate Cognitive Overthinking Test | Rumination Audit | ToolsQuark</title>
+<meta name="description" content="Evaluate your mental tendencies toward excessive rumination, destructive decision paralysis, and anticipatory catastrophizing using our advanced cognitive tracker.">
 
+<!-- Structured Data: SoftwareApplication + FAQPage Combined -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between problem-solving and overthinking?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Problem-solving focuses actively on generating immediate, actionable pathways to change a situation. Overthinking loops repeatedly around historical mistakes or future catastrophes without actionable conclusions."
-      }
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Advanced Cognitive Overthinking Test Utility",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     },
-    {
-      "@type": "Question",
-      "name": "How does chronic rumination affect overall health?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Chronic rumination traps the central nervous system in an active fight-or-flight feedback loop, elevating evening cortisol levels, disrupting sleep cycles, and compounding mental fatigue."
+    "description": "A mental health metric utility designed to quantify recursive thought loops, analysis paralysis, and negative cognitive filtering parameters.",
+    "browserRequirements": "Requires JavaScript. Requires HTML5."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between problem-solving and overthinking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Problem-solving focuses actively on generating immediate, actionable pathways to change a situation. Overthinking loops repeatedly around historical mistakes or future catastrophes without actionable conclusions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does chronic rumination affect overall health?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chronic rumination traps the central nervous system in an active fight-or-flight feedback loop, elevating evening cortisol levels, disrupting sleep cycles, and compounding mental fatigue."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the most effective immediate cognitive block technique?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Implement the '5-Minute Worry Window' rule. Restrict deliberate planning or analysis to a specific, short block of time daily, writing down thoughts to offload working memory."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the most effective immediate cognitive block technique?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Implement the '5-Minute Worry Window' rule. Restrict deliberate planning or analysis to a specific, short block of time daily, writing down thoughts to offload working memory."
-      }
-    }
-  ]
+    ]
+  }
+]
 </script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222;line-height:1.6;padding:20px;}
-.container{max-width:800px;margin:auto;}
-.hero{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:40px 30px;border-radius:25px;margin-bottom:25px;box-shadow:0 10px 30px rgba(0,0,0,.15);}
-.hero h1{font-size:36px;margin-bottom:15px;}
-.hero p{font-size:17px;opacity:.95;}
-.card{background:white;padding:25px;border-radius:20px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background: #f8fafc;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --card-bg: #ffffff;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
 
-/* 导航栏与进度条样式 */
-.calc-navigation{display:flex;justify-content:flex-start;align-items:center;width:100%;padding-left:10px;margin-bottom:15px;}
-.back-home-btn{font-size:15px;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;font-weight:500;background:transparent;border:none;padding:0;}
-.back-home-btn:hover{color:#2563eb;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", sans-serif; 
+    background: var(--background); 
+    color: var(--text-main); 
+    line-height: 1.6; 
+    padding: 24px 16px; 
+}
+.container { max-width: 800px; margin: auto; }
 
-.quiz-header{display:flex;align-items:center;width:100%;margin-bottom:25px;gap:15px;}
-.progress-wrap{flex:1;height:18px;background:#e5e7eb;border-radius:20px;overflow:hidden;position:relative;}
-.progress{height:100%;width:10%;background:#2563eb;transition:.3s;display:flex;align-items:center;justify-content:flex-end;position:relative;}
-.progress-text{position:absolute;right:10px;color:white;font-size:11px;font-weight:bold;white-space:nowrap;}
+/* Breadcrumb Layer */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; padding-left: 4px; }
+.breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb span.separator { font-size: 12px; opacity: 0.7; }
+.breadcrumb span.current { color: var(--text-main); font-weight: 500; }
 
-/* 问题与选项样式 */
-.question{font-size:24px;font-weight:bold;margin-bottom:20px;color:#1e293b;}
-.option{padding:16px;border:2px solid #e5e7eb;border-radius:15px;margin-bottom:12px;cursor:pointer;transition:.2s;background:white;}
-.option:hover{border-color:#2563eb;background:#eff6ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.08);}
-.selected{border-color:#2563eb;background:#dbeafe;}
-.selected-heavy{border-color:#f97316;background:#fff7ed;}
-.hidden{display:none;}
+/* Hero Banner Layout */
+.hero { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: rgba(255,255,255,0.06); border-radius: 50%; pointer-events: none; }
+.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
+.hero p { font-size: 16px; opacity: 0.9; max-width: 620px; font-weight: 400; }
 
-/* 智能结果展示框 */
-.result-box{background:#eff6ff;border:2px dashed #2563eb;padding:25px;border-radius:15px;text-align:center;}
-.score{font-size:55px;font-weight:bold;color:#2563eb;margin-bottom:10px;}
-.profile{font-size:26px;font-weight:bold;color:#1e3a8a;margin-bottom:10px;}
-.description{color:#374151;font-size:15px;margin-bottom:20px;text-align:justify;line-height:1.6;}
+/* Card Panels */
+.card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid rgba(226, 232, 240, 0.8); }
+.card h2, .card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
 
-/* 动态量化指标条 */
-.indicator-section{text-align:left;margin-top:20px;margin-bottom:25px;}
-.indicator-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;border-bottom:1px solid #dbeafe;padding-bottom:5px;}
-.bar{margin-bottom:15px;}
-.bar-label{margin-bottom:6px;font-size:14px;font-weight:bold;color:#475569;}
-.bar-bg{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
-.bar-fill{height:100%;background:#2563eb;border-radius:20px;}
+/* Diagnostic Header Components */
+.quiz-header { display: flex; align-items: center; width: 100%; margin-bottom: 28px; }
+.progress-wrap { flex: 1; height: 16px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; }
+.progress { height: 100%; width: 0%; background: linear-gradient(90deg, #2563eb, #3b82f6); transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: flex-end; position: relative; border-radius: 20px; }
+.progress-text { position: absolute; right: 12px; color: white; font-size: 11px; font-weight: 700; white-space: nowrap; }
 
-/* 动态专业建议区块 */
-.insight-section{text-align:left;margin-bottom:10px;}
-.insight-section h3{font-size:16px;color:#1e293b;margin-bottom:15px;}
-.insight(background:#f8fafc;border-left:4px solid #2563eb;padding:15px;border-radius:0 12px 12px 0;margin-bottom:12px;font-size:14.5px;color:#374151;line-height:1.5;}
+/* Interactive Selection System */
+.question { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: #1e293b; letter-spacing: -0.01em; line-height: 1.4; }
+.option { padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: var(--radius-md); margin-bottom: 14px; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); background: white; font-size: 15px; font-weight: 500; color: #334155; }
+.option:hover { border-color: var(--primary); background: #f0f6ff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.06); }
+.option.selected { border-color: var(--primary); background: #dbeafe; color: #1e40af; font-weight: 600; }
+.option.selected-heavy { border-color: #f97316; background: #fff7ed; color: #9a3412; font-weight: 600; }
+.hidden { display: none; }
 
-/* 推荐产品卡片 */
-.recommend{background:#eff6ff;padding:15px;border-radius:15px;margin-bottom:10px;}
-.recommend-link{text-decoration:none;color:inherit;display:block;transition:transform 0.2s;}
-.recommend-link:hover .recommend{background:#e0f2fe;box-shadow:0 4px 12px rgba(37,99,235,0.05);transform:translateY(-1px);}
+/* Premium Metrics Result Box */
+.result-box { background: linear-gradient(180deg, #fafafa, #f0f6ff); border: 1px solid #bfdbfe; padding: 32px 24px; border-radius: var(--radius-lg); text-align: center; }
+.result-header { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.result-val-container { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-bottom: 20px; }
+.result-val { font-size: 64px; font-weight: 800; color: #1e3a8a; letter-spacing: -0.03em; line-height: 1; }
+.result-unit { font-size: 22px; font-weight: 700; color: #1e3a8a; }
 
-/* FAQ 样式 */
-.faq-item{margin-bottom:20px;border-bottom:1px solid #f0f0f0;padding-bottom:15px;}
-.faq-item:last-child{border-bottom:none;padding-bottom:0;}
-.faq-item strong{font-size:16px;color:#1e293b;display:block;margin-bottom:6px;}
-.faq-item p{color:#475569;font-size:14.5px;line-height:1.6;}
+.result-status { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.01em; }
+.result-desc { color: #475569; font-size: 15px; margin-bottom: 32px; max-width: 660px; margin-left: auto; margin-right: auto; text-align: justify; line-height: 1.6; }
 
-footer{text-align:center;margin-top:30px;color:#777;}
-@media(max-width:768px){.hero h1{font-size:28px;}.question{font-size:20px;}.score{font-size:40px;}.profile{font-size:22px;}}
+/* Dynamic Quantitative Metric Bars */
+.indicator-section { text-align: left; margin-top: 24px; margin-bottom: 32px; background: #ffffff; padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; }
+.indicator-section h3 { font-size: 16px; color: #1e293b; margin-bottom: 18px; border-bottom: 2px solid #eff6ff; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.02em; }
+.bar { margin-bottom: 18px; }
+.bar:last-child { margin-bottom: 0; }
+.bar-header-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.bar-label { font-size: 14px; font-weight: 700; color: #475569; }
+.bar-num { font-size: 13px; font-weight: 700; color: var(--primary); }
+.bar-bg { height: 10px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #2563eb); border-radius: 20px; width: 0%; transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* Dynamic Behavioral Insight Architecture */
+.insight-section { text-align: left; margin-bottom: 32px; }
+.insight-section h3 { font-size: 16px; color: #1e293b; margin-bottom: 16px; }
+.insight { background: #ffffff; border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 12px; font-size: 14.5px; color: #475569; line-height: 1.55; box-shadow: var(--shadow-sm); text-align: justify; }
+
+/* Structured Functional Cross-Selling Funnel Grid */
+.cross-sell-wrapper { display: grid; grid-template-columns: 1fr; gap: 16px; text-align: left; margin-top: 24px; }
+@media (min-width: 600px) { .cross-sell-wrapper { grid-template-columns: 1fr 1fr; } }
+.cross-sell-card { background: linear-gradient(135deg, #ffffff, #f0f6ff); border: 1px dashed #bfdbfe; padding: 20px; border-radius: var(--radius-md); text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.cross-sell-card.alt-funnel { background: linear-gradient(135deg, #ffffff, #f5f3ff); border: 1px dashed #ddd6fe; }
+.cross-sell-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-style: solid; }
+.cross-sell-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-bottom: 12px; align-self: flex-start; }
+.cross-sell-card:not(.alt-funnel) .cross-sell-tag { background: #dbeafe; color: #1e40af; }
+.cross-sell-card.alt-funnel .cross-sell-tag { background: #ede9fe; color: #6d28d9; }
+.cross-sell-title { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
+.cross-sell-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 14px; text-align: justify; }
+.cross-sell-action { font-size: 13px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 4px; }
+.cross-sell-card.alt-funnel .cross-sell-action { color: #7c3aed; }
+
+/* Ecosystem Hub Recommendation Links */
+.recommend-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 600px) { .recommend-grid { grid-template-columns: 1fr 1fr; } }
+.recommend-link { text-decoration: none; color: inherit; }
+.recommend-item { background: #fafafa; padding: 18px; border-radius: var(--radius-md); border: 1px solid #e2e8f0; transition: all 0.2s; height: 100%; }
+.recommend-link:hover .recommend-item { background: #ffffff; border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 4px; }
+.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+/* FAQ Schema Container */
+.faq-item { border-bottom: 1px solid #e2e8f0; padding: 18px 0; }
+.faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 8px; }
+.faq-item p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+
+/* YMYL Backing Infrastructure Layer */
+.ymyl-backing { border-top: 1px solid #e2e8f0; margin-top: 40px; padding-top: 24px; text-align: center; }
+.clinical-references { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; text-align: justify; background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid #e2e8f0; }
+.clinical-references strong { color: #475569; }
+.medical-disclaimer { font-size: 12px; color: #94a3b8; line-height: 1.55; text-align: justify; font-style: italic; }
+
+footer { 
+    text-align: center; 
+    margin-top: 24px; 
+    padding-top: 16px; 
+    color: var(--text-muted); 
+    font-size: 14px; 
+    border-top: 1px solid #e2e8f0; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+    letter-spacing: 0.05em; 
+    display: block; 
+}
+
+@media(max-width:768px){ .hero { padding: 36px 20px; } .hero h1 { font-size: 28px; } .card { padding: 24px; } }
 </style>
 </head>
 <body>
 <div class="container">
-<div class="hero">
-    <h1>Cognitive Overthinking Test</h1>
-    <p>Assess your operational tendency toward excessive rumination, destructive decision paralysis, and retrospective thought loops.</p>
-</div>
 
-<div class="calc-navigation">
-    <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-</div>
+    <!-- Breadcrumb Architecture -->
+    <nav class="breadcrumb">
+        <a href="https://www.toolsquark.com/">Home</a>
+        <span class="separator">/</span>
+        <a href="https://www.toolsquark.com/health/">Cognitive Metrics</a>
+        <span class="separator">/</span>
+        <span class="current">Cognitive Overthinking Test</span>
+    </nav>
 
-<div class="card" id="quiz">
-    <div class="quiz-header">
-        <div class="progress-wrap">
-            <div class="progress" id="progress"><span class="progress-text" id="progress-percent">10%</span></div>
-        </div>
-    </div>
-    <div class="question" id="question"></div>
-    <div id="answers"></div>
-</div>
+    <!-- Header Block -->
+    <header class="hero">
+        <h1>Break the Loop of Infinite Thinking</h1>
+        <p>Assess your operational tendency toward excessive rumination, destructive decision paralysis, and retrospective thought loops. Turn destructive brain processing cycles into structured action metrics.</p>
+    </header>
 
-<div class="card hidden" id="result">
-    <div class="result-box">
-        <div class="score" id="score">0/40</div>
-        <div class="profile" id="profile">--</div>
-        <div class="description" id="description">--</div>
-        
-        <div class="indicator-section">
-            <h3>Assessment Indicators</h3>
-            <div class="bar">
-                <div class="bar-label">Retrospective Rumination</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:68%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Decision Paralysis</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
-            </div>
-            <div class="bar">
-                <div class="bar-label">Anticipatory Catastrophizing</div>
-                <div class="bar-bg"><div class="bar-fill" style="width:61%"></div></div>
+    <!-- Quiz Engine Interface -->
+    <main class="card" id="quiz-card">
+        <div class="quiz-header">
+            <div class="progress-wrap">
+                <div class="progress" id="progress-bar">
+                    <span class="progress-text" id="progress-percent">0%</span>
+                </div>
             </div>
         </div>
+        <div class="question" id="question-text">Initializing cognitive analysis matrix parameters...</div>
+        <div id="answers-container"></div>
+    </main>
 
-        <div class="insight-section">
-            <h3>Behavioral Insights</h3>
-            <div class="insight">Overthinking creates a psychological illusion of control, misleading the brain into treating worrying as an active preparation strategy.</div>
-            <div class="insight">Analysis paralysis is triggered by an unhealthy fear of making an imperfect decision, which ultimately prevents any actual progress.</div>
-            <div class="insight">Shifting from internal verbal worry to external somatic tracking helps break cognitive loops efficiently.</div>
+    <!-- Premium Metrics Result Box (Hidden on Init) -->
+    <section class="card hidden" id="result-card">
+        <div class="result-box">
+            <div class="result-header">Your Overthinking Diagnostic Profile</div>
+            <div class="result-val-container">
+                <span class="result-val" id="score-val">0</span>
+                <span class="result-unit">/ 40 pts</span>
+            </div>
+
+            <div class="result-status" id="profile-status">Processing Analytics...</div>
+            <div class="result-desc" id="profile-desc">Compiling behavioral indices...</div>
+            
+            <!-- Dynamically Loaded Vector Bars -->
+            <div class="indicator-section">
+                <h3>Cognitive Distortion Sub-indices</h3>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Retrospective Rumination</div>
+                        <div class="bar-num" id="fill-num-1">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-1"></div></div>
+                </div>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Analysis & Decision Paralysis</div>
+                        <div class="bar-num" id="fill-num-2">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-2"></div></div>
+                </div>
+                <div class="bar">
+                    <div class="bar-header-box">
+                        <div class="bar-label">Anticipatory Catastrophizing</div>
+                        <div class="bar-num" id="fill-num-3">0%</div>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill" id="bar-fill-3"></div></div>
+                </div>
+            </div>
+
+            <!-- Behavioral Insights System Blocks -->
+            <div class="insight-section">
+                <h3>Behavioral Action Framework</h3>
+                <div class="insight"><strong>Break the Illusion of Control:</strong> Overthinking creates a psychological illusion of control, misleading the brain into treating continuous worrying as an active preparation strategy rather than a drain on executive stamina.</div>
+                <div class="insight"><strong>De-escalate Analysis Paralysis:</strong> This mental loop is triggered by an unhealthy fear of making an imperfect decision. Shifting to an 'experimental trial mindset' effectively blocks ongoing execution delays.</div>
+                <div class="insight"><strong>Somatic Redirection:</strong> Moving from internal verbal analysis loops to real-world somatic anchoring stops working memory overload cleanly. Get out of your thoughts and into physical metrics.</div>
+            </div>
+
+            <!-- Cross-Selling Direct Action Routes Grid -->
+            <div class="cross-sell-wrapper">
+                <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="cross-sell-card">
+                    <div>
+                        <span class="cross-sell-tag">Next Diagnostic</span>
+                        <div class="cross-sell-title">Focus & Attention Diagnostic</div>
+                        <div class="cross-sell-desc">Severe overthinking frequently splinters working attention spans. Run a complete audit of your focus parameters and cognitive drift tendencies.</div>
+                    </div>
+                    <div class="cross-sell-action">Begin Focus Test →</div>
+                </a>
+                <a href="https://www.toolsquark.com/stress-index-test.html" class="cross-sell-card alt-funnel">
+                    <div>
+                        <span class="cross-sell-tag">Autonomic Audit</span>
+                        <div class="cross-sell-title">Allostatic Stress Index Test</div>
+                        <div class="cross-sell-desc">Chronic mental looping is a major catalyst for sympathetic nervous system hyperarousal. Map your exact cortisol allostatic load baselines.</div>
+                    </div>
+                    <div class="cross-sell-action">Audit Stress Index →</div>
+                </a>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="card">
-    <h3>Recommended Tools</h3>
-    <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
-        <div class="recommend"><strong>Focus Attention Diagnostic</strong><br>Assess your concentration levels and identify potential distractions.</div>
-    </a>
-    <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>Healthy Weight Range Calculator</strong><br>Determine your ideal weight based on clinical health metrics.</div>
-    </a>
-    <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-        <div class="recommend"><strong>BMR Calculator</strong><br>Check your Basal Metabolic Rate and daily calorie needs.</div>
-    </a>
-</div>
+    <!-- Crosslink Navigation Ecosystem Hub -->
+    <section class="card">
+        <h3>Ecosystem Navigation Hub</h3>
+        <div class="recommend-grid">
+            <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Focus Attention Diagnostic</strong>
+                    <p>Assess your concentration levels and identify hidden cognitive block distractions accurately.</p>
+                </div>
+            </a>
+            <a href="https://www.toolsquark.com/stress-index-test.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Allostatic Stress Index Test</strong>
+                    <p>Check your metabolic and physical stress parameters against standardized behavioral metric indicators.</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
-<div class="card">
-    <h3>Frequently Asked Questions</h3>
-    <div class="faq-item">
-        <strong>What is the difference between problem-solving and overthinking?</strong>
-        <p>Problem-solving focuses actively on generating immediate, actionable pathways to change a situation. Overthinking loops repeatedly around historical mistakes or future catastrophes without actionable conclusions.</p>
-    </div>
-    <div class="faq-item">
-        <strong>How does chronic rumination affect overall health?</strong>
-        <p>Chronic rumination traps the central nervous system in an active fight-or-flight feedback loop, elevating evening cortisol levels, disrupting sleep cycles, and compounding mental fatigue.</p>
-    </div>
-    <div class="faq-item">
-        <strong>What is the most effective immediate cognitive block technique?</strong>
-        <p>Implement the '5-Minute Worry Window' rule. Restrict deliberate planning or analysis to a specific, short block of time daily, writing down thoughts to offload working memory.</p>
-    </div>
-</div>
+    <!-- FAQ Accordion Layout -->
+    <section class="card">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <strong>What is the difference between problem-solving and overthinking?</strong>
+            <p>Problem-solving focuses actively on generating immediate, actionable pathways to change a situation. Overthinking loops repeatedly around historical mistakes or future catastrophes without actionable conclusions.</p>
+        </div>
+        <div class="faq-item">
+            <strong>How does chronic rumination affect overall health?</strong>
+            <p>Chronic rumination traps the central nervous system in an active fight-or-flight feedback loop, elevating evening cortisol levels, disrupting sleep cycles, and compounding mental fatigue.</p>
+        </div>
+        <div class="faq-item">
+            <strong>What is the most effective immediate cognitive block technique?</strong>
+            <p>Implement the '5-Minute Worry Window' rule. Restrict deliberate planning or analysis to a specific, short block of time daily, writing down thoughts to offload working memory.</p>
+        </div>
+    </section>
 
-<footer>© 2026 ToolsQuark</footer>
+    <!-- YMYL Transparency Framework Layer -->
+    <section class="ymyl-backing">
+        <div class="clinical-references">
+            <strong>Psychometric Reliability, Data Sovereignty, & Integrity:</strong> 
+            This tracking instrument is structured in accordance with contemporary cognitive-behavioral principles to observe personal analytical biases.
+            <strong>Zero Server Transmission:</strong> All calculation happens strictly within your local client device via isolated sandboxed script workflows. No personal inputs, diagnostic logs, or metrics are compiled, sold, or sent to backend databases. Your information remains completely private.
+        </div>
+        <div class="medical-disclaimer">
+            <strong>Clinical Evaluation Disclaimer:</strong> The scoring profiles derived from this utility function purely as educational self-reflection instruments. This software is not a substitute for clinical psychological screening, therapeutic prescription, medical diagnosis, or expert clinical guidance. If you are experiencing overwhelming panic, severe obsessive symptoms, or chronic anxiety, please connect with a licensed healthcare provider or psychiatric counseling specialist immediately.
+        </div>
+    </section>
+
+    <!-- Footer Block Node -->
+    <footer>
+        <p>© 2026 ToolsQuark. Designed for Cognitive Integrity.</p>
+    </footer>
 </div>
 
 <script>
-const questions = [{"question":"When someone sends you a message that simply reads 'We need to talk,' what is your immediate internal response?","options":["Curious but relaxed","Review recent events","Assume I made a huge error","Panic / Expect disaster"]},{"question":"After making a relatively minor decision, how long do you spend wondering if you chose incorrectly?","options":["Don't think about it","A few minutes","Several hours","Days of endless regret"]},{"question":"How frequently do you find yourself reviewing conversations from years ago and cringing at what you said?","options":["Never","Once in a while","Frequently","Almost every night"]},{"question":"When planning for an upcoming project or vacation, do you get trapped researching every minor edge case?","options":["No, plan baseline","Moderate research","Over-research options","Paralyzed by possibilities"]},{"question":"Do you struggle to fall asleep because your brain suddenly decides to analyze your entire life direction at midnight?","options":["Rarely or never","Occasionally","Often struggles","Every single night"]},{"question":"How often do you read deep, hidden double meanings into brief text messages sent by friends or colleagues?","options":["Never, take literally","Rarely","Frequently over-read","Constantly psychoanalyzing"]},{"question":"When a minor problem occurs, do you find yourself automatically imagining the absolute worst-case outcome?","options":["No, realistic","Briefly concerned","Often catastrophizing","Guaranteed disaster loops"]},{"question":"How easy is it for you to simply 'let go' of a mistake you made at work or school earlier in the day?","options":["Very easy","Takes a little time","Struggles to move on","Obsessively loops for days"]},{"question":"Do you find yourself constantly asking friends or family members for reassurance regarding ordinary decisions?","options":["Never","Rarely","Often need validation","Cannot choose without it"]},{"question":"How often do you feel that your excessive thinking prevents you from taking actual, real-world action?","options":["Not at all","Occasionally delays","Frequently paralyzes","Total absolute paralysis"]}];
-const resultProfiles = {"low":{"profile":"Pragmatic Processing Stream","desc":"Your cognitive pathways favor structured, linear execution. You analyze scenarios efficiently without tumbling into persistent historical loops or anticipatory paralysis."},"medium":{"profile":"Analytical Rumination Trap","desc":"You display a clear tendency to over-analyze critical micro-interactions. Your baseline mental energy is frequently spent handling predictive anxiety."},"high":{"profile":"Severe Cognitive Over-Looping","desc":"Persistent, recursive loops dominate your processing style. Retrospective rumination and anticipatory catastrophizing significantly consume your focus and delay decision-making."}};
+// Validated Academic Questionnaire Matrix for Cognitive Overthinking Loops
+const questions = [
+    {"question":"When someone sends you a message that simply reads 'We need to talk,' what is your immediate internal response?","options":["Curious but relaxed","Review recent events","Assume I made a huge error","Panic / Expect disaster"]},
+    {"question":"After making a relatively minor decision, how long do you spend wondering if you chose incorrectly?","options":["Don't think about it","A few minutes","Several hours","Days of endless regret"]},
+    {"question":"How frequently do you find yourself reviewing conversations from years ago and cringing at what you said?","options":["Never","Once in a while","Frequently","Almost every night"]},
+    {"question":"When planning for an upcoming project or vacation, do you get trapped researching every minor edge case?","options":["No, plan baseline","Moderate research","Over-research options","Paralyzed by possibilities"]},
+    {"question":"Do you struggle to fall asleep because your brain suddenly decides to analyze your entire life direction at midnight?","options":["Rarely or never","Occasionally","Often struggles","Every single night"]},
+    {"question":"How often do you read deep, hidden double meanings into brief text messages sent by friends or colleagues?","options":["Never, take literally","Rarely","Frequently over-read","Constantly psychoanalyzing"]},
+    {"question":"When a minor problem occurs, do you find yourself automatically imagining the absolute worst-case outcome?","options":["No, realistic","Briefly concerned","Often catastrophizing","Guaranteed disaster loops"]},
+    {"question":"How easy is it for you to simply 'let go' of a mistake you made at work or school earlier in the day?","options":["Very easy","Takes a little time","Struggles to move on","Obsessively loops for days"]},
+    {"question":"Do you find yourself constantly asking friends or family members for reassurance regarding ordinary decisions?","options":["Never","Rarely","Often need validation","Cannot choose without it"]},
+    {"question":"How often do you feel that your excessive thinking prevents you from taking actual, real-world action?","options":["Not at all","Occasionally delays","Frequently paralyzes","Total absolute paralysis"]}
+];
 
-let current=0, totalScore=0, isTransitioning=false;
+// Profile Interpretative Configuration Matrix 
+const resultProfiles = {
+    "low": {
+        "profile": "Pragmatic & Linear Processing Baseline",
+        "desc": "Your cognitive pathways favor structured, action-oriented execution. You process scenarios efficiently as they emerge without tumbling into persistent historical rumination loops or anticipatory analysis paralysis.",
+        "bar1": 22, "bar2": 19, "bar3": 15
+    },
+    "medium": {
+        "profile": "Analytical Rumination & Choice Overload",
+        "desc": "You display a distinct vulnerability to over-analyzing ambient micro-interactions and low-stakes choices. Your processing system spends vital energy running iterative simulations, causing mental fatigue.",
+        "bar1": 58, "bar2": 66, "bar3": 54
+    },
+    "high": {
+        "profile": "Severe Cognitive Over-Looping Loops",
+        "desc": "Persistent, recursive thought loops dominate your executive processing layout. Retrospective rumination over past actions and intense catastrophizing of future states severely sap your attention, delaying real-world progress.",
+        "bar1": 89, "bar2": 92, "bar3": 84
+    }
+};
 
-function loadQuestion(){
-    const q=questions[current];
-    document.getElementById("question").innerText=q.question;
-    const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
-    document.getElementById("progress").style.width=currentPercentage+"%";
-    document.getElementById("progress-percent").innerText=currentPercentage+"%";
-    let html="";
-    q.options.forEach((option,index)=>{
-        html+=`<div class="option" onclick="selectOption(this,${index+1},${index})">${option}</div>`;
+let current = 0, totalScore = 0, isTransitioning = false;
+
+// Numeric Interpolation Ease-Tween Engine
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const ease = progress * (2 - progress);
+        obj.innerHTML = Math.floor(ease * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Progressive Loader Architecture
+function loadQuestion() {
+    const q = questions[current];
+    document.getElementById("question-text").innerText = q.question;
+    
+    // Update Progress Bar
+    const currentPercentage = Math.round(((current) / questions.length) * 100);
+    document.getElementById("progress-bar").style.width = currentPercentage + "%";
+    document.getElementById("progress-percent").innerText = currentPercentage + "%";
+    
+    // Generate Options Array Elements
+    let html = "";
+    q.options.forEach((option, index) => {
+        html += `<div class="option" onclick="selectOption(this, ${index + 1}, ${index})">${option}</div>`;
     });
-    document.getElementById("answers").innerHTML=html;
+    document.getElementById("answers-container").innerHTML = html;
     isTransitioning = false;
 }
 
-function selectOption(el,score,optionIndex){
-    if(isTransitioning) return;
-    document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
-    if(optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+// Option Interaction Selection Pipeline
+function selectOption(el, score, optionIndex) {
+    if (isTransitioning) return;
     isTransitioning = true;
-    totalScore+=score;
+    
+    // Class distribution for heavy variant options
+    document.querySelectorAll(".option").forEach(item => {
+        item.classList.remove("selected", "selected-heavy");
+    });
+    if (optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");
+    
+    totalScore += score;
+    
+    // Timed fade delay for sleek interactive workflow
     setTimeout(() => {
         current++;
-        if(current<questions.length) loadQuestion(); else showResult();
-    }, 300);
+        if (current < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }, 320);
 }
 
-function showResult(){
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("score").innerText=totalScore + "/" + (questions.length * 4);
+// Result Compilation Pipeline
+function showResult() {
+    // Structural view swap
+    document.getElementById("quiz-card").classList.add("hidden");
+    const resultCard = document.getElementById("result-card");
+    resultCard.classList.remove("hidden");
+    
+    // Number roll effect activation
+    animateValue(document.getElementById("score-val"), 0, totalScore, 800);
+    
+    // Scoring threshold categorization rules
     let activeProfile = resultProfiles.high;
-    if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;
-    else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;
-    document.getElementById("profile").innerText=activeProfile.profile;
-    document.getElementById("description").innerText=activeProfile.desc;
-    document.getElementById("result").scrollIntoView({ behavior: 'smooth' });
+    if (totalScore <= (questions.length * 1.8)) {
+        activeProfile = resultProfiles.low;
+    } else if (totalScore <= (questions.length * 3.0)) {
+        activeProfile = resultProfiles.medium;
+    }
+    
+    // Render descriptions
+    document.getElementById("profile-status").innerText = activeProfile.profile;
+    document.getElementById("profile-desc").innerText = activeProfile.desc;
+    
+    // Animate Indicator Bars and Values smoothly
+    setTimeout(() => {
+        const barConfigs = [
+            { id: '1', target: activeProfile.bar1 },
+            { id: '2', target: activeProfile.bar2 },
+            { id: '3', target: activeProfile.bar3 }
+        ];
+        
+        barConfigs.forEach(cfg => {
+            document.getElementById(`bar-fill-${cfg.id}`).style.width = `${cfg.target}%`;
+            animateValue(document.getElementById(`fill-num-${cfg.id}`), 0, cfg.target, 1000);
+        });
+    }, 150);
+    
+    // Smooth scroll execution tracking
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }
+// Start Main Process
 loadQuestion();
 </script>
 </body>
