@@ -6,7 +6,6 @@
 <title>Self-Discipline Test | Interactive Volitional Impulsivity Assessment | ToolsQuark</title>
 <meta name="description" content="Evaluate your willpower consistency, resistance to instant gratification, and identity alignment with long-term goals using our interactive assessment tool.">
 
-<!-- Structured Data Metadata: SoftwareApplication + FAQPage Combined Schema Configurations -->
 <script type="application/ld+json">
 [
   {
@@ -107,7 +106,7 @@ body {
 .back-home-btn:hover { color: var(--primary); background: #f1f5f9; }
 
 .progress-wrap { width: 100%; height: 16px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; flex-grow: 1; border: 1px solid #cbd5e1; }
-.progress { height: 100%; width: 10%; background: var(--primary); transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: flex-end; position: relative; }
+.progress { height: 100%; width: 0%; background: var(--primary); transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: flex-end; position: relative; }
 .progress-text { position: absolute; right: 10px; color: white; font-size: 11px; font-weight: 800; white-space: nowrap; }
 
 /* Selection Item Arrays Interaction States */
@@ -120,33 +119,35 @@ body {
 /* Analytical Results Dashboard Displays */
 .score { font-size: 64px; font-weight: 800; text-align: center; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
 .profile { text-align: center; font-size: 26px; font-weight: 800; margin-bottom: 12px; color: #1e293b; letter-spacing: -0.02em; }
-.description { text-align: center; color: #475569; margin-bottom: 32px; font-size: 15.5px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.description { text-align: center; color: #475569; margin-bottom: 32px; font-size: 15.5px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
 
 /* Dynamic Psychometric Indicator Bars */
 .bar { margin-bottom: 20px; background: #fafafa; padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
 .bar-label { margin-bottom: 8px; font-weight: 700; font-size: 14px; color: #334155; display: flex; justify-content: space-between; }
 .bar-bg { height: 10px; background: var(--border-color); border-radius: 20px; overflow: hidden; position: relative; }
 .bar-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 20px; }
+.bar:nth-child(2) .bar-fill { background: #6366f1; }
+.bar:nth-child(3) .bar-fill { background: #0ea5e9; }
 
 /* Custom Action Insights Modules */
 .insight { background: #f8fafc; padding: 16px; border-radius: var(--radius-md); margin-bottom: 12px; border-left: 4px solid var(--primary); font-size: 14.5px; color: #475569; text-align: justify; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 
-/* Crosslink Ecosystem Ecosystem Matrices */
+/* Recommendation Cross-Linking Card Hubs */
 .recommend-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 @media (min-width: 600px) { .recommend-grid { grid-template-columns: 1fr 1fr 1fr; } }
 .recommend-link { text-decoration: none; color: inherit; }
 .recommend-item { background: #fafafa; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-color); transition: all 0.2s; height: 100%; display: flex; flex-direction: column; }
 .recommend-link:hover .recommend-item { background: #ffffff; border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
 .recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 6px; }
-.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.45; text-align: justify; }
+.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.45; }
 
-/* Informational FAQ Accordions Content Layout */
+/* Informational FAQ Bloc Accordion Style */
 .faq-item { border-bottom: 1px solid var(--border-color); padding: 18px 0; }
 .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
 .faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 8px; }
 .faq-item p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
 
-/* YMYL Transparency Framework & Local Sovereignty Block */
+/* YMYL Transparency & Trust Framework Layer */
 .ymyl-backing { border-top: 1px solid var(--border-color); margin-top: 40px; padding-top: 24px; text-align: center; }
 .clinical-references { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; text-align: justify; background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
 .clinical-references strong { color: #475569; }
@@ -154,13 +155,18 @@ body {
 
 footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-color); letter-spacing: 0.05em; display: block; }
 
-@media(max-width:768px){ .hero { padding: 36px 20px; } .hero h1 { font-size: 28px; } .card { padding: 24px; } .question { font-size: 19px; } .score { font-size: 52px; } .profile { font-size: 22px; } }
+@media(max-width:768px){
+    .hero { padding: 36px 20px; }
+    .hero h1 { font-size: 28px; }
+    .card { padding: 24px; }
+    .question { font-size: 19px; }
+    .score { font-size: 52px; }
+    .profile { font-size: 22px; }
+}
 </style>
 </head>
 <body>
 <div class="container">
-
-    <!-- Hierarchical Structural Breadcrumb Header Pattern -->
     <nav class="breadcrumb">
         <a href="https://www.toolsquark.com/">Home</a>
         <span class="separator">/</span>
@@ -169,19 +175,17 @@ footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--t
         <span class="current">Self-Discipline Test</span>
     </nav>
 
-    <!-- Header Branding Container Block Component -->
     <header class="hero">
         <h1>Self-Discipline Test</h1>
-        <p>Evaluate your willpower consistency, resistance to instant gratification, and identity alignment with long-term goals[cite: 14].</p>
+        <p>Evaluate your willpower consistency, resistance to instant gratification, and identity alignment with long-term goals.</p>
     </header>
 
-    <!-- Main Active Test Matrix Context App Core -->
     <main class="card" id="quiz">
         <div class="quiz-header">
             <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
             <div class="progress-wrap">
                 <div class="progress" id="progress">
-                    <span class="progress-text" id="progress-percent">10%</span>
+                    <span class="progress-text" id="progress-percent">0%</span>
                 </div>
             </div>
         </div>
@@ -189,218 +193,93 @@ footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--t
         <div id="answers"></div>
     </main>
 
-    <!-- Multi-Variant Score Analytics Metrics Results Dashboard (Hidden Viewport Container) -->
     <section class="card hidden" id="result">
-        <div class="score" id="score">0/40</div>
-        <div class="profile" id="profile">Parsing metrics...</div>
-        <div class="description" id="description"></div>
+        <div class="score" id="score">--</div>
+        <div class="profile" id="profile">Evaluating...</div>
+        <div class="description" id="description">Processing response array dimensions...</div>
         
-        <h3>Assessment Indicators</h3>
-        <div class="bar">
+        <h3>Volitional Sub-Domain Breakdown</h3>
+        <div class="bar" style="margin-top: 16px;">
             <div class="bar-label"><span>Gratification Delay Capacity</span><span id="label-delay">0%</span></div>
             <div class="bar-bg"><div class="bar-fill" id="bar-delay"></div></div>
         </div>
         <div class="bar">
-            <div class="bar-label"><span>Habit Automation Matrix</span><span id="label-automation">0%</span></div>
+            <div class="bar-label"><span>Automated Habit Efficiency</span><span id="label-automation">0%</span></div>
             <div class="bar-bg"><div class="bar-fill" id="bar-automation"></div></div>
         </div>
         <div class="bar">
-            <div class="bar-label"><span>Willpower Depletion Vulnerability</span><span id="label-depletion">0%</span></div>
+            <div class="bar-label"><span>Willpower Depletion Resistance</span><span id="label-depletion">0%</span></div>
             <div class="bar-bg"><div class="bar-fill" id="bar-depletion"></div></div>
         </div>
 
-        <h3 style="margin-top:32px; margin-bottom:16px;">Behavioral Insights</h3>
-        <div class="insight">Highly disciplined people don't possess heroic willpower; they construct automated habits that bypass decision fatigue entirely[cite: 14].</div>
-        <div class="insight">Relying on motivation is unreliable because emotions fluctuate; discipline relies on rules that govern action regardless of mood[cite: 14].</div>
-        <div class="insight">Every time you resist a short-term temptation for a long-term goal, you reinforce an empowering self-identity[cite: 14].</div>
+        <h3 style="margin-top:32px; margin-bottom:16px;">Strategic Behavioral Insights</h3>
+        <div class="insight">Self-control behaves identically to executive somatic muscles. Mitigate decision fatigue thresholds earlier in work cycles to guarantee project retention rates.</div>
+        <div class="insight">Establish strict environmental contextual blockers rather than relying entirely on raw active suppression willpower.</div>
     </section>
 
-    <!-- Recommended Specialized Psychometric Tests Crosslink Hub (Hidden Initially) -->
-    <section class="card hidden" id="recommendations">
-        <h3>Recommended Specialized Diagnostics</h3>
-        <div class="recommend-grid">
-            <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>Focus Attention Diagnostic</strong>
-                    <p>Assess your concentration levels and identify potential distractions mapping delay points[cite: 14].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>Healthy Weight Range Calculator</strong>
-                    <p>Determine your ideal weight baseline calculated on verified clinical health metrics[cite: 14].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>Lean Body Mass Calculator</strong>
-                    <p>Understand your physiological body composition benchmarks beyond total scale weight[cite: 14].</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Global Framework Layout Utilities Crosslink Matrix Block -->
     <section class="card">
         <h3>Recommended Tools</h3>
         <div class="recommend-grid">
             <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
                 <div class="recommend-item">
                     <strong>BMI Calculator</strong>
-                    <p>Quickly calculate your Body Mass Index and contextual somatic weight category status[cite: 14].</p>
+                    <p>Quickly calculate your Body Mass Index and contextual somatic weight category status.</p>
                 </div>
             </a>
             <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
                 <div class="recommend-item">
                     <strong>BMR Calculator</strong>
-                    <p>Check your Basal Metabolic Rate tracking index to verify underlying daily calorie needs[cite: 14].</p>
+                    <p>Check your Basal Metabolic Rate tracking index to verify underlying daily calorie needs.</p>
                 </div>
             </a>
             <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
                 <div class="recommend-item">
                     <strong>Water Intake Calculator</strong>
-                    <p>Standard data formulas charting baseline daily water intake estimations for body mass[cite: 14].</p>
+                    <p>Standard data formulas charting baseline daily water intake estimations for body mass.</p>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- Structural FAQ Content Block Section -->
     <section class="card">
         <h3>Frequently Asked Questions</h3>
         <div class="faq-item">
             <strong>Why does my discipline crash in the evening?</strong>
-            <p>Willpower behaves like a muscle; making decisions all day exhausts your self-control, making evening temptations harder to resist[cite: 14].</p>
+            <p>Willpower behaves like a muscle; making decisions all day exhausts your self-control, making evening temptations harder to resist.</p>
         </div>
         <div class="faq-item">
             <strong>Can discipline kill spontaneity and fun?</strong>
-            <p>No[cite: 14]. True discipline buys freedom[cite: 14]. Organizing your chores gives you guilt-free time for genuine relaxation[cite: 14].</p>
+            <p>No. True discipline buys freedom. Organizing your chores gives you guilt-free time for genuine relaxation.</p>
         </div>
         <div class="faq-item">
             <strong>How do I build self-discipline from scratch?</strong>
-            <p>Start small[cite: 14]. Automate one tiny daily habit—like making your bed—before tackling complex lifestyle transformations[cite: 14].</p>
+            <p>Start small. Automate one tiny daily habit—like making your bed—before tackling complex lifestyle transformations.</p>
         </div>
     </section>
 
-    <!-- YMYL Privacy Compliance Architecture Framework Layer -->
     <section class="ymyl-backing">
         <div class="clinical-references">
-            <strong>Methodology & Assessment Disclosures:</strong> This evaluation processes active choices calibrated to index your resistance vectors against established volitional control framework metrics[cite: 14]. 
-            <strong>Zero Server Logs Data Sovereignty:</strong> Your performance parameters are calculated 100% locally on-device inside your sandboxed modern browser workspace[cite: 14]. No demographic identifiers, selection responses, or test result metrics are ever compiled, archived, or transmitted to external web clusters[cite: 14].
+            <strong>Diagnostic Validation Metrics:</strong> This evaluation parses behavioral execution indices across multidimensional metrics. 
+            <strong>100% Privacy Assurance:</strong> Core logic processing scales entirely inside your system viewport. No responses, metadata tags, or metric properties are captured or mapped via remote server architectures.
         </div>
         <div class="medical-disclaimer">
-            <strong>Informational Framework Scope Notice:</strong> This automated self-assessment questionnaire acts as an educational index reflecting volitional habit patterns, personal clarity modeling, and subjective focus tracking[cite: 14]. This utility is designed strictly for personal development and optimization purposes and does not substitute for licensed psychiatric advice or clinical health diagnostic treatments.
+            <strong>Informational Framework Notice:</strong> Outputs rendered via this questionnaire represent cognitive delay analysis indexes designed strictly for personal optimization context. These markers do not replace certified psychological evaluations, neurobehavioras assessments, or professional clinical consultations.
         </div>
     </section>
 
-    <!-- Global Page Layout Footer Node -->
     <footer>
-        <p>© 2026 ToolsQuark. All Local Calculations Evaluated Ethically[cite: 14].</p>
+        <p>© 2026 ToolsQuark. All Local Calculations Evaluated Ethically.</p>
     </footer>
 </div>
 
 <script>
 const questions = [
-    {"question":"When you set an alarm to wake up early for a personal goal, how do you handle the snooze button?","options":["Get up immediately","Snooze once","Snooze multiple times","Turn it off and sleep in"]},
-    {"question":"How consistently do you follow through on the personal goals or resolutions you set for yourself?","options":["Always execute them","Finish most goals","Abandon them halfway","Rarely start them"]},
-    {"question":"When working or studying, how easily do cravings for snacks or digital entertainment derail you?","options":["Ignore cravings easily","Occasionally give in","Frequently distracted","Completely governed by impulses"]},
-    {"question":"How would you describe your personal financial savings and impulse spending habits?","options":["Highly disciplined","Budget occasionally","Struggle to save","Frequent impulse buyer"]},
-    {"question":"When faced with a necessary but deeply boring chore, when do you get around to doing it?","options":["Do it immediately","Schedule for later","Put it off for days","Ignore until it's a crisis"]},
-    {"question":"How healthy are your eating and exercise routines when you are going through a high-stress week?","options":["Stay strict to habits","Slightly slip up","Drop routines quickly","Complete health abandonment"]},
-    {"question":"How often do you find yourself scrolling mindlessly when you explicitly promised yourself you'd be asleep?","options":["Rarely/Never","1-2 times a week","Frequently","Almost every single night"]},
-    {"question":"If a task requires daily effort for months before showing any results, how do you handle it?","options":["Maintain daily effort","Miss occasional days","Lose focus quickly","Give up within a week"]},
-    {"question":"How easily can you say 'no' when friends offer fun plans that conflict with your critical goals?","options":["Say no comfortably","Hesitate but decline","Give in with guilt","Instantly abandon goals"]},
-    {"question":"When you break a self-imposed routine one day, how does that affect your behavior the following day?","options":["Back on track instantly","Slightly harder to start","Triggers a multi-day slide","Abandon the routine completely"]}
-];[cite: 14]
-
-const resultProfiles = {
-    "low":{"profile":"Highly Disciplined Architect","desc":"You have strong command over your impulses. You delay short-term pleasure easily, automate positive habits, and follow through on long-term goals[cite: 14]."},
-    "medium":{"profile":"Fluctuating Willpower Wave","desc":"Your discipline comes in short bursts. You excel when motivated but struggle with consistency when fatigue sets in or temptation increases[cite: 14]."},
-    "high":{"profile":"Severe Impulse Dominance","desc":"Instant gratification dominates your daily decisions. You struggle to sustain routines, leaving you trapped in a cycle of broken promises to yourself[cite: 14]."}
-};[cite: 14]
-
-// Category indicators map matching explicit survey array elements
-const categoryMapping = {
-    delay: [0, 3, 6, 8],
-    automation: [1, 4, 7],
-    depletion: [2, 5, 9]
-};
-
-// Internal Workflow App Engine Tracking States
-let current=0, totalScore=0, isTransitioning=false;
-let categoryScores = { delay: 0, automation: 0, depletion: 0 };
-
-function loadQuestion(){
-    const q=questions[current];
-    document.getElementById("question").innerText=q.question;
-    const currentPercentage = Math.round(((current + 1) / questions.length) * 100);
-    document.getElementById("progress").style.width=currentPercentage+"%";
-    document.getElementById("progress-percent").innerText=currentPercentage+"%";
-    
-    let html="";
-    q.options.forEach((option,index)=>{
-        html+=`<div class="option" onclick="selectOption(this,${index+1},${index})">${option}</div>`;
-    });
-    document.getElementById("answers").innerHTML=html;
-    isTransitioning = false;
-}[cite: 14]
-
-function selectOption(el,score,optionIndex){
-    if(isTransitioning) return;
-    document.querySelectorAll(".option").forEach(item=>{item.classList.remove("selected","selected-heavy");});
-    
-    if(optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");[cite: 14]
-    isTransitioning = true;
-    totalScore+=score;[cite: 14]
-
-    // Distribute structural psychometric scoring profiles
-    if(categoryMapping.delay.includes(current)) categoryScores.delay += score;
-    else if(categoryMapping.automation.includes(current)) categoryScores.automation += score;
-    else if(categoryMapping.depletion.includes(current)) categoryScores.depletion += score;
-
-    setTimeout(() => {
-        current++;
-        if(current<questions.length) loadQuestion(); else showResult();
-    }, 280);
-}[cite: 14]
-
-function showResult(){
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("recommendations").classList.remove("hidden");[cite: 14]
-    
-    const maxScore = questions.length * 4;[cite: 14]
-    document.getElementById("score").innerText=totalScore + "/" + maxScore;
-    
-    let activeProfile = resultProfiles.high;[cite: 14]
-    if(totalScore <= (questions.length * 1.6)) activeProfile = resultProfiles.low;[cite: 14]
-    else if(totalScore <= (questions.length * 2.8)) activeProfile = resultProfiles.medium;[cite: 14]
-    
-    document.getElementById("profile").innerText=activeProfile.profile;
-    document.getElementById("description").innerText=activeProfile.desc;[cite: 14]
-
-    // Compute localized interactive assessment percentages
-    const delayPct = Math.round((categoryScores.delay / (categoryMapping.delay.length * 4)) * 100);
-    const automationPct = Math.round((categoryScores.automation / (categoryMapping.automation.length * 4)) * 100);
-    const depletionPct = Math.round((categoryScores.depletion / (categoryMapping.depletion.length * 4)) * 100);
-
-    // Apply progress transitions smoothly inside view container elements
-    setTimeout(() => {
-        document.getElementById("bar-delay").style.width = delayPct + "%";
-        document.getElementById("label-delay").innerText = delayPct + "%";
-        
-        document.getElementById("bar-automation").style.width = automationPct + "%";
-        document.getElementById("label-automation").innerText = automationPct + "%";
-        
-        document.getElementById("bar-depletion").style.width = depletionPct + "%";
-        document.getElementById("label-depletion").innerText = depletionPct + "%";
-    }, 100);
-
-    document.getElementById("result").scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }[cite: 14]
-loadQuestion();[cite: 14]
-</script>
-</body>
-</html>
+    { question: "When faced with long-term tasks or self-imposed resolutions, how frequently do you see them to full completion?", options: ["Always execute them", "Finish most goals", "Abandon them halfway", "Rarely start them"], sub: "delay" },
+    { question: "When working or studying, how easily do cravings for snacks or digital entertainment derail you?", options: ["Ignore cravings easily", "Occasionally give in", "Frequently distracted", "Completely governed by impulses"], sub: "depletion" },
+    { question: "How would you describe your personal financial savings and impulse spending habits?", options: ["Highly disciplined", "Budget occasionally", "Struggle to save", "Frequent impulse buyer"], sub: "delay" },
+    { question: "When faced with a necessary but deeply boring chore, when do you get around to doing it?", options: ["Do it immediately", "Schedule for later", "Put it off for days", "Ignore until it's a crisis"], sub: "automation" },
+    { question: "How healthy are your eating and exercise routines when you are going through a high-stress week?", options: ["Stay strict to habits", "Slightly slip up", "Drop routines quickly", "Complete health abandonment"], sub: "depletion" },
+    { question: "How often do you find yourself scrolling mindlessly when you explicitly promised yourself you'd be asleep?", options: ["Rarely/Never", "1-2 times a week", "Frequently", "Almost every single night"], sub: "automation" },
+    { question: "If a task requires daily effort for months before showing any results, how do you handle it?", options: ["Maintain daily effort", "Miss occasional days", "Lose focus quickly", "Give up within a week"], sub: "delay" },
+    { question: "How easily can you say 'no' when friends offer fun plans that conflict with your critical goals?", options: ["Say no comfortably", "Hesitate but decline", "Give in with guilt", "Instantly abandon goals"], sub: "depletion" },
+    { question: "When you break a self-imposed routine one day, how does that affect your behavior the following day?", options: ["Resume routine instantly", "Regret but stay stable", "Slippage continues slightly", "Completely stop trying"] ,
