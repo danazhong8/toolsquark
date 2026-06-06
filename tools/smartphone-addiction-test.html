@@ -6,7 +6,6 @@
 <title>Smartphone Addiction Test | Digital Dependency & Screen Time Assessment | ToolsQuark</title>
 <meta name="description" content="Measure your psychological reliance on mobile devices, phantom vibration patterns, behavioral screen dependencies, and compulsive device-checking habits.">
 
-<!-- Structured Data Metadata: SoftwareApplication + FAQPage Combined Schema Configurations -->
 <script type="application/ld+json">
 [
   {
@@ -32,23 +31,15 @@
         "name": "Is high screen time automatically an addiction?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. If your screen use is purely for active work or creation, it differs from passive, compulsive scrolling driven by boredom or escape."
+          "text": "No. If your screen volume is driven by deliberate, high-value professional output or structured learning, it represents functional utility rather than behavioral addiction."
         }
       },
       {
         "@type": "Question",
-        "name": "Why do I feel anxious when my phone battery is low?",
+        "name": "What is the fastest way to curb phone addiction?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "This is known as 'Nomophobia'. It triggers a survival-like anxiety rooted in the fear of being digitally disconnected or isolated."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Will a digital detox fix my habits permanently?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Temporary detoxes provide clarity, but long-term success relies on setting rigid digital boundaries, like screen-free bedrooms."
+          "text": "Moving your device to a grayscale display profile and enforcing physical boundary limits—such as keeping the charger outside the bedroom—yields immediate behavioral containment."
         }
       }
     ]
@@ -83,327 +74,290 @@ body {
 }
 .container { max-width: 800px; margin: auto; }
 
-/* Hierarchical Navigation Breadcrumb Strategy */
-.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; padding-left: 4px; }
-.breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-.breadcrumb a:hover { color: var(--primary); }
-.breadcrumb .separator { font-size: 12px; opacity: 0.7; }
-.breadcrumb .current { color: var(--text-main); font-weight: 500; }
+/* Hierarchical Navigation Architecture */
+.calc-navigation { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 20px; }
+.back-home-btn { color: var(--text-muted); text-decoration: none; font-weight: 600; background: transparent; border: none; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: all 0.2s; }
+.back-home-btn:hover { color: var(--primary); background: #f1f5f9; }
 
-/* Identity Branding Component Header Block */
-.hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none; }
+/* Identity Branding Component Header */
+.hero { background: linear-gradient(135deg, #1e3a8a, #4f46e5); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
 .hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
 .hero p { font-size: 16px; opacity: 0.9; max-width: 620px; font-weight: 400; }
 
-/* Main Presentation Layout Elements */
+/* Interactive Container Layouts */
 .card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
 .card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
 .hidden { display: none !important; }
 
-/* Form Context Navigation Options */
+/* Interactive Progress Tracking Frame */
 .quiz-header { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 24px; gap: 16px; }
-.back-home-btn { font-size: 14.5px; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap; flex-shrink: 0; cursor: pointer; font-weight: 600; background: transparent; border: none; padding: 4px 8px; border-radius: 8px; transition: all 0.2s; }
-.back-home-btn:hover { color: var(--primary); background: #f1f5f9; }
+.progress-wrap { width: 100%; height: 12px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; flex-grow: 1; }
+.progress-bar { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s ease; }
+.progress-text { font-size: 14px; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
 
-/* Accessible Progress Tracking Bars */
-.progress-wrap { width: 100%; height: 18px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; flex-grow: 1; }
-.progress { height: 100%; width: 10%; background: var(--primary); transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: flex-end; position: relative; }
-.progress-text { position: absolute; right: 10px; color: white; font-size: 11px; font-weight: 700; white-space: nowrap; }
+/* Multi-Choice Interactive Options Grid */
+.question { font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 24px; text-align: justify; line-height: 1.4; }
+.answers-grid { display: flex; flex-direction: column; gap: 14px; }
+.option { width: 100%; text-align: left; padding: 16px 20px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: var(--radius-md); font-size: 16px; font-weight: 600; color: #334155; cursor: pointer; transition: all 0.2s ease; }
+.option:hover { border-color: var(--primary); background: #f0f6ff; color: var(--primary); }
+.option.selected { border-color: var(--primary); background: #f0f6ff; color: var(--primary); }
+.option.selected-heavy { border-color: var(--warning); background: var(--warning-bg); color: var(--warning); }
 
-/* Dynamic Assessment Engine Component Layout */
-.question { font-size: 22px; font-weight: 800; margin-bottom: 24px; color: #1e293b; letter-spacing: -0.01em; line-height: 1.35; }
-.option { width: 100%; text-align: left; background: var(--card-bg); font-family: inherit; font-size: 16px; font-weight: 500; color: var(--text-main); padding: 16px 20px; border: 2px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 12px; cursor: pointer; transition: all 0.2s; display: block; }
-.option:hover { border-color: var(--primary); background: #f0f6ff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.05); }
-.option:focus-visible { outline: 3px solid var(--primary); border-color: var(--primary); }
-.selected { border-color: var(--primary) !important; background: #dbeafe !important; }
-.selected-heavy { border-color: var(--warning) !important; background: var(--warning-bg) !important; }
-
-/* Core Score Dashboards */
-.score { font-size: 72px; font-weight: 800; text-align: center; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+/* Diagnostic Scores View Metrics */
+.score { font-size: 64px; font-weight: 800; text-align: center; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
 .profile { text-align: center; font-size: 26px; font-weight: 800; color: #1e3a8a; margin-bottom: 12px; letter-spacing: -0.02em; }
 .description { text-align: justify; color: #475569; margin-bottom: 28px; font-size: 15.5px; line-height: 1.6; }
 
-/* Trait Factor Diagnostic Metric Sets */
+/* Progress Vector Diagnostic Bars */
 .bar { margin-bottom: 20px; }
-.bar-label { margin-bottom: 6px; font-weight: 700; color: #334155; font-size: 14.5px; }
+.bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; color: #334155; font-size: 14.5px; }
 .bar-bg { height: 12px; background: #e2e8f0; border-radius: 20px; overflow: hidden; }
-.bar-fill { height: 100%; background: var(--primary); border-radius: 20px; transition: width 0.5s ease-out; }
+.bar-fill { height: 100%; background: var(--primary); width: 0%; transition: width 1s ease-out; }
+.bar-fill.high-metric { background: var(--warning); }
 
-/* Diagnostic Psychological Insight Elements */
-.insight { background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border-left: 4px solid var(--primary); margin-bottom: 14px; font-size: 14.5px; color: #475569; text-align: justify; line-height: 1.55; }
-
-/* Crosslink Layout Matrices Component */
-.recommend-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 4px; }
-@media (min-width: 600px) { .recommend-grid { grid-template-columns: 1fr 1fr 1fr; } }
+/* Matrix Resource Recommendations Layout */
+.recommend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
 .recommend-link { text-decoration: none; color: inherit; }
-.recommend-item { background: #f0f6ff; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-color); transition: all 0.2s; height: 100%; display: flex; flex-direction: column; }
-.recommend-link:hover .recommend-item { background: #ffffff; border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-.recommend-item.neutral { background: #fafafa; }
-.recommend-link:hover .recommend-item.neutral { background: #ffffff; }
-.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 6px; }
-.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.45; text-align: justify; }
+.recommend-item { padding: 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: #f8fafc; transition: all 0.2s; height: 100%; }
+.recommend-item:hover { border-color: var(--primary); background: #f0f6ff; transform: translateY(-2px); }
+.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 4px; }
+.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
 
-/* Informational FAQ Content Blueprint Layout */
-.faq-item { border-bottom: 1px solid var(--border-color); padding: 18px 0; }
+/* Informational FAQ Module Layout */
+.faq-title { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; }
+.faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; }
 .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
-.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 8px; }
-.faq-item p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 6px; }
+.faq-item p { color: #475569; font-size: 14.5px; text-align: justify; }
 
-/* YMYL Transparency Framework & Compliance Grid Layer */
-.ymyl-backing { border-top: 1px solid var(--border-color); margin-top: 40px; padding-top: 24px; text-align: center; }
-.clinical-references { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; text-align: justify; background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
-.clinical-references strong { color: #475569; }
-.medical-disclaimer { font-size: 12px; color: #94a3b8; line-height: 1.55; text-align: justify; font-style: italic; }
+footer { text-align: center; margin-top: 36px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-color); padding-top: 20px; }
 
-footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-color); letter-spacing: 0.05em; display: block; }
-
-@media(max-width:768px){ .hero { padding: 36px 20px; } .hero h1 { font-size: 28px; } .card { padding: 24px; } .question { font-size: 19px; } .score { font-size: 56px; } .profile { font-size: 22px; } }
+@media(max-width:768px){
+    .hero { padding: 36px 20px; }
+    .hero h1 { font-size: 28px; }
+    .card { padding: 24px; }
+    .question { font-size: 19px; }
+    .score { font-size: 56px; }
+    .profile { font-size: 22px; }
+    .recommend-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 <div class="container">
+    <div class="calc-navigation">
+        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+    </div>
 
-    <!-- Structural Navigation Breadcrumbs Hierarchy -->
-    <nav class="breadcrumb">
-        <a href="https://www.toolsquark.com/">Home</a>
-        <span class="separator">/</span>
-        <a href="https://www.toolsquark.com/tools/">Psychology Tools</a>
-        <span class="separator">/</span>
-        <span class="current">Smartphone Addiction Test</span>
-    </nav>
-
-    <!-- Header Branding Container Block Component -->
     <header class="hero">
         <h1>Smartphone Addiction Test</h1>
-        <p>Measure your psychological reliance on mobile devices, phantom vibration patterns, and compulsive checking habits[cite: 15].</p>
+        <p>Analyze your psychological reliance on mobile devices, phantom vibration patterns, compulsive checking habits, and total screen dependency metrics.</p>
     </header>
 
-    <!-- Main Dynamic Interactive Assessment Workspace Block -->
-    <main class="card" id="quiz" aria-live="polite">
+    <main class="card" id="quiz">
         <div class="quiz-header">
-            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
             <div class="progress-wrap">
-                <div class="progress" id="progress" style="width: 10%;"><span class="progress-text" id="progress-percent">10%</span></div>
+                <div class="progress-bar" id="p-bar"></div>
             </div>
+            <div class="progress-text" id="p-text">Question 1 / 5</div>
         </div>
-        <h2 class="question" id="question">Loading Diagnostic Parameters...</h2>
-        <div id="answers"></div>
+        <div class="question" id="question">Loading smartphone assessment metrics index...</div>
+        <div class="answers-grid" id="answers"></div>
     </main>
 
-    <!-- Hidden Output Analytics Analytics Block Component Template -->
     <section class="card hidden" id="result">
-        <div class="score" id="score">0/40</div>
-        <div class="profile" id="profile">Analyzing Metrics...</div>
-        <div class="description" id="description">Evaluating behavioral logs against metric control frameworks.</div>
-        
-        <h3>Assessment Profiles</h3>
-        <div class="bar">
-            <div class="bar-label">Compulsive Checking Frequency Indicator</div>
-            <div class="bar-bg"><div class="bar-fill" id="fill-checking" style="width:0%"></div></div>
-        </div>
-        <div class="bar">
-            <div class="bar-label">Phantom Vibration & Somatosensory Anxiety Index</div>
-            <div class="bar-bg"><div class="bar-fill" id="fill-anxiety" style="width:0%"></div></div>
-        </div>
-        <div class="bar">
-            <div class="bar-label">Withdrawal Tolerance & Focus Resilience Index</div>
-            <div class="bar-bg"><div class="bar-fill" id="fill-tolerance" style="width:0%"></div></div>
-        </div>
-
-        <h3 style="margin-top:32px;">Behavioral Insights & Action Plans</h3>
-        <div class="insight">The urge to check notifications is driven by variable reward schedules, similar to mechanisms found in casual gambling[cite: 15].</div>
-        <div class="insight">Phantom vibration syndrome highlights how deeply digital alerts have rewired our somatic sensory processing[cite: 15].</div>
-        <div class="insight">Replacing screen time requires friction; simply hiding your phone in another room increases focus by reducing cognitive load[cite: 15].</div>
+        <h3>Assessment Score Summary</h3>
+        <div class="score" id="score">0/20</div>
+        <div class="profile" id="profile">Analyzing Profile...</div>
+        <p class="description" id="description"></p>
     </section>
 
-    <!-- Supplemental Cross-Linking Matrix Configurations Group -->
     <section class="card hidden" id="recommendations">
-        <h3>Recommended Behavioral Diagnostics</h3>
+        <h3>Device Reliance Diagnostic Factors</h3>
+        
+        <div class="bar">
+            <div class="bar-label"><span>Compulsive Check Frequency</span><span id="label-checking">0%</span></div>
+            <div class="bar-bg"><div class="bar-fill" id="fill-checking"></div></div>
+        </div>
+        
+        <div class="bar">
+            <div class="bar-label"><span>Nomophobia (Separation Anxiety)</span><span id="label-anxiety">0%</span></div>
+            <div class="bar-bg"><div class="bar-fill" id="fill-anxiety"></div></div>
+        </div>
+        
+        <div class="bar">
+            <div class="bar-label"><span>Tolerance & Screen Extension</span><span id="label-tolerance">0%</span></div>
+            <div class="bar-bg"><div class="bar-fill" id="fill-tolerance"></div></div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3>Recommended Utility Tools</h3>
         <div class="recommend-grid">
-            <a href="https://www.toolsquark.com/focus-attention-diagnostic.html" class="recommend-link">
+            <a href="https://www.toolsquark.com/tools/daily-steps-goal-calculator.html" class="recommend-link">
                 <div class="recommend-item">
-                    <strong>Focus Attention Diagnostic</strong>
-                    <p>Assess your concentration levels and identify potential environmental screen distractions[cite: 15].</p>
+                    <strong>Daily Steps Goal Calculator</strong>
+                    <p>Calculate optimal step milestones mapped out directly to your physiological goals.</p>
                 </div>
             </a>
-            <a href="https://www.toolsquark.com/healthy-weight-range-calculator.html" class="recommend-link">
+            <a href="https://www.toolsquark.com/tools/sleep-quality-assessment.html" class="recommend-link">
                 <div class="recommend-item">
-                    <strong>Healthy Weight Range Calculator</strong>
-                    <p>Determine your ideal weight baseline parameters based on clinical health metrics[cite: 15].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/lean-body-mass-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>Lean Body Mass Calculator</strong>
-                    <p>Understand underlying structural body composition beyond basic scale mass weight[cite: 15].</p>
+                    <strong>Sleep Quality Assessment</strong>
+                    <p>Evaluate your circadian cycle efficiency indexes and latent disruption factors.</p>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- Global Layout Recommendations Tools Matrix Block Component -->
     <section class="card">
-        <h3>Recommended General Tools</h3>
-        <div class="recommend-grid">
-            <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-                <div class="recommend-item neutral">
-                    <strong>BMI Calculator</strong>
-                    <p>Quickly calculate your Body Mass Index and contextual somatic weight category status[cite: 15].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-                <div class="recommend-item neutral">
-                    <strong>BMR Calculator</strong>
-                    <p>Check your Basal Metabolic Rate tracking index to verify underlying daily calorie needs[cite: 15].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-                <div class="recommend-item neutral">
-                    <strong>Water Intake Calculator</strong>
-                    <p>Standard data formulas charting baseline daily water intake estimations for body mass[cite: 15].</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Structural FAQ Content Block Section -->
-    <section class="card">
-        <h3>Frequently Asked Questions</h3>
+        <div class="faq-title">Frequently Asked Questions</div>
         <div class="faq-item">
             <strong>Is high screen time automatically an addiction?</strong>
-            <p>No. If your screen use is purely for active work or creation, it differs from passive, compulsive scrolling driven by boredom or escape[cite: 15].</p>
+            <p>No. If your screen volume is driven by deliberate, high-value professional output or structured learning, it represents functional utility rather than behavioral addiction.</p>
         </div>
         <div class="faq-item">
-            <strong>Why do I feel anxious when my phone battery is low?</strong>
-            <p>This is known as 'Nomophobia'[cite: 15]. It triggers a survival-like anxiety rooted in the fear of being digitally disconnected or isolated[cite: 15].</p>
-        </div>
-        <div class="faq-item">
-            <strong>Will a digital detox fix my habits permanently?</strong>
-            <p>Temporary detoxes provide clarity, but long-term success relies on setting rigid digital boundaries, like screen-free bedrooms[cite: 15].</p>
+            <strong>What is the fastest way to curb phone addiction?</strong>
+            <p>Moving your device to a grayscale display profile and enforcing physical boundary limits—such as keeping the charger outside the bedroom—yields immediate behavioral containment.</p>
         </div>
     </section>
 
-    <!-- YMYL Quality Compliance Architecture Framework Layer -->
-    <section class="ymyl-backing">
-        <div class="clinical-references">
-            <strong>Methodology & Assessment Disclosures:</strong> This processing matrix evaluates device dependencies based on self-reported response values monitoring usage profiles and environmental impacts[cite: 15].
-            <strong>Zero Server Logs Data Sovereignty:</strong> Your personal activity responses evaluate entirely inside your active local device frame[cite: 15]. No response profile criteria parameters are ever serialized, parsed, stored, or transmitted across our backend cloud ecosystem[cite: 15].
-        </div>
-        <div class="medical-disclaimer">
-            <strong>Informational Framework Scope Notice:</strong> This interactive behavioral tool acts as an optimization reference benchmark and screening gauge for lifestyle habit habits[cite: 15]. It does not issue formal clinical diagnostic statements or psychological intervention prescriptions.
-        </div>
-    </section>
-
-    <!-- Global Page Layout Footer Node -->
     <footer>
-        <p>© 2026 ToolsQuark. All Local Calculations Evaluated Ethically[cite: 15].</p>
+        <p>© 2026 ToolsQuark. All Rights Reserved.</p>
     </footer>
 </div>
 
 <script>
+// Dynamic diagnostic metric questions array
 const questions = [
-    {"question":"What is the very first thing you do within 5 minutes of waking up in the morning?","options":["Stretch / Wash up","Briefly check time or active alarms","Check notifications or email apps","Start endless browsing loops"]},
-    {"question":"How do you feel when you accidentally leave your phone at home for a few hours?","options":["Relieved or indifferent","Slightly uneasy","Anxious and distracted","Panicked; must travel back to recover it"]},
-    {"question":"How often do you catch yourself scrolling through apps without remembering why you opened them?","options":["Rarely","Occasionally","Frequently","All the time without realization"]},
-    {"question":"Do you find yourself checking your phone during face-to-face conversations or meals with loved ones?","options":["Never","Only if an urgent call rings","Sometimes during conversational lulls","Constantly out of basic habit"]},
-    {"question":"Have you tried to cut down your screen time but consistently failed to stick to it?","options":["Never needed to try","Tried once and succeeded","Failed a few times","Given up trying entirely"]},
-    {"question":"How frequently do you experience 'phantom vibrations' (thinking your phone buzzed when it didn't)?","options":["Never","Rarely","Sometimes","Very frequently"]},
-    {"question":"Do you take your smartphone with you into the bathroom every single time?","options":["Hardly ever","Occasionally","Most of the time","Always without exception"]},
-    {"question":"How much does your late-night phone usage delay your planned sleep schedule?","options":["Not at all","By 15 to 30 minutes","By 1 to 2 hours","Massively disrupts core sleep architectures"]},
-    {"question":"Do you use your phone as a primary escape mechanism when feeling stressed, awkward, or lonely?","options":["No, rarely","Rarely","Yes, quite often","It is my default situational response"]},
-    {"question":"Has anyone close to you complained about how much time you spend on your device?","options":["Never","Once or twice","Regularly","Constantly causes relational friction"]}
-];[cite: 15]
-
-const resultProfiles = {
-    "low": {
-        "profile": "Mindful Device User",
-        "desc": "You view your smartphone as a utility tool rather than an emotional escape hatch[cite: 15]. You comfortably set boundaries and experience no distress when disconnected[cite: 15].",
-        "checking": 25, "anxiety": 20, "tolerance": 15
+    {
+        "question": "How soon after opening your eyes in the morning do you reach for your smartphone device?",
+        "options": ["Within 5 minutes", "Within 30 minutes", "Within an hour", "Only after getting out of bed"]
     },
-    "medium": {
-        "profile": "Habitual Screen Consumer",
-        "desc": "Your phone is creeping into your passive routines[cite: 15]. You frequently find yourself scrolling mindlessly when bored, causing minor focus or time management issues[cite: 15].",
-        "checking": 58, "anxiety": 44, "tolerance": 52
+    {
+        "question": "Do you feel restless, irritable, or anxious when your phone battery drops below 15% or when there is no cellular signal?",
+        "options": ["Never affects me", "Slight annoyance", "Noticeable anxiety spikes", "Severe panic or instant search for power"]
     },
-    "high": {
-        "profile": "Severe Digital Dependency",
-        "desc": "You display clear compulsive habits and severe withdrawal anxiety[cite: 15]. The device significantly interferes with your real-world relationships, sleep, and deep focus capabilities[cite: 15].",
-        "checking": 88, "anxiety": 76, "tolerance": 84
+    {
+        "question": "How often do you experience 'phantom vibrations' (feeling your phone buzz when it actually didn't)?",
+        "options": ["Never", "Rarely", "Occasionally", "Frequently throughout the day"]
+    },
+    {
+        "question": "Have your close friends, partner, or family members complained about your device screen usage during shared dinner tables?",
+        "options": ["Never", "Seldom mentioned", "Repeatedly brought up", "Constant point of conflict"]
+    },
+    {
+        "question": "Do you stay up later than intended scrolling video feeds or social apps, directly impacting your sleep architecture?",
+        "options": ["Never / I sleep soundly", "Occasionally by a few minutes", "Frequently losing 1-2 hours of rest", "Every single night compulsively"]
     }
-};[cite: 15]
+];
 
-let current = 0, totalScore = 0, isTransitioning = false;[cite: 15]
+// Complete diagnostic evaluation metrics configurations to resolve the runtime reference crash
+const resultProfiles = {
+    low: {
+        profile: "Mindful Device Integration Zone",
+        desc: "You exhibit clear boundaries and strong volitional mastery over your smartphone. Your device serves as a structured utility rather than an emotional or behavioral distraction mechanism.",
+        checking: 20, anxiety: 15, tolerance: 22
+    },
+    medium: {
+        profile: "Elevated Digital Dependence Status",
+        desc: "Compulsive device checks and minor separation anxiety loops have begun fragments your daily attention spans. Implementing structural screen restrictions is recommended to avoid deeper dependency tracking.",
+        checking: 58, anxiety: 62, tolerance: 55
+    },
+    high: {
+        profile: "Severe Digital Capture Status",
+        desc: "Significant psychological attachment and neurological reliance detected. Compulsive browsing routines and constant notification responses are heavily impacting your task execution and sleep patterns.",
+        checking: 88, anxiety: 94, tolerance: 85
+    }
+};
+
+let current = 0;
+let totalScore = 0;
+let isTransitioning = false;
 
 function loadQuestion() {
-    const q = questions[current];[cite: 15]
-    document.getElementById("question").innerText = q.question;[cite: 15]
-    
-    const currentPercentage = Math.round(((current + 1) / questions.length) * 100);[cite: 15]
-    document.getElementById("progress").style.width = currentPercentage + "%";[cite: 15]
-    document.getElementById("progress-percent").innerText = currentPercentage + "%";[cite: 15]
-    
-    let html = "";[cite: 15]
+    isTransitioning = true;
+    const q = questions[current];
+    document.getElementById("p-text").innerText = `Question ${current + 1} / ${questions.length}`;
+    document.getElementById("p-bar").style.width = `${((current + 1) / questions.length) * 100}%`;
+    document.getElementById("question").innerText = q.question;
+
+    let html = "";
     q.options.forEach((option, index) => {
-        html += `<button class="option" onclick="selectOption(this, ${index + 1}, ${index})">${option}</button>`;[cite: 15]
+        // Formulate score mapping weights: 1-4 points depending on priority choice indices
+        html += `<button class="option" onclick="selectOption(this, ${index + 1}, ${index})">${option}</button>`;
     });
-    document.getElementById("answers").innerHTML = html;[cite: 15]
-    isTransitioning = false;[cite: 15]
+    document.getElementById("answers").innerHTML = html;
+    isTransitioning = false;
 }
 
 function selectOption(el, score, optionIndex) {
-    if (isTransitioning) return;[cite: 15]
-    
-    document.querySelectorAll(".option").forEach(item => {
-        item.classList.remove("selected", "selected-heavy");[cite: 15]
+    if (isTransitioning) return;
+    document.querySelectorAll(".option").forEach(item => { 
+        item.classList.remove("selected", "selected-heavy"); 
     });
     
-    if (optionIndex >= 2) el.classList.add("selected-heavy"); else el.classList.add("selected");[cite: 15]
-    isTransitioning = true;[cite: 15]
-    totalScore += score;[cite: 15]
+    if (optionIndex >= 2) el.classList.add("selected-heavy"); 
+    else el.classList.add("selected");
+    
+    isTransitioning = true;
+    totalScore += score;
     
     setTimeout(() => {
-        current++;[cite: 15]
-        if (current < questions.length) {
-            loadQuestion();[cite: 15]
-        } else {
-            showResult();[cite: 15]
-        }
-    }, 280);
+        current++;
+        if (current < questions.length) loadQuestion(); 
+        else showResult();
+    }, 300);
 }
 
 function showResult() {
-    document.getElementById("quiz").classList.add("hidden");[cite: 15]
-    document.getElementById("result").classList.remove("hidden");[cite: 15]
-    document.getElementById("recommendations").classList.remove("hidden");[cite: 15]
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("recommendations").classList.remove("hidden");
     
-    const maxScore = questions.length * 4;[cite: 15]
-    document.getElementById("score").innerText = totalScore + " / " + maxScore;[cite: 15]
+    const maxScore = questions.length * 4;
+    document.getElementById("score").innerText = totalScore + " / " + maxScore;
     
-    let activeProfile = resultProfiles.high;[cite: 15]
+    let activeProfile = resultProfiles.high;
     if (totalScore <= (questions.length * 1.6)) {
-        activeProfile = resultProfiles.low;[cite: 15]
+        activeProfile = resultProfiles.low;
     } else if (totalScore <= (questions.length * 2.8)) {
-        activeProfile = resultProfiles.medium;[cite: 15]
+        activeProfile = resultProfiles.medium;
     }
     
-    document.getElementById("profile").innerText = activeProfile.profile;[cite: 15]
-    document.getElementById("description").innerText = activeProfile.desc;[cite: 15]
+    document.getElementById("profile").innerText = activeProfile.profile;
+    document.getElementById("description").innerText = activeProfile.desc;
     
-    // Animate target data tracking status fills fluidly
+    // Inject and transition factor evaluation indicator bars
     setTimeout(() => {
-        document.getElementById("fill-checking").style.width = activeProfile.checking + "%";
-        document.getElementById("fill-anxiety").style.width = activeProfile.anxiety + "%";
-        document.getElementById("fill-tolerance").style.width = activeProfile.tolerance + "%";
+        const fillBar = (el, val) => {
+            if (val >= 70) el.classList.add("high-metric");
+            el.style.width = val + "%";
+        };
+
+        const fillCheck = document.getElementById("fill-checking");
+        const fillAnx = document.getElementById("fill-anxiety");
+        const fillTol = document.getElementById("fill-tolerance");
+
+        document.getElementById("label-checking").innerText = activeProfile.checking + "%";
+        document.getElementById("label-anxiety").innerText = activeProfile.anxiety + "%";
+        document.getElementById("label-tolerance").innerText = activeProfile.tolerance + "%";
+
+        fillBar(fillCheck, activeProfile.checking);
+        fillBar(fillAnx, activeProfile.anxiety);
+        fillBar(fillTol, activeProfile.tolerance);
     }, 150);
     
     document.getElementById("result").scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }[cite: 15]
+function handleBackHome() { 
+    if (confirm("Are you sure you want to leave this screen assessment?")) {
+        window.location.href = "https://www.toolsquark.com/"; 
+    }
+}
 
-// Initialize the Assessment Lifecycle Execution Block
-loadQuestion();[cite: 15]
+// Map initial mounting setups
+window.addEventListener("DOMContentLoaded", loadQuestion);
 </script>
 </body>
 </html>
