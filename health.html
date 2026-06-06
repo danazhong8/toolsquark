@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO 独立标题：覆盖核心流量词 -->
     <title>Free Online Health Calculators & Body Trackers | ToolsQuark</title>
+    <!-- SEO 高转化率高吸引力 Meta 描述 -->
     <meta name="description" content="Discover 100% free, private health calculators. Accurately track your BMI, TDEE, body fat, water intake, and cycle metrics with zero registration.">
     
+    <!-- 针对二级工具列表页的 ItemList 结构化数据，向谷歌蜘蛛完美传递页面内所有资产 -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -17,254 +20,195 @@
         { "@type": "ListItem", "position": 2, "url": "https://www.toolsquark.com/tools/tdee-calculator.html" },
         { "@type": "ListItem", "position": 3, "url": "https://www.toolsquark.com/tools/bmr-calculator.html" },
         { "@type": "ListItem", "position": 4, "url": "https://www.toolsquark.com/tools/body-fat-calculator.html" },
-        { "@type": "ListItem", "position": 5, "url": "https://www.toolsquark.com/tools/water-intake-calculator.html" },
-        { "@type": "ListItem", "position": 6, "url": "https://www.toolsquark.com/tools/ideal-weight-calculator.html" },
-        { "@type": "ListItem", "position": 7, "url": "https://www.toolsquark.com/tools/ovulation-calculator.html" },
-        { "@type": "ListItem", "position": 8, "url": "https://www.toolsquark.com/tools/pregnancy-due-date-calculator.html" },
-        { "@type": "ListItem", "position": 9, "url": "https://www.toolsquark.com/tools/daily-steps-goal-calculator.html" },
-        { "@type": "ListItem", "position": 10, "url": "https://www.toolsquark.com/tools/steps-to-calories-converter.html" },
-        { "@type": "ListItem", "position": 11, "url": "https://www.toolsquark.com/tools/sleep-quality-assessment.html" }
+        { "@type": "ListItem", "position": 5, "url": "https://www.toolsquark.com/tools/lean-body-mass-calculator.html" },
+        { "@type": "ListItem", "position": 6, "url": "https://www.toolsquark.com/tools/waist-to-height-ratio-calculator.html" },
+        { "@type": "ListItem", "position": 7, "url": "https://www.toolsquark.com/tools/healthy-weight-range-calculator.html" },
+        { "@type": "ListItem", "position": 8, "url": "https://www.toolsquark.com/tools/water-intake-calculator.html" },
+        { "@type": "ListItem", "position": 9, "url": "https://www.toolsquark.com/tools/due-date-calculator.html" },
+        { "@type": "ListItem", "position": 10, "url": "https://www.toolsquark.com/tools/period-calculator.html" }
       ]
     }
     </script>
-    
+
     <style>
-    :root {
-        --primary: #2563eb;
-        --primary-hover: #1d4ed8;
-        --background: #f8fafc;
-        --text-main: #0f172a;
-        --text-muted: #64748b;
-        --card-bg: #ffffff;
-        --border-color: #e2e8f0;
-        --radius-lg: 16px;
-        --radius-md: 12px;
-        --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-    }
+        :root { 
+            --primary: #0f172a; 
+            --accent: #2563eb; 
+            --accent-light: #eff6ff;
+            --text-muted: #64748b; 
+            --bg: #f8fafc; 
+            --popular: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        
+        /* 容器与面包屑 */
+        .container { max-width: 1050px; margin: 40px auto 60px auto; padding: 0 20px; }
+        .breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; display: flex; align-items: center; gap: 6px; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        
+        /* 情感化头部开场 */
+        .header { margin-bottom: 50px; }
+        .header h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(to right, #0f172a, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .header p { color: var(--text-muted); font-size: 1.05rem; max-width: 700px; }
+        
+        /* 场景化分类副标题 */
+        .sub-category-title { font-size: 1.4rem; font-weight: 800; margin: 45px 0 20px 0; color: #1e293b; display: flex; align-items: center; gap: 10px; border-left: 4px solid var(--accent); padding-left: 12px; }
+        
+        /* 交互式工具网格 */
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .tool-card { background: white; padding: 28px; border-radius: 20px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .tool-card:hover { border-color: var(--accent); box-shadow: 0 20px 25px -5px rgba(37,99,235,0.05), 0 10px 10px -5px rgba(0,0,0,0.02); transform: translateY(-4px); }
+        
+        /* 打造视觉焦点：黄金卡片 */
+        .tool-card.popular-choice { border-color: #fbd38d; background: linear-gradient(180deg, #fffaf0 0%, #ffffff 100%); }
+        .tool-card.popular-choice:hover { border-color: var(--popular); box-shadow: 0 20px 25px -5px rgba(245,158,11,0.08); }
+        
+        /* 卡片内的时间/热门小标签 */
+        .card-badge { position: absolute; top: 15px; right: 20px; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+        .badge-popular { background: #fef3c7; color: #d97706; }
+        .badge-time { background: #f1f5f9; color: #475569; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-        background: var(--background); 
-        color: var(--text-main); 
-        line-height: 1.5; 
-        padding: 40px 16px; 
-    }
-    .container { max-width: 960px; margin: auto; }
-    
-    /* Navigation Breadcrumbs */
-    .nav-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 24px; color: var(--text-muted); }
-    .nav-breadcrumbs a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
-    .nav-breadcrumbs a:hover { color: var(--primary); }
+        .tool-meta { margin-bottom: 12px; }
+        .tool-name { font-weight: 800; display: block; font-size: 1.15rem; color: #1e293b; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .tool-desc { font-size: 0.95rem; color: var(--text-muted); font-weight: 400; line-height: 1.5; }
+        
+        /* 卡片底部隐藏式微交互 */
+        .card-footer { margin-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+        .card-footer .go-link { opacity: 0; transition: 0.2s; transform: translateX(-5px); }
+        .tool-card:hover .card-footer .go-link { opacity: 1; transform: translateX(0); }
+        .tool-card.popular-choice .card-footer { color: #d97706; }
 
-    /* Category Brand Hero Header - Perfectly Matched to Lifestyle */
-    .category-hero { 
-        background: linear-gradient(135deg, #1e3a8a, #2563eb); 
-        color: white; 
-        padding: 48px 32px; 
-        border-radius: var(--radius-lg); 
-        margin-bottom: 32px; 
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); 
-    }
-    .category-hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
-    .category-hero p { font-size: 16px; opacity: 0.9; max-width: 680px; font-weight: 400; }
-
-    /* Dynamic Grid Layout Framework */
-    .tools-grid { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-        gap: 16px; 
-        margin-bottom: 40px; 
-    }
-    
-    /* Interactive Card Framework - Matched to Lifestyle */
-    .tool-card { 
-        background: var(--card-bg); 
-        border: 1px solid var(--border-color); 
-        border-radius: var(--radius-md); 
-        padding: 20px; 
-        text-decoration: none; 
-        color: inherit; 
-        transition: all 0.2s ease; 
-        display: flex; 
-        flex-direction: column; 
-        justify-content: space-between; 
-        min-height: 200px;
-        box-shadow: var(--shadow-sm);
-    }
-    .tool-card:hover { 
-        border-color: #94a3b8; 
-        transform: translateY(-2px); 
-    }
-    
-    /* Card Elements & Badges */
-    .card-header { display: flex; flex-direction: column; gap: 8px; }
-    .badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); }
-    .card-header h3 { font-size: 18px; font-weight: 800; color: #1e293b; letter-spacing: -0.02em; }
-    .card-body { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; text-align: justify; }
-    
-    /* Card Footer Call-to-Actions */
-    .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
-    .card-footer span { font-size: 13px; font-weight: 700; color: var(--text-main); }
-    .go-link { width: 24px; height: 24px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; transition: all 0.2s; color: var(--text-main); }
-    .tool-card:hover .go-link { background: var(--primary); color: white; }
-
-    /* E-E-A-T Editorial Section Alignment */
-    .e-e-a-t-section { 
-        background: var(--card-bg); 
-        padding: 32px; 
-        border-radius: var(--radius-lg); 
-        border: 1px solid var(--border-color); 
-        box-shadow: var(--shadow-sm); 
-        margin-bottom: 32px;
-    }
-    .e-e-a-t-section h2 { font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 12px; letter-spacing: -0.02em; }
-    .e-e-a-t-section p { color: #475569; font-size: 14.5px; margin-bottom: 16px; text-align: justify; line-height: 1.6; }
-    
-    .disclaimer-box { 
-        padding: 16px; 
-        border-radius: var(--radius-md); 
-        background: #fef2f2; 
-        border-left: 4px solid #ef4444; 
-        color: #991b1b; 
-        font-size: 13.5px; 
-        line-height: 1.5; 
-    }
-    .disclaimer-box strong { color: #7f1d1d; display: block; margin-bottom: 2px; }
-
-    /* Footer Block Configuration */
-    footer { margin-top: 80px; padding: 40px 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); }
-    .footer-links { display: flex; justify-content: center; gap: 20px; font-size: 0.85rem; }
-    .footer-links a { text-decoration: none; color: inherit; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--primary); }
-    .footer-copy { margin-top: 20px; font-size: 0.75rem; }
-
-    @media(max-width: 768px) {
-        body { padding: 24px 12px; }
-        .category-hero { padding: 36px 20px; margin-bottom: 24px; }
-        .category-hero h1 { font-size: 26px; }
-        .tools-grid { grid-template-columns: 1fr; gap: 12px; }
-        .e-e-a-t-section { padding: 20px; }
-    }
+        /* YMYL 算法安全气垫与背书区 */
+        .e-e-a-t-section { margin-top: 80px; background: white; padding: 45px; border-radius: 24px; border: 1px solid #e2e8f0; }
+        .e-e-a-t-section h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 15px; color: #1e293b; }
+        .e-e-a-t-section p { color: var(--text-muted); font-size: 0.96rem; line-height: 1.7; margin-bottom: 15px; }
+        .disclaimer-box { font-size: 0.9rem; font-style: italic; border-left: 3px solid #cbd5e1; padding-left: 15px; color: #64748b; }
     </style>
 </head>
 <body>
-<div class="container">
-    <nav class="nav-breadcrumbs">
-        <a href="https://www.toolsquark.com/">Home</a> &gt; <span>Health Tools</span>
-    </nav>
 
-    <header class="category-hero">
-        <h1>Health & Wellness Calculators</h1>
-        <p>Access precision physical index models, dynamic nutritional baseline estimators, and structural biometric workload mapping matrices instantly without account logs.</p>
+<div class="container">
+    <!-- SEO 黄金线：完美的面包屑路径，顺畅引导蜘蛛与回流 -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Health Tools</span>
+    </div>
+
+    <!-- 情感化内容头部 -->
+    <header class="header">
+        <h1>Data-Driven Health Calculators</h1>
+        <p>No subscriptions, no hidden tracking. Decode your body metrics with precise mathematical instruments completely privately in your local browser.</p>
     </header>
 
-    <main class="tools-grid">
-        
-        <a href="bmi-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Body Mass</span>
-                <h3>BMI Calculator</h3>
-                <p class="card-body">Compute immediate Body Mass Index ratios based on clinical weight and height parameters to classify structural tissue status.</p>
+    <!-- 🌟 子场景一：减脂、身材与代谢管理 -->
+    <h2 class="sub-category-title">🎯 Weight & Body Composition</h2>
+    <div class="tools-grid">
+        <a href="tools/bmi-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 1 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">⚖️ BMI Calculator</span>
+                <span class="tool-desc">The classic health baseline. Find out if your current weight safely matches your height profile.</span>
             </div>
-            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
+            <div class="card-footer"><span>Check Baseline</span><span class="go-link">→</span></div>
         </a>
 
-        <a href="tdee-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Metabolic</span>
-                <h3>TDEE Calculator</h3>
-                <p class="card-body">Quantify your comprehensive Total Daily Energy Expenditure utilizing customized structural physical metabolic variables.</p>
+        <!-- 视觉焦点：TDEE 黄金色高亮卡片 -->
+        <a href="tools/tdee-calculator.html" class="tool-card popular-choice">
+            <span class="card-badge badge-popular">✨ Best for Fitness</span>
+            <div class="tool-meta">
+                <span class="tool-name">🔥 TDEE Calculator</span>
+                <span class="tool-desc">Discover your exact daily caloric burn baseline. The absolute starting point for any successful diet plan.</span>
             </div>
-            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
+            <div class="card-footer"><span>Calculate Daily Burn</span><span class="go-link">→</span></div>
         </a>
 
-        <a href="bmr-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Metabolic</span>
-                <h3>BMR Calculator</h3>
-                <p class="card-body">Determine baseline metabolic energy metrics expended exclusively at absolute non-active biological rest periods safely.</p>
+        <a href="tools/bmr-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 1 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🫀 BMR Calculator</span>
+                <span class="tool-desc">Uncover your basal metabolic rate—the energy your body consumes just staying alive at complete rest.</span>
             </div>
-            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
+            <div class="card-footer"><span>Check Basal Calories</span><span class="go-link">→</span></div>
         </a>
 
-        <a href="body-fat-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Body Mass</span>
-                <h3>Body Fat Calculator</h3>
-                <p class="card-body">Estimate net corporate adipose tissue distributions accurately leveraging specialized physical metric parameters.</p>
+        <a href="tools/body-fat-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 2 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🧬 Body Fat Calculator</span>
+                <span class="tool-desc">Estimate your body fat percentage safely using the trusted, standardized U.S. Navy formula.</span>
             </div>
-            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
+            <div class="card-footer"><span>Estimate Fat %</span><span class="go-link">→</span></div>
         </a>
 
-        <a href="water-intake-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Hydration</span>
-                <h3>Water Intake Calculator</h3>
-                <p class="card-body">Calculate optimal custom dynamic body cell hydration markers matching physical environmental sweat parameters tracking.</p>
+        <a href="tools/lean-body-mass-calculator.html" class="tool-card">
+            <span class="tool-name">💪 Lean Body Mass</span>
+            <div class="tool-meta">
+                <span class="tool-name">🥩 Lean Body Mass</span>
+                <span class="tool-desc">Isolate your pure muscle, bone, and organ weight by stripping fat metrics from the equation.</span>
             </div>
-            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
+            <div class="card-footer"><span>Isolate Mass</span><span class="go-link">→</span></div>
         </a>
 
-        <a href="ideal-weight-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Body Mass</span>
-                <h3>Ideal Weight Calculator</h3>
-                <p class="card-body">Identify biological mass milestones based on foundational clinical parameters and structural height records.</p>
+        <a href="tools/waist-to-height-ratio-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 1 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">📏 Waist-to-Height Ratio</span>
+                <span class="tool-desc">A modern indicator of cardiovascular health. Assess your body fat distribution beyond standard weight.</span>
             </div>
-            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
+            <div class="card-footer"><span>Assess Distribution</span><span class="go-link">→</span></div>
         </a>
 
-        <a href="ovulation-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Biometric Cycle</span>
-                <h3>Ovulation Calculator</h3>
-                <p class="card-body">Track dynamic hormonal peak windows and map upcoming biological reproductive wellness calendar trends.</p>
+        <a href="tools/healthy-weight-range-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 1 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🎯 Ideal Weight Zone</span>
+                <span class="tool-desc">Stop chasing arbitrary scales. Map out the scientifically realistic, healthy target weight range for your frame.</span>
             </div>
-            <div class="card-footer"><span>Launch Tracker</span><span class="go-link">→</span></div>
+            <div class="card-footer"><span>Find My Zone</span><span class="go-link">→</span></div>
+        </a>
+    </div>
+
+    <!-- 🌟 子场景二：日常活力调理 -->
+    <h2 class="sub-category-title">⚡ Daily Vitality & Balance</h2>
+    <div class="tools-grid">
+        <a href="tools/water-intake-calculator.html" class="tool-card popular-choice">
+            <span class="card-badge badge-popular">💡 Personalized</span>
+            <div class="tool-meta">
+                <span class="tool-name">💧 Water Intake Calculator</span>
+                <span class="tool-desc">Drinking 8 glasses is a myth. Discover your custom, optimal daily hydration goal based on weight and activity levels.</span>
+            </div>
+            <div class="card-footer"><span>Get Fluid Metric</span><span class="go-link">→</span></div>
+        </a>
+    </div>
+
+    <!-- 🌟 子场景三：两性、经期与生育健康 -->
+    <h2 class="sub-category-title">🌱 Maternal & Cycle Wellness</h2>
+    <div class="tools-grid">
+        <a href="tools/due-date-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 2 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">👶 Due Date Calculator</span>
+                <span class="tool-desc">Map out your pregnancy milestones and pinpoint your expected arrival date based on standard gestational metrics.</span>
+            </div>
+            <div class="card-footer"><span>Track Pregnancy</span><span class="go-link">→</span></div>
         </a>
 
-        <a href="pregnancy-due-date-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Biometric Cycle</span>
-                <h3>Pregnancy Due Date Calculator</h3>
-                <p class="card-body">Forecast structural gestation milestones and approximate dynamic developmental clinical scheduling parameters safely.</p>
+        <a href="tools/period-calculator.html" class="tool-card">
+            <span class="card-badge badge-time">⏱️ 1 min</span>
+            <div class="tool-meta">
+                <span class="tool-name">🩸 Period & Cycle Predictor</span>
+                <span class="tool-desc">Take the guesswork out of your month. Accurately monitor and predict your natural fertility windows and cycle phases.</span>
             </div>
-            <div class="card-footer"><span>Launch Tracker</span><span class="go-link">→</span></div>
+            <div class="card-footer"><span>Predict Cycle</span><span class="go-link">→</span></div>
         </a>
+    </div>
 
-        <a href="daily-steps-goal-calculator.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Activity Kinetics</span>
-                <h3>Daily Steps Goal Calculator</h3>
-                <p class="card-body">Formulate interactive, personalized step targets and construct structured, progressive metric volume schedules safely.</p>
-            </div>
-            <div class="card-footer"><span>Launch Planner</span><span class="go-link">→</span></div>
-        </a>
-
-        <a href="steps-to-calories-converter.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Activity Kinetics</span>
-                <h3>Steps to Calories Converter</h3>
-                <p class="card-body">Convert your exact step tracking outputs directly into active mechanical calorie kinetic burn metrics seamlessly.</p>
-            </div>
-            <div class="card-footer"><span>Launch Converter</span><span class="go-link">→</span></div>
-        </a>
-
-        <a href="sleep-quality-assessment.html" class="tool-card">
-            <div class="card-header">
-                <span class="badge">Circadian</span>
-                <h3>Sleep Quality Assessment</h3>
-                <p class="card-body">Evaluate your architectural sleep parameters, latency indices, and daytime biological circadian rest consistency loops.</p>
-            </div>
-            <div class="card-footer"><span>Begin Assessment</span><span class="go-link">→</span></div>
-        </a>
-    </main>
-
+    <!-- 🌟 E-E-A-T 安全防护垫：通过丰富的专业文本、算法机制和医学免责声明对冲 YMYL 惩罚风险 -->
     <section class="e-e-a-t-section">
-        <h2>Evidence-Based Calculation Methodology</h2>
+        <h2>Scientific Rigor Meet Complete Privacy</h2>
         <p>
-            All utility platforms listed across ToolsQuark are developed following documented physiological and lifestyle peer-reviewed mathematics. We utilize universally recognized benchmarks, including the <strong>Mifflin-St Jeor formula</strong> for energetic tracking, the <strong>U.S. Navy circumference parameters</strong> for tissue indexing, and standard clinical metrics for gestational scheduling. We bridge complex health formulas into private, accessible user dashboards.
+            At ToolsQuark, our medical and health tracking modules are engineered strictly upon established physiological and lifestyle peer-reviewed mathematics. We utilize universally recognized benchmarks, including the <strong>Mifflin-St Jeor formula</strong> for energetic tracking, the <strong>U.S. Navy circumference parameters</strong> for tissue indexing, and standard clinical metrics for gestational scheduling. We bridge complex health formulas into private, accessible user dashboards.
         </p>
         <div class="disclaimer-box">
             <strong>Disclaimer:</strong> All analytics and calculations on ToolsQuark are designed purely as baseline lifestyle indicators and self-awareness utilities. They do not constitute official medical advice, professional diagnoses, clinical intervention, or therapeutic counseling. Always cross-reference your findings with a certified healthcare practitioner.
@@ -272,13 +216,14 @@
     </section>
 </div>
 
-<footer>
-    <div class="footer-links">
-        <a href="about.html">About</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+<footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b;">
+    <div style="display: flex; justify-content: center; gap: 20px; font-size: 0.85rem;">
+        <a href="about.html" style="text-decoration: none; color: inherit;">About</a>
+        <a href="privacy.html" style="text-decoration: none; color: inherit;">Privacy Policy</a>
+        <a href="terms.html" style="text-decoration: none; color: inherit;">Terms of Service</a>
     </div>
-    <p class="footer-copy">&copy; 2026 ToolsQuark. All rights reserved.</p>
+    <p style="margin-top: 20px; font-size: 0.75rem;">&copy; 2026 ToolsQuark. All rights reserved.</p>
 </footer>
+
 </body>
 </html>
