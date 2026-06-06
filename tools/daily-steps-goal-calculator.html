@@ -124,4 +124,195 @@ body {
 .faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; }
 .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
 .faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 6px; }
-.faq-item p
+.faq-item p { color: #475569; font-size: 14.5px; text-align: justify; }
+
+footer { text-align: center; margin-top: 36px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+
+@media(max-width:768px){
+    .hero { padding: 36px 20px; }
+    .hero h1 { font-size: 28px; }
+    .card { padding: 24px; }
+    .recommend-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="calc-navigation">
+        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+    </div>
+
+    <header class="hero">
+        <h1>Daily Steps Goal Calculator</h1>
+        <p>Formulate interactive, personalized step targets and construct structured, progressive metric volume schedules safely.</p>
+    </header>
+
+    <main class="card">
+        <h3>Target Quantification Matrix</h3>
+        
+        <div class="form-group">
+            <label for="select_goal">Primary Fitness Objective</label>
+            <div class="input-wrapper">
+                <select id="select_goal">
+                    <option value="1">Weight Loss & High Active Deficit</option>
+                    <option value="2" selected>Cardiovascular Stamina Optimization</option>
+                    <option value="3">General Well-being & Metabolic Maintenance</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="input_current_steps">Current Daily Average Baseline</label>
+            <div class="input-wrapper">
+                <input type="number" id="input_current_steps" placeholder="e.g. 4000" min="500" max="30000" value="4000">
+                <span class="unit">steps / day</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="input_weeks">Target Plan Duration</label>
+            <div class="input-wrapper">
+                <select id="input_weeks">
+                    <option value="4">4 Weeks (Accelerated Adaptation)</option>
+                    <option value="6" selected>6 Weeks (Recommended Standard)</option>
+                    <option value="8">8 Weeks (Gradual Sustainable Track)</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="calc-btn" onclick="generateQuantitativePlan()">Generate Plan & Milestones</button>
+
+        <div class="result-area" id="result-area">
+            <div class="result-headline">
+                <div class="label">Ultimate Target Step Goal</div>
+                <div class="output" id="calc-output">0 Steps</div>
+                <div class="status" id="calc-status">Analyzing Parameters...</div>
+            </div>
+
+            <div class="plan-title">📅 Quantitative Weekly Milestone Schedule</div>
+            <div class="plan-timeline" id="plan-timeline-container"></div>
+
+            <div class="interpretation-box">
+                <h4 id="calc-desc">Metabolic Optimization Guidance</h4>
+                <p id="calc-suggestion">Please execution validation calculations.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="card">
+        <h3>Recommended Utility Tools</h3>
+        <div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/steps-to-calories-converter.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Steps to Calories Converter</strong>
+                    <p>Convert your exact step tracking outputs directly into active mechanical calorie metrics.</p>
+                </div>
+            </a>
+            <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Water Intake Calculator</strong>
+                    <p>Calculate optimal custom dynamic body cell hydration markers matching physical sweat tracking.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="faq-title">Frequently Asked Questions</div>
+        <div class="faq-item">
+            <strong>How fast should I increase my daily step count?</strong>
+            <p>Sports science principles recommend a gradual volume increase of roughly 10% per week to avoid joint stress and long-term volitional fatigue loops.</p>
+        </div>
+        <div class="faq-item">
+            <strong>Why choose structured milestone adaptations?</strong>
+            <p>Quantitative tracking segments extreme long-range fitness demands into smaller attainable milestones, preventing willpower burnouts.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 ToolsQuark. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<script>
+// Specialized clinical physiological matching text descriptors database
+const interpretationRules = [
+    { target: 12000, status: "High Active Athlete", desc: "Aggressive Energy Deficit Mode", suggestion: "This volume maximizes daily metabolic thresholds. Ensure supportive lower-limb cushioning equipment is utilized to secure steady cartilage adaptation loops." },
+    { target: 8500, status: "Active Cardiovascular Focus", desc: "Optimal Aerobic Stamina Tracking", suggestion: "Excellent threshold for stabilizing vascular performance indices, normalizing systolic stress, and preserving baseline core cellular health parameters." },
+    { target: 5000, status: "Sedentary Prevention Baseline", desc: "Metabolic Maintenance Framework", suggestion: "Ideal functional baseline to alleviate common metabolic blocks and physical stiffness linked with static office workspaces." }
+];
+
+function initCalculator() {
+    // Ensuring clean state initialization layout configurations
+    document.getElementById('result-area').style.display = 'none';
+}
+
+function generateQuantitativePlan() {
+    const goalSelection = parseInt(document.getElementById("select_goal").value);
+    const currentSteps = parseInt(document.getElementById("input_current_steps").value);
+    const planWeeks = parseInt(document.getElementById("input_weeks").value);
+
+    if (isNaN(currentSteps) || currentSteps < 500 || currentSteps > 30000) {
+        alert("Please input a realistic baseline average daily step count (between 500 and 30000 steps).");
+        return;
+    }
+
+    try {
+        // Extract basic parameters based on focus configuration metrics
+        const ultimateTarget = goalSelection === 1 ? 12000 : (goalSelection === 2 ? 8500 : 5000);
+        
+        let matchedRule = interpretationRules.find(r => r.target === ultimateTarget) || interpretationRules[interpretationRules.length - 1];
+
+        // Process final outcome headers
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('calc-output').innerText = ultimateTarget.toLocaleString() + " Steps";
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
+
+        // Perform Gradual Quantitative Weekly Linear Milestone Formulations
+        let timelineHtml = "";
+        const netDifference = ultimateTarget - currentSteps;
+        
+        for (let w = 1; w <= planWeeks; w++) {
+            // Distribute milestones progressively across specified weekly columns linearly
+            let calculatedWeeklyTarget = Math.round(currentSteps + (netDifference * (w / planWeeks)));
+            if (calculatedWeeklyTarget < 1000) calculatedWeeklyTarget = 1000; // Safeguard operational boundaries
+
+            // Approximate physical calorie active burning index values (roughly 0.04 kcal per stride baseline)
+            const estimatedKcalBurn = Math.round(calculatedWeeklyTarget * 0.04);
+            
+            let milestoneTag = `Week ${w}`;
+            if (w === planWeeks) milestoneTag = `🏆 Week ${w} (Goal Peak)`;
+
+            timelineHtml += `
+                <div class="timeline-item">
+                    <span class="timeline-week">${milestoneTag}</span>
+                    <span class="timeline-steps">${calculatedWeeklyTarget.toLocaleString()} steps/day</span>
+                    <span class="timeline-burn">🔥 ~${estimatedKcalBurn} active kcal/day</span>
+                </div>
+            `;
+        }
+
+        // Render target timelines grid seamlessly
+        document.getElementById("plan-timeline-container").innerHTML = timelineHtml;
+        
+        // Push user attention smooth to interactive analytics view panels elements
+        document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    } catch (e) {
+        alert("An error occurred while building your quantitative milestone architecture. Please check selections.");
+    }
+}
+
+function handleBackHome() { 
+    if (confirm("Are you sure you want to leave this milestone calculator?")) {
+        window.location.href = "https://www.toolsquark.com/"; 
+    }
+}
+
+// Fixed Lifecycle Hook: Trigger DOM registration configurations on window initialization parameters
+window.addEventListener("DOMContentLoaded", initCalculator);
+</script>
+</body>
+</html>
