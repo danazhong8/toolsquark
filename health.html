@@ -37,10 +37,9 @@
         --text-muted: #64748b;
         --card-bg: #ffffff;
         --border-color: #e2e8f0;
-        --radius-lg: 24px;
-        --radius-md: 16px;
+        --radius-lg: 16px;
+        --radius-md: 12px;
         --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-        --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,91 +47,104 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
         background: var(--background); 
         color: var(--text-main); 
-        line-height: 1.6; 
+        line-height: 1.5; 
         padding: 40px 16px; 
     }
-    .container { max-width: 1000px; margin: auto; }
+    .container { max-width: 960px; margin: auto; }
     
-    /* Navigation Breadcrumb Links */
+    /* Navigation Breadcrumbs */
     .nav-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 24px; color: var(--text-muted); }
     .nav-breadcrumbs a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .nav-breadcrumbs a:hover { color: var(--primary); }
 
-    /* Structural Category Brand Hero Header Block Layout */
+    /* Category Brand Hero Header - Perfectly Matched to Lifestyle */
     .category-hero { 
         background: linear-gradient(135deg, #1e3a8a, #2563eb); 
         color: white; 
-        padding: 56px 40px; 
+        padding: 48px 32px; 
         border-radius: var(--radius-lg); 
-        margin-bottom: 40px; 
-        box-shadow: var(--shadow-md); 
+        margin-bottom: 32px; 
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); 
     }
-    .category-hero h1 { font-size: 38px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; line-height: 1.2; }
-    .category-hero p { font-size: 17px; opacity: 0.9; max-width: 700px; font-weight: 400; }
+    .category-hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
+    .category-hero p { font-size: 16px; opacity: 0.9; max-width: 680px; font-weight: 400; }
 
-    /* Interactive Tools Aggregations Adaptive Grid */
+    /* Dynamic Grid Layout Framework */
     .tools-grid { 
         display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-        gap: 24px; 
-        margin-bottom: 48px; 
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+        gap: 16px; 
+        margin-bottom: 40px; 
     }
+    
+    /* Interactive Card Framework - Matched to Lifestyle */
     .tool-card { 
         background: var(--card-bg); 
         border: 1px solid var(--border-color); 
         border-radius: var(--radius-md); 
-        padding: 24px; 
+        padding: 20px; 
         text-decoration: none; 
         color: inherit; 
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+        transition: all 0.2s ease; 
         display: flex; 
         flex-direction: column; 
         justify-content: space-between; 
+        min-height: 200px;
+        box-shadow: var(--shadow-sm);
     }
     .tool-card:hover { 
-        border-color: var(--primary); 
-        transform: translateY(-3px); 
-        box-shadow: var(--shadow-md); 
+        border-color: #94a3b8; 
+        transform: translateY(-2px); 
     }
-    .tool-meta h3 { font-size: 19px; font-weight: 700; color: #1e293b; margin-bottom: 8px; letter-spacing: -0.01em; transition: color 0.2s; }
-    .tool-card:hover .tool-meta h3 { color: var(--primary); }
-    .tool-meta p { font-size: 14px; color: var(--text-muted); line-height: 1.5; text-align: justify; }
-    .tool-action { display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700; color: var(--primary); margin-top: 18px; }
+    
+    /* Card Elements & Badges */
+    .card-header { display: flex; flex-direction: column; gap: 8px; }
+    .badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); }
+    .card-header h3 { font-size: 18px; font-weight: 800; color: #1e293b; letter-spacing: -0.02em; }
+    .card-body { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; text-align: justify; }
+    
+    /* Card Footer Call-to-Actions */
+    .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
+    .card-footer span { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .go-link { width: 24px; height: 24px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; transition: all 0.2s; color: var(--text-main); }
+    .tool-card:hover .go-link { background: var(--primary); color: white; }
 
-    /* Editorial Baseline Content Configurations Blocks */
-    .editorial-section { 
+    /* E-E-A-T Editorial Section Alignment */
+    .e-e-a-t-section { 
         background: var(--card-bg); 
-        padding: 40px; 
+        padding: 32px; 
         border-radius: var(--radius-lg); 
         border: 1px solid var(--border-color); 
         box-shadow: var(--shadow-sm); 
-        margin-bottom: 40px;
+        margin-bottom: 32px;
     }
-    .editorial-section h2 { font-size: 24px; font-weight: 800; color: #1e293b; margin-bottom: 16px; letter-spacing: -0.02em; }
-    .editorial-section p { color: #475569; font-size: 15.5px; margin-bottom: 20px; text-align: justify; }
+    .e-e-a-t-section h2 { font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .e-e-a-t-section p { color: #475569; font-size: 14.5px; margin-bottom: 16px; text-align: justify; line-height: 1.6; }
+    
     .disclaimer-box { 
-        padding: 20px; 
+        padding: 16px; 
         border-radius: var(--radius-md); 
         background: #fef2f2; 
         border-left: 4px solid #ef4444; 
         color: #991b1b; 
-        font-size: 14px; 
-        line-height: 1.6; 
+        font-size: 13.5px; 
+        line-height: 1.5; 
     }
-    .disclaimer-box strong { color: #7f1d1d; display: block; margin-bottom: 4px; }
+    .disclaimer-box strong { color: #7f1d1d; display: block; margin-bottom: 2px; }
 
+    /* Footer Block Configuration */
     footer { margin-top: 80px; padding: 40px 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); }
-    .footer-links { display: flex; justify-content: center; gap: 20px; font-size: 14px; margin-bottom: 20px; }
-    .footer-links a { text-decoration: none; color: inherit; font-weight: 500; transition: color 0.2s; }
+    .footer-links { display: flex; justify-content: center; gap: 20px; font-size: 0.85rem; }
+    .footer-links a { text-decoration: none; color: inherit; transition: color 0.2s; }
     .footer-links a:hover { color: var(--primary); }
-    .footer-copy { font-size: 12px; }
+    .footer-copy { margin-top: 20px; font-size: 0.75rem; }
 
     @media(max-width: 768px) {
         body { padding: 24px 12px; }
-        .category-hero { padding: 40px 24px; margin-bottom: 28px; }
-        .category-hero h1 { font-size: 28px; }
-        .tools-grid { grid-template-columns: 1fr; gap: 16px; }
-        .editorial-section { padding: 24px; }
+        .category-hero { padding: 36px 20px; margin-bottom: 24px; }
+        .category-hero h1 { font-size: 26px; }
+        .tools-grid { grid-template-columns: 1fr; gap: 12px; }
+        .e-e-a-t-section { padding: 20px; }
     }
     </style>
 </head>
@@ -148,96 +160,108 @@
     </header>
 
     <main class="tools-grid">
+        
         <a href="bmi-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Body Mass</span>
                 <h3>BMI Calculator</h3>
-                <p>Compute immediate Body Mass Index ratios based on clinical weight and height parameters to classify structural tissue status.</p>
+                <p class="card-body">Compute immediate Body Mass Index ratios based on clinical weight and height parameters to classify structural tissue status.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
         </a>
 
         <a href="tdee-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Metabolic</span>
                 <h3>TDEE Calculator</h3>
-                <p>Quantify your comprehensive Total Daily Energy Expenditure utilizing customized structural physical metabolic variables.</p>
+                <p class="card-body">Quantify your comprehensive Total Daily Energy Expenditure utilizing customized structural physical metabolic variables.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
         </a>
 
         <a href="bmr-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Metabolic</span>
                 <h3>BMR Calculator</h3>
-                <p>Determine baseline metabolic energy metrics expended exclusively at absolute non-active biological rest periods safely.</p>
+                <p class="card-body">Determine baseline metabolic energy metrics expended exclusively at absolute non-active biological rest periods safely.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
         </a>
 
         <a href="body-fat-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Body Mass</span>
                 <h3>Body Fat Calculator</h3>
-                <p>Estimate net corporate adipose tissue distributions accurately leveraging specialized physical metric parameters.</p>
+                <p class="card-body">Estimate net corporate adipose tissue distributions accurately leveraging specialized physical metric parameters.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
         </a>
 
         <a href="water-intake-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Hydration</span>
                 <h3>Water Intake Calculator</h3>
-                <p>Calculate optimal custom dynamic body cell hydration markers matching physical environmental sweat parameters tracking.</p>
+                <p class="card-body">Calculate optimal custom dynamic body cell hydration markers matching physical environmental sweat parameters tracking.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
         </a>
 
         <a href="ideal-weight-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Body Mass</span>
                 <h3>Ideal Weight Calculator</h3>
-                <p>Identify biological mass milestones based on foundational clinical parameters and structural height records.</p>
+                <p class="card-body">Identify biological mass milestones based on foundational clinical parameters and structural height records.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Calculator</span><span class="go-link">→</span></div>
         </a>
 
         <a href="ovulation-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Biometric Cycle</span>
                 <h3>Ovulation Calculator</h3>
-                <p>Track dynamic hormonal peak windows and map upcoming biological reproductive wellness calendar trends.</p>
+                <p class="card-body">Track dynamic hormonal peak windows and map upcoming biological reproductive wellness calendar trends.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Tracker</span><span class="go-link">→</span></div>
         </a>
 
         <a href="pregnancy-due-date-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Biometric Cycle</span>
                 <h3>Pregnancy Due Date Calculator</h3>
-                <p>Forecast structural gestation milestones and approximate dynamic developmental clinical scheduling parameters safely.</p>
+                <p class="card-body">Forecast structural gestation milestones and approximate dynamic developmental clinical scheduling parameters safely.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Tracker</span><span class="go-link">→</span></div>
         </a>
 
         <a href="daily-steps-goal-calculator.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Activity Kinetics</span>
                 <h3>Daily Steps Goal Calculator</h3>
-                <p>Formulate interactive, personalized step targets and construct structured, progressive metric volume schedules safely.</p>
+                <p class="card-body">Formulate interactive, personalized step targets and construct structured, progressive metric volume schedules safely.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Planner</span><span class="go-link">→</span></div>
         </a>
 
         <a href="steps-to-calories-converter.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Activity Kinetics</span>
                 <h3>Steps to Calories Converter</h3>
-                <p>Convert your exact step tracking outputs directly into active mechanical calorie kinetic burn metrics seamlessly.</p>
+                <p class="card-body">Convert your exact step tracking outputs directly into active mechanical calorie kinetic burn metrics seamlessly.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Launch Converter</span><span class="go-link">→</span></div>
         </a>
 
         <a href="sleep-quality-assessment.html" class="tool-card">
-            <div class="tool-meta">
+            <div class="card-header">
+                <span class="badge">Circadian</span>
                 <h3>Sleep Quality Assessment</h3>
-                <p>Evaluate your architectural sleep parameters, latency indices, and daytime biological circadian rest consistency loops.</p>
+                <p class="card-body">Evaluate your architectural sleep parameters, latency indices, and daytime biological circadian rest consistency loops.</p>
             </div>
-            <div class="tool-action">Launch Tool →</div>
+            <div class="card-footer"><span>Begin Assessment</span><span class="go-link">→</span></div>
         </a>
     </main>
 
-    <section class="editorial-section">
+    <section class="e-e-a-t-section">
         <h2>Evidence-Based Calculation Methodology</h2>
         <p>
             All utility platforms listed across ToolsQuark are developed following documented physiological and lifestyle peer-reviewed mathematics. We utilize universally recognized benchmarks, including the <strong>Mifflin-St Jeor formula</strong> for energetic tracking, the <strong>U.S. Navy circumference parameters</strong> for tissue indexing, and standard clinical metrics for gestational scheduling. We bridge complex health formulas into private, accessible user dashboards.
