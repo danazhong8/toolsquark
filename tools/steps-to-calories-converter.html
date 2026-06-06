@@ -186,4 +186,165 @@ footer { text-align: center; margin-top: 36px; color: var(--text-muted); font-si
 
         <button class="calc-btn" onclick="calculateEnergyExpenditure()">Convert & Analyze Target</button>
 
-        <div class="result-area"
+        <div class="result-area" id="result-area">
+            <div class="result-headline">
+                <div class="label">Estimated Energy Expenditure</div>
+                <div class="output" id="calc-output">0.00 kcal</div>
+                <div class="status" id="calc-status">Analyzing Profile...</div>
+            </div>
+
+            <div class="target-section">
+                <div class="target-header">
+                    <span>Target Achievement Rate</span>
+                    <span id="label-progress">0%</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" id="bar-progress"></div>
+                </div>
+                <div class="target-message" id="target-msg">Enter parameters to evaluate your fitness milestone data.</div>
+            </div>
+
+            <div class="equivalents-title">Quantitative Metabolic Equivalents</div>
+            <div class="equivalents-grid">
+                <div class="equiv-card">
+                    <div class="equiv-icon">🍚</div>
+                    <div class="equiv-val" id="equiv-rice">0.0</div>
+                    <div class="equiv-label">Bowls of Rice</div>
+                </div>
+                <div class="equiv-card">
+                    <div class="equiv-icon">🍔</div>
+                    <div class="equiv-val" id="equiv-burger">0.0</div>
+                    <div class="equiv-label">Burgers</div>
+                </div>
+                <div class="equiv-card">
+                    <div class="equiv-icon">🥤</div>
+                    <div class="equiv-val" id="equiv-cola">0.0</div>
+                    <div class="equiv-label">Cans of Cola</div>
+                </div>
+            </div>
+
+            <div class="interpretation-box" id="interpretation-box">
+                <h4 id="calc-desc">Metabolic Assessment Status</h4>
+                <p id="calc-suggestion">Please perform an interactive evaluation track.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="card">
+        <h3>Recommended Utility Tools</h3>
+        <div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/daily-steps-goal-calculator.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Daily Steps Goal Calculator</strong>
+                    <p>Calculate your recommended step counts tailored directly to your specific metabolic objectives.</p>
+                </div>
+            </a>
+            <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Water Intake Calculator</strong>
+                    <p>Determine individual hydration rules matching daily sweat profiles and weight scales.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="faq-title">Frequently Asked Questions</div>
+        <div class="faq-item">
+            <strong>How accurate is this converter?</strong>
+            <p>It provides a solid metabolic estimate based on mechanical workload. True burn variations rely heavily on individual walking velocity, metabolic health profiles, and precise terrain inclines.</p>
+        </div>
+        <div class="faq-item">
+            <strong>How does target tracking enhance performance?</strong>
+            <p>Quantitative milestone visibility triggers positive psychological reinforcement loops, decreasing the overall likelihood of voluntary exercise routine dropouts.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 ToolsQuark. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<script>
+// Granular behavioral matching datasets configurations
+const interpretationRules = [
+    { min: 0, max: 150, status: "Light Physical Activity", desc: "Minimal Metabolic Impact", suggestion: "Great effort starting out. Consider extending your walking runtime to establish stronger cardiovascular baseline adaptation loops." },
+    { min: 150, max: 350, status: "Moderate Active Performance", desc: "Active Fat-Loss Support", suggestion: "Excellent daily workload. You have successfully activated continuous blood glucose processing behaviors. Maintain this pace to secure lean muscle tone." },
+    { min: 350, max: 99999, status: "High-Intensity Endurance", desc: "Optimal Cardiovascular Output", suggestion: "Outstanding structural discipline! This sustained mechanical workload significantly accelerates long-term metabolic capacities and caloric optimization tracks." }
+];
+
+function calculateEnergyExpenditure() {
+    const steps = parseFloat(document.getElementById("input_steps").value);
+    const weight = parseFloat(document.getElementById("input_weight").value);
+    const goal = parseFloat(document.getElementById("input_goal").value);
+
+    if (isNaN(steps) || isNaN(weight) || isNaN(goal) || steps <= 0 || weight <= 0 || goal <= 0) {
+        alert("Please fill in all input fields correctly with positive numeric values.");
+        return;
+    }
+
+    try {
+        // Kinetic mechanical expenditure evaluation formulation
+        const finalResult = steps * (weight * 0.000057);
+        
+        let matchedRule = null;
+        for (let rule of interpretationRules) {
+            if (finalResult >= rule.min && finalResult < rule.max) {
+                matchedRule = rule;
+                break;
+            }
+        }
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
+        
+        // Inject core conversion outcomes
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('calc-output').innerText = finalResult.toFixed(2) + " kcal";
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
+
+        // Quantitative Target Achievement Computation Block
+        const progressPct = Math.min(Math.round((finalResult / goal) * 100), 200); // Caps out at 200% logically
+        const progressBar = document.getElementById("bar-progress");
+        const interpretationBox = document.getElementById("interpretation-box");
+        
+        document.getElementById("label-progress").innerText = progressPct + "%";
+        
+        // Dynamic UI Theme Swapping according to objective completion metrics
+        if (progressPct >= 100) {
+            progressBar.classList.add("target-achieved");
+            interpretationBox.classList.add("success-theme");
+            document.getElementById("target-msg").innerText = "🎉 Congratulations! You have fully crushed your daily active caloric target goal!";
+        } else {
+            progressBar.classList.remove("target-achieved");
+            interpretationBox.classList.remove("success-theme");
+            const remainingKcal = (goal - finalResult).toFixed(1);
+            document.getElementById("target-msg").innerText = `You are only ${remainingKcal} kcal away from achieving your objective. Keep pushing!`;
+        }
+
+        // Animate progress vector widths fluidly
+        setTimeout(() => {
+            progressBar.style.width = Math.min(progressPct, 100) + "%";
+        }, 100);
+
+        // Compute Specific Quantitative Food Equivalents
+        // Bowl of cooked white rice ~ 200 kcal, Standard fast-food burger ~ 400 kcal, Can of sweetened cola ~ 140 kcal
+        document.getElementById("equiv-rice").innerText = (finalResult / 200).toFixed(1);
+        document.getElementById("equiv-burger").innerText = (finalResult / 400).toFixed(1);
+        document.getElementById("equiv-cola").innerText = (finalResult / 140).toFixed(1);
+        
+        // Auto-scroll seamlessly to discoveries panel
+        document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } catch (e) {
+        alert("Calculation error. Please verify input variables.");
+    }
+}
+
+function handleBackHome() { 
+    if (confirm("Are you sure you want to leave this converter?")) {
+        window.location.href = "https://www.toolsquark.com/"; 
+    }
+}
+</script>
+</body>
+</html>
