@@ -3,57 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Steps Goal Calculator | Interactive Step Count Target Tool | ToolsQuark</title>
-<meta name="description" content="Calculate your recommended target daily step counts tailored directly to your specific fitness, metabolic health, and fat loss aspirations.">
-
-<!-- Structured Data Metadata: SoftwareApplication + FAQPage Combined Schema Configurations -->
-<script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Daily Steps Goal Calculator Assessment Tool",
-    "operatingSystem": "All",
-    "applicationCategory": "HealthApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "description": "An interactive fitness assessment utility calculating physical activity parameters and customized daily step targets based on individual lifestyle objectives.",
-    "browserRequirements": "Requires JavaScript. Requires HTML5."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is 10,000 steps a hard rule?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No, it originated as a marketing slogan. Clinical benefits scale beautifully starting from 7,500-8,500 steps per day."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I stack all my steps into the weekend?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "While helpful, consistent daily movement spreads metabolic benefits far more effectively than one massive weekend session."
-        }
-      }
-    ]
-  }
-]
-</script>
-
+<title>Daily Steps Goal Calculator | ToolsQuark</title>
 <style>
 :root {
     --primary: #2563eb;
     --primary-hover: #1d4ed8;
-    --warning: #f97316;
-    --warning-bg: #fff7ed;
     --background: #f8fafc;
     --text-main: #0f172a;
     --text-muted: #64748b;
@@ -61,13 +15,12 @@
     --border-color: #e2e8f0;
     --radius-lg: 24px;
     --radius-md: 16px;
-    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
     background: var(--background); 
     color: var(--text-main); 
     line-height: 1.6; 
@@ -75,219 +28,166 @@ body {
 }
 .container { max-width: 800px; margin: auto; }
 
-/* Hierarchical Navigation Breadcrumb Strategy */
-.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; padding-left: 4px; }
-.breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-.breadcrumb a:hover { color: var(--primary); }
-.breadcrumb .separator { font-size: 12px; opacity: 0.7; }
-.breadcrumb .current { color: var(--text-main); font-weight: 500; }
-
-/* Identity Branding Component Header Block */
-.hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none; }
-.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
-.hero p { font-size: 16px; opacity: 0.9; max-width: 620px; font-weight: 400; }
-
-/* Main Presentation Layout Elements */
-.card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
-.card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
-.hidden { display: none !important; }
-
-/* Form Context Navigation Options */
-.calc-navigation { display: flex; align-items: center; justify-content: flex-start; width: 100%; margin-bottom: 24px; }
-.back-home-btn { font-size: 14.5px; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap; flex-shrink: 0; cursor: pointer; font-weight: 600; background: transparent; border: none; padding: 4px 8px; border-radius: 8px; transition: all 0.2s; }
+/* Navigation & Header */
+.calc-navigation { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 20px; }
+.back-home-btn { color: var(--text-muted); text-decoration: none; font-weight: 600; background: transparent; border: none; cursor: pointer; padding: 4px 8px; border-radius: 8px; }
 .back-home-btn:hover { color: var(--primary); background: #f1f5f9; }
 
-/* Form Field Selectors and Inputs */
-.input-group { margin-bottom: 24px; }
-.input-group label { display: block; font-weight: 700; margin-bottom: 8px; color: #334155; font-size: 15px; }
-.input-group select { width: 100%; padding: 14px; border: 2px solid var(--border-color); border-radius: var(--radius-md); font-size: 16px; color: var(--text-main); outline: none; transition: all 0.2s; background-color: var(--card-bg); font-weight: 500; }
-.input-group select:focus { border-color: var(--primary); background: #f0f6ff; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
+.hero { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; padding: 40px 30px; border-radius: var(--radius-lg); margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
+.hero h1 { font-size: 32px; margin-bottom: 12px; font-weight: 800; }
+.hero p { font-size: 16px; opacity: .95; }
 
-/* Submission Triggers */
-.calc-submit-btn { width: 100%; padding: 16px; border: none; border-radius: var(--radius-md); background: var(--primary); color: white; font-size: 17px; font-weight: 700; cursor: pointer; transition: background .2s; box-shadow: 0 4px 12px rgba(37,99,235,0.2); }
-.calc-submit-btn:hover { background: var(--primary-hover); }
+/* Form Card Layout */
+.card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 700; margin-bottom: 8px; color: #334155; font-size: 15px; }
 
-/* Active Real-Time Analytics Dashboard Display */
-.result-box { background: #f0f6ff; border: 2px dashed var(--primary); padding: 32px; border-radius: var(--radius-lg); margin-top: 28px; text-align: center; }
-.normal-range-badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
-.result-val { font-size: 64px; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 12px; }
-.result-status { font-size: 22px; font-weight: 800; color: #1e3a8a; margin-bottom: 12px; letter-spacing: -0.01em; }
-.result-desc { color: #475569; font-size: 15.5px; margin-bottom: 20px; text-align: justify; line-height: 1.6; }
+select, input { width: 100%; padding: 14px; border-radius: var(--radius-md); border: 2px solid var(--border-color); font-size: 16px; color: var(--text-main); background: #f8fafc; transition: all 0.2s; }
+select:focus, input:focus { outline: none; border-color: var(--primary); background: #fff; }
 
-/* Custom Action Insights Modules */
-.suggestion-box { background: var(--card-bg); border-left: 4px solid var(--primary); padding: 18px; border-radius: 0 var(--radius-md) var(--radius-md) 0; text-align: left; box-shadow: var(--shadow-sm); border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-.suggestion-box h4 { color: #1e293b; margin-bottom: 6px; font-size: 15px; font-weight: 700; }
-.suggestion-box p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+.calc-btn { width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: var(--radius-md); font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
+.calc-btn:hover { background: var(--primary-hover); }
 
-/* Crosslink Layout Matrices Component */
-.recommend-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-@media (min-width: 600px) { .recommend-grid { grid-template-columns: 1fr 1fr 1fr; } }
-.recommend-link { text-decoration: none; color: inherit; }
-.recommend-item { background: #fafafa; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-color); transition: all 0.2s; height: 100%; display: flex; flex-direction: column; }
-.recommend-link:hover .recommend-item { background: #ffffff; border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 6px; }
-.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.45; text-align: justify; }
+/* Results Section */
+#result-area { display: none; margin-top: 25px; padding: 24px; background: #f0f6ff; border-radius: var(--radius-md); border-left: 5px solid var(--primary); }
+.result-title { font-size: 18px; font-weight: 700; color: #1e3a8a; }
+.result-value { font-size: 36px; font-weight: 800; color: var(--primary); margin: 12px 0; }
+.status-badge { display: inline-block; padding: 6px 12px; background: #e0f2fe; color: #0369a1; font-weight: 700; font-size: 13px; border-radius: 20px; margin-bottom: 12px; }
+.result-text { color: #475569; font-size: 15px; margin-bottom: 8px; }
 
-/* Informational FAQ Content Blueprint Layout */
-.faq-item { border-bottom: 1px solid var(--border-color); padding: 18px 0; }
+/* FAQ Section */
+.faq-title { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; }
+.faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; }
 .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
-.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 8px; }
-.faq-item p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 6px; }
+.faq-item p { color: #475569; font-size: 14.5px; }
 
-/* YMYL Transparency Framework & Compliance Grid Layer */
-.ymyl-backing { border-top: 1px solid var(--border-color); margin-top: 40px; padding-top: 24px; text-align: center; }
-.clinical-references { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; text-align: justify; background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
-.clinical-references strong { color: #475569; }
-.medical-disclaimer { font-size: 12px; color: #94a3b8; line-height: 1.55; text-align: justify; font-style: italic; }
-
-footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-color); letter-spacing: 0.05em; display: block; }
-
-@media(max-width:768px){ .hero { padding: 36px 20px; } .hero h1 { font-size: 28px; } .card { padding: 24px; } .result-val { font-size: 48px; } .result-status { font-size: 19px; } }
+footer { text-align: center; margin-top: 32px; color: var(--text-muted); font-size: 14px; }
 </style>
 </head>
 <body>
 <div class="container">
-
-    <!-- Structural Navigation Breadcrumbs Hierarchy -->
-    <nav class="breadcrumb">
-        <a href="https://www.toolsquark.com/">Home</a>
-        <span class="separator">/</span>
-        <a href="https://www.toolsquark.com/tools/">Health Tools</a>
-        <span class="separator">/</span>
-        <span class="current">Daily Steps Calculator</span>
-    </nav>
-
-    <!-- Header Branding Container Block Component -->
-    <header class="hero">
-        <h1>Daily Steps Goal Calculator</h1>
-        <p>Calculate your recommended target daily step counts tailored directly to your specific fitness and fat loss aspirations[cite: 14].</p>
-    </header>
-
     <div class="calc-navigation">
         <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
     </div>
 
-    <!-- Main Active Calculator Interface Component Core -->
+    <header class="hero">
+        <h1>Daily Steps Goal Calculator</h1>
+        <p>Calculate your optimized target daily step counts tailored directly to your specific fitness, metabolic health, and fat loss aspirations.</p>
+    </header>
+
     <main class="card">
-        <div id="inputs-area">
-            <div class="input-group">
-                <label for="input_goal">Primary Fitness Focus Target</label>
-                <select id="input_goal">
-                    <option value="1">Weight Loss & Fat Management</option>
-                    <option value="2" selected>General Health & Longevity optimization</option>
-                    <option value="3">Sedentary Break & Vascular Mobility</option>
-                </select>
-            </div>
+        <div id="dynamic-inputs"></div>
+        <button class="calc-btn" onclick="calculateNow()">Calculate Target</button>
+
+        <div id="result-area">
+            <div class="result-title">Your Target Output:</div>
+            <div class="result-value" id="calc-output">0</div>
+            <div class="status-badge" id="calc-status">Pending</div>
+            <p class="result-text" id="calc-desc"></p>
+            <p class="result-text" id="calc-suggestion" style="font-weight: 500; color: #1e293b;"></p>
         </div>
-        
-        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
-        
-        <!-- Output Content Area Deck (Hidden Dynamically) -->
-        <section id="result-area" class="result-box" style="display:none;">
-            <div class="normal-range-badge">Normal Baseline Range: 6,000 - 12,000 Steps / Day[cite: 14]</div>
-            <div class="result-val" id="calc-output">0</div>
-            <div class="result-status" id="calc-status"></div>
-            <div class="result-desc" id="calc-desc"></div>
-            <div class="suggestion-box">
-                <h4>💡 Professional Clinical Suggestion:</h4>
-                <p id="calc-suggestion"></p>
-            </div>
-        </section>
     </main>
 
-    <!-- Global Layout Recommendations Tools Matrix Block Component -->
     <section class="card">
-        <h3>Recommended Specialized Tools</h3>
-        <div class="recommend-grid">
-            <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>BMI Calculator</strong>
-                    <p>Quickly calculate your Body Mass Index and contextual somatic weight category status[cite: 14].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>BMR Calculator</strong>
-                    <p>Check your Basal Metabolic Rate tracking index to verify underlying daily calorie needs[cite: 14].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>Water Intake Calculator</strong>
-                    <p>Standard data formulas charting baseline daily water intake estimations for body mass[cite: 14].</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Structural FAQ Content Block Section -->
-    <section class="card">
-        <h3>Frequently Asked Questions</h3>
+        <div class="faq-title">Frequently Asked Questions</div>
         <div class="faq-item">
             <strong>Is 10,000 steps a hard rule?</strong>
-            <p>No, it originated as a marketing slogan[cite: 14]. Clinical benefits scale beautifully starting from 7,500 - 8,500 steps per day[cite: 14].</p>
+            <p>No, it originated as a marketing campaign. Health benefits, such as cardiovascular improvement and metabolic regulation, are observed starting from 7,500 to 8,500 daily steps.</p>
         </div>
         <div class="faq-item">
-            <strong>Can I stack all my steps into the weekend?</strong>
-            <p>While helpful, consistent daily movement spreads metabolic benefits far more effectively than one massive weekend session[cite: 14].</p>
+            <strong>How should I progress my step goals?</strong>
+            <p>If your baseline is low, increase your daily target by 1,000 steps each week to avoid overuse injuries and ensure metabolic sustainability.</p>
         </div>
     </section>
 
-    <!-- YMYL Quality Compliance Architecture Framework Layer -->
-    <section class="ymyl-backing">
-        <div class="clinical-references">
-            <strong>Methodology & Assessment Disclosures:</strong> This processing matrix calculates metabolic target outputs by cross-referencing targeted objective focuses with standard cardiovascular and daily activity clinical paradigms[cite: 14].
-            <strong>Zero Server Logs Data Sovereignty:</strong> Your focus metrics evaluate entirely inside your active local device frame[cite: 14]. No information parameters are ever serialized, parsed, stored, or transmitted across our backend cloud ecosystem[cite: 14].
-        </div>
-        <div class="medical-disclaimer">
-            <strong>Informational Framework Scope Notice:</strong> This automated activity assessment utility acts as an optimization reference for general metabolic scaling and conditioning goals[cite: 14]. This application does not issue medical diagnoses, therapeutic conditioning prescriptions, or formal cardiology physical therapeutic programs.
-        </div>
-    </section>
-
-    <!-- Global Page Layout Footer Node -->
     <footer>
-        <p>© 2026 ToolsQuark. All Local Calculations Evaluated Ethically[cite: 14].</p>
+        <p>© 2026 ToolsQuark. All Rights Reserved.</p>
     </footer>
 </div>
 
 <script>
+// Standard configuration parsing architectures perfectly mapping the template models
+const inputConfigs = [
+    {
+        id: "goal",
+        label: "Select your fitness and health objective:",
+        type: "select",
+        options: [
+            { value: "1", text: "High Intensity Fat Loss & Calorie Deficit" },
+            { value: "2", text: "Metabolic Health Maintenance & Cardiovascular Conditioning" },
+            { value: "3", text: "Baseline Sedentary Activity Recovery" }
+        ]
+    }
+];
+
+// The critical rule array missing in your previous execution pipeline
 const interpretationRules = [
     {
-        "min": 0, 
-        "max": 6000, 
-        "status": "Active Break Target", 
-        "desc": "This goal focuses on reducing the cardiovascular damages of prolonged sitting, serving as a clean entry point to daily fitness[cite: 14].", 
-        "suggestion": "Set a recurring chime to walk for 2 minutes every hour[cite: 14]. Seamlessly hitting this baseline protects vascular elasticity[cite: 14]."
+        min: 0,
+        max: 6000,
+        status: "Baseline Activity Zone",
+        desc: "This target focuses on breaking long sedentary periods and recovering baseline biological movement.",
+        suggestion: "Incorporate short 10-minute walking intervals after main meals to easily hit this foundational tier."
     },
     {
-        "min": 6000, 
-        "max": 10000, 
-        "status": "Cardio-Protective Health Target", 
-        "desc": "The clinical sweet spot! This target is tied directly to reduced all-cause mortality, improved heart health, and mental clarity[cite: 14].", 
-        "suggestion": "Fulfill parts of this goal via a structured morning brisk walk[cite: 14]. Consistency at this tier builds great vascular and metabolic health[cite: 14]."
+        min: 6001,
+        max: 10000,
+        status: "Active Metabolic Zone",
+        desc: "This is the ideal evidence-based target window for cardiovascular protection, optimized blood markers, and sustainable fat regulation.",
+        suggestion: "Maintain consistency. This volume provides significant systemic protection against insulin resistance."
     },
     {
-        "min": 10000, 
-        "max": 99999, 
-        "status": "Caloric Deficit Maximizer Target", 
-        "desc": "An aggressive, highly rewarding tier optimized to create an un-restrictive, natural caloric deficit for fat management[cite: 14].", 
-        "suggestion": "Incorporate longer weekend outdoor hikes to easily buffer your weekly numbers without fatiguing your central nervous system[cite: 14]."
+        min: 10001,
+        max: 99999,
+        status: "High Performance Conditioning Zone",
+        desc: "An aggressive objective designed to maximize total daily energy expenditure (TDEE) and support intensive body composition transformations.",
+        suggestion: "Ensure adequate nutritional recovery and wear supportive footwear to maintain joint integrity under high weekly volumes."
     }
-];[cite: 14]
+];
+
+// Instantiating elements dynamically on page mounting
+function initCalculator() {
+    const container = document.getElementById("dynamic-inputs");
+    let html = "";
+    
+    inputConfigs.forEach(cfg => {
+        html += `<div class="form-group">`;
+        html += `<label class="form-label" for="input_${cfg.id}">${cfg.label}</label>`;
+        
+        if (cfg.type === "select") {
+            html += `<select id="input_${cfg.id}">`;
+            cfg.options.forEach(opt => {
+                html += `<option value="${opt.value}">${opt.text}</option>`;
+            });
+            html += `</select>`;
+        }
+        html += `</div>`;
+    });
+    
+    container.innerHTML = html;
+}
 
 function calculateNow() {
-    const goalSelect = document.getElementById("input_goal");
-    const goalValue = parseInt(goalSelect.value, 10);
+    let args = {};
+    let missing = false;
     
-    if (isNaN(goalValue)) {
-        alert("Please select a valid fitness target option.");
+    inputConfigs.forEach(cfg => {
+        const element = document.getElementById(`input_${cfg.id}`);
+        const val = parseFloat(element.value);
+        if (isNaN(val)) missing = true;
+        args[cfg.id] = val;
+    });
+    
+    if (missing) {
+        alert("Please fill in all input fields correctly.");
         return;
     }
-
+    
     try {
-        // Evaluate target based on specified focus conditions
-        const finalResult = goalValue === 1 ? 12000 : (goalValue === 2 ? 8500 : 5000);[cite: 14]
+        // Core execution parser formula matching custom metrics
+        const formulaFunc = new Function('fields', 'return fields.goal === 1 ? 12000 : (fields.goal === 2 ? 8500 : 5000)');
+        const finalResult = formulaFunc(args);
         
         let matchedRule = null;
         for (let rule of interpretationRules) {
@@ -296,22 +196,29 @@ function calculateNow() {
                 break;
             }
         }
-        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];[cite: 14]
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
         
-        // Populate the dynamic target interface nodes
-        document.getElementById('result-area').style.display = 'block';[cite: 14]
-        document.getElementById('calc-output').innerText = finalResult.toLocaleString();
-        document.getElementById('calc-status').innerText = matchedRule.status;[cite: 14]
-        document.getElementById('calc-desc').innerText = matchedRule.desc;[cite: 14]
-        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;[cite: 14]
+        // Unlocking and injecting variables into view nodes smoothly
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('calc-output').innerText = finalResult.toLocaleString() + " Steps";
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
         
         document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } catch (e) {
-        alert("An error occurred while evaluating metrics. Please refresh.");
+        alert("An error occurred while running calculations. Please verify selection options.");
     }
 }
 
-function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }[cite: 14]
+function handleBackHome() { 
+    if (confirm("Are you sure you want to leave?")) {
+        window.location.href = "https://www.toolsquark.com/"; 
+    }
+}
+
+// Initialize template rendering architecture
+window.addEventListener("DOMContentLoaded", initCalculator);
 </script>
 </body>
 </html>
