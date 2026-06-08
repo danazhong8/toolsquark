@@ -6,7 +6,6 @@
 <title>Water Intake Calculator | Daily Hydration & Fluid Needs | ToolsQuark</title>
 <meta name="description" content="Calculate your optimal daily water intake based on your body weight and daily exercise duration to maintain healthy physical hydration levels.">
 
-<!-- Structured Data Metadata: SoftwareApplication + FAQPage Combined Schema Configurations -->
 <script type="application/ld+json">
 [
   {
@@ -52,259 +51,338 @@
 :root {
     --primary: #2563eb;
     --primary-hover: #1d4ed8;
-    --warning: #f97316;
-    --warning-bg: #fff7ed;
     --background: #f8fafc;
     --text-main: #0f172a;
     --text-muted: #64748b;
     --card-bg: #ffffff;
     --border-color: #e2e8f0;
-    --radius-lg: 24px;
-    --radius-md: 16px;
-    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
     background: var(--background); 
     color: var(--text-main); 
-    line-height: 1.6; 
-    padding: 24px 16px; 
+    line-height: 1.5; 
+    padding: 40px 16px; 
 }
 .container { max-width: 800px; margin: auto; }
 
-/* Hierarchical Navigation Breadcrumb Strategy */
-.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; padding-left: 4px; }
-.breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-.breadcrumb a:hover { color: var(--primary); }
-.breadcrumb .separator { font-size: 12px; opacity: 0.7; }
-.breadcrumb .current { color: var(--text-main); font-weight: 500; }
+/* Navigation Breadcrumbs */
+.nav-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 24px; color: var(--text-muted); }
+.nav-breadcrumbs a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-breadcrumbs a:hover { color: var(--primary); }
 
-/* Identity Branding Component Header Block */
-.hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none; }
-.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
-.hero p { font-size: 16px; opacity: 0.9; max-width: 620px; font-weight: 400; }
+/* Category Brand Hero Header */
+.category-hero { 
+    background: linear-gradient(135deg, #1e3a8a, #2563eb); 
+    color: white; 
+    padding: 48px 32px; 
+    border-radius: var(--radius-lg); 
+    margin-bottom: 32px; 
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); 
+}
+.category-hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
+.category-hero p { font-size: 16px; opacity: 0.9; max-width: 680px; font-weight: 400; }
 
-/* Main Presentation Layout Elements */
-.card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
-.card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
-.hidden { display: none !important; }
+/* Back Navigation Button Area */
+.calc-navigation { margin-bottom: 24px; }
+.back-home-btn { 
+    background: none; 
+    border: none; 
+    color: var(--text-muted); 
+    font-size: 14px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 4px; 
+    transition: color 0.2s; 
+}
+.back-home-btn:hover { color: var(--primary); }
 
-/* Form Context Navigation Options */
-.calc-navigation { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 24px; gap: 16px; }
-.back-home-btn { font-size: 14.5px; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap; flex-shrink: 0; cursor: pointer; font-weight: 600; background: transparent; border: none; padding: 4px 8px; border-radius: 8px; transition: all 0.2s; }
-.back-home-btn:hover { color: var(--primary); background: #f1f5f9; }
+/* Interactive Calculator Working Panel Frame */
+.calculator-card { 
+    background: var(--card-bg); 
+    border: 1px solid var(--border-color); 
+    border-radius: var(--radius-lg); 
+    padding: 32px; 
+    box-shadow: var(--shadow-sm); 
+    margin-bottom: 32px; 
+}
 
-/* Interactive Input Component Fields */
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; font-weight: 700; margin-bottom: 8px; color: #334155; font-size: 15px; }
-.input-group input { width: 100%; padding: 14px; border: 2px solid var(--border-color); border-radius: var(--radius-md); font-size: 16px; outline: none; transition: all 0.2s; font-family: inherit; color: var(--text-main); }
-.input-group input:focus { border-color: var(--primary); background: #f0f6ff; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+/* Questionnaire Elements Layout Styles */
+.question-block { margin-bottom: 28px; }
+.question-title { font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 12px; }
 
-/* Execution Controls */
-.calc-submit-btn { width: 100%; padding: 16px; border: none; border-radius: var(--radius-md); background: var(--primary); color: white; font-size: 17px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: inherit; display: block; text-align: center; }
-.calc-submit-btn:hover { background: var(--primary-hover); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.15); }
-.calc-submit-btn:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+/* Numeric Fields Structural Integration */
+.input-field { 
+    width: 100%; 
+    padding: 14px 16px; 
+    font-size: 15px; 
+    border: 1px solid var(--border-color); 
+    border-radius: var(--radius-md); 
+    background: #ffffff; 
+    color: var(--text-main); 
+    outline: none; 
+    transition: all 0.2s; 
+}
+.input-field:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
 
-/* Output Summary Boxes */
-.result-box { background: #f0f6ff; border: 2px dashed var(--primary); padding: 32px; border-radius: var(--radius-lg); margin-top: 28px; text-align: center; }
-.normal-range-badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 6px 16px; border-radius: 20px; font-size: 13.5px; font-weight: 700; margin-bottom: 18px; letter-spacing: 0.02em; }
-.result-val { font-size: 64px; font-weight: 800; color: var(--primary); margin-bottom: 8px; letter-spacing: -0.03em; line-height: 1; }
-.result-status { font-size: 24px; font-weight: 800; color: #1e3a8a; margin-bottom: 12px; letter-spacing: -0.01em; }
-.result-desc { color: #475569; font-size: 15.5px; margin-bottom: 20px; text-align: justify; line-height: 1.6; }
+/* Submission Triggers Styling Block */
+.action-area { margin-top: 32px; }
+.submit-btn { 
+    width: 100%; 
+    background: var(--primary); 
+    color: white; 
+    border: none; 
+    padding: 16px; 
+    font-size: 16px; 
+    font-weight: 700; 
+    border-radius: var(--radius-md); 
+    cursor: pointer; 
+    transition: background 0.2s; 
+}
+.submit-btn:hover { background: var(--primary-hover); }
+
+/* Analytical Results Core Dashboard Elements */
+.result-box { 
+    margin-top: 32px; 
+    padding-top: 32px; 
+    border-top: 1px solid var(--border-color); 
+    display: none; 
+}
+.score { font-size: 64px; font-weight: 800; text-align: center; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+.profile { text-align: center; font-size: 22px; font-weight: 800; margin-bottom: 12px; color: #1e293b; letter-spacing: -0.02em; }
+.description { text-align: center; color: #475569; margin-bottom: 32px; font-size: 15px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 
 /* Dynamic Diagnostic Recommendations Elements */
-.suggestion-box { background: var(--card-bg); border-left: 4px solid var(--primary); padding: 18px; border-radius: 0 var(--radius-md) var(--radius-md) 0; text-align: left; margin-top: 15px; box-shadow: var(--shadow-sm); }
-.suggestion-box h4 { color: #1e293b; margin-bottom: 6px; font-size: 15.5px; font-weight: 700; }
-.suggestion-box p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+.suggestion-box { 
+    background: var(--background); 
+    border-left: 4px solid var(--primary); 
+    padding: 20px; 
+    border-radius: 0 var(--radius-md) var(--radius-md) 0; 
+}
+.suggestion-box h4 { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
+.suggestion-box p { font-size: 14px; color: #475569; line-height: 1.5; }
 
-/* Crosslink Layout Matrices Component */
-.recommend-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 4px; }
-@media (min-width: 600px) { .recommend-grid { grid-template-columns: 1fr 1fr 1fr; } }
-.recommend-link { text-decoration: none; color: inherit; }
-.recommend-item { background: #f0f6ff; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-color); transition: all 0.2s; height: 100%; display: flex; flex-direction: column; }
-.recommend-link:hover .recommend-item { background: #ffffff; border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-.recommend-item.neutral { background: #fafafa; }
-.recommend-link:hover .recommend-item.neutral { background: #ffffff; }
-.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 6px; }
-.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.45; text-align: justify; }
+/* FAQ Accordion Architecture Styles */
+.faq-section { margin-bottom: 32px; }
+.faq-section h2 { font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.02em; }
+.faq-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+.faq-trigger { width: 100%; text-align: left; background: none; border: none; padding: 18px 20px; font-size: 15px; font-weight: 700; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-trigger::after { content: '+'; font-size: 18px; color: var(--text-muted); transition: transform 0.2s; }
+.faq-item.open .faq-trigger::after { content: '−'; }
+.faq-content { padding: 0 20px Implied !important; max-height: 0; overflow: hidden; transition: all 0.25s ease-out; color: #475569; font-size: 14.5px; line-height: 1.6; }
+.faq-item.open .faq-content { padding: 0 20px 20px 20px; max-height: 200px; }
 
-/* Informational FAQ Content Blueprint Layout */
-.faq-item { border-bottom: 1px solid var(--border-color); padding: 18px 0; }
-.faq-item:last-child { border-bottom: none; padding-bottom: 0; }
-.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 8px; }
-.faq-item p { color: #475569; font-size: 14.5px; line-height: 1.55; text-align: justify; }
+/* E-E-A-T Editorial Section Alignment */
+.e-e-a-t-section { 
+    background: var(--card-bg); 
+    padding: 32px; 
+    border-radius: var(--radius-lg); 
+    border: 1px solid var(--border-color); 
+    box-shadow: var(--shadow-sm); 
+    margin-bottom: 32px;
+}
+.e-e-a-t-section h2 { font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 12px; letter-spacing: -0.02em; }
+.e-e-a-t-section p { color: #475569; font-size: 14.5px; margin-bottom: 16px; text-align: justify; line-height: 1.6; }
 
-/* YMYL Transparency Framework & Compliance Grid Layer */
-.ymyl-backing { border-top: 1px solid var(--border-color); margin-top: 40px; padding-top: 24px; text-align: center; }
-.clinical-references { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; text-align: justify; background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
-.clinical-references strong { color: #475569; }
-.medical-disclaimer { font-size: 12px; color: #94a3b8; line-height: 1.55; text-align: justify; font-style: italic; }
+.disclaimer-box { 
+    padding: 16px; 
+    border-radius: var(--radius-md); 
+    background: #fef2f2; 
+    border-left: 4px solid #ef4444; 
+    color: #991b1b; 
+    font-size: 13.5px; 
+    line-height: 1.5; 
+}
+.disclaimer-box strong { color: #7f1d1d; display: block; margin-bottom: 2px; }
 
-footer { text-align: center; margin-top: 24px; padding-top: 16px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-color); letter-spacing: 0.05em; display: block; }
+/* Footer Block Configuration */
+footer { margin-top: 80px; padding: 40px 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); }
+.footer-links { display: flex; justify-content: center; gap: 20px; font-size: 0.85rem; }
+.footer-links a { text-decoration: none; color: inherit; transition: color 0.2s; }
+.footer-links a:hover { color: var(--primary); }
+.footer-copy { margin-top: 20px; font-size: 0.75rem; }
 
-@media(max-width:768px){ .hero { padding: 36px 20px; } .hero h1 { font-size: 28px; } .card { padding: 24px; } .result-val { font-size: 48px; } .result-status { font-size: 20px; } }
+@media(max-width: 768px) {
+    body { padding: 24px 12px; }
+    .category-hero { padding: 36px 20px; margin-bottom: 24px; }
+    .category-hero h1 { font-size: 26px; }
+    .calculator-card { padding: 20px; }
+    .e-e-a-t-section { padding: 20px; }
+}
 </style>
 </head>
 <body>
 <div class="container">
-
-    <!-- Structural Navigation Breadcrumbs Hierarchy -->
-    <nav class="breadcrumb">
-        <a href="https://www.toolsquark.com/">Home</a>
-        <span class="separator">/</span>
-        <a href="https://www.toolsquark.com/tools/">Health Tools</a>
-        <span class="separator">/</span>
-        <span class="current">Water Intake Calculator</span>
+    <nav class="nav-breadcrumbs">
+        <a href="https://www.toolsquark.com/">Home</a> &gt; <a href="health.html">Health Tools</a> &gt; <span>Water Intake Calculator</span>
     </nav>
 
-    <!-- Header Branding Container Block Component -->
-    <header class="hero">
+    <header class="category-hero">
         <h1>Water Intake Calculator</h1>
-        <p>Calculate your optimal daily water intake based on your weight and physical activity levels to stay perfectly hydrated[cite: 15].</p>
+        <p>Calculate your optimal daily water intake targets based on customized physiological body weight inputs and dynamic exercise patterns smoothly.</p>
     </header>
 
-    <!-- Navigation Area Block Component -->
     <div class="calc-navigation">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+        <button class="back-home-btn" onclick="handleBackHome()">← Back to Category</button>
     </div>
 
-    <!-- Main Dynamic Interactive Assessment Workspace Block -->
-    <main class="card">
-        <div id="inputs-area"></div>
-        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Now</button>
-        
-        <!-- Hidden Output Panel Container - Announced using aria-live to assist screen readers -->
-        <div id="result-area" class="result-box" style="display:none;" aria-live="polite">
-            <div class="normal-range-badge">Hydration Standard: 2.0 - 3.5 Liters</div>
-            <div class="result-val" id="calc-output">0.00 L</div>
-            <div class="result-status" id="calc-status"></div>
-            <div class="result-desc" id="calc-desc"></div>
+    <div class="calculator-card" id="calculator-anchor">
+        <div id="questions-wrapper">
+            </div>
+        <div class="action-area">
+            <button class="submit-btn" onclick="processCalculations()">Calculate Hydration Target</button>
+        </div>
+
+        <div class="result-box" id="result-area">
+            <div class="score" id="calc-output">0.00 L</div>
+            <div class="profile" id="calc-status">Hydration Status</div>
+            <div class="description" id="calc-desc">Hydration metric description placeholder.</div>
             <div class="suggestion-box">
-                <h4>💡 Professional Suggestions:</h4>
-                <p id="calc-suggestion"></p>
+                <h4 id="calc-suggestion-title">Hydration Strategy Directive</h4>
+                <p id="calc-suggestion">Hydration strategy recommendation paragraph placeholder details.</p>
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- Supplemental Cross-Linking Matrix Configurations Group -->
-    <section class="card">
-        <h3>Recommended Tools</h3>
-        <div class="recommend-grid">
-            <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>BMI Calculator</strong>
-                    <p>Quickly calculate your Body Mass Index and contextual somatic weight category status[cite: 15].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/tools/bmr-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>BMR Calculator</strong>
-                    <p>Check your Basal Metabolic Rate tracking index to verify underlying daily calorie needs[cite: 15].</p>
-                </div>
-            </a>
-            <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>Water Intake Calculator</strong>
-                    <p>Standard data formulas charting baseline daily water intake estimations for body mass[cite: 15].</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Structural FAQ Content Block Section -->
-    <section class="card">
-        <h3>Frequently Asked Questions</h3>
+    <section class="faq-section">
+        <h2>Hydration & Volumetric Science FAQ</h2>
         <div class="faq-item">
-            <strong>Does coffee or tea count towards my fluid intake?</strong>
-            <p>Yes, mild caffeinated drinks contribute to total daily hydration, though plain water remains the most biologically direct option[cite: 15].</p>
+            <button class="faq-trigger" onclick="toggleFaq(this)">Does coffee or tea count towards my fluid intake?</button>
+            <div class="faq-content">
+                Yes, mild caffeinated drinks contribute to total daily hydration, though plain water remains the most biologically direct option.
+            </div>
         </div>
         <div class="faq-item">
-            <strong>Can you drink too much water?</strong>
-            <p>Yes, over-hydration can cause hyponatremia (dangerously low blood sodium levels)[cite: 15]. Always let your thirst baseline assist you alongside numerical indicators[cite: 15].</p>
+            <button class="faq-trigger" onclick="toggleFaq(this)">Can you drink too much water?</button>
+            <div class="faq-content">
+                Yes, over-hydration can cause hyponatremia (dangerously low blood sodium levels). Always let your thirst baseline assist you alongside numerical indicators.
+            </div>
         </div>
     </section>
 
-    <!-- YMYL Quality Compliance Architecture Framework Layer -->
-    <section class="ymyl-backing">
-        <div class="clinical-references">
-            <strong>Methodology & Assessment Disclosures:</strong> This processing matrix scales hydration metrics using industry-standard base scaling calculations relative to total physical body structure mass and training metrics[cite: 15].
-            <strong>Zero Server Logs Data Sovereignty:</strong> Your biological calculations process fully inside your active local device workspace[cite: 15]. No metric entries or inputs are ever parsed, tracked, stored, or transmitted across our backend cloud framework[cite: 15].
-        </div>
-        <div class="medical-disclaimer">
-            <strong>Informational Framework Scope Notice:</strong> This interactive baseline calculation utility acts as an optimization reference benchmark and screening gauge[cite: 15]. It does not issue formal clinical diagnostic statements or diagnostic medical prescriptions.
+    <section class="e-e-a-t-section">
+        <h2>Evidence-Based Hydration Calculation Methodology</h2>
+        <p>
+            Our utility calculator utilizes baseline metabolic and volumetric fluid scaling equations matching your weight variables combined directly with physical activity factors. The framework adds roughly 350 milliliters of fluid tracking allocations for every 30 minutes of logged exercise parameters to support dynamic cardiovascular sweat dissipation baselines safely.
+        </p>
+        <div class="disclaimer-box">
+            <strong>Disclaimer:</strong> This application provides biometric baseline hydration indicators based on normalized metabolic approximations. It does not constitute formal clinical diagnostic statements, customized nutrition therapies, or diagnostic medical prescriptions.
         </div>
     </section>
-
-    <!-- Global Page Layout Footer Node -->
-    <footer>
-        <p>© 2026 ToolsQuark. All Local Calculations Evaluated Ethically[cite: 15].</p>
-    </footer>
 </div>
 
+<footer>
+    <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 ToolsQuark. All rights reserved.</p>
+</footer>
+
 <script>
-const inputConfigs = [
-    {"id":"weight","label":"Weight","unit":"kg","placeholder":"70"},
-    {"id":"activity","label":"Daily Exercise Duration","unit":"minutes","placeholder":"30"}
-];[cite: 15]
+const fieldsSchema = [
+    { id: "weight", title: "What is your current body weight (in kilograms)?", placeholder: "e.g., 70", type: "number" },
+    { id: "activity", title: "How many minutes of physical exercise do you perform daily?", placeholder: "e.g., 45", type: "number" }
+];
 
 const interpretationRules = [
-    {"min":0,"max":2.5,"status":"Baseline Fluid Profile","desc":"Your required calculation yields a steady foundation baseline requirement. Ideal for sedentary or indoor schedules.","suggestion":"Keep a glass nearby. Try drinking small quantities continuously rather than chugging large amounts at once."},
-    {"min":2.5,"max":99,"status":"Active Hydration Demand","desc":"Increased cellular energy metrics require enhanced fluid support to properly flush structural metabolic processing toxins.","suggestion":"Crucial baseline target. Ensure you sip water before, during, and directly after intense training regimes to prevent cramps."}
-];[cite: 15]
+    { min: 0, max: 2.0, status: "Baseline Hydration Level", desc: "Your metrics indicate standard rest fluid requirements matching lower physical load categories.", suggestion: "Distribute your fluid intake across 6-8 micro-intervals throughout the day to avoid cell baseline fatigue cycles." },
+    { min: 2.0, max: 3.5, status: "Active Hydration Level", desc: "Elevated fluid requirements matching steady metabolic active workload or kinetic perspiration output variables.", suggestion: "Incorporate mineral-rich fluid varieties or pure spring fluid balances to compensate dynamic cell electrolyte transitions smoothly." },
+    { min: 3.5, max: 99.0, status: "High-Performance Hydration Level", desc: "Substantial baseline volumetric volume required to defend intensive mechanical workloads or somatic weights profiles.", suggestion: "Monitor urine color consistency scales actively. Ensure intakes remain progressive rather than compressed in singular tracking hours." }
+];
 
-const inputsArea = document.getElementById('inputs-area');[cite: 15]
-let html = "";[cite: 15]
-inputConfigs.forEach(cfg => {
-    html += `
-    <div class="input-group">
-        <label for="input_${cfg.id}">${cfg.label} (${cfg.unit})</label>
-        <input type="number" id="input_${cfg.id}" placeholder="e.g. ${cfg.placeholder}" min="0" step="any">
-    </div>`;[cite: 15]
-});
-inputsArea.innerHTML = html;[cite: 15]
-
-function calculateNow() {
-    let args = {};[cite: 15]
-    let missing = false;[cite: 15]
-    inputConfigs.forEach(cfg => {
-        const val = parseFloat(document.getElementById(`input_${cfg.id}`).value);[cite: 15]
-        if (isNaN(val) || val < 0) missing = true;[cite: 15]
-        args[cfg.id] = val;[cite: 15]
+function initCalculator() {
+    const wrapper = document.getElementById('questions-wrapper');
+    wrapper.innerHTML = "";
+    
+    fieldsSchema.forEach((item) => {
+        const div = document.createElement('div');
+        div.className = "question-block";
+        
+        const title = document.createElement('div');
+        title.className = "question-title";
+        title.innerText = item.title;
+        
+        const input = document.createElement('input');
+        input.className = "input-field";
+        input.type = item.type;
+        input.id = "field-" + item.id;
+        input.placeholder = item.placeholder;
+        input.min = "1";
+        
+        div.appendChild(title);
+        div.appendChild(input);
+        wrapper.appendChild(div);
     });
-    if (missing) {
-        alert("Please fill in all input fields correctly with positive numbers.");[cite: 15]
-        return;[cite: 15]
+}
+
+function processCalculations() {
+    let args = {};
+    let passes = true;
+
+    fieldsSchema.forEach((item) => {
+        const el = document.getElementById("field-" + item.id);
+        const val = parseFloat(el.value);
+        if (isNaN(val) || val <= 0) {
+            passes = false;
+        }
+        args[item.id] = val;
+    });
+
+    if (!passes) {
+        alert("Please fill in all input fields correctly with positive numeric values.");
+        return;
     }
+
     try {
         // Standard biological volumetric fluid scaling conversion script execution paths
-        const formulaFunc = new Function('fields', 'return (fields.weight * 0.033) + ((fields.activity / 30) * 0.35)');[cite: 15]
-        const finalResult = formulaFunc(args);[cite: 15]
-        let matchedRule = null;[cite: 15]
+        const formulaFunc = new Function('fields', 'return (fields.weight * 0.033) + ((fields.activity / 30) * 0.35)');
+        const finalResult = formulaFunc(args);
+        
+        let matchedRule = null;
         for (let rule of interpretationRules) {
             if (finalResult >= rule.min && finalResult < rule.max) {
-                matchedRule = rule;[cite: 15]
-                break;[cite: 15]
+                matchedRule = rule;
+                break;
             }
         }
-        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];[cite: 15]
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
         
-        document.getElementById('result-area').style.display = 'block';[cite: 15]
-        document.getElementById('calc-output').innerText = finalResult.toFixed(2) + " L";[cite: 15]
-        document.getElementById('calc-status').innerText = matchedRule.status;[cite: 15]
-        document.getElementById('calc-desc').innerText = matchedRule.desc;[cite: 15]
-        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;[cite: 15]
+        // Render final outcomes directly inside responsive viewport nodes
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('calc-output').innerText = finalResult.toFixed(2) + " L";
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
         
+        // Auto-scroll seamlessly to findings viewport panel
         document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } catch (e) {
-        alert("Calculation error. Please check inputs.");[cite: 15]
+        alert("Calculation error. Please verify input variables.");
     }
 }
 
-function handleBackHome(){ if(confirm("Are you sure you want to leave?")) window.location.href="https://www.toolsquark.com/"; }[cite: 15]
+function handleBackHome() { 
+    if (confirm("Are you sure you want to leave?")) {
+        window.location.href = "health.html"; 
+    }
+}
+
+function toggleFaq(btn) {
+    const item = btn.parentElement;
+    item.classList.toggle('open');
+}
+
+// Trigger initial mounting setups
+window.addEventListener("DOMContentLoaded", initCalculator);
 </script>
 </body>
 </html>
