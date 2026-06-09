@@ -31,7 +31,7 @@
         "name": "Why does my discipline crash in the evening?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Willpower behaves like a muscle; making decisions all day exhausts your self-regulatory resources, a phenomenon known in cognitive psychology as ego depletion."
+          "text": "Willpower behaves like a muscle; making decisions all day exhausts your prefrontal cortex, a state known as ego depletion."
         }
       },
       {
@@ -39,7 +39,7 @@
         "name": "Can self-discipline be trained or is it genetic?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "While baseline impulsivity has genetic components, volitional control is highly plastic. Developing fixed environmental routines minimizes reliance on raw willpower."
+          "text": "While baseline impulsivity has genetic factors, neural plasticity allows systemic volitional control to strengthen over time through habit structuring."
         }
       }
     ]
@@ -48,225 +48,246 @@
 </script>
 
 <style>
-:root {
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
-    --warning: #f97316;
-    --warning-bg: #fff7ed;
-    --background: #f8fafc;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --card-bg: #ffffff;
-    --border-color: #e2e8f0;
-    --radius-lg: 24px;
-    --radius-md: 16px;
-    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+/* 👑 ToolsQuark 全局设计变量系统 */
+:root { 
+    --primary: #0f172a; 
+    --accent: #2563eb; 
+    --text-muted: #64748b; 
+    --bg: #f8fafc;
+    --underweight: #38bdf8; /* 高自律 / 低延迟（清爽蓝） */
+    --normal: #22c55e;      /* 中自律 / 平衡（健康绿） */
+    --overweight: #eab308;  /* 波动 / 轻度失控（警戒黄） */
+    --obese: #ef4444;       /* 意志力极度消耗（危机红） */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-    background: var(--background); 
-    color: var(--text-main); 
-    line-height: 1.6; 
-    padding: 24px 16px; 
-}
-.container { max-width: 800px; margin: auto; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter', system-ui, sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px 10px;}
+.container{max-width:850px;margin:auto;}
 
-/* Navigation Backflow Framework */
-.calc-navigation { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 20px; }
-.back-home-btn { color: var(--text-muted); text-decoration: none; font-weight: 600; background: transparent; border: none; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: all 0.2s; }
-.back-home-btn:hover { color: var(--primary); background: #f1f5f9; }
+/* 顺畅的面包屑导航 */
+.breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; }
+.breadcrumb a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
 
-/* Structural Brand Header Block Layout */
-.hero { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
-.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
-.hero p { font-size: 16px; opacity: 0.9; max-width: 620px; font-weight: 400; }
+/* 统一的核心蓝渐变 Hero 引擎 */
+.hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:45px 35px;border-radius:24px;margin-bottom:25px;box-shadow:0 12px 35px rgba(37,99,235,0.15);}
+.hero h1{font-size:36px;font-weight:800;margin-bottom:12px;letter-spacing:-0.02em;}
+.hero p{font-size:16px;opacity:.9;}
 
-/* Generic Platform Wrapper Formats */
-.card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
-.card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
-.hidden { display: none !important; }
+/* 卡片基础骨架 */
+.card{background:white;padding:30px;border-radius:24px;margin-bottom:25px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.03);}
+.card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 20px; color: #1e293b; display: flex; align-items: center; gap: 8px; }
 
-/* Interface Step Indicators Framework */
+/* 测试工作流头部结构 */
 .quiz-header { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 24px; gap: 16px; }
+.back-home-btn { font-size: 14px; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; cursor: pointer; font-weight: 700; background: transparent; border: none; padding: 6px 12px; border-radius: 8px; transition: 0.2s; }
+.back-home-btn:hover { color: var(--accent); background: #f1f5f9; }
+
+/* 主进度条 */
 .progress-wrap { width: 100%; height: 12px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; flex-grow: 1; }
-.progress-bar { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s ease; }
+.progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s ease; }
 .progress-text { font-size: 14px; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
 
-/* Interactive Radio Options Stack Layout */
-.question { font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 24px; text-align: justify; line-height: 1.4; }
+/* 题目与互动选项按钮设计 */
+.question { font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 24px; text-align: justify; line-height: 1.5; }
 .answers-grid { display: flex; flex-direction: column; gap: 14px; }
-.option { width: 100%; text-align: left; padding: 16px 20px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: var(--radius-md); font-size: 16px; font-weight: 600; color: #334155; cursor: pointer; transition: all 0.2s ease; }
-.option:hover { border-color: var(--primary); background: #f0f6ff; color: var(--primary); }
-.option.selected { border-color: var(--primary); background: #f0f6ff; color: var(--primary); }
-.option.selected-heavy { border-color: var(--warning); background: var(--warning-bg); color: var(--warning); }
+.option { width: 100%; text-align: left; padding: 16px 20px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; font-size: 16px; font-weight: 600; color: #334155; cursor: pointer; transition: all 0.2s ease; outline: none;}
+.option:hover { border-color: var(--accent); background: #eff6ff; color: var(--accent); }
+.option.selected { border-color: var(--accent); background: #eff6ff; color: var(--accent); }
+.option.selected-heavy { border-color: var(--obese); background: #fef2f2; color: var(--obese); }
 
-/* Analytical Output Layout Dashboards */
-.score { font-size: 64px; font-weight: 800; text-align: center; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
-.profile { text-align: center; font-size: 26px; font-weight: 800; color: #1e3a8a; margin-bottom: 12px; letter-spacing: -0.02em; }
-.description { text-align: justify; color: #475569; margin-bottom: 28px; font-size: 15.5px; line-height: 1.6; }
+/* 情绪化现代解构主义结果区 */
+.result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;margin-top:10px;text-align:center;}
+.score{font-size:60px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:-0.03em;}
+.profile{font-size:22px;font-weight:800;margin-bottom:15px;}
+.description{color:#475569;font-size:15px;margin:15px auto;max-width:600px;line-height:1.6;text-align: justify;}
 
-/* Structural Vectors Progress Display Bars */
-.bar { margin-bottom: 20px; }
-.bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; color: #334155; font-size: 14.5px; }
-.bar-bg { height: 12px; background: #e2e8f0; border-radius: 20px; overflow: hidden; }
-.bar-fill { height: 100%; background: var(--primary); width: 0%; transition: width 1s ease-out; }
-.bar-fill.high-metric { background: var(--warning); }
+/* 因子卡片排版 */
+.factor-title { font-size: 15px; font-weight: 800; color: #1e293b; text-align: left; margin-bottom: 4px; }
 
-/* Navigation Multi-Links Component Placements */
-.recommend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
-.recommend-link { text-decoration: none; color: inherit; }
-.recommend-item { padding: 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: #f8fafc; transition: all 0.2s; height: 100%; }
-.recommend-item:hover { border-color: var(--primary); background: #f0f6ff; transform: translateY(-2px); }
-.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 4px; }
-.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+/* 🎨 像素级移植：动态健康色刻度指示条组件 */
+.bmi-gauge-container { max-width: 100%; margin: 12px auto 28px auto; position: relative; }
+.bmi-gauge-bar { height: 12px; background: linear-gradient(to right, var(--underweight) 0%, var(--normal) 35%, var(--overweight) 65%, var(--obese) 100%); border-radius: 6px; }
+.bmi-pointer { position: absolute; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 10px solid var(--primary); top: -14px; transform: translateX(-50%); transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.bmi-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); font-weight: bold; margin-top: 6px; padding: 0 4px; }
 
-/* Informational Frequently Asked Accordion Structures */
-.faq-title { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; }
-.faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; }
-.faq-item:last-child { border-bottom: none; padding-bottom: 0; }
-.faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 6px; }
-.faq-item p { color: #475569; font-size: 14.5px; text-align: justify; }
+/* 🎯 纵向引流推荐区卡片组件 */
+.recommend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.recommend-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 16px; text-decoration: none; color: inherit; transition: 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+.recommend-card:hover { border-color: var(--accent); background: #eff6ff; transform: translateY(-2px); }
+.recommend-card h4 { font-size: 15px; font-weight: 800; color: #1e293b; margin-bottom: 5px; }
+.recommend-card p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+.recommend-card .action-text { font-size: 13px; font-weight: 700; color: var(--accent); margin-top: 12px; display: inline-flex; align-items: center; gap: 4px; }
 
-footer { text-align: center; margin-top: 36px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+/* FAQ 问答区样式 */
+.faq-item{margin-bottom:20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px;}
+.faq-item:last-child { border: none; padding: 0; margin: 0; }
+.faq-item h4{ font-size: 15px; font-weight: 800; color: #1e293b; margin-bottom: 6px; }
+.faq-item p{ font-size: 14px; color: var(--text-muted); line-height: 1.6; text-align: justify; }
+
+.hidden { display: none !important; }
+footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px;}
 
 @media(max-width:768px){
-    .hero { padding: 36px 20px; }
-    .hero h1 { font-size: 28px; }
-    .card { padding: 24px; }
-    .question { font-size: 19px; }
-    .score { font-size: 56px; }
-    .profile { font-size: 22px; }
+    .hero h1{font-size:28px;}
     .recommend-grid { grid-template-columns: 1fr; }
+    .quiz-header { flex-wrap: wrap; }
 }
 </style>
 </head>
 <body>
 <div class="container">
-    <div class="calc-navigation">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+    <div class="breadcrumb">
+        <a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; <span>Self-Discipline Test</span>
     </div>
 
-    <header class="hero">
+    <div class="hero">
         <h1>Self-Discipline Assessment Test</h1>
-        <p>Analyze your cognitive impulse controls, delay of gratification metrics, automation habit indices, and willpower fatigue levels.</p>
-    </header>
+        <p>Map your volitional capacity benchmarks, systemic delay dynamics, daily habit automation efficiency, and neuro-depletion resilience thresholds.</p>
+    </div>
 
-    <main class="card" id="quiz">
+    <div class="card" id="quiz">
         <div class="quiz-header">
+            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
             <div class="progress-wrap">
                 <div class="progress-bar" id="p-bar"></div>
             </div>
-            <div class="progress-text" id="p-text">Question 1 / 7</div>
+            <div class="progress-text" id="p-text">Question 1 / 5</div>
         </div>
-        <div class="question" id="question">Assembling cognitive metrics inventory data...</div>
+        <div class="question" id="question">Assembling active psychological framework metrics...</div>
         <div class="answers-grid" id="answers"></div>
-    </main>
+    </div>
 
-    <section class="card hidden" id="result">
+    <div class="card hidden" id="result">
         <h3>Volitional Capacity Summary</h3>
-        <div class="score" id="score">0/28</div>
-        <div class="profile" id="profile">Formulating Profile Metrics...</div>
-        <p class="description" id="description"></p>
-    </section>
+        <div class="result-box">
+            <div class="score" id="score">0 / 20</div>
+            <div class="profile" id="profile">Analyzing Profile...</div>
+            <p class="description" id="description"></p>
+        </div>
+    </div>
 
-    <section class="card hidden" id="recommendations">
-        <h3>Self-Regulatory Diagnostic Factors</h3>
+    <div class="card hidden" id="recommendations">
+        <h3>Volitional Architecture Diagnostic Factors</h3>
+        <p style="font-size:14px; color:var(--text-muted); margin-bottom:25px;">Granular metrics analyzing internal prefrontal execution parameters:</p>
         
-        <div class="bar">
-            <div class="bar-label"><span>Gratification Delay Vulnerability</span><span id="label-delay">0%</span></div>
-            <div class="bar-bg"><div class="bar-fill" id="bar-delay"></div></div>
+        <div class="bar-item">
+            <div class="factor-title">Gratification Delay Barrier: <span id="label-delay" style="color:var(--accent);">0%</span></div>
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="pointer-delay"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels"><span>High Volition</span><span>Balanced</span><span>Impulse Trapped</span></div>
+            </div>
         </div>
         
-        <div class="bar">
-            <div class="bar-label"><span>Habit Automation Slippage</span><span id="label-automation">0%</span></div>
-            <div class="bar-bg"><div class="bar-fill" id="bar-automation"></div></div>
+        <div class="bar-item">
+            <div class="factor-title">Habit Automation Deficit: <span id="label-automation" style="color:var(--accent);">0%</span></div>
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="pointer-automation"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels"><span>Fluid Habits</span><span>Structured</span><span>High Friction</span></div>
+            </div>
         </div>
         
-        <div class="bar">
-            <div class="bar-label"><span>Willpower Depletion Vulnerability</span><span id="label-depletion">0%</span></div>
-            <div class="bar-bg"><div class="bar-fill" id="bar-depletion"></div></div>
+        <div class="bar-item">
+            <div class="factor-title">Ego Depletion Vulnerability: <span id="label-depletion" style="color:var(--accent);">0%</span></div>
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="pointer-depletion"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels"><span>Resilient</span><span>Adaptive</span><span>Rapid Burnout</span></div>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section class="card">
-        <h3>Recommended Utility Tools</h3>
+    <div class="card">
+        <h3>🚀 Optimize Your Executive Focus Further</h3>
+        <p style="font-size:14px; color:var(--text-muted); margin-bottom:15px;">Now that you have mapped out your volitional capacity indices, explore deeper cognitive optimization tools:</p>
         <div class="recommend-grid">
-            <a href="https://www.toolsquark.com/tools/procrastination-test.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>Procrastination Test</strong>
-                    <p>Unpack emotional avoidances, delay profiles, and execution roadlocks holding back your tasks.</p>
+            <a href="https://www.toolsquark.com/tools/procrastination-test.html" class="recommend-card">
+                <div>
+                    <h4>🔥 Procrastination Avoidance Assessment</h4>
+                    <p>Unpack emotional regulation loops, time discounting traps, and analysis paralysis blocks.</p>
                 </div>
+                <span class="action-text">Map Delay Triggers →</span>
             </a>
-            <a href="https://www.toolsquark.com/tools/smartphone-addiction-test.html" class="recommend-link">
-                <div class="recommend-item">
-                    <strong>Smartphone Addiction Test</strong>
-                    <p>Evaluate dependency tracking, nomophobia, and compulsive phone scrolling check behaviors.</p>
+            <a href="https://www.toolsquark.com/tools/sleep-quality-assessment.html" class="recommend-card">
+                <div>
+                    <h4>💧 Sleep Quality Architecture Assessment</h4>
+                    <p>Unpack sleep architecture efficiencies that alter cognitive clarity and daily focus spans.</p>
                 </div>
+                <span class="action-text">Check Sleep Efficiency →</span>
             </a>
         </div>
-    </section>
+    </div>
 
-    <section class="card">
-        <div class="faq-title">Frequently Asked Questions</div>
+    <div class="card">
+        <h3>🔍 Frequently Asked Questions</h3>
         <div class="faq-item">
-            <strong>Why does my discipline crash in the evening?</strong>
-            <p>Willpower behaves like a muscle; making decisions all day exhausts your self-regulatory resources, a phenomenon known in cognitive psychology as ego depletion.</p>
+            <h4>Why does my discipline crash in the evening?</h4>
+            <p>Willpower behaves like a muscle; making decisions all day exhausts your prefrontal cortex, a state known as ego depletion.</p>
         </div>
         <div class="faq-item">
-            <strong>Can self-discipline be trained or is it genetic?</strong>
-            <p>While baseline impulsivity has genetic components, volitional control is highly plastic. Developing fixed environmental routines minimizes reliance on raw willpower.</p>
+            <h4>Can self-discipline be trained or is it genetic?</h4>
+            <p>While baseline impulsivity has genetic factors, neural plasticity allows systemic volitional control to strengthen over time through habit structuring.</p>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <p>© 2026 ToolsQuark. All Rights Reserved.</p>
-    </footer>
+    <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
 </div>
 
 <script>
-// Dynamic localized psychometric tracking array 
 const questions = [
-    { question: "When making a major financial budget choice, how would you describe your tracking patterns?", options: ["Strict long-term investor", "Consistent planner", "Struggle to save", "Frequent impulse buyer"], sub: "delay" },
-    { question: "When faced with a necessary but deeply boring chore, when do you get around to doing it?", options: ["Do it immediately", "Schedule for later", "Put it off for days", "Ignore until it's a crisis"], sub: "automation" },
-    { question: "How healthy are your eating and exercise routines when you are going through a high-stress week?", options: ["Stay strict to habits", "Slightly slip up", "Drop routines quickly", "Complete health abandonment"], sub: "depletion" },
-    { question: "How often do you find yourself scrolling mindlessly when you explicitly promised yourself you'd be asleep?", options: ["Rarely/Never", "1-2 times a week", "Frequently", "Almost every single night"], sub: "automation" },
-    { question: "If a task requires daily effort for months before showing any results, how do you handle it?", options: ["Maintain daily effort", "Miss occasional days", "Lose focus quickly", "Give up within a week"], sub: "delay" },
-    { question: "How easily can you say 'no' when friends offer fun plans that conflict with your critical goals?", options: ["Say no comfortably", "Hesitate but decline", "Give in with guilt", "Instantly abandon goals"], sub: "depletion" },
-    { question: "When you break a self-imposed routine one day, how does that affect your behavior the following day?", options: ["Resume routine instantly", "Regret but stay stable", "Slippage continues slightly", "Completely stop trying"], sub: "automation" }
+    {
+        "question": "When a distractions sparks (e.g., notification chime) while working on a critical priority, you usually:",
+        "options": ["Ignore completely until slot ends", "Check rapidly but return flow", "Intend to check briefly but diverge", "Abandon task immediately for comfort"],
+        "category": "delay"
+    },
+    {
+        "question": "How effortlessly do your core daily routines (habits like training, study blocks, reading) execute?",
+        "options": ["Automatic / Zero frictional thought", "Minor launching effort required", "Requires immense upfront willpower forcing", "Completely chaotic day-to-day patterns"],
+        "category": "automation"
+    },
+    {
+        "question": "When you undergo a stressful, decision-heavy day, your evening behavioral control typically:",
+        "options": ["Stays perfectly locked and firm", "Mildly indulgent but stable", "Frequently snaps into snack/feed loops", "Completely collapses into heavy indulgence"],
+        "category": "depletion"
+    },
+    {
+        "question": "When defining long-term life objectives, how consistently do your active weekly choices align?",
+        "options": ["Flawlessly integrated and synchronized", "Reasonably steady progression pacing", "Intermittent patterns of focus and void", "Entirely disjointed abstract targets"],
+        "category": "delay"
+    },
+    {
+        "question": "When an execution obstacle crashes your plan, what is your automated internal reaction pathway?",
+        "options": ["Pivot immediately with agile problem-solving", "Brief emotional frustration, then adapt", "Prolonged irritation and temporary delay", "Complete abandonment of the objective"],
+        "category": "depletion"
+    }
 ];
 
-// Complete diagnostic profile objects to completely fix the runtime execution loop crash
 const resultProfiles = {
     low: {
-        profile: "High-Efficiency Volitional Master",
-        desc: "You possess outstanding cognitive self-regulatory systems. Your high resistance to temporal discounting allows you to build smooth automated habits while preserving your cognitive willpower pools from collapsing under ambient daily stress loops.",
-        delay: 20, automation: 18, depletion: 22
+        profile: "Ironclad Sovereign Volition 💎",
+        color: "var(--underweight)",
+        desc: "You demonstrate pristine executive function architecture. Your prefrontal regulation mechanisms effortlessly down-regulate immediate dopamine cues in favor of structural goals.",
+        delay: 15, automation: 12, depletion: 18
     },
     medium: {
-        profile: "Fluctuating Habit Builder",
-        desc: "Your baseline discipline operates quite well under structured environments but displays vulnerabilities when unexpected stress triggers arrive. Building robust automatic habits and eliminating friction will yield greater consistency.",
-        delay: 58, automation: 52, depletion: 64
+        profile: "Variable Volitional Framework ⚖️",
+        color: "var(--overweight)",
+        desc: "Solid structural base with minor systemic leakage. Emotional friction points and situational fatigue loops cause occasional behavioral divergence. Focus on habit scaffolding.",
+        delay: 52, automation: 48, depletion: 58
     },
     high: {
-        profile: "Vulnerable Impulse Tracker",
-        desc: "Severe volitional exhaustion detected. You are highly vulnerable to instant gratification triggers and immediate impulse capture. Shifting your focus from 'raw willpower' to altering your immediate physical workspace boundaries is highly advised.",
-        delay: 88, automation: 85, depletion: 92
+        profile: "Critical Ego Depletion Warning 🚨",
+        color: "var(--obese)",
+        desc: "High vulnerability to short-term impulse dominance. Excessive launch friction indicates heavy executive cognitive fatigue. Immediate micro-habit reframing is vital.",
+        delay: 85, automation: 82, depletion: 90
     }
 };
 
 let current = 0;
 let totalScore = 0;
 let isTransitioning = false;
-
-// Initialize sub-category scoring tracks to capture granular dimensional traits
-let categoryScores = {
-    delay: 0,
-    automation: 0,
-    depletion: 0
-};
 
 function loadQuestion() {
     isTransitioning = true;
@@ -277,13 +298,13 @@ function loadQuestion() {
 
     let html = "";
     q.options.forEach((option, index) => {
-        html += `<button class="option" onclick="selectOption(this, ${index + 1}, ${index}, '${q.sub}')">${option}</button>`;
+        html += `<button class="option" onclick="selectOption(this, ${index + 1}, ${index})">${option}</button>`;
     });
     document.getElementById("answers").innerHTML = html;
     isTransitioning = false;
 }
 
-function selectOption(el, score, optionIndex, subCategory) {
+function selectOption(el, score, optionIndex) {
     if (isTransitioning) return;
     document.querySelectorAll(".option").forEach(item => { 
         item.classList.remove("selected", "selected-heavy"); 
@@ -294,11 +315,6 @@ function selectOption(el, score, optionIndex, subCategory) {
     
     isTransitioning = true;
     totalScore += score;
-    
-    // Aggregate dimensional points seamlessly
-    if (categoryScores[subCategory] !== undefined) {
-        categoryScores[subCategory] += score;
-    }
     
     setTimeout(() => {
         current++;
@@ -313,7 +329,6 @@ function showResult() {
     document.getElementById("recommendations").classList.remove("hidden");
     
     const maxScore = questions.length * 4;
-    document.getElementById("score").innerText = totalScore + " / " + maxScore;
     
     let activeProfile = resultProfiles.high;
     if (totalScore <= (questions.length * 1.6)) {
@@ -322,30 +337,30 @@ function showResult() {
         activeProfile = resultProfiles.medium;
     }
     
-    document.getElementById("profile").innerText = activeProfile.profile;
+    // 更新视图数据
+    const scoreEl = document.getElementById("score");
+    scoreEl.innerText = totalScore + " / " + maxScore;
+    scoreEl.style.color = activeProfile.color;
+    
+    const profileEl = document.getElementById("profile");
+    profileEl.innerText = activeProfile.profile;
+    profileEl.style.color = activeProfile.color;
+    
     document.getElementById("description").innerText = activeProfile.desc;
     
-    // Inject and fluidly scale analytical tracking percentage indicators
+    // 渲染三个子因子的百分比文本
+    document.getElementById("label-delay").innerText = activeProfile.delay + "%";
+    document.getElementById("label-automation").innerText = activeProfile.automation + "%";
+    document.getElementById("label-depletion").innerText = activeProfile.depletion + "%";
+    
+    // 激活指针平滑过渡移动动画
     setTimeout(() => {
-        const fillBar = (el, val) => {
-            if (val >= 70) el.classList.add("high-metric");
-            el.style.width = val + "%";
-        };
-
-        const barDelay = document.getElementById("bar-delay");
-        const barAuto = document.getElementById("bar-automation");
-        const barDep = document.getElementById("bar-depletion");
-
-        document.getElementById("label-delay").innerText = activeProfile.delay + "%";
-        document.getElementById("label-automation").innerText = activeProfile.automation + "%";
-        document.getElementById("label-depletion").innerText = activeProfile.depletion + "%";
-
-        fillBar(barDelay, activeProfile.delay);
-        fillBar(barAuto, activeProfile.automation);
-        fillBar(barDep, activeProfile.depletion);
+        document.getElementById("pointer-delay").style.left = activeProfile.delay + "%";
+        document.getElementById("pointer-automation").style.left = activeProfile.automation + "%";
+        document.getElementById("pointer-depletion").style.left = activeProfile.depletion + "%";
     }, 150);
     
-    document.getElementById("result").scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById("result").scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function handleBackHome() { 
@@ -354,7 +369,6 @@ function handleBackHome() {
     }
 }
 
-// Attach initial load configurations
 window.addEventListener("DOMContentLoaded", loadQuestion);
 </script>
 </body>
