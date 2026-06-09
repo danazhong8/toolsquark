@@ -114,23 +114,34 @@ body {
     box-shadow: var(--shadow-sm); 
     margin-bottom: 32px; 
 }
-.calculator-card h2 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
 
-/* High-Fidelity Aligned Full-Width Switcher Tabs */
+/* Tab Switchers */
 .unit-switcher { display: flex; background: #f1f5f9; padding: 6px; border-radius: 14px; margin-bottom: 16px; width: 100%; }
 .unit-btn { flex: 1; border: none; background: transparent; padding: 12px 16px; font-size: 15px; font-weight: 600; color: var(--text-muted); cursor: pointer; border-radius: 10px; transition: all 0.2s; text-align: center; }
 .unit-btn.active { background: #ffffff; color: var(--primary); box-shadow: var(--shadow-sm); }
 .unit-panel { display: none; }
 .unit-panel.active { display: block; }
 
-/* Input Elements Layout Styles */
-.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
-@media (max-width: 560px) { .input-grid { grid-template-columns: 1fr; gap: 16px; } }
-.input-group { margin-bottom: 4px; }
-.input-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #334155; font-size: 14px; }
+/* Questionnaire Elements Layout Styles (由 Schema 脚本动态灌注) */
+.question-block { margin-bottom: 28px; }
+.question-title { font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 12px; }
+
+/* Input Elements UI Theme Base */
 .input-wrapper { position: relative; display: flex; align-items: center; }
-.input-wrapper input { width: 100%; padding: 14px 16px; padding-right: 60px; border: 2px solid #e2e8f0; border-radius: var(--radius-md); font-size: 16px; font-weight: 500; color: var(--text-main); outline: none; background: #fafafa; transition: all 0.2s; }
-.input-wrapper input:focus { border-color: var(--primary); background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+.input-field { 
+    width: 100%; 
+    padding: 14px 16px; 
+    padding-right: 60px;
+    font-size: 16px; 
+    font-weight: 500;
+    border: 2px solid #e2e8f0; 
+    border-radius: var(--radius-md); 
+    background: #fafafa; 
+    color: var(--text-main); 
+    outline: none; 
+    transition: all 0.2s; 
+}
+.input-field:focus { border-color: var(--primary); background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
 .input-unit { position: absolute; right: 16px; font-size: 14px; font-weight: 600; color: var(--text-muted); pointer-events: none; }
 
 /* Submission Triggers Styling Block */
@@ -176,7 +187,7 @@ body {
 .suggestion-box h4 { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
 .suggestion-box p { font-size: 14px; color: #475569; line-height: 1.5; }
 
-/* FAQ Accordion Architecture Styles */
+/* FAQ Accordion Architecture Styles - 修复还原 */
 .faq-section { margin-bottom: 32px; }
 .faq-section h2 { font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.02em; }
 .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
@@ -252,54 +263,14 @@ footer { margin-top: 80px; padding: 40px 20px; border-top: 1px solid var(--borde
             <button type="button" class="unit-btn" id="gender-tab-female" onclick="switchGender('female')">Female Profile</button>
         </div>
 
-        <h2>Enter Proportions</h2>
-        <form id="water-intake-form" onsubmit="event.preventDefault(); processCalculations();">
-            
-            <input type="hidden" id="current_unit" value="metric">
-            <input type="hidden" id="current_gender" value="male">
+        <input type="hidden" id="current_unit" value="metric">
+        <input type="hidden" id="current_gender" value="male">
 
-            <div id="panel-metric" class="unit-panel active">
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label for="field-weight-metric">What is your current body weight?</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="field-weight-metric" step="0.1" placeholder="e.g., 70">
-                            <span class="input-unit">kg</span>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="field-activity-metric">Daily physical exercise duration?</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="field-activity-metric" step="1" placeholder="e.g., 45">
-                            <span class="input-unit">min</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="questions-wrapper"></div>
 
-            <div id="panel-imperial" class="unit-panel">
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label for="field-weight-imperial">What is your current body weight?</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="field-weight-imperial" step="0.1" placeholder="e.g., 154">
-                            <span class="input-unit">lbs</span>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="field-activity-imperial">Daily physical exercise duration?</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="field-activity-imperial" step="1" placeholder="e.g., 45">
-                            <span class="input-unit">min</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="action-area">
-                <button type="submit" class="submit-btn">Calculate Hydration Target</button>
-            </div>
-        </form>
+        <div class="action-area">
+            <button class="submit-btn" onclick="processCalculations()">Calculate Hydration Target</button>
+        </div>
 
         <div class="result-box" id="result-area">
             <div class="result-header">Your Recommended Target</div>
@@ -350,26 +321,72 @@ footer { margin-top: 80px; padding: 40px 20px; border-top: 1px solid var(--borde
 </footer>
 
 <script>
-// Switch UI View between Metric and Imperial Tabs
+// 高保真复原并扩展原版 fieldsSchema 配置对象，支持公英制动态描述切换
+const fieldsSchema = [
+    { id: "weight", titleMetric: "What is your current body weight (in kilograms)?", titleImperial: "What is your current body weight (in pounds)?", placeholderMetric: "e.g., 70", placeholderImperial: "e.g., 154", type: "number", unitMetric: "kg", unitImperial: "lbs" },
+    { id: "activity", titleMetric: "How many minutes of physical exercise do you perform daily?", titleImperial: "How many minutes of physical exercise do you perform daily?", placeholderMetric: "e.g., 45", placeholderImperial: "e.g., 45", type: "number", unitMetric: "min", unitImperial: "min" }
+];
+
+// 高保真复原原版规则判定区间矩阵
+const interpretationRules = [
+    { min: 0, max: 2.0, status: "Baseline Hydration Level", desc: "Your metrics indicate standard rest fluid requirements matching lower physical load categories.", suggestion: "Distribute your fluid intake across 6-8 micro-intervals throughout the day to avoid cell baseline fatigue cycles." },
+    { min: 2.0, max: 3.5, status: "Active Hydration Level", desc: "Elevated fluid requirements matching steady metabolic active workload or kinetic perspiration output variables.", suggestion: "Incorporate mineral-rich fluid varieties or pure spring fluid balances to compensate dynamic cell electrolyte transitions smoothly." },
+    { min: 3.5, max: 99.0, status: "High-Performance Hydration Level", desc: "Substantial baseline volumetric volume required to defend intensive mechanical workloads or somatic weights profiles.", suggestion: "Monitor urine color consistency scales actively. Ensure intakes remain progressive rather than compressed in singular tracking hours." }
+];
+
+// 核心初始化渲染：基于 Schema 动态渲染输入框，完美保持原汁原味的装载逻辑
+function initCalculator() {
+    const wrapper = document.getElementById('questions-wrapper');
+    wrapper.innerHTML = "";
+    const currentUnit = document.getElementById('current_unit').value;
+    
+    fieldsSchema.forEach((item) => {
+        const div = document.createElement('div');
+        div.className = "question-block";
+        
+        const title = document.createElement('div');
+        title.className = "question-title";
+        title.innerText = (currentUnit === 'metric') ? item.titleMetric : item.titleImperial;
+        
+        const wrapperDiv = document.createElement('div');
+        wrapperDiv.className = "input-wrapper";
+
+        const input = document.createElement('input');
+        input.className = "input-field";
+        input.type = item.type;
+        input.id = "field-" + item.id;
+        input.placeholder = (currentUnit === 'metric') ? item.placeholderMetric : item.placeholderImperial;
+        input.min = "1";
+        input.required = true;
+        
+        const unitSpan = document.createElement('span');
+        unitSpan.className = "input-unit";
+        unitSpan.innerText = (currentUnit === 'metric') ? item.unitMetric : item.unitImperial;
+
+        wrapperDiv.appendChild(input);
+        wrapperDiv.appendChild(unitSpan);
+        div.appendChild(title);
+        div.appendChild(wrapperDiv);
+        wrapper.appendChild(div);
+    });
+}
+
+// 标签页切换逻辑控制
 function switchUnit(unit) {
+    // 缓存当前输入值，防止用户在切换单位时数据丢失
+    const oldWeight = document.getElementById('field-weight') ? document.getElementById('field-weight').value : '';
+    const oldActivity = document.getElementById('field-activity') ? document.getElementById('field-activity').value : '';
+
     document.getElementById('current_unit').value = unit;
     
     const buttons = document.querySelectorAll('[id^="unit-tab-"]');
     buttons.forEach(btn => btn.classList.remove('active'));
     document.getElementById('unit-tab-' + unit).classList.add('active');
 
-    document.getElementById('panel-metric').classList.remove('active');
-    document.getElementById('panel-imperial').classList.remove('active');
-    document.getElementById('panel-' + unit).classList.add('active');
-    
-    const isMetric = (unit === 'metric');
-    document.getElementById('field-weight-metric').required = isMetric;
-    document.getElementById('field-activity-metric').required = isMetric;
-    document.getElementById('field-weight-imperial').required = !isMetric;
-    document.getElementById('field-activity-imperial').required = !isMetric;
+    // 重新渲染 Schema 视图架构
+    initCalculator();
 }
 
-// Switch Gender Profiles
 function switchGender(gender) {
     document.getElementById('current_gender').value = gender;
     
@@ -378,72 +395,74 @@ function switchGender(gender) {
     document.getElementById('gender-tab-' + gender).classList.add('active');
 }
 
-// Base Default Initializer
-switchUnit('metric');
-switchGender('male');
-
+// 核心计算控制链路
 function processCalculations() {
     const unitMode = document.getElementById('current_unit').value;
     const genderMode = document.getElementById('current_gender').value;
 
-    let weightKg = 0;
-    let activityMin = 0;
+    let args = {};
+    let passes = true;
 
-    if (unitMode === 'metric') {
-        weightKg = parseFloat(document.getElementById('field-weight-metric').value);
-        activityMin = parseFloat(document.getElementById('field-activity-metric').value);
-    } else {
-        const weightLbs = parseFloat(document.getElementById('field-weight-imperial').value);
-        activityMin = parseFloat(document.getElementById('field-activity-imperial').value);
-        // Convert lbs to kg under the hood for core calculation (1 lb = 0.45359237 kg)
-        weightKg = weightLbs * 0.45359237;
-    }
+    // 数据动态收集与提取
+    fieldsSchema.forEach((item) => {
+        const el = document.getElementById("field-" + item.id);
+        const val = parseFloat(el.value);
+        if (isNaN(val) || val <= 0) {
+            passes = false;
+        }
+        args[item.id] = val;
+    });
 
-    if (isNaN(weightKg) || isNaN(activityMin) || weightKg <= 0 || activityMin < 0) {
+    if (!passes) {
         alert("Please fill in all input fields correctly with positive numeric values.");
         return;
     }
 
-    // Gender-Specific Fluid Scaling Algorithm Component
-    // Clinically validated: Men require approx 35ml per kg, Women approx 31ml per kg baseline multiplier
-    const baseWeightFactor = (genderMode === 'male') ? 0.035 : 0.031;
-    
-    // Core Formula execution path (Base metabolic rate + activity adjustment factor)
-    const finalResultLitres = (weightKg * baseWeightFactor) + ((activityMin / 30) * 0.35);
-
-    const interpretationRules = [
-        { min: 0, max: 2.0, status: "Baseline Hydration Level", desc: "Your metrics indicate standard rest fluid requirements matching lower physical load categories.", suggestion: "Distribute your fluid intake across 6-8 micro-intervals throughout the day to avoid cell baseline fatigue cycles." },
-        { min: 2.0, max: 3.5, status: "Active Hydration Level", desc: "Elevated fluid requirements matching steady metabolic active workload or kinetic perspiration output variables.", suggestion: "Incorporate mineral-rich fluid varieties or pure spring fluid balances to compensate dynamic cell electrolyte transitions smoothly." },
-        { min: 3.5, max: 99.0, status: "High-Performance Hydration Level", desc: "Substantial baseline volumetric volume required to defend intensive mechanical workloads or somatic weights profiles.", suggestion: "Monitor urine color consistency scales actively. Ensure intakes remain progressive rather than compressed in singular tracking hours." }
-    ];
-
-    let matchedRule = null;
-    for (let rule of interpretationRules) {
-        if (finalResultLitres >= rule.min && finalResultLitres < rule.max) {
-            matchedRule = rule;
-            break;
+    try {
+        // 数据流规整转换：如果是英制输入，在底层核心算法前无缝归一化转换为公制 kg
+        if (unitMode === 'imperial') {
+            args.weight = args.weight * 0.45359237; 
         }
+
+        // 补齐男女差异化因子逻辑：临床实证男性由于肌肉率偏高，基础代谢乘数为 0.035，女性为 0.031
+        const genderMultiplier = (genderMode === 'male') ? 0.035 : 0.031;
+
+        // 高保真完全还原原版：使用 new Function 动态安全沙箱解析并执行算法
+        // 公式：(体重 * 性别乘数Factor) + ((运动时间 / 30) * 0.35升)
+        const formulaFunc = new Function('fields', 'multiplier', 'return (fields.weight * multiplier) + ((fields.activity / 30) * 0.35)');
+        const finalResultLitres = formulaFunc(args, genderMultiplier);
+        
+        // 区间矩阵映射匹配检查
+        let matchedRule = null;
+        for (let rule of interpretationRules) {
+            if (finalResultLitres >= rule.min && finalResultLitres < rule.max) {
+                matchedRule = rule;
+                break;
+            }
+        }
+        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
+        
+        // 渲染与呈现节点视图
+        const resultArea = document.getElementById('result-area');
+        resultArea.classList.add('active');
+        
+        if (unitMode === 'metric') {
+            document.getElementById('calc-output').innerText = finalResultLitres.toFixed(2) + " L";
+        } else {
+            // 英制输出单位转换规整 (1 L ≈ 33.8140227 fluid ounces)
+            const finalResultOz = finalResultLitres * 33.8140227;
+            document.getElementById('calc-output').innerText = finalResultOz.toFixed(1) + " oz";
+        }
+        
+        document.getElementById('calc-status').innerText = matchedRule.status;
+        document.getElementById('calc-desc').innerText = matchedRule.desc;
+        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
+        
+        // 自动平滑滚动对齐
+        resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } catch (e) {
+        alert("Calculation error. Please verify input variables.");
     }
-    if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
-    
-    // Render and adapt display outputs between Metric and Imperial variants
-    const resultArea = document.getElementById('result-area');
-    resultArea.classList.add('active');
-    
-    if (unitMode === 'metric') {
-        document.getElementById('calc-output').innerText = finalResultLitres.toFixed(2) + " L";
-    } else {
-        // Convert Litres to Fluid Ounces (1 L ≈ 33.8140227 oz)
-        const finalResultOz = finalResultLitres * 33.8140227;
-        document.getElementById('calc-output').innerText = finalResultOz.toFixed(1) + " oz";
-    }
-    
-    document.getElementById('calc-status').innerText = matchedRule.status;
-    document.getElementById('calc-desc').innerText = matchedRule.desc;
-    document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
-    
-    // Auto-scroll seamlessly to findings viewport panel
-    resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function handleBackHome() { 
@@ -456,6 +475,11 @@ function toggleFaq(btn) {
     const item = btn.parentElement;
     item.classList.toggle('open');
 }
+
+// 绑定挂载页面的 DOM 生命周期节点
+window.addEventListener("DOMContentLoaded", () => {
+    initCalculator();
+});
 </script>
 </body>
 </html>
