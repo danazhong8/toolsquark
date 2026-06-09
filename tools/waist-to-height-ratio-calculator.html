@@ -67,6 +67,12 @@
     --radius-lg: 24px;
     --radius-md: 16px;
     --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+    
+    /* Gauge Palette Colors */
+    --clr-slim: #3b82f6;
+    --clr-healthy: #10b981;
+    --clr-increased: #f59e0b;
+    --clr-highly: #ef4444;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -114,8 +120,15 @@ body {
 .result-box { margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border-color); display: none; }
 .result-grid { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 24px; }
 .score-display { font-size: 64px; font-weight: 800; line-height: 1; color: var(--primary); letter-spacing: -0.03em; margin-bottom: 8px; }
-.status-badge { font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 12px; }
-.status-desc { color: #475569; font-size: 15px; max-width: 580px; line-height: 1.6; }
+.status-badge { font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 16px; }
+
+/* Visual Gauge Scale Architecture */
+.gauge-container { width: 100%; max-width: 480px; margin: 12px auto 28px auto; position: relative; padding-bottom: 20px; }
+.gauge-track { height: 12px; border-radius: 6px; background: linear-gradient(to right, var(--clr-slim) 0%, var(--clr-slim) 25%, var(--clr-healthy) 25%, var(--clr-healthy) 60%, var(--clr-increased) 60%, var(--clr-increased) 80%, var(--clr-highly) 80%, var(--clr-highly) 100%); position: relative; }
+.gauge-pointer { width: 16px; height: 16px; background: #0f172a; border: 2px solid #ffffff; border-radius: 50%; position: absolute; top: -2px; transform: translateX(-50%); transition: left 0.6s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.gauge-labels { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-top: 8px; padding: 0 2px; }
+
+.status-desc { color: #475569; font-size: 15px; max-width: 580px; line-height: 1.6; margin-top: 12px; }
 
 .guidance-card { background: #f8fafc; border-left: 4px solid var(--primary); padding: 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 32px; }
 .guidance-card h4 { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
@@ -141,12 +154,15 @@ body {
 .disclaimer-panel { background: #fff1f2; border-left: 4px solid #f43f5e; padding: 16px; border-radius: var(--radius-md); color: #9f1239; font-size: 13.5px; line-height: 1.5; }
 .disclaimer-panel strong { display: block; color: #881337; margin-bottom: 4px; }
 
-/* FAQ Styles */
-.faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; cursor: pointer; }
+/* FAQ Accordion Smooth Optimization Grid System */
+.faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; }
 .faq-item:last-child { border-bottom: none; }
-.faq-question { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 700; color: #1e293b; }
-.faq-icon { font-size: 18px; color: var(--text-muted); transition: transform 0.2s; }
-.faq-answer { display: none; padding-top: 12px; color: #475569; font-size: 14.5px; line-height: 1.6; }
+.faq-trigger { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 700; color: #1e293b; background: none; border: none; width: 100%; text-align: left; cursor: pointer; padding: 4px 0; }
+.faq-icon { font-size: 18px; color: var(--text-muted); transition: transform 0.25s ease; }
+.faq-content-wrapper { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.25s ease; overflow: hidden; }
+.faq-content-wrapper.expanded { grid-template-rows: 1fr; }
+.faq-answer { min-height: 0; color: #475569; font-size: 14.5px; line-height: 1.6; padding-top: 0; transition: padding 0.25s ease; }
+.faq-content-wrapper.expanded .faq-answer { padding-top: 12px; }
 
 @media (max-width: 768px) {
     body { padding: 16px 8px; }
@@ -181,17 +197,17 @@ body {
                 <label class="input-label" id="label-height">Your Total Standing Height</label>
                 
                 <div class="input-wrapper" id="box-height-metric">
-                    <input type="number" id="inp-height-metric" class="input-field" placeholder="e.g., 175" min="1" step="any">
+                    <input type="number" id="inp-height-metric" class="input-field" placeholder="e.g., 175" min="1" step="any" oninput="if(this.value<0)this.value=''">
                     <span class="unit-badge">cm</span>
                 </div>
 
                 <div class="dual-fields" id="box-height-imperial" style="display: none;">
                     <div class="input-wrapper">
-                        <input type="number" id="inp-height-ft" class="input-field" placeholder="ft" min="0" step="1">
+                        <input type="number" id="inp-height-ft" class="input-field" placeholder="ft" min="0" step="1" oninput="if(this.value<0)this.value=''">
                         <span class="unit-badge">ft</span>
                     </div>
                     <div class="input-wrapper">
-                        <input type="number" id="inp-height-in" class="input-field" placeholder="in" min="0" max="11.9" step="any">
+                        <input type="number" id="inp-height-in" class="input-field" placeholder="in" min="0" max="11.9" step="any" oninput="if(this.value<0)this.value=''">
                         <span class="unit-badge">in</span>
                     </div>
                 </div>
@@ -200,7 +216,7 @@ body {
             <div class="input-group">
                 <label class="input-label" id="label-waist">Your Natural Waist Circumference</label>
                 <div class="input-wrapper">
-                    <input type="number" id="inp-waist" class="input-field" placeholder="e.g., 80" min="1" step="any">
+                    <input type="number" id="inp-waist" class="input-field" placeholder="e.g., 80" min="1" step="any" oninput="if(this.value<0)this.value=''">
                     <span class="unit-badge" id="badge-waist">cm</span>
                 </div>
             </div>
@@ -211,19 +227,31 @@ body {
         <div class="result-box" id="result-area">
             <div class="result-grid">
                 <div class="score-display" id="out-ratio">0.00</div>
-                <div class="status-badge" id="out-status">Proportion Status</div>
-                <div class="status-desc" id="out-desc">Detailed physiological analysis paragraph tracking.</div>
+                <div class="status-badge" id="out-status">--</div>
+                
+                <div class="gauge-container">
+                    <div class="gauge-track">
+                        <div class="gauge-pointer" id="gauge-pointer" style="left: 50%;"></div>
+                    </div>
+                    <div class="gauge-labels">
+                        <span>Slim</span>
+                        <span>Healthy</span>
+                        <span>Increased</span>
+                        <span>Highly Elevated</span>
+                    </div>
+                </div>
+
+                <div class="status-desc" id="out-desc"></div>
             </div>
 
             <div class="guidance-card">
                 <h4 id="out-tip-title">Clinical Risk Evaluation Summary</h4>
-                <p id="out-tip-body">Strategic therapeutic suggestion block aligned with physical calculations index formulas.</p>
+                <p id="out-tip-body"></p>
             </div>
 
             <div class="cross-sell-wrapper">
                 <div class="cross-sell-headline">Recommended Next Diagnostics</div>
-                <div class="cross-sell-grid" id="cross-sell-container">
-                    </div>
+                <div class="cross-sell-grid" id="cross-sell-container"></div>
             </div>
         </div>
     </main>
@@ -240,17 +268,32 @@ body {
 
     <section class="info-section" style="margin-top: 32px;">
         <h2>Frequently Asked Questions</h2>
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question"><span>Why is WHtR considered better than BMI?</span><span class="faq-icon">+</span></div>
-            <div class="faq-answer">BMI only measures total weight relative to height, ignoring fat distribution. WHtR directly measures abdominal fat accumulation, which is a far stronger clinical indicator of cardiovascular risk, type 2 diabetes, and metabolic syndrome.</div>
+        <div class="faq-item">
+            <button class="faq-trigger" onclick="toggleFaqAccordion(this)" aria-expanded="false">
+                <span>Why is WHtR considered better than BMI?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content-wrapper">
+                <div class="faq-answer">BMI only measures total weight relative to height, ignoring fat distribution. WHtR directly measures abdominal fat accumulation, which is a far stronger clinical indicator of cardiovascular risk, type 2 diabetes, and metabolic syndrome.</div>
+            </div>
         </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question"><span>What is a healthy Waist-to-Height Ratio?</span><span class="faq-icon">+</span></div>
-            <div class="faq-answer">As a general clinical rule of thumb, keeping your waist circumference to less than half your height (a ratio below 0.50) is associated with lower health risks for both men and women.</div>
+        <div class="faq-item">
+            <button class="faq-trigger" onclick="toggleFaqAccordion(this)" aria-expanded="false">
+                <span>What is a healthy Waist-to-Height Ratio?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content-wrapper">
+                <div class="faq-answer">As a general clinical rule of thumb, keeping your waist circumference to less than half your height (a ratio below 0.50) is associated with lower health risks for both men and women.</div>
+            </div>
         </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question"><span>Where exactly should I measure my waist?</span><span class="faq-icon">+</span></div>
-            <div class="faq-answer">Measure at the midpoint between the bottom of your lowest rib and the top of your hip bone (usually right across your belly button). Breathe out naturally and do not pull the tape too tight.</div>
+        <div class="faq-item">
+            <button class="faq-trigger" onclick="toggleFaqAccordion(this)" aria-expanded="false">
+                <span>Where exactly should I measure my waist?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content-wrapper">
+                <div class="faq-answer">Measure at the midpoint between the bottom of your lowest rib and the top of your hip bone (usually right across your belly button). Breathe out naturally and do not pull the tape too tight.</div>
+            </div>
         </div>
     </section>
 </div>
@@ -265,94 +308,142 @@ body {
 </footer>
 
 <script>
-// Active tracking system states matching BMI control conventions
 let currentSystem = 'metric';
 
+// High-fidelity localized interpretation mapping
 const interpretationMatrix = [
-    { max: 0.42, status: "Extremely Slim / Underweight ⚠️", desc: "Your waist-to-height proportion drops below normal biological baselines, indicating low central fat mass levels.", tip: "Ensure your systemic energy levels align with balanced nutritional patterns. Consult a performance coach or clinical nutritionist to build lean muscle stability if needed." },
-    { max: 0.49, status: "Healthy / Optimal Proportion Template  ", desc: "Your visceral adiposity measurements reside in an excellent therapeutic zone, showcasing minimized metabolic structural risk indices.", tip: "Outstanding distribution profile. Continue backing your current framework with regular movement programs and real food nutrition properties to protect cardiovascular strength longevity." },
-    { max: 0.54, status: "Increased Central Adiposity Zone 📈", desc: "Your profile points to an early expansion of abdominal visceral storage parameters, tracking toward elevated cardiac and cellular stress profiles.", tip: "This boundary marks an optimal inflection point for active intervention. Minor dietary structure cleanups combined with steady aerobic step adjustments can return metrics efficiently to the safety tier." },
-    { max: 99.0, status: "Highly Elevated Visceral Risk Tier 🚨", desc: "Your ratio displays significant central tissue concentration, raising statistical liabilities regarding vascular fatigue, insulin resistance, and blood sugar issues.", tip: "We highly encourage cross-checking these automated measurements with an experienced clinical practitioner. Prioritize steady cardiovascular activation combined with systemic anti-inflammatory eating frameworks." }
+    { max: 0.42, status: "身形偏瘦 / 体脂较低 ⚠️", color: "var(--clr-slim)", desc: "您的腰高比低于标准基准线。这表明您的腹部核心脂肪水平偏低，虽然罹患代谢疾病的风险极小，但仍需注意是否伴随肌肉量不足的情况。", tip: "请确保您的日常热量摄入与您的基础活动水平相匹配。如果您的目标是进行力量塑造或运动调理，建议指定科学的膳食计划，专注于维持或提高健康的瘦肌肉量。", gaugeMin: 0, gaugeMax: 25 },
+    { max: 0.49, status: "健康体态 / 理想身材比例 ✨", color: "var(--clr-healthy)", desc: "恭喜！您的腹部脂肪分布处于完美的优秀区间，这意味着您因内脏脂肪堆积而导致心血管或慢性代谢疾病的统计学风险降到了最低点。", tip: "极佳的身体比例指标！请继续保持目前的健康生活方式，多摄入天然全食物，并配合规律的有氧与抗阻运动，以长期锁定这份宝贵的心血管健康红利。", gaugeMin: 25, gaugeMax: 60 },
+    { max: 0.54, status: "腹部脂肪偏高 / 早期向心肥胖 📈", color: "var(--clr-increased)", desc: "计算结果显示，您的腹部已经开始隐蔽地蓄积内脏脂肪。指标已逐步逼近健康临界线的红灯区，容易引发身体代谢系统的潜在负担。", tip: "当前这一阶段正是干预的黄金时期。只要在日常饮食中适当减少精制糖和深度加工食品的摄入，并确保每周进行至少150分钟的快走或骑行等中强度有氧运动，便可非常轻松地将该指标拉回绿色健康区间。", gaugeMin: 60, gaugeMax: 80 },
+    { max: 99.0, status: "高危脂肪累积 / 需高度重视 🚨", color: "var(--clr-highly)", desc: "您的腰高比例偏高。这表明大量的内脏脂肪正在腹部深处包裹着您的核心器官，这在临床医学上与胰岛素抵抗、高血压、高血脂以及心血管疲劳高度相关。", tip: "强烈建议您在日常生活中开启控糖与减脂计划。多采用高纤维、高蛋白的膳食结构，并建议在专业指导下进行抗阻力量训练以提高基础代谢。如有必要，可定期前往医院进行血脂及糖耐量健康筛查。", gaugeMin: 80, gaugeMax: 100 }
 ];
 
 function switchUnitSystem(system) {
-    currentSystem = system;
+    if (currentSystem === system) return;
     
-    // Toggle active classes on structural button blocks
-    document.getElementById('btn-metric').classList.toggle('active', system === 'metric');
-    document.getElementById('btn-imperial').classList.toggle('active', system === 'imperial');
-
-    // Display fields block variants conditionally based on toggle selections
     const metricBox = document.getElementById('box-height-metric');
     const imperialBox = document.getElementById('box-height-imperial');
     const waistBadge = document.getElementById('badge-waist');
     const waistInput = document.getElementById('inp-waist');
-
-    if (system === 'metric') {
-        metricBox.style.display = 'flex';
-        imperialBox.style.display = 'none';
-        waistBadge.innerText = 'cm';
-        waistInput.placeholder = 'e.g., 80';
-    } else {
+    
+    const hMetricInp = document.getElementById('inp-height-metric');
+    const hFtInp = document.getElementById('inp-height-ft');
+    const hInInp = document.getElementById('inp-height-in');
+    
+    // Read current data values to run frictionless conversion properties
+    if (system === 'imperial') {
+        const cmVal = parseFloat(hMetricInp.value);
+        if (!isNaN(cmVal) && cmVal > 0) {
+            const totalInches = cmVal / 2.54;
+            const ft = Math.floor(totalInches / 12);
+            const inch = (totalInches % 12).toFixed(1);
+            hFtInp.value = ft;
+            hInInp.value = inch;
+        }
+        
+        const waistCm = parseFloat(waistInput.value);
+        if (!isNaN(waistCm) && waistCm > 0) {
+            waistInput.value = (waistCm / 2.54).toFixed(1);
+        }
+        waistInput.placeholder = 'e.g., 31.5';
+        waistBadge.innerText = 'in';
+        
         metricBox.style.display = 'none';
         imperialBox.style.display = 'flex';
-        waistBadge.innerText = 'in';
-        waistInput.placeholder = 'e.g., 31.5';
+    } else {
+        const ft = parseFloat(hFtInp.value) || 0;
+        const inch = parseFloat(hInInp.value) || 0;
+        if (ft > 0 || inch > 0) {
+            const totalIn = (ft * 12) + inch;
+            hMetricInp.value = Math.round(totalIn * 2.54);
+        }
+        
+        const waistIn = parseFloat(waistInput.value);
+        if (!isNaN(waistIn) && waistIn > 0) {
+            waistInput.value = Math.round(waistIn * 2.54);
+        }
+        waistInput.placeholder = 'e.g., 80';
+        waistBadge.innerText = 'cm';
+        
+        metricBox.style.display = 'flex';
+        imperialBox.style.display = 'none';
     }
+    
+    currentSystem = system;
+    document.getElementById('btn-metric').classList.toggle('active', system === 'metric');
+    document.getElementById('btn-imperial').classList.toggle('active', system === 'imperial');
 }
 
 function executeWhtrCalculation() {
     let heightCm = 0;
     let waistCm = 0;
 
-    // Retrieve input values dynamically depending on the current active system state
     if (currentSystem === 'metric') {
         const rawHeight = parseFloat(document.getElementById('inp-height-metric').value);
         const rawWaist = parseFloat(document.getElementById('inp-waist').value);
 
         if (isNaN(rawHeight) || rawHeight <= 0 || isNaN(rawWaist) || rawWaist <= 0) {
-            alert("Please input accurate, positive numeric parameters into the fields.");
+            alert("请输入准确的正数身高与腰围参数。");
             return;
         }
         heightCm = rawHeight;
         waistCm = rawWaist;
     } else {
-        // Imperial calculation block execution paths
         const feet = parseFloat(document.getElementById('inp-height-ft').value) || 0;
         const inches = parseFloat(document.getElementById('inp-height-in').value) || 0;
         const rawWaistInches = parseFloat(document.getElementById('inp-waist').value);
 
         if ((feet <= 0 && inches <= 0) || isNaN(rawWaistInches) || rawWaistInches <= 0) {
-            alert("Please provide valid entries for your height inputs (ft/in) and waist dimension (in).");
+            alert("请完整填写英制身高(ft/in)与腰围(in)输入框。");
             return;
         }
 
-        // Convert all measurements to uniform internal calculations
         const totalInches = (feet * 12) + inches;
         heightCm = totalInches * 2.54;
-        rawWaistInches ? waistCm = rawWaistInches * 2.54 : waistCm = 0;
+        waistCm = rawWaistInches * 2.54;
     }
 
-    // Execute standard mathematical ratio algorithm
     const finalRatio = waistCm / heightCm;
 
     // Extract exact diagnostic rule alignment boundaries
     let matchedRule = interpretationMatrix[interpretationMatrix.length - 1];
-    for (let rule of interpretationMatrix) {
-        if (finalRatio <= rule.max) {
-            matchedRule = rule;
+    let matchedIdx = interpretationMatrix.length - 1;
+    for (let i = 0; i < interpretationMatrix.length; i++) {
+        if (finalRatio <= interpretationMatrix[i].max) {
+            matchedRule = interpretationMatrix[i];
+            matchedIdx = i;
             break;
         }
     }
 
-    // Unlocking and injecting variables into view nodes smoothly
+    // Calculate fluid responsive linear percent mapping locations inside custom segment bounds
+    let segmentPercent = 0;
+    let currentMinBoundary = matchedIdx === 0 ? 0.30 : interpretationMatrix[matchedIdx - 1].max;
+    let currentMaxBoundary = matchedRule.max === 99.0 ? 0.65 : matchedRule.max;
+    
+    let clampedRatio = Math.max(currentMinBoundary, Math.min(currentMaxBoundary, finalRatio));
+    segmentPercent = (clampedRatio - currentMinBoundary) / (currentMaxBoundary - currentMinBoundary);
+    
+    let needlePlacement = matchedRule.gaugeMin + (segmentPercent * (matchedRule.gaugeMax - matchedRule.gaugeMin));
+    needlePlacement = Math.max(2, Math.min(98, needlePlacement));
+
+    // Inject parameters into viewport display layers seamlessly
     document.getElementById('result-area').style.display = 'block';
-    document.getElementById('out-ratio').innerText = finalRatio.toFixed(2);
-    document.getElementById('out-status').innerText = matchedRule.status;
+    
+    const outRatioNode = document.getElementById('out-ratio');
+    outRatioNode.innerText = finalRatio.toFixed(2);
+    outRatioNode.style.color = matchedRule.color;
+    
+    const outStatusNode = document.getElementById('out-status');
+    outStatusNode.innerText = matchedRule.status;
+    outStatusNode.style.color = matchedRule.color;
+    
     document.getElementById('out-desc').innerText = matchedRule.desc;
     document.getElementById('out-tip-body').innerText = matchedRule.tip;
+    
+    // Execute CSS3 Gauge needle shifting properties smoothly
+    document.getElementById('gauge-pointer').style.left = needlePlacement + '%';
 
-    // Dynamically update conversion funnel recommendation links based on diagnostic findings
     injectDownstreamOffers(finalRatio);
 
     // Auto-scroll seamlessly to findings viewport panel
@@ -363,56 +454,59 @@ function injectDownstreamOffers(calculatedRatio) {
     const targetArea = document.getElementById('cross-sell-container');
     let cardsHTML = '';
 
-    if (calculatedRatio >= 0.50) { // Elevated Central Risk Funnel Route mapping
+    if (calculatedRatio >= 0.50) {
         cardsHTML = `
             <a href="https://www.toolsquark.com/tools/body-fat-calculator.html" class="cross-sell-card">
                 <div>
-                    <span class="cross-sell-tag">Advanced Composition</span>
-                    <div class="cross-sell-title">Verify True Body Fat Volume %</div>
-                    <div class="cross-sell-desc">Your waist ratio hints at visceral development. Isolate your accurate body fat volumes from active lean tissue weight parameters safely.</div>
+                    <span class="cross-sell-tag">深度体测</span>
+                    <div class="cross-sell-title">进一步测算您的精确体脂率 (Body Fat %)</div>
+                    <div class="cross-sell-desc">您的腰高比提示皮下及内脏脂肪较为活跃。建议立即配合腰、颈、臀等多围度算法，准确剥离出真实的体脂质量占比。</div>
                 </div>
-                <div class="cross-sell-action">Run Fat Analysis →</div>
+                <div class="cross-sell-action">进行体脂率测算 →</div>
             </a>
             <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="cross-sell-card alt-funnel">
                 <div>
-                    <span class="cross-sell-tag">Baseline Validation</span>
-                    <div class="cross-sell-title">Cross-Reference Standard Weight Categories</div>
-                    <div class="cross-sell-desc">Evaluate how your central proportion profiles match traditional clinical total mass index markers across standard demographic bands.</div>
+                    <span class="cross-sell-tag">基准校准</span>
+                    <div class="cross-sell-title">同步对照国际标定 BMI 质量指数</div>
+                    <div class="cross-sell-desc">结合传统的全身总重量判定公式，双重核对您的体量在标准人口学统计带宽中所映射的健康水位。</div>
                 </div>
-                <div class="cross-sell-action">Cross-Check BMI Index →</div>
+                <div class="cross-sell-action">测算传统 BMI →</div>
             </a>
         `;
-    } else { // HealthyZone Route mapping
+    } else {
         cardsHTML = `
             <a href="https://www.toolsquark.com/tools/body-fat-calculator.html" class="cross-sell-card">
                 <div>
-                    <span class="cross-sell-tag">Composition Profile</span>
-                    <div class="cross-sell-title">Map Out Total Adipose Volume</div>
-                    <div class="cross-sell-desc">Your waist proportion is in an excellent place. Dive deeper into your body composition by measuring your overall fat-to-muscle distribution.</div>
+                    <span class="cross-sell-tag">成分画像</span>
+                    <div class="cross-sell-title">精细测算全身脂肪总量与分布</div>
+                    <div class="cross-sell-desc">您的腰腹比例处于极度理想的状态。建议您探索更加精细的身体成分模型，查看肌肉与总脂肪的深层配比。</div>
                 </div>
-                <div class="cross-sell-action">Analyze Body Fat % →</div>
+                <div class="cross-sell-action">精细测算体脂率 →</div>
             </a>
             <a href="https://www.toolsquark.com/tools/lean-body-mass-calculator.html" class="cross-sell-card alt-funnel">
                 <div>
-                    <span class="cross-sell-tag">Performance Tracking</span>
-                    <div class="cross-sell-title">Isolate Your Active Lean Mass</div>
-                    <div class="cross-sell-desc">Keep your metabolism working efficiently. Calculate the exact weight of your muscles, bones, and organs to monitor your physical development over time.</div>
+                    <span class="cross-sell-tag">增肌减脂追踪</span>
+                    <div class="cross-sell-title">测算您的精确去脂体重 / 纯瘦体重 (LBM)</div>
+                    <div class="cross-sell-desc">保持高效的代谢基石。精准算出您骨骼与肌肉的净重，协助您在后续的力量训练或日常习惯中更清晰地把握身体进化轨迹。</div>
                 </div>
-                <div class="cross-sell-action">Track Active Muscle Mass →</div>
+                <div class="cross-sell-action">锁定制衡瘦体重 →</div>
             </a>
         `;
     }
     targetArea.innerHTML = cardsHTML;
 }
 
-// Micro UX Action Trigger Panels 
-function toggleFaq(element) {
-    const answer = element.querySelector('.faq-answer');
-    const icon = element.querySelector('.faq-icon');
-    const isVisible = answer.style.display === 'block';
+// Micro UX Smooth Accordion Engine
+function toggleFaqAccordion(triggerButton) {
+    const contentWrapper = triggerButton.nextElementSibling;
+    const icon = triggerButton.querySelector('.faq-icon');
+    const isExpanded = triggerButton.getAttribute('aria-expanded') === 'true';
     
-    answer.style.display = isVisible ? 'none' : 'block';
-    icon.innerText = isVisible ? '+' : '−';
+    triggerButton.setAttribute('aria-expanded', !isExpanded);
+    contentWrapper.classList.toggle('expanded');
+    
+    icon.innerText = isExpanded ? '+' : '−';
+    icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
 }
 </script>
 </body>
