@@ -68,7 +68,7 @@
     --radius-md: 16px;
     --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
     
-    /* Gauge Palette Colors */
+    /* Gauge Palette Colors - High Fidelity */
     --clr-slim: #3b82f6;
     --clr-healthy: #10b981;
     --clr-increased: #f59e0b;
@@ -85,11 +85,12 @@ body {
 }
 .container { max-width: 800px; margin: auto; }
 
-/* Navigation & Header */
+/* Navigation Breadcrumbs */
 .calc-nav { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 24px; color: var(--text-muted); }
 .calc-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
 .calc-nav a:hover { color: var(--primary); }
 
+/* Hero Header Dashboard */
 .hero-header { background: #ffffff; border: 1px solid var(--border-color); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 32px; box-shadow: var(--shadow-sm); }
 .hero-header h1 { font-size: 28px; font-weight: 800; color: #1e293b; letter-spacing: -0.02em; margin-bottom: 8px; }
 .hero-header p { color: var(--text-muted); font-size: 15px; }
@@ -139,7 +140,7 @@ body {
 .cross-sell-grid { display: flex; flex-direction: column; gap: 16px; }
 .cross-sell-card { display: flex; justify-content: space-between; align-items: center; background: #ffffff; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: all 0.2s; }
 .cross-sell-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-.cross-sell-tag { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; tracking: 0.05em; color: var(--primary); background: rgba(37, 99, 235, 0.08); padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
+.cross-sell-tag { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); background: rgba(37, 99, 235, 0.08); padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
 .alt-funnel .cross-sell-tag { color: #4f46e5; background: rgba(79, 70, 229, 0.08); }
 .cross-sell-title { font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
 .cross-sell-desc { font-size: 13.5px; color: var(--text-muted); max-width: 540px; line-height: 1.5; }
@@ -310,12 +311,12 @@ body {
 <script>
 let currentSystem = 'metric';
 
-// High-fidelity localized interpretation mapping
+// High-fidelity localized interpretation mapping - Highly Emotional Copywriting Built-in
 const interpretationMatrix = [
-    { max: 0.42, status: "身形偏瘦 / 体脂较低 ⚠️", color: "var(--clr-slim)", desc: "您的腰高比低于标准基准线。这表明您的腹部核心脂肪水平偏低，虽然罹患代谢疾病的风险极小，但仍需注意是否伴随肌肉量不足的情况。", tip: "请确保您的日常热量摄入与您的基础活动水平相匹配。如果您的目标是进行力量塑造或运动调理，建议指定科学的膳食计划，专注于维持或提高健康的瘦肌肉量。", gaugeMin: 0, gaugeMax: 25 },
-    { max: 0.49, status: "健康体态 / 理想身材比例 ✨", color: "var(--clr-healthy)", desc: "恭喜！您的腹部脂肪分布处于完美的优秀区间，这意味着您因内脏脂肪堆积而导致心血管或慢性代谢疾病的统计学风险降到了最低点。", tip: "极佳的身体比例指标！请继续保持目前的健康生活方式，多摄入天然全食物，并配合规律的有氧与抗阻运动，以长期锁定这份宝贵的心血管健康红利。", gaugeMin: 25, gaugeMax: 60 },
-    { max: 0.54, status: "腹部脂肪偏高 / 早期向心肥胖 📈", color: "var(--clr-increased)", desc: "计算结果显示，您的腹部已经开始隐蔽地蓄积内脏脂肪。指标已逐步逼近健康临界线的红灯区，容易引发身体代谢系统的潜在负担。", tip: "当前这一阶段正是干预的黄金时期。只要在日常饮食中适当减少精制糖和深度加工食品的摄入，并确保每周进行至少150分钟的快走或骑行等中强度有氧运动，便可非常轻松地将该指标拉回绿色健康区间。", gaugeMin: 60, gaugeMax: 80 },
-    { max: 99.0, status: "高危脂肪累积 / 需高度重视 🚨", color: "var(--clr-highly)", desc: "您的腰高比例偏高。这表明大量的内脏脂肪正在腹部深处包裹着您的核心器官，这在临床医学上与胰岛素抵抗、高血压、高血脂以及心血管疲劳高度相关。", tip: "强烈建议您在日常生活中开启控糖与减脂计划。多采用高纤维、高蛋白的膳食结构，并建议在专业指导下进行抗阻力量训练以提高基础代谢。如有必要，可定期前往医院进行血脂及糖耐量健康筛查。", gaugeMin: 80, gaugeMax: 100 }
+    { max: 0.42, status: "Extremely Slim / Underweight ⚠️", color: "var(--clr-slim)", desc: "Your waist-to-height profile falls below the optimal clinical line. While your abdominal storage is low, this proportion often points to insufficient lean skeletal muscle mass or general systemic undernourishment.", tip: "Prioritize nutrient-dense fuel intake and structured resistance exercises. Focus heavily on expanding structural metabolic durability and dynamic muscle volume rather than simple calorie accumulation.", gaugeMin: 0, gaugeMax: 25 },
+    { max: 0.49, status: "Ideal Proportions / Healthy Zone ✨", color: "var(--clr-healthy)", desc: "Perfect alignment! Your metabolic body proportion stands in the gold standard medical tier. This explicit ratio confirms minimal visceral lipid buildup around your vital core frameworks.", tip: "Sensational physical preservation! Lock down this exceptional advantage by continuing clean whole-food nutrition grids alongside consistent cardiorespiratory physical routines.", gaugeMin: 25, gaugeMax: 60 },
+    { max: 0.54, status: "Increased Visceral Fat / Early Alert 📈", color: "var(--clr-increased)", desc: "Caution: Subterranean visceral fat tissue is actively compiling deep within your core perimeter. You have crossed the primary medical safety threshold, placing silent friction on your cardiovascular networks.", tip: "Act immediately before this locks into stubborn chronic patterns! Simply stripping refined sugars from your routine and engineering 150 minutes of weekly movement can easily pull your metrics straight back to safe zones.", gaugeMin: 60, gaugeMax: 80 },
+    { max: 99.0, status: "Highly Elevated Risk / Action Required 🚨", color: "var(--clr-highly)", desc: "Critical Exposure: Your calculated proportions indicate an advanced build-up of metabolic fat tissue surrounding interior organs. This condition is closely linked with high blood pressure and chronic fatigue.", tip: "Treat this diagnostic feedback as your ultimate wake-up call. We highly suggest integrating an absolute low-glycemic dietary strategy combined with safe resistance exercises to burn out the dangerous internal central fat mass.", gaugeMin: 80, gaugeMax: 100 }
 ];
 
 function switchUnitSystem(system) {
@@ -383,7 +384,7 @@ function executeWhtrCalculation() {
         const rawWaist = parseFloat(document.getElementById('inp-waist').value);
 
         if (isNaN(rawHeight) || rawHeight <= 0 || isNaN(rawWaist) || rawWaist <= 0) {
-            alert("请输入准确的正数身高与腰围参数。");
+            alert("Please provide valid positive values for height and waist measurements.");
             return;
         }
         heightCm = rawHeight;
@@ -394,7 +395,7 @@ function executeWhtrCalculation() {
         const rawWaistInches = parseFloat(document.getElementById('inp-waist').value);
 
         if ((feet <= 0 && inches <= 0) || isNaN(rawWaistInches) || rawWaistInches <= 0) {
-            alert("请完整填写英制身高(ft/in)与腰围(in)输入框。");
+            alert("Please complete the Imperial fields with correct positive parameters.");
             return;
         }
 
@@ -458,38 +459,38 @@ function injectDownstreamOffers(calculatedRatio) {
         cardsHTML = `
             <a href="https://www.toolsquark.com/tools/body-fat-calculator.html" class="cross-sell-card">
                 <div>
-                    <span class="cross-sell-tag">深度体测</span>
-                    <div class="cross-sell-title">进一步测算您的精确体脂率 (Body Fat %)</div>
-                    <div class="cross-sell-desc">您的腰高比提示皮下及内脏脂肪较为活跃。建议立即配合腰、颈、臀等多围度算法，准确剥离出真实的体脂质量占比。</div>
+                    <span class="cross-sell-tag">Deep Diagnostic</span>
+                    <div class="cross-sell-title">Expose Your Real Body Fat Percentage (BF%)</div>
+                    <div class="cross-sell-desc">Your waist ratio reveals highly active core adiposity. Uncover exactly how much of your total body volume consists of fat tissue using precise multi-circumference configurations.</div>
                 </div>
-                <div class="cross-sell-action">进行体脂率测算 →</div>
+                <div class="cross-sell-action">Analyze Body Fat % →</div>
             </a>
             <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="cross-sell-card alt-funnel">
                 <div>
-                    <span class="cross-sell-tag">基准校准</span>
-                    <div class="cross-sell-title">同步对照国际标定 BMI 质量指数</div>
-                    <div class="cross-sell-desc">结合传统的全身总重量判定公式，双重核对您的体量在标准人口学统计带宽中所映射的健康水位。</div>
+                    <span class="cross-sell-tag">Baseline Verification</span>
+                    <div class="cross-sell-title">Cross-Reference Your Standard BMI Level</div>
+                    <div class="cross-sell-desc">Match your central profile indicators with standard mass formulas. Determine how your global body frame maps out against standard medical weight expectations.</div>
                 </div>
-                <div class="cross-sell-action">测算传统 BMI →</div>
+                <div class="cross-sell-action">Check BMI Metrics →</div>
             </a>
         `;
     } else {
         cardsHTML = `
             <a href="https://www.toolsquark.com/tools/body-fat-calculator.html" class="cross-sell-card">
                 <div>
-                    <span class="cross-sell-tag">成分画像</span>
-                    <div class="cross-sell-title">精细测算全身脂肪总量与分布</div>
-                    <div class="cross-sell-desc">您的腰腹比例处于极度理想的状态。建议您探索更加精细的身体成分模型，查看肌肉与总脂肪的深层配比。</div>
+                    <span class="cross-sell-tag">Composition Profile</span>
+                    <div class="cross-sell-title">Map Out Total Adipose Volume</div>
+                    <div class="cross-sell-desc">Your waist proportion is in an excellent place. Dive deeper into your body composition by measuring your overall fat-to-muscle distribution.</div>
                 </div>
-                <div class="cross-sell-action">精细测算体脂率 →</div>
+                <div class="cross-sell-action">Analyze Body Fat % →</div>
             </a>
             <a href="https://www.toolsquark.com/tools/lean-body-mass-calculator.html" class="cross-sell-card alt-funnel">
                 <div>
-                    <span class="cross-sell-tag">增肌减脂追踪</span>
-                    <div class="cross-sell-title">测算您的精确去脂体重 / 纯瘦体重 (LBM)</div>
-                    <div class="cross-sell-desc">保持高效的代谢基石。精准算出您骨骼与肌肉的净重，协助您在后续的力量训练或日常习惯中更清晰地把握身体进化轨迹。</div>
+                    <span class="cross-sell-tag">Performance Tracking</span>
+                    <div class="cross-sell-title">Isolate Your Active Lean Mass (LBM)</div>
+                    <div class="cross-sell-desc">Keep your metabolism working efficiently. Calculate the exact weight of your muscles, bones, and organs to monitor your physical development over time.</div>
                 </div>
-                <div class="cross-sell-action">锁定制衡瘦体重 →</div>
+                <div class="cross-sell-action">Track Active Muscle Mass →</div>
             </a>
         `;
     }
