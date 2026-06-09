@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Steps to Calories Converter | Active Step Count Burn Tool | ToolsQuark</title>
-<meta name="description" content="Convert your daily walking step counts directly into active calories burned, customized to your body weight parameters.">
+<title>Procrastination Test | Interactive Behavioral Delay Evaluation | ToolsQuark</title>
+<meta name="description" content="Unpack your delay mechanisms, emotional regulation short-circuits, and perfectionism barriers to task execution with our free interactive evaluation tool.">
 
 <script type="application/ld+json">
 [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Steps to Calories Energy Expenditure Converter Tool",
+    "name": "Interactive Procrastination Diagnostic Evaluation Assessment Tool",
     "operatingSystem": "All",
     "applicationCategory": "HealthApplication",
     "offers": {
@@ -19,7 +19,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "An interactive fitness conversion utility calculating active physical workload expenditure values based on accumulated step steps and body metrics.",
+    "description": "An interactive assessment tool parsing behavioral delay indices, emotional avoidance parameters, temporal discounting, and perfectionism gridlock indicators.",
     "browserRequirements": "Requires JavaScript. Requires HTML5."
   },
   {
@@ -28,10 +28,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How accurate is this converter?",
+        "name": "Why do I work better under tight deadline pressure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It provides a solid metabolic estimate based on mechanical workload. True burn variations rely heavily on individual walking velocity, metabolic rates, and precise terrain inclines."
+          "text": "The massive surge of stress hormones artificially activates executive planning centers, compensating temporarily for weak intrinsic motivation pathways."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is procrastination driven primarily by structural laziness?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Modern cognitive science demonstrates procrastination is fundamentally an emotional regulation failure—prioritizing immediate mood repair over future long-term welfare."
         }
       }
     ]
@@ -43,6 +51,8 @@
 :root {
     --primary: #2563eb;
     --primary-hover: #1d4ed8;
+    --warning: #f97316;
+    --warning-bg: #fff7ed;
     --background: #f8fafc;
     --text-main: #0f172a;
     --text-muted: #64748b;
@@ -50,12 +60,13 @@
     --border-color: #e2e8f0;
     --radius-lg: 24px;
     --radius-md: 16px;
-    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
     background: var(--background); 
     color: var(--text-main); 
     line-height: 1.6; 
@@ -63,77 +74,161 @@ body {
 }
 .container { max-width: 800px; margin: auto; }
 
-/* Navigation Breadcrumbs Hierarchy */
-.calc-navigation { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 20px; }
-.back-home-btn { color: var(--text-muted); text-decoration: none; font-weight: 600; background: transparent; border: none; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: all 0.2s; }
+/* Breadcrumb Architecture Style Component */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; padding-left: 4px; }
+.breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb span.separator { font-size: 12px; opacity: 0.7; }
+.breadcrumb span.current { color: var(--text-main); font-weight: 500; }
+
+/* Quiz Workflow Header & Controls */
+.back-home-btn { font-size: 14.5px; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap; flex-shrink: 0; cursor: pointer; font-weight: 600; background: transparent; border: none; padding: 4px 8px; border-radius: 8px; transition: all 0.2s; }
 .back-home-btn:hover { color: var(--primary); background: #f1f5f9; }
 
-/* Branding Header */
-.hero { background: linear-gradient(135deg, #1e3a8a, #4f46e5); color: white; padding: 40px 30px; border-radius: var(--radius-lg); margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
-.hero h1 { font-size: 32px; margin-bottom: 12px; font-weight: 800; letter-spacing: -0.02em; }
-.hero p { font-size: 16px; opacity: .95; }
+/* Identity Branding Component Header Block */
+.hero { background: linear-gradient(135deg, #4f46e5, #06b6d4); color: white; padding: 48px 32px; border-radius: var(--radius-lg); margin-bottom: 28px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
+.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.2; }
+.hero p { font-size: 16px; opacity: 0.9; max-width: 620px; font-weight: 400; }
 
-/* Interactive Workspace Form Layout */
+/* Container Core Layout Architecture */
 .card { background: var(--card-bg); padding: 32px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
-.form-group { margin-bottom: 20px; }
-.form-label { display: block; font-weight: 700; margin-bottom: 8px; color: #334155; font-size: 15px; }
+.card h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.01em; }
+.hidden { display: none !important; }
 
-input, select { width: 100%; padding: 14px; border-radius: var(--radius-md); border: 2px solid var(--border-color); font-size: 16px; color: var(--text-main); background: #f8fafc; transition: all 0.2s; }
-input:focus, select:focus { outline: none; border-color: var(--primary); background: #fff; }
+/* Interactive Progress Tracking Frame */
+.quiz-header { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 24px; gap: 16px; }
+.progress-wrap { width: 100%; height: 12px; background: #e2e8f0; border-radius: 20px; overflow: hidden; position: relative; flex-grow: 1; }
+.progress-bar { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s ease; }
+.progress-text { font-size: 14px; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
 
-.calc-btn { width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: var(--radius-md); font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
-.calc-btn:hover { background: var(--primary-hover); }
+/* Option Cards Interaction Designs */
+.question { font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 24px; text-align: justify; line-height: 1.4; }
+.answers-grid { display: flex; flex-direction: column; gap: 14px; }
+.option { width: 100%; text-align: left; padding: 16px 20px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: var(--radius-md); font-size: 16px; font-weight: 600; color: #334155; cursor: pointer; transition: all 0.2s ease; }
+.option:hover { border-color: var(--primary); background: #f0f6ff; color: var(--primary); }
+.option.selected { border-color: var(--primary); background: #f0f6ff; color: var(--primary); }
+.option.selected-heavy { border-color: var(--warning); background: var(--warning-bg); color: var(--warning); }
 
-/* Results Metrics Panel Display */
-#result-area { display: none; margin-top: 25px; padding: 24px; background: #f0f6ff; border-radius: var(--radius-md); border-left: 5px solid var(--primary); }
-.result-title { font-size: 18px; font-weight: 700; color: #1e3a8a; }
-.result-value { font-size: 36px; font-weight: 800; color: var(--primary); margin: 12px 0; }
-.status-badge { display: inline-block; padding: 6px 12px; background: #e0f2fe; color: #0369a1; font-weight: 700; font-size: 13px; border-radius: 20px; margin-bottom: 12px; }
-.result-text { color: #475569; font-size: 15px; margin-bottom: 8px; text-align: justify; }
+/* Diagnostic Metrics Result Outputs */
+.score { font-size: 64px; font-weight: 800; text-align: center; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+.profile { text-align: center; font-size: 26px; font-weight: 800; color: #1e3a8a; margin-bottom: 12px; letter-spacing: -0.02em; }
+.description { text-align: justify; color: #475569; margin-bottom: 28px; font-size: 15.5px; line-height: 1.6; }
 
-/* FAQ Content Accordion Modules */
+/* Custom Progress Visualization Vector Bars */
+.bar { margin-bottom: 20px; }
+.bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; color: #334155; font-size: 14.5px; }
+.bar-bg { height: 12px; background: #e2e8f0; border-radius: 20px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--primary); width: 0%; transition: width 1s ease-out; }
+.bar-fill.high-metric { background: var(--warning); }
+
+/* General Matrix Tools Navigation Configurations */
+.recommend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+.recommend-link { text-decoration: none; color: inherit; }
+.recommend-item { padding: 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: #f8fafc; transition: all 0.2s; height: 100%; }
+.recommend-item:hover { border-color: var(--primary); background: #f0f6ff; transform: translateY(-2px); }
+.recommend-item strong { display: block; font-size: 15px; color: #1e293b; margin-bottom: 4px; }
+.recommend-item p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+/* Informational FAQ Module Layout */
 .faq-title { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; }
 .faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; }
 .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
 .faq-item strong { display: block; font-size: 16px; color: #1e293b; margin-bottom: 6px; }
 .faq-item p { color: #475569; font-size: 14.5px; text-align: justify; }
 
-footer { text-align: center; margin-top: 32px; color: var(--text-muted); font-size: 14px; }
+footer { text-align: center; margin-top: 36px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+
+@media(max-width:768px){
+    .hero { padding: 36px 20px; }
+    .hero h1 { font-size: 28px; }
+    .card { padding: 24px; }
+    .question { font-size: 19px; }
+    .score { font-size: 56px; }
+    .profile { font-size: 22px; }
+    .recommend-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 <div class="container">
-    <div class="calc-navigation">
-        <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
-    </div>
+    <nav class="breadcrumb">
+        <a href="https://www.toolsquark.com/">Home</a>
+        <span class="separator">/</span>
+        <a href="https://www.toolsquark.com/lifestyle.html">lifestyle Tools</a>
+        <span class="separator">/</span>
+        <span class="current">Procrastination Test</span>
+    </nav>
 
     <header class="hero">
-        <h1>Steps to Calories Converter</h1>
-        <p>Convert your cumulative walking step count directly into estimated active metabolic energy expenditure, customized to your weight parameters.</p>
+        <h1>Procrastination Assessment Test</h1>
+        <p>Unpack your priority delay mechanisms, emotional regulation short-circuits, and perfectionism blockages hindering executive performance.</p>
     </header>
 
-    <main class="card">
-        <div id="dynamic-inputs"></div>
-        <button class="calc-btn" onclick="calculateNow()">Calculate Energy Burn</button>
-
-        <div id="result-area">
-            <div class="result-title">Estimated Energy Burn:</div>
-            <div class="result-value" id="calc-output">0.00 kcal</div>
-            <div class="status-badge" id="calc-status">Pending Evaluation</div>
-            <p class="result-text" id="calc-desc"></p>
-            <p class="result-text" id="calc-suggestion" style="font-weight: 500; color: #1e293b;"></p>
+    <main class="card" id="quiz">
+        <div class="quiz-header">
+            <button class="back-home-btn" onclick="handleBackHome()">← Home</button>
+            <div class="progress-wrap">
+                <div class="progress-bar" id="p-bar"></div>
+            </div>
+            <div class="progress-text" id="p-text">Question 1 / 5</div>
         </div>
+        <div class="question" id="question">Assembling interactive behavior items index...</div>
+        <div class="answers-grid" id="answers"></div>
     </main>
+
+    <section class="card hidden" id="result">
+        <h3>Procrastination Index Summary</h3>
+        <div class="score" id="score">0/20</div>
+        <div class="profile" id="profile">Analyzing Profile...</div>
+        <p class="description" id="description"></p>
+    </section>
+
+    <section class="card hidden" id="recommendations">
+        <h3>Delay Trigger Diagnostic Factors</h3>
+        
+        <div class="bar">
+            <div class="bar-label"><span>Emotional Avoidance Index</span><span id="label-avoidance">0%</span></div>
+            <div class="bar-bg"><div class="bar-fill" id="bar-avoidance"></div></div>
+        </div>
+        
+        <div class="bar">
+            <div class="bar-label"><span>Temporal Discounting (Present Bias)</span><span id="label-temporal">0%</span></div>
+            <div class="bar-bg"><div class="bar-fill" id="bar-temporal"></div></div>
+        </div>
+        
+        <div class="bar">
+            <div class="bar-label"><span>Perfectionism Gridlock Loop</span><span id="label-perfectionism">0%</span></div>
+            <div class="bar-bg"><div class="bar-fill" id="bar-perfectionism"></div></div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3>Recommended Utility Tools</h3>
+        <div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/self-discipline-test.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Self-Discipline Test</strong>
+                    <p>Evaluate your ongoing willpower metrics and daily volitional habit performance levels.</p>
+                </div>
+            </a>
+            <a href="https://www.toolsquark.com/tools/sleep-quality-assessment.html" class="recommend-link">
+                <div class="recommend-item">
+                    <strong>Sleep Quality Assessment</strong>
+                    <p>Unpack sleep architecture efficiencies that alter cognitive clarity and daily focus spans.</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
     <section class="card">
         <div class="faq-title">Frequently Asked Questions</div>
         <div class="faq-item">
-            <strong>How accurate is this converter?</strong>
-            <p>It provides a solid metabolic estimate based on mechanical workload. True burn variations rely heavily on individual walking velocity, metabolic rates, and precise terrain inclines.</p>
+            <strong>Why do I work better under tight deadline pressure?</strong>
+            <p>The massive surge of stress hormones artificially activates executive planning centers, compensating temporarily for weak intrinsic motivation pathways.</p>
         </div>
         <div class="faq-item">
-            <strong>Does body weight significantly affect energy expenditure?</strong>
-            <p>Yes. Moving more body mass requires higher kinetic energy and muscular force expenditure. Therefore, individuals with higher body weight inherently burn more calories covering the same distance.</p>
+            <strong>Is procrastination driven primarily by structural laziness?</strong>
+            <p>No. Modern cognitive science demonstrates procrastination is fundamentally an emotional regulation failure—prioritizing immediate mood repair over future long-term welfare.</p>
         </div>
     </section>
 
@@ -143,104 +238,153 @@ footer { text-align: center; margin-top: 32px; color: var(--text-muted); font-si
 </div>
 
 <script>
-// Dynamic template generation arrays mapped strictly to original architecture fields
-const inputConfigs = [
-    { id: "steps", label: "Enter total steps accumulated:", type: "number", placeholder: "e.g., 8500" },
-    { id: "weight", label: "Enter your current weight (kg):", type: "number", placeholder: "e.g., 70" }
-];
-
-// The core rules database required to fix the ReferenceError issue
-const interpretationRules = [
+// Specialized behavioral tracking datasets mapped onto specific categories
+const questions = [
     {
-        min: 0,
-        max: 200,
-        status: "Light Thermic Output",
-        desc: "This expenditure covers low-intensity systemic movement. Ideal for basic glycemic clearance post-meals.",
-        suggestion: "To enhance cardiovascular fitness, aim for extended sessions to cross the 300 kcal target threshold."
+        "question": "When faced with an intensive, highly demanding task, how do you typically respond initially?",
+        "options": ["Dive in immediately", "Plan it out but pause", "Clean my desk or check emails first", "Delay it completely until stress spikes"],
+        "category": "avoidance"
     },
     {
-        min: 201,
-        max: 500,
-        status: "Moderate Metabolic Burn",
-        desc: "An excellent operational zone indicating a healthy level of daily physical activity and sustainable energy output.",
-        suggestion: "Consistently achieving this deficit tier provides reliable long-term metabolic control and weight regulation."
+        "question": "How strongly do immediate small rewards (e.g., social feeds, gaming) override your major long-term goals?",
+        "options": ["Rarely misaligned", "Occasional friction", "Frequently choose instant comfort", "Constantly trapped in present bias loops"],
+        "category": "temporal"
     },
     {
-        min: 501,
-        max: 99999,
-        status: "High Volume Energy Expenditure",
-        desc: "Significant kinetic caloric expenditure typical of long hikes, active endurance days, or high athletic performance.",
-        suggestion: "Ensure adequate fluid intake and steady macronutrient rebalancing to match this level of training volume."
+        "question": "Do you delay launching a creative project because you feel your initial output won't look flawless or perfect?",
+        "options": ["Never / I value draft execution", "Seldom holds me back", "Often stuck drafting and planning", "Paralyzed by unrealistic benchmarks"],
+        "category": "perfectionism"
+    },
+    {
+        "question": "When looking at your intended schedule for the day, how closely does your actual execution match up?",
+        "options": ["90% or higher consistency", "Around 60-80% accomplished", "Highly variable and erratic", "Complete execution collapse daily"],
+        "category": "temporal"
+    },
+    {
+        "question": "How often do you say 'I will feel more like doing this tomorrow' to excuse an active task shift?",
+        "options": ["Almost never", "Occasionally on tough days", "Very frequently", "It is my automatic coping mantra"],
+        "category": "avoidance"
     }
 ];
 
-// Dynamically inject structural input forms on page loading execution
-function initCalculator() {
-    const container = document.getElementById("dynamic-inputs");
+// Complete diagnostic evaluation configuration metrics profiles to close the execution loops
+const resultProfiles = {
+    low: {
+        profile: "Proactive Execution Master",
+        desc: "You demonstrate clean executive functioning boundaries, clear emotional regulation resilience, and low vulnerability to instant gratification traps.",
+        avoidance: 18, temporal: 22, perfectionism: 20
+    },
+    medium: {
+        profile: "Fluctuating Action Delayer",
+        desc: "Task aversion and present-bias loops occasionally disrupt your flow state. Strategic structural frameworks like the Pomodoro technique are highly recommended to lower launch friction.",
+        avoidance: 55, temporal: 62, perfectionism: 50
+    },
+    high: {
+        profile: "Chronic Procrastination Framework",
+        desc: "Severe action paralysis detected. You are frequently prioritizing short-term emotional comfort over long-term stability. Breaking tasks down into micro-steps is critical to short-circuit this freeze mechanism.",
+        avoidance: 88, temporal: 90, perfectionism: 82
+    }
+};
+
+let current = 0;
+let totalScore = 0;
+let isTransitioning = false;
+
+// Score categorical matrix mapping bucket
+let scoreBreakdown = {
+    avoidance: 0,
+    temporal: 0,
+    perfectionism: 0
+};
+
+function loadQuestion() {
+    isTransitioning = true;
+    const q = questions[current];
+    document.getElementById("p-text").innerText = `Question ${current + 1} / ${questions.length}`;
+    document.getElementById("p-bar").style.width = `${((current + 1) / questions.length) * 100}%`;
+    document.getElementById("question").innerText = q.question;
+
     let html = "";
-    
-    inputConfigs.forEach(cfg => {
-        html += `<div class="form-group">`;
-        html += `<label class="form-label" for="input_${cfg.id}">${cfg.label}</label>`;
-        html += `<input type="${cfg.type}" id="input_${cfg.id}" placeholder="${cfg.placeholder || ''}" min="1">`;
-        html += `</div>`;
+    q.options.forEach((option, index) => {
+        html += `<button class="option" onclick="selectOption(this, ${index + 1}, ${index}, '${q.category}')">${option}</button>`;
     });
-    
-    container.innerHTML = html;
+    document.getElementById("answers").innerHTML = html;
+    isTransitioning = false;
 }
 
-function calculateNow() {
-    let args = {};
-    let missing = false;
-    
-    inputConfigs.forEach(cfg => {
-        const element = document.getElementById(`input_${cfg.id}`);
-        const val = parseFloat(element.value);
-        if (isNaN(val) || val <= 0) missing = true;
-        args[cfg.id] = val;
+function selectOption(el, score, optionIndex, category) {
+    if (isTransitioning) return;
+    document.querySelectorAll(".option").forEach(item => { 
+        item.classList.remove("selected", "selected-heavy"); 
     });
     
-    if (missing) {
-        alert("Please fill in all input fields correctly with positive numeric values.");
-        return;
+    if (optionIndex >= 2) el.classList.add("selected-heavy"); 
+    else el.classList.add("selected");
+    
+    isTransitioning = true;
+    totalScore += score;
+    
+    // Aggregate category scoring tracks dynamically
+    if (scoreBreakdown[category] !== undefined) {
+        scoreBreakdown[category] += score;
     }
     
-    try {
-        // Core kinetic walking conversion formula: steps * (weight * 0.000057)
-        const formulaFunc = new Function('fields', 'return fields.steps * (fields.weight * 0.000057)');
-        const finalResult = formulaFunc(args);
-        
-        let matchedRule = null;
-        for (let rule of interpretationRules) {
-            if (finalResult >= rule.min && finalResult < rule.max) {
-                matchedRule = rule;
-                break;
-            }
-        }
-        if (!matchedRule) matchedRule = interpretationRules[interpretationRules.length - 1];
-        
-        // Render final outcomes directly inside responsive viewport nodes
-        document.getElementById('result-area').style.display = 'block';
-        document.getElementById('calc-output').innerText = finalResult.toFixed(2) + " kcal";
-        document.getElementById('calc-status').innerText = matchedRule.status;
-        document.getElementById('calc-desc').innerText = matchedRule.desc;
-        document.getElementById('calc-suggestion').innerText = matchedRule.suggestion;
-        
-        // Auto-scroll seamlessly to findings viewport panel
-        document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    } catch (e) {
-        alert("Calculation error. Please verify input variables.");
+    setTimeout(() => {
+        current++;
+        if (current < questions.length) loadQuestion(); 
+        else showResult();
+    }, 300);
+}
+
+function showResult() {
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("recommendations").classList.remove("hidden");
+    
+    const maxScore = questions.length * 4;
+    document.getElementById("score").innerText = totalScore + " / " + maxScore;
+    
+    let activeProfile = resultProfiles.high;
+    if (totalScore <= (questions.length * 1.6)) {
+        activeProfile = resultProfiles.low;
+    } else if (totalScore <= (questions.length * 2.8)) {
+        activeProfile = resultProfiles.medium;
     }
+    
+    document.getElementById("profile").innerText = activeProfile.profile;
+    document.getElementById("description").innerText = activeProfile.desc;
+    
+    // Inject diagnostic percentages smoothly with alerting parameters
+    setTimeout(() => {
+        const fillBar = (el, val) => {
+            if (val >= 70) el.classList.add("high-metric");
+            el.style.width = val + "%";
+        };
+
+        const barAvoid = document.getElementById("bar-avoidance");
+        const barTemp = document.getElementById("bar-temporal");
+        const barPerf = document.getElementById("bar-perfectionism");
+
+        document.getElementById("label-avoidance").innerText = activeProfile.avoidance + "%";
+        document.getElementById("label-temporal").innerText = activeProfile.temporal + "%";
+        document.getElementById("label-perfectionism").innerText = activeProfile.perfectionism + "%";
+
+        fillBar(barAvoid, activeProfile.avoidance);
+        fillBar(barTemp, activeProfile.temporal);
+        fillBar(barPerf, activeProfile.perfectionism);
+    }, 150);
+    
+    document.getElementById("result").scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function handleBackHome() { 
-    if (confirm("Are you sure you want to leave?")) {
+    if (confirm("Are you sure you want to leave this behavioral assessment?")) {
         window.location.href = "https://www.toolsquark.com/"; 
     }
 }
 
-// Trigger initial mounting setups
-window.addEventListener("DOMContentLoaded", initCalculator);
+// Map initial mounting triggers
+window.addEventListener("DOMContentLoaded", loadQuestion);
 </script>
 </body>
 </html>
