@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.toolsquark.com/tools/daily-steps-goal-calculator.html">
+<title>Daily Steps Goal Calculator | Quantitative Milestone Planner | ToolsQuark</title>
+<meta name="description" content="Calculate your recommended target daily step counts and generate a customized, progressive weekly physical activity milestone plan tailored to your lifestyle.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Privacy-First Daily Steps Goal Calculator",
+  "url": "https://www.toolsquark.com/tools/daily-steps-goal-calculator.html",
+  "operatingSystem": "All",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Calculate your recommended target daily step counts and generate a customized, progressive weekly physical activity milestone plan tailored to your lifestyle."
+}
+</script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--underweight:#38bdf8;--normal:#22c55e;--overweight:#eab308;--obese:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px 10px}.container{max-width:850px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:45px 35px;border-radius:24px;margin-bottom:25px;box-shadow:0 12px 35px rgba(37,99,235,.15)}.hero h1{font-size:36px;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}.hero p{font-size:16px;opacity:.9}.card{background:white;padding:30px;border-radius:24px;margin-bottom:25px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.03)}.card h3{font-size:1.3rem;font-weight:800;margin-bottom:20px;color:#1e293b}
+.unit-switcher{display:flex;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:25px}.unit-tab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:700;color:var(--text-muted);border-radius:9px;cursor:pointer;transition:.2s}.unit-tab.active{background:white;color:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,.05)}
+.input-row{display:flex;gap:16px}.input-group{margin-bottom:20px;flex:1}.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px}.input-wrapper{position:relative;display:flex;align-items:center}.input-wrapper input,.input-wrapper select{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;background:white;color:var(--primary)}.input-wrapper input:focus,.input-wrapper select:focus{border-color:#2563eb;background:#eff6ff}.unit-badge{position:absolute;right:15px;color:var(--text-muted);font-size:14px;font-weight:600;pointer-events:none}
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,.2)}.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+.result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;margin-top:30px;text-align:center}.result-val{font-size:54px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:-.03em}.result-unit{font-size:20px;font-weight:700;color:var(--text-muted);margin-left:5px}.result-status{font-size:22px;font-weight:800;margin-bottom:15px}.bmi-gauge-container{max-width:500px;margin:20px auto;position:relative}.bmi-gauge-bar{height:12px;background:linear-gradient(to right,var(--underweight) 0%,var(--normal) 35%,var(--overweight) 70%,var(--obese) 100%);border-radius:6px}.bmi-pointer{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--primary);top:-14px;transform:translateX(-50%);transition:left .5s cubic-bezier(.175,.885,.32,1.275)}.bmi-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);font-weight:bold;margin-top:6px;padding:0 4px}.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:650px;line-height:1.7}.suggestion-box{background:white;border-left:4px solid var(--accent);padding:18px;border-radius:8px;text-align:left;margin-top:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800}.suggestion-box p{color:#475569;font-size:14px}.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.macro-pill{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:16px}.macro-pill strong{display:block;font-size:22px;color:#1e293b}.macro-pill span{font-size:13px;color:var(--text-muted);font-weight:700}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+@media(max-width:768px){.hero{padding:36px 24px}.hero h1{font-size:28px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb"><a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/health.html">Health Tools</a> &gt; <span>Daily Steps Goal Calculator</span></div>
+    <div class="hero"><h1>Daily Steps Goal Calculator</h1><p>Create a progressive step-count goal plan based on your current baseline and primary fitness objective.</p></div>
+    <div class="card">
+
+        <div class="input-group">
+            <label for="select_goal">Primary Fitness Objective</label>
+            <div class="input-wrapper">
+                <select id="select_goal">
+                    <option value="loss">Weight Loss & Higher Activity</option>
+                    <option value="cardio" selected>Cardiovascular Stamina</option>
+                    <option value="wellbeing">General Well-being</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label for="input_current_steps">Current Daily Average</label>
+                <div class="input-wrapper"><input type="number" id="input_current_steps" placeholder="e.g. 4000" min="500" max="30000" value="4000"><span class="unit-badge">steps</span></div>
+            </div>
+            <div class="input-group">
+                <label for="input_weeks">Plan Duration</label>
+                <div class="input-wrapper">
+                    <select id="input_weeks">
+                        <option value="4">4 weeks</option>
+                        <option value="6" selected>6 weeks</option>
+                        <option value="8">8 weeks</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Generate Step Plan</button>
+        <div id="result-area" class="result-box" style="display:none;">
+
+            <div class="result-val"><span id="calc-output">0</span><span class="result-unit">steps/day</span></div>
+            <div class="result-status" id="calc-status">Step Goal</div>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="suggestion-box">
+                <h4>Weekly Milestone Plan</h4>
+                <div id="plan-timeline-container" class="result-desc" style="text-align:left;margin:0;"></div>
+                <p id="calc-suggestion" style="margin-top:12px;"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card"><h3>Track Movement Impact</h3><div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/steps-to-calories-converter.html" class="recommend-card">
+                <div>
+                    <h4>Steps to Calories Converter</h4>
+                    <p>Convert your planned steps into estimated calories.</p>
+                </div>
+                <span class="action-text">Estimate Burn &rarr;</span>
+            </a>
+            <a href="https://www.toolsquark.com/tools/water-intake-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Water Intake Calculator</h4>
+                    <p>Adjust hydration around higher activity volume.</p>
+                </div>
+                <span class="action-text">Plan Fluids &rarr;</span>
+            </a></div></div>
+    <div class="card"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>How fast should I increase daily steps?</h4>
+            <p>A gradual increase is usually easier to sustain and may reduce joint stress. Many people do best by adding volume over several weeks rather than jumping immediately.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is 10,000 steps required for health?</h4>
+            <p>No single number fits everyone. Benefits can begin below 10,000 steps, especially when moving from a low baseline. The best target is one you can build toward consistently.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What if my baseline is already above the goal?</h4>
+            <p>If your current baseline is above the selected goal, the plan will keep you near your current level rather than reducing your target.</p>
+        </div></div>
+    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool maps goals to step targets of 12,000, 8,500, or 5,000 steps/day and distributes the change linearly across the selected plan duration.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Step goals should be adapted for injury history, mobility limits, medical conditions, footwear, terrain, and recovery needs.</p></div></div>
+    <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
+</div>
+<script>
+
+function calculateNow() {
+    const goal = document.getElementById('select_goal').value;
+    const currentSteps = parseInt(document.getElementById('input_current_steps').value, 10);
+    const weeks = parseInt(document.getElementById('input_weeks').value, 10);
+    if (isNaN(currentSteps) || currentSteps < 500 || currentSteps > 30000) {
+        alert('Please input a realistic baseline average daily step count between 500 and 30000.');
+        return;
+    }
+    const profiles = {
+        loss: { target: 12000, status: 'Higher Activity Goal', desc: 'A higher daily movement target designed to support energy expenditure and active weight-management routines.', suggestion: 'Build carefully and pay attention to foot, knee, and hip comfort while increasing total walking volume.' },
+        cardio: { target: 8500, status: 'Cardiovascular Stamina Goal', desc: 'A balanced step target for improving daily aerobic workload and reducing sedentary time.', suggestion: 'Use brisk walking intervals when possible to make the same step count more cardiovascularly useful.' },
+        wellbeing: { target: 5000, status: 'Well-being Baseline Goal', desc: 'A practical baseline target for reducing sedentary time and supporting general daily mobility.', suggestion: 'Spread steps across the day with short walks after meals or between long sitting blocks.' }
+    };
+    const profile = profiles[goal] || profiles.cardio;
+    const target = Math.max(profile.target, currentSteps);
+    const diff = target - currentSteps;
+    let timelineHtml = '';
+    for (let week = 1; week <= weeks; week++) {
+        const weeklyTarget = Math.round(currentSteps + diff * (week / weeks));
+        const estimatedKcal = Math.round(weeklyTarget * 0.04);
+        timelineHtml += `<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #e2e8f0;"><strong>Week ${week}</strong><span>${weeklyTarget.toLocaleString()} steps/day</span><span>~${estimatedKcal} kcal/day</span></div>`;
+    }
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = target.toLocaleString();
+    document.getElementById('calc-status').innerText = profile.status;
+    document.getElementById('calc-desc').innerText = profile.desc;
+    document.getElementById('plan-timeline-container').innerHTML = timelineHtml;
+    document.getElementById('calc-suggestion').innerText = profile.suggestion;
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

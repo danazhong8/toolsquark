@@ -1,0 +1,178 @@
+module.exports = {
+  slug: "bmr-calculator",
+  title: "Accurate BMR Calculator | Find Your Basal Metabolic Rate | ToolsQuark",
+  description: "Calculate your Basal Metabolic Rate (BMR) accurately using the Mifflin-St Jeor equation. Support Metric & Imperial systems. Discover your baseline survival calories instantly.",
+  h1: "BMR Calculator",
+  hero: "Discover your basal metabolic rate: the estimated calories your body burns at complete rest to support essential functions.",
+  schemaName: "Privacy-First BMR Calculator",
+  schemaDescription: "An interactive, client-side basal metabolic rate calculator using the Mifflin-St Jeor equation without data logging.",
+  buttonText: "Calculate BMR",
+  resultUnit: "kcal/day",
+  resultStatus: "Resting Energy Baseline",
+  gaugeLabels: ["Lower", "Standard", "Higher"],
+  insightTitle: "Energy Strategy",
+  controlsHtml: `
+        <div class="unit-switcher">
+            <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
+            <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
+        </div>
+        <div id="inputs-container"></div>`,
+  relatedTitle: "Turn Baseline Into Daily Targets",
+  related: [
+    {
+      href: "https://www.toolsquark.com/tools/tdee-calculator.html",
+      title: "TDEE Calculator",
+      description: "Add activity level to your resting baseline and estimate total daily calorie burn.",
+      action: "Calculate TDEE"
+    },
+    {
+      href: "https://www.toolsquark.com/tools/calorie-calculator.html",
+      title: "Calorie Calculator",
+      description: "Estimate maintenance, deficit, and surplus calories for practical nutrition planning.",
+      action: "Plan Calories"
+    }
+  ],
+  faq: [
+    {
+      question: "What is BMR?",
+      answer: "Basal metabolic rate is an estimate of the energy your body uses at complete rest to maintain vital functions such as breathing, circulation, cellular repair, and brain activity."
+    },
+    {
+      question: "What formula does this BMR calculator use?",
+      answer: "This calculator uses the Mifflin-St Jeor equation. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161."
+    },
+    {
+      question: "Is BMR the same as daily calories?",
+      answer: "No. BMR estimates resting energy only. Your real daily needs are higher once walking, exercise, work, digestion, and normal daily movement are included."
+    }
+  ],
+  methodology: "This tool uses the Mifflin-St Jeor equation with metric conversions for imperial entries. Results are rounded to the nearest whole calorie.",
+  disclaimer: "BMR is an educational estimate, not a medical diagnosis or nutrition prescription. Consult a qualified clinician or registered dietitian before making major calorie changes.",
+  script: `
+let currentUnit = 'metric';
+function renderInputs() {
+    const container = document.getElementById('inputs-container');
+    const baseInputs = \`
+        <div class="input-row">
+            <div class="input-group">
+                <label for="input_gender">Gender</label>
+                <div class="input-wrapper">
+                    <select id="input_gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="input_age">Age</label>
+                <div class="input-wrapper">
+                    <input type="number" id="input_age" placeholder="e.g. 28" min="10" max="120">
+                    <span class="unit-badge">yrs</span>
+                </div>
+            </div>
+        </div>\`;
+    if (currentUnit === 'metric') {
+        container.innerHTML = baseInputs + \`
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="input_weight">Your Weight</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_weight" placeholder="e.g. 70" step="any">
+                        <span class="unit-badge">kg</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="input_height">Your Height</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_height" placeholder="e.g. 175" step="any">
+                        <span class="unit-badge">cm</span>
+                    </div>
+                </div>
+            </div>\`;
+    } else {
+        container.innerHTML = baseInputs + \`
+            <div class="input-group">
+                <label for="input_weight">Your Weight</label>
+                <div class="input-wrapper">
+                    <input type="number" id="input_weight" placeholder="e.g. 154" step="any">
+                    <span class="unit-badge">lbs</span>
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="input_ft">Height (Feet)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_ft" placeholder="e.g. 5">
+                        <span class="unit-badge">ft</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="input_in">Height (Inches)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_in" placeholder="e.g. 9">
+                        <span class="unit-badge">in</span>
+                    </div>
+                </div>
+            </div>\`;
+    }
+}
+function switchUnit(unit) {
+    if (currentUnit === unit) return;
+    currentUnit = unit;
+    document.getElementById('tab-metric').classList.toggle('active', unit === 'metric');
+    document.getElementById('tab-imperial').classList.toggle('active', unit === 'imperial');
+    document.getElementById('result-area').style.display = 'none';
+    renderInputs();
+}
+function calculateNow() {
+    const gender = document.getElementById('input_gender').value;
+    const age = parseInt(document.getElementById('input_age').value, 10);
+    if (isNaN(age) || age < 10 || age > 120) {
+        alert('Please input a valid age.');
+        return;
+    }
+    let weightKg = 0;
+    let heightCm = 0;
+    if (currentUnit === 'metric') {
+        const weight = parseFloat(document.getElementById('input_weight').value);
+        const height = parseFloat(document.getElementById('input_height').value);
+        if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+            alert('Please input valid metric values for weight and height.');
+            return;
+        }
+        weightKg = weight;
+        heightCm = height;
+    } else {
+        const lbs = parseFloat(document.getElementById('input_weight').value);
+        const feet = parseFloat(document.getElementById('input_ft').value) || 0;
+        const inches = parseFloat(document.getElementById('input_in').value) || 0;
+        if (isNaN(lbs) || lbs <= 0 || (feet === 0 && inches === 0)) {
+            alert('Please input valid imperial values.');
+            return;
+        }
+        weightKg = lbs * 0.45359237;
+        heightCm = ((feet * 12) + inches) * 2.54;
+    }
+    let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
+    bmr += gender === 'male' ? 5 : -161;
+    const rounded = Math.round(bmr);
+    let result = {};
+    if (rounded < 1300) {
+        result = { status: 'Lower Resting Energy', color: 'var(--underweight)', desc: \`Your estimated BMR is \${rounded.toLocaleString()} kcal/day. This is a lower resting energy baseline, often associated with smaller body size, lower body mass, or older age.\`, suggestion: 'Use this as a floor, not a weight-loss target. Daily needs usually rise after normal movement and exercise are included.', percent: Math.max(5, (rounded / 1300) * 30) };
+    } else if (rounded <= 1800) {
+        result = { status: 'Standard Resting Range', color: 'var(--normal)', desc: \`Your estimated BMR is \${rounded.toLocaleString()} kcal/day, which is a common resting-energy range for many adults.\`, suggestion: 'To estimate maintenance calories, multiply this baseline by an activity factor or use the TDEE calculator.', percent: 35 + ((rounded - 1300) / 500) * 30 };
+    } else {
+        result = { status: 'Higher Resting Energy', color: 'var(--overweight)', desc: \`Your estimated BMR is \${rounded.toLocaleString()} kcal/day. Higher baselines are often linked to larger body size, greater lean mass, or younger age.\`, suggestion: 'Make sure calorie planning supports training recovery, protein intake, and consistent real-world weight trends.', percent: Math.min(95, 65 + (Math.min(rounded - 1800, 800) / 800) * 30) };
+    }
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = rounded.toLocaleString();
+    document.getElementById('calc-output').style.color = result.color;
+    document.getElementById('calc-status').innerText = result.status;
+    document.getElementById('calc-status').style.color = result.color;
+    document.getElementById('calc-desc').innerText = result.desc;
+    document.getElementById('calc-suggestion').innerText = result.suggestion;
+    document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+renderInputs();`
+};

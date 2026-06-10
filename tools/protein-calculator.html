@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.toolsquark.com/tools/protein-calculator.html">
+<title>Free Accurate Protein Calculator | Daily Intake Tracker | ToolsQuark</title>
+<meta name="description" content="Calculate your daily protein requirements based on body weight, activity level, and training goal. Supports Metric and Imperial units with private browser-side processing.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Privacy-First Protein Calculator",
+  "url": "https://www.toolsquark.com/tools/protein-calculator.html",
+  "operatingSystem": "All",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "A client-side protein intake calculator that estimates daily protein targets from body weight and activity level without data logging."
+}
+</script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--underweight:#38bdf8;--normal:#22c55e;--overweight:#eab308;--obese:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px 10px}.container{max-width:850px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:45px 35px;border-radius:24px;margin-bottom:25px;box-shadow:0 12px 35px rgba(37,99,235,.15)}.hero h1{font-size:36px;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}.hero p{font-size:16px;opacity:.9}.card{background:white;padding:30px;border-radius:24px;margin-bottom:25px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.03)}.card h3{font-size:1.3rem;font-weight:800;margin-bottom:20px;color:#1e293b}
+.unit-switcher{display:flex;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:25px}.unit-tab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:700;color:var(--text-muted);border-radius:9px;cursor:pointer;transition:.2s}.unit-tab.active{background:white;color:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,.05)}
+.input-row{display:flex;gap:16px}.input-group{margin-bottom:20px;flex:1}.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px}.input-wrapper{position:relative;display:flex;align-items:center}.input-wrapper input,.input-wrapper select{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;background:white;color:var(--primary)}.input-wrapper input:focus,.input-wrapper select:focus{border-color:#2563eb;background:#eff6ff}.unit-badge{position:absolute;right:15px;color:var(--text-muted);font-size:14px;font-weight:600;pointer-events:none}
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,.2)}.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+.result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;margin-top:30px;text-align:center}.result-val{font-size:54px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:-.03em}.result-unit{font-size:20px;font-weight:700;color:var(--text-muted);margin-left:5px}.result-status{font-size:22px;font-weight:800;margin-bottom:15px}.bmi-gauge-container{max-width:500px;margin:20px auto;position:relative}.bmi-gauge-bar{height:12px;background:linear-gradient(to right,var(--underweight) 0%,var(--normal) 35%,var(--overweight) 70%,var(--obese) 100%);border-radius:6px}.bmi-pointer{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--primary);top:-14px;transform:translateX(-50%);transition:left .5s cubic-bezier(.175,.885,.32,1.275)}.bmi-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);font-weight:bold;margin-top:6px;padding:0 4px}.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:650px;line-height:1.7}.suggestion-box{background:white;border-left:4px solid var(--accent);padding:18px;border-radius:8px;text-align:left;margin-top:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800}.suggestion-box p{color:#475569;font-size:14px}.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.macro-pill{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:16px}.macro-pill strong{display:block;font-size:22px;color:#1e293b}.macro-pill span{font-size:13px;color:var(--text-muted);font-weight:700}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+@media(max-width:768px){.hero{padding:36px 24px}.hero h1{font-size:28px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb"><a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/health.html">Health Tools</a> &gt; <span>Protein Calculator</span></div>
+    <div class="hero"><h1>Protein Calculator</h1><p>Estimate your daily protein target for maintenance, fat loss, or muscle-supportive training. The calculation runs locally in your browser.</p></div>
+    <div class="card">
+
+        <div class="unit-switcher">
+            <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg)</div>
+            <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs)</div>
+        </div>
+        <div id="inputs-container"></div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Protein Target</button>
+        <div id="result-area" class="result-box" style="display:none;">
+
+            <div class="result-val"><span id="calc-output">0</span></div>
+            <div class="result-status" id="calc-status">Standard Target</div>
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="gauge-pointer"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels"><span>0.8g/kg</span><span>1.4g/kg</span><span>2.2g/kg</span></div>
+            </div>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="suggestion-box">
+                <h4>Actionable Nutrition Insight</h4>
+                <p id="calc-suggestion"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card"><h3>Build A Fuller Nutrition Plan</h3><div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/macro-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Macro Calculator</h4>
+                    <p>Split your daily calories into protein, fat, and carbohydrate targets.</p>
+                </div>
+                <span class="action-text">Calculate Macros &rarr;</span>
+            </a>
+            <a href="https://www.toolsquark.com/tools/calorie-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Calorie Calculator</h4>
+                    <p>Estimate your maintenance calories before setting a protein target.</p>
+                </div>
+                <span class="action-text">Check Calories &rarr;</span>
+            </a></div></div>
+    <div class="card"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>How much protein does an average adult need?</h4>
+            <p>The Recommended Dietary Allowance is about 0.8 grams per kilogram of body weight for sedentary adults. Active people and strength trainees often use higher targets, commonly around 1.4 to 2.2 grams per kilogram.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can high protein intake harm healthy kidneys?</h4>
+            <p>For people with healthy kidneys, higher protein intake is generally considered safe within reasonable dietary ranges. People with kidney disease or medical restrictions should follow clinician guidance.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Should protein be eaten all at once?</h4>
+            <p>Most people do better distributing protein across several meals. This can improve meal quality and support muscle protein synthesis throughout the day.</p>
+        </div></div>
+    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This calculator multiplies body weight in kilograms by a selected protein factor from 0.8 to 2.2 grams per kilogram, matching common dietary planning ranges.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> These results are educational estimates and not medical advice. Consult a qualified clinician or registered dietitian for personal nutrition guidance.</p></div></div>
+    <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
+</div>
+<script>
+
+let currentUnit='metric';
+function renderInputs(){
+ const container=document.getElementById('inputs-container');
+ const activity=`<div class="input-group"><label for="input_activity">Activity Level & Goal</label><div class="input-wrapper"><select id="input_activity"><option value="0.8">Sedentary or minimum RDA (0.8g/kg)</option><option value="1.0">Lightly active (1.0g/kg)</option><option value="1.4">Moderately active (1.4g/kg)</option><option value="1.8">Strength training (1.8g/kg)</option><option value="2.2">Athlete or bodybuilding phase (2.2g/kg)</option></select></div></div>`;
+ if(currentUnit==='metric'){container.innerHTML=`<div class="input-group"><label for="input_weight">Your Body Weight</label><div class="input-wrapper"><input type="number" id="input_weight" placeholder="e.g. 70" step="any"><span class="unit-badge">kg</span></div></div>`+activity;}else{container.innerHTML=`<div class="input-group"><label for="input_weight">Your Body Weight</label><div class="input-wrapper"><input type="number" id="input_weight" placeholder="e.g. 154" step="any"><span class="unit-badge">lbs</span></div></div>`+activity;}
+}
+function switchUnit(unit){if(currentUnit===unit)return;currentUnit=unit;document.getElementById('tab-metric').classList.toggle('active',unit==='metric');document.getElementById('tab-imperial').classList.toggle('active',unit==='imperial');document.getElementById('result-area').style.display='none';renderInputs();}
+function calculateNow(){
+ const weightInput=parseFloat(document.getElementById('input_weight').value);const multiplier=parseFloat(document.getElementById('input_activity').value);
+ if(isNaN(weightInput)||weightInput<=0){alert('Please input a valid body weight.');return;}
+ const weightKg=currentUnit==='metric'?weightInput:weightInput*0.45359237;const grams=Math.round(weightKg*multiplier);
+ let status='',color='',desc='',suggestion='',percent=0;
+ if(multiplier<=0.8){status='Baseline RDA';color='var(--underweight)';desc=`Your estimated target is ${grams}g of protein per day, based on the basic adult RDA range.`;suggestion='This level is mainly a minimum adequacy target. Active adults often benefit from a higher range.';percent=15;}else if(multiplier<=1.2){status='Active Maintenance';color='var(--normal)';desc=`Your estimated target is ${grams}g of protein per day for light activity and lean mass maintenance.`;suggestion='Aim to distribute protein across meals and pair it with whole-food carbohydrate and fat sources.';percent=35;}else if(multiplier<=1.6){status='Muscle Recovery';color='var(--overweight)';desc=`Your estimated target is ${grams}g per day, suitable for regular training and recovery support.`;suggestion='This range pairs well with consistent resistance training, sleep, and sufficient total calories.';percent=65;}else{status='High Training Target';color='var(--obese)';desc=`Your estimated target is ${grams}g per day for intense training or a muscle-building phase.`;suggestion='High protein targets require planning. Keep meals balanced and consider professional guidance if you have kidney disease or other medical concerns.';percent=90;}
+ document.getElementById('result-area').style.display='block';document.getElementById('calc-output').innerText=grams+'g';document.getElementById('calc-output').style.color=color;document.getElementById('calc-status').innerText=status;document.getElementById('calc-status').style.color=color;document.getElementById('calc-desc').innerText=desc;document.getElementById('calc-suggestion').innerText=suggestion;document.getElementById('gauge-pointer').style.left=percent+'%';document.getElementById('result-area').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+renderInputs();
+</script>
+</body>
+</html>

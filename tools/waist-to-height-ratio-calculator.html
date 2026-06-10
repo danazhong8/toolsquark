@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.toolsquark.com/tools/waist-to-height-ratio-calculator.html">
+<title>Accurate Waist-to-Height Ratio Calculator (WHtR) | ToolsQuark</title>
+<meta name="description" content="Calculate your precise Waist-to-Height Ratio (WHtR) to screen central body fat distribution and cardiometabolic health risk.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Privacy-First Waist-to-Height Ratio Calculator",
+  "url": "https://www.toolsquark.com/tools/waist-to-height-ratio-calculator.html",
+  "operatingSystem": "All",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Calculate your precise Waist-to-Height Ratio (WHtR) to screen central body fat distribution and cardiometabolic health risk."
+}
+</script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--underweight:#38bdf8;--normal:#22c55e;--overweight:#eab308;--obese:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px 10px}.container{max-width:850px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:45px 35px;border-radius:24px;margin-bottom:25px;box-shadow:0 12px 35px rgba(37,99,235,.15)}.hero h1{font-size:36px;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}.hero p{font-size:16px;opacity:.9}.card{background:white;padding:30px;border-radius:24px;margin-bottom:25px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.03)}.card h3{font-size:1.3rem;font-weight:800;margin-bottom:20px;color:#1e293b}
+.unit-switcher{display:flex;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:25px}.unit-tab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:700;color:var(--text-muted);border-radius:9px;cursor:pointer;transition:.2s}.unit-tab.active{background:white;color:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,.05)}
+.input-row{display:flex;gap:16px}.input-group{margin-bottom:20px;flex:1}.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px}.input-wrapper{position:relative;display:flex;align-items:center}.input-wrapper input,.input-wrapper select{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;background:white;color:var(--primary)}.input-wrapper input:focus,.input-wrapper select:focus{border-color:#2563eb;background:#eff6ff}.unit-badge{position:absolute;right:15px;color:var(--text-muted);font-size:14px;font-weight:600;pointer-events:none}
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,.2)}.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+.result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;margin-top:30px;text-align:center}.result-val{font-size:54px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:-.03em}.result-unit{font-size:20px;font-weight:700;color:var(--text-muted);margin-left:5px}.result-status{font-size:22px;font-weight:800;margin-bottom:15px}.bmi-gauge-container{max-width:500px;margin:20px auto;position:relative}.bmi-gauge-bar{height:12px;background:linear-gradient(to right,var(--underweight) 0%,var(--normal) 35%,var(--overweight) 70%,var(--obese) 100%);border-radius:6px}.bmi-pointer{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--primary);top:-14px;transform:translateX(-50%);transition:left .5s cubic-bezier(.175,.885,.32,1.275)}.bmi-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);font-weight:bold;margin-top:6px;padding:0 4px}.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:650px;line-height:1.7}.suggestion-box{background:white;border-left:4px solid var(--accent);padding:18px;border-radius:8px;text-align:left;margin-top:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800}.suggestion-box p{color:#475569;font-size:14px}.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.macro-pill{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:16px}.macro-pill strong{display:block;font-size:22px;color:#1e293b}.macro-pill span{font-size:13px;color:var(--text-muted);font-weight:700}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+@media(max-width:768px){.hero{padding:36px 24px}.hero h1{font-size:28px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb"><a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/health.html">Health Tools</a> &gt; <span>Waist-to-Height Ratio Calculator</span></div>
+    <div class="hero"><h1>Waist-to-Height Ratio Calculator</h1><p>Compare waist circumference against height to evaluate central fat distribution beyond body weight alone.</p></div>
+    <div class="card">
+
+        <div class="unit-switcher">
+            <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (cm)</div>
+            <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (inches)</div>
+        </div>
+        <div id="inputs-container"></div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Waist-to-Height Ratio</button>
+        <div id="result-area" class="result-box" style="display:none;">
+
+            <div class="result-val"><span id="calc-output">0</span></div>
+            <div class="result-status" id="calc-status">WHtR Result</div>
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="gauge-pointer"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels"><span>Low</span><span>Healthy</span><span>High</span></div>
+            </div>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="suggestion-box">
+                <h4>Central Fat Insight</h4>
+                <p id="calc-suggestion"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card"><h3>Compare Your Body Metrics</h3><div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-card">
+                <div>
+                    <h4>BMI Calculator</h4>
+                    <p>Check a standard height-to-weight baseline.</p>
+                </div>
+                <span class="action-text">Check BMI &rarr;</span>
+            </a>
+            <a href="https://www.toolsquark.com/tools/waist-hip-ratio-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Waist Hip Ratio Calculator</h4>
+                    <p>Compare abdominal and hip circumference patterns.</p>
+                </div>
+                <span class="action-text">Check WHR &rarr;</span>
+            </a></div></div>
+    <div class="card"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>What is waist-to-height ratio?</h4>
+            <p>Waist-to-height ratio divides waist circumference by height. It is used as a simple screening marker for central abdominal fat distribution.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What WHtR value is considered elevated?</h4>
+            <p>A common public health rule of thumb is to keep waist circumference below half of height. Values at or above 0.50 suggest elevated central fat risk.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is WHtR better than BMI?</h4>
+            <p>WHtR and BMI measure different things. BMI compares body weight with height, while WHtR focuses on abdominal distribution, so using both can provide better context.</p>
+        </div></div>
+    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool divides waist circumference by height using matching units and interprets the result with common waist-to-height screening ranges.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> WHtR is a screening estimate, not a diagnosis. Consult a qualified clinician for personalized health risk assessment.</p></div></div>
+    <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
+</div>
+<script>
+
+let currentUnit = 'metric';
+function renderInputs() {
+    const container = document.getElementById('inputs-container');
+    const waistUnit = currentUnit === 'metric' ? 'cm' : 'inches';
+    const heightUnit = currentUnit === 'metric' ? 'cm' : 'inches';
+    container.innerHTML = `
+        <div class="input-row">
+            <div class="input-group">
+                <label for="input_waist">Waist Circumference</label>
+                <div class="input-wrapper"><input type="number" id="input_waist" placeholder="${currentUnit === 'metric' ? 'e.g. 82' : 'e.g. 32'}" step="any"><span class="unit-badge">${waistUnit}</span></div>
+            </div>
+            <div class="input-group">
+                <label for="input_height">Height</label>
+                <div class="input-wrapper"><input type="number" id="input_height" placeholder="${currentUnit === 'metric' ? 'e.g. 175' : 'e.g. 69'}" step="any"><span class="unit-badge">${heightUnit}</span></div>
+            </div>
+        </div>`;
+}
+function switchUnit(unit) {
+    if (currentUnit === unit) return;
+    currentUnit = unit;
+    document.getElementById('tab-metric').classList.toggle('active', unit === 'metric');
+    document.getElementById('tab-imperial').classList.toggle('active', unit === 'imperial');
+    document.getElementById('result-area').style.display = 'none';
+    renderInputs();
+}
+function calculateNow() {
+    const waist = parseFloat(document.getElementById('input_waist').value);
+    const height = parseFloat(document.getElementById('input_height').value);
+    if (isNaN(waist) || isNaN(height) || waist <= 0 || height <= 0) {
+        alert('Please enter valid waist and height values.');
+        return;
+    }
+    const ratio = waist / height;
+    let result = {};
+    if (ratio < 0.40) {
+        result = { status: 'Lower Central Mass', color: 'var(--underweight)', desc: `Your WHtR is ${ratio.toFixed(2)}. This is below the commonly targeted central-fat range.`, suggestion: 'If this reflects low body weight or low energy availability, consider checking BMI and overall nutrition status.', percent: Math.max(5, ratio / 0.40 * 25) };
+    } else if (ratio < 0.50) {
+        result = { status: 'Healthy Central Range', color: 'var(--normal)', desc: `Your WHtR is ${ratio.toFixed(2)}. This is generally within the keep-your-waist-below-half-your-height target.`, suggestion: 'Maintain this pattern with regular movement, strength training, sleep consistency, and balanced nutrition.', percent: 25 + ((ratio - 0.40) / 0.10) * 35 };
+    } else if (ratio < 0.60) {
+        result = { status: 'Elevated Central Risk', color: 'var(--overweight)', desc: `Your WHtR is ${ratio.toFixed(2)}, which is above the common 0.50 screening threshold.`, suggestion: 'This may indicate increased central abdominal fat. Consider combining waist tracking with blood pressure, lipids, glucose, and clinician guidance.', percent: 60 + ((ratio - 0.50) / 0.10) * 25 };
+    } else {
+        result = { status: 'High Central Risk Indicator', color: 'var(--obese)', desc: `Your WHtR is ${ratio.toFixed(2)}, which is in a high central-fat screening range.`, suggestion: 'Review this result with a qualified clinician, especially if other cardiometabolic risk markers are present.', percent: Math.min(95, 85 + (Math.min(ratio - 0.60, 0.20) / 0.20) * 10) };
+    }
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = ratio.toFixed(2);
+    document.getElementById('calc-output').style.color = result.color;
+    document.getElementById('calc-status').innerText = result.status;
+    document.getElementById('calc-status').style.color = result.color;
+    document.getElementById('calc-desc').innerText = result.desc;
+    document.getElementById('calc-suggestion').innerText = result.suggestion;
+    document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+renderInputs();
+</script>
+</body>
+</html>

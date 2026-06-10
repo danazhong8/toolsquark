@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.toolsquark.com/tools/sleep-quality-assessment.html">
+<title>Sleep Quality Assessment | Interactive Circadian Efficiency Test | ToolsQuark</title>
+<meta name="description" content="Analyze your sleep architecture, latency, and daytime dysfunction to uncover hidden factors disrupting your biological rest with our interactive evaluation.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Privacy-First Sleep Quality Assessment",
+  "url": "https://www.toolsquark.com/tools/sleep-quality-assessment.html",
+  "operatingSystem": "All",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Analyze your sleep architecture, latency, and daytime dysfunction to uncover hidden factors disrupting your biological rest with our interactive evaluation."
+}
+</script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--low:#22c55e;--mid:#eab308;--high:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px 10px}.container{max-width:850px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:700}.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:45px 35px;border-radius:24px;margin-bottom:25px;box-shadow:0 12px 35px rgba(37,99,235,.15)}.hero h1{font-size:36px;font-weight:800;margin-bottom:12px}.hero p{font-size:16px;opacity:.92}.card{background:white;padding:30px;border-radius:24px;margin-bottom:25px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.03)}.card h3{font-size:1.3rem;font-weight:800;margin-bottom:20px;color:#1e293b}
+.quiz-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}.progress-wrap{flex:1;height:14px;background:#e2e8f0;border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#3b82f6);transition:width .25s}.progress-text{font-size:13px;font-weight:800;color:var(--text-muted);white-space:nowrap}.question{font-size:21px;font-weight:800;color:#1e293b;margin-bottom:22px;line-height:1.45}.answers-grid{display:flex;flex-direction:column;gap:12px}.option{width:100%;text-align:left;padding:16px 18px;border:2px solid #e2e8f0;border-radius:14px;background:#f8fafc;color:#334155;font-size:15px;font-weight:650;cursor:pointer;transition:.2s}.option:hover{border-color:var(--accent);background:#eff6ff;color:var(--accent);transform:translateY(-1px)}.option.selected{border-color:var(--accent);background:#dbeafe;color:#1e40af}.option.selected-heavy{border-color:#f97316;background:#fff7ed;color:#9a3412}.hidden{display:none!important}
+.result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;text-align:center}.score{font-size:60px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:8px}.profile{font-size:22px;font-weight:900;margin-bottom:12px}.description{color:#475569;font-size:15px;margin:0 auto 24px;max-width:660px;line-height:1.65}.indicator-grid{text-align:left;margin-top:20px}.bar{margin-bottom:18px;background:white;border:1px solid #e2e8f0;border-radius:14px;padding:14px}.bar-label{display:flex;justify-content:space-between;gap:10px;color:#334155;font-weight:800;font-size:14px;margin-bottom:8px}.bar-bg{height:10px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar-fill{height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#2563eb);border-radius:999px;transition:width .8s cubic-bezier(.16,1,.3,1)}.insight{background:white;border-left:4px solid var(--accent);padding:16px;border-radius:8px;text-align:left;margin-top:12px;color:#475569;font-size:14px}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.recommend-card span{font-size:13px;font-weight:800;color:var(--accent);margin-top:12px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+@media(max-width:768px){.hero{padding:36px 24px}.hero h1{font-size:28px}.question{font-size:19px}.recommend-grid{grid-template-columns:1fr}.score{font-size:46px}}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb"><a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/health.html">Health Tools</a> &gt; <span>Sleep Quality Assessment</span></div>
+    <div class="hero"><h1>Sleep Quality Assessment</h1><p>Review sleep latency, nighttime awakenings, schedule consistency, and daytime fatigue in a private self-assessment.</p></div>
+    <div class="card" id="quiz-card">
+        <div class="quiz-header"><div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div><div class="progress-text" id="progress-text">Question 1 / 10</div></div>
+        <div class="question" id="question-text"></div>
+        <div class="answers-grid" id="answers-container"></div>
+    </div>
+    <div class="card hidden" id="result-card">
+        <div class="result-box">
+            <div class="score"><span id="score-val">0</span> / 40</div>
+            <div class="profile" id="profile-status"></div>
+            <p class="description" id="profile-desc"></p>
+            <div class="indicator-grid" id="indicator-grid"></div>
+            <div id="insight-grid"></div>
+        </div>
+    </div>
+    <div class="card"><h3>Recommended Tools</h3><div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/sleep-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Sleep Calculator</h4>
+                    <p>Plan sleep windows around 90-minute cycles.</p>
+                </div>
+                <span>Plan Sleep &rarr;</span>
+            </a>
+            <a href="https://www.toolsquark.com/tools/stress-index-test.html" class="recommend-card">
+                <div>
+                    <h4>Stress Index Test</h4>
+                    <p>Check whether stress load may be affecting rest.</p>
+                </div>
+                <span>Assess Stress &rarr;</span>
+            </a></div></div>
+    <div class="card"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>Is 8 hours always required?</h4>
+            <p>No. Many adults do well around 7-9 hours, but sleep quality, consistency, and daytime function matter too.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Should I stay in bed if I cannot sleep?</h4>
+            <p>If you are awake for a long time, a calm low-light activity away from bed can help avoid associating bed with frustration.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can this diagnose insomnia or sleep apnea?</h4>
+            <p>No. This is an educational self-check. Persistent insomnia, gasping, or severe sleepiness should be discussed with a clinician.</p>
+        </div></div>
+    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Privacy:</strong> This self-assessment uses 10 four-point items covering sleep latency, continuity, schedule consistency, symptoms, and daytime impact. Scoring happens locally.</p><p style="font-style:italic;font-size:12px;"><strong>Disclaimer:</strong> This tool is not a medical diagnosis and does not replace evaluation for insomnia, sleep apnea, restless legs, parasomnias, or other sleep disorders.</p></div></div>
+    <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
+</div>
+<script>
+const questions = [
+  {
+    "question": "How long does it typically take you to fall asleep after turning off the lights?",
+    "options": [
+      "Under 15 minutes",
+      "15-30 minutes",
+      "31-60 minutes",
+      "More than an hour"
+    ]
+  },
+  {
+    "question": "How often do you wake at night and struggle to fall back asleep?",
+    "options": [
+      "Rarely or never",
+      "1-2 times a week",
+      "3-4 times a week",
+      "Almost every night"
+    ]
+  },
+  {
+    "question": "How regularly do you wake feeling unrefreshed, stiff, or tired?",
+    "options": [
+      "Never",
+      "Occasionally",
+      "Frequently",
+      "Every day"
+    ]
+  },
+  {
+    "question": "Do racing thoughts or worry keep your mind active at bedtime?",
+    "options": [
+      "Hardly ever",
+      "Some nights",
+      "Most nights",
+      "Every night"
+    ]
+  },
+  {
+    "question": "How often do you feel groggy or struggle to stay awake during daytime tasks?",
+    "options": [
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Constantly"
+    ]
+  },
+  {
+    "question": "How consistent is your sleep schedule on weekends compared with weekdays?",
+    "options": [
+      "Highly consistent",
+      "Slightly varies",
+      "Very erratic",
+      "Completely different"
+    ]
+  },
+  {
+    "question": "Do you experience night sweats, gasping, or restless legs?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Frequently"
+    ]
+  },
+  {
+    "question": "How often do you rely on sleep aids, alcohol, or supplements to fall asleep?",
+    "options": [
+      "Never",
+      "A few times a month",
+      "Multiple times a week",
+      "Daily"
+    ]
+  },
+  {
+    "question": "Does poor sleep strongly affect your mood the next day?",
+    "options": [
+      "Not really",
+      "Slightly",
+      "Noticeably",
+      "Extremely"
+    ]
+  },
+  {
+    "question": "How often do you use screens in bed while waiting for sleep?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Often",
+      "Almost always"
+    ]
+  }
+];
+const profiles = [
+  {
+    "min": 10,
+    "max": 16,
+    "title": "Optimal Circadian Rhythm",
+    "color": "var(--low)",
+    "description": "Your sleep pattern appears relatively efficient, with fewer signs of prolonged latency, fragmentation, or daytime dysfunction.",
+    "indicators": {
+      "architecture": 24,
+      "latency": 22,
+      "dysfunction": 20
+    },
+    "insights": [
+      "Protect your consistent wake time.",
+      "Keep screens and work out of bed to preserve the bed-sleep association."
+    ]
+  },
+  {
+    "min": 17,
+    "max": 28,
+    "title": "Fragmented Rest Pattern",
+    "color": "var(--mid)",
+    "description": "Your answers suggest moderate sleep disruption. Stress, schedule drift, or bedtime stimulation may be affecting recovery.",
+    "indicators": {
+      "architecture": 56,
+      "latency": 62,
+      "dysfunction": 58
+    },
+    "insights": [
+      "Use a consistent wind-down routine.",
+      "If awake for a long time, leave bed briefly and return when sleepy."
+    ]
+  },
+  {
+    "min": 29,
+    "max": 40,
+    "title": "Severe Sleep Disruption",
+    "color": "var(--high)",
+    "description": "Your responses suggest significant sleep disturbance or daytime impact. A clinical sleep evaluation may be worth considering.",
+    "indicators": {
+      "architecture": 86,
+      "latency": 88,
+      "dysfunction": 90
+    },
+    "insights": [
+      "Discuss persistent insomnia, gasping, or severe daytime sleepiness with a clinician.",
+      "Avoid using alcohol as a sleep strategy; it can worsen sleep architecture."
+    ]
+  }
+];
+const indicators = [
+  {
+    "key": "architecture",
+    "label": "Sleep Architecture Risk"
+  },
+  {
+    "key": "latency",
+    "label": "Latency & Continuity"
+  },
+  {
+    "key": "dysfunction",
+    "label": "Daytime Dysfunction"
+  }
+];
+let current = 0;
+let totalScore = 0;
+let isTransitioning = false;
+
+function activeProfile() {
+    for (const profile of profiles) {
+        if (totalScore >= profile.min && totalScore <= profile.max) return profile;
+    }
+    return profiles[profiles.length - 1];
+}
+function loadQuestion() {
+    const q = questions[current];
+    document.getElementById('question-text').innerText = q.question;
+    document.getElementById('progress-text').innerText = `Question ${current + 1} / ${questions.length}`;
+    document.getElementById('progress-bar').style.width = `${((current + 1) / questions.length) * 100}%`;
+    document.getElementById('answers-container').innerHTML = q.options.map((option, index) => `<button class="option" onclick="selectOption(this, ${index + 1}, ${index})">${option}</button>`).join('');
+    isTransitioning = false;
+}
+function selectOption(el, score, optionIndex) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    document.querySelectorAll('.option').forEach((item) => item.classList.remove('selected', 'selected-heavy'));
+    el.classList.add(optionIndex >= 2 ? 'selected-heavy' : 'selected');
+    totalScore += score;
+    setTimeout(() => {
+        current += 1;
+        if (current < questions.length) loadQuestion();
+        else showResult();
+    }, 260);
+}
+function showResult() {
+    const profile = activeProfile();
+    document.getElementById('quiz-card').classList.add('hidden');
+    document.getElementById('result-card').classList.remove('hidden');
+    document.getElementById('score-val').innerText = totalScore;
+    document.getElementById('profile-status').innerText = profile.title;
+    document.getElementById('profile-status').style.color = profile.color || 'var(--accent)';
+    document.getElementById('profile-desc').innerText = profile.description;
+    document.getElementById('indicator-grid').innerHTML = indicators.map((item) => {
+        const value = profile.indicators && profile.indicators[item.key] != null ? profile.indicators[item.key] : Math.round((totalScore / (questions.length * 4)) * 100);
+        return `<div class="bar"><div class="bar-label"><span>${item.label}</span><span>${value}%</span></div><div class="bar-bg"><div class="bar-fill" style="width:${value}%"></div></div></div>`;
+    }).join('');
+    document.getElementById('insight-grid').innerHTML = (profile.insights || []).map((text) => `<div class="insight">${text}</div>`).join('');
+    document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+loadQuestion();
+</script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accurate Waist Hip Ratio Calculator | WHR Health Risk Tracker | ToolsQuark</title>
+<meta name="description" content="Calculate your Waist-to-Hip Ratio (WHR) instantly with our free online calculator. Supports Metric and Imperial systems to evaluate body fat distribution and metabolic health risks with 100% data privacy.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Privacy-First Waist Hip Ratio Calculator",
+  "operatingSystem": "All",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "An interactive, client-side Waist-to-Hip Ratio utility that evaluates body shape and cardiovascular health risks using Metric and Imperial conversions without data logging."
+}
+</script>
+
+<style>
+:root { 
+    --primary: #0f172a; 
+    --accent: #2563eb; 
+    --text-muted: #64748b; 
+    --bg: #f8fafc;
+    --underweight: #38bdf8;
+    --normal: #22c55e;
+    --overweight: #eab308;
+    --obese: #ef4444;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter', system-ui, sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px 10px;}
+.container{max-width:850px;margin:auto;}
+
+/* 顺畅的面包屑路径，完美替换原 button 跳转死结 */
+.breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; }
+.breadcrumb a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+.hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:45px 35px;border-radius:24px;margin-bottom:25px;box-shadow:0 12px 35px rgba(37,99,235,0.15);}
+.hero h1{font-size:36px;font-weight:800;margin-bottom:12px;letter-spacing:-0.02em;}
+.hero p{font-size:16px;opacity:.9;}
+
+.card{background:white;padding:30px;border-radius:24px;margin-bottom:25px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.03);}
+.card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 20px; color: #1e293b; display: flex; align-items: center; gap: 8px; }
+
+/* 丝滑的公英制一键切换 Tab 样式 */
+.unit-switcher { display: flex; background: #f1f5f9; padding: 4px; border-radius: 12px; margin-bottom: 25px; }
+.unit-tab { flex: 1; text-align: center; padding: 10px; font-size: 14px; font-weight: 700; color: var(--text-muted); border-radius: 9px; cursor: pointer; transition: 0.2s; }
+.unit-tab.active { background: white; color: var(--accent); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+.input-row { display: flex; gap: 16px; }
+.input-group{margin-bottom:20px; flex: 1;}
+.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px;}
+.input-wrapper { position: relative; display: flex; align-items: center; }
+.input-wrapper input{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;}
+.input-wrapper input:focus{border-color:#2563eb;background:#eff6ff;}
+.input-wrapper .unit-badge { position: absolute; right: 15px; color: var(--text-muted); font-size: 14px; font-weight: 600; }
+
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,0.2);}
+.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px);}
+
+/* 情绪化动态交互结果区 */
+.result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;margin-top:30px;text-align:center;}
+.result-val{font-size:60px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:-0.03em;}
+.result-status{font-size:22px;font-weight:800;margin-bottom:15px;}
+
+/* 动态健康色刻度指示条 */
+.bmi-gauge-container { max-width: 500px; margin: 20px auto; position: relative; }
+.bmi-gauge-bar { height: 12px; background: linear-gradient(to right, var(--underweight) 0%, var(--normal) 30%, var(--overweight) 65%, var(--obese) 100%); border-radius: 6px; }
+.bmi-pointer { position: absolute; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 10px solid var(--primary); top: -14px; transform: translateX(-50%); transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.bmi-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); font-weight: bold; margin-top: 6px; padding: 0 4px; }
+
+.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:600px;line-height:1.6;}
+.suggestion-box{background:white;border-left:4px solid var(--accent);padding:18px;border-radius:8px;text-align:left;margin-top:20px;box-shadow:0 2px 10px rgba(0,0,0,0.02);}
+.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800;}
+.suggestion-box p{color:#475569;font-size:14px;}
+
+/* 连环留存跳转卡片 */
+.recommend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.recommend-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 16px; text-decoration: none; color: inherit; transition: 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+.recommend-card:hover { border-color: var(--accent); background: #eff6ff; transform: translateY(-2px); }
+.recommend-card h4 { font-size: 15px; font-weight: 800; color: #1e293b; margin-bottom: 5px; }
+.recommend-card p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+.recommend-card .action-text { font-size: 13px; font-weight: 700; color: var(--accent); margin-top: 12px; display: inline-flex; align-items: center; gap: 4px; }
+
+/* 常青 FAQ 区（支持 PAA 抓取） */
+.faq-item{margin-bottom:20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px;}
+.faq-item:last-child { border: none; padding: 0; margin: 0; }
+.faq-item h4{ font-size: 15px; font-weight: 800; color: #1e293b; margin-bottom: 6px; }
+.faq-item p{ font-size: 14px; color: var(--text-muted); line-height: 1.6; text-align: justify; }
+
+/* 学术背书与免责声明 */
+.scientific-backing { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; border-top: 1px solid #e2e8f0; padding-top: 25px; margin-top: 25px; }
+.scientific-backing p { margin-bottom: 10px; }
+
+footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px;}
+
+@media(max-width:768px){
+    .hero h1{font-size:28px;}
+    .recommend-grid { grid-template-columns: 1fr; }
+    .input-row { flex-direction: column; gap: 0; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/health.html">Health Tools</a> &gt; <span>Waist Hip Ratio Calculator</span>
+    </div>
+
+    <div class="hero">
+        <h1>Waist Hip Ratio Calculator</h1>
+        <p>Evaluate your body fat distribution pattern and check for indicators of visceral fat accumulation instantly. This privacy-focused application computes data entirely within your browser.</p>
+    </div>
+
+    <div class="card">
+        <div class="unit-switcher">
+            <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (cm)</div>
+            <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (inches)</div>
+        </div>
+
+        <div id="inputs-container">
+            </div>
+
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Waist-to-Hip Ratio</button>
+
+        <div id="result-area" class="result-box" style="display:none;">
+            <div class="result-val" id="calc-output">0.00</div>
+            <div class="result-status" id="calc-status">Low Risk</div>
+            
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="gauge-pointer"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels">
+                    <span id="label-low">Low Risk</span>
+                    <span id="label-mod">Moderate</span>
+                    <span id="label-high">High Risk</span>
+                </div>
+            </div>
+
+            <p class="result-desc" id="calc-desc"></p>
+            
+            <div class="suggestion-box">
+                <h4>💡 Actionable Health Insight:</h4>
+                <p id="calc-suggestion"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>🚀 Optimize Your Body Metrics Further</h3>
+        <p style="font-size:14px; color:var(--text-muted); margin-bottom:15px;">Now that you know your waist-to-hip ratio status, explore deeper physiological trackers:</p>
+        <div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/bmi-calculator.html" class="recommend-card">
+                <div>
+                    <h4>⚖️ BMI Calculator</h4>
+                    <p>Check your standard height-to-weight ratio baseline using standard clinical data guidelines.</p>
+                </div>
+                <span class="action-text">Check BMI Ratio →</span>
+            </a>
+            <a href="https://www.toolsquark.com/tools/body-fat-calculator.html" class="recommend-card">
+                <div>
+                    <h4>🧬 Precision Body Fat Tracker</h4>
+                    <p>Estimate your body fat percentage instantly using structural adult composition relationship equations.</p>
+                </div>
+                <span class="action-text">Calculate Fat % →</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>🔍 Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>What is the scientific significance of the Waist-to-Hip Ratio (WHR)?</h4>
+            <p>The Waist-to-Hip Ratio (WHR) is a clinical epidemiological metric utilized to evaluate body fat distribution. Unlike the Body Mass Index (BMI), which measures general adipose mass based solely on height and weight, WHR isolates abdominal adiposity. Higher scores point significantly toward abdominal visceral fat storage surrounding essential internal organs, serving as a powerful, independent diagnostic predictor for cardiovascular disease, metabolic syndrome, and type 2 diabetes.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What are the official World Health Organization (WHO) health risk cut-off thresholds for WHR?</h4>
+            <p>According to historical research guidelines released by the World Health Organization (WHO), a waist-to-hip ratio equal to or greater than 0.90 for male adults, and equal to or greater than 0.85 for female adults, indicates central abdominal obesity and substantially elevated metabolic health complications. Ratios sitting firmly under these respective gender benchmarks reflect a lower biological risk configuration.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How do I accurately measure my waist and hip circumferences for this calculator?</h4>
+            <p>To acquire precise physical diagnostic tracking results, stand straight and wrap a non-elastic tape measure directly around your bare skin. For your waist circumference, position the tape mid-way between your lowest palpable rib and the top edge of your hip bone (iliac crest), measuring at the end of a normal exhalation. For your hip circumference, wrap the tape snugly around the widest horizontal perimeter of your buttocks. Ensure the measuring loop stays parallel to the floor during both steps.</p>
+        </div>
+    </div>
+
+    <div class="card" style="background:#f8fafc; border:none;">
+        <div class="scientific-backing">
+            <p><strong>Methodology & Quality Assurance:</strong> The mathematical algorithms and parameters deployed across this application follow structural physiological guidelines curated by the World Health Organization (WHO) and the Centers for Disease Control and Prevention (CDC).</p>
+            <p style="font-style: italic; font-size:12px;"><strong>Medical Disclaimer:</strong> The findings derived from this front-end script serve solely as baseline educational references. This online software application does not distribute clinical advice, formal medical diagnoses, or specialized treatment plans. Please consult a qualified clinical professional for dedicated medical evaluation.</p>
+        </div>
+    </div>
+
+    <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
+</div>
+
+<script>
+let currentUnit = 'metric';
+
+// 纯前端动态渲染公制/英制表单，完全告别页面刷新
+function renderInputs() {
+    const container = document.getElementById('inputs-container');
+    
+    // 基础输入（性别，公英制通用）
+    const baseInputs = `
+        <div class="input-group">
+            <label for="input_gender">Biological Gender</label>
+            <div class="input-wrapper">
+                <select id="input_gender" style="width:100%;padding:14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;font-weight:600;background:white;-webkit-appearance:none;appearance:none;cursor:pointer;">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
+    `;
+
+    if (currentUnit === 'metric') {
+        container.innerHTML = baseInputs + `
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="input_waist">Waist Circumference</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_waist" placeholder="e.g. 85" step="any">
+                        <span class="unit-badge">cm</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="input_hip">Hip Circumference</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_hip" placeholder="e.g. 95" step="any">
+                        <span class="unit-badge">cm</span>
+                    </div>
+                </div>
+            </div>`;
+    } else {
+        container.innerHTML = baseInputs + `
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="input_waist">Waist Circumference</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_waist" placeholder="e.g. 33.5" step="any">
+                        <span class="unit-badge">inches</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="input_hip">Hip Circumference</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input_hip" placeholder="e.g. 37.4" step="any">
+                        <span class="unit-badge">inches</span>
+                    </div>
+                </div>
+            </div>`;
+    }
+}
+
+function switchUnit(unit) {
+    if (currentUnit === unit) return;
+    currentUnit = unit;
+    document.getElementById('tab-metric').classList.toggle('active', unit === 'metric');
+    document.getElementById('tab-imperial').classList.toggle('active', unit === 'imperial');
+    document.getElementById('result-area').style.display = 'none';
+    renderInputs();
+}
+
+function calculateNow() {
+    const gender = document.getElementById('input_gender').value;
+    const waist = parseFloat(document.getElementById('input_waist').value);
+    const hip = parseFloat(document.getElementById('input_hip').value);
+
+    if (isNaN(waist) || isNaN(hip) || waist <= 0 || hip <= 0) {
+        alert("Please enter valid positive measurements for both waist and hip dimensions.");
+        return;
+    }
+
+    // WHR is a simple ratio, unit conversion cancels out so we can divide directly
+    const whr = waist / hip;
+    let result = {status: "", color: "", desc: "", suggestion: "", percent: 0};
+
+    // WHO clinical risk standards for WHR
+    if (gender === 'male') {
+        if (whr < 0.90) {
+            // Low Risk (Mapped to Underweight/Normal range on gauge: 5% - 45%)
+            let p = 5 + (whr / 0.90) * 40;
+            result = {
+                status: "Low Risk Health Profile 🟢",
+                color: "var(--normal)",
+                desc: `Your calculated Waist-to-Hip Ratio is ${whr.toFixed(2)}. This falls comfortably within the standard low risk parameters established for male physiology.`,
+                suggestion: "Your lower visceral abdominal body composition suggests reduced risk for lifestyle related cardiovascular conditions. Maintain balanced nutrition and steady exercise habits.",
+                percent: Math.min(45, p)
+            };
+        } else if (whr <= 0.95) {
+            // Moderate Risk (Mapped to Overweight range on gauge: 45% - 75%)
+            let p = 45 + ((whr - 0.90) / (0.95 - 0.90)) * 30;
+            result = {
+                status: "Moderate Risk Profile 🟡",
+                color: "var(--overweight)",
+                desc: `Your calculated Waist-to-Hip Ratio is ${whr.toFixed(2)}. This falls into the moderate risk warning range for male adults.`,
+                suggestion: "This indicates an emerging trend toward central abdominal weight localization. Introducing standard cardiovascular routines and mindful daily metabolic management is highly beneficial.",
+                percent: p
+            };
+        } else {
+            // High Risk (Mapped to Obese range on gauge: 75% - 95%)
+            let p = 75 + (Math.min(whr - 0.95, 0.2) / 0.2) * 20;
+            result = {
+                status: "High Risk Indicator 🚨",
+                color: "var(--obese)",
+                desc: `Your calculated Waist-to-Hip Ratio is ${whr.toFixed(2)}, indicating central body fat concentration and high health risks.`,
+                suggestion: "Ratios above 0.95 in men correlate strongly with heightened internal organ metabolic strain. We highly recommend reviewing your cardiovascular health indicators with a specialist doctor.",
+                percent: Math.min(95, p)
+            };
+        }
+    } else {
+        // Female physiology standards
+        if (whr < 0.80) {
+            // Low Risk (Mapped to 5% - 45%)
+            let p = 5 + (whr / 0.80) * 40;
+            result = {
+                status: "Low Risk Health Profile 🟢",
+                color: "var(--normal)",
+                desc: `Your calculated Waist-to-Hip Ratio is ${whr.toFixed(2)}. This is safely aligned within the baseline healthy parameters for female physiology.`,
+                suggestion: "This structural proportion indicates lower accumulation of dangerous visceral fats surrounding abdominal core systems. Continue supporting your systemic health via active movement.",
+                percent: Math.min(45, p)
+            };
+        } else if (whr <= 0.85) {
+            // Moderate Risk (Mapped to 45% - 75%)
+            let p = 45 + ((whr - 0.80) / (0.85 - 0.80)) * 30;
+            result = {
+                status: "Moderate Risk Profile 🟡",
+                color: "var(--overweight)",
+                desc: `Your calculated Waist-to-Hip Ratio is ${whr.toFixed(2)}. This is classified within the moderate biological risk segment for female adults.`,
+                suggestion: "This represents early signs of visceral lipid shifts around your core. Focusing on nutritional optimization and consistent fat burning exercises can help redistribute or minimize abdominal storage.",
+                percent: p
+            };
+        } else {
+            // High Risk (Mapped to 75% - 95%)
+            let p = 75 + (Math.min(whr - 0.85, 0.2) / 0.2) * 20;
+            result = {
+                status: "High Risk Indicator 🚨",
+                color: "var(--obese)",
+                desc: `Your calculated Waist-to-Hip Ratio is ${whr.toFixed(2)}, pointing toward prominent central abdominal adipose tissue density.`,
+                suggestion: "WHR parameters exceeding 0.85 for women indicate notable metabolic vulnerability. Partnering with clinical experts or dietitians to outline therapeutic metabolic strategies is recommended.",
+                percent: Math.min(95, p)
+            };
+        }
+    }
+
+    // 更新视图层
+    document.getElementById('result-area').style.display = 'block';
+    const outputEl = document.getElementById('calc-output');
+    outputEl.innerText = whr.toFixed(2);
+    outputEl.style.color = result.color;
+    
+    const statusEl = document.getElementById('calc-status');
+    statusEl.innerText = result.status;
+    statusEl.style.color = result.color;
+    
+    document.getElementById('calc-desc').innerText = result.desc;
+    document.getElementById('calc-suggestion').innerText = result.suggestion;
+    
+    // 执行 CSS3 渐变刻度条指针位移
+    document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    
+    // 自动平滑滚动到结果可视区域
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// 页面加载自动执行公制渲染
+renderInputs();
+</script>
+</body>
+</html>

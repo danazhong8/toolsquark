@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.toolsquark.com/tools/body-fat-calculator.html">
+<title>Accurate Body Fat Calculator (U.S. Navy Method) | ToolsQuark</title>
+<meta name="description" content="Estimate your body fat percentage using the U.S. Navy circumference method with metric and imperial measurement support.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Privacy-First Body Fat Calculator",
+  "url": "https://www.toolsquark.com/tools/body-fat-calculator.html",
+  "operatingSystem": "All",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Estimate your body fat percentage using the U.S. Navy circumference method with metric and imperial measurement support."
+}
+</script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--underweight:#38bdf8;--normal:#22c55e;--overweight:#eab308;--obese:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px 10px}.container{max-width:850px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:45px 35px;border-radius:24px;margin-bottom:25px;box-shadow:0 12px 35px rgba(37,99,235,.15)}.hero h1{font-size:36px;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}.hero p{font-size:16px;opacity:.9}.card{background:white;padding:30px;border-radius:24px;margin-bottom:25px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.03)}.card h3{font-size:1.3rem;font-weight:800;margin-bottom:20px;color:#1e293b}
+.unit-switcher{display:flex;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:25px}.unit-tab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:700;color:var(--text-muted);border-radius:9px;cursor:pointer;transition:.2s}.unit-tab.active{background:white;color:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,.05)}
+.input-row{display:flex;gap:16px}.input-group{margin-bottom:20px;flex:1}.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px}.input-wrapper{position:relative;display:flex;align-items:center}.input-wrapper input,.input-wrapper select{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;background:white;color:var(--primary)}.input-wrapper input:focus,.input-wrapper select:focus{border-color:#2563eb;background:#eff6ff}.unit-badge{position:absolute;right:15px;color:var(--text-muted);font-size:14px;font-weight:600;pointer-events:none}
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,.2)}.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+.result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;margin-top:30px;text-align:center}.result-val{font-size:54px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:-.03em}.result-unit{font-size:20px;font-weight:700;color:var(--text-muted);margin-left:5px}.result-status{font-size:22px;font-weight:800;margin-bottom:15px}.bmi-gauge-container{max-width:500px;margin:20px auto;position:relative}.bmi-gauge-bar{height:12px;background:linear-gradient(to right,var(--underweight) 0%,var(--normal) 35%,var(--overweight) 70%,var(--obese) 100%);border-radius:6px}.bmi-pointer{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--primary);top:-14px;transform:translateX(-50%);transition:left .5s cubic-bezier(.175,.885,.32,1.275)}.bmi-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);font-weight:bold;margin-top:6px;padding:0 4px}.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:650px;line-height:1.7}.suggestion-box{background:white;border-left:4px solid var(--accent);padding:18px;border-radius:8px;text-align:left;margin-top:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800}.suggestion-box p{color:#475569;font-size:14px}.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.macro-pill{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:16px}.macro-pill strong{display:block;font-size:22px;color:#1e293b}.macro-pill span{font-size:13px;color:var(--text-muted);font-weight:700}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+@media(max-width:768px){.hero{padding:36px 24px}.hero h1{font-size:28px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb"><a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/health.html">Health Tools</a> &gt; <span>Body Fat Calculator</span></div>
+    <div class="hero"><h1>Body Fat Calculator</h1><p>Estimate body fat percentage from circumference measurements using the U.S. Navy method, processed privately in your browser.</p></div>
+    <div class="card">
+
+        <div class="unit-switcher">
+            <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (cm)</div>
+            <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (inches)</div>
+        </div>
+        <div id="inputs-container"></div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Body Fat</button>
+        <div id="result-area" class="result-box" style="display:none;">
+
+            <div class="result-val"><span id="calc-output">0</span><span class="result-unit">%</span></div>
+            <div class="result-status" id="calc-status">Estimated Body Fat</div>
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="gauge-pointer"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels"><span>Lean</span><span>Fitness</span><span>Higher</span></div>
+            </div>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="suggestion-box">
+                <h4>Composition Insight</h4>
+                <p id="calc-suggestion"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card"><h3>Add Context To The Result</h3><div class="recommend-grid">
+            <a href="https://www.toolsquark.com/tools/lean-body-mass-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Lean Body Mass Calculator</h4>
+                    <p>Estimate non-fat body mass from height and weight.</p>
+                </div>
+                <span class="action-text">Check Lean Mass &rarr;</span>
+            </a>
+            <a href="https://www.toolsquark.com/tools/waist-to-height-ratio-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Waist-to-Height Ratio Calculator</h4>
+                    <p>Screen central abdominal distribution with waist and height.</p>
+                </div>
+                <span class="action-text">Check WHtR &rarr;</span>
+            </a></div></div>
+    <div class="card"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>What measurements are required?</h4>
+            <p>Men need height, neck, and waist circumference. Women need height, neck, waist, and hip circumference.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How accurate is the U.S. Navy method?</h4>
+            <p>It is a practical field estimate based on circumference measurements. It is useful for tracking trends, but it is not as precise as clinical methods such as DEXA.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Should I use metric or imperial units?</h4>
+            <p>Either works as long as all circumference and height entries use the same unit system selected in the calculator.</p>
+        </div></div>
+    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool applies the U.S. Navy circumference equations for body density and converts that density into estimated body fat percentage.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Body fat estimates are educational screening values and can be affected by measurement technique, hydration, and body proportions.</p></div></div>
+    <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
+</div>
+<script>
+
+let currentUnit = 'metric';
+function renderInputs() {
+    const container = document.getElementById('inputs-container');
+    const unit = currentUnit === 'metric' ? 'cm' : 'inches';
+    container.innerHTML = `
+        <div class="input-group">
+            <label for="input_gender">Gender</label>
+            <div class="input-wrapper">
+                <select id="input_gender" onchange="renderInputs()">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group"><label for="input_height">Height</label><div class="input-wrapper"><input type="number" id="input_height" placeholder="${currentUnit === 'metric' ? 'e.g. 175' : 'e.g. 69'}" step="any"><span class="unit-badge">${unit}</span></div></div>
+            <div class="input-group"><label for="input_neck">Neck</label><div class="input-wrapper"><input type="number" id="input_neck" placeholder="${currentUnit === 'metric' ? 'e.g. 38' : 'e.g. 15'}" step="any"><span class="unit-badge">${unit}</span></div></div>
+        </div>
+        <div class="input-row">
+            <div class="input-group"><label for="input_waist">Waist</label><div class="input-wrapper"><input type="number" id="input_waist" placeholder="${currentUnit === 'metric' ? 'e.g. 85' : 'e.g. 33.5'}" step="any"><span class="unit-badge">${unit}</span></div></div>
+            <div class="input-group" id="hip-group"><label for="input_hip">Hip</label><div class="input-wrapper"><input type="number" id="input_hip" placeholder="${currentUnit === 'metric' ? 'e.g. 96' : 'e.g. 38'}" step="any"><span class="unit-badge">${unit}</span></div></div>
+        </div>`;
+    const genderSelect = document.getElementById('input_gender');
+    const existingGender = genderSelect.dataset.gender || 'male';
+    genderSelect.value = existingGender;
+    genderSelect.onchange = function() {
+        this.dataset.gender = this.value;
+        document.getElementById('hip-group').style.display = this.value === 'female' ? 'block' : 'none';
+    };
+    genderSelect.onchange();
+}
+function switchUnit(unit) {
+    if (currentUnit === unit) return;
+    currentUnit = unit;
+    document.getElementById('tab-metric').classList.toggle('active', unit === 'metric');
+    document.getElementById('tab-imperial').classList.toggle('active', unit === 'imperial');
+    document.getElementById('result-area').style.display = 'none';
+    renderInputs();
+}
+function log10(value) {
+    return Math.log(value) / Math.LN10;
+}
+function calculateNow() {
+    const gender = document.getElementById('input_gender').value;
+    const height = parseFloat(document.getElementById('input_height').value);
+    const neck = parseFloat(document.getElementById('input_neck').value);
+    const waist = parseFloat(document.getElementById('input_waist').value);
+    const hipInput = document.getElementById('input_hip');
+    const hip = hipInput ? parseFloat(hipInput.value) : 0;
+    if (isNaN(height) || isNaN(neck) || isNaN(waist) || height <= 0 || neck <= 0 || waist <= 0) {
+        alert('Please enter valid height, neck, and waist values.');
+        return;
+    }
+    let bodyFat = 0;
+    if (gender === 'male') {
+        if (waist <= neck) { alert('Waist must be greater than neck for the Navy formula.'); return; }
+        bodyFat = 495 / (1.0324 - 0.19077 * log10(waist - neck) + 0.15456 * log10(height)) - 450;
+    } else {
+        if (isNaN(hip) || hip <= 0) { alert('Please enter a valid hip measurement.'); return; }
+        if ((waist + hip) <= neck) { alert('Waist plus hip must be greater than neck for the Navy formula.'); return; }
+        bodyFat = 495 / (1.29579 - 0.35004 * log10(waist + hip - neck) + 0.22100 * log10(height)) - 450;
+    }
+    bodyFat = Math.max(3, Math.min(60, bodyFat));
+    let result = {};
+    if (bodyFat < 14) {
+        result = { status: 'Very Lean Range', color: 'var(--underweight)', suggestion: 'Very lean results may be appropriate for some athletes but can be risky if paired with low energy, poor recovery, or hormonal symptoms.', percent: Math.max(5, bodyFat) };
+    } else if (bodyFat < 25) {
+        result = { status: 'Fitness / Standard Range', color: 'var(--normal)', suggestion: 'This range is commonly compatible with active health goals. Track long-term trends rather than reacting to one measurement.', percent: 25 + ((bodyFat - 14) / 11) * 35 };
+    } else if (bodyFat < 32) {
+        result = { status: 'Elevated Fat Range', color: 'var(--overweight)', suggestion: 'Consider pairing gradual nutrition changes with strength training, daily movement, sleep, and waist tracking.', percent: 60 + ((bodyFat - 25) / 7) * 20 };
+    } else {
+        result = { status: 'High Fat Range', color: 'var(--obese)', suggestion: 'This screening result may justify a broader health review, especially when combined with high waist measurements or metabolic risk markers.', percent: Math.min(95, 80 + ((bodyFat - 32) / 28) * 15) };
+    }
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = bodyFat.toFixed(1);
+    document.getElementById('calc-output').style.color = result.color;
+    document.getElementById('calc-status').innerText = result.status;
+    document.getElementById('calc-status').style.color = result.color;
+    document.getElementById('calc-desc').innerText = `Your estimated body fat percentage is ${bodyFat.toFixed(1)}% using the U.S. Navy circumference method.`;
+    document.getElementById('calc-suggestion').innerText = result.suggestion;
+    document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+renderInputs();
+</script>
+</body>
+</html>
