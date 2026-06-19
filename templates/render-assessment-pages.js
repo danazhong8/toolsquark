@@ -4,6 +4,7 @@ const path = require("path");
 const root = path.resolve(__dirname, "..");
 const configDir = path.join(__dirname, "assessment-pages");
 const outDir = path.join(root, "tools");
+const defaultLastUpdated = "June 19, 2026";
 
 function esc(value) {
   return String(value ?? "")
@@ -11,6 +12,10 @@ function esc(value) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+function cleanOutput(value) {
+  return value.replace(/[ \t]+$/gm, "");
 }
 
 function renderRelated(items = []) {
@@ -43,6 +48,7 @@ function renderContentSections(items = []) {
 function renderPage(config) {
   const canonical = `https://toolsquark.com/tools/${config.slug}.html`;
   const categoryUrl = `https://toolsquark.com/${config.categoryHref || "mental-health.html"}`;
+  const lastUpdated = config.lastUpdated || defaultLastUpdated;
   const schema = [
     {
       "@context": "https://schema.org",
@@ -123,7 +129,7 @@ ${config.extraCss || ""}
     ${config.contentSections?.length ? `<div class="card">${renderContentSections(config.contentSections)}</div>` : ""}
     <div class="card"><h3>${esc(config.relatedTitle || "Recommended Tools")}</h3><div class="recommend-grid">${renderRelated(config.related)}</div></div>
     <div class="card"><h3>Frequently Asked Questions</h3>${renderFaq(config.faq)}</div>
-    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Privacy:</strong> ${config.methodology}</p><p style="font-style:italic;font-size:12px;"><strong>Disclaimer:</strong> ${config.disclaimer}</p>${config.lastUpdated ? `<div class="updated-row">Last updated: ${esc(config.lastUpdated)}</div>` : ""}</div></div>
+    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Privacy:</strong> ${config.methodology}</p><p style="font-style:italic;font-size:12px;"><strong>Disclaimer:</strong> ${config.disclaimer}</p><div class="updated-row">Last updated: ${esc(lastUpdated)}</div></div></div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
 </div>
 <script>
@@ -191,7 +197,7 @@ for (const file of files) {
   const configPath = path.join(configDir, file);
   delete require.cache[require.resolve(configPath)];
   const config = require(configPath);
-  const html = renderPage(config);
+  const html = cleanOutput(renderPage(config));
   const outPath = path.join(outDir, `${config.slug}.html`);
   fs.writeFileSync(outPath, html, "utf8");
   console.log(`Rendered ${path.relative(root, outPath)}`);
