@@ -1,11 +1,12 @@
 module.exports = {
   slug: "bmi-calculator",
-  title: "Free Accurate BMI Calculator | Metric & Imperial | ToolsQuark",
-  description: "Calculate your Body Mass Index (BMI) instantly with our free online calculator. Supports Metric (kg/cm) and Imperial (lbs/ft/in) systems with 100% data privacy.",
+  title: "BMI Calculator | Free Metric & Imperial Body Mass Index Tool",
+  description: "Calculate BMI with kg/cm or lbs/ft/in, see your adult BMI category, formula, and result interpretation. Free private browser-side BMI calculator.",
   h1: "BMI Calculator",
   hero: "Calculate body mass index using metric or imperial units. Everything runs locally in your browser with no account and no server-side health data storage.",
   schemaName: "Privacy-First BMI Calculator",
-  schemaDescription: "An interactive, client-side Body Mass Index calculator supporting metric and imperial units without data logging.",
+  schemaDescription: "A free browser-side Body Mass Index calculator for metric and imperial units, with adult BMI categories, formula notes, and result interpretation.",
+  lastUpdated: "June 19, 2026",
   buttonText: "Calculate BMI",
   resultUnit: "",
   resultStatus: "BMI Result",
@@ -44,9 +45,35 @@ module.exports = {
     {
       question: "Can BMI be inaccurate for athletes?",
       answer: "Yes. BMI does not separate muscle from fat, so muscular athletes can score high even when body fat is low. Pair BMI with waist or body fat tools for better context."
+    },
+    {
+      question: "Is BMI different for children or teenagers?",
+      answer: "Yes. Children and teenagers are usually evaluated with age- and sex-specific BMI percentiles rather than the standard adult BMI categories shown here."
+    },
+    {
+      question: "Does this BMI calculator store my height or weight?",
+      answer: "No. The calculation runs in your browser. ToolsQuark does not require an account and this page does not send your BMI inputs to a server."
     }
   ],
-  methodology: "This tool applies the standard adult BMI equation and unit conversions for metric and imperial inputs.",
+  contentSections: [
+    {
+      title: "What BMI Measures",
+      body: `<p>Body Mass Index is a height-to-weight screening number used to place many adults into broad weight categories. It is quick to calculate and useful for population-level comparisons, but it does not directly measure body fat, muscle mass, waist size, fitness, or metabolic health.</p><p>Use your BMI result as a first-pass signal, then add context from waist measurements, body composition, activity level, sleep, nutrition, and clinical markers when those details matter.</p>`
+    },
+    {
+      title: "BMI Formula",
+      body: `<div class="formula-box">Metric: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p>The calculator converts your inputs into the standard adult BMI equation and rounds the result to one decimal place.</p>`
+    },
+    {
+      title: "How To Read Your Result",
+      body: `<ul><li><strong>Below 18.5:</strong> commonly categorized as underweight.</li><li><strong>18.5 to 24.9:</strong> commonly categorized as normal weight.</li><li><strong>25.0 to 29.9:</strong> commonly categorized as overweight.</li><li><strong>30.0 or higher:</strong> commonly categorized as obesity.</li></ul><div class="note-box">These adult categories are screening ranges, not a personal diagnosis. They can be less informative during pregnancy, for children and teenagers, older adults, highly muscular people, and anyone whose body composition differs from the average assumptions behind BMI.</div>`
+    },
+    {
+      title: "Example Calculation",
+      body: `<p>For a person who weighs 70 kg and is 175 cm tall, height is first converted to 1.75 m. The calculation is 70 / 1.75<sup>2</sup>, which equals 22.9. That falls within the standard adult normal-weight BMI range.</p>`
+    }
+  ],
+  methodology: "This tool applies the standard adult Body Mass Index equation and unit conversions for metric and imperial inputs. Results are rounded to one decimal place and mapped to common adult BMI screening categories.",
   disclaimer: "BMI is a screening estimate, not a diagnosis. It may be less informative for athletes, older adults, pregnancy, children, or people with unusual body composition.",
   script: `
 let currentUnit = 'metric';
