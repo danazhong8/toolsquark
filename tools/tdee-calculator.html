@@ -4,23 +4,95 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/tdee-calculator.html">
-<title>Free Accurate TDEE Calculator | Total Daily Energy Expenditure | ToolsQuark</title>
-<meta name="description" content="Calculate your Total Daily Energy Expenditure (TDEE) accurately with our free calorie calculator. Supports Metric &amp; Imperial systems with smart activity pacing multipliers.">
+<title>TDEE Calculator | Estimate Daily Calories by Activity Level</title>
+<meta name="description" content="Estimate your TDEE from BMR, body metrics, age, sex, and activity level. Free private calculator with maintenance, fat-loss, and muscle-gain calorie targets.">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Privacy-First TDEE Calculator",
-  "url": "https://toolsquark.com/tools/tdee-calculator.html",
-  "operatingSystem": "All",
-  "applicationCategory": "HealthApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Privacy-First TDEE Calculator",
+    "url": "https://toolsquark.com/tools/tdee-calculator.html",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A free browser-side Total Daily Energy Expenditure calculator using the Mifflin-St Jeor equation, activity multipliers, and practical calorie target guidance."
   },
-  "description": "An interactive, client-side total daily energy expenditure calculator using the Mifflin-St Jeor equation and activity multipliers."
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolsquark.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Health Tools",
+        "item": "https://toolsquark.com/health.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "TDEE Calculator",
+        "item": "https://toolsquark.com/tools/tdee-calculator.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does TDEE mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TDEE means Total Daily Energy Expenditure. It estimates how many calories you burn in a full day after resting metabolism and your usual activity level are included."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is TDEE calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator estimates BMR with the Mifflin-St Jeor equation, then multiplies it by an activity factor such as sedentary, lightly active, moderately active, very active, or extra active."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How should I use TDEE for weight change?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eating near TDEE tends to support maintenance. A moderate deficit can support gradual fat loss, while a modest surplus can support muscle gain when paired with resistance training."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which activity level should I choose?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Choose the activity level that matches your usual week, not your hardest training day. If you are between two options, start with the lower one and adjust after tracking your weight trend for two to four weeks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my real maintenance different from this estimate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TDEE formulas cannot fully capture genetics, non-exercise movement, adaptive metabolism, training intensity, sleep, illness, or tracking accuracy. Treat the result as a starting estimate and refine it with real-world progress data."
+        }
+      }
+    ]
+  }
+]
 </script>
 <style>
 :root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--underweight:#38bdf8;--normal:#22c55e;--overweight:#eab308;--obese:#ef4444;}
@@ -30,7 +102,7 @@
 .input-row{display:flex;gap:16px}.input-group{margin-bottom:20px;flex:1}.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px}.input-wrapper{position:relative;display:flex;align-items:center}.input-wrapper input,.input-wrapper select{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;background:white;color:var(--primary)}.input-wrapper input:focus,.input-wrapper select:focus{border-color:#2563eb;background:#eff6ff}.unit-badge{position:absolute;right:15px;color:var(--text-muted);font-size:14px;font-weight:600;pointer-events:none}
 .calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,.2)}.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
 .result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;margin-top:30px;text-align:center}.result-val{font-size:54px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:-.03em}.result-unit{font-size:20px;font-weight:700;color:var(--text-muted);margin-left:5px}.result-status{font-size:22px;font-weight:800;margin-bottom:15px}.bmi-gauge-container{max-width:500px;margin:20px auto;position:relative}.bmi-gauge-bar{height:12px;background:linear-gradient(to right,var(--underweight) 0%,var(--normal) 35%,var(--overweight) 70%,var(--obese) 100%);border-radius:6px}.bmi-pointer{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--primary);top:-14px;transform:translateX(-50%);transition:left .5s cubic-bezier(.175,.885,.32,1.275)}.bmi-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);font-weight:bold;margin-top:6px;padding:0 4px}.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:650px;line-height:1.7}.suggestion-box{background:white;border-left:4px solid var(--accent);padding:18px;border-radius:8px;text-align:left;margin-top:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800}.suggestion-box p{color:#475569;font-size:14px}.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.macro-pill{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:16px}.macro-pill strong{display:block;font-size:22px;color:#1e293b}.macro-pill span{font-size:13px;color:var(--text-muted);font-weight:700}
-.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
 @media(max-width:768px){.hero{padding:36px 24px}.hero h1{font-size:28px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}}
 
 </style>
@@ -63,6 +135,23 @@
             </div>
         </div>
     </div>
+    <div class="card">
+    <div class="content-section">
+        <h3>What TDEE Means</h3>
+        <p>Total Daily Energy Expenditure is an estimate of how many calories your body burns in a typical day. It combines your resting metabolic needs with daily movement, exercise, digestion, and general activity.</p><p>TDEE is most useful as a starting point for planning maintenance calories, a moderate fat-loss deficit, or a controlled muscle-gain surplus.</p>
+    </div>
+    <div class="content-section">
+        <h3>How This Calculator Works</h3>
+        <p>This tool first estimates Basal Metabolic Rate with the Mifflin-St Jeor equation, then multiplies that number by your selected activity factor.</p><div class="formula-box">TDEE = BMR x activity multiplier</div><ul><li><strong>1.2:</strong> sedentary or little planned exercise.</li><li><strong>1.375:</strong> light activity one to three days per week.</li><li><strong>1.55:</strong> moderate activity three to five days per week.</li><li><strong>1.725:</strong> hard training most days.</li><li><strong>1.9:</strong> intense training plus a physically demanding lifestyle.</li></ul>
+    </div>
+    <div class="content-section">
+        <h3>How To Use Your Result</h3>
+        <ul><li><strong>Maintenance:</strong> start near your TDEE and monitor body weight trend.</li><li><strong>Fat loss:</strong> a moderate deficit often starts around 300 to 500 calories below TDEE.</li><li><strong>Muscle gain:</strong> a modest surplus often starts around 150 to 300 calories above TDEE.</li></ul><div class="note-box">Avoid using one calculation as a permanent prescription. Track your average weight, performance, hunger, and energy for a few weeks, then adjust gradually.</div>
+    </div>
+    <div class="content-section">
+        <h3>Example Calculation</h3>
+        <p>If a person's estimated BMR is 1,650 kcal/day and they choose a moderate activity multiplier of 1.55, their estimated TDEE is 1,650 x 1.55 = 2,558 kcal/day. That would be a practical starting point for maintenance planning.</p>
+    </div></div>
     <div class="card"><h3>Refine Your Nutrition Plan</h3><div class="recommend-grid">
             <a href="https://toolsquark.com/tools/bmr-calculator.html" class="recommend-card">
                 <div>
@@ -90,8 +179,16 @@
         <div class="faq-item">
             <h4>How should I use TDEE for weight change?</h4>
             <p>Eating near TDEE tends to support maintenance. A moderate deficit can support gradual fat loss, while a modest surplus can support muscle gain when paired with resistance training.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Which activity level should I choose?</h4>
+            <p>Choose the activity level that matches your usual week, not your hardest training day. If you are between two options, start with the lower one and adjust after tracking your weight trend for two to four weeks.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why is my real maintenance different from this estimate?</h4>
+            <p>TDEE formulas cannot fully capture genetics, non-exercise movement, adaptive metabolism, training intensity, sleep, illness, or tracking accuracy. Treat the result as a starting estimate and refine it with real-world progress data.</p>
         </div></div>
-    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool calculates BMR with the Mifflin-St Jeor equation, converts imperial inputs when needed, and applies standard activity multipliers from 1.2 to 1.9.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> TDEE is an educational estimate, not medical advice. Consult a qualified clinician or registered dietitian before making aggressive calorie changes.</p></div></div>
+    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool calculates BMR with the Mifflin-St Jeor equation, converts imperial inputs when needed, and applies standard activity multipliers from 1.2 to 1.9.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> TDEE is an educational estimate, not medical advice. Consult a qualified clinician or registered dietitian before making aggressive calorie changes.</p><div class="updated-row">Last updated: June 19, 2026</div></div></div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
 </div>
 <script>

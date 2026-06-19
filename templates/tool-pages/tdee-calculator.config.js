@@ -1,11 +1,12 @@
 module.exports = {
   slug: "tdee-calculator",
-  title: "Free Accurate TDEE Calculator | Total Daily Energy Expenditure | ToolsQuark",
-  description: "Calculate your Total Daily Energy Expenditure (TDEE) accurately with our free calorie calculator. Supports Metric & Imperial systems with smart activity pacing multipliers.",
+  title: "TDEE Calculator | Estimate Daily Calories by Activity Level",
+  description: "Estimate your TDEE from BMR, body metrics, age, sex, and activity level. Free private calculator with maintenance, fat-loss, and muscle-gain calorie targets.",
   h1: "TDEE Calculator",
   hero: "Estimate the calories your body burns in a full day by combining resting metabolism with your usual activity level.",
   schemaName: "Privacy-First TDEE Calculator",
-  schemaDescription: "An interactive, client-side total daily energy expenditure calculator using the Mifflin-St Jeor equation and activity multipliers.",
+  schemaDescription: "A free browser-side Total Daily Energy Expenditure calculator using the Mifflin-St Jeor equation, activity multipliers, and practical calorie target guidance.",
+  lastUpdated: "June 19, 2026",
   buttonText: "Calculate TDEE",
   resultUnit: "kcal/day",
   resultStatus: "Maintenance Energy",
@@ -44,6 +45,32 @@ module.exports = {
     {
       question: "How should I use TDEE for weight change?",
       answer: "Eating near TDEE tends to support maintenance. A moderate deficit can support gradual fat loss, while a modest surplus can support muscle gain when paired with resistance training."
+    },
+    {
+      question: "Which activity level should I choose?",
+      answer: "Choose the activity level that matches your usual week, not your hardest training day. If you are between two options, start with the lower one and adjust after tracking your weight trend for two to four weeks."
+    },
+    {
+      question: "Why is my real maintenance different from this estimate?",
+      answer: "TDEE formulas cannot fully capture genetics, non-exercise movement, adaptive metabolism, training intensity, sleep, illness, or tracking accuracy. Treat the result as a starting estimate and refine it with real-world progress data."
+    }
+  ],
+  contentSections: [
+    {
+      title: "What TDEE Means",
+      body: `<p>Total Daily Energy Expenditure is an estimate of how many calories your body burns in a typical day. It combines your resting metabolic needs with daily movement, exercise, digestion, and general activity.</p><p>TDEE is most useful as a starting point for planning maintenance calories, a moderate fat-loss deficit, or a controlled muscle-gain surplus.</p>`
+    },
+    {
+      title: "How This Calculator Works",
+      body: `<p>This tool first estimates Basal Metabolic Rate with the Mifflin-St Jeor equation, then multiplies that number by your selected activity factor.</p><div class="formula-box">TDEE = BMR x activity multiplier</div><ul><li><strong>1.2:</strong> sedentary or little planned exercise.</li><li><strong>1.375:</strong> light activity one to three days per week.</li><li><strong>1.55:</strong> moderate activity three to five days per week.</li><li><strong>1.725:</strong> hard training most days.</li><li><strong>1.9:</strong> intense training plus a physically demanding lifestyle.</li></ul>`
+    },
+    {
+      title: "How To Use Your Result",
+      body: `<ul><li><strong>Maintenance:</strong> start near your TDEE and monitor body weight trend.</li><li><strong>Fat loss:</strong> a moderate deficit often starts around 300 to 500 calories below TDEE.</li><li><strong>Muscle gain:</strong> a modest surplus often starts around 150 to 300 calories above TDEE.</li></ul><div class="note-box">Avoid using one calculation as a permanent prescription. Track your average weight, performance, hunger, and energy for a few weeks, then adjust gradually.</div>`
+    },
+    {
+      title: "Example Calculation",
+      body: `<p>If a person's estimated BMR is 1,650 kcal/day and they choose a moderate activity multiplier of 1.55, their estimated TDEE is 1,650 x 1.55 = 2,558 kcal/day. That would be a practical starting point for maintenance planning.</p>`
     }
   ],
   methodology: "This tool calculates BMR with the Mifflin-St Jeor equation, converts imperial inputs when needed, and applies standard activity multipliers from 1.2 to 1.9.",

@@ -1,11 +1,12 @@
 module.exports = {
   slug: "bmr-calculator",
-  title: "Accurate BMR Calculator | Find Your Basal Metabolic Rate | ToolsQuark",
-  description: "Calculate your Basal Metabolic Rate (BMR) accurately using the Mifflin-St Jeor equation. Support Metric & Imperial systems. Discover your baseline survival calories instantly.",
+  title: "BMR Calculator | Estimate Basal Metabolic Rate Calories",
+  description: "Calculate BMR with the Mifflin-St Jeor equation using metric or imperial units. Estimate resting calories and understand how BMR differs from TDEE.",
   h1: "BMR Calculator",
   hero: "Discover your basal metabolic rate: the estimated calories your body burns at complete rest to support essential functions.",
   schemaName: "Privacy-First BMR Calculator",
-  schemaDescription: "An interactive, client-side basal metabolic rate calculator using the Mifflin-St Jeor equation without data logging.",
+  schemaDescription: "A free browser-side Basal Metabolic Rate calculator using the Mifflin-St Jeor equation, metric and imperial inputs, and practical energy-planning context.",
+  lastUpdated: "June 19, 2026",
   buttonText: "Calculate BMR",
   resultUnit: "kcal/day",
   resultStatus: "Resting Energy Baseline",
@@ -44,6 +45,32 @@ module.exports = {
     {
       question: "Is BMR the same as daily calories?",
       answer: "No. BMR estimates resting energy only. Your real daily needs are higher once walking, exercise, work, digestion, and normal daily movement are included."
+    },
+    {
+      question: "Why is BMR lower than TDEE?",
+      answer: "BMR only estimates calories used at complete rest. TDEE adds normal movement, exercise, daily activity, and digestion, so TDEE is usually higher than BMR."
+    },
+    {
+      question: "Can I eat below my BMR to lose weight?",
+      answer: "Eating below BMR is not automatically appropriate or safe. BMR is not a diet target; it is a resting-energy estimate. For weight change, use TDEE and consider professional guidance for large deficits."
+    }
+  ],
+  contentSections: [
+    {
+      title: "What BMR Measures",
+      body: `<p>Basal Metabolic Rate estimates the calories your body would use at complete rest to support essential functions such as breathing, circulation, body temperature, organ function, and cellular repair.</p><p>BMR is not the same as your full daily calorie need. It is the resting baseline that sits underneath your total daily energy expenditure.</p>`
+    },
+    {
+      title: "BMR Formula",
+      body: `<p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Imperial inputs are converted to kilograms and centimeters before the equation is applied.</p>`
+    },
+    {
+      title: "How To Use Your Result",
+      body: `<ul><li>Use BMR to understand your resting energy baseline.</li><li>Use TDEE to estimate maintenance calories after activity is included.</li><li>Use real-world weight trends to adjust calorie targets over time.</li></ul><div class="note-box">BMR can shift with body size, lean mass, age, hormonal status, illness, sleep, and long periods of dieting. Treat it as an estimate, not a fixed biological number.</div>`
+    },
+    {
+      title: "Example Calculation",
+      body: `<p>For a 30-year-old man weighing 80 kg at 180 cm, the Mifflin-St Jeor estimate is 10 x 80 + 6.25 x 180 - 5 x 30 + 5 = 1,780 kcal/day. That is his estimated resting baseline before activity is added.</p>`
     }
   ],
   methodology: "This tool uses the Mifflin-St Jeor equation with metric conversions for imperial entries. Results are rounded to the nearest whole calorie.",
