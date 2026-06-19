@@ -1,11 +1,12 @@
 module.exports = {
   slug: "calorie-calculator",
-  title: "Free Accurate Calorie Calculator | Daily Energy & TDEE | ToolsQuark",
-  description: "Calculate your daily calorie needs instantly with our free online calculator. Supports Metric and Imperial systems, accounting for your true activity level with 100% data privacy.",
+  title: "Calorie Calculator | Daily Calories for Maintenance & Weight Goals",
+  description: "Estimate daily calories for maintenance, fat loss, or muscle gain using BMR, activity level, and body metrics. Free private calorie calculator.",
   h1: "Calorie Calculator",
   hero: "Estimate your daily calorie needs with the Mifflin-St Jeor equation. Everything runs locally in your browser, with no account and no server-side health data storage.",
   schemaName: "Privacy-First Calorie Calculator",
-  schemaDescription: "An interactive, client-side calorie and TDEE calculator using the Mifflin-St Jeor equation without data logging.",
+  schemaDescription: "A free browser-side daily calorie calculator for maintenance, fat-loss, and muscle-gain planning using BMR and activity level.",
+  lastUpdated: "June 19, 2026",
   buttonText: "Calculate Calorie Needs",
   resultUnit: "kcal/day",
   resultStatus: "Maintenance Calories",
@@ -44,6 +45,32 @@ module.exports = {
     {
       question: "Why does activity level change my calorie target so much?",
       answer: "Daily movement, training volume, and physically demanding work can add substantial energy expenditure above your resting needs. Choose the activity level that best matches your average week rather than your most active day."
+    },
+    {
+      question: "What calorie deficit should I use for fat loss?",
+      answer: "Many adults start with a moderate deficit of about 300 to 500 calories below estimated maintenance. The best target depends on body size, training, hunger, medical context, and how your trend changes over several weeks."
+    },
+    {
+      question: "How often should I adjust my calorie target?",
+      answer: "Use the estimate for two to four weeks, track average body weight and energy, then adjust gradually. Daily scale changes are noisy, so weekly averages are more useful than single weigh-ins."
+    }
+  ],
+  contentSections: [
+    {
+      title: "What This Calorie Calculator Estimates",
+      body: `<p>This calculator estimates your daily maintenance calories: the approximate intake that would keep body weight stable at your current body metrics and activity level.</p><p>From that maintenance estimate, you can create a reasonable starting target for fat loss, muscle gain, or weight maintenance.</p>`
+    },
+    {
+      title: "How Daily Calories Are Calculated",
+      body: `<p>The tool estimates resting energy needs with the Mifflin-St Jeor equation, then applies an activity multiplier to estimate total daily calorie needs.</p><div class="formula-box">Daily calories = estimated BMR x activity multiplier</div><p>Metric and imperial inputs are converted into the same formula before the final target is calculated.</p>`
+    },
+    {
+      title: "How To Use Your Target",
+      body: `<ul><li><strong>Maintenance:</strong> eat near the displayed estimate and watch your weight trend.</li><li><strong>Fat loss:</strong> start with a moderate deficit, often 300 to 500 calories below maintenance.</li><li><strong>Muscle gain:</strong> use a modest surplus, often 150 to 300 calories above maintenance, alongside resistance training.</li></ul><div class="note-box">The best calorie target is the one your real trend confirms. Adjust gradually based on average weight, training performance, hunger, sleep, and consistency.</div>`
+    },
+    {
+      title: "Example Calorie Plan",
+      body: `<p>If your estimated maintenance intake is 2,300 kcal/day, a cautious fat-loss target might start around 1,800 to 2,000 kcal/day. A modest muscle-gain target might start around 2,450 to 2,600 kcal/day, then be adjusted based on progress.</p>`
     }
   ],
   methodology: "This tool uses the Mifflin-St Jeor equation for basal metabolic rate and standard activity multipliers for estimated total daily energy expenditure.",

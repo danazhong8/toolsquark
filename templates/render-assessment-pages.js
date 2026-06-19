@@ -32,18 +32,54 @@ function renderFaq(items = []) {
         </div>`).join("");
 }
 
+function renderContentSections(items = []) {
+  return items.map((section) => `
+    <div class="content-section">
+        <h3>${esc(section.title)}</h3>
+        ${section.body}
+    </div>`).join("");
+}
+
 function renderPage(config) {
   const canonical = `https://toolsquark.com/tools/${config.slug}.html`;
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: config.schemaName || config.h1,
-    url: canonical,
-    operatingSystem: "All",
-    applicationCategory: "HealthApplication",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    description: config.schemaDescription || config.description
-  };
+  const categoryUrl = `https://toolsquark.com/${config.categoryHref || "mental-health.html"}`;
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: config.schemaName || config.h1,
+      url: canonical,
+      operatingSystem: "All",
+      applicationCategory: "HealthApplication",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description: config.schemaDescription || config.description
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://toolsquark.com/" },
+        { "@type": "ListItem", position: 2, name: config.categoryLabel || "Mental Health", item: categoryUrl },
+        { "@type": "ListItem", position: 3, name: config.h1, item: canonical }
+      ]
+    }
+  ];
+
+  if (config.faq?.length) {
+    schema.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: config.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: String(item.answer).replace(/<[^>]*>/g, "")
+        }
+      }))
+    });
+  }
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,14 +97,14 @@ ${JSON.stringify(schema, null, 2)}
 .hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:45px 35px;border-radius:24px;margin-bottom:25px;box-shadow:0 12px 35px rgba(37,99,235,.15)}.hero h1{font-size:36px;font-weight:800;margin-bottom:12px}.hero p{font-size:16px;opacity:.92}.card{background:white;padding:30px;border-radius:24px;margin-bottom:25px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.03)}.card h3{font-size:1.3rem;font-weight:800;margin-bottom:20px;color:#1e293b}
 .quiz-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}.progress-wrap{flex:1;height:14px;background:#e2e8f0;border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#3b82f6);transition:width .25s}.progress-text{font-size:13px;font-weight:800;color:var(--text-muted);white-space:nowrap}.question{font-size:21px;font-weight:800;color:#1e293b;margin-bottom:22px;line-height:1.45}.answers-grid{display:flex;flex-direction:column;gap:12px}.option{width:100%;text-align:left;padding:16px 18px;border:2px solid #e2e8f0;border-radius:14px;background:#f8fafc;color:#334155;font-size:15px;font-weight:650;cursor:pointer;transition:.2s}.option:hover{border-color:var(--accent);background:#eff6ff;color:var(--accent);transform:translateY(-1px)}.option.selected{border-color:var(--accent);background:#dbeafe;color:#1e40af}.option.selected-heavy{border-color:#f97316;background:#fff7ed;color:#9a3412}.hidden{display:none!important}
 .result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;text-align:center}.score{font-size:60px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:8px}.profile{font-size:22px;font-weight:900;margin-bottom:12px}.description{color:#475569;font-size:15px;margin:0 auto 24px;max-width:660px;line-height:1.65}.indicator-grid{text-align:left;margin-top:20px}.bar{margin-bottom:18px;background:white;border:1px solid #e2e8f0;border-radius:14px;padding:14px}.bar-label{display:flex;justify-content:space-between;gap:10px;color:#334155;font-weight:800;font-size:14px;margin-bottom:8px}.bar-bg{height:10px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar-fill{height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#2563eb);border-radius:999px;transition:width .8s cubic-bezier(.16,1,.3,1)}.insight{background:white;border-left:4px solid var(--accent);padding:16px;border-radius:8px;text-align:left;margin-top:12px;color:#475569;font-size:14px}
-.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.recommend-card span{font-size:13px;font-weight:800;color:var(--accent);margin-top:12px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.recommend-card span{font-size:13px;font-weight:800;color:var(--accent);margin-top:12px}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
 @media(max-width:768px){.hero{padding:36px 24px}.hero h1{font-size:28px}.question{font-size:19px}.recommend-grid{grid-template-columns:1fr}.score{font-size:46px}}
 ${config.extraCss || ""}
 </style>
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/${esc(config.categoryHref || "mental-health.html")}">${esc(config.categoryLabel || "Mental Health")}</a> &gt; <span>${esc(config.h1)}</span></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="${categoryUrl}">${esc(config.categoryLabel || "Mental Health")}</a> &gt; <span>${esc(config.h1)}</span></div>
     <div class="hero"><h1>${esc(config.h1)}</h1><p>${esc(config.hero)}</p></div>
     <div class="card" id="quiz-card">
         <div class="quiz-header"><div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div><div class="progress-text" id="progress-text">Question 1 / ${config.questions.length}</div></div>
@@ -84,9 +120,10 @@ ${config.extraCss || ""}
             <div id="insight-grid"></div>
         </div>
     </div>
+    ${config.contentSections?.length ? `<div class="card">${renderContentSections(config.contentSections)}</div>` : ""}
     <div class="card"><h3>${esc(config.relatedTitle || "Recommended Tools")}</h3><div class="recommend-grid">${renderRelated(config.related)}</div></div>
     <div class="card"><h3>Frequently Asked Questions</h3>${renderFaq(config.faq)}</div>
-    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Privacy:</strong> ${config.methodology}</p><p style="font-style:italic;font-size:12px;"><strong>Disclaimer:</strong> ${config.disclaimer}</p></div></div>
+    <div class="card" style="background:#f8fafc;border:none;"><div class="scientific-backing"><p><strong>Methodology & Privacy:</strong> ${config.methodology}</p><p style="font-style:italic;font-size:12px;"><strong>Disclaimer:</strong> ${config.disclaimer}</p>${config.lastUpdated ? `<div class="updated-row">Last updated: ${esc(config.lastUpdated)}</div>` : ""}</div></div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
 </div>
 <script>

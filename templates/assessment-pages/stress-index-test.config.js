@@ -1,10 +1,12 @@
 module.exports = {
   slug: "stress-index-test",
-  title: "Accurate Stress Index Test | Scientific Nervous System Audit | ToolsQuark",
-  description: "Evaluate your overall allostatic load, chronic nervous system reactivity, and emotional burnout risk factors using our advanced diagnostic behavioral metrics.",
+  title: "Stress Index Test | Free Private Stress Self-Check",
+  description: "Take a private stress self-check for tension, overload, irritability, and recovery reserve. Educational browser-side assessment with instant results.",
   h1: "Stress Index Test",
   hero: "Audit your stress load, physical tension, and nervous system recovery capacity with a private browser-side self-assessment.",
   schemaName: "Privacy-First Stress Index Test",
+  schemaDescription: "A free browser-side stress self-check that estimates stress load, reactivity, and recovery reserve for educational self-reflection.",
+  lastUpdated: "June 19, 2026",
   questions: [
     { question: "How frequently have you felt upset or agitated because of something unexpected happening?", options: ["Almost never", "Sometimes", "Fairly often", "Very often"] },
     { question: "How often do you feel you lack control over the important responsibilities in your life?", options: ["Never", "Rarely", "Sometimes", "All the time"] },
@@ -59,7 +61,27 @@ module.exports = {
   faq: [
     { question: "Can I be highly stressed without feeling anxious?", answer: "Yes. Stress can show up physically through tension, fatigue, headaches, appetite shifts, digestive symptoms, or irritability before it feels like anxiety." },
     { question: "What is a quick way to lower stress intensity?", answer: "Slow exhale breathing, a brief walk, reducing sensory input, and pausing caffeine can help shift the body toward parasympathetic recovery." },
-    { question: "Is this a diagnosis?", answer: "No. This is a private educational self-check and cannot diagnose anxiety, burnout, trauma, or other clinical conditions." }
+    { question: "Is this a diagnosis?", answer: "No. This is a private educational self-check and cannot diagnose anxiety, burnout, trauma, or other clinical conditions." },
+    { question: "How often should I retake the stress test?", answer: "You can retake it after a meaningful change in workload, sleep, recovery routines, or life stress. Weekly or monthly check-ins are more useful than repeating it several times in one day." },
+    { question: "When should I seek professional support?", answer: "Consider professional support if stress feels persistent, affects sleep or work, causes panic-like symptoms, leads to unsafe thoughts, or makes daily responsibilities difficult to manage." }
+  ],
+  contentSections: [
+    {
+      title: "What This Stress Test Measures",
+      body: `<p>This self-check looks at common stress signals across perceived control, irritability, physical tension, overwhelm, recovery difficulty, and stress-related behavior changes.</p><p>The goal is not to label you. The goal is to give you a structured snapshot of current stress load and recovery reserve so you can decide what support or routine changes may help.</p>`
+    },
+    {
+      title: "How To Interpret Your Score",
+      body: `<ul><li><strong>Regulated baseline:</strong> pressure may be present, but recovery capacity appears relatively intact.</li><li><strong>Elevated tension:</strong> stress signals may be clustering and deserve active recovery planning.</li><li><strong>High overload:</strong> stress burden may be affecting daily function, emotional bandwidth, or physical symptoms.</li></ul><div class="note-box">A high score is not a diagnosis. It is a prompt to slow down, add support, and consider qualified professional help if distress is persistent or impairing.</div>`
+    },
+    {
+      title: "What To Do After The Test",
+      body: `<p>Start with one small intervention that reduces load or improves recovery: protect sleep timing, take a short walk, reduce avoidable stimulants, write down open loops, or schedule an actual break rather than waiting to feel ready for one.</p><p>If stress is tied to work, caregiving, finances, health, or conflict, practical support and boundary changes often matter more than relaxation techniques alone.</p>`
+    },
+    {
+      title: "Privacy And Limits",
+      body: `<p>Your answers are scored in the browser. This page does not require an account and does not send your individual responses to a server.</p><p>This tool is educational and cannot replace a clinician, therapist, crisis line, or emergency service.</p>`
+    }
   ],
   methodology: "This self-assessment uses 10 four-point items to estimate stress load and recovery reserve. All scoring happens locally in your browser.",
   disclaimer: "This tool is for education and self-reflection only. If you feel unsafe, overwhelmed, or persistently distressed, seek help from a qualified health professional or local emergency support."
