@@ -2,7 +2,8 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const site = "https://www.toolsquark.com";
+const site = "https://toolsquark.com";
+const lastmod = "2026-06-19";
 
 const groups = {
   health: {
@@ -257,7 +258,7 @@ function renderSitemap() {
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((url) => `  <url><loc>${site}/${url}</loc></url>`).join("\n")}
+${urls.map((url) => `  <url><loc>${site}/${url}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}
 </urlset>
 `;
 }

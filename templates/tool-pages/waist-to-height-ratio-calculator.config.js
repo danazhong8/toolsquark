@@ -18,8 +18,8 @@ module.exports = {
         <div id="inputs-container"></div>`,
   relatedTitle: "Compare Your Body Metrics",
   related: [
-    { href: "https://www.toolsquark.com/tools/bmi-calculator.html", title: "BMI Calculator", description: "Check a standard height-to-weight baseline.", action: "Check BMI" },
-    { href: "https://www.toolsquark.com/tools/waist-hip-ratio-calculator.html", title: "Waist Hip Ratio Calculator", description: "Compare abdominal and hip circumference patterns.", action: "Check WHR" }
+    { href: "https://toolsquark.com/tools/bmi-calculator.html", title: "BMI Calculator", description: "Check a standard height-to-weight baseline.", action: "Check BMI" },
+    { href: "https://toolsquark.com/tools/waist-hip-ratio-calculator.html", title: "Waist Hip Ratio Calculator", description: "Compare abdominal and hip circumference patterns.", action: "Check WHR" }
   ],
   faq: [
     { question: "What is waist-to-height ratio?", answer: "Waist-to-height ratio divides waist circumference by height. It is used as a simple screening marker for central abdominal fat distribution." },

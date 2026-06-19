@@ -37,13 +37,13 @@ module.exports = {
   relatedTitle: "Optimize Your Nutrition Further",
   related: [
     {
-      href: "https://www.toolsquark.com/tools/calorie-calculator.html",
+      href: "https://toolsquark.com/tools/calorie-calculator.html",
       title: "Calorie Calculator",
       description: "Estimate your maintenance calorie baseline before choosing a macro split.",
       action: "Calculate Calories"
     },
     {
-      href: "https://www.toolsquark.com/tools/protein-calculator.html",
+      href: "https://toolsquark.com/tools/protein-calculator.html",
       title: "Protein Calculator",
       description: "Focus specifically on daily protein requirements for training and recovery.",
       action: "Set Protein Goal"

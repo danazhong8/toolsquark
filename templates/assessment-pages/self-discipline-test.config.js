@@ -21,8 +21,8 @@ module.exports = {
   ],
   indicators: [{ key: "consistency", label: "Consistency" }, { key: "impulse", label: "Impulse Friction" }, { key: "identity", label: "Identity Alignment" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/procrastination-test.html", title: "Procrastination Test", description: "Check task delay and avoidance loops.", action: "Assess Delay" },
-    { href: "https://www.toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Diagnostic", description: "Evaluate focus and task initiation.", action: "Check Focus" }
+    { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Test", description: "Check task delay and avoidance loops.", action: "Assess Delay" },
+    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Diagnostic", description: "Evaluate focus and task initiation.", action: "Check Focus" }
   ],
   faq: [
     { question: "Is self-discipline just willpower?", answer: "No. Environment design, habits, sleep, stress, identity, and incentives all shape follow-through." },

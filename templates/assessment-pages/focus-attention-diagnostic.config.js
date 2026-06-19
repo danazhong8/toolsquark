@@ -19,8 +19,8 @@ module.exports = {
   ],
   indicators: [{ key: "distractibility", label: "Distractibility" }, { key: "initiation", label: "Task Initiation" }, { key: "switching", label: "Task Switching" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/procrastination-test.html", title: "Procrastination Test", description: "Check whether delay loops are affecting task starts.", action: "Assess Delay" },
-    { href: "https://www.toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Poor sleep can reduce focus stability.", action: "Assess Sleep" }
+    { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Test", description: "Check whether delay loops are affecting task starts.", action: "Assess Delay" },
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Poor sleep can reduce focus stability.", action: "Assess Sleep" }
   ],
   faq: [
     { question: "Does low focus mean ADHD?", answer: "Not necessarily. Sleep, stress, environment, mood, workload, and habits can all affect focus." },

@@ -20,13 +20,13 @@ module.exports = {
   relatedTitle: "Turn Baseline Into Daily Targets",
   related: [
     {
-      href: "https://www.toolsquark.com/tools/tdee-calculator.html",
+      href: "https://toolsquark.com/tools/tdee-calculator.html",
       title: "TDEE Calculator",
       description: "Add activity level to your resting baseline and estimate total daily calorie burn.",
       action: "Calculate TDEE"
     },
     {
-      href: "https://www.toolsquark.com/tools/calorie-calculator.html",
+      href: "https://toolsquark.com/tools/calorie-calculator.html",
       title: "Calorie Calculator",
       description: "Estimate maintenance, deficit, and surplus calories for practical nutrition planning.",
       action: "Plan Calories"

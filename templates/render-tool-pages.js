@@ -33,7 +33,7 @@ function renderFaq(items = []) {
 }
 
 function renderPage(config) {
-  const canonical = `https://www.toolsquark.com/tools/${config.slug}.html`;
+  const canonical = `https://toolsquark.com/tools/${config.slug}.html`;
   const resultContent = config.resultHtml || `
             <div class="result-val"><span id="calc-output">0</span>${config.resultUnit ? `<span class="result-unit">${esc(config.resultUnit)}</span>` : ""}</div>
             <div class="result-status" id="calc-status">${esc(config.resultStatus || "Result")}</div>
@@ -83,7 +83,7 @@ ${config.extraCss || ""}
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/${esc(config.categoryHref || "health.html")}">${esc(config.categoryLabel || "Health Tools")}</a> &gt; <span>${esc(config.h1)}</span></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/${esc(config.categoryHref || "health.html")}">${esc(config.categoryLabel || "Health Tools")}</a> &gt; <span>${esc(config.h1)}</span></div>
     <div class="hero"><h1>${esc(config.h1)}</h1><p>${esc(config.hero)}</p></div>
     <div class="card">
 ${config.controlsHtml}

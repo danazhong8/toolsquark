@@ -18,8 +18,8 @@ module.exports = {
         <div id="inputs-container"></div>`,
   relatedTitle: "Support Daily Activity",
   related: [
-    { href: "https://www.toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Estimate calories burned from your walking step count.", action: "Convert Steps" },
-    { href: "https://www.toolsquark.com/tools/running-pace-calculator.html", title: "Running Pace Calculator", description: "Calculate pace for training sessions that raise hydration needs.", action: "Check Pace" }
+    { href: "https://toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Estimate calories burned from your walking step count.", action: "Convert Steps" },
+    { href: "https://toolsquark.com/tools/running-pace-calculator.html", title: "Running Pace Calculator", description: "Calculate pace for training sessions that raise hydration needs.", action: "Check Pace" }
   ],
   faq: [
     { question: "Does coffee or tea count toward fluid intake?", answer: "Yes, mild caffeinated drinks contribute to total daily fluid intake, though plain water remains the most direct hydration option." },

@@ -25,8 +25,8 @@ module.exports = {
     { key: "perfectionism", label: "Perfectionism Gridlock" }
   ],
   related: [
-    { href: "https://www.toolsquark.com/tools/self-discipline-test.html", title: "Self-Discipline Test", description: "Check consistency and long-term goal alignment.", action: "Assess Discipline" },
-    { href: "https://www.toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Attention Diagnostic", description: "Review attention stability and task initiation friction.", action: "Check Focus" }
+    { href: "https://toolsquark.com/tools/self-discipline-test.html", title: "Self-Discipline Test", description: "Check consistency and long-term goal alignment.", action: "Assess Discipline" },
+    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Attention Diagnostic", description: "Review attention stability and task initiation friction.", action: "Check Focus" }
   ],
   faq: [
     { question: "Is procrastination just laziness?", answer: "Usually no. It often reflects emotion regulation, unclear task structure, fear of failure, boredom, or difficulty starting." },

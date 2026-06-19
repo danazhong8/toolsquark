@@ -19,8 +19,8 @@ module.exports = {
   ],
   indicators: [{ key: "rumination", label: "Rumination" }, { key: "paralysis", label: "Decision Paralysis" }, { key: "catastrophizing", label: "Catastrophizing" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety Assessment", description: "Check whether worry is paired with body-level arousal.", action: "Assess Anxiety" },
-    { href: "https://www.toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Diagnostic", description: "Review attention control and task initiation.", action: "Check Focus" }
+    { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety Assessment", description: "Check whether worry is paired with body-level arousal.", action: "Assess Anxiety" },
+    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Diagnostic", description: "Review attention control and task initiation.", action: "Check Focus" }
   ],
   faq: [
     { question: "Is overthinking always bad?", answer: "No. Careful thinking is useful. It becomes a problem when it repeats without progress, rest, or action." },

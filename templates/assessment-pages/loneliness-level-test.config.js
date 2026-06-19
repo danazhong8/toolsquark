@@ -19,8 +19,8 @@ module.exports = {
   ],
   indicators: [{ key: "isolation", label: "Emotional Isolation" }, { key: "support", label: "Perceived Support" }, { key: "belonging", label: "Belonging" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/social-anxiety-test.html", title: "Social Anxiety Test", description: "Check whether fear of judgment affects connection.", action: "Assess Social Anxiety" },
-    { href: "https://www.toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Loneliness can increase stress load.", action: "Assess Stress" }
+    { href: "https://toolsquark.com/tools/social-anxiety-test.html", title: "Social Anxiety Test", description: "Check whether fear of judgment affects connection.", action: "Assess Social Anxiety" },
+    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Loneliness can increase stress load.", action: "Assess Stress" }
   ],
   faq: [
     { question: "Can I be lonely even with friends?", answer: "Yes. Loneliness is about perceived connection quality, not just the number of people around you." },

@@ -33,7 +33,7 @@ function renderFaq(items = []) {
 }
 
 function renderPage(config) {
-  const canonical = `https://www.toolsquark.com/tools/${config.slug}.html`;
+  const canonical = `https://toolsquark.com/tools/${config.slug}.html`;
   const schema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -68,7 +68,7 @@ ${config.extraCss || ""}
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://www.toolsquark.com/">Home</a> &gt; <a href="https://www.toolsquark.com/${esc(config.categoryHref || "mental-health.html")}">${esc(config.categoryLabel || "Mental Health")}</a> &gt; <span>${esc(config.h1)}</span></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/${esc(config.categoryHref || "mental-health.html")}">${esc(config.categoryLabel || "Mental Health")}</a> &gt; <span>${esc(config.h1)}</span></div>
     <div class="hero"><h1>${esc(config.h1)}</h1><p>${esc(config.hero)}</p></div>
     <div class="card" id="quiz-card">
         <div class="quiz-header"><div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div><div class="progress-text" id="progress-text">Question 1 / ${config.questions.length}</div></div>

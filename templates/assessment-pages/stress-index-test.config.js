@@ -53,8 +53,8 @@ module.exports = {
   ],
   relatedTitle: "Related Self-Checks",
   related: [
-    { href: "https://www.toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether sleep disruption is adding to stress load.", action: "Assess Sleep" },
-    { href: "https://www.toolsquark.com/tools/occupational-burnout-level-test.html", title: "Burnout Level Test", description: "Evaluate work-related fatigue and depletion.", action: "Check Burnout" }
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether sleep disruption is adding to stress load.", action: "Assess Sleep" },
+    { href: "https://toolsquark.com/tools/occupational-burnout-level-test.html", title: "Burnout Level Test", description: "Evaluate work-related fatigue and depletion.", action: "Check Burnout" }
   ],
   faq: [
     { question: "Can I be highly stressed without feeling anxious?", answer: "Yes. Stress can show up physically through tension, fatigue, headaches, appetite shifts, digestive symptoms, or irritability before it feels like anxiety." },

@@ -22,8 +22,8 @@ module.exports = {
         <div id="inputs-container"></div>`,
   relatedTitle: "Add More Context",
   related: [
-    { href: "https://www.toolsquark.com/tools/bmi-calculator.html", title: "BMI Calculator", description: "Check where your current weight sits on the BMI scale.", action: "Check BMI" },
-    { href: "https://www.toolsquark.com/tools/body-fat-calculator.html", title: "Body Fat Calculator", description: "Estimate body composition beyond scale weight.", action: "Estimate Fat %" }
+    { href: "https://toolsquark.com/tools/bmi-calculator.html", title: "BMI Calculator", description: "Check where your current weight sits on the BMI scale.", action: "Check BMI" },
+    { href: "https://toolsquark.com/tools/body-fat-calculator.html", title: "Body Fat Calculator", description: "Estimate body composition beyond scale weight.", action: "Estimate Fat %" }
   ],
   faq: [
     { question: "How is healthy weight range calculated?", answer: "This calculator uses the adult BMI reference range of 18.5 to 24.9, then converts those BMI boundaries into weight values for your height." },

@@ -20,13 +20,13 @@ module.exports = {
   relatedTitle: "Optimize Your Body Metrics Further",
   related: [
     {
-      href: "https://www.toolsquark.com/tools/bmi-calculator.html",
+      href: "https://toolsquark.com/tools/bmi-calculator.html",
       title: "BMI Calculator",
       description: "Check your standard height-to-weight baseline before setting a weight goal.",
       action: "Check BMI Ratio"
     },
     {
-      href: "https://www.toolsquark.com/tools/macro-calculator.html",
+      href: "https://toolsquark.com/tools/macro-calculator.html",
       title: "Macro Calculator",
       description: "Turn your calorie target into protein, carbs, and fat ranges for a practical meal plan.",
       action: "Split Macros"

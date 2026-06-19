@@ -20,13 +20,13 @@ module.exports = {
   relatedTitle: "Refine Your Nutrition Plan",
   related: [
     {
-      href: "https://www.toolsquark.com/tools/bmr-calculator.html",
+      href: "https://toolsquark.com/tools/bmr-calculator.html",
       title: "BMR Calculator",
       description: "Isolate your resting metabolic baseline before activity is added.",
       action: "Calculate BMR"
     },
     {
-      href: "https://www.toolsquark.com/tools/macro-calculator.html",
+      href: "https://toolsquark.com/tools/macro-calculator.html",
       title: "Macro Calculator",
       description: "Turn your calorie result into protein, carbohydrates, and fat targets.",
       action: "Split Macros"

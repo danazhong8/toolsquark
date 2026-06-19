@@ -20,13 +20,13 @@ module.exports = {
   relatedTitle: "Compare With Other Body Metrics",
   related: [
     {
-      href: "https://www.toolsquark.com/tools/bmi-calculator.html",
+      href: "https://toolsquark.com/tools/bmi-calculator.html",
       title: "BMI Calculator",
       description: "Compare your waist-to-hip result with a standard height-to-weight baseline.",
       action: "Check BMI"
     },
     {
-      href: "https://www.toolsquark.com/tools/body-fat-calculator.html",
+      href: "https://toolsquark.com/tools/body-fat-calculator.html",
       title: "Body Fat Calculator",
       description: "Estimate body fat percentage using circumference-based measurements.",
       action: "Estimate Body Fat"

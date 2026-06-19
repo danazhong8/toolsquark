@@ -38,8 +38,8 @@ module.exports = {
         </div>`,
   relatedTitle: "Reproductive & Wellness Tools",
   related: [
-    { href: "https://www.toolsquark.com/tools/due-date-calculator.html", title: "Due Date Calculator", description: "Estimate pregnancy timeline from last menstrual period.", action: "Estimate Due Date" },
-    { href: "https://www.toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Stress can affect cycle regularity and symptom patterns.", action: "Assess Stress" }
+    { href: "https://toolsquark.com/tools/due-date-calculator.html", title: "Due Date Calculator", description: "Estimate pregnancy timeline from last menstrual period.", action: "Estimate Due Date" },
+    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Stress can affect cycle regularity and symptom patterns.", action: "Assess Stress" }
   ],
   faq: [
     { question: "When does ovulation usually happen?", answer: "Ovulation often happens about 14 days before the next period starts, but this varies by person and cycle consistency." },

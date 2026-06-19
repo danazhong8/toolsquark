@@ -23,8 +23,8 @@ module.exports = {
         </div>`,
   relatedTitle: "Helpful Health Context",
   related: [
-    { href: "https://www.toolsquark.com/tools/bmr-calculator.html", title: "BMR Calculator", description: "Use age with height and weight to estimate resting energy needs.", action: "Calculate BMR" },
-    { href: "https://www.toolsquark.com/tools/healthy-weight-range-calculator.html", title: "Healthy Weight Range Calculator", description: "Estimate a BMI-based adult weight range from height.", action: "Check Range" }
+    { href: "https://toolsquark.com/tools/bmr-calculator.html", title: "BMR Calculator", description: "Use age with height and weight to estimate resting energy needs.", action: "Calculate BMR" },
+    { href: "https://toolsquark.com/tools/healthy-weight-range-calculator.html", title: "Healthy Weight Range Calculator", description: "Estimate a BMI-based adult weight range from height.", action: "Check Range" }
   ],
   faq: [
     { question: "Does this calculator account for leap years?", answer: "Yes. It uses calendar dates and JavaScript Date behavior, so leap years and month lengths are handled during the date comparison." },

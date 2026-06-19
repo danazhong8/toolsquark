@@ -21,8 +21,8 @@ module.exports = {
   ],
   indicators: [{ key: "checking", label: "Compulsive Checking" }, { key: "dependency", label: "Dependency" }, { key: "disruption", label: "Life Disruption" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/social-media-addiction-index.html", title: "Social Media Addiction Index", description: "Assess algorithmic feed and validation loops.", action: "Assess Social Media" },
-    { href: "https://www.toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether phone use is affecting sleep.", action: "Assess Sleep" }
+    { href: "https://toolsquark.com/tools/social-media-addiction-index.html", title: "Social Media Addiction Index", description: "Assess algorithmic feed and validation loops.", action: "Assess Social Media" },
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether phone use is affecting sleep.", action: "Assess Sleep" }
   ],
   faq: [
     { question: "Is frequent phone use always addiction?", answer: "No. The concern is loss of control, distress, and interference with sleep, work, study, or relationships." },

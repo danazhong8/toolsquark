@@ -18,8 +18,8 @@ module.exports = {
         <div id="inputs-container"></div>`,
   relatedTitle: "Add Context To The Result",
   related: [
-    { href: "https://www.toolsquark.com/tools/lean-body-mass-calculator.html", title: "Lean Body Mass Calculator", description: "Estimate non-fat body mass from height and weight.", action: "Check Lean Mass" },
-    { href: "https://www.toolsquark.com/tools/waist-to-height-ratio-calculator.html", title: "Waist-to-Height Ratio Calculator", description: "Screen central abdominal distribution with waist and height.", action: "Check WHtR" }
+    { href: "https://toolsquark.com/tools/lean-body-mass-calculator.html", title: "Lean Body Mass Calculator", description: "Estimate non-fat body mass from height and weight.", action: "Check Lean Mass" },
+    { href: "https://toolsquark.com/tools/waist-to-height-ratio-calculator.html", title: "Waist-to-Height Ratio Calculator", description: "Screen central abdominal distribution with waist and height.", action: "Check WHtR" }
   ],
   faq: [
     { question: "What measurements are required?", answer: "Men need height, neck, and waist circumference. Women need height, neck, waist, and hip circumference." },

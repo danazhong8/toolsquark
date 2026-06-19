@@ -44,8 +44,8 @@ module.exports = {
         </div>`,
   relatedTitle: "Track Movement Impact",
   related: [
-    { href: "https://www.toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Convert your planned steps into estimated calories.", action: "Estimate Burn" },
-    { href: "https://www.toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Adjust hydration around higher activity volume.", action: "Plan Fluids" }
+    { href: "https://toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Convert your planned steps into estimated calories.", action: "Estimate Burn" },
+    { href: "https://toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Adjust hydration around higher activity volume.", action: "Plan Fluids" }
   ],
   faq: [
     { question: "How fast should I increase daily steps?", answer: "A gradual increase is usually easier to sustain and may reduce joint stress. Many people do best by adding volume over several weeks rather than jumping immediately." },

@@ -30,8 +30,8 @@ module.exports = {
     { key: "dysfunction", label: "Daytime Dysfunction" }
   ],
   related: [
-    { href: "https://www.toolsquark.com/tools/sleep-calculator.html", title: "Sleep Calculator", description: "Plan sleep windows around 90-minute cycles.", action: "Plan Sleep" },
-    { href: "https://www.toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Check whether stress load may be affecting rest.", action: "Assess Stress" }
+    { href: "https://toolsquark.com/tools/sleep-calculator.html", title: "Sleep Calculator", description: "Plan sleep windows around 90-minute cycles.", action: "Plan Sleep" },
+    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Check whether stress load may be affecting rest.", action: "Assess Stress" }
   ],
   faq: [
     { question: "Is 8 hours always required?", answer: "No. Many adults do well around 7-9 hours, but sleep quality, consistency, and daytime function matter too." },

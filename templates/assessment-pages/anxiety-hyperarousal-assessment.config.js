@@ -19,8 +19,8 @@ module.exports = {
   ],
   indicators: [{ key: "arousal", label: "Physical Arousal" }, { key: "worry", label: "Cognitive Worry" }, { key: "sensory", label: "Sensory Load" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Compare anxiety activation with overall stress load.", action: "Assess Stress" },
-    { href: "https://www.toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether hyperarousal is affecting sleep.", action: "Assess Sleep" }
+    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Compare anxiety activation with overall stress load.", action: "Assess Stress" },
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether hyperarousal is affecting sleep.", action: "Assess Sleep" }
   ],
   faq: [
     { question: "Is hyperarousal the same as anxiety?", answer: "Not always. Hyperarousal describes a high-alert body state that can accompany anxiety, stress, trauma responses, lack of sleep, or sensory overload." },

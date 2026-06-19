@@ -19,8 +19,8 @@ module.exports = {
   ],
   indicators: [{ key: "judgment", label: "Fear of Judgment" }, { key: "avoidance", label: "Avoidance" }, { key: "replay", label: "Post-Event Replay" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/loneliness-level-test.html", title: "Loneliness Level Test", description: "Check whether avoidance is affecting connection.", action: "Assess Loneliness" },
-    { href: "https://www.toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety Assessment", description: "Review physical hyperarousal patterns.", action: "Assess Anxiety" }
+    { href: "https://toolsquark.com/tools/loneliness-level-test.html", title: "Loneliness Level Test", description: "Check whether avoidance is affecting connection.", action: "Assess Loneliness" },
+    { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety Assessment", description: "Review physical hyperarousal patterns.", action: "Assess Anxiety" }
   ],
   faq: [
     { question: "Is shyness the same as social anxiety?", answer: "No. Social anxiety involves fear, distress, avoidance, or impairment around social evaluation." },

@@ -29,8 +29,8 @@ module.exports = {
         </div>`,
   relatedTitle: "Build A Movement Plan",
   related: [
-    { href: "https://www.toolsquark.com/tools/daily-steps-goal-calculator.html", title: "Daily Steps Goal Calculator", description: "Create a progressive weekly step target plan.", action: "Plan Steps" },
-    { href: "https://www.toolsquark.com/tools/tdee-calculator.html", title: "TDEE Calculator", description: "Estimate full-day calorie expenditure beyond walking.", action: "Calculate TDEE" }
+    { href: "https://toolsquark.com/tools/daily-steps-goal-calculator.html", title: "Daily Steps Goal Calculator", description: "Create a progressive weekly step target plan.", action: "Plan Steps" },
+    { href: "https://toolsquark.com/tools/tdee-calculator.html", title: "TDEE Calculator", description: "Estimate full-day calorie expenditure beyond walking.", action: "Calculate TDEE" }
   ],
   faq: [
     { question: "How does this converter estimate calories?", answer: "The calculator uses a practical walking estimate based on step count and body weight. It is intended for directional tracking rather than laboratory-grade energy measurement." },

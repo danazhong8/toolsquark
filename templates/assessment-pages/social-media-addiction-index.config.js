@@ -21,8 +21,8 @@ module.exports = {
   ],
   indicators: [{ key: "capture", label: "Feed Capture" }, { key: "validation", label: "Validation Seeking" }, { key: "comparison", label: "Comparison/FOMO" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/smartphone-addiction-test.html", title: "Smartphone Addiction Test", description: "Assess broader phone dependency and checking loops.", action: "Assess Phone Use" },
-    { href: "https://www.toolsquark.com/tools/self-discipline-test.html", title: "Self-Discipline Test", description: "Check impulse control and habit consistency.", action: "Assess Discipline" }
+    { href: "https://toolsquark.com/tools/smartphone-addiction-test.html", title: "Smartphone Addiction Test", description: "Assess broader phone dependency and checking loops.", action: "Assess Phone Use" },
+    { href: "https://toolsquark.com/tools/self-discipline-test.html", title: "Self-Discipline Test", description: "Check impulse control and habit consistency.", action: "Assess Discipline" }
   ],
   faq: [
     { question: "Is social media always harmful?", answer: "No. It can support connection and learning. Risk rises when use feels compulsive or strongly affects mood, sleep, or self-worth." },

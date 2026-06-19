@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.toolsquark.com/sitemap.xml
+Sitemap: https://toolsquark.com/sitemap.xml

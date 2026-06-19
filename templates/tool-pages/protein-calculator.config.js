@@ -19,13 +19,13 @@ module.exports = {
   relatedTitle: "Build A Fuller Nutrition Plan",
   related: [
     {
-      href: "https://www.toolsquark.com/tools/macro-calculator.html",
+      href: "https://toolsquark.com/tools/macro-calculator.html",
       title: "Macro Calculator",
       description: "Split your daily calories into protein, fat, and carbohydrate targets.",
       action: "Calculate Macros"
     },
     {
-      href: "https://www.toolsquark.com/tools/calorie-calculator.html",
+      href: "https://toolsquark.com/tools/calorie-calculator.html",
       title: "Calorie Calculator",
       description: "Estimate your maintenance calories before setting a protein target.",
       action: "Check Calories"

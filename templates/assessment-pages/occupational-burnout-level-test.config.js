@@ -19,8 +19,8 @@ module.exports = {
   ],
   indicators: [{ key: "exhaustion", label: "Emotional Exhaustion" }, { key: "detachment", label: "Detachment" }, { key: "efficacy", label: "Work Efficacy" }],
   related: [
-    { href: "https://www.toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Compare burnout with broader stress load.", action: "Assess Stress" },
-    { href: "https://www.toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Burnout and sleep often reinforce each other.", action: "Assess Sleep" }
+    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Compare burnout with broader stress load.", action: "Assess Stress" },
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Burnout and sleep often reinforce each other.", action: "Assess Sleep" }
   ],
   faq: [
     { question: "Is burnout just being tired?", answer: "No. Burnout often combines exhaustion, cynicism or detachment, and reduced professional efficacy." },

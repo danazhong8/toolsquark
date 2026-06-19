@@ -18,8 +18,8 @@ module.exports = {
         <div id="inputs-container"></div>`,
   relatedTitle: "Complete Your Body Composition Check",
   related: [
-    { href: "https://www.toolsquark.com/tools/body-fat-calculator.html", title: "Body Fat Calculator", description: "Estimate fat percentage from body measurements.", action: "Estimate Fat %" },
-    { href: "https://www.toolsquark.com/tools/protein-calculator.html", title: "Protein Calculator", description: "Set protein intake based on weight and training goal.", action: "Set Protein" }
+    { href: "https://toolsquark.com/tools/body-fat-calculator.html", title: "Body Fat Calculator", description: "Estimate fat percentage from body measurements.", action: "Estimate Fat %" },
+    { href: "https://toolsquark.com/tools/protein-calculator.html", title: "Protein Calculator", description: "Set protein intake based on weight and training goal.", action: "Set Protein" }
   ],
   faq: [
     { question: "What is lean body mass?", answer: "Lean body mass is body weight minus fat mass. It includes muscle, bone, organs, connective tissue, and body water." },

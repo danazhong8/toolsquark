@@ -20,13 +20,13 @@ module.exports = {
   relatedTitle: "Support Your Training Plan",
   related: [
     {
-      href: "https://www.toolsquark.com/tools/calorie-calculator.html",
+      href: "https://toolsquark.com/tools/calorie-calculator.html",
       title: "Calorie Calculator",
       description: "Estimate your maintenance calories before adjusting intake around running volume.",
       action: "Estimate Calories"
     },
     {
-      href: "https://www.toolsquark.com/tools/protein-calculator.html",
+      href: "https://toolsquark.com/tools/protein-calculator.html",
       title: "Protein Calculator",
       description: "Set a daily protein target that supports recovery after frequent training.",
       action: "Set Protein Target"

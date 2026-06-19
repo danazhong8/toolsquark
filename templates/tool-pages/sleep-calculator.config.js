@@ -20,8 +20,8 @@ module.exports = {
         </div>`,
   relatedTitle: "Support Recovery",
   related: [
-    { href: "https://www.toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Check whether stress load may be affecting sleep quality.", action: "Assess Stress" },
-    { href: "https://www.toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Plan daytime hydration without overloading fluid intake before bed.", action: "Check Hydration" }
+    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Check whether stress load may be affecting sleep quality.", action: "Assess Stress" },
+    { href: "https://toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Plan daytime hydration without overloading fluid intake before bed.", action: "Check Hydration" }
   ],
   faq: [
     { question: "What is a sleep cycle?", answer: "A complete sleep cycle is often described as lasting roughly 90 minutes and includes light sleep, deeper sleep, and REM stages." },

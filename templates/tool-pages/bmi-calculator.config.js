@@ -20,13 +20,13 @@ module.exports = {
   relatedTitle: "Optimize Your Body Metrics Further",
   related: [
     {
-      href: "https://www.toolsquark.com/tools/tdee-calculator.html",
+      href: "https://toolsquark.com/tools/tdee-calculator.html",
       title: "TDEE Calculator",
       description: "Estimate your full-day calorie burn after checking your basic weight category.",
       action: "Calculate TDEE"
     },
     {
-      href: "https://www.toolsquark.com/tools/body-fat-calculator.html",
+      href: "https://toolsquark.com/tools/body-fat-calculator.html",
       title: "Body Fat Calculator",
       description: "Add body composition context beyond the standard height-to-weight ratio.",
       action: "Estimate Fat %"

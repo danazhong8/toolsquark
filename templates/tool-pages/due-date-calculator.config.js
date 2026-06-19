@@ -28,8 +28,8 @@ module.exports = {
         </div>`,
   relatedTitle: "Reproductive & Wellness Tools",
   related: [
-    { href: "https://www.toolsquark.com/tools/period-calculator.html", title: "Period Calculator", description: "Estimate cycle timing, ovulation day, and fertile window.", action: "Track Cycle" },
-    { href: "https://www.toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Estimate daily hydration targets for general wellness planning.", action: "Check Hydration" }
+    { href: "https://toolsquark.com/tools/period-calculator.html", title: "Period Calculator", description: "Estimate cycle timing, ovulation day, and fertile window.", action: "Track Cycle" },
+    { href: "https://toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Estimate daily hydration targets for general wellness planning.", action: "Check Hydration" }
   ],
   faq: [
     { question: "What is Naegele's Rule?", answer: "Naegele's Rule estimates due date by adding 280 days, or 40 weeks, to the first day of the last menstrual period." },
