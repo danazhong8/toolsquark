@@ -1,10 +1,12 @@
 module.exports = {
   slug: "anxiety-hyperarousal-assessment",
-  title: "Accurate Anxiety & Hyperarousal Assessment | Nervous System Audit | ToolsQuark",
+  title: "Anxiety & Hyperarousal Self-Check | ToolsQuark",
   description: "Evaluate your somatic anxiety baselines, sensory overload, and chronic sympathetic hyperarousal parameters using our advanced behavioral health tracker.",
   h1: "Anxiety & Hyperarousal Assessment",
   hero: "Check whether your nervous system is staying in a high-alert state through physical tension, worry, sensory overload, and recovery difficulty.",
   schemaName: "Privacy-First Anxiety Hyperarousal Assessment",
+  timeframe: "Past 2 weeks",
+  questionDimensions: ["arousal", "sensory", "worry", "arousal", "arousal"],
   questions: [
     { question: "How often do you feel physically on edge even when nothing urgent is happening?", options: ["Rarely", "Sometimes", "Often", "Almost constantly"] },
     { question: "How easily do noise, crowds, messages, or interruptions overload you?", options: ["Not easily", "Occasionally", "Frequently", "Very easily"] },
@@ -15,7 +17,7 @@ module.exports = {
   profiles: [
     { min: 5, max: 8, title: "Calm Regulation Pattern", color: "var(--low)", description: "Your answers suggest relatively low hyperarousal and better recovery from daily triggers.", indicators: { arousal: 22, worry: 24, sensory: 20 }, insights: ["Keep recovery habits consistent before stress piles up.", "Use short breaks to preserve nervous-system flexibility."] },
     { min: 9, max: 14, title: "Elevated Alert State", color: "var(--mid)", description: "You may be spending more time in a high-alert state than is comfortable, especially around worry, tension, or stimulation.", indicators: { arousal: 60, worry: 58, sensory: 55 }, insights: ["Practice slow exhale breathing after triggers.", "Reduce stacked stimulation when possible, especially before sleep."] },
-    { min: 15, max: 20, title: "Chronic Hyperarousal Pattern", color: "var(--high)", description: "Your responses suggest persistent nervous-system activation that may be draining attention, sleep, and emotional bandwidth.", indicators: { arousal: 88, worry: 84, sensory: 82 }, insights: ["Consider professional support if anxiety is persistent or impairing.", "Prioritize predictable routines, sleep protection, and lower-stimulation recovery windows."] }
+    { min: 15, max: 20, title: "Persistent High-Alert Pattern", color: "var(--high)", description: "Your responses suggest persistent nervous-system activation that may be draining attention, sleep, and emotional bandwidth.", indicators: { arousal: 88, worry: 84, sensory: 82 }, insights: ["Consider professional support if anxiety is persistent or impairing.", "Prioritize predictable routines, sleep protection, and lower-stimulation recovery windows."] }
   ],
   indicators: [{ key: "arousal", label: "Physical Arousal" }, { key: "worry", label: "Cognitive Worry" }, { key: "sensory", label: "Sensory Load" }],
   related: [

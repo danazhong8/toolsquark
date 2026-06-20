@@ -5,6 +5,8 @@ module.exports = {
   h1: "Smartphone Addiction Test",
   hero: "Assess compulsive phone checking, screen dependency, notification reactivity, and difficulty disconnecting.",
   schemaName: "Privacy-First Smartphone Addiction Test",
+  timeframe: "Past 30 days",
+  questionDimensions: ["checking", "dependency", "disruption", "dependency", "disruption"],
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   questions: [

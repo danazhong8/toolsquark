@@ -1,10 +1,12 @@
 module.exports = {
   slug: "social-anxiety-test",
-  title: "Accurate Social Anxiety Test | Evaluation & Behavioral Audit | ToolsQuark",
+  title: "Social Anxiety Self-Check | ToolsQuark",
   description: "Evaluate your fear of negative evaluation, safe behaviors, hyper-vigilance in social environments, and post-event cognitive parsing using our interactive tool.",
   h1: "Social Anxiety Test",
   hero: "Reflect on fear of judgment, avoidance, safety behaviors, and post-event replay after social interactions.",
   schemaName: "Privacy-First Social Anxiety Test",
+  timeframe: "Past 2 weeks",
+  questionDimensions: ["judgment", "avoidance", "judgment", "replay", "avoidance"],
   questions: [
     { question: "How worried are you about being judged in social situations?", options: ["Rarely", "Sometimes", "Often", "Very worried"] },
     { question: "How often do you avoid social events because of anxiety?", options: ["Rarely", "Sometimes", "Often", "Very often"] },

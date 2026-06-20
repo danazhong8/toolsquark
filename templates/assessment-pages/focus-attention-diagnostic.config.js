@@ -1,10 +1,12 @@
 module.exports = {
   slug: "focus-attention-diagnostic",
-  title: "Accurate Focus & Attention Diagnostic | Executive Function Audit | ToolsQuark",
+  title: "Focus & Attention Self-Check | ToolsQuark",
   description: "Evaluate your cognitive control parameters, task initiation friction, and stability when filtering environmental and digital noise using our advanced focus tracker.",
-  h1: "Focus & Attention Diagnostic",
+  h1: "Focus & Attention Self-Check",
   hero: "Assess concentration stability, distraction sensitivity, task initiation, and cognitive switching friction.",
-  schemaName: "Privacy-First Focus Attention Diagnostic",
+  schemaName: "Privacy-First Focus Attention Self-Check",
+  timeframe: "Past 2 weeks",
+  questionDimensions: ["distractibility", "initiation", "switching", "distractibility", "switching"],
   questions: [
     { question: "How easily do notifications, sounds, or tabs pull you away from work?", options: ["Rarely", "Sometimes", "Often", "Constantly"] },
     { question: "How difficult is it to start a task even when you know what to do?", options: ["Easy", "Somewhat hard", "Hard", "Very hard"] },
@@ -17,7 +19,7 @@ module.exports = {
     { min: 9, max: 14, title: "Fragmented Focus Pattern", color: "var(--mid)", description: "Your focus may be disrupted by task switching, unclear starts, or environmental noise.", indicators: { distractibility: 60, initiation: 58, switching: 62 }, insights: ["Define one visible next action.", "Use timed focus blocks and remove the easiest distractions before starting."] },
     { min: 15, max: 20, title: "High Attention Friction", color: "var(--high)", description: "Your responses suggest high difficulty sustaining focus or initiating tasks consistently.", indicators: { distractibility: 88, initiation: 84, switching: 90 }, insights: ["External structure may help: timers, checklists, blockers, and body doubling.", "If focus issues are lifelong or impairing, consider professional evaluation."] }
   ],
-  indicators: [{ key: "distractibility", label: "Distractibility" }, { key: "initiation", label: "Task Initiation" }, { key: "switching", label: "Task Switching" }],
+  indicators: [{ key: "distractibility", label: "Distractibility" }, { key: "initiation", label: "Task Initiation Friction" }, { key: "switching", label: "Task Switching" }],
   related: [
     { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Test", description: "Check whether delay loops are affecting task starts.", action: "Assess Delay" },
     { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Poor sleep can reduce focus stability.", action: "Assess Sleep" }

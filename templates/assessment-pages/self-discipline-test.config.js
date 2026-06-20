@@ -5,6 +5,8 @@ module.exports = {
   h1: "Self-Discipline Test",
   hero: "Assess consistency, impulse control, habit follow-through, and alignment with long-term goals.",
   schemaName: "Privacy-First Self-Discipline Test",
+  timeframe: "Past 30 days",
+  questionDimensions: ["consistency", "impulse", "consistency", "identity", "identity"],
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   questions: [
@@ -19,10 +21,10 @@ module.exports = {
     { min: 9, max: 14, title: "Inconsistent Discipline Pattern", color: "var(--mid)", description: "You may follow through in some areas but lose consistency when motivation, stress, or temptation shifts.", indicators: { consistency: 50, impulse: 58, identity: 48 }, insights: ["Reduce reliance on willpower by designing easier defaults.", "Track one habit at a time until it stabilizes."] },
     { min: 15, max: 20, title: "High Impulse Friction", color: "var(--high)", description: "Your answers suggest frequent conflict between immediate comfort and long-term goals.", indicators: { consistency: 24, impulse: 86, identity: 28 }, insights: ["Start with smaller commitments that are hard to fail.", "Remove triggers before relying on discipline in the moment."] }
   ],
-  indicators: [{ key: "consistency", label: "Consistency" }, { key: "impulse", label: "Impulse Friction" }, { key: "identity", label: "Identity Alignment" }],
+  indicators: [{ key: "consistency", label: "Consistency", direction: "protective" }, { key: "impulse", label: "Impulse Friction" }, { key: "identity", label: "Identity Alignment", direction: "protective" }],
   related: [
     { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Test", description: "Check task delay and avoidance loops.", action: "Assess Delay" },
-    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Diagnostic", description: "Evaluate focus and task initiation.", action: "Check Focus" }
+    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Self-Check", description: "Evaluate focus and task initiation.", action: "Check Focus" }
   ],
   faq: [
     { question: "Is self-discipline just willpower?", answer: "No. Environment design, habits, sleep, stress, identity, and incentives all shape follow-through." },

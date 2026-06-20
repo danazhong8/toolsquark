@@ -5,6 +5,8 @@ module.exports = {
   h1: "Stress Index Test",
   hero: "Audit your stress load, physical tension, and nervous system recovery capacity with a private browser-side self-assessment.",
   schemaName: "Privacy-First Stress Index Test",
+  timeframe: "Past 2 weeks",
+  questionDimensions: ["reactivity", "load", "load", "reactivity", "load", "load", "load", "reserve", "reactivity", "reserve"],
   schemaDescription: "A free browser-side stress self-check that estimates stress load, reactivity, and recovery reserve for educational self-reflection.",
   lastUpdated: "June 19, 2026",
   questions: [
@@ -32,7 +34,7 @@ module.exports = {
     {
       min: 19,
       max: 30,
-      title: "Elevated Tension & Allostatic Plateau",
+      title: "Elevated Stress & Reduced Recovery",
       color: "var(--mid)",
       description: "Your stress load appears elevated. Physical tension, sleep disruption, irritability, or reduced mental bandwidth may be starting to cluster.",
       indicators: { load: 58, reactivity: 64, reserve: 52 },
@@ -41,7 +43,7 @@ module.exports = {
     {
       min: 31,
       max: 40,
-      title: "Allostatic Overload & Sympathetic Exhaustion",
+      title: "High Stress Load & Low Recovery",
       color: "var(--high)",
       description: "Your answers suggest a high stress burden and reduced recovery reserve. Active restoration, boundary setting, and support may be important.",
       indicators: { load: 88, reactivity: 92, reserve: 21 },
@@ -51,7 +53,7 @@ module.exports = {
   indicators: [
     { key: "load", label: "Allostatic Load" },
     { key: "reactivity", label: "Stress Reactivity" },
-    { key: "reserve", label: "Recovery Reserve" }
+    { key: "reserve", label: "Recovery Reserve", direction: "protective" }
   ],
   relatedTitle: "Related Self-Checks",
   related: [

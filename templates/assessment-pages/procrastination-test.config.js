@@ -5,6 +5,8 @@ module.exports = {
   h1: "Procrastination Test",
   hero: "Identify whether task delay is driven by emotional avoidance, present bias, perfectionism, or inconsistent execution.",
   schemaName: "Privacy-First Procrastination Test",
+  timeframe: "Past 30 days",
+  questionDimensions: ["avoidance", "temporal", "perfectionism", "avoidance", "avoidance"],
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   questions: [

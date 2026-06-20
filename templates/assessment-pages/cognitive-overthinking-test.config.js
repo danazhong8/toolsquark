@@ -1,10 +1,12 @@
 module.exports = {
   slug: "cognitive-overthinking-test",
-  title: "Accurate Cognitive Overthinking Test | Rumination Audit | ToolsQuark",
+  title: "Cognitive Overthinking Self-Check | ToolsQuark",
   description: "Evaluate your mental tendencies toward excessive rumination, destructive decision paralysis, and anticipatory catastrophizing using our advanced cognitive tracker.",
   h1: "Cognitive Overthinking Test",
   hero: "Measure rumination, decision loops, and future-focused worry that may keep your mind running without resolution.",
   schemaName: "Privacy-First Cognitive Overthinking Test",
+  timeframe: "Past 2 weeks",
+  questionDimensions: ["rumination", "paralysis", "catastrophizing", "rumination", "paralysis"],
   questions: [
     { question: "How often do you replay conversations long after they ended?", options: ["Rarely", "Sometimes", "Often", "Constantly"] },
     { question: "How often do decisions feel stuck because you keep analyzing every option?", options: ["Rarely", "Sometimes", "Often", "Nearly always"] },
@@ -20,7 +22,7 @@ module.exports = {
   indicators: [{ key: "rumination", label: "Rumination" }, { key: "paralysis", label: "Decision Paralysis" }, { key: "catastrophizing", label: "Catastrophizing" }],
   related: [
     { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety Assessment", description: "Check whether worry is paired with body-level arousal.", action: "Assess Anxiety" },
-    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Diagnostic", description: "Review attention control and task initiation.", action: "Check Focus" }
+    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Self-Check", description: "Review attention control and task initiation.", action: "Check Focus" }
   ],
   faq: [
     { question: "Is overthinking always bad?", answer: "No. Careful thinking is useful. It becomes a problem when it repeats without progress, rest, or action." },

@@ -66,7 +66,7 @@ const groups = {
         title: "Work & Cognitive Pacing",
         tools: [
           ["occupational-burnout-level-test", "Occupational Burnout Test", "Evaluate work exhaustion, detachment, and reduced efficacy.", "Check Burnout"],
-          ["focus-attention-diagnostic", "Focus & Attention Diagnostic", "Assess distractibility, task initiation, and attention stability.", "Check Focus"]
+          ["focus-attention-diagnostic", "Focus & Attention Self-Check", "Assess distractibility, task initiation, and attention stability.", "Check Focus"]
         ]
       },
       {

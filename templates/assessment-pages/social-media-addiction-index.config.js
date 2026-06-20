@@ -5,6 +5,8 @@ module.exports = {
   h1: "Social Media Addiction Index",
   hero: "Evaluate feed capture, validation seeking, FOMO, and mood shifts linked to social media use.",
   schemaName: "Privacy-First Social Media Addiction Index",
+  timeframe: "Past 30 days",
+  questionDimensions: ["capture", "validation", "comparison", "capture", "comparison"],
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   questions: [

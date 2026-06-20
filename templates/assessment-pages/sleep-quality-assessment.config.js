@@ -5,6 +5,8 @@ module.exports = {
   h1: "Sleep Quality Assessment",
   hero: "Review sleep latency, nighttime awakenings, schedule consistency, and daytime fatigue in a private self-assessment.",
   schemaName: "Privacy-First Sleep Quality Assessment",
+  timeframe: "Past 4 weeks",
+  questionDimensions: ["latency", "architecture", "dysfunction", "latency", "dysfunction", "architecture", "architecture", "latency", "dysfunction", "latency"],
   categoryHref: "health.html",
   categoryLabel: "Health Tools",
   questions: [
@@ -22,11 +24,11 @@ module.exports = {
   profiles: [
     { min: 10, max: 16, title: "Optimal Circadian Rhythm", color: "var(--low)", description: "Your sleep pattern appears relatively efficient, with fewer signs of prolonged latency, fragmentation, or daytime dysfunction.", indicators: { architecture: 24, latency: 22, dysfunction: 20 }, insights: ["Protect your consistent wake time.", "Keep screens and work out of bed to preserve the bed-sleep association."] },
     { min: 17, max: 28, title: "Fragmented Rest Pattern", color: "var(--mid)", description: "Your answers suggest moderate sleep disruption. Stress, schedule drift, or bedtime stimulation may be affecting recovery.", indicators: { architecture: 56, latency: 62, dysfunction: 58 }, insights: ["Use a consistent wind-down routine.", "If awake for a long time, leave bed briefly and return when sleepy."] },
-    { min: 29, max: 40, title: "Severe Sleep Disruption", color: "var(--high)", description: "Your responses suggest significant sleep disturbance or daytime impact. A clinical sleep evaluation may be worth considering.", indicators: { architecture: 86, latency: 88, dysfunction: 90 }, insights: ["Discuss persistent insomnia, gasping, or severe daytime sleepiness with a clinician.", "Avoid using alcohol as a sleep strategy; it can worsen sleep architecture."] }
+    { min: 29, max: 40, title: "High Sleep Disruption Signal", color: "var(--high)", description: "Your responses suggest significant sleep disturbance or daytime impact. A clinical sleep evaluation may be worth considering.", indicators: { architecture: 86, latency: 88, dysfunction: 90 }, insights: ["Discuss persistent insomnia, gasping, or severe daytime sleepiness with a clinician.", "Avoid using alcohol as a sleep strategy; it can worsen sleep architecture."] }
   ],
   indicators: [
     { key: "architecture", label: "Sleep Architecture Risk" },
-    { key: "latency", label: "Latency & Continuity" },
+    { key: "latency", label: "Latency & Continuity Risk" },
     { key: "dysfunction", label: "Daytime Dysfunction" }
   ],
   related: [
