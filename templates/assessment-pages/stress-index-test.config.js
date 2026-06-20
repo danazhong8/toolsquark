@@ -14,7 +14,8 @@ module.exports = {
     reserve: "Protect one repeatable recovery block this week and treat sleep, food, movement, and support as capacity maintenance rather than rewards."
   },
   references: [
-    { title: "So Stressed Out?", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/publications/so-stressed-out-fact-sheet" }
+    { title: "So Stressed Out?", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/publications/so-stressed-out-fact-sheet" },
+    { title: "Managing Stress", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/mental-health/living-with/index.html" }
   ],
   schemaDescription: "A free browser-side stress self-check that estimates stress load, reactivity, and recovery reserve for educational self-reflection.",
   lastUpdated: "June 20, 2026",
@@ -79,21 +80,21 @@ module.exports = {
   contentSections: [
     {
       title: "What This Stress Test Measures",
-      body: `<p>This self-check looks at common stress signals across perceived control, irritability, physical tension, overwhelm, recovery difficulty, and stress-related behavior changes.</p><p>The goal is not to label you. The goal is to give you a structured snapshot of current stress load and recovery reserve so you can decide what support or routine changes may help.</p>`
+      body: `<p>This self-check samples ten common stress experiences across perceived control, irritability, physical tension, overwhelm, behavior change, and recovery difficulty during the past two weeks.</p><p>It is an editorial educational checklist created for ToolsQuark. It is not the Perceived Stress Scale or another validated clinical instrument, and its custom load, reactivity, and reserve indicators have not been clinically validated.</p>`
     },
     {
       title: "How To Interpret Your Score",
-      body: `<ul><li><strong>Regulated baseline:</strong> pressure may be present, but recovery capacity appears relatively intact.</li><li><strong>Elevated tension:</strong> stress signals may be clustering and deserve active recovery planning.</li><li><strong>High overload:</strong> stress burden may be affecting daily function, emotional bandwidth, or physical symptoms.</li></ul><div class="note-box">A high score is not a diagnosis. It is a prompt to slow down, add support, and consider qualified professional help if distress is persistent or impairing.</div>`
+      body: `<p>Each answer contributes 1 to 4 points, producing a total from 10 to 40. Higher totals mean that more high-frequency stress responses were selected; they do not represent a diagnosis or a population percentile.</p><ul><li><strong>10-18:</strong> fewer frequent stress signals in this checklist.</li><li><strong>19-30:</strong> several elevated stress or recovery signals.</li><li><strong>31-40:</strong> many frequent stress responses that merit attention.</li></ul><div class="note-box">The score bands are practical editorial groupings, not validated clinical cutoffs. Look at which answers changed and whether stress is impairing daily life, not just the total.</div>`
     },
     {
       title: "What To Do After The Test",
-      body: `<p>Start with one small intervention that reduces load or improves recovery: protect sleep timing, take a short walk, reduce avoidable stimulants, write down open loops, or schedule an actual break rather than waiting to feel ready for one.</p><p>If stress is tied to work, caregiving, finances, health, or conflict, practical support and boundary changes often matter more than relaxation techniques alone.</p>`
+      body: `<p>Start with one specific lever: reduce or clarify one demand, protect a repeatable sleep window, take a movement break, write down open loops, or contact someone who can provide practical support. Repeating the check after a meaningful change is more informative than retaking it several times in one day.</p><p>Seek qualified support when distress persists, disrupts sleep or work, causes panic-like symptoms, or makes ordinary responsibilities hard to manage. If you may harm yourself or someone else, use local emergency or crisis support now rather than relying on this page.</p>`
     },
     {
       title: "Privacy And Limits",
       body: `<p>Your answers are scored in the browser. This page does not require an account and does not send your individual responses to a server.</p><p>This tool is educational and cannot replace a clinician, therapist, crisis line, or emergency service.</p>`
     }
   ],
-  methodology: "This self-assessment uses 10 four-point items to estimate stress load and recovery reserve. All scoring happens locally in your browser.",
+  methodology: "This original educational checklist uses 10 four-point items scored from 1 to 4. Total-score bands and dimension indicators are editorial, not clinically validated. All scoring happens locally in your browser.",
   disclaimer: "This tool is for education and self-reflection only. If you feel unsafe, overwhelmed, or persistently distressed, seek help from a qualified health professional or local emergency support."
 };

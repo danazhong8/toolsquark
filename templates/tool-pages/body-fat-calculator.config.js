@@ -1,14 +1,16 @@
 module.exports = {
   slug: "body-fat-calculator",
-  title: "Accurate Body Fat Calculator (U.S. Navy Method) | ToolsQuark",
-  description: "Estimate your body fat percentage using the U.S. Navy circumference method with metric and imperial measurement support.",
+  title: "Body Fat Calculator | U.S. Navy Circumference Method",
+  description: "Estimate adult body fat percentage with the U.S. Navy circumference method. Includes measurement instructions, formula details, limits, and sources.",
   h1: "Body Fat Calculator",
   hero: "Estimate body fat percentage from circumference measurements using the U.S. Navy method, processed privately in your browser.",
   schemaName: "Privacy-First Body Fat Calculator",
+  schemaDescription: "A browser-side adult body fat estimate using U.S. Navy circumference equations, with metric and imperial inputs and method limitations.",
+  lastUpdated: "June 20, 2026",
   buttonText: "Calculate Body Fat",
   resultUnit: "%",
   resultStatus: "Estimated Body Fat",
-  gaugeLabels: ["Lean", "Fitness", "Higher"],
+  gaugeLabels: ["Lower", "Midrange", "Higher"],
   insightTitle: "Composition Insight",
   controlsHtml: `
         <div class="unit-switcher">
@@ -21,12 +23,40 @@ module.exports = {
     { href: "https://toolsquark.com/tools/lean-body-mass-calculator.html", title: "Lean Body Mass Calculator", description: "Estimate non-fat body mass from height and weight.", action: "Check Lean Mass" },
     { href: "https://toolsquark.com/tools/waist-to-height-ratio-calculator.html", title: "Waist-to-Height Ratio Calculator", description: "Screen central abdominal distribution with waist and height.", action: "Check WHtR" }
   ],
+  references: [
+    { title: "History of the U.S. Navy Body Composition Program", publisher: "Military Medicine / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/25562863/" },
+    { title: "Predicting Percent Body Fat from Circumference Measurements", publisher: "Military Medicine / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/8437737/" }
+  ],
   faq: [
     { question: "What measurements are required?", answer: "Men need height, neck, and waist circumference. Women need height, neck, waist, and hip circumference." },
-    { question: "How accurate is the U.S. Navy method?", answer: "It is a practical field estimate based on circumference measurements. It is useful for tracking trends, but it is not as precise as clinical methods such as DEXA." },
-    { question: "Should I use metric or imperial units?", answer: "Either works as long as all circumference and height entries use the same unit system selected in the calculator." }
+    { question: "How accurate is the U.S. Navy method?", answer: "It is a field estimate derived from circumference measurements and population equations. Individual error can be meaningful, so it is better for repeatable trend tracking than for treating one decimal result as exact." },
+    { question: "Should I use metric or imperial units?", answer: "Either works as long as every measurement matches the selected system. Imperial entries are converted to centimeters before the equations are applied." },
+    { question: "Where should I measure?", answer: "Keep the tape horizontal and snug without compressing skin. Measure the neck below the larynx, the waist at the method-specific abdominal site, and for women the hips at the widest point. Repeat each measurement." },
+    { question: "Can this replace DEXA or clinical assessment?", answer: "No. Circumference equations infer body composition from body shape. They do not directly image fat or lean tissue and may be less suitable when body proportions differ from the development samples." }
   ],
-  methodology: "This tool applies the U.S. Navy circumference equations for body density and converts that density into estimated body fat percentage.",
+  contentSections: [
+    {
+      title: "What The Result Represents",
+      body: `<p>This calculator estimates adult body-fat percentage from height and circumference measurements. It uses separate U.S. Navy equations for men and women because the measurement sets and fitted coefficients differ.</p><p>The output is not a direct scan and should not be read as precise to one decimal place, even though a decimal is displayed for consistent tracking.</p>`
+    },
+    {
+      title: "Equations And Variables",
+      body: `<div class="formula-box">Men: density = 1.0324 - 0.19077 log<sub>10</sub>(waist - neck) + 0.15456 log<sub>10</sub>(height)<br>Women: density = 1.29579 - 0.35004 log<sub>10</sub>(waist + hip - neck) + 0.22100 log<sub>10</sub>(height)<br>Body fat % = 495 / density - 450</div><p>All equation inputs are centimeters. The tool converts inches before calculation. Log<sub>10</sub> means base-10 logarithm.</p>`
+    },
+    {
+      title: "How To Measure Consistently",
+      body: `<ol><li>Use a flexible, non-stretch tape on bare skin when practical.</li><li>Stand relaxed, keep the tape level, and avoid compressing the skin.</li><li>Take two or three readings at each site and repeat any pair that differs noticeably.</li><li>For trend tracking, measure at a similar time and under similar conditions.</li></ol><div class="note-box">A small tape-placement change can shift the estimate. Consistency matters more than chasing a favorable single reading.</div>`
+    },
+    {
+      title: "Worked Example",
+      body: `<p>For a man with a 175 cm height, 80 cm waist, and 38 cm neck, the circumference difference is 42 cm. The equation estimates density at about 1.069, which converts to roughly 12.9% body fat.</p>`
+    },
+    {
+      title: "Limits And Appropriate Use",
+      body: `<p>The equations were developed from specific military samples and can misestimate people with different body proportions, ages, backgrounds, training histories, or fat distribution. Hydration, breathing, tape tension, and measurement site also affect the result.</p><p>Use this tool for adult educational trend tracking. Pregnancy, edema, major weight change, clinical nutrition decisions, and pediatric assessment require a more appropriate professional method.</p>`
+    }
+  ],
+  methodology: "This tool converts all measurements to centimeters, applies the published sex-specific U.S. Navy circumference equations for body density, and converts density to estimated body-fat percentage. Display is rounded to one decimal place.",
   disclaimer: "Body fat estimates are educational screening values and can be affected by measurement technique, hydration, and body proportions.",
   script: `
 let currentUnit = 'metric';
@@ -82,26 +112,22 @@ function calculateNow() {
         alert('Please enter valid height, neck, and waist values.');
         return;
     }
+    const unitScale = currentUnit === 'imperial' ? 2.54 : 1;
+    const heightCm = height * unitScale;
+    const neckCm = neck * unitScale;
+    const waistCm = waist * unitScale;
+    const hipCm = hip * unitScale;
     let bodyFat = 0;
     if (gender === 'male') {
-        if (waist <= neck) { alert('Waist must be greater than neck for the Navy formula.'); return; }
-        bodyFat = 495 / (1.0324 - 0.19077 * log10(waist - neck) + 0.15456 * log10(height)) - 450;
+        if (waistCm <= neckCm) { alert('Waist must be greater than neck for the Navy formula.'); return; }
+        bodyFat = 495 / (1.0324 - 0.19077 * log10(waistCm - neckCm) + 0.15456 * log10(heightCm)) - 450;
     } else {
         if (isNaN(hip) || hip <= 0) { alert('Please enter a valid hip measurement.'); return; }
-        if ((waist + hip) <= neck) { alert('Waist plus hip must be greater than neck for the Navy formula.'); return; }
-        bodyFat = 495 / (1.29579 - 0.35004 * log10(waist + hip - neck) + 0.22100 * log10(height)) - 450;
+        if ((waistCm + hipCm) <= neckCm) { alert('Waist plus hip must be greater than neck for the Navy formula.'); return; }
+        bodyFat = 495 / (1.29579 - 0.35004 * log10(waistCm + hipCm - neckCm) + 0.22100 * log10(heightCm)) - 450;
     }
     bodyFat = Math.max(3, Math.min(60, bodyFat));
-    let result = {};
-    if (bodyFat < 14) {
-        result = { status: 'Very Lean Range', color: 'var(--underweight)', suggestion: 'Very lean results may be appropriate for some athletes but can be risky if paired with low energy, poor recovery, or hormonal symptoms.', percent: Math.max(5, bodyFat) };
-    } else if (bodyFat < 25) {
-        result = { status: 'Fitness / Standard Range', color: 'var(--normal)', suggestion: 'This range is commonly compatible with active health goals. Track long-term trends rather than reacting to one measurement.', percent: 25 + ((bodyFat - 14) / 11) * 35 };
-    } else if (bodyFat < 32) {
-        result = { status: 'Elevated Fat Range', color: 'var(--overweight)', suggestion: 'Consider pairing gradual nutrition changes with strength training, daily movement, sleep, and waist tracking.', percent: 60 + ((bodyFat - 25) / 7) * 20 };
-    } else {
-        result = { status: 'High Fat Range', color: 'var(--obese)', suggestion: 'This screening result may justify a broader health review, especially when combined with high waist measurements or metabolic risk markers.', percent: Math.min(95, 80 + ((bodyFat - 32) / 28) * 15) };
-    }
+    const result = { status: 'Circumference-Based Estimate', color: 'var(--accent)', suggestion: 'Repeat the measurements with the same tape placement and conditions. Use the trend alongside waist, strength, energy, and clinical context rather than treating one estimate as a diagnosis.', percent: Math.min(95, Math.max(5, (bodyFat / 50) * 90 + 5)) };
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = bodyFat.toFixed(1);
     document.getElementById('calc-output').style.color = result.color;

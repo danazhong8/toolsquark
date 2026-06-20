@@ -6,7 +6,7 @@ module.exports = {
   hero: "Estimate the calories your body burns in a full day by combining resting metabolism with your usual activity level.",
   schemaName: "Privacy-First TDEE Calculator",
   schemaDescription: "A free browser-side Total Daily Energy Expenditure calculator using the Mifflin-St Jeor equation, activity multipliers, and practical calorie target guidance.",
-  lastUpdated: "June 19, 2026",
+  lastUpdated: "June 20, 2026",
   buttonText: "Calculate TDEE",
   resultUnit: "kcal/day",
   resultStatus: "Maintenance Energy",
@@ -55,6 +55,10 @@ module.exports = {
       answer: "TDEE formulas cannot fully capture genetics, non-exercise movement, adaptive metabolism, training intensity, sleep, illness, or tracking accuracy. Treat the result as a starting estimate and refine it with real-world progress data."
     }
   ],
+  references: [
+    { title: "A New Predictive Equation for Resting Energy Expenditure", publisher: "The American Journal of Clinical Nutrition / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/2305711/" },
+    { title: "Body Weight Planner", publisher: "National Institute of Diabetes and Digestive and Kidney Diseases", href: "https://www.niddk.nih.gov/bwp" }
+  ],
   contentSections: [
     {
       title: "What TDEE Means",
@@ -62,7 +66,7 @@ module.exports = {
     },
     {
       title: "How This Calculator Works",
-      body: `<p>This tool first estimates Basal Metabolic Rate with the Mifflin-St Jeor equation, then multiplies that number by your selected activity factor.</p><div class="formula-box">TDEE = BMR x activity multiplier</div><ul><li><strong>1.2:</strong> sedentary or little planned exercise.</li><li><strong>1.375:</strong> light activity one to three days per week.</li><li><strong>1.55:</strong> moderate activity three to five days per week.</li><li><strong>1.725:</strong> hard training most days.</li><li><strong>1.9:</strong> intense training plus a physically demanding lifestyle.</li></ul>`
+      body: `<p>This tool first estimates resting energy expenditure with the Mifflin-St Jeor equations, then multiplies that estimate by a selected activity factor.</p><div class="formula-box">Men: BMR = 10W + 6.25H - 5A + 5<br>Women: BMR = 10W + 6.25H - 5A - 161<br>TDEE = BMR x activity multiplier</div><p>W is weight in kilograms, H is height in centimeters, and A is age in years. The sex-specific constants are part of the published equation.</p><ul><li><strong>1.2:</strong> sedentary.</li><li><strong>1.375:</strong> lightly active.</li><li><strong>1.55:</strong> moderately active.</li><li><strong>1.725:</strong> very active.</li><li><strong>1.9:</strong> extra active.</li></ul>`
     },
     {
       title: "How To Use Your Result",
@@ -70,7 +74,11 @@ module.exports = {
     },
     {
       title: "Example Calculation",
-      body: `<p>If a person's estimated BMR is 1,650 kcal/day and they choose a moderate activity multiplier of 1.55, their estimated TDEE is 1,650 x 1.55 = 2,558 kcal/day. That would be a practical starting point for maintenance planning.</p>`
+      body: `<p>For a 30-year-old man at 70 kg and 175 cm, estimated BMR is (10 x 70) + (6.25 x 175) - (5 x 30) + 5 = 1,649 kcal/day. With the moderate 1.55 multiplier, estimated TDEE is 1,649 x 1.55 = 2,556 kcal/day after rounding.</p>`
+    },
+    {
+      title: "Accuracy And Real-World Calibration",
+      body: `<p>The published equation estimates resting needs; the activity multiplier adds another assumption. Step count, non-exercise movement, training load, body composition, illness, sleep, and food tracking can all move actual maintenance away from the estimate.</p><p>Use the result as a starting budget for two to four weeks. Compare average intake with average body-weight trend, energy, hunger, and performance, then adjust in small steps. Pregnancy, breastfeeding, growth, eating-disorder history, and medical nutrition needs require individualized guidance.</p>`
     }
   ],
   methodology: "This tool calculates BMR with the Mifflin-St Jeor equation, converts imperial inputs when needed, and applies standard activity multipliers from 1.2 to 1.9.",

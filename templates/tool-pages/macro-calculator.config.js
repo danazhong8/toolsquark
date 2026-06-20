@@ -1,11 +1,12 @@
 module.exports = {
   slug: "macro-calculator",
-  title: "Free Accurate Macro Calculator | Diet & Nutrition Planner | ToolsQuark",
-  description: "Calculate your optimal daily macronutrients for protein, carbs, and fat based on your body metrics, activity level, and fitness goal.",
+  title: "Macro Calculator | Protein, Carbs & Fat Planning",
+  description: "Estimate daily calories and a 30/35/35 protein, fat, and carbohydrate planning split. See formulas, a worked example, limits, and sources.",
   h1: "Macro Calculator",
   hero: "Convert your calorie target into protein, fat, and carbohydrate ranges for fat loss, maintenance, or lean muscle gain. All calculations run locally in your browser.",
   schemaName: "Privacy-First Macro Calculator",
   schemaDescription: "A client-side macronutrient planning calculator using Mifflin-St Jeor calorie estimates and goal-based macro targets.",
+  lastUpdated: "June 20, 2026",
   buttonText: "Calculate My Macros",
   resultStatus: "Maintenance",
   gaugeLabels: ["Deficit", "Maintain", "Surplus"],
@@ -49,10 +50,14 @@ module.exports = {
       action: "Set Protein Goal"
     }
   ],
+  references: [
+    { title: "A New Predictive Equation for Resting Energy Expenditure", publisher: "The American Journal of Clinical Nutrition / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/2305711/" },
+    { title: "Dietary Reference Intakes for Energy and Macronutrients", publisher: "National Academies Press", href: "https://nap.nationalacademies.org/catalog/10490/dietary-reference-intakes-for-energy-carbohydrate-fiber-fat-fatty-acids-cholesterol-protein-and-amino-acids" }
+  ],
   faq: [
     {
       question: "How does this macro calculator work?",
-      answer: "It first estimates daily energy needs with the Mifflin-St Jeor equation and activity multipliers. It then adjusts calories based on your goal and applies a moderate macro split of 30% protein, 35% fat, and 35% carbohydrates."
+      answer: "It estimates daily energy needs with the Mifflin-St Jeor equation and an activity multiplier, applies the selected goal adjustment, then uses a fixed planning split of 30% protein, 35% fat, and 35% carbohydrate."
     },
     {
       question: "Are these macros exact prescriptions?",
@@ -63,7 +68,29 @@ module.exports = {
       answer: "Choose fat loss for a planned calorie deficit, maintenance when you want weight stability, and muscle gain when you are pairing a calorie surplus with progressive resistance training."
     }
   ],
-  methodology: "This tool combines Mifflin-St Jeor calorie estimation with standard energy values: protein and carbohydrates provide about 4 kcal per gram, while fat provides about 9 kcal per gram.",
+  contentSections: [
+    {
+      title: "What This Calculator Produces",
+      body: `<p>The calculator produces an estimated calorie target and converts it into grams of protein, fat, and carbohydrate using one fixed 30/35/35 energy split. This is a simple meal-planning preset, not an evidence-based optimum for every person.</p><p>Macro percentages can vary widely while still supporting a nutritious diet. Food quality, fiber, micronutrients, training demands, preferences, and adherence remain important.</p>`
+    },
+    {
+      title: "Calculation Steps",
+      body: `<div class="formula-box">BMR = Mifflin-St Jeor estimate<br>Target calories = BMR x activity factor, then -500 / 0 / +500 kcal by goal<br>Protein grams = target x 0.30 / 4<br>Fat grams = target x 0.35 / 9<br>Carbohydrate grams = target x 0.35 / 4</div><p>Protein and carbohydrate are converted at 4 kcal per gram and fat at 9 kcal per gram. Gram targets are rounded, so the reconstructed calorie total can differ slightly.</p>`
+    },
+    {
+      title: "Worked Example",
+      body: `<p>At a 2,000 kcal target, the preset allocates 600 kcal to protein, 700 kcal to fat, and 700 kcal to carbohydrate. That converts to 150 g protein, about 78 g fat, and 175 g carbohydrate.</p>`
+    },
+    {
+      title: "How To Personalize The Starting Split",
+      body: `<ul><li><strong>Protein:</strong> check whether the gram target is appropriate for body size, training, and medical context.</li><li><strong>Fat:</strong> preserve enough dietary fat for food variety and essential nutrients.</li><li><strong>Carbohydrate:</strong> adjust around training volume, tolerance, and preference after protein and fat needs are covered.</li></ul><p>Judge the plan by adherence, hunger, digestion, performance, and multi-week weight trend rather than exact daily matching.</p>`
+    },
+    {
+      title: "Limits And Safety",
+      body: `<p>The calorie estimate inherits uncertainty from both the BMR equation and broad activity factors. The fixed split does not account for diabetes, kidney disease, pregnancy, breastfeeding, pediatric growth, eating-disorder history, allergies, or therapeutic diets.</p><div class="note-box">The calculator places a 1,200 kcal floor on its fat-loss result, but that software limit does not establish that 1,200 kcal is suitable or safe for a particular person.</div>`
+    }
+  ],
+  methodology: "This tool estimates BMR with Mifflin-St Jeor, applies an activity factor and goal adjustment, then converts a disclosed fixed 30% protein, 35% fat, and 35% carbohydrate split using 4/9/4 kcal-per-gram factors.",
   disclaimer: "These results are educational estimates and not medical nutrition therapy. Consult a qualified clinician or registered dietitian for personal guidance.",
   script: `
 let currentUnit = 'metric';

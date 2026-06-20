@@ -6,7 +6,7 @@ module.exports = {
   hero: "Estimate your daily calorie needs with the Mifflin-St Jeor equation. Everything runs locally in your browser, with no account and no server-side health data storage.",
   schemaName: "Privacy-First Calorie Calculator",
   schemaDescription: "A free browser-side daily calorie calculator for maintenance, fat-loss, and muscle-gain planning using BMR and activity level.",
-  lastUpdated: "June 19, 2026",
+  lastUpdated: "June 20, 2026",
   buttonText: "Calculate Calorie Needs",
   resultUnit: "kcal/day",
   resultStatus: "Maintenance Calories",
@@ -55,6 +55,10 @@ module.exports = {
       answer: "Use the estimate for two to four weeks, track average body weight and energy, then adjust gradually. Daily scale changes are noisy, so weekly averages are more useful than single weigh-ins."
     }
   ],
+  references: [
+    { title: "A New Predictive Equation for Resting Energy Expenditure", publisher: "The American Journal of Clinical Nutrition / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/2305711/" },
+    { title: "Body Weight Planner", publisher: "National Institute of Diabetes and Digestive and Kidney Diseases", href: "https://www.niddk.nih.gov/bwp" }
+  ],
   contentSections: [
     {
       title: "What This Calorie Calculator Estimates",
@@ -62,7 +66,7 @@ module.exports = {
     },
     {
       title: "How Daily Calories Are Calculated",
-      body: `<p>The tool estimates resting energy needs with the Mifflin-St Jeor equation, then applies an activity multiplier to estimate total daily calorie needs.</p><div class="formula-box">Daily calories = estimated BMR x activity multiplier</div><p>Metric and imperial inputs are converted into the same formula before the final target is calculated.</p>`
+      body: `<p>The tool estimates resting energy needs with the Mifflin-St Jeor equation, then applies an activity multiplier to estimate daily maintenance calories.</p><div class="formula-box">Men: BMR = 10W + 6.25H - 5A + 5<br>Women: BMR = 10W + 6.25H - 5A - 161<br>Maintenance calories = BMR x activity multiplier</div><p>W is kilograms, H is centimeters, and A is years. Imperial inputs are converted before calculation. The final estimate is rounded to the nearest calorie.</p>`
     },
     {
       title: "How To Use Your Target",
@@ -70,7 +74,11 @@ module.exports = {
     },
     {
       title: "Example Calorie Plan",
-      body: `<p>If your estimated maintenance intake is 2,300 kcal/day, a cautious fat-loss target might start around 1,800 to 2,000 kcal/day. A modest muscle-gain target might start around 2,450 to 2,600 kcal/day, then be adjusted based on progress.</p>`
+      body: `<p>For a 35-year-old woman at 65 kg and 165 cm, the equation estimates BMR at 1,330 kcal/day. A light-activity multiplier of 1.375 produces about 1,829 kcal/day for maintenance. A cautious deficit might begin near 1,500 kcal/day, then be checked against the real weight and energy trend.</p>`
+    },
+    {
+      title: "Where The Estimate Can Miss",
+      body: `<p>Activity categories are broad and cannot measure individual movement, training intensity, adaptive changes, or differences in body composition. Food labels and portion estimates also introduce error, so apparent intake and true intake may differ.</p><p>This calculator is intended for generally healthy, non-pregnant adults. Children, teenagers, pregnancy, breastfeeding, recovery from illness, eating-disorder history, and therapeutic diets need professional assessment rather than a generic deficit or surplus.</p>`
     }
   ],
   methodology: "This tool uses the Mifflin-St Jeor equation for basal metabolic rate and standard activity multipliers for estimated total daily energy expenditure.",

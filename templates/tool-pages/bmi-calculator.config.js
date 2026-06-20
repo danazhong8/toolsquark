@@ -6,7 +6,7 @@ module.exports = {
   hero: "Calculate body mass index using metric or imperial units. Everything runs locally in your browser with no account and no server-side health data storage.",
   schemaName: "Privacy-First BMI Calculator",
   schemaDescription: "A free browser-side Body Mass Index calculator for metric and imperial units, with adult BMI categories, formula notes, and result interpretation.",
-  lastUpdated: "June 19, 2026",
+  lastUpdated: "June 20, 2026",
   buttonText: "Calculate BMI",
   resultUnit: "",
   resultStatus: "BMI Result",
@@ -55,22 +55,30 @@ module.exports = {
       answer: "No. The calculation runs in your browser. ToolsQuark does not require an account and this page does not send your BMI inputs to a server."
     }
   ],
+  references: [
+    { title: "Adult BMI Categories", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html" },
+    { title: "About Body Mass Index (BMI)", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/bmi/about/index.html" }
+  ],
   contentSections: [
     {
       title: "What BMI Measures",
-      body: `<p>Body Mass Index is a height-to-weight screening number used to place many adults into broad weight categories. It is quick to calculate and useful for population-level comparisons, but it does not directly measure body fat, muscle mass, waist size, fitness, or metabolic health.</p><p>Use your BMI result as a first-pass signal, then add context from waist measurements, body composition, activity level, sleep, nutrition, and clinical markers when those details matter.</p>`
+      body: `<p>Body Mass Index is a screening ratio of weight to height. Health professionals use it to group adults into broad weight categories and to identify cases where a fuller health assessment may be useful.</p><p>BMI does not directly measure body fat, muscle, bone, fat distribution, fitness, or metabolic health. Two people with the same BMI can therefore have very different body composition and risk profiles.</p>`
     },
     {
       title: "BMI Formula",
-      body: `<div class="formula-box">Metric: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p>The calculator converts your inputs into the standard adult BMI equation and rounds the result to one decimal place.</p>`
+      body: `<div class="formula-box">Metric: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p><strong>Weight</strong> is total body weight and <strong>height</strong> is standing height without shoes. The imperial constant 703 converts pounds and inches to the metric ratio. This tool rounds only the displayed result to one decimal place.</p>`
     },
     {
       title: "How To Read Your Result",
-      body: `<ul><li><strong>Below 18.5:</strong> commonly categorized as underweight.</li><li><strong>18.5 to 24.9:</strong> commonly categorized as normal weight.</li><li><strong>25.0 to 29.9:</strong> commonly categorized as overweight.</li><li><strong>30.0 or higher:</strong> commonly categorized as obesity.</li></ul><div class="note-box">These adult categories are screening ranges, not a personal diagnosis. They can be less informative during pregnancy, for children and teenagers, older adults, highly muscular people, and anyone whose body composition differs from the average assumptions behind BMI.</div>`
+      body: `<ul><li><strong>Below 18.5:</strong> underweight screening category.</li><li><strong>18.5 to 24.9:</strong> healthy-weight screening category.</li><li><strong>25.0 to 29.9:</strong> overweight screening category.</li><li><strong>30.0 or higher:</strong> obesity screening category.</li></ul><div class="note-box">These are CDC adult screening categories, not diagnoses or personal targets. Risk can vary within every category, so interpret BMI with waist size, health history, blood pressure, laboratory results, and clinician guidance when available.</div>`
     },
     {
       title: "Example Calculation",
       body: `<p>For a person who weighs 70 kg and is 175 cm tall, height is first converted to 1.75 m. The calculation is 70 / 1.75<sup>2</sup>, which equals 22.9. That falls within the standard adult normal-weight BMI range.</p>`
+    },
+    {
+      title: "When BMI Needs More Context",
+      body: `<p>Standard adult categories are not designed for children or teenagers, who are assessed with age- and sex-specific percentiles. BMI also needs cautious interpretation during pregnancy, in very muscular people, and when illness, edema, amputation, or age-related muscle loss changes the relationship between weight and body composition.</p><p>For a broader picture, pair BMI with waist circumference or waist-to-height ratio and discuss unexpected weight change or health concerns with a qualified clinician.</p>`
     }
   ],
   methodology: "This tool applies the standard adult Body Mass Index equation and unit conversions for metric and imperial inputs. Results are rounded to one decimal place and mapped to common adult BMI screening categories.",
