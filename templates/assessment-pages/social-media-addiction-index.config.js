@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Social Media Addiction Test",
   timeframe: "Past 30 days",
   questionDimensions: ["capture", "validation", "comparison", "capture", "comparison"],
+  dimensionRelated: { capture: 0, validation: 0, comparison: 1 },
   dimensionGuidance: {
     capture: "Create a clear stopping cue: use a timer, remove shortcuts from the home screen, and decide what you are opening the app to do.",
     validation: "Disable nonessential reaction alerts and wait for a planned check time instead of monitoring response counts.",

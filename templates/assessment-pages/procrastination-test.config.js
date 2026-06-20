@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Procrastination Test",
   timeframe: "Past 30 days",
   questionDimensions: ["avoidance", "temporal", "perfectionism", "avoidance", "avoidance"],
+  dimensionRelated: { avoidance: 1, temporal: 0, perfectionism: 1 },
   dimensionGuidance: {
     avoidance: "Use a ten-minute start: define the first visible action, work only until the timer ends, and decide about continuing afterward.",
     temporal: "Move the easiest immediate reward out of reach until one small work interval is complete.",

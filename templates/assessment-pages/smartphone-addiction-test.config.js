@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Smartphone Addiction Test",
   timeframe: "Past 30 days",
   questionDimensions: ["checking", "dependency", "disruption", "dependency", "disruption"],
+  dimensionRelated: { checking: 0, dependency: 0, disruption: 1 },
   dimensionGuidance: {
     checking: "Choose two or three intentional check windows and turn off nonessential alerts between them.",
     dependency: "Practice one short phone-free routine each day, such as a meal, walk, shower, or the first fifteen minutes after waking.",

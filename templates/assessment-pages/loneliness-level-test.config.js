@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Loneliness Level Assessment",
   timeframe: "Past 2 weeks",
   questionDimensions: ["support", "isolation", "belonging", "isolation", "support"],
+  dimensionRelated: { isolation: 0, support: 1, belonging: 0 },
   dimensionGuidance: {
     isolation: "Choose one recurring, low-pressure point of contact this week rather than waiting for a large social event or the perfect mood.",
     support: "Ask one trusted person for something concrete, such as a short call, a walk, or help thinking through a specific problem.",

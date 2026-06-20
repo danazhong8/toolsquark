@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Anxiety Hyperarousal Assessment",
   timeframe: "Past 2 weeks",
   questionDimensions: ["arousal", "sensory", "worry", "arousal", "arousal"],
+  dimensionRelated: { arousal: 0, worry: 0, sensory: 1 },
   dimensionGuidance: {
     arousal: "Try a two-minute downshift after a trigger: relax your jaw and shoulders, then make each exhale slightly longer than the inhale.",
     worry: "Write the worry and one next action down. If no action is possible now, schedule a short time to revisit it instead of reopening it all day.",

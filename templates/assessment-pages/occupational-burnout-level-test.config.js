@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Occupational Burnout Test",
   timeframe: "Past 4 weeks",
   questionDimensions: ["exhaustion", "detachment", "exhaustion", "efficacy", "exhaustion"],
+  dimensionRelated: { exhaustion: 1, detachment: 0, efficacy: 0 },
   dimensionGuidance: {
     exhaustion: "Protect one genuine recovery boundary this week, such as a defined stop time, a meal away from work, or a notification-free evening block.",
     detachment: "Identify the work condition driving the most cynicism and decide whether it needs a boundary, a process change, or a direct conversation.",

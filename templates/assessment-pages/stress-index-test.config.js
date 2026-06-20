@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Stress Index Test",
   timeframe: "Past 2 weeks",
   questionDimensions: ["reactivity", "load", "load", "reactivity", "load", "load", "load", "reserve", "reactivity", "reserve"],
+  dimensionRelated: { load: 1, reactivity: 0, reserve: 0 },
   dimensionGuidance: {
     load: "List the demands currently using the most capacity, then remove, defer, delegate, or clarify one item instead of trying to recover around an unchanged load.",
     reactivity: "Use a brief pause at the first physical sign of escalation: release muscle tension, slow the exhale, and delay the next response when possible.",

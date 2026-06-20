@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Focus Attention Self-Check",
   timeframe: "Past 2 weeks",
   questionDimensions: ["distractibility", "initiation", "switching", "distractibility", "switching"],
+  dimensionRelated: { distractibility: 1, initiation: 0, switching: 0 },
   dimensionGuidance: {
     distractibility: "Remove the easiest source of interruption before starting: silence alerts, close extra tabs, and place the phone out of reach.",
     initiation: "Define a first action that takes under five minutes and begin it before trying to plan the whole task.",

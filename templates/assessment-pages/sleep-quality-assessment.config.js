@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Sleep Quality Assessment",
   timeframe: "Past 4 weeks",
   questionDimensions: ["latency", "architecture", "dysfunction", "latency", "dysfunction", "architecture", "architecture", "latency", "dysfunction", "latency"],
+  dimensionRelated: { architecture: 0, latency: 0, dysfunction: 1 },
   dimensionGuidance: {
     architecture: "Keep wake time consistent and discuss repeated gasping, restless legs, or unusual nighttime symptoms with a qualified clinician.",
     latency: "Use a repeatable low-light wind-down and keep wake time stable; avoid turning the bed into a place for scrolling or extended problem-solving.",

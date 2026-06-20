@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Self-Discipline Test",
   timeframe: "Past 30 days",
   questionDimensions: ["consistency", "impulse", "consistency", "identity", "identity"],
+  dimensionRelated: { consistency: 0, impulse: 0, identity: 1 },
   dimensionGuidance: {
     consistency: "Attach one small behavior to a stable daily cue and make the minimum version easy enough to complete on a low-motivation day.",
     impulse: "Add friction before the tempting action and reduce friction before the intended action by changing what is visible, open, or within reach.",

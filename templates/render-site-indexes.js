@@ -3,7 +3,7 @@ const path = require("path");
 
 const root = path.resolve(__dirname, "..");
 const site = "https://toolsquark.com";
-const lastmod = "2026-06-19";
+const lastmod = "2026-06-20";
 
 const groups = {
   health: {

@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Cognitive Overthinking Test",
   timeframe: "Past 2 weeks",
   questionDimensions: ["rumination", "paralysis", "catastrophizing", "rumination", "paralysis"],
+  dimensionRelated: { rumination: 0, paralysis: 1, catastrophizing: 0 },
   dimensionGuidance: {
     rumination: "Give the loop a stopping point: write what happened, what you learned, and the one thing you will do differently, then close the note.",
     paralysis: "Set a decision deadline and choose the smallest reversible next step rather than waiting for complete certainty.",

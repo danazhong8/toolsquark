@@ -7,6 +7,7 @@ module.exports = {
   schemaName: "Privacy-First Social Anxiety Test",
   timeframe: "Past 2 weeks",
   questionDimensions: ["judgment", "avoidance", "judgment", "replay", "avoidance"],
+  dimensionRelated: { judgment: 1, avoidance: 0, replay: 1 },
   dimensionGuidance: {
     judgment: "During one manageable interaction, move attention toward the other person and the shared task instead of monitoring how you appear.",
     avoidance: "Choose a small, repeatable social step that feels challenging but manageable; repeat it before increasing difficulty.",
