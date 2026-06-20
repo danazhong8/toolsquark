@@ -1,12 +1,20 @@
 module.exports = {
   slug: "focus-attention-diagnostic",
   title: "Focus & Attention Self-Check | ToolsQuark",
-  description: "Evaluate your cognitive control parameters, task initiation friction, and stability when filtering environmental and digital noise using our advanced focus tracker.",
+  description: "Take a private focus and attention self-check covering distractibility, task initiation, sustained attention, and frequent task switching.",
   h1: "Focus & Attention Self-Check",
   hero: "Assess concentration stability, distraction sensitivity, task initiation, and cognitive switching friction.",
   schemaName: "Privacy-First Focus Attention Self-Check",
   timeframe: "Past 2 weeks",
   questionDimensions: ["distractibility", "initiation", "switching", "distractibility", "switching"],
+  dimensionGuidance: {
+    distractibility: "Remove the easiest source of interruption before starting: silence alerts, close extra tabs, and place the phone out of reach.",
+    initiation: "Define a first action that takes under five minutes and begin it before trying to plan the whole task.",
+    switching: "Keep one visible priority and capture incoming tasks on a separate list instead of changing course immediately."
+  },
+  references: [
+    { title: "Attention-Deficit/Hyperactivity Disorder", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd" }
+  ],
   questions: [
     { question: "How easily do notifications, sounds, or tabs pull you away from work?", options: ["Rarely", "Sometimes", "Often", "Constantly"] },
     { question: "How difficult is it to start a task even when you know what to do?", options: ["Easy", "Somewhat hard", "Hard", "Very hard"] },

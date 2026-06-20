@@ -1,12 +1,20 @@
 module.exports = {
   slug: "smartphone-addiction-test",
-  title: "Smartphone Addiction Test | Digital Dependency & Screen Time Assessment | ToolsQuark",
-  description: "Measure your psychological reliance on mobile devices, phantom vibration patterns, behavioral screen dependencies, and compulsive device-checking habits.",
+  title: "Smartphone Addiction Test | Private Phone Use Check | ToolsQuark",
+  description: "Take a private phone use self-check for compulsive checking, difficulty disconnecting, notification reactivity, and disruption to sleep or work.",
   h1: "Smartphone Addiction Test",
   hero: "Assess compulsive phone checking, screen dependency, notification reactivity, and difficulty disconnecting.",
   schemaName: "Privacy-First Smartphone Addiction Test",
   timeframe: "Past 30 days",
   questionDimensions: ["checking", "dependency", "disruption", "dependency", "disruption"],
+  dimensionGuidance: {
+    checking: "Choose two or three intentional check windows and turn off nonessential alerts between them.",
+    dependency: "Practice one short phone-free routine each day, such as a meal, walk, shower, or the first fifteen minutes after waking.",
+    disruption: "Remove the phone from the setting it disrupts most, especially the bed, focused work surface, or face-to-face conversations."
+  },
+  references: [
+    { title: "Health Advisory on Social Media Use in Adolescence", publisher: "American Psychological Association", href: "https://www.apa.org/topics/social-media-internet/health-advisory-adolescent-social-media-use" }
+  ],
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   questions: [
@@ -23,7 +31,7 @@ module.exports = {
   ],
   indicators: [{ key: "checking", label: "Compulsive Checking" }, { key: "dependency", label: "Dependency" }, { key: "disruption", label: "Life Disruption" }],
   related: [
-    { href: "https://toolsquark.com/tools/social-media-addiction-index.html", title: "Social Media Addiction Index", description: "Assess algorithmic feed and validation loops.", action: "Assess Social Media" },
+    { href: "https://toolsquark.com/tools/social-media-addiction-index.html", title: "Social Media Addiction Test", description: "Assess algorithmic feed and validation loops.", action: "Assess Social Media" },
     { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether phone use is affecting sleep.", action: "Assess Sleep" }
   ],
   faq: [

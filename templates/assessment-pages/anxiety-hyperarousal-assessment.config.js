@@ -1,12 +1,20 @@
 module.exports = {
   slug: "anxiety-hyperarousal-assessment",
   title: "Anxiety & Hyperarousal Self-Check | ToolsQuark",
-  description: "Evaluate your somatic anxiety baselines, sensory overload, and chronic sympathetic hyperarousal parameters using our advanced behavioral health tracker.",
+  description: "Take a private anxiety and hyperarousal self-check covering physical tension, persistent worry, sensory overload, and recovery after stress.",
   h1: "Anxiety & Hyperarousal Assessment",
   hero: "Check whether your nervous system is staying in a high-alert state through physical tension, worry, sensory overload, and recovery difficulty.",
   schemaName: "Privacy-First Anxiety Hyperarousal Assessment",
   timeframe: "Past 2 weeks",
   questionDimensions: ["arousal", "sensory", "worry", "arousal", "arousal"],
+  dimensionGuidance: {
+    arousal: "Try a two-minute downshift after a trigger: relax your jaw and shoulders, then make each exhale slightly longer than the inhale.",
+    worry: "Write the worry and one next action down. If no action is possible now, schedule a short time to revisit it instead of reopening it all day.",
+    sensory: "Reduce stacked stimulation for one daily block by silencing alerts, lowering background noise, or stepping away from crowded input."
+  },
+  references: [
+    { title: "Anxiety Disorders", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/anxiety-disorders" }
+  ],
   questions: [
     { question: "How often do you feel physically on edge even when nothing urgent is happening?", options: ["Rarely", "Sometimes", "Often", "Almost constantly"] },
     { question: "How easily do noise, crowds, messages, or interruptions overload you?", options: ["Not easily", "Occasionally", "Frequently", "Very easily"] },

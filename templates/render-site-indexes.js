@@ -107,7 +107,7 @@ const groups = {
           ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a progressive step target plan from your current baseline.", "Plan Steps"],
           ["steps-to-calories-converter", "Steps to Calories Converter", "Estimate active calories from step count and body weight.", "Convert Steps"],
           ["smartphone-addiction-test", "Smartphone Addiction Test", "Assess compulsive checking and phone dependency.", "Assess Phone Use"],
-          ["social-media-addiction-index", "Social Media Addiction Index", "Review feed capture, validation loops, comparison, and FOMO.", "Assess Social Media"]
+          ["social-media-addiction-index", "Social Media Addiction Test", "Review feed capture, validation loops, comparison, and FOMO.", "Assess Social Media"]
         ]
       }
     ]

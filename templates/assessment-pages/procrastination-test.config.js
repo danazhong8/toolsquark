@@ -1,12 +1,17 @@
 module.exports = {
   slug: "procrastination-test",
-  title: "Procrastination Test | Interactive Behavioral Delay Evaluation | ToolsQuark",
-  description: "Unpack your delay mechanisms, emotional regulation short-circuits, and perfectionism barriers to task execution with our free interactive evaluation tool.",
+  title: "Procrastination Test | Free Private Self-Check | ToolsQuark",
+  description: "Take a private procrastination self-check for emotional avoidance, present bias, perfectionism, and difficulty starting important tasks.",
   h1: "Procrastination Test",
   hero: "Identify whether task delay is driven by emotional avoidance, present bias, perfectionism, or inconsistent execution.",
   schemaName: "Privacy-First Procrastination Test",
   timeframe: "Past 30 days",
   questionDimensions: ["avoidance", "temporal", "perfectionism", "avoidance", "avoidance"],
+  dimensionGuidance: {
+    avoidance: "Use a ten-minute start: define the first visible action, work only until the timer ends, and decide about continuing afterward.",
+    temporal: "Move the easiest immediate reward out of reach until one small work interval is complete.",
+    perfectionism: "Create a deliberately rough first version and separate producing from judging; quality review comes in a later pass."
+  },
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   questions: [

@@ -1,12 +1,20 @@
 module.exports = {
   slug: "social-media-addiction-index",
-  title: "Social Media Addiction Index | Algorithmic Capture Assessment | ToolsQuark",
-  description: "Assess how digital validation metrics, algorithmic feeds, social validation tracking, and the fear of missing out (FOMO) influence your psychological self-worth.",
-  h1: "Social Media Addiction Index",
+  title: "Social Media Addiction Test | Private Use Check | ToolsQuark",
+  description: "Take a private social media use self-check for automatic opening, endless scrolling, validation seeking, comparison, and fear of missing out.",
+  h1: "Social Media Addiction Test",
   hero: "Evaluate feed capture, validation seeking, FOMO, and mood shifts linked to social media use.",
-  schemaName: "Privacy-First Social Media Addiction Index",
+  schemaName: "Privacy-First Social Media Addiction Test",
   timeframe: "Past 30 days",
   questionDimensions: ["capture", "validation", "comparison", "capture", "comparison"],
+  dimensionGuidance: {
+    capture: "Create a clear stopping cue: use a timer, remove shortcuts from the home screen, and decide what you are opening the app to do.",
+    validation: "Disable nonessential reaction alerts and wait for a planned check time instead of monitoring response counts.",
+    comparison: "Mute or unfollow accounts that reliably worsen your mood and add accounts connected to real interests, learning, or supportive relationships."
+  },
+  references: [
+    { title: "Health Advisory on Social Media Use in Adolescence", publisher: "American Psychological Association", href: "https://www.apa.org/topics/social-media-internet/health-advisory-adolescent-social-media-use" }
+  ],
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   questions: [

@@ -1,12 +1,20 @@
 module.exports = {
   slug: "sleep-quality-assessment",
-  title: "Sleep Quality Assessment | Interactive Circadian Efficiency Test | ToolsQuark",
-  description: "Analyze your sleep architecture, latency, and daytime dysfunction to uncover hidden factors disrupting your biological rest with our interactive evaluation.",
+  title: "Sleep Quality Test | Free Private Self-Check | ToolsQuark",
+  description: "Take a private sleep quality self-check covering time to fall asleep, awakenings, schedule consistency, nighttime symptoms, and daytime fatigue.",
   h1: "Sleep Quality Assessment",
   hero: "Review sleep latency, nighttime awakenings, schedule consistency, and daytime fatigue in a private self-assessment.",
   schemaName: "Privacy-First Sleep Quality Assessment",
   timeframe: "Past 4 weeks",
   questionDimensions: ["latency", "architecture", "dysfunction", "latency", "dysfunction", "architecture", "architecture", "latency", "dysfunction", "latency"],
+  dimensionGuidance: {
+    architecture: "Keep wake time consistent and discuss repeated gasping, restless legs, or unusual nighttime symptoms with a qualified clinician.",
+    latency: "Use a repeatable low-light wind-down and keep wake time stable; avoid turning the bed into a place for scrolling or extended problem-solving.",
+    dysfunction: "Protect adequate sleep opportunity and seek clinical advice if daytime sleepiness is persistent, severe, or creates a driving or work safety risk."
+  },
+  references: [
+    { title: "About Sleep", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/sleep/about/index.html" }
+  ],
   categoryHref: "health.html",
   categoryLabel: "Health Tools",
   questions: [

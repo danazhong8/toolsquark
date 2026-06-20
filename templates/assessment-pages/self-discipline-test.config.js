@@ -1,12 +1,17 @@
 module.exports = {
   slug: "self-discipline-test",
-  title: "Self-Discipline Test | Interactive Volitional Impulsivity Assessment | ToolsQuark",
-  description: "Evaluate your willpower consistency, resistance to instant gratification, behavioral habits, and identity alignment with long-term goals using our interactive assessment tool.",
+  title: "Self-Discipline Test | Free Private Self-Check | ToolsQuark",
+  description: "Take a private self-discipline check covering consistency, impulse friction, habit follow-through, and alignment with long-term goals.",
   h1: "Self-Discipline Test",
   hero: "Assess consistency, impulse control, habit follow-through, and alignment with long-term goals.",
   schemaName: "Privacy-First Self-Discipline Test",
   timeframe: "Past 30 days",
   questionDimensions: ["consistency", "impulse", "consistency", "identity", "identity"],
+  dimensionGuidance: {
+    consistency: "Attach one small behavior to a stable daily cue and make the minimum version easy enough to complete on a low-motivation day.",
+    impulse: "Add friction before the tempting action and reduce friction before the intended action by changing what is visible, open, or within reach.",
+    identity: "Choose one small daily action that represents the person you want to become; treat repetition as evidence, not a test of willpower."
+  },
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   questions: [

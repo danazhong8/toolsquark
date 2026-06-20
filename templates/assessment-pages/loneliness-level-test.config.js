@@ -1,12 +1,20 @@
 module.exports = {
   slug: "loneliness-level-test",
   title: "Loneliness Level Self-Check | ToolsQuark",
-  description: "Evaluate your relational depth, emotional isolation parameters, and perceived social support networks using our advanced psychological loneliness metric tracker.",
+  description: "Take a private loneliness self-check covering emotional isolation, perceived support, relationship depth, and sense of belonging.",
   h1: "Loneliness Level Assessment",
   hero: "Reflect on emotional connection, social support, and whether your relationships feel available when you need them.",
   schemaName: "Privacy-First Loneliness Level Assessment",
   timeframe: "Past 2 weeks",
   questionDimensions: ["support", "isolation", "belonging", "isolation", "support"],
+  dimensionGuidance: {
+    isolation: "Choose one recurring, low-pressure point of contact this week rather than waiting for a large social event or the perfect mood.",
+    support: "Ask one trusted person for something concrete, such as a short call, a walk, or help thinking through a specific problem.",
+    belonging: "Look for a repeated group built around a shared activity; familiarity usually grows through regular contact, not one intense interaction."
+  },
+  references: [
+    { title: "Social Connectedness", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/social-connectedness/about/index.html" }
+  ],
   questions: [
     { question: "How often do you feel you have someone to talk to honestly?", options: ["Very often", "Sometimes", "Rarely", "Almost never"] },
     { question: "How often do you feel emotionally isolated even around people?", options: ["Rarely", "Sometimes", "Often", "Almost always"] },

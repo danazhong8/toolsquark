@@ -1,12 +1,20 @@
 module.exports = {
   slug: "social-anxiety-test",
   title: "Social Anxiety Self-Check | ToolsQuark",
-  description: "Evaluate your fear of negative evaluation, safe behaviors, hyper-vigilance in social environments, and post-event cognitive parsing using our interactive tool.",
+  description: "Take a private social anxiety self-check covering fear of judgment, avoidance, self-monitoring, and replaying interactions afterward.",
   h1: "Social Anxiety Test",
   hero: "Reflect on fear of judgment, avoidance, safety behaviors, and post-event replay after social interactions.",
   schemaName: "Privacy-First Social Anxiety Test",
   timeframe: "Past 2 weeks",
   questionDimensions: ["judgment", "avoidance", "judgment", "replay", "avoidance"],
+  dimensionGuidance: {
+    judgment: "During one manageable interaction, move attention toward the other person and the shared task instead of monitoring how you appear.",
+    avoidance: "Choose a small, repeatable social step that feels challenging but manageable; repeat it before increasing difficulty.",
+    replay: "Limit post-event review to a short written check: what went adequately, what you learned, and whether any action is actually needed."
+  },
+  references: [
+    { title: "Social Anxiety Disorder: More Than Just Shyness", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/publications/social-anxiety-disorder-more-than-just-shyness" }
+  ],
   questions: [
     { question: "How worried are you about being judged in social situations?", options: ["Rarely", "Sometimes", "Often", "Very worried"] },
     { question: "How often do you avoid social events because of anxiety?", options: ["Rarely", "Sometimes", "Often", "Very often"] },

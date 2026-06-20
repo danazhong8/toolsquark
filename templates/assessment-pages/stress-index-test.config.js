@@ -7,8 +7,16 @@ module.exports = {
   schemaName: "Privacy-First Stress Index Test",
   timeframe: "Past 2 weeks",
   questionDimensions: ["reactivity", "load", "load", "reactivity", "load", "load", "load", "reserve", "reactivity", "reserve"],
+  dimensionGuidance: {
+    load: "List the demands currently using the most capacity, then remove, defer, delegate, or clarify one item instead of trying to recover around an unchanged load.",
+    reactivity: "Use a brief pause at the first physical sign of escalation: release muscle tension, slow the exhale, and delay the next response when possible.",
+    reserve: "Protect one repeatable recovery block this week and treat sleep, food, movement, and support as capacity maintenance rather than rewards."
+  },
+  references: [
+    { title: "So Stressed Out?", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/publications/so-stressed-out-fact-sheet" }
+  ],
   schemaDescription: "A free browser-side stress self-check that estimates stress load, reactivity, and recovery reserve for educational self-reflection.",
-  lastUpdated: "June 19, 2026",
+  lastUpdated: "June 20, 2026",
   questions: [
     { question: "How frequently have you felt upset or agitated because of something unexpected happening?", options: ["Almost never", "Sometimes", "Fairly often", "Very often"] },
     { question: "How often do you feel you lack control over the important responsibilities in your life?", options: ["Never", "Rarely", "Sometimes", "All the time"] },

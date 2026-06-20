@@ -1,12 +1,20 @@
 module.exports = {
   slug: "occupational-burnout-level-test",
   title: "Occupational Burnout Self-Check | ToolsQuark",
-  description: "Evaluate your professional fatigue parameters, chronic emotional exhaustion, and career efficacy using our advanced workplace burnout tracker.",
+  description: "Take a private occupational burnout self-check covering work exhaustion, detachment, recovery difficulty, and perceived effectiveness.",
   h1: "Occupational Burnout Level Test",
-  hero: "Assess work-related exhaustion, detachment, and reduced efficacy before fatigue becomes your default operating mode.",
+  hero: "Reflect on work-related exhaustion, detachment, spillover into personal time, and your current capacity to recover.",
   schemaName: "Privacy-First Occupational Burnout Test",
   timeframe: "Past 4 weeks",
   questionDimensions: ["exhaustion", "detachment", "exhaustion", "efficacy", "exhaustion"],
+  dimensionGuidance: {
+    exhaustion: "Protect one genuine recovery boundary this week, such as a defined stop time, a meal away from work, or a notification-free evening block.",
+    detachment: "Identify the work condition driving the most cynicism and decide whether it needs a boundary, a process change, or a direct conversation.",
+    efficacy: "Define the most important achievable outcome for the week and ask for feedback or priority clarification where expectations are unclear."
+  },
+  references: [
+    { title: "Burn-out as an Occupational Phenomenon", publisher: "World Health Organization", href: "https://www.who.int/standards/classifications/frequently-asked-questions/burn-out-an-occupational-phenomenon" }
+  ],
   questions: [
     { question: "How often do you feel emotionally drained by work?", options: ["Rarely", "Sometimes", "Often", "Almost daily"] },
     { question: "How often do you feel detached or cynical about your work?", options: ["Rarely", "Sometimes", "Often", "Almost daily"] },

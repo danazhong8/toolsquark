@@ -1,12 +1,20 @@
 module.exports = {
   slug: "cognitive-overthinking-test",
   title: "Cognitive Overthinking Self-Check | ToolsQuark",
-  description: "Evaluate your mental tendencies toward excessive rumination, destructive decision paralysis, and anticipatory catastrophizing using our advanced cognitive tracker.",
+  description: "Take a private overthinking self-check for rumination, decision paralysis, worst-case thinking, and difficulty moving from thought to action.",
   h1: "Cognitive Overthinking Test",
   hero: "Measure rumination, decision loops, and future-focused worry that may keep your mind running without resolution.",
   schemaName: "Privacy-First Cognitive Overthinking Test",
   timeframe: "Past 2 weeks",
   questionDimensions: ["rumination", "paralysis", "catastrophizing", "rumination", "paralysis"],
+  dimensionGuidance: {
+    rumination: "Give the loop a stopping point: write what happened, what you learned, and the one thing you will do differently, then close the note.",
+    paralysis: "Set a decision deadline and choose the smallest reversible next step rather than waiting for complete certainty.",
+    catastrophizing: "Name the feared outcome, then write a more likely outcome and one coping step you could take if the difficult outcome occurred."
+  },
+  references: [
+    { title: "Anxiety Disorders", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/anxiety-disorders" }
+  ],
   questions: [
     { question: "How often do you replay conversations long after they ended?", options: ["Rarely", "Sometimes", "Often", "Constantly"] },
     { question: "How often do decisions feel stuck because you keep analyzing every option?", options: ["Rarely", "Sometimes", "Often", "Nearly always"] },
