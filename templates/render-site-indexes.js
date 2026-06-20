@@ -170,6 +170,8 @@ ${JSON.stringify({
   }))
 }, null, 2)}
 </script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <style>${baseStyles()}</style>
 </head>
 <body>
@@ -222,6 +224,8 @@ ${JSON.stringify({
   description: "A privacy-focused library of free health calculators, lifestyle utilities, and mental wellness self-checks."
 }, null, 2)}
 </script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <style>${baseStyles()}.navbar{background:white;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:10}.logo{font-size:22px;font-weight:850;color:var(--accent);text-decoration:none}.nav-links a{margin-left:25px;text-decoration:none;color:#4b5563;font-weight:700;font-size:14px}.hero{text-align:center;margin-bottom:44px}.hero h1{font-size:3.1rem;font-weight:850;letter-spacing:-.03em;margin-bottom:14px;background:linear-gradient(to right,#0f172a,#2563eb);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.trust-badges{display:flex;justify-content:center;gap:20px;margin-top:18px;color:#059669;font-weight:750;font-size:.9rem;flex-wrap:wrap}.search-wrapper{max-width:650px;margin:0 auto 50px}.search-bar-box{display:flex;gap:12px}.search-input{flex:1;padding:16px 20px;border:2px solid #e2e8f0;border-radius:16px;font-size:16px}.search-input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 4px var(--accent-light)}.surprise-btn{padding:0 22px;background:white;border:2px solid #e2e8f0;border-radius:16px;font-weight:800;cursor:pointer}.view-all-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.view-all-btn{display:inline-block;padding:12px 20px;background:white;color:var(--accent);border:2px solid var(--accent);border-radius:12px;font-weight:800;text-decoration:none}@media(max-width:768px){.hero h1{font-size:2.25rem}.search-bar-box{flex-direction:column}.nav-links a{margin-left:12px}}</style>
 </head>
 <body>
