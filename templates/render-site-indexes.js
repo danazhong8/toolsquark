@@ -135,15 +135,26 @@ const allTools = Object.values(groups).flatMap((group) =>
   group.sections.flatMap((section) => section.tools.map((tool) => tool[0]))
 );
 
+const allToolRecords = Object.values(groups).flatMap((group) =>
+  group.sections.flatMap((section) => section.tools.map((tool) => ({
+    slug: tool[0],
+    name: tool[1],
+    description: tool[2],
+    category: group.categoryLabel,
+    section: section.title
+  })))
+);
+
 function esc(value) {
   return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-function renderToolCard(tool) {
+function renderToolCard(tool, options = {}) {
   const [slug, name, desc, action, featured] = tool;
+  const popular = options.popular || featured;
   return `
-        <a href="tools/${slug}.html" class="tool-card${featured ? " popular-choice" : ""}" data-tool="${esc(name + " " + desc)}">
-            <span class="card-badge ${featured ? "badge-popular" : "badge-time"}">${featured ? "Popular" : "1-3 min"}</span>
+        <a href="tools/${slug}.html" class="tool-card${popular ? " popular-choice" : ""}" data-tool="${esc(name + " " + desc)}">
+            <span class="card-badge ${popular ? "badge-popular" : "badge-time"}">${popular ? "Popular" : "1-3 min"}</span>
             <div class="tool-meta">
                 <span class="tool-name">${esc(name)}</span>
                 <span class="tool-desc">${esc(desc)}</span>
@@ -230,7 +241,7 @@ ${footer()}
 }
 
 function renderHome() {
-  const featured = [
+  const popular = [
     groups.health.sections[0].tools[0],
     groups.health.sections[0].tools[1],
     groups.health.sections[1].tools[1],
@@ -238,18 +249,26 @@ function renderHome() {
     groups.mental.sections[0].tools[1],
     groups.mental.sections[1].tools[1],
     groups.lifestyle.sections[0].tools[0],
-    groups.lifestyle.sections[1].tools[0],
-    groups.lifestyle.sections[2].tools[0]
+    groups.lifestyle.sections[1].tools[0]
   ];
-  const categoryLinks = Object.values(groups).map((group) => `<a href="${group.file}" class="view-all-btn">View All ${esc(group.categoryLabel)}</a>`).join("");
+  const categoryDescriptions = {
+    health: "Body metrics, nutrition, activity, cycle, pregnancy, and sleep tools.",
+    mental: "Private self-checks for stress, anxiety, focus, burnout, and connection.",
+    lifestyle: "Sleep planning, daily movement, follow-through, and digital habits."
+  };
+  const categoryLinks = Object.entries(groups).map(([key, group]) => {
+    const toolCount = group.sections.reduce((count, section) => count + section.tools.length, 0);
+    return `<a href="${group.file}" class="category-link"><span>${esc(group.categoryLabel)}</span><small>${toolCount} tools</small><p>${esc(categoryDescriptions[key])}</p><strong>Browse category &rarr;</strong></a>`;
+  }).join("");
+  const searchIndex = JSON.stringify(allToolRecords).replace(/</g, "\\u003c");
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="${site}/">
-<title>ToolsQuark | Health Calculators & Wellness Self-Checks</title>
-<meta name="description" content="Access privacy-focused health calculators, lifestyle tools, and mental wellness self-checks. No registration, free, and browser-side.">
+<title>Free Health Calculators & Wellness Self-Checks | ToolsQuark</title>
+<meta name="description" content="Use free BMI, calorie, sleep, body composition, lifestyle, and wellness self-check tools. No registration, with inputs processed in your browser.">
 <script type="application/ld+json">
 ${JSON.stringify([
   {
@@ -271,34 +290,56 @@ ${JSON.stringify([
   },
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "ToolsQuark Tool Library",
+    "@type": "CollectionPage",
+    name: "Free Health Calculators and Wellness Self-Checks",
     url: `${site}/`,
-    applicationCategory: "HealthApplication",
-    operatingSystem: "All",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "A free collection of private health calculators, lifestyle tools, and educational wellness self-checks.",
     publisher: { "@id": `${site}/#organization` }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Popular ToolsQuark tools",
+    itemListElement: popular.map((tool, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: tool[1],
+      url: `${site}/tools/${tool[0]}.html`
+    }))
   }
 ], null, 2)}
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<style>${baseStyles()}.container{max-width:1200px}.tool-card,.e-e-a-t-section{border-radius:8px}.navbar{background:white;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:10}.logo{font-size:22px;font-weight:850;color:var(--accent);text-decoration:none}.nav-links a{margin-left:25px;text-decoration:none;color:#4b5563;font-weight:700;font-size:14px}.hero{text-align:center;margin-bottom:44px}.hero h1{font-size:3.1rem;font-weight:850;letter-spacing:0;margin-bottom:14px;background:linear-gradient(to right,#0f172a,#2563eb);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.trust-badges{display:flex;justify-content:center;gap:20px;margin-top:18px;color:#059669;font-weight:750;font-size:.9rem;flex-wrap:wrap}.search-wrapper{max-width:650px;margin:0 auto 50px}.search-bar-box{display:flex;gap:12px}.search-input{flex:1;padding:16px 20px;border:2px solid #e2e8f0;border-radius:8px;font-size:16px}.search-input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 4px var(--accent-light)}.surprise-btn{padding:0 22px;background:white;border:2px solid #e2e8f0;border-radius:8px;font-weight:800;cursor:pointer}.view-all-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.view-all-btn{display:inline-block;padding:12px 20px;background:white;color:var(--accent);border:2px solid var(--accent);border-radius:8px;font-weight:800;text-decoration:none}@media(max-width:768px){.hero h1{font-size:2.25rem}.search-bar-box{flex-direction:column}.nav-links a{margin-left:12px}}</style>
+<style>${baseStyles()}.container{max-width:1280px;margin-top:32px}.tool-card,.e-e-a-t-section{border-radius:8px}.navbar{background:white;padding:15px max(20px,5%);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:10}.logo{font-size:22px;font-weight:850;color:var(--accent);text-decoration:none}.nav-links{display:flex;gap:24px}.nav-links a{text-decoration:none;color:#4b5563;font-weight:700;font-size:14px}.hero{text-align:center;margin:0 auto 32px;max-width:880px}.hero h1{font-size:2.85rem;font-weight:850;letter-spacing:0;line-height:1.12;margin-bottom:14px;color:#0f172a}.hero p{color:var(--text-muted);font-size:1.05rem;max-width:760px;margin:0 auto}.trust-badges{display:flex;justify-content:center;gap:20px;margin-top:16px;color:#047857;font-weight:750;font-size:.9rem;flex-wrap:wrap}.search-wrapper{max-width:760px;margin:0 auto 34px;position:relative}.search-input{width:100%;padding:16px 20px;border:2px solid #cbd5e1;border-radius:8px;font-size:16px;background:white}.search-input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 4px var(--accent-light)}.search-results{display:none;position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:20;background:white;border:1px solid #cbd5e1;border-radius:8px;box-shadow:0 18px 35px rgba(15,23,42,.14);overflow:hidden}.search-results.is-open{display:block}.search-result{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 18px;padding:13px 16px;border-bottom:1px solid #eef2f7;text-decoration:none;color:inherit}.search-result:last-child{border-bottom:none}.search-result:hover,.search-result:focus-visible{background:#eff6ff;outline:none}.search-result strong{font-size:14px;color:#1e293b}.search-result span{grid-row:1 / 3;grid-column:2;color:var(--accent);font-size:12px;font-weight:800;align-self:center}.search-result small{font-size:12px;color:var(--text-muted)}.search-empty{padding:16px;color:var(--text-muted);font-size:14px}.category-band{padding:26px 0 32px;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:16px}.section-heading h2{font-size:1.35rem;line-height:1.25}.section-heading p{font-size:.9rem;color:var(--text-muted)}.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.category-link{padding:20px 0;text-decoration:none;color:inherit;border-top:3px solid #cbd5e1}.category-link:hover,.category-link:focus-visible{border-color:var(--accent);outline:none}.category-link span{font-size:1.05rem;font-weight:850;color:#1e293b}.category-link small{margin-left:8px;color:var(--text-muted);font-weight:750}.category-link p{color:var(--text-muted);font-size:.9rem;line-height:1.5;margin:7px 0 12px;max-width:340px}.category-link strong{font-size:.82rem;color:var(--accent)}.popular-section{padding-top:36px}.popular-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.popular-grid .tool-card{padding:22px;min-height:220px}.popular-grid .tool-name{font-size:1.03rem}.popular-grid .tool-desc{font-size:.88rem}.topic-guide{margin-top:54px}@media(max-width:1050px){.popular-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:768px){.container{margin-top:24px}.navbar{align-items:flex-start;gap:12px;flex-direction:column}.nav-links{gap:14px;flex-wrap:wrap}.hero h1{font-size:2.15rem}.category-grid,.popular-grid{grid-template-columns:1fr}.section-heading{align-items:flex-start;flex-direction:column;gap:4px}.search-result{grid-template-columns:minmax(0,1fr)}.search-result span{grid-row:auto;grid-column:auto}.popular-grid .tool-card{min-height:0}}</style>
 </head>
 <body>
 <nav class="navbar"><a href="index.html" class="logo">ToolsQuark</a><div class="nav-links"><a href="health.html">Health</a><a href="mental-health.html">Mental Health</a><a href="lifestyle.html">Lifestyle</a></div></nav>
 <div class="container">
-    <header class="hero"><h1>Health Calculators & Wellness Self-Checks</h1><p style="color:var(--text-muted);font-size:1.05rem;">Private, browser-side tools for body metrics, mental wellness, sleep, habits, and daily health planning.</p><div class="trust-badges"><span>Free to use</span><span>No registration</span><span>Local inputs</span></div></header>
-    <div class="search-wrapper"><div class="search-bar-box"><input type="text" id="searchInput" class="search-input" placeholder="Search BMI, burnout, sleep, calories..." oninput="filterTools()" aria-label="Search tools"><button class="surprise-btn" onclick="goToRandomTool()">Surprise Me</button></div></div>
-    <h2 class="sub-category-title">Featured Tools</h2>
-    <div class="tools-grid">${featured.map(renderToolCard).join("")}
-    </div>
-    <div class="view-all-row">${categoryLinks}</div>
+    <header class="hero"><h1>Free Health Calculators & Wellness Self-Checks</h1><p>Private, browser-side tools for body metrics, mental wellness, sleep, habits, and daily health planning.</p><div class="trust-badges"><span>Free to use</span><span>No registration</span><span>Inputs stay in your browser</span></div></header>
+    <div class="search-wrapper" id="searchWrapper"><input type="search" id="searchInput" class="search-input" placeholder="Search BMI, burnout, sleep, calories..." autocomplete="off" aria-label="Search all ToolsQuark tools" aria-controls="searchResults" aria-expanded="false"><div class="search-results" id="searchResults" role="region" aria-label="Tool search results" aria-live="polite"></div></div>
+    <section class="category-band" aria-labelledby="category-heading"><div class="section-heading"><h2 id="category-heading">Browse By Category</h2><p>Choose a focused collection or search every tool above.</p></div><div class="category-grid">${categoryLinks}</div></section>
+    <section class="popular-section" aria-labelledby="popular-heading"><div class="section-heading"><h2 id="popular-heading">Popular Tools</h2><p>Practical starting points across health, wellness, and daily habits.</p></div><div class="popular-grid">${popular.map((tool) => renderToolCard(tool, { popular: true })).join("")}</div></section>
     <section class="topic-guide" aria-label="How ToolsQuark works"><div><h2>Transparent Methods</h2><p>Professionalized pages show formulas or scoring, examples, assumptions, limits, sources, and update dates. Original self-checks are explicitly labeled as non-validated.</p></div><div><h2>Accountable Maintenance</h2><p>Read the <a href="editorial-policy.html">Editorial Policy</a> and <a href="about.html">About page</a>, or report reproducible errors through the public GitHub repository.</p></div></section>
 </div>
 <script>
-function filterTools(){const query=document.getElementById('searchInput').value.toLowerCase();document.querySelectorAll('.tool-card').forEach((card)=>{const text=(card.dataset.tool||card.textContent).toLowerCase();card.style.display=text.includes(query)?'flex':'none';});}
-function goToRandomTool(){const cards=Array.from(document.querySelectorAll('.tool-card')).filter((card)=>card.style.display!=='none');if(cards.length){window.location.href=cards[Math.floor(Math.random()*cards.length)].getAttribute('href');}}
+const searchTools=${searchIndex};
+const searchInput=document.getElementById('searchInput');
+const searchResults=document.getElementById('searchResults');
+const searchWrapper=document.getElementById('searchWrapper');
+function closeSearch(){searchResults.classList.remove('is-open');searchInput.setAttribute('aria-expanded','false');}
+function renderSearchResults(){
+  const query=searchInput.value.trim().toLowerCase();
+  if(!query){searchResults.innerHTML='';closeSearch();return;}
+  const matches=searchTools.filter((tool)=>[tool.name,tool.description,tool.category,tool.section].join(' ').toLowerCase().includes(query)).slice(0,8);
+  searchResults.innerHTML=matches.length?matches.map((tool)=>'<a class="search-result" href="tools/'+tool.slug+'.html"><strong>'+tool.name+'</strong><small>'+tool.section+' &middot; '+tool.category+'</small><span>Open &rarr;</span></a>').join(''):'<div class="search-empty">No matching tool found. Try a broader term or browse a category.</div>';
+  searchResults.classList.add('is-open');
+  searchInput.setAttribute('aria-expanded','true');
+}
+searchInput.addEventListener('input',renderSearchResults);
+searchInput.addEventListener('focus',renderSearchResults);
+searchInput.addEventListener('keydown',(event)=>{if(event.key==='Escape'){closeSearch();searchInput.blur();}});
+document.addEventListener('click',(event)=>{if(!searchWrapper.contains(event.target)){closeSearch();}});
 </script>
 ${footer()}
 </body>
