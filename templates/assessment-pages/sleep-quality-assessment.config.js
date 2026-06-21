@@ -1,74 +1,111 @@
-module.exports = {
+const { createV2Config, withSkip } = require("./v2-assessment-factory");
+
+module.exports = createV2Config({
+  key: "sleep",
   slug: "sleep-quality-assessment",
-  title: "Sleep Quality Self-Check | Private 10-Question Review",
-  description: "Take a private sleep quality self-check covering time to fall asleep, awakenings, schedule consistency, nighttime symptoms, and daytime fatigue.",
-  h1: "Sleep Quality Self-Check",
-  hero: "Review sleep latency, nighttime awakenings, schedule consistency, and daytime fatigue in a private self-assessment.",
-  schemaName: "Privacy-First Sleep Quality Assessment",
-  lastUpdated: "June 21, 2026",
-  timeframe: "Past 4 weeks",
-  questionDimensions: ["latency", "architecture", "dysfunction", "latency", "dysfunction", "architecture", "architecture", "latency", "dysfunction", "latency"],
-  dimensionRelated: { architecture: 0, latency: 0, dysfunction: 1 },
+  title: "Sleep Pattern Self-Check | Private 28-Day Review",
+  description: "Review sleep initiation, continuity, restorative quality, and daytime impact with a private 12-item original self-check.",
+  h1: "Sleep Pattern Self-Check",
+  hero: "Review how often difficulty falling asleep, interrupted sleep, unrefreshing sleep, and daytime effects appeared during the past four weeks.",
+  shareDescription: "A private 28-day self-check for sleep initiation, continuity, restorative quality, and daytime impact.",
+  socialFile: "sleep-pattern-self-check.png",
+  socialAccent: "#2563eb",
+  recallDays: 28,
+  legacyItems: 10,
+  intendedAudience: "Adults seeking general self-reflection about recent sleep patterns",
+  categoryHref: "health.html",
+  categoryLabel: "Health Tools",
+  dimensions: [
+    { key: "initiation", label: "Sleep Initiation", definition: "Difficulty transitioning from intended bedtime to sleep." },
+    { key: "continuity", label: "Sleep Continuity", definition: "Sleep being interrupted or ending earlier than intended." },
+    { key: "restoration", label: "Restorative Quality", definition: "Sleep not producing the expected sense of restoration." },
+    { key: "daytime", label: "Daytime Impact", definition: "Sleep patterns affecting alertness, concentration, or emotional regulation." }
+  ],
+  items: [
+    ["initiation-1", "initiation", "During the past 28 days, how often did falling asleep take longer than you intended?"],
+    ["initiation-2", "initiation", "During the past 28 days, how often did mental alertness delay sleep?"],
+    ["initiation-3", "initiation", "During the past 28 days, how often did you remain awake after turning off the light to sleep?"],
+    ["continuity-1", "continuity", "During the past 28 days how often was returning to sleep difficult after a nighttime awakening?"],
+    ["continuity-2", "continuity", "During the past 28 days, how often did sleep end earlier than you intended?"],
+    ["continuity-3", "continuity", "During the past 28 days, how often did repeated awakenings make sleep feel fragmented?"],
+    ["restoration-1", "restoration", "During the past 28 days, how often did you wake without feeling restored?"],
+    ["restoration-2", "restoration", "During the past 28 days, how often did sleep feel lighter than you needed?"],
+    ["restoration-3", "restoration", "During the past 28 days, how often did your sleep schedule make rest feel insufficient?"],
+    ["daytime-1", "daytime", "During the past 28 days, how often did sleepiness interfere with a routine daytime task?"],
+    ["daytime-2", "daytime", "During the past 28 days, how often did poor sleep make concentration more difficult?"],
+    ["daytime-3", "daytime", "During the past 28 days, how often did poor sleep reduce your patience during the day?"]
+  ],
+  contextQuestions: [
+    {
+      id: "sleep-duration",
+      label: "Typical sleep duration",
+      question: "About how much sleep do you usually get in a 24-hour period?",
+      options: withSkip([
+        { label: "Less than 5 hours", value: "under-5" },
+        { label: "5 to under 7 hours", value: "5-7" },
+        { label: "7 to 9 hours", value: "7-9" },
+        { label: "More than 9 hours", value: "over-9" }
+      ])
+    },
+    {
+      id: "sleep-impact",
+      label: "Overall interference",
+      question: "How much is this sleep pattern interfering with daily life?",
+      options: withSkip([
+        { label: "Not noticeably", value: "none" },
+        { label: "A little", value: "some" },
+        { label: "Substantially", value: "substantial" },
+        { label: "It is creating serious safety or functioning problems", value: "major" }
+      ])
+    },
+    {
+      id: "sleep-safety",
+      label: "Symptoms needing assessment",
+      question: "Which additional sleep-related concern applies most closely?",
+      options: withSkip([
+        { label: "None of these", value: "none" },
+        { label: "Observed breathing pauses or gasping", value: "breathing" },
+        { label: "Severe sleepiness during safety-sensitive tasks", value: "sleepiness" },
+        { label: "Both concerns", value: "both" }
+      ])
+    }
+  ],
+  protectiveQuestions: [
+    { id: "wake-time", label: "Consistent wake time", question: "During the past 28 days, how often did you wake at roughly the intended time?" },
+    { id: "wind-down", label: "Wind-down routine", question: "During the past 28 days, how often did you use a repeatable routine before sleep?" }
+  ],
+  safetyRules: [
+    { questionId: "sleep-impact", values: ["major"], title: "Sleep is creating serious consequences", message: "Serious safety or functioning problems deserve medical assessment regardless of the checklist result. Avoid driving or operating equipment when dangerously sleepy." },
+    { questionId: "sleep-safety", values: ["breathing", "sleepiness", "both"], title: "These symptoms need appropriate assessment", message: "Observed breathing pauses, gasping, or severe sleepiness during safety-sensitive tasks can require prompt medical evaluation. This page cannot assess sleep apnea or immediate driving safety." }
+  ],
+  profiles: [
+    { min: 0, max: 12, title: "Mostly Occasional Sleep Disruption", color: "var(--low)", description: "Your answers place most sleep difficulties in the occasional range.", insights: ["Keep the timing and routines that currently support sleep.", "Review changes over weeks rather than retesting after one night."] },
+    { min: 13, max: 30, title: "Recurring Sleep Disruption", color: "var(--mid)", description: "Several sleep difficulties appeared repeatedly, with the pattern varying by dimension.", insights: ["Start with one timing or environment condition rather than chasing a perfect score.", "Review daytime impact alongside nighttime frequency."] },
+    { min: 31, max: 48, title: "Frequent Sleep Disruption Across Areas", color: "var(--high)", description: "Many sleep difficulties appeared on numerous days. Duration, daytime consequences, and safety symptoms deserve attention.", insights: ["Consider qualified assessment when sleep problems persist.", "Treat breathing concerns or safety-sensitive sleepiness as more important than the total."] }
+  ],
+  dimensionRelated: { initiation: 0, continuity: 0, restoration: 1, daytime: 1 },
   dimensionGuidance: {
-    architecture: "Keep wake time consistent and discuss repeated gasping, restless legs, or unusual nighttime symptoms with a qualified clinician.",
-    latency: "Use a repeatable low-light wind-down and keep wake time stable; avoid turning the bed into a place for scrolling or extended problem-solving.",
-    dysfunction: "Protect adequate sleep opportunity and seek clinical advice if daytime sleepiness is persistent, severe, or creates a driving or work safety risk."
+    initiation: "Keep a stable wind-down window and discuss persistent difficulty falling asleep with a qualified clinician.",
+    continuity: "Track repeated awakenings over time and review environmental, medical, medication, or substance contributors with appropriate support.",
+    restoration: "Compare time asleep, schedule regularity, breathing symptoms, and daytime function instead of relying on duration alone.",
+    daytime: "Protect safety first and seek assessment when sleepiness or concentration problems interfere with routine tasks."
   },
   references: [
     { title: "About Sleep", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/sleep/about/index.html" },
     { title: "Sleep Deprivation and Deficiency", publisher: "National Heart, Lung, and Blood Institute", href: "https://www.nhlbi.nih.gov/health/sleep-deprivation" }
   ],
-  categoryHref: "health.html",
-  categoryLabel: "Health Tools",
-  questions: [
-    { question: "How long does it typically take you to fall asleep after turning off the lights?", options: ["Under 15 minutes", "15-30 minutes", "31-60 minutes", "More than an hour"] },
-    { question: "How often do you wake at night and struggle to fall back asleep?", options: ["Rarely or never", "1-2 times a week", "3-4 times a week", "Almost every night"] },
-    { question: "How regularly do you wake feeling unrefreshed, stiff, or tired?", options: ["Never", "Occasionally", "Frequently", "Every day"] },
-    { question: "Do racing thoughts or worry keep your mind active at bedtime?", options: ["Hardly ever", "Some nights", "Most nights", "Every night"] },
-    { question: "How often do you feel groggy or struggle to stay awake during daytime tasks?", options: ["Rarely", "Sometimes", "Often", "Constantly"] },
-    { question: "How consistent is your sleep schedule on weekends compared with weekdays?", options: ["Highly consistent", "Slightly varies", "Very erratic", "Completely different"] },
-    { question: "Do you experience night sweats, gasping, or restless legs?", options: ["Never", "Rarely", "Sometimes", "Frequently"] },
-    { question: "How often do you rely on sleep aids, alcohol, or supplements to fall asleep?", options: ["Never", "A few times a month", "Multiple times a week", "Daily"] },
-    { question: "Does poor sleep strongly affect your mood the next day?", options: ["Not really", "Slightly", "Noticeably", "Extremely"] },
-    { question: "How often do you use screens in bed while waiting for sleep?", options: ["Never", "Rarely", "Often", "Almost always"] }
-  ],
-  profiles: [
-    { min: 10, max: 16, title: "Fewer Frequent Sleep Concerns", color: "var(--low)", description: "Your answers include fewer frequent concerns about latency, fragmentation, or daytime function in this checklist.", indicators: { architecture: 24, latency: 22, dysfunction: 20 }, insights: ["Protect your consistent wake time.", "Keep screens and work out of bed to preserve the bed-sleep association."] },
-    { min: 17, max: 28, title: "Fragmented Rest Pattern", color: "var(--mid)", description: "Your answers suggest moderate sleep disruption. Stress, schedule drift, or bedtime stimulation may be affecting recovery.", indicators: { architecture: 56, latency: 62, dysfunction: 58 }, insights: ["Use a consistent wind-down routine.", "If awake for a long time, leave bed briefly and return when sleepy."] },
-    { min: 29, max: 40, title: "High Sleep Disruption Signal", color: "var(--high)", description: "Your responses suggest significant sleep disturbance or daytime impact. A clinical sleep evaluation may be worth considering.", indicators: { architecture: 86, latency: 88, dysfunction: 90 }, insights: ["Discuss persistent insomnia, gasping, or severe daytime sleepiness with a clinician.", "Avoid using alcohol as a sleep strategy; it can worsen sleep architecture."] }
-  ],
-  indicators: [
-    { key: "architecture", label: "Sleep Architecture Risk" },
-    { key: "latency", label: "Latency & Continuity Risk" },
-    { key: "dysfunction", label: "Daytime Dysfunction" }
-  ],
   related: [
-    { href: "https://toolsquark.com/tools/sleep-calculator.html", title: "Sleep Calculator", description: "Create a rough duration plan with clear cycle-timing limits.", action: "Plan Sleep" },
-    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Check whether stress load may be affecting rest.", action: "Assess Stress" }
+    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Pattern Self-Check", description: "Review whether overload or reactivity overlaps with sleep disruption.", action: "Review Stress" },
+    { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety And High-Alert Pattern", description: "Review whether high-alert responses are affecting rest.", action: "Review Alertness" }
   ],
   faq: [
-    { question: "Is 8 hours always required?", answer: "No. Many adults do well around 7-9 hours, but sleep quality, consistency, and daytime function matter too." },
-    { question: "Should I stay in bed if I cannot sleep?", answer: "If you are awake for a long time, a calm low-light activity away from bed can help avoid associating bed with frustration." },
-    { question: "Can this diagnose insomnia or sleep apnea?", answer: "No. This is an educational self-check. Persistent insomnia, gasping, or severe sleepiness should be discussed with a clinician." }
+    { question: "Is this a validated sleep questionnaire?", answer: "No. It is an original ToolsQuark educational self-check and is not the Pittsburgh Sleep Quality Index." },
+    { question: "Can this diagnose insomnia or sleep apnea?", answer: "No. Diagnosis requires appropriate clinical assessment, and breathing pauses or severe daytime sleepiness deserve medical attention." },
+    { question: "Is sleep duration the same as sleep quality?", answer: "No. Timing, continuity, restoration, breathing, and daytime function also matter." }
   ],
-  contentSections: [
-    {
-      title: "What This Self-Check Covers",
-      body: `<p>The ten questions review sleep onset, awakenings, schedule consistency, nighttime symptoms, sleep-related substances, and daytime impact over the past four weeks.</p><p>This is an original ToolsQuark checklist. It is not the Pittsburgh Sleep Quality Index, Insomnia Severity Index, Epworth Sleepiness Scale, or a sleep study.</p>`
-    },
-    {
-      title: "How Scoring Works",
-      body: `<p>Each answer contributes 1 to 4 points, producing a total from 10 to 40. Higher totals mean that more frequent sleep concerns were selected.</p><ul><li><strong>10-16:</strong> fewer frequent concerns in this checklist.</li><li><strong>17-28:</strong> several recurring sleep concerns.</li><li><strong>29-40:</strong> many frequent concerns or daytime effects.</li></ul><div class="note-box">These bands and dimension bars are editorial groupings, not diagnostic cutoffs.</div>`
-    },
-    {
-      title: "Symptoms A Score Cannot Explain",
-      body: `<p>Insomnia, sleep apnea, restless legs, circadian disorders, medication effects, pain, mood conditions, and insufficient sleep opportunity can overlap. Gasping, witnessed breathing pauses, severe sleepiness, or unsafe drowsy driving deserve clinical attention regardless of total score.</p>`
-    },
-    {
-      title: "How To Use The Result",
-      body: `<p>Track sleep opportunity, wake time, awakenings, substances, and daytime function for one to two weeks. Share that pattern with a qualified clinician when problems persist. Avoid using this checklist to start, stop, or combine sleep medicines or supplements.</p>`
-    }
-  ],
-  methodology: "This original 10-item checklist scores answers from 1 to 4. Total-score bands and sleep, latency, and daytime indicators are editorial and not clinically validated. Scoring stays in the browser.",
-  disclaimer: "This tool is not a medical diagnosis and does not replace evaluation for insomnia, sleep apnea, restless legs, parasomnias, or other sleep disorders."
-};
+  validationLimit: "It cannot diagnose insomnia, sleep apnea, circadian disorders, or another sleep condition.",
+  limitsTitle: "Symptoms That Need More Than A Checklist",
+  limitsBody: `<p>Breathing pauses, gasping, severe daytime sleepiness, near-miss accidents, persistent insomnia, or other concerning symptoms require appropriate medical assessment. Avoid driving or operating equipment when dangerously sleepy.</p>`,
+  actionBody: `<p>Use the most frequent dimension to choose one practical change, then observe the pattern over time. Seek qualified assessment when difficulties persist, cause daytime impairment, or include breathing or safety concerns.</p>`,
+  disclaimer: "This educational tool cannot diagnose a sleep disorder or determine whether it is safe to drive."
+});

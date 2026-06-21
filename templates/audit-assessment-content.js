@@ -161,7 +161,11 @@ const totals = reports.flatMap((report) => report.issues).reduce((counts, item) 
 
 console.log(`\nAudited ${reports.length} original self-check configurations.`);
 console.log(`Errors: ${totals.error || 0}; blockers: ${totals.blocker || 0}; warnings: ${totals.warning || 0}; migration tasks: ${totals.migration || 0}.`);
-console.log("Known P0 content blockers are expected until each assessment is migrated as a complete P1 unit.");
+if ((totals.blocker || 0) > 0 || (totals.migration || 0) > 0) {
+  console.log("Known content blockers remain until each assessment is migrated as a complete versioned unit.");
+} else {
+  console.log("All original self-check configurations satisfy the versioned content contract.");
+}
 
 if ((totals.error || 0) > 0 || (strict && (totals.blocker || 0) > 0)) {
   process.exitCode = 1;

@@ -1,49 +1,77 @@
-module.exports = {
+const { createV2Config } = require("./v2-assessment-factory");
+
+module.exports = createV2Config({
+  key: "overthinking",
   slug: "cognitive-overthinking-test",
-  title: "Cognitive Overthinking Self-Check | ToolsQuark",
-  description: "Take a private overthinking self-check for rumination, decision paralysis, worst-case thinking, and difficulty moving from thought to action.",
-  h1: "Cognitive Overthinking Self-Check",
-  hero: "Measure rumination, decision loops, and future-focused worry that may keep your mind running without resolution.",
-  schemaName: "Privacy-First Cognitive Overthinking Test",
-  lastUpdated: "June 21, 2026",
-  timeframe: "Past 2 weeks",
-  questionDimensions: ["rumination", "paralysis", "catastrophizing", "rumination", "paralysis"],
-  dimensionRelated: { rumination: 0, paralysis: 1, catastrophizing: 0 },
+  title: "Overthinking Pattern Self-Check | Private 14-Day Review",
+  description: "Review repetitive thinking, decision loops, threat projection, and action displacement with a private 12-item original self-check.",
+  h1: "Overthinking Pattern Self-Check",
+  hero: "Review how often repetitive thinking, decision loops, imagined negative outcomes, and thought replacing action appeared during the past two weeks.",
+  shareDescription: "A private 14-day self-check for repetitive thinking, decision loops, threat projection, and action displacement.",
+  socialFile: "overthinking-pattern-self-check.png",
+  socialAccent: "#7c3aed",
+  recallDays: 14,
+  intendedAudience: "Adults seeking general self-reflection about recent repetitive thinking patterns",
+  contextLabel: "Most affected area",
+  contextQuestion: "Which area is most affected by repetitive thinking right now?",
+  contextOptions: [
+    { label: "Decisions", value: "decisions" },
+    { label: "Work or study", value: "work" },
+    { label: "Sleep or rest", value: "rest" },
+    { label: "Relationships", value: "relationships" }
+  ],
+  dimensions: [
+    { key: "rumination", label: "Repetitive Review", definition: "Repeatedly revisiting past events without gaining useful new information." },
+    { key: "decision", label: "Decision Loops", definition: "Continuing to compare options after enough information is available for a next step." },
+    { key: "threat", label: "Threat Projection", definition: "Repeatedly imagining negative future outcomes." },
+    { key: "action", label: "Action Displacement", definition: "Thinking taking the place of a concrete next action." }
+  ],
+  items: [
+    ["rumination-1", "rumination", "During the past 14 days, how often did you replay a past conversation without finding new information?"],
+    ["rumination-2", "rumination", "During the past 14 days, how often did you revisit a past decision after no new evidence appeared?"],
+    ["rumination-3", "rumination", "During the past 14 days, how often did an old mistake return to mind while you were trying to focus elsewhere?"],
+    ["decision-1", "decision", "During the past 14 days, how often did comparing options delay a decision you were able to make?"],
+    ["decision-2", "decision", "During the past 14 days, how often did you seek more certainty after you already had enough information for a next step?"],
+    ["decision-3", "decision", "During the past 14 days, how often did you reopen a decision shortly after making it?"],
+    ["threat-1", "threat", "During the past 14 days, how often did you imagine a negative outcome before beginning a task?"],
+    ["threat-2", "threat", "During the past 14 days, how often did your attention move toward the worst plausible outcome?"],
+    ["threat-3", "threat", "During the past 14 days, how often did uncertainty lead you to mentally rehearse possible problems?"],
+    ["action-1", "action", "During the past 14 days, how often did thinking about a task replace taking its first concrete step?"],
+    ["action-2", "action", "During the past 14 days, how often did planning continue after a workable next action was clear?"],
+    ["action-3", "action", "During the past 14 days, how often did mental review use time you intended for action?" ]
+  ],
+  protectiveQuestions: [
+    { id: "attention-shift", label: "Attention shifting", question: "During the past 14 days, how often could you redirect attention after noticing a thought loop?" },
+    { id: "uncertain-action", label: "Action with uncertainty", question: "During the past 14 days, how often could you take one useful step without complete certainty?" }
+  ],
+  impactMessage: "When repetitive thinking seriously disrupts work, sleep, relationships, or self-care, consider qualified support. A fuller assessment can review anxiety, mood, trauma, attention, and current stress without assuming one cause from this checklist.",
+  profiles: [
+    { min: 0, max: 12, title: "Mostly Occasional Thought Loops", color: "var(--low)", description: "Your answers place most repetitive-thinking experiences in the occasional range.", insights: ["Keep using concrete next actions when uncertainty appears.", "Protect activities that make attention easier to redirect."] },
+    { min: 13, max: 30, title: "Recurring Overthinking In Some Areas", color: "var(--mid)", description: "Several thought-loop experiences appeared repeatedly, with the main driver varying by dimension.", insights: ["Choose one loop to interrupt with a written next action.", "Set a short decision boundary before seeking more information."] },
+    { min: 31, max: 48, title: "Frequent Thought Loops Across Areas", color: "var(--high)", description: "Many repetitive-thinking experiences appeared on numerous days. Duration and practical interference deserve attention.", insights: ["Consider qualified support when thought loops persist or limit daily life.", "Reduce one loop by shifting from mental review to one observable action."] }
+  ],
+  dimensionRelated: { rumination: 0, decision: 1, threat: 0, action: 1 },
   dimensionGuidance: {
-    rumination: "Give the loop a stopping point: write what happened, what you learned, and the one thing you will do differently, then close the note.",
-    paralysis: "Set a decision deadline and choose the smallest reversible next step rather than waiting for complete certainty.",
-    catastrophizing: "Name the feared outcome, then write a more likely outcome and one coping step you could take if the difficult outcome occurred."
+    rumination: "Write down the one useful lesson available now, then redirect attention instead of reopening the same review.",
+    decision: "Define what information is sufficient and set a time when the decision will close.",
+    threat: "Separate the most likely outcome from the most feared outcome, then identify one preparation step.",
+    action: "Convert the current thought into one visible action that can be completed in ten minutes."
   },
   references: [
-    { title: "Anxiety Disorders", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/anxiety-disorders" }
+    { title: "Anxiety Disorders", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/anxiety-disorders" },
+    { title: "Anxiety", publisher: "MedlinePlus", href: "https://medlineplus.gov/anxiety.html" }
   ],
-  questions: [
-    { question: "How often do you replay conversations long after they ended?", options: ["Rarely", "Sometimes", "Often", "Constantly"] },
-    { question: "How often do decisions feel stuck because you keep analyzing every option?", options: ["Rarely", "Sometimes", "Often", "Nearly always"] },
-    { question: "How often do you imagine worst-case outcomes before starting something?", options: ["Rarely", "Sometimes", "Often", "Automatically"] },
-    { question: "How hard is it to stop thinking once a worry starts?", options: ["Easy", "Somewhat hard", "Hard", "Very hard"] },
-    { question: "How often does thinking replace action?", options: ["Rarely", "Sometimes", "Often", "Most of the time"] }
-  ],
-  profiles: [
-    { min: 5, max: 8, title: "Flexible Thinking Pattern", color: "var(--low)", description: "You appear able to think through problems without getting stuck in repetitive loops.", indicators: { rumination: 22, paralysis: 20, catastrophizing: 18 }, insights: ["Keep using action steps to close loops.", "Write down decisions when they are made to avoid reopening them repeatedly."] },
-    { min: 9, max: 14, title: "Moderate Rumination Loop", color: "var(--mid)", description: "You may be losing time and energy to repeated analysis, especially when uncertainty is high.", indicators: { rumination: 58, paralysis: 62, catastrophizing: 55 }, insights: ["Use time-boxed decisions.", "Ask: what action would make this 5% clearer?"] },
-    { min: 15, max: 20, title: "High Overthinking Load", color: "var(--high)", description: "Your responses suggest overthinking may be interfering with clarity, action, or rest.", indicators: { rumination: 88, paralysis: 86, catastrophizing: 84 }, insights: ["Externalize thoughts on paper instead of processing endlessly in your head.", "If loops feel uncontrollable or distressing, consider qualified mental health support."] }
-  ],
-  indicators: [{ key: "rumination", label: "Rumination" }, { key: "paralysis", label: "Decision Paralysis" }, { key: "catastrophizing", label: "Catastrophizing" }],
   related: [
-    { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety Assessment", description: "Check whether worry is paired with body-level arousal.", action: "Assess Anxiety" },
-    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Self-Check", description: "Review attention control and task initiation.", action: "Check Focus" }
+    { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety And High-Alert Pattern", description: "Review whether thought loops occur alongside high-alert responses.", action: "Review Alertness" },
+    { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Pattern Self-Check", description: "Review whether extended thinking is displacing action.", action: "Review Delay" }
   ],
   faq: [
-    { question: "Is overthinking always bad?", answer: "No. Careful thinking is useful. It becomes a problem when it repeats without progress, rest, or action." },
-    { question: "Can this diagnose OCD or anxiety?", answer: "No. This is a self-reflection tool and cannot diagnose clinical conditions." }
+    { question: "Is overthinking a diagnosis?", answer: "No. Repetitive thinking can occur in many situations and conditions, and this original checklist cannot determine a cause." },
+    { question: "Is this a validated rumination scale?", answer: "No. It is an original ToolsQuark educational self-check with editorial result patterns." },
+    { question: "When may support help?", answer: "Consider qualified support when repetitive thinking persists, disrupts sleep or daily responsibilities, or causes substantial distress." }
   ],
-  contentSections: [
-    { title: "What This Self-Check Covers", body: `<p>The five questions review replaying conversations, analysis paralysis, worst-case thinking, difficulty disengaging from worry, and thinking that replaces action.</p><p>This is an original ToolsQuark checklist. “Overthinking” is not a diagnosis, and this is not a validated rumination or anxiety scale.</p>` },
-    { title: "How Scoring Works", body: `<p>Answers contribute 1 to 4 points, for a total from 5 to 20. Higher totals reflect more frequent repetitive-thinking responses in this set.</p><ul><li><strong>5-8:</strong> fewer frequent loops.</li><li><strong>9-14:</strong> several recurring loops.</li><li><strong>15-20:</strong> many frequent loops affecting action or rest.</li></ul><div class="note-box">The bands and dimension bars are editorial, not clinical cutoffs.</div>` },
-    { title: "What The Score Cannot Explain", body: `<p>Repetitive thinking can occur with stress, anxiety, depression, obsessive-compulsive symptoms, trauma, perfectionism, sleep loss, or difficult real-world decisions. The content and impact of thoughts matter more than a generic label.</p>` },
-    { title: "When To Seek Support", body: `<p>Consider qualified support when thought loops feel uncontrollable, cause major distress, interfere with sleep or responsibilities, or include frightening intrusive content. Seek urgent local help if thoughts involve immediate danger or inability to stay safe.</p>` }
-  ],
-  methodology: "This original five-item checklist scores answers from 1 to 4. Total-score bands and rumination, paralysis, and catastrophizing indicators are editorial and not clinically validated.",
-  disclaimer: "This tool is educational only. Seek professional care if repetitive thoughts are distressing, intrusive, or impairing."
-};
+  validationLimit: "It cannot diagnose anxiety, depression, OCD, trauma-related conditions, or another cause of repetitive thinking.",
+  limitsBody: `<p>Careful analysis is useful when it produces information or action. Repetitive thinking becomes more relevant when it continues without progress, rest, or a decision. Current stress, anxiety, depression, trauma, attention differences, and other factors can overlap.</p>`,
+  actionBody: `<p>Use the most frequent dimension to choose one experiment: close a decision, write one lesson, compare feared and likely outcomes, or take one visible next action. Seek qualified support when the pattern remains persistent or impairing.</p>`,
+  disclaimer: "This educational tool cannot diagnose a condition or determine why repetitive thinking occurs."
+});

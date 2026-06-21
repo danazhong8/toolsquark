@@ -13,6 +13,7 @@ module.exports = {
   schemaName: "ToolsQuark Stress Pattern Self-Check",
   schemaDescription: "A private browser-side 12-item original stress pattern self-check for educational reflection.",
   socialImage: "https://toolsquark.com/assets/social/stress-pattern-self-check.png",
+  socialAccent: "#2563eb",
   shareDescription: "A private 14-day self-check for overload, control strain, stress reactivity, and daily-life impact.",
   lastUpdated: "June 21, 2026",
   timeframe: "Past 14 days",

@@ -1,52 +1,79 @@
-module.exports = {
+const { createV2Config } = require("./v2-assessment-factory");
+
+module.exports = createV2Config({
+  key: "socialmedia",
   slug: "social-media-addiction-index",
-  title: "Social Media Use Self-Check | Scrolling & Comparison",
-  description: "Take a private social media use self-check for automatic opening, endless scrolling, validation seeking, comparison, and fear of missing out.",
-  h1: "Social Media Use Self-Check",
-  hero: "Evaluate feed capture, validation seeking, FOMO, and mood shifts linked to social media use.",
-  schemaName: "Privacy-First Social Media Use Self-Check",
-  lastUpdated: "June 21, 2026",
-  timeframe: "Past 30 days",
-  questionDimensions: ["capture", "validation", "comparison", "capture", "comparison"],
-  dimensionRelated: { capture: 0, validation: 0, comparison: 1 },
+  title: "Social Media Use Pattern Self-Check | ToolsQuark",
+  description: "Review automatic feed use, stopping control, social evaluation, and life displacement with a private 12-item original self-check.",
+  h1: "Social Media Use Pattern Self-Check",
+  hero: "Review how often automatic feed use, difficulty stopping, social evaluation, and social apps displacing intended activity appeared during the past 30 days.",
+  shareDescription: "A private 30-day self-check for feed capture, stopping control, social evaluation, and life displacement.",
+  socialFile: "social-media-use-pattern-self-check.png",
+  socialAccent: "#7c3aed",
+  recallDays: 30,
+  intendedAudience: "Adults seeking general self-reflection about recent social media use patterns",
+  categoryHref: "lifestyle.html",
+  categoryLabel: "Lifestyle Tools",
+  contextLabel: "Main social media activity",
+  contextQuestion: "Which social media activity is most connected to this pattern?",
+  contextOptions: [
+    { label: "Short-form or algorithmic feeds", value: "feeds" },
+    { label: "Messaging or group activity", value: "messaging" },
+    { label: "Posting or checking feedback", value: "posting" },
+    { label: "Several activities", value: "multiple" }
+  ],
+  dimensions: [
+    { key: "capture", label: "Automatic Feed Capture", definition: "Opening or continuing social feeds without a prior intention." },
+    { key: "control", label: "Stopping Control", definition: "Difficulty ending social media use at the intended time." },
+    { key: "evaluation", label: "Social Evaluation", definition: "Mood or self-appraisal being shaped by feedback and comparison." },
+    { key: "displacement", label: "Life Displacement", definition: "Social media replacing intended sleep, work, connection, or routines." }
+  ],
+  items: [
+    ["capture-1", "capture", "During the past 30 days, how often did you open a social app without a clear purpose?"],
+    ["capture-2", "capture", "During the past 30 days, how often did a feed continue longer than you initially intended?"],
+    ["capture-3", "capture", "During the past 30 days, how often did you reopen a social app shortly after closing it?"],
+    ["control-1", "control", "During the past 30 days, how often was it difficult to stop after deciding to leave a social app?"],
+    ["control-2", "control", "During the past 30 days, how often did one more post become an extended session?"],
+    ["control-3", "control", "During the past 30 days, how often did you continue using a social app despite no longer enjoying it?"],
+    ["evaluation-1", "evaluation", "During the past 30 days, how often did feedback on a post noticeably affect your mood?"],
+    ["evaluation-2", "evaluation", "During the past 30 days, how often did comparing yourself with posts reduce satisfaction with your own life?"],
+    ["evaluation-3", "evaluation", "During the past 30 days, how often did concern about missing updates pull you back to a social app?"],
+    ["displacement-1", "displacement", "During the past 30 days, how often did social media delay your intended bedtime?"],
+    ["displacement-2", "displacement", "During the past 30 days, how often did social media replace time planned for a responsibility?"],
+    ["displacement-3", "displacement", "During the past 30 days, how often did social media reduce attention available for an in-person interaction?"]
+  ],
+  protectiveQuestions: [
+    { id: "intentional-entry", label: "Intentional entry", question: "During the past 30 days, how often did you decide your purpose before opening a social app?" },
+    { id: "feed-boundary", label: "Feed boundary", question: "During the past 30 days, how often did you use a planned stopping point for social media?" }
+  ],
+  impactMessage: "Serious sleep, work, relationship, financial, or emotional consequences deserve support regardless of the checklist total. Consider qualified support when social media use remains difficult to control or substantially affects mood and daily life.",
+  profiles: [
+    { min: 0, max: 12, title: "Mostly Intentional Social Media Use", color: "var(--low)", description: "Your answers place most automatic or disruptive social media experiences in the occasional range.", insights: ["Keep the boundaries that support intentional use.", "Protect online activities that create genuine connection rather than passive capture."] },
+    { min: 13, max: 30, title: "Context-Dependent Social Media Capture", color: "var(--mid)", description: "Several social media experiences appeared repeatedly, with the pattern varying by dimension.", insights: ["Change one feed cue or stopping condition before relying on restraint alone.", "Notice whether evaluation or displacement matters more than total time."] },
+    { min: 31, max: 48, title: "Frequent Social Media Capture Across Areas", color: "var(--high)", description: "Many social media experiences appeared on numerous days. Practical and emotional consequences deserve attention.", insights: ["Use stronger feed and notification boundaries around the most affected activity.", "Consider support when use remains difficult to control or strongly affects mood."] }
+  ],
+  dimensionRelated: { capture: 0, control: 0, evaluation: 1, displacement: 1 },
   dimensionGuidance: {
-    capture: "Create a clear stopping cue: use a timer, remove shortcuts from the home screen, and decide what you are opening the app to do.",
-    validation: "Disable nonessential reaction alerts and wait for a planned check time instead of monitoring response counts.",
-    comparison: "Mute or unfollow accounts that reliably worsen your mood and add accounts connected to real interests, learning, or supportive relationships."
+    capture: "Remove automatic entry points and decide the purpose before opening the app.",
+    control: "Use an external stopping cue and close the app when the cue occurs.",
+    evaluation: "Reduce feedback checking and unfollow comparison-heavy sources that reliably worsen mood.",
+    displacement: "Protect the displaced activity first with a feed-free time or location."
   },
   references: [
     { title: "Health Advisory on Social Media Use in Adolescence", publisher: "American Psychological Association", href: "https://www.apa.org/topics/social-media-internet/health-advisory-adolescent-social-media-use" },
     { title: "Social Media and Youth Mental Health", publisher: "U.S. Surgeon General", href: "https://www.hhs.gov/surgeongeneral/priorities/youth-mental-health/social-media/index.html" }
   ],
-  categoryHref: "lifestyle.html",
-  categoryLabel: "Lifestyle Tools",
-  questions: [
-    { question: "How often do you open social apps without intending to?", options: ["Rarely", "Sometimes", "Often", "Constantly"] },
-    { question: "How much do likes, views, or comments affect your mood?", options: ["Very little", "Somewhat", "A lot", "Strongly"] },
-    { question: "How often do you compare your life to what others post?", options: ["Rarely", "Sometimes", "Often", "Almost always"] },
-    { question: "How hard is it to stop scrolling once you begin?", options: ["Easy", "Somewhat hard", "Hard", "Very hard"] },
-    { question: "How often do you fear missing out when offline?", options: ["Rarely", "Sometimes", "Often", "Almost constantly"] }
-  ],
-  profiles: [
-    { min: 5, max: 8, title: "Fewer Frequent Use Concerns", color: "var(--low)", description: "Your answers include fewer frequent concerns about automatic use, validation, or comparison.", indicators: { capture: 22, validation: 20, comparison: 18 }, insights: ["Keep feeds intentional and time-limited.", "Protect offline identity-building activities."] },
-    { min: 9, max: 14, title: "Recurring Social-Media Friction", color: "var(--mid)", description: "Your social media use may be affecting mood, attention, or comparison patterns.", indicators: { capture: 62, validation: 58, comparison: 60 }, insights: ["Hide like counts where possible.", "Replace passive scrolling with intentional check-in windows."] },
-    { min: 15, max: 20, title: "Frequent Social-Media Disruption", color: "var(--high)", description: "Your responses include frequent feed loops, comparison, or validation seeking that may affect attention and mood.", indicators: { capture: 90, validation: 86, comparison: 88 }, insights: ["Use blockers or app limits during vulnerable times.", "Consider a short reset period if social media strongly affects self-worth."] }
-  ],
-  indicators: [{ key: "capture", label: "Feed Capture" }, { key: "validation", label: "Validation Seeking" }, { key: "comparison", label: "Comparison/FOMO" }],
   related: [
-    { href: "https://toolsquark.com/tools/smartphone-addiction-test.html", title: "Smartphone Use Self-Check", description: "Review broader phone-use and checking loops.", action: "Review Phone Use" },
-    { href: "https://toolsquark.com/tools/self-discipline-test.html", title: "Self-Discipline Self-Check", description: "Check impulse friction and habit consistency.", action: "Review Follow-Through" }
+    { href: "https://toolsquark.com/tools/smartphone-addiction-test.html", title: "Smartphone Use Pattern", description: "Review device-level checking, notifications, and displacement across phone activities.", action: "Review Phone Use" },
+    { href: "https://toolsquark.com/tools/loneliness-level-test.html", title: "Connection And Loneliness Pattern", description: "Review whether online use is occurring alongside unmet connection needs.", action: "Review Connection" }
   ],
   faq: [
-    { question: "Is social media always harmful?", answer: "No. It can support connection and learning. Risk rises when use feels compulsive or strongly affects mood, sleep, or self-worth." },
-    { question: "What is a practical first step?", answer: "Remove algorithmic feeds from your first and last hour of the day." }
+    { question: "Does frequent social media use mean addiction?", answer: "No. Frequency alone does not establish addiction. Control, distress, context, and practical consequences matter." },
+    { question: "Is this a validated social media addiction scale?", answer: "No. It is an original ToolsQuark educational self-check." },
+    { question: "How is this different from the smartphone self-check?", answer: "This page focuses on feeds, social evaluation, and comparison. The smartphone page covers device-level behavior across phone activities." }
   ],
-  contentSections: [
-    { title: "What This Self-Check Covers", body: `<p>The five questions review automatic opening, sensitivity to engagement metrics, social comparison, scrolling control, and fear of missing out.</p><p>This is an original ToolsQuark checklist. It is not the Bergen Social Media Addiction Scale or a diagnostic assessment.</p>` },
-    { title: "How Scoring Works", body: `<p>Each answer contributes 1 to 4 points, producing a total from 5 to 20. Higher totals reflect more frequent social-media friction in this set.</p><ul><li><strong>5-8:</strong> fewer frequent concerns.</li><li><strong>9-14:</strong> several recurring concerns.</li><li><strong>15-20:</strong> many frequent concerns affecting attention or mood.</li></ul><div class="note-box">The bands and dimension bars are editorial, not validated addiction thresholds.</div>` },
-    { title: "Effects Differ By Person And Use", body: `<p>Age, content, active connection versus passive scrolling, harassment, sleep timing, existing mental health, and platform design can all change the experience. A single time total cannot determine benefit or harm.</p>` },
-    { title: "How To Use The Result", body: `<p>Identify the answer with the most real-world cost and test one boundary: remove a trigger, schedule check-in windows, mute comparison-heavy accounts, or keep feeds out of the sleep period. Seek support when use is tied to severe distress, harassment, self-harm content, or major functional impairment.</p>` }
-  ],
-  methodology: "This original five-item checklist scores answers from 1 to 4. Total-score bands and feed, validation, and comparison indicators are editorial and not clinically validated.",
-  disclaimer: "This tool is educational and cannot diagnose behavioral addiction, depression, anxiety, or other mental health conditions."
-};
+  validationLimit: "It cannot diagnose behavioral addiction, depression, anxiety, or another cause of difficult social media use.",
+  limitsBody: `<p>Social media can support learning, identity, work, and connection. Risk cannot be inferred from time alone. Age, platform design, content, purpose, mood effects, control, and what use displaces all matter.</p>`,
+  actionBody: `<p>Use the most frequent dimension to change one feed cue, stopping condition, evaluation habit, or protected activity. Seek support when use remains difficult to control or causes serious consequences.</p>`,
+  disclaimer: "This educational tool cannot diagnose social media addiction or determine whether a specific amount of use is harmful."
+});

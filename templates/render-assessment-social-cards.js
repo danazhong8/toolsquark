@@ -10,47 +10,40 @@ try {
 
 const root = path.resolve(__dirname, "..");
 const outDir = path.join(root, "assets", "social");
-const cards = [
-  {
-    file: "stress-pattern-self-check.png",
-    eyebrow: "14-DAY ORIGINAL SELF-CHECK",
-    title: ["Stress Pattern", "Self-Check"],
-    description: ["Review overload, control strain, reactivity,", "and daily-life impact."],
-    accent: "#2563eb",
-    dimensions: [
-      ["Perceived overload", "#2563eb", 78],
-      ["Control strain", "#0891b2", 58],
-      ["Stress reactivity", "#16a34a", 68],
-      ["Daily-life impact", "#d97706", 46]
-    ]
-  },
-  {
-    file: "anxiety-high-alert-self-check.png",
-    eyebrow: "14-DAY ORIGINAL SELF-CHECK",
-    title: ["Anxiety And High-Alert", "Pattern Self-Check"],
-    description: ["Review physical alertness, persistent worry,", "sensitivity, and recovery."],
-    accent: "#0f766e",
-    dimensions: [
-      ["Physical alertness", "#0f766e", 72],
-      ["Worry persistence", "#2563eb", 64],
-      ["Trigger sensitivity", "#7c3aed", 56],
-      ["Recovery and impact", "#d97706", 48]
-    ]
-  },
-  {
-    file: "procrastination-pattern-self-check.png",
-    eyebrow: "30-DAY ORIGINAL SELF-CHECK",
-    title: ["Procrastination Pattern", "Self-Check"],
-    description: ["Review initiation, avoidance, short-term reward", "pull, and perfectionistic delay."],
-    accent: "#7c3aed",
-    dimensions: [
-      ["Task initiation", "#7c3aed", 74],
-      ["Emotional avoidance", "#2563eb", 62],
-      ["Short-term reward pull", "#d97706", 54],
-      ["Perfectionistic delay", "#0f766e", 44]
-    ]
+const configDir = path.join(__dirname, "assessment-pages");
+const barColors = ["#2563eb", "#0891b2", "#16a34a", "#d97706"];
+const barWidths = [74, 62, 54, 46];
+
+function wrapWords(text, maxCharacters, maxLines) {
+  const words = text.split(/\s+/);
+  const lines = [];
+  let line = "";
+  for (const word of words) {
+    const candidate = line ? `${line} ${word}` : word;
+    if (candidate.length > maxCharacters && line && lines.length < maxLines - 1) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
   }
-];
+  if (line) lines.push(line);
+  return lines.slice(0, maxLines);
+}
+
+const cards = fs.readdirSync(configDir)
+  .filter((file) => file.endsWith(".config.js"))
+  .sort()
+  .map((file) => require(path.join(configDir, file)))
+  .filter((config) => config.instrument?.type === "original-self-check" && config.socialImage)
+  .map((config) => ({
+    file: config.socialImage.split("/").pop(),
+    eyebrow: `${config.instrument.recallPeriodDays}-DAY ORIGINAL SELF-CHECK`,
+    title: wrapWords(config.h1, 20, 3),
+    description: wrapWords(config.shareDescription || config.description, 48, 2),
+    accent: config.socialAccent || "#2563eb",
+    dimensions: config.dimensions.map((dimension, index) => [dimension.label, barColors[index], barWidths[index]])
+  }));
 
 function xml(value) {
   return String(value)
@@ -72,13 +65,16 @@ function renderSvg(card) {
       <rect x="800" y="${y + 14}" width="${Math.round(290 * width / 100)}" height="12" rx="6" fill="${color}"/>`;
   }).join("");
 
+  const titleSize = card.title.length > 2 ? 48 : 58;
+  const titleLineHeight = card.title.length > 2 ? 54 : 65;
+  const descriptionY = 257 + card.title.length * titleLineHeight + 34;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
     <rect width="1200" height="630" fill="#f8fafc"/>
     <rect width="1200" height="14" fill="${card.accent}"/>
     <text x="70" y="88" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" fill="#2563eb">ToolsQuark</text>
     <text x="70" y="188" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" fill="${card.accent}">${xml(card.eyebrow)}</text>
-    ${textLines(card.title, 70, 257, 58, 800, "#0f172a", 65)}
-    ${textLines(card.description, 70, 421, 23, 400, "#475569", 34)}
+    ${textLines(card.title, 70, 257, titleSize, 800, "#0f172a", titleLineHeight)}
+    ${textLines(card.description, 70, descriptionY, 23, 400, "#475569", 34)}
     <text x="70" y="576" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#64748b">toolsquark.com</text>
     <rect x="760" y="105" width="370" height="430" rx="8" fill="#ffffff" stroke="#dbe3ec"/>
     <text x="800" y="158" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" fill="#0f172a">Four-part answer pattern</text>

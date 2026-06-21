@@ -1,61 +1,77 @@
-module.exports = {
+const { createV2Config } = require("./v2-assessment-factory");
+
+module.exports = createV2Config({
+  key: "focus",
   slug: "focus-attention-diagnostic",
-  title: "Focus & Attention Self-Check | ToolsQuark",
-  description: "Take a private focus and attention self-check covering distractibility, task initiation, sustained attention, and frequent task switching.",
-  h1: "Focus & Attention Self-Check",
-  hero: "Assess concentration stability, distraction sensitivity, task initiation, and cognitive switching friction.",
-  schemaName: "Privacy-First Focus Attention Self-Check",
-  lastUpdated: "June 21, 2026",
-  timeframe: "Past 2 weeks",
-  questionDimensions: ["distractibility", "initiation", "switching", "distractibility", "switching"],
-  dimensionRelated: { distractibility: 1, initiation: 0, switching: 0 },
+  title: "Focus And Attention Pattern Self-Check | ToolsQuark",
+  description: "Review distractibility, task initiation, sustained attention, and task organization with a private 12-item original self-check.",
+  h1: "Focus And Attention Pattern Self-Check",
+  hero: "Review how often distraction, starting friction, attention drift, and task organization difficulties appeared during the past two weeks.",
+  shareDescription: "A private 14-day self-check for distractibility, task initiation, sustained attention, and task organization.",
+  socialFile: "focus-attention-pattern-self-check.png",
+  socialAccent: "#0891b2",
+  recallDays: 14,
+  intendedAudience: "Adults seeking general self-reflection about recent focus patterns",
+  contextLabel: "Most affected setting",
+  contextQuestion: "Where has focus difficulty been most noticeable?",
+  contextOptions: [
+    { label: "Work or study", value: "work" },
+    { label: "Household tasks", value: "household" },
+    { label: "Conversations or reading", value: "communication" },
+    { label: "Across several settings", value: "multiple" }
+  ],
+  dimensions: [
+    { key: "distraction", label: "Distractibility", definition: "Attention being pulled away by external or internal cues." },
+    { key: "initiation", label: "Task Initiation", definition: "Difficulty beginning after the next action is known." },
+    { key: "sustained", label: "Sustained Attention", definition: "Difficulty remaining with one task for the intended period." },
+    { key: "organization", label: "Task Organization", definition: "Difficulty keeping priorities or task state clear." }
+  ],
+  items: [
+    ["distraction-1", "distraction", "During the past 14 days, how often did a notification pull you away from an intended task?"],
+    ["distraction-2", "distraction", "During the past 14 days, how often did background activity interrupt your train of thought?"],
+    ["distraction-3", "distraction", "During the past 14 days, how often did an unrelated thought redirect your attention?"],
+    ["initiation-1", "initiation", "During the past 14 days, how often was it difficult to begin after the next task step was clear?"],
+    ["initiation-2", "initiation", "During the past 14 days, how often did you remain inactive while preparing to start?"],
+    ["initiation-3", "initiation", "During the past 14 days, how often did a routine task require unusual effort to begin?"],
+    ["sustained-1", "sustained", "During the past 14 days, how often did attention drift before the intended work period ended?"],
+    ["sustained-2", "sustained", "During the past 14 days, how often did you leave a task before reaching a planned stopping point?"],
+    ["sustained-3", "sustained", "During the past 14 days, how often did you need to reread material because attention had moved elsewhere?"],
+    ["organization-1", "organization", "During the past 14 days, how often was the next priority unclear?"],
+    ["organization-2", "organization", "During the past 14 days, how often did switching tasks make it difficult to remember where you stopped?"],
+    ["organization-3", "organization", "During the past 14 days, how often did several open tasks make one next action hard to identify?"]
+  ],
+  protectiveQuestions: [
+    { id: "focus-block", label: "Protected focus time", question: "During the past 14 days, how often did you have a period protected from major interruptions?" },
+    { id: "clear-next-step", label: "Clear next step", question: "During the past 14 days, how often was one concrete next action written down before work began?" }
+  ],
+  impactMessage: "Serious focus-related consequences deserve a fuller assessment. Sleep, stress, mood, workload, medication effects, substance use, medical conditions, learning needs, and ADHD can overlap, so this checklist should not be used to select one explanation.",
+  profiles: [
+    { min: 0, max: 12, title: "Mostly Occasional Focus Friction", color: "var(--low)", description: "Your answers place most focus difficulties in the occasional range.", insights: ["Keep protecting low-interruption work periods.", "Continue defining one next action before beginning."] },
+    { min: 13, max: 30, title: "Context-Dependent Focus Friction", color: "var(--mid)", description: "Several focus difficulties appeared repeatedly, with the pattern varying across dimensions or settings.", insights: ["Change one environmental cue before changing the whole routine.", "Use the highest-frequency dimension to choose one experiment."] },
+    { min: 31, max: 48, title: "Frequent Focus Friction Across Areas", color: "var(--high)", description: "Many focus difficulties appeared on numerous days. Duration and practical interference deserve attention.", insights: ["Consider qualified support when focus problems persist or impair daily life.", "Protect sleep and reduce one major interruption while arranging support."] }
+  ],
+  dimensionRelated: { distraction: 0, initiation: 1, sustained: 0, organization: 1 },
   dimensionGuidance: {
-    distractibility: "Remove the easiest source of interruption before starting: silence alerts, close extra tabs, and place the phone out of reach.",
-    initiation: "Define a first action that takes under five minutes and begin it before trying to plan the whole task.",
-    switching: "Keep one visible priority and capture incoming tasks on a separate list instead of changing course immediately."
+    distraction: "Silence one nonessential cue and keep unrelated capture notes outside the current task.",
+    initiation: "Reduce the task to one action that can begin in under two minutes.",
+    sustained: "Use a realistic work interval with one visible stopping point and one planned break.",
+    organization: "Keep one short active-task list and mark exactly where work stopped before switching."
   },
   references: [
-    { title: "Attention-Deficit/Hyperactivity Disorder", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd" }
+    { title: "Attention-Deficit/Hyperactivity Disorder", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd" },
+    { title: "About ADHD", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/adhd/about/index.html" }
   ],
-  questions: [
-    { question: "How easily do notifications, sounds, or tabs pull you away from work?", options: ["Rarely", "Sometimes", "Often", "Constantly"] },
-    { question: "How difficult is it to start a task even when you know what to do?", options: ["Easy", "Somewhat hard", "Hard", "Very hard"] },
-    { question: "How often do you jump between tasks before completing one?", options: ["Rarely", "Sometimes", "Often", "Almost always"] },
-    { question: "How long can you usually sustain deep focus?", options: ["60+ minutes", "30-60 minutes", "10-30 minutes", "Under 10 minutes"] },
-    { question: "How often does mental clutter make priorities unclear?", options: ["Rarely", "Sometimes", "Often", "Daily"] }
-  ],
-  profiles: [
-    { min: 5, max: 8, title: "Stable Attention Control", color: "var(--low)", description: "Your attention pattern appears comparatively stable and less vulnerable to frequent switching.", indicators: { distractibility: 20, initiation: 22, switching: 24 }, insights: ["Keep protecting deep-work blocks.", "Batch messages to preserve attention depth."] },
-    { min: 9, max: 14, title: "Fragmented Focus Pattern", color: "var(--mid)", description: "Your focus may be disrupted by task switching, unclear starts, or environmental noise.", indicators: { distractibility: 60, initiation: 58, switching: 62 }, insights: ["Define one visible next action.", "Use timed focus blocks and remove the easiest distractions before starting."] },
-    { min: 15, max: 20, title: "High Attention Friction", color: "var(--high)", description: "Your responses suggest high difficulty sustaining focus or initiating tasks consistently.", indicators: { distractibility: 88, initiation: 84, switching: 90 }, insights: ["External structure may help: timers, checklists, blockers, and body doubling.", "If focus issues are lifelong or impairing, consider professional evaluation."] }
-  ],
-  indicators: [{ key: "distractibility", label: "Distractibility" }, { key: "initiation", label: "Task Initiation Friction" }, { key: "switching", label: "Task Switching" }],
   related: [
-    { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Test", description: "Check whether delay loops are affecting task starts.", action: "Assess Delay" },
-    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Poor sleep can reduce focus stability.", action: "Assess Sleep" }
+    { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Pattern Self-Check", description: "Review whether task delay is occurring alongside focus friction.", action: "Review Delay" },
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Self-Check", description: "Review whether recent sleep patterns overlap with attention difficulty.", action: "Review Sleep" }
   ],
   faq: [
-    { question: "Does low focus mean ADHD?", answer: "Not necessarily. Sleep, stress, environment, mood, workload, and habits can all affect focus." },
-    { question: "What is the fastest focus improvement?", answer: "Remove one major distraction and define the first tiny action before using a timer." }
+    { question: "Does frequent focus difficulty mean ADHD?", answer: "No. Many conditions and circumstances can affect focus, and ADHD assessment requires developmental history and impairment across settings." },
+    { question: "Is this a diagnostic test?", answer: "No. It is an original educational self-check despite the legacy page URL." },
+    { question: "When may support help?", answer: "Consider qualified support when focus difficulties persist across settings or cause meaningful work, study, relationship, or safety problems." }
   ],
-  contentSections: [
-    {
-      title: "What This Self-Check Covers",
-      body: `<p>The five questions review distractibility, task initiation, task switching, sustained focus, and priority clarity during the stated timeframe.</p><p>This is an original ToolsQuark checklist. It is not ASRS, a neuropsychological test, or an ADHD diagnostic interview.</p>`
-    },
-    {
-      title: "How Scoring Works",
-      body: `<p>Answers are scored from 1 to 4, producing a total from 5 to 20. Higher totals reflect more frequent attention friction in this question set.</p><ul><li><strong>5-8:</strong> fewer frequent focus difficulties.</li><li><strong>9-14:</strong> several recurring attention barriers.</li><li><strong>15-20:</strong> many frequent barriers that may warrant support.</li></ul><div class="note-box">The score bands and dimension bars are editorial, not validated ADHD thresholds.</div>`
-    },
-    {
-      title: "Attention Problems Have Many Causes",
-      body: `<p>Sleep loss, anxiety, depression, stress, pain, substances, medication effects, learning differences, and an overloaded environment can all affect attention. ADHD diagnosis also considers childhood history, persistence across settings, functional impairment, and alternative explanations.</p>`
-    },
-    {
-      title: "When To Seek Evaluation",
-      body: `<p>Consider qualified evaluation when attention problems are long-standing, occur across settings, or substantially affect school, work, finances, relationships, driving, or safety. Bring concrete examples and a timeline rather than relying on this score alone.</p>`
-    }
-  ],
-  methodology: "This original five-item checklist scores answers from 1 to 4. Total-score bands and distractibility, initiation, and switching indicators are editorial and not clinically validated. Scoring stays in the browser.",
-  disclaimer: "This tool is not an ADHD diagnosis or medical assessment. Seek qualified evaluation if symptoms are persistent or impairing."
-};
+  validationLimit: "It cannot diagnose ADHD, a learning difference, a mood condition, or another cause of attention difficulty.",
+  limitsBody: `<p>Attention varies with sleep, stress, environment, mood, pain, medication effects, substance use, workload, and medical conditions. ADHD assessment also considers childhood history and patterns across settings, which this page cannot evaluate.</p>`,
+  actionBody: `<p>Start with the highest-frequency dimension: remove one cue, shrink the first step, set a realistic focus interval, or externalize task state. Seek qualified support when difficulties remain persistent or impairing.</p>`,
+  disclaimer: "This educational tool cannot diagnose ADHD or determine why attention difficulty occurs."
+});

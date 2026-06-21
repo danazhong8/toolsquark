@@ -12,6 +12,7 @@ module.exports = {
   hero: "Review how often task initiation, emotional avoidance, short-term reward pull, and perfectionistic delay affected action during the past 30 days.",
   schemaName: "ToolsQuark Procrastination Pattern Self-Check",
   socialImage: "https://toolsquark.com/assets/social/procrastination-pattern-self-check.png",
+  socialAccent: "#7c3aed",
   shareDescription: "A private 30-day self-check for task initiation, emotional avoidance, short-term reward pull, and perfectionistic delay.",
   lastUpdated: "June 21, 2026",
   timeframe: "Past 30 days",

@@ -1,49 +1,77 @@
-module.exports = {
+const { createV2Config } = require("./v2-assessment-factory");
+
+module.exports = createV2Config({
+  key: "socialfear",
   slug: "social-anxiety-test",
-  title: "Social Anxiety Self-Check | ToolsQuark",
-  description: "Take a private social anxiety self-check covering fear of judgment, avoidance, self-monitoring, and replaying interactions afterward.",
-  h1: "Social Anxiety Self-Check",
-  hero: "Reflect on fear of judgment, avoidance, safety behaviors, and post-event replay after social interactions.",
-  schemaName: "Privacy-First Social Anxiety Test",
-  lastUpdated: "June 21, 2026",
-  timeframe: "Past 2 weeks",
-  questionDimensions: ["judgment", "avoidance", "judgment", "replay", "avoidance"],
-  dimensionRelated: { judgment: 1, avoidance: 0, replay: 1 },
+  title: "Social Anxiety Pattern Self-Check | Private 14-Day Review",
+  description: "Review anticipated evaluation, avoidance, self-monitoring, and post-event review with a private 12-item original self-check.",
+  h1: "Social Anxiety Pattern Self-Check",
+  hero: "Review how often fear of evaluation, avoidance, self-monitoring, and replaying interactions appeared during the past two weeks.",
+  shareDescription: "A private 14-day self-check for anticipated evaluation, avoidance, self-monitoring, and post-event review.",
+  socialFile: "social-anxiety-pattern-self-check.png",
+  socialAccent: "#7c3aed",
+  recallDays: 14,
+  intendedAudience: "Adults seeking general self-reflection about recent social fear patterns",
+  contextLabel: "Most difficult setting",
+  contextQuestion: "Where has social fear been most noticeable?",
+  contextOptions: [
+    { label: "Groups or meetings", value: "groups" },
+    { label: "One-to-one conversations", value: "one-to-one" },
+    { label: "Performance or speaking situations", value: "performance" },
+    { label: "Unfamiliar people or places", value: "unfamiliar" }
+  ],
+  dimensions: [
+    { key: "evaluation", label: "Anticipated Evaluation", definition: "Expecting negative judgment before or during social situations." },
+    { key: "avoidance", label: "Social Avoidance", definition: "Avoiding or leaving situations because of social fear." },
+    { key: "monitoring", label: "Self-Monitoring", definition: "Attention being directed toward one's own performance during interaction." },
+    { key: "review", label: "Post-Event Review", definition: "Replaying interactions afterward while searching for mistakes." }
+  ],
+  items: [
+    ["evaluation-1", "evaluation", "During the past 14 days, how often did you expect another person to judge you negatively?"],
+    ["evaluation-2", "evaluation", "During the past 14 days, how often did fear of appearing awkward increase before an interaction?"],
+    ["evaluation-3", "evaluation", "During the past 14 days, how often did you anticipate embarrassment in an ordinary social situation?"],
+    ["avoidance-1", "avoidance", "During the past 14 days, how often did social fear lead you to decline an interaction?"],
+    ["avoidance-2", "avoidance", "During the past 14 days, how often did you leave a social situation earlier than intended because of discomfort?"],
+    ["avoidance-3", "avoidance", "During the past 14 days, how often did you avoid speaking when you had something relevant to contribute?"],
+    ["monitoring-1", "monitoring", "During the past 14 days, how often did you monitor how your voice sounded during an interaction?"],
+    ["monitoring-2", "monitoring", "During the past 14 days, how often did attention shift toward how you appeared while speaking?"],
+    ["monitoring-3", "monitoring", "During the past 14 days, how often did self-monitoring make it harder to follow the conversation?"],
+    ["review-1", "review", "During the past 14 days, how often did you replay a social interaction afterward?"],
+    ["review-2", "review", "During the past 14 days, how often did you search your memory for a possible social mistake?"],
+    ["review-3", "review", "During the past 14 days, how often did concern about a past interaction continue into the next day?"]
+  ],
+  protectiveQuestions: [
+    { id: "stayed-present", label: "Stayed present", question: "During the past 14 days, how often could you remain in an interaction despite some discomfort?" },
+    { id: "supportive-contact", label: "Supportive contact", question: "During the past 14 days, how often did you interact with someone who felt relatively safe to be around?" }
+  ],
+  impactMessage: "When social fear seriously restricts work, study, relationships, health care, or ordinary responsibilities, consider qualified support. Use urgent local help if distress occurs alongside thoughts of self-harm or feeling unable to stay safe.",
+  profiles: [
+    { min: 0, max: 12, title: "Mostly Occasional Social Fear", color: "var(--low)", description: "Your answers place most social-fear experiences in the occasional range.", insights: ["Keep participating in interactions that feel manageable and meaningful.", "Protect relationships where self-monitoring is lower."] },
+    { min: 13, max: 30, title: "Context-Dependent Social Fear", color: "var(--mid)", description: "Several social-fear experiences appeared repeatedly, with the pattern varying by dimension or setting.", insights: ["Choose one manageable interaction instead of avoiding the whole category.", "Direct attention toward the conversation rather than performance monitoring."] },
+    { min: 31, max: 48, title: "Frequent Social Fear Across Areas", color: "var(--high)", description: "Many social-fear experiences appeared on numerous days. Avoidance and practical interference deserve attention.", insights: ["Consider qualified support when social fear persistently restricts life.", "Use gradual, supported practice rather than forcing the most difficult situation first."] }
+  ],
+  dimensionRelated: { evaluation: 0, avoidance: 1, monitoring: 0, review: 1 },
   dimensionGuidance: {
-    judgment: "During one manageable interaction, move attention toward the other person and the shared task instead of monitoring how you appear.",
-    avoidance: "Choose a small, repeatable social step that feels challenging but manageable; repeat it before increasing difficulty.",
-    replay: "Limit post-event review to a short written check: what went adequately, what you learned, and whether any action is actually needed."
+    evaluation: "Write the feared judgment as a prediction, then identify what evidence would actually confirm it.",
+    avoidance: "Choose one smaller version of the avoided interaction that is challenging but manageable.",
+    monitoring: "Redirect attention to one external detail in the conversation whenever performance monitoring appears.",
+    review: "Limit post-event review to one useful observation and one next action before closing it."
   },
   references: [
-    { title: "Social Anxiety Disorder: More Than Just Shyness", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/publications/social-anxiety-disorder-more-than-just-shyness" }
+    { title: "Social Anxiety Disorder: More Than Just Shyness", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/publications/social-anxiety-disorder-more-than-just-shyness" },
+    { title: "Social Anxiety", publisher: "National Health Service", href: "https://www.nhs.uk/mental-health/conditions/social-anxiety/" }
   ],
-  questions: [
-    { question: "How worried are you about being judged in social situations?", options: ["Rarely", "Sometimes", "Often", "Very worried"] },
-    { question: "How often do you avoid social events because of anxiety?", options: ["Rarely", "Sometimes", "Often", "Very often"] },
-    { question: "How much do you monitor your words, face, or body language while interacting?", options: ["Not much", "Somewhat", "A lot", "Constantly"] },
-    { question: "How often do you replay conversations afterward looking for mistakes?", options: ["Rarely", "Sometimes", "Often", "Almost always"] },
-    { question: "How hard is it to speak up in groups?", options: ["Easy", "Somewhat hard", "Hard", "Very hard"] }
-  ],
-  profiles: [
-    { min: 5, max: 8, title: "Low Social Fear Pattern", color: "var(--low)", description: "Your answers suggest lower fear of negative evaluation and less social avoidance.", indicators: { judgment: 22, avoidance: 20, replay: 18 }, insights: ["Keep practicing natural social exposure.", "Do not over-review small interactions."] },
-    { min: 9, max: 14, title: "Moderate Social Anxiety Pattern", color: "var(--mid)", description: "You may experience notable fear or self-monitoring in some social settings.", indicators: { judgment: 60, avoidance: 55, replay: 62 }, insights: ["Practice small exposures that are challenging but manageable.", "Shift attention outward to the conversation rather than monitoring yourself."] },
-    { min: 15, max: 20, title: "High Social Anxiety Signal", color: "var(--high)", description: "Your responses suggest social fear or avoidance may be limiting expression, connection, or participation.", indicators: { judgment: 88, avoidance: 84, replay: 90 }, insights: ["Consider evidence-based support such as CBT if avoidance is impairing life.", "Start with small repeated exposures instead of waiting for confidence."] }
-  ],
-  indicators: [{ key: "judgment", label: "Fear of Judgment" }, { key: "avoidance", label: "Avoidance" }, { key: "replay", label: "Post-Event Replay" }],
   related: [
-    { href: "https://toolsquark.com/tools/loneliness-level-test.html", title: "Loneliness Level Test", description: "Check whether avoidance is affecting connection.", action: "Assess Loneliness" },
-    { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety Assessment", description: "Review physical hyperarousal patterns.", action: "Assess Anxiety" }
+    { href: "https://toolsquark.com/tools/loneliness-level-test.html", title: "Connection And Loneliness Pattern", description: "Review whether social fear is affecting connection or support.", action: "Review Connection" },
+    { href: "https://toolsquark.com/tools/cognitive-overthinking-test.html", title: "Overthinking Pattern Self-Check", description: "Review whether post-event replay is part of a broader thought loop.", action: "Review Thought Loops" }
   ],
   faq: [
-    { question: "Is shyness the same as social anxiety?", answer: "No. Social anxiety involves fear, distress, avoidance, or impairment around social evaluation." },
-    { question: "Can this diagnose social anxiety disorder?", answer: "No. It is a private educational self-check, not a clinical diagnosis." }
+    { question: "Is social anxiety the same as shyness?", answer: "No. Shyness does not necessarily involve persistent fear, avoidance, distress, or meaningful impairment." },
+    { question: "Is this a validated social anxiety screener?", answer: "No. It is an original ToolsQuark educational self-check." },
+    { question: "When may support help?", answer: "Consider qualified support when social fear persists, causes significant distress, or restricts important parts of life." }
   ],
-  contentSections: [
-    { title: "What This Self-Check Covers", body: `<p>The five questions review fear of judgment, avoidance, self-monitoring, difficulty speaking in groups, and replaying interactions afterward.</p><p>This is an original ToolsQuark checklist. It is not SPIN, LSAS, MINI, or a diagnostic interview for social anxiety disorder.</p>` },
-    { title: "How Scoring Works", body: `<p>Each answer contributes 1 to 4 points, for a total from 5 to 20. Higher totals reflect more frequent social-fear responses in this question set.</p><ul><li><strong>5-8:</strong> fewer frequent social-fear signals.</li><li><strong>9-14:</strong> several recurring signals.</li><li><strong>15-20:</strong> many frequent signals that may be limiting.</li></ul><div class="note-box">The bands and dimension bars are editorial, not validated diagnostic thresholds.</div>` },
-    { title: "Shyness, Stress, And Social Anxiety", body: `<p>Temporary nervousness, introversion, unfamiliar settings, communication differences, trauma, depression, and autism-related experiences can overlap with these answers. Clinical assessment considers persistence, distress, avoidance, impairment, and alternative explanations.</p>` },
-    { title: "When To Seek Support", body: `<p>Qualified support may help when social fear repeatedly blocks school, work, healthcare, relationships, or ordinary activities. A clinician can discuss evidence-based options without treating this score as a diagnosis.</p>` }
-  ],
-  methodology: "This original five-item checklist scores answers from 1 to 4. Total-score bands and judgment, avoidance, and replay indicators are editorial and not clinically validated. Scoring stays in the browser.",
-  disclaimer: "This tool is educational only. Seek qualified mental health support if social fear is persistent, intense, or limiting."
-};
+  validationLimit: "It cannot diagnose social anxiety disorder, autism, trauma-related conditions, or another cause of social discomfort.",
+  limitsBody: `<p>Social discomfort can reflect temperament, unfamiliarity, exclusion, trauma, communication differences, culture, autism, mood, or other circumstances. This checklist cannot determine a cause or evaluate every social context.</p>`,
+  actionBody: `<p>Use the most frequent dimension to choose one manageable experiment: test a prediction, reduce avoidance gradually, redirect attention outward, or close post-event review. Seek qualified support when fear remains persistent or limiting.</p>`,
+  disclaimer: "This educational tool cannot diagnose social anxiety disorder or determine why social situations feel difficult."
+});

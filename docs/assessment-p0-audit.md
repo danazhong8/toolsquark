@@ -13,6 +13,8 @@ P2 added a dedicated introduction state, explicit three-part progress, confirm-b
 
 P3 added unique 1200-by-630 social preview images, Open Graph and Twitter metadata, WebPage and version schema, test sharing, privacy-limited result sharing, and downloadable result cards. Shared and downloaded results exclude raw answers, context selections, functional-impact selections, and numerical scores.
 
+The full migration completed on June 21, 2026. All 12 original self-checks now use the version 2.0 contract with 12 scored items, four dimensions, one response scale, three context questions, two protective factors, versioned methods, safe sharing, and unique social preview images. Strict content audit status: zero errors, zero blockers, zero warnings, and zero migration tasks.
+
 ## Executive Findings
 
 - Ten of 12 self-checks have only five scored questions.

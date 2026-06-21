@@ -9,7 +9,7 @@ const groups = {
   health: {
     file: "health.html",
     title: "Free Online Health Calculators & Body Trackers | ToolsQuark",
-    description: "Discover free, private health calculators for BMI, TDEE, body fat, hydration, nutrition, pregnancy, and cycle tracking.",
+    description: "Discover private health calculators for BMI, TDEE, body fat, hydration, nutrition, pregnancy, cycle tracking, and sleep patterns.",
     h1: "Data-Driven Health Calculators",
     intro: "Decode body metrics with private, browser-side tools built for fast, practical health planning.",
     categoryLabel: "Health Tools",
@@ -47,6 +47,12 @@ const groups = {
           ["due-date-calculator", "Due Date Calculator", "Estimate due date, gestational age, and trimester from LMP.", "Track Pregnancy"],
           ["period-calculator", "Period Calculator", "Estimate next period, ovulation day, and fertile window.", "Predict Cycle"]
         ]
+      },
+      {
+        title: "Sleep Health",
+        tools: [
+          ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review sleep initiation, continuity, restoration, and daytime impact.", "Review Sleep"]
+        ]
       }
     ]
   },
@@ -65,31 +71,31 @@ const groups = {
       {
         title: "Mood & Nervous System",
         tools: [
-          ["stress-index-test", "Stress Index Test", "Review stress load, tension, and recovery reserve.", "Assess Stress", true],
-          ["anxiety-hyperarousal-assessment", "Anxiety & Hyperarousal Self-Check", "Review high-alert body patterns, worry, and sensory load.", "Review Anxiety Signals"],
-          ["cognitive-overthinking-test", "Cognitive Overthinking Self-Check", "Identify rumination, decision paralysis, and repetitive worry loops.", "Check Overthinking"]
+          ["stress-index-test", "Stress Pattern Self-Check", "Review overload, control strain, reactivity, and daily-life impact.", "Review Stress", true],
+          ["anxiety-hyperarousal-assessment", "Anxiety & High-Alert Pattern", "Review physical alertness, persistent worry, sensitivity, and recovery.", "Review Alertness"],
+          ["cognitive-overthinking-test", "Overthinking Pattern Self-Check", "Review repetitive thinking, decision loops, threat projection, and action displacement.", "Review Thought Loops"]
         ]
       },
       {
         title: "Work & Cognitive Pacing",
         tools: [
-          ["occupational-burnout-level-test", "Occupational Burnout Self-Check", "Review work exhaustion, detachment, and perceived efficacy.", "Check Burnout"],
-          ["focus-attention-diagnostic", "Focus & Attention Self-Check", "Assess distractibility, task initiation, and attention stability.", "Check Focus"]
+          ["occupational-burnout-level-test", "Occupational Burnout Pattern", "Review work exhaustion, mental distance, efficacy, and recovery interference.", "Review Work Strain"],
+          ["focus-attention-diagnostic", "Focus & Attention Pattern", "Review distractibility, task initiation, sustained attention, and organization.", "Review Focus"]
         ]
       },
       {
         title: "Social Connection",
         tools: [
-          ["social-anxiety-test", "Social Anxiety Self-Check", "Review fear of judgment, avoidance, and post-event replay.", "Review Social Anxiety"],
-          ["loneliness-level-test", "Loneliness Self-Check", "Reflect on perceived support, connection depth, and isolation.", "Check Connection"]
+          ["social-anxiety-test", "Social Anxiety Pattern Self-Check", "Review anticipated evaluation, avoidance, self-monitoring, and post-event review.", "Review Social Fear"],
+          ["loneliness-level-test", "Connection & Loneliness Pattern", "Review emotional connection, support access, belonging, and withdrawal barriers.", "Review Connection"]
         ]
       }
     ]
   },
   lifestyle: {
     file: "lifestyle.html",
-    title: "Free Lifestyle Calculators, Habit Trackers & Sleep Planners | ToolsQuark",
-    description: "Optimize routine with free lifestyle tools for sleep, steps, procrastination, self-discipline, smartphone use, and social media habits.",
+    title: "Lifestyle Calculators & Behavior Self-Checks | ToolsQuark",
+    description: "Use private lifestyle tools for sleep planning, steps, procrastination, follow-through, smartphone use, and social media habits.",
     h1: "Lifestyle Calculators & Habit Self-Checks",
     intro: "Plan sleep, activity, and routines with transparent calculators and private behavior self-checks.",
     categoryLabel: "Lifestyle Tools",
@@ -102,15 +108,14 @@ const groups = {
         title: "Sleep & Recovery",
         tools: [
           ["sleep-calculator", "Sleep Calculator", "Create a rough duration plan with clear cycle-timing limits.", "Plan Sleep", true],
-          ["sleep-quality-assessment", "Sleep Quality Self-Check", "Review sleep latency, awakenings, consistency, and daytime fatigue.", "Review Sleep"],
           ["age-calculator", "Age Calculator", "Calculate exact chronological age in years, months, and days.", "Calculate Age"]
         ]
       },
       {
         title: "Execution & Discipline",
         tools: [
-          ["procrastination-test", "Procrastination Self-Check", "Identify task delay, avoidance, and perfectionism loops.", "Check Delay", true],
-          ["self-discipline-test", "Self-Discipline Self-Check", "Review consistency, impulse friction, and habit follow-through.", "Review Follow-Through"]
+          ["procrastination-test", "Procrastination Pattern Self-Check", "Review initiation, avoidance, short-term reward pull, and perfectionistic delay.", "Review Delay", true],
+          ["self-discipline-test", "Follow-Through Pattern Self-Check", "Review starting friction, consistency, immediate impulses, and restarting.", "Review Follow-Through"]
         ]
       },
       {
@@ -118,8 +123,8 @@ const groups = {
         tools: [
           ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a progressive step target plan from your current baseline.", "Plan Steps"],
           ["steps-to-calories-converter", "Steps to Calories Converter", "Estimate active calories from step count and body weight.", "Convert Steps"],
-          ["smartphone-addiction-test", "Smartphone Use Self-Check", "Review automatic checking and phone-use disruption.", "Review Phone Use"],
-          ["social-media-addiction-index", "Social Media Use Self-Check", "Review feed capture, validation loops, comparison, and FOMO.", "Review Social Media"]
+          ["smartphone-addiction-test", "Smartphone Use Pattern Self-Check", "Review automatic checking, stopping control, cue reactivity, and displacement.", "Review Phone Use"],
+          ["social-media-addiction-index", "Social Media Use Pattern Self-Check", "Review feed capture, stopping control, social evaluation, and displacement.", "Review Social Media"]
         ]
       }
     ]
