@@ -11,6 +11,8 @@ module.exports = {
   h1: "Anxiety And High-Alert Pattern Self-Check",
   hero: "Review how often physical alertness, persistent worry, trigger sensitivity, and recovery difficulty appeared during the past two weeks.",
   schemaName: "ToolsQuark Anxiety And High-Alert Pattern Self-Check",
+  socialImage: "https://toolsquark.com/assets/social/anxiety-high-alert-self-check.png",
+  shareDescription: "A private 14-day self-check for physical alertness, persistent worry, trigger sensitivity, and recovery.",
   lastUpdated: "June 21, 2026",
   timeframe: "Past 14 days",
   instrument: {

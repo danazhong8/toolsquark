@@ -11,6 +11,8 @@ The executable audit moved these three pages to zero blockers and zero warnings.
 
 P2 added a dedicated introduction state, explicit three-part progress, confirm-before-next answering, immediate functioning guidance, a structured result hierarchy, and clean retake behavior to the three version 2.0 pages. Legacy assessments retain their existing automatic progression until their content is migrated.
 
+P3 added unique 1200-by-630 social preview images, Open Graph and Twitter metadata, WebPage and version schema, test sharing, privacy-limited result sharing, and downloadable result cards. Shared and downloaded results exclude raw answers, context selections, functional-impact selections, and numerical scores.
+
 ## Executive Findings
 
 - Ten of 12 self-checks have only five scored questions.
