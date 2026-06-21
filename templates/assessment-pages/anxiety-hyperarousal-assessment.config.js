@@ -1,61 +1,138 @@
+const frequency14d = {
+  id: "frequency-14d-v1",
+  values: [0, 1, 2, 3, 4],
+  options: ["Not at all", "On 1-2 days", "On 3-6 days", "On 7-11 days", "On 12-14 days"]
+};
+
 module.exports = {
   slug: "anxiety-hyperarousal-assessment",
-  title: "Anxiety & Hyperarousal Self-Check | ToolsQuark",
-  description: "Take a private anxiety and hyperarousal self-check covering physical tension, persistent worry, sensory overload, and recovery after stress.",
-  h1: "Anxiety & Hyperarousal Self-Check",
-  hero: "Check whether your nervous system is staying in a high-alert state through physical tension, worry, sensory overload, and recovery difficulty.",
-  schemaName: "Privacy-First Anxiety Hyperarousal Assessment",
+  title: "Anxiety And High-Alert Pattern Self-Check | ToolsQuark",
+  description: "Review physical alertness, persistent worry, trigger sensitivity, and daily interference with a private 12-item original self-check.",
+  h1: "Anxiety And High-Alert Pattern Self-Check",
+  hero: "Review how often physical alertness, persistent worry, trigger sensitivity, and recovery difficulty appeared during the past two weeks.",
+  schemaName: "ToolsQuark Anxiety And High-Alert Pattern Self-Check",
   lastUpdated: "June 21, 2026",
-  timeframe: "Past 2 weeks",
-  questionDimensions: ["arousal", "sensory", "worry", "arousal", "arousal"],
-  dimensionRelated: { arousal: 0, worry: 0, sensory: 1 },
-  dimensionGuidance: {
-    arousal: "Try a two-minute downshift after a trigger: relax your jaw and shoulders, then make each exhale slightly longer than the inhale.",
-    worry: "Write the worry and one next action down. If no action is possible now, schedule a short time to revisit it instead of reopening it all day.",
-    sensory: "Reduce stacked stimulation for one daily block by silencing alerts, lowering background noise, or stepping away from crowded input."
+  timeframe: "Past 14 days",
+  instrument: {
+    type: "original-self-check",
+    version: "2.0",
+    reviewStatus: "editorial-review",
+    intendedAudience: "Adults seeking general reflection about recent high-alert or worry patterns",
+    recallPeriodDays: 14
   },
-  references: [
-    { title: "Anxiety Disorders", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/anxiety-disorders" }
+  dimensions: [
+    { key: "alertness", label: "Physical Alertness", definition: "How often the body felt activated without an immediate demand." },
+    { key: "worry", label: "Worry Persistence", definition: "How often concern repeated or remained difficult to redirect." },
+    { key: "sensitivity", label: "Trigger Sensitivity", definition: "How often ordinary input or uncertainty produced a high-alert response." },
+    { key: "impact", label: "Recovery And Impact", definition: "How often alertness was slow to settle or interfered with ordinary life." }
   ],
+  responseScale: frequency14d,
   questions: [
-    { question: "How often do you feel physically on edge even when nothing urgent is happening?", options: ["Rarely", "Sometimes", "Often", "Almost constantly"] },
-    { question: "How easily do noise, crowds, messages, or interruptions overload you?", options: ["Not easily", "Occasionally", "Frequently", "Very easily"] },
-    { question: "How often does worry keep running after you have already handled the issue?", options: ["Rarely", "Sometimes", "Often", "Almost always"] },
-    { question: "How often do you notice tight chest, shallow breathing, or muscle tension?", options: ["Rarely", "Sometimes", "Often", "Daily"] },
-    { question: "How hard is it to calm down after a stressful trigger?", options: ["Easy", "Somewhat hard", "Hard", "Very hard"] }
+    { id: "alertness-1", dimension: "alertness", question: "During the past 14 days, how often did you feel physically keyed up when no immediate response was needed?" },
+    { id: "alertness-2", dimension: "alertness", question: "During the past 14 days, how often did you notice your muscles staying tense while you were trying to rest?" },
+    { id: "alertness-3", dimension: "alertness", question: "During the past 14 days, how often were you startled more easily than you expected?" },
+    { id: "worry-1", dimension: "worry", question: "During the past 14 days, how often did the same concern return when there was no new information?" },
+    { id: "worry-2", dimension: "worry", question: "During the past 14 days, how often was it difficult to redirect attention away from a possible problem?" },
+    { id: "worry-3", dimension: "worry", question: "During the past 14 days, how often did you anticipate that something would go wrong?" },
+    { id: "sensitivity-1", dimension: "sensitivity", question: "During the past 14 days, how often did an ordinary notification pull your attention immediately?" },
+    { id: "sensitivity-2", dimension: "sensitivity", question: "During the past 14 days, how often was it difficult to filter background activity around you?" },
+    { id: "sensitivity-3", dimension: "sensitivity", question: "During the past 14 days, how often did uncertainty put you on guard?" },
+    { id: "impact-1", dimension: "impact", question: "During the past 14 days, how often did it take longer than usual to settle after a stressful moment?" },
+    { id: "impact-2", dimension: "impact", question: "During the past 14 days, how often did feeling on alert interfere with rest?" },
+    { id: "impact-3", dimension: "impact", question: "During the past 14 days, how often did feeling on alert make routine tasks harder to complete?" }
   ],
-  profiles: [
-    { min: 5, max: 8, title: "Calm Regulation Pattern", color: "var(--low)", description: "Your answers suggest relatively low hyperarousal and better recovery from daily triggers.", indicators: { arousal: 22, worry: 24, sensory: 20 }, insights: ["Keep recovery habits consistent before stress piles up.", "Use short breaks to preserve nervous-system flexibility."] },
-    { min: 9, max: 14, title: "Elevated Alert State", color: "var(--mid)", description: "You may be spending more time in a high-alert state than is comfortable, especially around worry, tension, or stimulation.", indicators: { arousal: 60, worry: 58, sensory: 55 }, insights: ["Practice slow exhale breathing after triggers.", "Reduce stacked stimulation when possible, especially before sleep."] },
-    { min: 15, max: 20, title: "Persistent High-Alert Pattern", color: "var(--high)", description: "Your responses suggest persistent nervous-system activation that may be draining attention, sleep, and emotional bandwidth.", indicators: { arousal: 88, worry: 84, sensory: 82 }, insights: ["Consider professional support if anxiety is persistent or impairing.", "Prioritize predictable routines, sleep protection, and lower-stimulation recovery windows."] }
-  ],
-  indicators: [{ key: "arousal", label: "Physical Arousal" }, { key: "worry", label: "Cognitive Worry" }, { key: "sensory", label: "Sensory Load" }],
-  related: [
-    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Compare anxiety activation with overall stress load.", action: "Assess Stress" },
-    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether hyperarousal is affecting sleep.", action: "Assess Sleep" }
-  ],
-  faq: [
-    { question: "Is hyperarousal the same as anxiety?", answer: "Not always. Hyperarousal describes a high-alert body state that can accompany anxiety, stress, trauma responses, lack of sleep, or sensory overload." },
-    { question: "Can this diagnose an anxiety disorder?", answer: "No. It is a private self-check, not a clinical diagnosis." }
-  ],
-  contentSections: [
+  contextQuestions: [
     {
-      title: "What This Self-Check Covers",
-      body: `<p>The five questions sample physical tension, persistent worry, sensory overload, and difficulty settling after a trigger during the past two weeks.</p><p>This is an original ToolsQuark checklist. It is not GAD-7, another validated anxiety scale, or a trauma assessment.</p>`
+      id: "alert-setting",
+      label: "Most noticeable setting",
+      question: "Where has this pattern been most noticeable?",
+      options: [
+        { label: "While resting or trying to sleep", value: "rest" },
+        { label: "At work or while studying", value: "work" },
+        { label: "In social or crowded settings", value: "social" },
+        { label: "Across several settings", value: "multiple" },
+        { label: "Prefer not to answer", value: "__skip__" }
+      ]
     },
     {
-      title: "How Scoring Works",
-      body: `<p>Each answer contributes 1 to 4 points, for a total from 5 to 20. Higher totals mean that more high-frequency alert-state responses were selected.</p><ul><li><strong>5-8:</strong> fewer frequent signals in this checklist.</li><li><strong>9-14:</strong> several elevated alert-state responses.</li><li><strong>15-20:</strong> many frequent responses worth reviewing.</li></ul><div class="note-box">The score bands and dimension bars are editorial groupings, not clinical cutoffs or population percentiles.</div>`
+      id: "alert-duration",
+      label: "Duration",
+      question: "How long has this pattern been noticeable?",
+      options: [
+        { label: "Less than 2 weeks", value: "under-2w" },
+        { label: "2-6 weeks", value: "2-6w" },
+        { label: "More than 6 weeks", value: "over-6w" },
+        { label: "It varies too much to say", value: "variable" },
+        { label: "Prefer not to answer", value: "__skip__" }
+      ]
     },
     {
-      title: "How To Use The Result",
-      body: `<p>Review the individual answers and the situations in which they occur. Sleep loss, caffeine, pain, medication effects, acute stress, trauma reminders, and medical conditions can overlap with anxiety-like activation.</p><p>If symptoms persist, intensify, or limit daily life, a qualified clinician can assess duration, impairment, medical causes, and whether treatment may help.</p>`
-    },
-    {
-      title: "Urgent Support",
-      body: `<p>This page cannot assess immediate safety. Seek urgent local help for severe breathing difficulty, chest pain, fainting, feeling unable to stay safe, or thoughts of harming yourself or someone else.</p>`
+      id: "alert-impact",
+      label: "Overall interference",
+      question: "How much is this pattern interfering with daily life?",
+      options: [
+        { label: "Not noticeably", value: "none" },
+        { label: "A little", value: "some" },
+        { label: "Substantially", value: "substantial" },
+        { label: "I am struggling with basic responsibilities", value: "unable" },
+        { label: "Prefer not to answer", value: "__skip__" }
+      ]
     }
   ],
-  methodology: "This original five-item checklist scores each answer from 1 to 4. Total-score bands and arousal, worry, and sensory indicators are editorial and not clinically validated. Scoring stays in the browser.",
-  disclaimer: "This educational tool cannot diagnose or treat anxiety disorders. Seek qualified support if symptoms are persistent, intense, or impairing."
+  protectiveResponseScale: frequency14d,
+  protectiveQuestions: [
+    { id: "settling-routine", label: "Settling routine", question: "During the past 14 days, how often did you use a routine that helped your body settle?" },
+    { id: "support-access", label: "Access to support", question: "During the past 14 days, how often could you contact someone for support when alertness increased?" }
+  ],
+  safetyRules: [
+    {
+      questionId: "alert-impact",
+      values: ["unable"],
+      title: "Daily functioning needs attention",
+      message: "Struggling with basic responsibilities deserves support regardless of the checklist result. Consider contacting a qualified clinician or a trusted person who can help you access care. Seek urgent local help for severe breathing difficulty, chest pain, fainting, or if you may be unable to stay safe."
+    }
+  ],
+  profiles: [
+    { min: 0, max: 12, title: "Mostly Occasional High-Alert Responses", color: "var(--low)", description: "Your answers place most high-alert experiences in the occasional range. Recent context, duration, and functional impact still matter.", insights: ["Keep the routines that help you settle after pressure.", "Reassess after a meaningful change rather than repeating the check today."] },
+    { min: 13, max: 30, title: "Mixed High-Alert Pattern", color: "var(--mid)", description: "Several alertness or worry experiences appeared repeatedly, with a pattern that may vary by dimension and setting.", insights: ["Start with the most frequent dimension and one realistic adjustment.", "Reduce stacked stimulation during one predictable part of the day."] },
+    { min: 31, max: 48, title: "Frequent High-Alert Responses", color: "var(--high)", description: "Many high-alert experiences appeared on numerous days. Duration and interference are especially important when deciding what support may help.", insights: ["Consider qualified assessment when this pattern persists or limits daily life.", "Protect basic rest and reduce avoidable stimulation while arranging support."] }
+  ],
+  indicators: [
+    { key: "alertness", label: "Physical Alertness" },
+    { key: "worry", label: "Worry Persistence" },
+    { key: "sensitivity", label: "Trigger Sensitivity" },
+    { key: "impact", label: "Recovery And Impact" }
+  ],
+  dimensionRelated: { alertness: 0, worry: 0, sensitivity: 1, impact: 1 },
+  dimensionGuidance: {
+    alertness: "Use a brief settling routine after a trigger and discuss persistent or unexplained physical symptoms with a qualified clinician.",
+    worry: "Write down one concern and one available action, then set a specific time to revisit concerns that cannot be acted on now.",
+    sensitivity: "Reduce stacked input for one daily block by silencing nonessential alerts or choosing a lower-stimulation setting.",
+    impact: "Prioritize basic routines and seek qualified support when alertness repeatedly interferes with sleep, work, relationships, or self-care."
+  },
+  references: [
+    { title: "Anxiety Disorders", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/topics/anxiety-disorders" },
+    { title: "Generalized Anxiety Disorder", publisher: "MedlinePlus", href: "https://medlineplus.gov/anxiety.html" }
+  ],
+  related: [
+    { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Pattern Self-Check", description: "Compare high-alert responses with recent overload and control strain.", action: "Review Stress" },
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Self-Check", description: "Review whether alertness is occurring alongside sleep disruption.", action: "Review Sleep" }
+  ],
+  faq: [
+    { question: "Is this a validated anxiety screener?", answer: "No. It is an original ToolsQuark educational self-check and is not GAD-7, a trauma assessment, or another validated instrument." },
+    { question: "Does a frequent result mean I have an anxiety disorder?", answer: "No. Sleep loss, pain, medication effects, acute stress, trauma reminders, medical conditions, and other factors can overlap with these experiences." },
+    { question: "When should I seek professional support?", answer: "Consider qualified support when the pattern persists, intensifies, or interferes with daily life. Use urgent local help for immediate safety concerns or severe physical symptoms." }
+  ],
+  contentSections: [
+    { title: "What Version 2.0 Measures", body: `<p>The 12 scored items cover physical alertness, worry persistence, trigger sensitivity, and recovery or daily-life impact. Each dimension uses three questions with the same 14-day frequency scale.</p><p>Context and protective-factor answers are displayed separately and do not change the core score.</p>` },
+    { title: "How Scoring Works", body: `<p>Scored answers use values from 0 to 4 and produce an editorial total from 0 to 48. Dimension labels describe selected frequency, not medical severity or population standing.</p><div class="note-box">Version 2.0 is original and non-validated. It cannot diagnose an anxiety disorder, trauma-related condition, or medical cause.</div>` },
+    { title: "Important Overlap And Limits", body: `<p>High-alert experiences can overlap with sleep loss, pain, stimulants, medication effects, acute stress, trauma reminders, and medical conditions. New, severe, or unexplained physical symptoms require appropriate medical assessment rather than interpretation through this page.</p>` },
+    { title: "Urgent Support", body: `<p>Seek urgent local help for severe breathing difficulty, chest pain, fainting, feeling unable to stay safe, or thoughts of harming yourself or someone else.</p>` }
+  ],
+  revisionHistory: [
+    { version: "2.0", date: "2026-06-21", summary: "Replaced mixed five-item scoring with 12 uniform core items, separate context, protective factors, and functioning guidance." },
+    { version: "1.0", date: "2026-06-21", summary: "Initial original five-item editorial checklist." }
+  ],
+  methodology: "Version 2.0 is an original 12-item editorial self-check. Four dimensions use three items each and one explicit 0-to-4 frequency scale. Context and protective factors are separate from the scored core. The model is not clinically or psychometrically validated.",
+  disclaimer: "This educational tool cannot diagnose or treat anxiety or another condition. Seek appropriate support for persistent, intense, impairing, or urgent symptoms."
 };

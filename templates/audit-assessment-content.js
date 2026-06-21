@@ -30,7 +30,8 @@ function inspectConfig(file) {
   const config = require(configPath);
   const issues = [];
   const questions = Array.isArray(config.questions) ? config.questions : [];
-  const dimensions = Array.isArray(config.questionDimensions) ? config.questionDimensions : [];
+  const modern = config.instrument?.type === "original-self-check";
+  const dimensions = questions.map((question, index) => question.dimension || config.questionDimensions?.[index]);
 
   if (!questions.length) {
     issues.push(issue("error", "questions.missing", "No scored questions are configured."));
@@ -40,8 +41,8 @@ function inspectConfig(file) {
     issues.push(issue("blocker", "questions.too-few", `${questions.length} scored items; the P1 standard requires 12-16.`));
   }
 
-  if (dimensions.length !== questions.length) {
-    issues.push(issue("error", "dimensions.mapping", `${dimensions.length} dimension mappings for ${questions.length} questions.`));
+  if (dimensions.some((dimension) => !dimension)) {
+    issues.push(issue("error", "dimensions.mapping", "Every scored question must map to one primary dimension."));
   }
 
   const dimensionCounts = dimensions.reduce((counts, key) => {
@@ -62,15 +63,17 @@ function inspectConfig(file) {
       issues.push(issue("error", "item.text", "Question text is missing.", item));
       return;
     }
-    if (!Array.isArray(question.options) || question.options.length !== 4) {
-      issues.push(issue("error", "item.options", "Legacy production items must currently contain four options.", item));
+    const options = question.options || config.responseScale?.options;
+    const expectedOptionCount = modern ? config.responseScale?.values?.length : 4;
+    if (!Array.isArray(options) || options.length !== expectedOptionCount) {
+      issues.push(issue("error", "item.options", `Expected ${expectedOptionCount || "a declared number of"} response options.`, item));
     } else {
-      optionSets.add(question.options.join(" | "));
+      optionSets.add(options.map((option) => typeof option === "object" ? option.label : option).join(" | "));
     }
     if (compoundPatterns.some((pattern) => pattern.test(question.question))) {
       issues.push(issue("warning", "item.possible-compound", "Review for multiple concepts or alternatives.", item));
     }
-    if (loadedLanguage.some((pattern) => question.options.some((option) => pattern.test(option)))) {
+    if (Array.isArray(options) && loadedLanguage.some((pattern) => options.some((option) => pattern.test(typeof option === "object" ? option.label : option)))) {
       issues.push(issue("warning", "item.loaded-anchor", "Replace emotionally loaded answer wording with an observable anchor.", item));
     }
   });
@@ -79,8 +82,9 @@ function inspectConfig(file) {
     issues.push(issue("blocker", "scale.inconsistent", `${optionSets.size} unique answer scales are converted to the same positional score.`));
   }
 
-  const expectedMin = questions.length;
-  const expectedMax = questions.length * 4;
+  const scaleValues = modern ? config.responseScale?.values || [] : [1, 2, 3, 4];
+  const expectedMin = (scaleValues.length ? Math.min(...scaleValues) : 0) * questions.length;
+  const expectedMax = (scaleValues.length ? Math.max(...scaleValues) : 0) * questions.length;
   const profiles = Array.isArray(config.profiles) ? config.profiles : [];
   if (!profiles.length || profiles[0].min !== expectedMin || profiles[profiles.length - 1].max !== expectedMax) {
     issues.push(issue("error", "profiles.coverage", `Profiles must cover the legacy score range ${expectedMin}-${expectedMax}.`));
@@ -103,9 +107,13 @@ function inspectConfig(file) {
   }
   if (!Array.isArray(config.contextQuestions)) {
     issues.push(issue("migration", "contract.context", "P1 must separate optional context questions from scored questions."));
+  } else if (modern && config.contextQuestions.length < 2) {
+    issues.push(issue("warning", "contract.context-thin", "Modern self-checks should include at least two non-scored context questions."));
   }
   if (!Array.isArray(config.protectiveQuestions)) {
     issues.push(issue("migration", "contract.protective", "P1 must declare protective factors separately when relevant."));
+  } else if (modern && config.protectiveQuestions.length < 2) {
+    issues.push(issue("warning", "contract.protective-thin", "Modern self-checks should include at least two separately reported protective factors."));
   }
   if (!Array.isArray(config.revisionHistory)) {
     issues.push(issue("migration", "contract.history", "P1 must add a revision history."));

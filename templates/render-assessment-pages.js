@@ -50,17 +50,69 @@ function renderReferences(items = []) {
   return `<div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">These resources provide general background. They do not validate or endorse this self-check.</p><ul class="reference-list">${items.map((item) => `<li><a href="${esc(item.href)}" target="_blank" rel="noopener noreferrer">${esc(item.title)}</a><span>${esc(item.publisher)}</span></li>`).join("")}</ul></div>`;
 }
 
-function renderScoreGuide(config) {
+function normalizeOptions(options = [], values = []) {
+  return options.map((option, index) => {
+    if (typeof option === "object") return option;
+    return { label: option, value: values[index] ?? index + 1 };
+  });
+}
+
+function buildAssessmentModel(config) {
+  const modern = config.instrument?.type === "original-self-check";
+  const responseScale = config.responseScale || {
+    id: "legacy-position-1-4",
+    values: [1, 2, 3, 4],
+    options: []
+  };
+  const coreQuestions = config.questions.map((question, index) => ({
+    ...question,
+    id: question.id || `core-${index + 1}`,
+    type: "scored",
+    dimension: question.dimension || config.questionDimensions?.[index],
+    options: normalizeOptions(question.options || responseScale.options, responseScale.values)
+  }));
+  const contextQuestions = (config.contextQuestions || []).map((question, index) => ({
+    ...question,
+    id: question.id || `context-${index + 1}`,
+    type: "context",
+    options: normalizeOptions(question.options)
+  }));
+  const protectiveScale = config.protectiveResponseScale || responseScale;
+  const protectiveQuestions = (config.protectiveQuestions || []).map((question, index) => ({
+    ...question,
+    id: question.id || `protective-${index + 1}`,
+    type: "protective",
+    options: normalizeOptions(question.options || protectiveScale.options, protectiveScale.values)
+  }));
+  const scaleValues = responseScale.values || [1, 2, 3, 4];
+
+  return {
+    modern,
+    responseScale,
+    coreQuestions,
+    contextQuestions,
+    protectiveQuestions,
+    allQuestions: [...coreQuestions, ...contextQuestions, ...protectiveQuestions],
+    minimumScore: Math.min(...scaleValues) * coreQuestions.length,
+    maximumScore: Math.max(...scaleValues) * coreQuestions.length
+  };
+}
+
+function renderScoreGuide(config, model) {
   const dimensions = (config.indicators || []).map((item) => item.label).join(", ");
-  const minScore = config.questions.length;
-  const maxScore = config.questions.length * 4;
+  const minScore = model.minimumScore;
+  const maxScore = model.maximumScore;
   const protectiveNote = (config.indicators || []).some((item) => item.direction === "protective")
     ? " Protective factors are displayed in the positive direction."
     : "";
+  if (model.modern) {
+    return `<div class="card score-guide" id="result-guide"><h3>How To Read This Result</h3><p>This versioned original self-check uses ${model.coreQuestions.length} scored frequency items for the ${esc((config.timeframe || "past 2 weeks").toLowerCase())}. It reviews ${esc(dimensions)}. Optional context answers personalize guidance but do not change the score.</p><p>Dimension labels summarize how often their assigned experiences were selected. Protective factors are shown separately and are not reverse-scored into a risk total. Result profiles are descriptive editorial patterns, not clinical cutoffs, probabilities, or population percentiles.</p><div class="note-box"><strong>Important limit:</strong> This is not a validated screening instrument and cannot diagnose, rule out, or measure the severity of a medical or mental health condition. Use the result as a structured reflection, not as a label.</div></div>`;
+  }
   return `<div class="card score-guide" id="result-guide"><h3>How To Read This Result</h3><p>This original ${config.questions.length}-item educational self-check reflects your answers for the ${esc((config.timeframe || "past 2 weeks").toLowerCase())}. It reviews ${esc(dimensions)}.</p><p>The overall score runs from ${minScore} to ${maxScore}. Result bands are descriptive groupings for self-reflection, not clinical cutoffs. Dimension labels are calculated from the questions assigned to each area.${protectiveNote}</p><div class="note-box"><strong>Important limit:</strong> This is not a validated screening instrument and cannot diagnose, rule out, or measure the severity of a medical or mental health condition. Use the result as a prompt for reflection, not as a label.</div></div>`;
 }
 
 function renderPage(config) {
+  const model = buildAssessmentModel(config);
   const canonical = `https://toolsquark.com/tools/${config.slug}.html`;
   const categoryUrl = `https://toolsquark.com/${config.categoryHref || "mental-health.html"}`;
   const lastUpdated = config.lastUpdated || defaultLastUpdated;
@@ -120,11 +172,11 @@ ${JSON.stringify(schema, null, 2)}
 :root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--low:#22c55e;--mid:#eab308;--high:#ef4444;}
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px}.container{max-width:1240px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:700}.breadcrumb a:hover{text-decoration:underline}
 .hero{padding:22px 0 28px;margin-bottom:28px;border-bottom:1px solid #dbe3ec}.hero h1{font-size:40px;font-weight:850;margin-bottom:10px;letter-spacing:0;line-height:1.15}.hero p{font-size:17px;color:#475569;max-width:820px}.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}.main-column,.side-column{min-width:0}.card{background:white;padding:30px;border-radius:8px;margin-bottom:24px;border:1px solid #e2e8f0;box-shadow:0 3px 14px rgba(15,23,42,.04)}.card h3{font-size:1.25rem;font-weight:800;margin-bottom:20px;color:#1e293b}.side-card{padding:22px}.side-card h3{font-size:1.05rem;margin-bottom:14px}.side-sticky{position:static}.fact-list{list-style:none;display:grid;gap:10px}.fact-list li{display:flex;justify-content:space-between;gap:14px;padding-bottom:10px;border-bottom:1px solid #eef2f7;font-size:13px}.fact-list li:last-child{border-bottom:none;padding-bottom:0}.fact-list span{color:var(--text-muted)}.fact-list strong{text-align:right;color:#334155}.page-nav{list-style:none;display:grid;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid #e2e8f0}.page-nav a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:750}.page-nav a:hover{text-decoration:underline}
-.assessment-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:22px;color:var(--text-muted);font-size:13px;font-weight:700}.assessment-meta span{display:inline-flex;align-items:center;gap:6px}.quiz-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}.progress-wrap{flex:1;height:14px;background:#e2e8f0;border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#3b82f6);transition:width .25s}.progress-text{font-size:13px;font-weight:800;color:var(--text-muted);white-space:nowrap}.question{font-size:21px;font-weight:800;color:#1e293b;margin-bottom:22px;line-height:1.45;outline:none}.answers-grid{display:flex;flex-direction:column;gap:12px}.option{width:100%;text-align:left;padding:16px 18px;border:2px solid #e2e8f0;border-radius:14px;background:#f8fafc;color:#334155;font-size:15px;font-weight:650;cursor:pointer;transition:.2s}.option:hover,.option:focus-visible{border-color:var(--accent);background:#eff6ff;color:var(--accent);transform:translateY(-1px);outline:3px solid rgba(37,99,235,.18);outline-offset:2px}.option.selected{border-color:var(--accent);background:#dbeafe;color:#1e40af}.option.selected-heavy{border-color:#f97316;background:#fff7ed;color:#9a3412}.quiz-actions,.result-actions{display:flex;justify-content:space-between;gap:12px;margin-top:22px}.secondary-btn,.primary-btn{min-height:44px;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer}.secondary-btn{background:white;border:1px solid #cbd5e1;color:#334155}.secondary-btn:hover,.secondary-btn:focus-visible{border-color:var(--accent);color:var(--accent)}.secondary-btn:disabled{opacity:.45;cursor:not-allowed}.primary-btn{border:1px solid var(--accent);background:var(--accent);color:white}.primary-btn:hover,.primary-btn:focus-visible{background:#1d4ed8}.hidden{display:none!important}
+.assessment-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:22px;color:var(--text-muted);font-size:13px;font-weight:700}.assessment-meta span{display:inline-flex;align-items:center;gap:6px}.quiz-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}.progress-wrap{flex:1;height:14px;background:#e2e8f0;border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#3b82f6);transition:width .25s}.progress-text{font-size:13px;font-weight:800;color:var(--text-muted);white-space:nowrap}.question-kicker{font-size:12px;font-weight:850;text-transform:uppercase;color:var(--accent);margin-bottom:7px}.question{font-size:21px;font-weight:800;color:#1e293b;margin-bottom:22px;line-height:1.45;outline:none}.answers-grid{display:flex;flex-direction:column;gap:12px}.option{width:100%;text-align:left;padding:16px 18px;border:2px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#334155;font-size:15px;font-weight:650;cursor:pointer;transition:.2s}.option:hover,.option:focus-visible{border-color:var(--accent);background:#eff6ff;color:var(--accent);transform:translateY(-1px);outline:3px solid rgba(37,99,235,.18);outline-offset:2px}.option.selected{border-color:var(--accent);background:#dbeafe;color:#1e40af}.option.selected-heavy{border-color:#f97316;background:#fff7ed;color:#9a3412}.quiz-actions,.result-actions{display:flex;justify-content:space-between;gap:12px;margin-top:22px}.secondary-btn,.primary-btn{min-height:44px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:800;cursor:pointer}.secondary-btn{background:white;border:1px solid #cbd5e1;color:#334155}.secondary-btn:hover,.secondary-btn:focus-visible{border-color:var(--accent);color:var(--accent)}.secondary-btn:disabled{opacity:.45;cursor:not-allowed}.primary-btn{border:1px solid var(--accent);background:var(--accent);color:white}.primary-btn:hover,.primary-btn:focus-visible{background:#1d4ed8}.hidden{display:none!important}
 .result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;text-align:center}.score-label{font-size:12px;font-weight:800;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px}.score{font-size:60px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:8px}.profile{font-size:22px;font-weight:900;margin-bottom:12px}.description{color:#475569;font-size:15px;margin:0 auto 24px;max-width:660px;line-height:1.65}.indicator-grid{text-align:left;margin-top:20px}.bar{margin-bottom:18px;background:white;border:1px solid #e2e8f0;border-radius:14px;padding:14px}.bar-label{display:flex;justify-content:space-between;gap:10px;color:#334155;font-weight:800;font-size:14px;margin-bottom:8px}.bar-bg{height:10px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar-fill{height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#2563eb);border-radius:999px;transition:width .8s cubic-bezier(.16,1,.3,1)}.focus-area{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--accent);padding:18px;border-radius:10px;text-align:left;margin-top:20px}.focus-area h4{font-size:15px;color:#1e3a8a;margin-bottom:6px}.focus-area p{font-size:14px;color:#334155}.next-tool{display:flex;align-items:center;justify-content:space-between;gap:14px;background:white;border:1px solid #bfdbfe;border-radius:10px;padding:15px 16px;margin-top:12px;text-align:left;text-decoration:none}.next-tool div{min-width:0}.next-tool small{display:block;color:var(--text-muted);font-weight:700;margin-bottom:2px}.next-tool strong{display:block;color:#1e3a8a;font-size:14px}.next-tool span{color:var(--accent);font-weight:900;font-size:20px}.next-tool:hover,.next-tool:focus-visible{border-color:var(--accent);outline:3px solid rgba(37,99,235,.15);outline-offset:2px}.copy-status{min-height:20px;margin-top:8px;color:var(--text-muted);font-size:12px;font-weight:700}.insight{background:white;border-left:4px solid var(--accent);padding:16px;border-radius:8px;text-align:left;margin-top:12px;color:#475569;font-size:14px}
 .recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.recommend-card span{font-size:13px;font-weight:800;color:var(--accent);margin-top:12px}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li,.score-guide p{font-size:15px;color:#475569;line-height:1.75}.content-section p,.score-guide p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{color:var(--accent);font-weight:750;text-decoration:none}.reference-list a:hover{text-decoration:underline}.reference-list span{font-size:13px;color:var(--text-muted);white-space:nowrap}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}footer a{color:var(--accent);font-weight:700;text-decoration:none;margin-right:14px}footer a:hover{text-decoration:underline}
 footer span{display:block;margin-top:10px}
-.result-box{background:transparent;border:none;padding:0}.bar{border-radius:6px}.focus-area,.next-tool{border-radius:6px}.side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.side-column .reference-list li{display:block}.side-column .reference-list span{display:block;margin-top:4px;white-space:normal}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.question{font-size:19px}.recommend-grid{grid-template-columns:1fr}.score{font-size:46px}.card{padding:22px 18px}.assessment-meta{display:grid;grid-template-columns:1fr 1fr}.quiz-actions,.result-actions{flex-wrap:wrap}.reference-list li{display:block}.reference-list span{display:block;margin-top:4px;white-space:normal}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
+.result-box{background:transparent;border:none;padding:0}.bar{border-radius:6px}.focus-area,.next-tool{border-radius:6px}.result-subsection{text-align:left;margin-top:24px;padding-top:20px;border-top:1px solid #e2e8f0}.result-subsection h4{font-size:16px;margin-bottom:10px}.context-list{display:grid;gap:8px;list-style:none}.context-list li{display:flex;justify-content:space-between;gap:18px;padding:10px 0;border-bottom:1px solid #eef2f7;color:#475569;font-size:14px}.context-list strong{text-align:right;color:#1e293b}.protective-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.protective-item{border:1px solid #bbf7d0;background:#f0fdf4;padding:14px;border-radius:6px}.protective-item strong{display:block;color:#166534;font-size:14px}.protective-item span{display:block;color:#475569;font-size:13px;margin-top:4px}.safety-area{background:#fff7ed;border:1px solid #fdba74;border-left:4px solid #f97316;padding:16px;text-align:left;margin-top:20px;border-radius:6px}.safety-area h4{color:#9a3412;margin-bottom:6px}.safety-area p{color:#7c2d12;font-size:14px}.instrument-status{margin-top:12px;padding-top:12px;border-top:1px solid #e2e8f0;color:#475569;font-size:12px}.side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.side-column .reference-list li{display:block}.side-column .reference-list span{display:block;margin-top:4px;white-space:normal}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.question{font-size:19px}.recommend-grid,.protective-grid{grid-template-columns:1fr}.score{font-size:46px}.card{padding:22px 18px}.assessment-meta{display:grid;grid-template-columns:1fr 1fr}.quiz-actions,.result-actions{flex-wrap:wrap}.reference-list li{display:block}.reference-list span{display:block;margin-top:4px;white-space:normal}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
 ${config.extraCss || ""}
 </style>
 </head>
@@ -135,19 +187,23 @@ ${config.extraCss || ""}
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="quiz-card">
-        <div class="assessment-meta"><span>${config.questions.length} questions</span><span>About ${Math.max(1, Math.ceil(config.questions.length / 6))} minute${config.questions.length > 6 ? "s" : ""}</span><span>${esc(config.timeframe || "Past 2 weeks")}</span><span>Scored in your browser</span></div>
-        <div class="quiz-header"><div class="progress-wrap" id="progress-wrap" role="progressbar" aria-valuemin="1" aria-valuemax="${config.questions.length}" aria-valuenow="1" aria-labelledby="progress-text"><div class="progress-bar" id="progress-bar"></div></div><div class="progress-text" id="progress-text">Question 1 / ${config.questions.length}</div></div>
+        <div class="assessment-meta"><span>${model.coreQuestions.length} scored questions</span><span>About ${Math.max(2, Math.ceil(model.allQuestions.length / 5))} minutes</span><span>${esc(config.timeframe || "Past 2 weeks")}</span><span>Scored in your browser</span></div>
+        <div class="quiz-header"><div class="progress-wrap" id="progress-wrap" role="progressbar" aria-valuemin="1" aria-valuemax="${model.allQuestions.length}" aria-valuenow="1" aria-labelledby="progress-text"><div class="progress-bar" id="progress-bar"></div></div><div class="progress-text" id="progress-text">Question 1 / ${model.allQuestions.length}</div></div>
+        <div class="question-kicker" id="question-kicker"></div>
         <div class="question" id="question-text" tabindex="-1"></div>
         <div class="answers-grid" id="answers-container"></div>
         <div class="quiz-actions"><button type="button" class="secondary-btn" id="previous-btn" onclick="previousQuestion()">&larr; Previous</button></div>
     </div>
     <div class="card hidden" id="result-card" role="region" aria-live="polite" aria-labelledby="profile-status">
         <div class="result-box">
-            <div class="score-label">Overall score</div>
-            <div class="score"><span id="score-val">0</span> / ${config.questions.length * 4}</div>
+            <div class="score-label">${model.modern ? "Current answer pattern" : "Overall score"}</div>
+            <div class="score${model.modern ? " hidden" : ""}"><span id="score-val">0</span> / ${model.maximumScore}</div>
             <div class="profile" id="profile-status" tabindex="-1"></div>
             <p class="description" id="profile-desc"></p>
             <div class="indicator-grid" id="indicator-grid"></div>
+            <div class="result-subsection hidden" id="protective-section"><h4>Recovery And Protective Factors</h4><div class="protective-grid" id="protective-grid"></div></div>
+            <div class="result-subsection hidden" id="context-section"><h4>Your Context</h4><ul class="context-list" id="context-list"></ul></div>
+            <div class="safety-area hidden" id="safety-area"></div>
             <div class="focus-area" id="focus-area"></div>
             <a class="next-tool" id="next-tool" href="#" onclick="trackNextTool()"><div><small>Recommended next</small><strong id="next-tool-title"></strong></div><span aria-hidden="true">&rarr;</span></a>
             <div id="insight-grid"></div>
@@ -155,12 +211,12 @@ ${config.extraCss || ""}
             <div class="copy-status" id="copy-status" role="status" aria-live="polite"></div>
         </div>
     </div>
-    ${renderScoreGuide(config)}
+    ${renderScoreGuide(config, model)}
     ${config.contentSections?.length ? `<div class="card" id="guide">${renderContentSections(config.contentSections)}</div>` : ""}
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>${renderFaq(config.faq)}</div>
     </main>
     <aside class="side-column" aria-label="Assessment information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Questions</span><strong>${config.questions.length}</strong></li><li><span>Time</span><strong>About ${Math.max(1, Math.ceil(config.questions.length / 6))} minute${config.questions.length > 6 ? "s" : ""}</strong></li><li><span>Timeframe</span><strong>${esc(config.timeframe || "Past 2 weeks")}</strong></li><li><span>Answers</span><strong>Stay in browser</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#quiz-card">Assessment</a></li><li><a href="#result-guide">Score guide</a></li>${config.contentSections?.length ? `<li><a href="#guide">Detailed guide</a></li>` : ""}<li><a href="#faq">FAQs</a></li>${config.references?.length ? `<li><a href="#references">References</a></li>` : ""}<li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Scored questions</span><strong>${model.coreQuestions.length}</strong></li><li><span>Total prompts</span><strong>${model.allQuestions.length}</strong></li><li><span>Time</span><strong>About ${Math.max(2, Math.ceil(model.allQuestions.length / 5))} minutes</strong></li><li><span>Timeframe</span><strong>${esc(config.timeframe || "Past 2 weeks")}</strong></li><li><span>Answers</span><strong>Stay in browser</strong></li></ul>${model.modern ? `<div class="instrument-status"><strong>Original self-check v${esc(config.instrument.version)}</strong><br>${esc(config.instrument.reviewStatus.replace(/-/g, " "))}; not clinically validated.</div>` : ""}<nav aria-label="On this page"><ul class="page-nav"><li><a href="#quiz-card">Assessment</a></li><li><a href="#result-guide">Score guide</a></li>${config.contentSections?.length ? `<li><a href="#guide">Detailed guide</a></li>` : ""}<li><a href="#faq">FAQs</a></li>${config.references?.length ? `<li><a href="#references">References</a></li>` : ""}<li><a href="#methodology">Methodology</a></li></ul></nav></div>
         <div class="card side-card" id="related"><h3>${esc(config.relatedTitle || "Recommended Tools")}</h3><div class="recommend-grid">${renderRelated(config.related)}</div></div>
         ${renderReferences(config.references)}
         <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Privacy:</strong> ${config.methodology}</p><p style="font-style:italic;font-size:12px;"><strong>Disclaimer:</strong> ${config.disclaimer}</p><div class="updated-row">Last updated: ${esc(lastUpdated)}</div></div></div>
@@ -169,15 +225,16 @@ ${config.extraCss || ""}
     <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><span>&copy; 2026 ToolsQuark. All rights reserved.</span></footer>
 </div>
 <script>
-const questions = ${JSON.stringify(config.questions.map((question, index) => ({
-  ...question,
-  dimension: question.dimension || config.questionDimensions?.[index]
-})), null, 2)};
+const questions = ${JSON.stringify(model.allQuestions, null, 2)};
 const profiles = ${JSON.stringify(config.profiles, null, 2)};
 const indicators = ${JSON.stringify((config.indicators || []).map((indicator) => ({
   ...indicator,
   guidance: indicator.guidance || config.dimensionGuidance?.[indicator.key]
 })), null, 2)};
+const modernAssessment = ${JSON.stringify(model.modern)};
+const scoreMinimum = ${JSON.stringify(model.minimumScore)};
+const scoreMaximum = ${JSON.stringify(model.maximumScore)};
+const safetyRules = ${JSON.stringify(config.safetyRules || [], null, 2)};
 const assessmentSlug = ${JSON.stringify(config.slug)};
 const assessmentName = ${JSON.stringify(config.h1)};
 const relatedTools = ${JSON.stringify(config.related || [], null, 2)};
@@ -203,19 +260,21 @@ function activeProfile(totalScore) {
 }
 function loadQuestion() {
     const q = questions[current];
+    const typeLabels = { scored: 'Scored question', context: 'Context question - not scored', protective: 'Protective factor - reported separately' };
+    document.getElementById('question-kicker').innerText = typeLabels[q.type] || 'Question';
     document.getElementById('question-text').innerText = q.question;
     document.getElementById('progress-text').innerText = \`Question \${current + 1} / \${questions.length}\`;
     document.getElementById('progress-bar').style.width = \`\${((current + 1) / questions.length) * 100}%\`;
     document.getElementById('progress-wrap').setAttribute('aria-valuenow', current + 1);
     document.getElementById('previous-btn').disabled = current === 0;
     document.getElementById('answers-container').innerHTML = q.options.map((option, index) => {
-        const selected = answers[current] === index + 1;
-        const selectedClass = selected ? (index >= 2 ? ' selected-heavy' : ' selected') : '';
-        return \`<button type="button" class="option\${selectedClass}" aria-pressed="\${selected}" onclick="selectOption(this, \${index + 1}, \${index})">\${option}</button>\`;
+        const selected = answers[current] === option.value;
+        const selectedClass = selected ? (!modernAssessment && q.type === 'scored' && index >= 2 ? ' selected-heavy' : ' selected') : '';
+        return \`<button type="button" class="option\${selectedClass}" aria-pressed="\${selected}" onclick="selectOption(this, \${index})">\${option.label}</button>\`;
     }).join('');
     isTransitioning = false;
 }
-function selectOption(el, score, optionIndex) {
+function selectOption(el, optionIndex) {
     if (isTransitioning) return;
     if (!hasStarted) {
         hasStarted = true;
@@ -223,8 +282,9 @@ function selectOption(el, score, optionIndex) {
     }
     isTransitioning = true;
     document.querySelectorAll('.option').forEach((item) => item.classList.remove('selected', 'selected-heavy'));
-    el.classList.add(optionIndex >= 2 ? 'selected-heavy' : 'selected');
-    answers[current] = score;
+    const question = questions[current];
+    el.classList.add(!modernAssessment && question.type === 'scored' && optionIndex >= 2 ? 'selected-heavy' : 'selected');
+    answers[current] = question.options[optionIndex].value;
     setTimeout(() => {
         current += 1;
         if (current < questions.length) loadQuestion();
@@ -239,17 +299,60 @@ function previousQuestion() {
 }
 function dimensionValue(indicator) {
     const dimensionAnswers = questions
-        .map((question, index) => question.dimension === indicator.key ? answers[index] : null)
-        .filter((value) => value !== null);
-    const source = dimensionAnswers.length ? dimensionAnswers : answers.filter((value) => value !== null);
-    const riskValue = Math.round(((source.reduce((sum, value) => sum + value, 0) - source.length) / (source.length * 3)) * 100);
+        .map((question, index) => question.type === 'scored' && question.dimension === indicator.key ? answers[index] : null)
+        .filter((value) => Number.isFinite(value));
+    const source = dimensionAnswers.length ? dimensionAnswers : questions
+        .map((question, index) => question.type === 'scored' ? answers[index] : null)
+        .filter((value) => Number.isFinite(value));
+    const scaleRange = scoreMaximum / questions.filter((question) => question.type === 'scored').length - scoreMinimum / questions.filter((question) => question.type === 'scored').length;
+    const scaleFloor = scoreMinimum / questions.filter((question) => question.type === 'scored').length;
+    const riskValue = Math.round(((source.reduce((sum, value) => sum + value, 0) / source.length - scaleFloor) / scaleRange) * 100);
     return indicator.direction === 'protective' ? 100 - riskValue : riskValue;
 }
 function dimensionLevel(value) {
+    if (modernAssessment) {
+        if (value < 13) return 'Not often';
+        if (value < 38) return 'On a few days';
+        if (value < 63) return 'On some days';
+        if (value < 88) return 'On many days';
+        return 'On most days';
+    }
     if (value < 17) return 'Low';
     if (value < 50) return 'Moderate';
     if (value < 84) return 'High';
     return 'Very high';
+}
+function renderProtectiveFactors() {
+    const entries = questions.map((question, index) => ({ question, answer: answers[index] }))
+        .filter((entry) => entry.question.type === 'protective' && Number.isFinite(entry.answer));
+    const section = document.getElementById('protective-section');
+    if (!entries.length) return;
+    section.classList.remove('hidden');
+    document.getElementById('protective-grid').innerHTML = entries.map((entry) => {
+        const selected = entry.question.options.find((option) => option.value === entry.answer);
+        return \`<div class="protective-item"><strong>\${entry.question.label || entry.question.question}</strong><span>\${selected ? selected.label : 'Not answered'}</span></div>\`;
+    }).join('');
+}
+function renderContext() {
+    const entries = questions.map((question, index) => ({ question, answer: answers[index] }))
+        .filter((entry) => entry.question.type === 'context' && entry.answer !== '__skip__');
+    const section = document.getElementById('context-section');
+    if (!entries.length) return;
+    section.classList.remove('hidden');
+    document.getElementById('context-list').innerHTML = entries.map((entry) => {
+        const selected = entry.question.options.find((option) => option.value === entry.answer);
+        return \`<li><span>\${entry.question.label || entry.question.question}</span><strong>\${selected ? selected.label : 'Not answered'}</strong></li>\`;
+    }).join('');
+}
+function renderSafetyGuidance() {
+    const matched = safetyRules.find((rule) => {
+        const questionIndex = questions.findIndex((question) => question.id === rule.questionId);
+        return questionIndex >= 0 && rule.values.includes(answers[questionIndex]);
+    });
+    if (!matched) return;
+    const area = document.getElementById('safety-area');
+    area.classList.remove('hidden');
+    area.innerHTML = \`<h4>\${matched.title}</h4><p>\${matched.message}</p>\`;
 }
 function focusIndicator() {
     return indicators
@@ -260,7 +363,7 @@ function focusIndicator() {
         .sort((a, b) => b.priority - a.priority)[0];
 }
 function showResult() {
-    const totalScore = answers.reduce((sum, value) => sum + value, 0);
+    const totalScore = questions.reduce((sum, question, index) => question.type === 'scored' && Number.isFinite(answers[index]) ? sum + answers[index] : sum, 0);
     const profile = activeProfile(totalScore);
     document.getElementById('quiz-card').classList.add('hidden');
     document.getElementById('result-card').classList.remove('hidden');
@@ -273,6 +376,9 @@ function showResult() {
         const level = dimensionLevel(value);
         return \`<div class="bar"><div class="bar-label"><span>\${item.label}</span><span>\${level}</span></div><div class="bar-bg" role="img" aria-label="\${item.label}: \${level}"><div class="bar-fill" style="width:\${value}%"></div></div></div>\`;
     }).join('');
+    renderProtectiveFactors();
+    renderContext();
+    renderSafetyGuidance();
     const focus = focusIndicator();
     const focusTitle = focus.priority < 17 ? 'Maintain what is working' : \`Suggested focus: \${focus.label}\`;
     const focusGuidance = focus.priority < 17
@@ -301,7 +407,8 @@ function trackNextTool() {
 async function copyResultSummary() {
     const score = document.getElementById('score-val').innerText;
     const profile = document.getElementById('profile-status').innerText;
-    const summary = assessmentName + '\\nResult: ' + profile + ' (' + score + ' / ' + (questions.length * 4) + ')\\n' + latestFocusTitle + '\\nEducational self-check only: https://toolsquark.com/tools/' + assessmentSlug + '.html';
+    const scoreText = modernAssessment ? '' : ' (' + score + ' / ' + scoreMaximum + ')';
+    const summary = assessmentName + '\\nAnswer pattern: ' + profile + scoreText + '\\n' + latestFocusTitle + '\\nOriginal educational self-check, not a diagnosis: https://toolsquark.com/tools/' + assessmentSlug + '.html';
     const status = document.getElementById('copy-status');
     try {
         await navigator.clipboard.writeText(summary);
@@ -325,6 +432,9 @@ function restartAssessment() {
     hasStarted = false;
     completionCounted = false;
     latestFocusTitle = '';
+    document.getElementById('protective-section').classList.add('hidden');
+    document.getElementById('context-section').classList.add('hidden');
+    document.getElementById('safety-area').classList.add('hidden');
     document.getElementById('copy-status').innerText = '';
     document.getElementById('result-card').classList.add('hidden');
     document.getElementById('quiz-card').classList.remove('hidden');

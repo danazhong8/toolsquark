@@ -3,6 +3,12 @@
 Audit date: June 21, 2026  
 Scope: 12 files in `templates/assessment-pages`
 
+## P1 Pilot Progress
+
+On June 21, 2026, Stress Pattern, Anxiety and High-Alert Pattern, and Procrastination Pattern were migrated to the version 2.0 contract. Each now has 12 scored items across four dimensions, one shared frequency scale, three separate context questions, two separately reported protective factors, functioning guidance, and revision history.
+
+The executable audit moved these three pages to zero blockers and zero warnings. The site baseline decreased from 52 blockers and 33 warnings to 41 blockers and 20 warnings. The original figures below remain as the P0 snapshot for comparison.
+
 ## Executive Findings
 
 - Ten of 12 self-checks have only five scored questions.
@@ -78,4 +84,3 @@ Priority replacements include:
 - A shared item-writing and scoring standard exists.
 - An executable audit reports structural, content, and migration risks.
 - Existing production scoring remains unchanged until P1 replaces each assessment as a complete versioned unit.
-

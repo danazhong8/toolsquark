@@ -1,100 +1,140 @@
+const frequency14d = {
+  id: "frequency-14d-v1",
+  values: [0, 1, 2, 3, 4],
+  options: ["Not at all", "On 1-2 days", "On 3-6 days", "On 7-11 days", "On 12-14 days"]
+};
+
 module.exports = {
   slug: "stress-index-test",
-  title: "Stress Index Test | Free Private Stress Self-Check",
-  description: "Take a private stress self-check for tension, overload, irritability, and recovery reserve. Educational browser-side assessment with instant results.",
-  h1: "Stress Index Test",
-  hero: "Audit your stress load, physical tension, and nervous system recovery capacity with a private browser-side self-assessment.",
-  schemaName: "Privacy-First Stress Index Test",
-  timeframe: "Past 2 weeks",
-  questionDimensions: ["reactivity", "load", "load", "reactivity", "load", "load", "load", "reserve", "reactivity", "reserve"],
-  dimensionRelated: { load: 1, reactivity: 0, reserve: 0 },
+  title: "Stress Pattern Self-Check | Private 14-Day Review",
+  description: "Review perceived overload, control strain, stress reactivity, and daily-life impact with a private 12-item original self-check.",
+  h1: "Stress Pattern Self-Check",
+  hero: "Review how often overload, reduced control, stress reactivity, and day-to-day interference appeared during the past two weeks.",
+  schemaName: "ToolsQuark Stress Pattern Self-Check",
+  schemaDescription: "A private browser-side 12-item original stress pattern self-check for educational reflection.",
+  lastUpdated: "June 21, 2026",
+  timeframe: "Past 14 days",
+  instrument: {
+    type: "original-self-check",
+    version: "2.0",
+    reviewStatus: "editorial-review",
+    intendedAudience: "Adults seeking general self-reflection about recent stress patterns",
+    recallPeriodDays: 14
+  },
+  dimensions: [
+    { key: "overload", label: "Perceived Overload", definition: "How often available time or energy felt insufficient for current demands." },
+    { key: "control", label: "Control Strain", definition: "How often uncertainty or limited influence made demands harder to manage." },
+    { key: "reactivity", label: "Stress Reactivity", definition: "How often activation persisted or reactions felt stronger than intended." },
+    { key: "impact", label: "Daily-Life Impact", definition: "How often stress interfered with ordinary tasks, routines, or interactions." }
+  ],
+  responseScale: frequency14d,
+  questions: [
+    { id: "overload-1", dimension: "overload", question: "During the past 14 days, how often did important responsibilities exceed the time available for them?" },
+    { id: "overload-2", dimension: "overload", question: "During the past 14 days, how often did unfinished responsibilities remain difficult to put out of mind?" },
+    { id: "overload-3", dimension: "overload", question: "During the past 14 days, how often did current demands exceed the energy you had available?" },
+    { id: "control-1", dimension: "control", question: "During the past 14 days, how often did unexpected changes leave you unsure what to do next?" },
+    { id: "control-2", dimension: "control", question: "During the past 14 days, how often did you feel unable to influence an important demand?" },
+    { id: "control-3", dimension: "control", question: "During the past 14 days, how often did uncertainty make it difficult to choose a next step?" },
+    { id: "reactivity-1", dimension: "reactivity", question: "During the past 14 days, how often did your body remain tense after a stressful moment had passed?" },
+    { id: "reactivity-2", dimension: "reactivity", question: "During the past 14 days, how often did a minor interruption trigger a stronger reaction than you intended?" },
+    { id: "reactivity-3", dimension: "reactivity", question: "During the past 14 days, how often did it take longer than usual to feel settled after pressure eased?" },
+    { id: "impact-1", dimension: "impact", question: "During the past 14 days, how often did stress make ordinary responsibilities harder to complete?" },
+    { id: "impact-2", dimension: "impact", question: "During the past 14 days, how often did stress disrupt your usual sleep schedule?" },
+    { id: "impact-3", dimension: "impact", question: "During the past 14 days, how often did stress reduce your patience during conversations?" }
+  ],
+  contextQuestions: [
+    {
+      id: "stress-source",
+      label: "Main source",
+      question: "Which area contributed most to your recent stress?",
+      options: [
+        { label: "Work or study", value: "work" },
+        { label: "Relationships or caregiving", value: "relationships" },
+        { label: "Health or practical concerns", value: "health-practical" },
+        { label: "Several areas at once", value: "multiple" },
+        { label: "Prefer not to answer", value: "__skip__" }
+      ]
+    },
+    {
+      id: "stress-duration",
+      label: "Duration",
+      question: "How long has this pattern been noticeable?",
+      options: [
+        { label: "Less than 2 weeks", value: "under-2w" },
+        { label: "2-6 weeks", value: "2-6w" },
+        { label: "More than 6 weeks", value: "over-6w" },
+        { label: "It varies too much to say", value: "variable" },
+        { label: "Prefer not to answer", value: "__skip__" }
+      ]
+    },
+    {
+      id: "stress-impact",
+      label: "Overall interference",
+      question: "How much is this pattern interfering with daily life?",
+      options: [
+        { label: "Not noticeably", value: "none" },
+        { label: "A little", value: "some" },
+        { label: "Substantially", value: "substantial" },
+        { label: "I am struggling with basic responsibilities", value: "unable" },
+        { label: "Prefer not to answer", value: "__skip__" }
+      ]
+    }
+  ],
+  protectiveResponseScale: frequency14d,
+  protectiveQuestions: [
+    { id: "support-access", label: "Access to support", question: "During the past 14 days, how often could you contact someone for support when pressure increased?" },
+    { id: "recovery-action", label: "Recovery time", question: "During the past 14 days, how often did you make time for an activity that helped you recover?" }
+  ],
+  safetyRules: [
+    {
+      questionId: "stress-impact",
+      values: ["unable"],
+      title: "Daily functioning needs attention",
+      message: "Difficulty managing basic responsibilities is more important than the checklist total. Consider contacting a qualified health professional or a trusted person who can help you access support. Use urgent local help if you may be unable to stay safe."
+    }
+  ],
+  profiles: [
+    { min: 0, max: 12, title: "Mostly Occasional Stress Responses", color: "var(--low)", description: "Your answers place most of these stress experiences in the occasional range. Context and recent changes still matter more than a single result.", insights: ["Protect the routines and support that are currently helping.", "Recheck after a meaningful change rather than repeating the test today."] },
+    { min: 13, max: 30, title: "Mixed Stress With Recurring Pressure", color: "var(--mid)", description: "Several stress experiences appeared repeatedly, but the pattern may differ across overload, control, reactivity, and daily impact.", insights: ["Start with the highest-frequency dimension rather than trying to change everything.", "Reduce or clarify one demand before adding another recovery task."] },
+    { min: 31, max: 48, title: "Frequent Stress Across Several Areas", color: "var(--high)", description: "Many of these stress experiences appeared on numerous days. Review daily-life interference and duration alongside the dimension pattern.", insights: ["Consider qualified support when the pattern persists or limits ordinary life.", "Prioritize one immediate reduction in demand and one repeatable recovery action."] }
+  ],
+  indicators: [
+    { key: "overload", label: "Perceived Overload" },
+    { key: "control", label: "Control Strain" },
+    { key: "reactivity", label: "Stress Reactivity" },
+    { key: "impact", label: "Daily-Life Impact" }
+  ],
+  dimensionRelated: { overload: 1, control: 1, reactivity: 0, impact: 0 },
   dimensionGuidance: {
-    load: "List the demands currently using the most capacity, then remove, defer, delegate, or clarify one item instead of trying to recover around an unchanged load.",
-    reactivity: "Use a brief pause at the first physical sign of escalation: release muscle tension, slow the exhale, and delay the next response when possible.",
-    reserve: "Protect one repeatable recovery block this week and treat sleep, food, movement, and support as capacity maintenance rather than rewards."
+    overload: "List the demands using the most capacity, then remove, defer, delegate, or clarify one item.",
+    control: "Separate what can be acted on today from what can only be monitored, then define one next decision.",
+    reactivity: "At the first sign of escalation, pause briefly, release muscle tension, and slow the exhale before responding.",
+    impact: "Protect basic routines first and seek qualified support when stress repeatedly interferes with sleep, work, relationships, or self-care."
   },
   references: [
     { title: "So Stressed Out?", publisher: "National Institute of Mental Health", href: "https://www.nimh.nih.gov/health/publications/so-stressed-out-fact-sheet" },
     { title: "Managing Stress", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/mental-health/living-with/index.html" }
   ],
-  schemaDescription: "A free browser-side stress self-check that estimates stress load, reactivity, and recovery reserve for educational self-reflection.",
-  lastUpdated: "June 20, 2026",
-  questions: [
-    { question: "How frequently have you felt upset or agitated because of something unexpected happening?", options: ["Almost never", "Sometimes", "Fairly often", "Very often"] },
-    { question: "How often do you feel you lack control over the important responsibilities in your life?", options: ["Never", "Rarely", "Sometimes", "All the time"] },
-    { question: "Have you noticed jaw clenching, teeth grinding, or shoulder tension?", options: ["Never notice this", "Rarely", "Frequently", "Almost constantly"] },
-    { question: "How easily do minor everyday inconveniences make you feel angry?", options: ["Stay calm", "Slightly annoyed", "Noticeably irritated", "Explosive frustration"] },
-    { question: "How regularly do you skip meals or overeat because of emotional pressure?", options: ["Never", "Occasionally", "Often", "Daily stress-eating or restriction"] },
-    { question: "Do you experience digestive issues, unexplained fatigue, or tension headaches?", options: ["No", "Rarely", "Frequently", "Chronic daily symptoms"] },
-    { question: "How often do you feel overwhelmed by your current duties?", options: ["Never", "Rarely", "Often", "Constantly drowning"] },
-    { question: "How successful are you at relaxing during evenings or weekends?", options: ["Highly successful", "Moderately successful", "Struggle to relax", "Almost impossible"] },
-    { question: "How often do you snap at family, friends, or coworkers over minor things?", options: ["Never", "Rarely", "Often", "Almost daily"] },
-    { question: "Do demands on your time feel like they are increasing while energy reserves shrink?", options: ["No, balanced", "Slightly out of balance", "Yes, noticeably", "Completely unsustainable"] }
-  ],
-  profiles: [
-    {
-      min: 10,
-      max: 18,
-      title: "Regulated Nervous System Baseline",
-      color: "var(--low)",
-      description: "Your stress responses appear relatively regulated. You still face pressure, but recovery capacity and emotional stability look comparatively strong.",
-      indicators: { load: 32, reactivity: 28, reserve: 85 },
-      insights: ["Keep protecting recovery routines before stress accumulates.", "Use short breaks and consistent sleep as maintenance, not emergency repair."]
-    },
-    {
-      min: 19,
-      max: 30,
-      title: "Elevated Stress & Reduced Recovery",
-      color: "var(--mid)",
-      description: "Your stress load appears elevated. Physical tension, sleep disruption, irritability, or reduced mental bandwidth may be starting to cluster.",
-      indicators: { load: 58, reactivity: 64, reserve: 52 },
-      insights: ["Schedule decompression windows as real appointments.", "Reduce avoidable stimulants and add simple downshifts such as slow exhale breathing or walking."]
-    },
-    {
-      min: 31,
-      max: 40,
-      title: "High Stress Load & Low Recovery",
-      color: "var(--high)",
-      description: "Your answers suggest a high stress burden and reduced recovery reserve. Active restoration, boundary setting, and support may be important.",
-      indicators: { load: 88, reactivity: 92, reserve: 21 },
-      insights: ["Consider speaking with a qualified professional if distress is persistent or impairing.", "Prioritize sleep, workload boundaries, and immediate nervous-system calming practices."]
-    }
-  ],
-  indicators: [
-    { key: "load", label: "Allostatic Load" },
-    { key: "reactivity", label: "Stress Reactivity" },
-    { key: "reserve", label: "Recovery Reserve", direction: "protective" }
-  ],
   relatedTitle: "Related Self-Checks",
   related: [
-    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Assessment", description: "Check whether sleep disruption is adding to stress load.", action: "Assess Sleep" },
-    { href: "https://toolsquark.com/tools/occupational-burnout-level-test.html", title: "Burnout Level Test", description: "Evaluate work-related fatigue and depletion.", action: "Check Burnout" }
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Self-Check", description: "Review whether sleep disruption is adding to recent strain.", action: "Review Sleep" },
+    { href: "https://toolsquark.com/tools/occupational-burnout-level-test.html", title: "Occupational Burnout Self-Check", description: "Review work-related exhaustion and detachment patterns.", action: "Review Work Strain" }
   ],
   faq: [
-    { question: "Can I be highly stressed without feeling anxious?", answer: "Yes. Stress can show up physically through tension, fatigue, headaches, appetite shifts, digestive symptoms, or irritability before it feels like anxiety." },
-    { question: "What is a quick way to lower stress intensity?", answer: "Slow exhale breathing, a brief walk, reducing sensory input, and pausing caffeine can help shift the body toward parasympathetic recovery." },
-    { question: "Is this a diagnosis?", answer: "No. This is a private educational self-check and cannot diagnose anxiety, burnout, trauma, or other clinical conditions." },
-    { question: "How often should I retake the stress test?", answer: "You can retake it after a meaningful change in workload, sleep, recovery routines, or life stress. Weekly or monthly check-ins are more useful than repeating it several times in one day." },
-    { question: "When should I seek professional support?", answer: "Consider professional support if stress feels persistent, affects sleep or work, causes panic-like symptoms, leads to unsafe thoughts, or makes daily responsibilities difficult to manage." }
+    { question: "Is this a validated stress scale?", answer: "No. It is an original ToolsQuark educational self-check with editorial result patterns, not a validated clinical instrument." },
+    { question: "Why are context questions not scored?", answer: "Duration, source, and interference help interpret a pattern but are not interchangeable with symptom frequency. Keeping them separate avoids hiding unlike information inside one total." },
+    { question: "When should I seek support?", answer: "Consider qualified support when stress persists, intensifies, interferes with ordinary responsibilities, or makes you feel unable to stay safe." }
   ],
   contentSections: [
-    {
-      title: "What This Stress Test Measures",
-      body: `<p>This self-check samples ten common stress experiences across perceived control, irritability, physical tension, overwhelm, behavior change, and recovery difficulty during the past two weeks.</p><p>It is an editorial educational checklist created for ToolsQuark. It is not the Perceived Stress Scale or another validated clinical instrument, and its custom load, reactivity, and reserve indicators have not been clinically validated.</p>`
-    },
-    {
-      title: "How To Interpret Your Score",
-      body: `<p>Each answer contributes 1 to 4 points, producing a total from 10 to 40. Higher totals mean that more high-frequency stress responses were selected; they do not represent a diagnosis or a population percentile.</p><ul><li><strong>10-18:</strong> fewer frequent stress signals in this checklist.</li><li><strong>19-30:</strong> several elevated stress or recovery signals.</li><li><strong>31-40:</strong> many frequent stress responses that merit attention.</li></ul><div class="note-box">The score bands are practical editorial groupings, not validated clinical cutoffs. Look at which answers changed and whether stress is impairing daily life, not just the total.</div>`
-    },
-    {
-      title: "What To Do After The Test",
-      body: `<p>Start with one specific lever: reduce or clarify one demand, protect a repeatable sleep window, take a movement break, write down open loops, or contact someone who can provide practical support. Repeating the check after a meaningful change is more informative than retaking it several times in one day.</p><p>Seek qualified support when distress persists, disrupts sleep or work, causes panic-like symptoms, or makes ordinary responsibilities hard to manage. If you may harm yourself or someone else, use local emergency or crisis support now rather than relying on this page.</p>`
-    },
-    {
-      title: "Privacy And Limits",
-      body: `<p>Your answers are scored in the browser. This page does not require an account and does not send your individual responses to a server.</p><p>This tool is educational and cannot replace a clinician, therapist, crisis line, or emergency service.</p>`
-    }
+    { title: "What Version 2.0 Measures", body: `<p>The 12 scored items cover perceived overload, control strain, stress reactivity, and daily-life impact. Each dimension is supported by three items using the same 14-day frequency scale.</p><p>Three optional context questions and two protective-factor questions are reported separately. They do not silently increase or reduce the core score.</p>` },
+    { title: "How Scoring Works", body: `<p>Scored answers use values from 0 to 4 and produce an editorial total from 0 to 48. Dimension labels summarize response frequency, not population standing or medical risk.</p><div class="note-box">The result patterns are editorial groupings. Version 2.0 has not undergone psychometric validation and cannot diagnose a stress-related condition.</div>` },
+    { title: "How To Use The Result", body: `<p>Review the dimension with the most frequent experiences, the reported duration, and whether ordinary life is being affected. A practical next step should address either one demand or one recovery condition, not add a long list of new obligations.</p>` },
+    { title: "Privacy And Support", body: `<p>Answers and scoring remain in the browser. If stress is making basic responsibilities difficult, seek qualified support regardless of the displayed pattern. Use urgent local help if you may be unable to stay safe.</p>` }
   ],
-  methodology: "This original educational checklist uses 10 four-point items scored from 1 to 4. Total-score bands and dimension indicators are editorial, not clinically validated. All scoring happens locally in your browser.",
-  disclaimer: "This tool is for education and self-reflection only. If you feel unsafe, overwhelmed, or persistently distressed, seek help from a qualified health professional or local emergency support."
+  revisionHistory: [
+    { version: "2.0", date: "2026-06-21", summary: "Replaced mixed 10-item scoring with 12 uniform core items, separate context, protective factors, and functioning guidance." },
+    { version: "1.0", date: "2026-06-20", summary: "Initial original 10-item editorial checklist." }
+  ],
+  methodology: "Version 2.0 is an original 12-item editorial self-check. Four dimensions use three items each and one explicit 0-to-4 frequency scale. Context and protective factors are separate from the scored core. The model is not clinically or psychometrically validated.",
+  disclaimer: "This tool is for education and self-reflection only. It cannot diagnose a condition or assess immediate safety."
 };
