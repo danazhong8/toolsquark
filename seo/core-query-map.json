@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "updated": "2026-06-21",
+  "market": "en",
+  "notes": "Seed queries are editorial hypotheses until validated with Google Search Console data.",
+  "pages": [
+    {
+      "path": "/tools/bmi-calculator.html",
+      "cluster": "body-metrics",
+      "primaryQuery": "bmi calculator",
+      "secondaryQueries": ["body mass index calculator", "adult bmi calculator", "metric bmi calculator", "imperial bmi calculator"],
+      "intent": "Calculate adult BMI from height and weight and interpret the screening category.",
+      "snippetAngle": "Free metric and imperial adult BMI calculation with category context.",
+      "avoidQueries": ["child bmi calculator", "pregnancy bmi calculator", "bmi percentile calculator"],
+      "cannibalizationGuard": "Own BMI calculation queries; link to healthy-weight range for height-based weight estimates."
+    },
+    {
+      "path": "/tools/tdee-calculator.html",
+      "cluster": "energy-needs",
+      "primaryQuery": "tdee calculator",
+      "secondaryQueries": ["total daily energy expenditure calculator", "maintenance calorie calculator by activity", "daily calorie burn calculator", "tdee calculator metric"],
+      "intent": "Estimate total daily energy expenditure from BMR and activity level.",
+      "snippetAngle": "Estimate TDEE and maintenance energy from body metrics and activity.",
+      "avoidQueries": ["calorie intake calculator", "food calorie calculator"],
+      "cannibalizationGuard": "Own expenditure and maintenance queries; calorie-calculator owns intake targets by goal."
+    },
+    {
+      "path": "/tools/calorie-calculator.html",
+      "cluster": "energy-needs",
+      "primaryQuery": "calorie calculator",
+      "secondaryQueries": ["daily calorie needs calculator", "calories for weight loss calculator", "maintenance calories calculator", "calorie intake calculator"],
+      "intent": "Plan daily calorie intake for maintenance, loss, or gain.",
+      "snippetAngle": "Daily calorie targets for maintenance, fat loss, and muscle gain.",
+      "avoidQueries": ["food calorie counter", "calories burned calculator"],
+      "cannibalizationGuard": "Own intake-planning queries; TDEE owns expenditure terminology and BMR owns resting energy."
+    },
+    {
+      "path": "/tools/bmr-calculator.html",
+      "cluster": "energy-needs",
+      "primaryQuery": "bmr calculator",
+      "secondaryQueries": ["basal metabolic rate calculator", "resting calorie calculator", "mifflin st jeor calculator", "bmr calculator metric"],
+      "intent": "Estimate resting energy expenditure with the Mifflin-St Jeor equation.",
+      "snippetAngle": "Calculate estimated resting calories with the disclosed Mifflin-St Jeor formula.",
+      "avoidQueries": ["tdee calculator", "maintenance calorie calculator"],
+      "cannibalizationGuard": "Own resting-energy queries and explain the next step to TDEE without targeting TDEE as primary."
+    },
+    {
+      "path": "/tools/body-fat-calculator.html",
+      "cluster": "body-metrics",
+      "primaryQuery": "body fat calculator",
+      "secondaryQueries": ["body fat percentage calculator", "navy body fat calculator", "circumference body fat calculator", "body fat calculator metric"],
+      "intent": "Estimate adult body-fat percentage from circumference measurements.",
+      "snippetAngle": "U.S. Navy circumference estimate with metric and imperial measurements.",
+      "avoidQueries": ["body fat scale accuracy", "skin fold calculator"],
+      "cannibalizationGuard": "Own circumference-based body-fat estimates; BMI and waist-ratio pages remain screening tools."
+    },
+    {
+      "path": "/tools/healthy-weight-range-calculator.html",
+      "cluster": "body-metrics",
+      "primaryQuery": "healthy weight range calculator",
+      "secondaryQueries": ["healthy weight for height calculator", "bmi weight range calculator", "adult weight range by height", "normal weight range calculator"],
+      "intent": "Estimate an adult BMI-based screening weight range from height.",
+      "snippetAngle": "Calculate a BMI-based adult weight range from height with clear limitations.",
+      "avoidQueries": ["ideal weight calculator", "child healthy weight calculator"],
+      "cannibalizationGuard": "Own height-to-weight-range queries; BMI calculator owns current BMI classification."
+    },
+    {
+      "path": "/tools/water-intake-calculator.html",
+      "cluster": "nutrition-hydration",
+      "primaryQuery": "water intake calculator",
+      "secondaryQueries": ["how much water should i drink calculator", "daily water intake by weight", "hydration calculator", "water intake calculator kg"],
+      "intent": "Estimate a general daily fluid planning target from weight and exercise.",
+      "snippetAngle": "Daily hydration estimate by body weight and exercise duration, with safety limits.",
+      "avoidQueries": ["medical fluid restriction", "infant water intake"],
+      "cannibalizationGuard": "Own general adult hydration planning and avoid medical fluid-prescription intent."
+    },
+    {
+      "path": "/tools/macro-calculator.html",
+      "cluster": "nutrition-hydration",
+      "primaryQuery": "macro calculator",
+      "secondaryQueries": ["macronutrient calculator", "protein carbs fat calculator", "macro split calculator", "daily macros calculator"],
+      "intent": "Split a calorie target into protein, carbohydrate, and fat planning amounts.",
+      "snippetAngle": "Convert daily calories into a transparent protein, carbohydrate, and fat split.",
+      "avoidQueries": ["macro food tracker", "custom diet plan"],
+      "cannibalizationGuard": "Own three-macronutrient split queries; protein calculator owns protein-only requirements."
+    },
+    {
+      "path": "/tools/protein-calculator.html",
+      "cluster": "nutrition-hydration",
+      "primaryQuery": "protein calculator",
+      "secondaryQueries": ["protein intake calculator", "grams of protein per day calculator", "protein per kg calculator", "daily protein needs calculator"],
+      "intent": "Estimate a daily protein range from body weight and selected activity goal.",
+      "snippetAngle": "Daily protein grams by body weight with an explicit planning factor.",
+      "avoidQueries": ["protein powder serving calculator", "kidney disease protein intake"],
+      "cannibalizationGuard": "Own protein-only queries; macro calculator owns full macro distribution."
+    },
+    {
+      "path": "/tools/running-pace-calculator.html",
+      "cluster": "activity-performance",
+      "primaryQuery": "running pace calculator",
+      "secondaryQueries": ["pace calculator", "minutes per mile calculator", "minutes per km calculator", "running speed calculator"],
+      "intent": "Convert running distance and elapsed time into pace per kilometer or mile.",
+      "snippetAngle": "Calculate running pace in min/km or min/mile from distance and finish time.",
+      "avoidQueries": ["race predictor", "training pace plan"],
+      "cannibalizationGuard": "Own observed pace conversion; future race-prediction tools must target prediction intent separately."
+    },
+    {
+      "path": "/tools/sleep-calculator.html",
+      "cluster": "sleep-planning",
+      "primaryQuery": "sleep calculator",
+      "secondaryQueries": ["sleep cycle calculator", "bedtime calculator", "wake up time calculator", "sleep duration calculator"],
+      "intent": "Create a rough bedtime or wake-time plan from target sleep duration and cycle assumptions.",
+      "snippetAngle": "Plan bedtime or wake time with transparent cycle and sleep-latency assumptions.",
+      "avoidQueries": ["sleep disorder test", "sleep apnea test"],
+      "cannibalizationGuard": "Own sleep timing and duration planning; sleep self-check owns recent sleep-pattern reflection."
+    },
+    {
+      "path": "/tools/period-calculator.html",
+      "cluster": "cycle-planning",
+      "primaryQuery": "period calculator",
+      "secondaryQueries": ["menstrual cycle calculator", "next period calculator", "ovulation date calculator", "fertile window calculator"],
+      "intent": "Estimate the next period, ovulation day, and fertile window from average cycle length.",
+      "snippetAngle": "Estimate next period and fertile-window dates with irregular-cycle limitations.",
+      "avoidQueries": ["pregnancy test calculator", "irregular period diagnosis"],
+      "cannibalizationGuard": "Own cycle-date estimates; due-date calculator owns pregnancy dating."
+    }
+  ]
+}
