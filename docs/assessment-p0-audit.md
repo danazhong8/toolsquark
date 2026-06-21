@@ -9,6 +9,8 @@ On June 21, 2026, Stress Pattern, Anxiety and High-Alert Pattern, and Procrastin
 
 The executable audit moved these three pages to zero blockers and zero warnings. The site baseline decreased from 52 blockers and 33 warnings to 41 blockers and 20 warnings. The original figures below remain as the P0 snapshot for comparison.
 
+P2 added a dedicated introduction state, explicit three-part progress, confirm-before-next answering, immediate functioning guidance, a structured result hierarchy, and clean retake behavior to the three version 2.0 pages. Legacy assessments retain their existing automatic progression until their content is migrated.
+
 ## Executive Findings
 
 - Ten of 12 self-checks have only five scored questions.

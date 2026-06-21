@@ -86,11 +86,12 @@
 :root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--low:#22c55e;--mid:#eab308;--high:#ef4444;}
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px}.container{max-width:1240px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:700}.breadcrumb a:hover{text-decoration:underline}
 .hero{padding:22px 0 28px;margin-bottom:28px;border-bottom:1px solid #dbe3ec}.hero h1{font-size:40px;font-weight:850;margin-bottom:10px;letter-spacing:0;line-height:1.15}.hero p{font-size:17px;color:#475569;max-width:820px}.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}.main-column,.side-column{min-width:0}.card{background:white;padding:30px;border-radius:8px;margin-bottom:24px;border:1px solid #e2e8f0;box-shadow:0 3px 14px rgba(15,23,42,.04)}.card h3{font-size:1.25rem;font-weight:800;margin-bottom:20px;color:#1e293b}.side-card{padding:22px}.side-card h3{font-size:1.05rem;margin-bottom:14px}.side-sticky{position:static}.fact-list{list-style:none;display:grid;gap:10px}.fact-list li{display:flex;justify-content:space-between;gap:14px;padding-bottom:10px;border-bottom:1px solid #eef2f7;font-size:13px}.fact-list li:last-child{border-bottom:none;padding-bottom:0}.fact-list span{color:var(--text-muted)}.fact-list strong{text-align:right;color:#334155}.page-nav{list-style:none;display:grid;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid #e2e8f0}.page-nav a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:750}.page-nav a:hover{text-decoration:underline}
+.intro-eyebrow{font-size:12px;font-weight:850;text-transform:uppercase;color:var(--accent);margin-bottom:8px}.intro-card h2{font-size:26px;line-height:1.25;margin-bottom:10px}.intro-lede{color:#475569;max-width:720px;margin-bottom:24px}.intro-facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;margin-bottom:22px}.intro-fact{padding:16px 12px}.intro-fact:first-child{padding-left:0}.intro-fact span{display:block;color:var(--text-muted);font-size:12px;margin-bottom:3px}.intro-fact strong{display:block;color:#1e293b;font-size:14px}.intro-note{color:#475569;font-size:14px;line-height:1.65;margin-bottom:22px}.start-row{display:flex;align-items:center;justify-content:space-between;gap:18px}.start-row small{color:var(--text-muted);max-width:470px}.start-btn{min-height:48px;padding:12px 20px}.phase-track{display:grid;grid-template-columns:12fr 3fr 2fr;gap:6px;margin-bottom:18px}.phase-segment{height:5px;background:#e2e8f0;border-radius:999px}.phase-segment.active{background:#2563eb}.phase-segment.complete{background:#93c5fd}
 .assessment-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:22px;color:var(--text-muted);font-size:13px;font-weight:700}.assessment-meta span{display:inline-flex;align-items:center;gap:6px}.quiz-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}.progress-wrap{flex:1;height:14px;background:#e2e8f0;border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#3b82f6);transition:width .25s}.progress-text{font-size:13px;font-weight:800;color:var(--text-muted);white-space:nowrap}.question-kicker{font-size:12px;font-weight:850;text-transform:uppercase;color:var(--accent);margin-bottom:7px}.question{font-size:21px;font-weight:800;color:#1e293b;margin-bottom:22px;line-height:1.45;outline:none}.answers-grid{display:flex;flex-direction:column;gap:12px}.option{width:100%;text-align:left;padding:16px 18px;border:2px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#334155;font-size:15px;font-weight:650;cursor:pointer;transition:.2s}.option:hover,.option:focus-visible{border-color:var(--accent);background:#eff6ff;color:var(--accent);transform:translateY(-1px);outline:3px solid rgba(37,99,235,.18);outline-offset:2px}.option.selected{border-color:var(--accent);background:#dbeafe;color:#1e40af}.option.selected-heavy{border-color:#f97316;background:#fff7ed;color:#9a3412}.quiz-actions,.result-actions{display:flex;justify-content:space-between;gap:12px;margin-top:22px}.secondary-btn,.primary-btn{min-height:44px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:800;cursor:pointer}.secondary-btn{background:white;border:1px solid #cbd5e1;color:#334155}.secondary-btn:hover,.secondary-btn:focus-visible{border-color:var(--accent);color:var(--accent)}.secondary-btn:disabled{opacity:.45;cursor:not-allowed}.primary-btn{border:1px solid var(--accent);background:var(--accent);color:white}.primary-btn:hover,.primary-btn:focus-visible{background:#1d4ed8}.hidden{display:none!important}
 .result-box{background:#f8fafc;border:1px solid #e2e8f0;padding:30px;border-radius:20px;text-align:center}.score-label{font-size:12px;font-weight:800;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px}.score{font-size:60px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:8px}.profile{font-size:22px;font-weight:900;margin-bottom:12px}.description{color:#475569;font-size:15px;margin:0 auto 24px;max-width:660px;line-height:1.65}.indicator-grid{text-align:left;margin-top:20px}.bar{margin-bottom:18px;background:white;border:1px solid #e2e8f0;border-radius:14px;padding:14px}.bar-label{display:flex;justify-content:space-between;gap:10px;color:#334155;font-weight:800;font-size:14px;margin-bottom:8px}.bar-bg{height:10px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar-fill{height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#2563eb);border-radius:999px;transition:width .8s cubic-bezier(.16,1,.3,1)}.focus-area{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--accent);padding:18px;border-radius:10px;text-align:left;margin-top:20px}.focus-area h4{font-size:15px;color:#1e3a8a;margin-bottom:6px}.focus-area p{font-size:14px;color:#334155}.next-tool{display:flex;align-items:center;justify-content:space-between;gap:14px;background:white;border:1px solid #bfdbfe;border-radius:10px;padding:15px 16px;margin-top:12px;text-align:left;text-decoration:none}.next-tool div{min-width:0}.next-tool small{display:block;color:var(--text-muted);font-weight:700;margin-bottom:2px}.next-tool strong{display:block;color:#1e3a8a;font-size:14px}.next-tool span{color:var(--accent);font-weight:900;font-size:20px}.next-tool:hover,.next-tool:focus-visible{border-color:var(--accent);outline:3px solid rgba(37,99,235,.15);outline-offset:2px}.copy-status{min-height:20px;margin-top:8px;color:var(--text-muted);font-size:12px;font-weight:700}.insight{background:white;border-left:4px solid var(--accent);padding:16px;border-radius:8px;text-align:left;margin-top:12px;color:#475569;font-size:14px}
 .recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.recommend-card span{font-size:13px;font-weight:800;color:var(--accent);margin-top:12px}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li,.score-guide p{font-size:15px;color:#475569;line-height:1.75}.content-section p,.score-guide p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{color:var(--accent);font-weight:750;text-decoration:none}.reference-list a:hover{text-decoration:underline}.reference-list span{font-size:13px;color:var(--text-muted);white-space:nowrap}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}footer a{color:var(--accent);font-weight:700;text-decoration:none;margin-right:14px}footer a:hover{text-decoration:underline}
 footer span{display:block;margin-top:10px}
-.result-box{background:transparent;border:none;padding:0}.bar{border-radius:6px}.focus-area,.next-tool{border-radius:6px}.result-subsection{text-align:left;margin-top:24px;padding-top:20px;border-top:1px solid #e2e8f0}.result-subsection h4{font-size:16px;margin-bottom:10px}.context-list{display:grid;gap:8px;list-style:none}.context-list li{display:flex;justify-content:space-between;gap:18px;padding:10px 0;border-bottom:1px solid #eef2f7;color:#475569;font-size:14px}.context-list strong{text-align:right;color:#1e293b}.protective-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.protective-item{border:1px solid #bbf7d0;background:#f0fdf4;padding:14px;border-radius:6px}.protective-item strong{display:block;color:#166534;font-size:14px}.protective-item span{display:block;color:#475569;font-size:13px;margin-top:4px}.safety-area{background:#fff7ed;border:1px solid #fdba74;border-left:4px solid #f97316;padding:16px;text-align:left;margin-top:20px;border-radius:6px}.safety-area h4{color:#9a3412;margin-bottom:6px}.safety-area p{color:#7c2d12;font-size:14px}.instrument-status{margin-top:12px;padding-top:12px;border-top:1px solid #e2e8f0;color:#475569;font-size:12px}.side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.side-column .reference-list li{display:block}.side-column .reference-list span{display:block;margin-top:4px;white-space:normal}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.question{font-size:19px}.recommend-grid,.protective-grid{grid-template-columns:1fr}.score{font-size:46px}.card{padding:22px 18px}.assessment-meta{display:grid;grid-template-columns:1fr 1fr}.quiz-actions,.result-actions{flex-wrap:wrap}.reference-list li{display:block}.reference-list span{display:block;margin-top:4px;white-space:normal}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
+.result-box{background:transparent;border:none;padding:0}.result-meta{display:flex;justify-content:center;gap:8px 18px;flex-wrap:wrap;color:var(--text-muted);font-size:12px;font-weight:700;margin-bottom:12px}.bar{border-radius:6px}.focus-area,.next-tool{border-radius:6px}.result-subsection{text-align:left;margin-top:24px;padding-top:20px;border-top:1px solid #e2e8f0}.result-subsection h4{font-size:16px;margin-bottom:6px}.result-subsection>p{color:var(--text-muted);font-size:13px;margin-bottom:12px}.context-list{display:grid;gap:8px;list-style:none}.context-list li{display:flex;justify-content:space-between;gap:18px;padding:10px 0;border-bottom:1px solid #eef2f7;color:#475569;font-size:14px}.context-list strong{text-align:right;color:#1e293b}.protective-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.protective-item{border:1px solid #bbf7d0;background:#f0fdf4;padding:14px;border-radius:6px}.protective-item strong{display:block;color:#166534;font-size:14px}.protective-item span{display:block;color:#475569;font-size:13px;margin-top:4px}.safety-area{background:#fff7ed;border:1px solid #fdba74;border-left:4px solid #f97316;padding:16px;text-align:left;margin-top:20px;border-radius:6px}.safety-area h4{color:#9a3412;margin-bottom:6px}.safety-area p{color:#7c2d12;font-size:14px}.quiz-safety{margin:18px 0 0}.instrument-status{margin-top:12px;padding-top:12px;border-top:1px solid #e2e8f0;color:#475569;font-size:12px}.side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.side-column .reference-list li{display:block}.side-column .reference-list span{display:block;margin-top:4px;white-space:normal}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.intro-facts{grid-template-columns:1fr 1fr}.intro-fact:nth-child(3){padding-left:0}.start-row{align-items:stretch;flex-direction:column}.start-btn{width:100%}.question{font-size:19px}.recommend-grid,.protective-grid{grid-template-columns:1fr}.score{font-size:46px}.card{padding:22px 18px}.assessment-meta{display:grid;grid-template-columns:1fr 1fr}.quiz-actions,.result-actions{flex-wrap:wrap}.quiz-actions .primary-btn{margin-left:auto}.reference-list li{display:block}.reference-list span{display:block;margin-top:4px;white-space:normal}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
 
 </style>
 </head>
@@ -100,21 +101,25 @@ footer span{display:block;margin-top:10px}
     <div class="hero"><h1>Occupational Burnout Self-Check</h1><p>Reflect on work-related exhaustion, detachment, spillover into personal time, and your current capacity to recover.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
+
     <div class="card" id="quiz-card">
         <div class="assessment-meta"><span>5 scored questions</span><span>About 2 minutes</span><span>Past 4 weeks</span><span>Scored in your browser</span></div>
+
         <div class="quiz-header"><div class="progress-wrap" id="progress-wrap" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-labelledby="progress-text"><div class="progress-bar" id="progress-bar"></div></div><div class="progress-text" id="progress-text">Question 1 / 5</div></div>
         <div class="question-kicker" id="question-kicker"></div>
         <div class="question" id="question-text" tabindex="-1"></div>
         <div class="answers-grid" id="answers-container"></div>
+        <div class="safety-area quiz-safety hidden" id="quiz-safety-area" role="alert"></div>
         <div class="quiz-actions"><button type="button" class="secondary-btn" id="previous-btn" onclick="previousQuestion()">&larr; Previous</button></div>
     </div>
     <div class="card hidden" id="result-card" role="region" aria-live="polite" aria-labelledby="profile-status">
         <div class="result-box">
+
             <div class="score-label">Overall score</div>
             <div class="score"><span id="score-val">0</span> / 20</div>
             <div class="profile" id="profile-status" tabindex="-1"></div>
             <p class="description" id="profile-desc"></p>
-            <div class="indicator-grid" id="indicator-grid"></div>
+            <div class="result-subsection"><h4>Scored Dimensions</h4><p>Labels describe selected frequency within this checklist, not medical severity or population standing.</p><div class="indicator-grid" id="indicator-grid"></div></div>
             <div class="result-subsection hidden" id="protective-section"><h4>Recovery And Protective Factors</h4><div class="protective-grid" id="protective-grid"></div></div>
             <div class="result-subsection hidden" id="context-section"><h4>Your Context</h4><ul class="context-list" id="context-list"></ul></div>
             <div class="safety-area hidden" id="safety-area"></div>
@@ -411,21 +416,67 @@ function activeProfile(totalScore) {
     }
     return profiles[profiles.length - 1];
 }
+function phaseDetails(question) {
+    const phaseQuestions = questions.filter((item) => item.type === question.type);
+    const phaseIndex = phaseQuestions.findIndex((item) => item.id === question.id) + 1;
+    const labels = { scored: 'Part 1 of 3 - Scored question', context: 'Part 2 of 3 - Context, not scored', protective: 'Part 3 of 3 - Protective factor' };
+    return { label: labels[question.type] || 'Question', index: phaseIndex, total: phaseQuestions.length };
+}
+function updatePhaseTrack(question) {
+    const track = document.getElementById('phase-track');
+    if (!track) return;
+    const order = ['scored', 'context', 'protective'];
+    const activeIndex = order.indexOf(question.type);
+    track.querySelectorAll('.phase-segment').forEach((segment, index) => {
+        segment.classList.toggle('active', index === activeIndex);
+        segment.classList.toggle('complete', index < activeIndex);
+    });
+}
+function matchingSafetyRule() {
+    return safetyRules.find((rule) => {
+        const questionIndex = questions.findIndex((question) => question.id === rule.questionId);
+        return questionIndex >= 0 && rule.values.includes(answers[questionIndex]);
+    });
+}
+function renderQuizSafety() {
+    const area = document.getElementById('quiz-safety-area');
+    const question = questions[current];
+    const matched = safetyRules.find((rule) => rule.questionId === question.id && rule.values.includes(answers[current]));
+    area.classList.toggle('hidden', !matched);
+    area.innerHTML = matched ? `<h4>${matched.title}</h4><p>${matched.message}</p>` : '';
+}
 function loadQuestion() {
     const q = questions[current];
-    const typeLabels = { scored: 'Scored question', context: 'Context question - not scored', protective: 'Protective factor - reported separately' };
-    document.getElementById('question-kicker').innerText = typeLabels[q.type] || 'Question';
+    const phase = phaseDetails(q);
+    document.getElementById('question-kicker').innerText = modernAssessment ? `${phase.label} ${phase.index} of ${phase.total}` : phase.label;
     document.getElementById('question-text').innerText = q.question;
     document.getElementById('progress-text').innerText = `Question ${current + 1} / ${questions.length}`;
     document.getElementById('progress-bar').style.width = `${((current + 1) / questions.length) * 100}%`;
     document.getElementById('progress-wrap').setAttribute('aria-valuenow', current + 1);
     document.getElementById('previous-btn').disabled = current === 0;
+    updatePhaseTrack(q);
     document.getElementById('answers-container').innerHTML = q.options.map((option, index) => {
         const selected = answers[current] === option.value;
         const selectedClass = selected ? (!modernAssessment && q.type === 'scored' && index >= 2 ? ' selected-heavy' : ' selected') : '';
         return `<button type="button" class="option${selectedClass}" aria-pressed="${selected}" onclick="selectOption(this, ${index})">${option.label}</button>`;
     }).join('');
+    const nextButton = document.getElementById('next-btn');
+    if (nextButton) {
+        nextButton.disabled = answers[current] === null;
+        nextButton.innerHTML = current === questions.length - 1 ? 'See results &rarr;' : 'Next &rarr;';
+    }
+    renderQuizSafety();
     isTransitioning = false;
+}
+function startAssessment() {
+    document.getElementById('intro-card')?.classList.add('hidden');
+    document.getElementById('quiz-card').classList.remove('hidden');
+    if (!hasStarted) {
+        hasStarted = true;
+        trackAssessmentEvent('assessment_started');
+    }
+    loadQuestion();
+    document.getElementById('question-text').focus();
 }
 function selectOption(el, optionIndex) {
     if (isTransitioning) return;
@@ -438,11 +489,29 @@ function selectOption(el, optionIndex) {
     const question = questions[current];
     el.classList.add(!modernAssessment && question.type === 'scored' && optionIndex >= 2 ? 'selected-heavy' : 'selected');
     answers[current] = question.options[optionIndex].value;
+    if (modernAssessment) {
+        const nextButton = document.getElementById('next-btn');
+        nextButton.disabled = false;
+        renderQuizSafety();
+        isTransitioning = false;
+        return;
+    }
     setTimeout(() => {
         current += 1;
         if (current < questions.length) loadQuestion();
         else showResult();
     }, 260);
+}
+function nextQuestion() {
+    if (!modernAssessment || isTransitioning || answers[current] === null) return;
+    isTransitioning = true;
+    current += 1;
+    if (current < questions.length) {
+        loadQuestion();
+        document.getElementById('question-text').focus();
+    } else {
+        showResult();
+    }
 }
 function previousQuestion() {
     if (isTransitioning || current === 0) return;
@@ -498,10 +567,7 @@ function renderContext() {
     }).join('');
 }
 function renderSafetyGuidance() {
-    const matched = safetyRules.find((rule) => {
-        const questionIndex = questions.findIndex((question) => question.id === rule.questionId);
-        return questionIndex >= 0 && rule.values.includes(answers[questionIndex]);
-    });
+    const matched = matchingSafetyRule();
     if (!matched) return;
     const area = document.getElementById('safety-area');
     area.classList.remove('hidden');
@@ -572,6 +638,7 @@ async function copyResultSummary() {
     }
 }
 function reviewAnswers() {
+    document.getElementById('intro-card')?.classList.add('hidden');
     document.getElementById('result-card').classList.add('hidden');
     document.getElementById('quiz-card').classList.remove('hidden');
     current = questions.length - 1;
@@ -590,9 +657,10 @@ function restartAssessment() {
     document.getElementById('safety-area').classList.add('hidden');
     document.getElementById('copy-status').innerText = '';
     document.getElementById('result-card').classList.add('hidden');
-    document.getElementById('quiz-card').classList.remove('hidden');
+    document.getElementById('quiz-card').classList.toggle('hidden', modernAssessment);
+    document.getElementById('intro-card')?.classList.toggle('hidden', !modernAssessment);
     loadQuestion();
-    document.getElementById('quiz-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById(modernAssessment ? 'intro-card' : 'quiz-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 loadQuestion();
 </script>
