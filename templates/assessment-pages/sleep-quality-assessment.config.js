@@ -1,10 +1,11 @@
 module.exports = {
   slug: "sleep-quality-assessment",
-  title: "Sleep Quality Test | Free Private Self-Check | ToolsQuark",
+  title: "Sleep Quality Self-Check | Private 10-Question Review",
   description: "Take a private sleep quality self-check covering time to fall asleep, awakenings, schedule consistency, nighttime symptoms, and daytime fatigue.",
-  h1: "Sleep Quality Assessment",
+  h1: "Sleep Quality Self-Check",
   hero: "Review sleep latency, nighttime awakenings, schedule consistency, and daytime fatigue in a private self-assessment.",
   schemaName: "Privacy-First Sleep Quality Assessment",
+  lastUpdated: "June 21, 2026",
   timeframe: "Past 4 weeks",
   questionDimensions: ["latency", "architecture", "dysfunction", "latency", "dysfunction", "architecture", "architecture", "latency", "dysfunction", "latency"],
   dimensionRelated: { architecture: 0, latency: 0, dysfunction: 1 },
@@ -14,7 +15,8 @@ module.exports = {
     dysfunction: "Protect adequate sleep opportunity and seek clinical advice if daytime sleepiness is persistent, severe, or creates a driving or work safety risk."
   },
   references: [
-    { title: "About Sleep", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/sleep/about/index.html" }
+    { title: "About Sleep", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/sleep/about/index.html" },
+    { title: "Sleep Deprivation and Deficiency", publisher: "National Heart, Lung, and Blood Institute", href: "https://www.nhlbi.nih.gov/health/sleep-deprivation" }
   ],
   categoryHref: "health.html",
   categoryLabel: "Health Tools",
@@ -31,7 +33,7 @@ module.exports = {
     { question: "How often do you use screens in bed while waiting for sleep?", options: ["Never", "Rarely", "Often", "Almost always"] }
   ],
   profiles: [
-    { min: 10, max: 16, title: "Optimal Circadian Rhythm", color: "var(--low)", description: "Your sleep pattern appears relatively efficient, with fewer signs of prolonged latency, fragmentation, or daytime dysfunction.", indicators: { architecture: 24, latency: 22, dysfunction: 20 }, insights: ["Protect your consistent wake time.", "Keep screens and work out of bed to preserve the bed-sleep association."] },
+    { min: 10, max: 16, title: "Fewer Frequent Sleep Concerns", color: "var(--low)", description: "Your answers include fewer frequent concerns about latency, fragmentation, or daytime function in this checklist.", indicators: { architecture: 24, latency: 22, dysfunction: 20 }, insights: ["Protect your consistent wake time.", "Keep screens and work out of bed to preserve the bed-sleep association."] },
     { min: 17, max: 28, title: "Fragmented Rest Pattern", color: "var(--mid)", description: "Your answers suggest moderate sleep disruption. Stress, schedule drift, or bedtime stimulation may be affecting recovery.", indicators: { architecture: 56, latency: 62, dysfunction: 58 }, insights: ["Use a consistent wind-down routine.", "If awake for a long time, leave bed briefly and return when sleepy."] },
     { min: 29, max: 40, title: "High Sleep Disruption Signal", color: "var(--high)", description: "Your responses suggest significant sleep disturbance or daytime impact. A clinical sleep evaluation may be worth considering.", indicators: { architecture: 86, latency: 88, dysfunction: 90 }, insights: ["Discuss persistent insomnia, gasping, or severe daytime sleepiness with a clinician.", "Avoid using alcohol as a sleep strategy; it can worsen sleep architecture."] }
   ],
@@ -41,7 +43,7 @@ module.exports = {
     { key: "dysfunction", label: "Daytime Dysfunction" }
   ],
   related: [
-    { href: "https://toolsquark.com/tools/sleep-calculator.html", title: "Sleep Calculator", description: "Plan sleep windows around 90-minute cycles.", action: "Plan Sleep" },
+    { href: "https://toolsquark.com/tools/sleep-calculator.html", title: "Sleep Calculator", description: "Create a rough duration plan with clear cycle-timing limits.", action: "Plan Sleep" },
     { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Check whether stress load may be affecting rest.", action: "Assess Stress" }
   ],
   faq: [
@@ -49,6 +51,24 @@ module.exports = {
     { question: "Should I stay in bed if I cannot sleep?", answer: "If you are awake for a long time, a calm low-light activity away from bed can help avoid associating bed with frustration." },
     { question: "Can this diagnose insomnia or sleep apnea?", answer: "No. This is an educational self-check. Persistent insomnia, gasping, or severe sleepiness should be discussed with a clinician." }
   ],
-  methodology: "This self-assessment uses 10 four-point items covering sleep latency, continuity, schedule consistency, symptoms, and daytime impact. Scoring happens locally.",
+  contentSections: [
+    {
+      title: "What This Self-Check Covers",
+      body: `<p>The ten questions review sleep onset, awakenings, schedule consistency, nighttime symptoms, sleep-related substances, and daytime impact over the past four weeks.</p><p>This is an original ToolsQuark checklist. It is not the Pittsburgh Sleep Quality Index, Insomnia Severity Index, Epworth Sleepiness Scale, or a sleep study.</p>`
+    },
+    {
+      title: "How Scoring Works",
+      body: `<p>Each answer contributes 1 to 4 points, producing a total from 10 to 40. Higher totals mean that more frequent sleep concerns were selected.</p><ul><li><strong>10-16:</strong> fewer frequent concerns in this checklist.</li><li><strong>17-28:</strong> several recurring sleep concerns.</li><li><strong>29-40:</strong> many frequent concerns or daytime effects.</li></ul><div class="note-box">These bands and dimension bars are editorial groupings, not diagnostic cutoffs.</div>`
+    },
+    {
+      title: "Symptoms A Score Cannot Explain",
+      body: `<p>Insomnia, sleep apnea, restless legs, circadian disorders, medication effects, pain, mood conditions, and insufficient sleep opportunity can overlap. Gasping, witnessed breathing pauses, severe sleepiness, or unsafe drowsy driving deserve clinical attention regardless of total score.</p>`
+    },
+    {
+      title: "How To Use The Result",
+      body: `<p>Track sleep opportunity, wake time, awakenings, substances, and daytime function for one to two weeks. Share that pattern with a qualified clinician when problems persist. Avoid using this checklist to start, stop, or combine sleep medicines or supplements.</p>`
+    }
+  ],
+  methodology: "This original 10-item checklist scores answers from 1 to 4. Total-score bands and sleep, latency, and daytime indicators are editorial and not clinically validated. Scoring stays in the browser.",
   disclaimer: "This tool is not a medical diagnosis and does not replace evaluation for insomnia, sleep apnea, restless legs, parasomnias, or other sleep disorders."
 };

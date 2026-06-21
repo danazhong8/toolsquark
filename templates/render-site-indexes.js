@@ -97,8 +97,8 @@ const groups = {
       {
         title: "Execution & Discipline",
         tools: [
-          ["procrastination-test", "Procrastination Test", "Identify task delay, avoidance, and perfectionism loops.", "Check Delay", true],
-          ["self-discipline-test", "Self-Discipline Test", "Assess consistency, impulse control, and habit follow-through.", "Assess Discipline"]
+          ["procrastination-test", "Procrastination Self-Check", "Identify task delay, avoidance, and perfectionism loops.", "Check Delay", true],
+          ["self-discipline-test", "Self-Discipline Self-Check", "Review consistency, impulse friction, and habit follow-through.", "Review Follow-Through"]
         ]
       },
       {
@@ -106,8 +106,8 @@ const groups = {
         tools: [
           ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a progressive step target plan from your current baseline.", "Plan Steps"],
           ["steps-to-calories-converter", "Steps to Calories Converter", "Estimate active calories from step count and body weight.", "Convert Steps"],
-          ["smartphone-addiction-test", "Smartphone Addiction Test", "Assess compulsive checking and phone dependency.", "Assess Phone Use"],
-          ["social-media-addiction-index", "Social Media Addiction Test", "Review feed capture, validation loops, comparison, and FOMO.", "Assess Social Media"]
+          ["smartphone-addiction-test", "Smartphone Use Self-Check", "Review automatic checking and phone-use disruption.", "Review Phone Use"],
+          ["social-media-addiction-index", "Social Media Use Self-Check", "Review feed capture, validation loops, comparison, and FOMO.", "Review Social Media"]
         ]
       }
     ]

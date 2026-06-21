@@ -2,9 +2,10 @@ module.exports = {
   slug: "cognitive-overthinking-test",
   title: "Cognitive Overthinking Self-Check | ToolsQuark",
   description: "Take a private overthinking self-check for rumination, decision paralysis, worst-case thinking, and difficulty moving from thought to action.",
-  h1: "Cognitive Overthinking Test",
+  h1: "Cognitive Overthinking Self-Check",
   hero: "Measure rumination, decision loops, and future-focused worry that may keep your mind running without resolution.",
   schemaName: "Privacy-First Cognitive Overthinking Test",
+  lastUpdated: "June 21, 2026",
   timeframe: "Past 2 weeks",
   questionDimensions: ["rumination", "paralysis", "catastrophizing", "rumination", "paralysis"],
   dimensionRelated: { rumination: 0, paralysis: 1, catastrophizing: 0 },
@@ -37,6 +38,12 @@ module.exports = {
     { question: "Is overthinking always bad?", answer: "No. Careful thinking is useful. It becomes a problem when it repeats without progress, rest, or action." },
     { question: "Can this diagnose OCD or anxiety?", answer: "No. This is a self-reflection tool and cannot diagnose clinical conditions." }
   ],
-  methodology: "This self-check uses five four-point items covering rumination, decision paralysis, catastrophizing, and action delay.",
+  contentSections: [
+    { title: "What This Self-Check Covers", body: `<p>The five questions review replaying conversations, analysis paralysis, worst-case thinking, difficulty disengaging from worry, and thinking that replaces action.</p><p>This is an original ToolsQuark checklist. “Overthinking” is not a diagnosis, and this is not a validated rumination or anxiety scale.</p>` },
+    { title: "How Scoring Works", body: `<p>Answers contribute 1 to 4 points, for a total from 5 to 20. Higher totals reflect more frequent repetitive-thinking responses in this set.</p><ul><li><strong>5-8:</strong> fewer frequent loops.</li><li><strong>9-14:</strong> several recurring loops.</li><li><strong>15-20:</strong> many frequent loops affecting action or rest.</li></ul><div class="note-box">The bands and dimension bars are editorial, not clinical cutoffs.</div>` },
+    { title: "What The Score Cannot Explain", body: `<p>Repetitive thinking can occur with stress, anxiety, depression, obsessive-compulsive symptoms, trauma, perfectionism, sleep loss, or difficult real-world decisions. The content and impact of thoughts matter more than a generic label.</p>` },
+    { title: "When To Seek Support", body: `<p>Consider qualified support when thought loops feel uncontrollable, cause major distress, interfere with sleep or responsibilities, or include frightening intrusive content. Seek urgent local help if thoughts involve immediate danger or inability to stay safe.</p>` }
+  ],
+  methodology: "This original five-item checklist scores answers from 1 to 4. Total-score bands and rumination, paralysis, and catastrophizing indicators are editorial and not clinically validated.",
   disclaimer: "This tool is educational only. Seek professional care if repetitive thoughts are distressing, intrusive, or impairing."
 };

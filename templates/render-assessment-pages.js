@@ -54,7 +54,10 @@ function renderScoreGuide(config) {
   const dimensions = (config.indicators || []).map((item) => item.label).join(", ");
   const minScore = config.questions.length;
   const maxScore = config.questions.length * 4;
-  return `<div class="card score-guide" id="result-guide"><h3>How To Read This Result</h3><p>This original ${config.questions.length}-item educational self-check reflects your answers for the ${esc((config.timeframe || "past 2 weeks").toLowerCase())}. It reviews ${esc(dimensions)}.</p><p>The overall score runs from ${minScore} to ${maxScore}. Result bands are descriptive groupings for self-reflection, not clinical cutoffs. Dimension labels are calculated from the questions assigned to each area; protective factors such as support or recovery reserve are displayed in the positive direction.</p><div class="note-box"><strong>Important limit:</strong> This is not a validated screening instrument and cannot diagnose, rule out, or measure the severity of a medical or mental health condition. Use the result as a prompt for reflection, not as a label.</div></div>`;
+  const protectiveNote = (config.indicators || []).some((item) => item.direction === "protective")
+    ? " Protective factors are displayed in the positive direction."
+    : "";
+  return `<div class="card score-guide" id="result-guide"><h3>How To Read This Result</h3><p>This original ${config.questions.length}-item educational self-check reflects your answers for the ${esc((config.timeframe || "past 2 weeks").toLowerCase())}. It reviews ${esc(dimensions)}.</p><p>The overall score runs from ${minScore} to ${maxScore}. Result bands are descriptive groupings for self-reflection, not clinical cutoffs. Dimension labels are calculated from the questions assigned to each area.${protectiveNote}</p><div class="note-box"><strong>Important limit:</strong> This is not a validated screening instrument and cannot diagnose, rule out, or measure the severity of a medical or mental health condition. Use the result as a prompt for reflection, not as a label.</div></div>`;
 }
 
 function renderPage(config) {

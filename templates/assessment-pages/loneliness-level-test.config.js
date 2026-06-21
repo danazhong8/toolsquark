@@ -2,9 +2,10 @@ module.exports = {
   slug: "loneliness-level-test",
   title: "Loneliness Level Self-Check | ToolsQuark",
   description: "Take a private loneliness self-check covering emotional isolation, perceived support, relationship depth, and sense of belonging.",
-  h1: "Loneliness Level Assessment",
+  h1: "Loneliness Self-Check",
   hero: "Reflect on emotional connection, social support, and whether your relationships feel available when you need them.",
   schemaName: "Privacy-First Loneliness Level Assessment",
+  lastUpdated: "June 21, 2026",
   timeframe: "Past 2 weeks",
   questionDimensions: ["support", "isolation", "belonging", "isolation", "support"],
   dimensionRelated: { isolation: 0, support: 1, belonging: 0 },
@@ -37,6 +38,12 @@ module.exports = {
     { question: "Can I be lonely even with friends?", answer: "Yes. Loneliness is about perceived connection quality, not just the number of people around you." },
     { question: "Is loneliness a mental illness?", answer: "No, but chronic loneliness can affect mood, stress, sleep, and health, and support can help." }
   ],
-  methodology: "This self-check uses five four-point items covering perceived support, isolation, belonging, and reach-out barriers.",
+  contentSections: [
+    { title: "What This Self-Check Covers", body: `<p>The five questions review perceived support, emotional isolation, relationship depth, belonging, and difficulty reaching out.</p><p>This is an original ToolsQuark checklist. It is not the UCLA Loneliness Scale or another validated social-connection measure.</p>` },
+    { title: "How Scoring Works", body: `<p>Responses are normalized to 1 through 4 points so that higher totals represent more frequent disconnection signals. The total ranges from 5 to 20.</p><ul><li><strong>5-8:</strong> fewer frequent disconnection signals.</li><li><strong>9-14:</strong> several recurring signals.</li><li><strong>15-20:</strong> many frequent signals worth addressing.</li></ul><div class="note-box">These bands are editorial and are not clinical cutoffs or population percentiles.</div>` },
+    { title: "Connection Is More Than Contact Count", body: `<p>Loneliness is a subjective gap between desired and experienced connection. Someone can feel lonely in a crowd, while another person with a small network may feel supported. Culture, grief, relocation, caregiving, disability, discrimination, and mood can shape the experience.</p>` },
+    { title: "When To Reach Out", body: `<p>Persistent loneliness that affects sleep, mood, functioning, or safety deserves support from a trusted person, community resource, or qualified professional. Seek urgent local help if isolation is accompanied by thoughts of self-harm or feeling unable to stay safe.</p>` }
+  ],
+  methodology: "This original five-item checklist scores answers from 1 to 4 after accounting for positively worded items. Total-score bands and isolation, support, and belonging indicators are editorial and not clinically validated.",
   disclaimer: "This is an educational self-reflection tool and not a clinical assessment. Seek professional or community support if loneliness feels persistent or unsafe."
 };

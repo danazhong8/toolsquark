@@ -2,9 +2,10 @@ module.exports = {
   slug: "anxiety-hyperarousal-assessment",
   title: "Anxiety & Hyperarousal Self-Check | ToolsQuark",
   description: "Take a private anxiety and hyperarousal self-check covering physical tension, persistent worry, sensory overload, and recovery after stress.",
-  h1: "Anxiety & Hyperarousal Assessment",
+  h1: "Anxiety & Hyperarousal Self-Check",
   hero: "Check whether your nervous system is staying in a high-alert state through physical tension, worry, sensory overload, and recovery difficulty.",
   schemaName: "Privacy-First Anxiety Hyperarousal Assessment",
+  lastUpdated: "June 21, 2026",
   timeframe: "Past 2 weeks",
   questionDimensions: ["arousal", "sensory", "worry", "arousal", "arousal"],
   dimensionRelated: { arousal: 0, worry: 0, sensory: 1 },
@@ -37,6 +38,24 @@ module.exports = {
     { question: "Is hyperarousal the same as anxiety?", answer: "Not always. Hyperarousal describes a high-alert body state that can accompany anxiety, stress, trauma responses, lack of sleep, or sensory overload." },
     { question: "Can this diagnose an anxiety disorder?", answer: "No. It is a private self-check, not a clinical diagnosis." }
   ],
-  methodology: "This five-item self-check estimates physical arousal, worry, sensory load, and recovery difficulty. Scoring happens locally in your browser.",
+  contentSections: [
+    {
+      title: "What This Self-Check Covers",
+      body: `<p>The five questions sample physical tension, persistent worry, sensory overload, and difficulty settling after a trigger during the past two weeks.</p><p>This is an original ToolsQuark checklist. It is not GAD-7, another validated anxiety scale, or a trauma assessment.</p>`
+    },
+    {
+      title: "How Scoring Works",
+      body: `<p>Each answer contributes 1 to 4 points, for a total from 5 to 20. Higher totals mean that more high-frequency alert-state responses were selected.</p><ul><li><strong>5-8:</strong> fewer frequent signals in this checklist.</li><li><strong>9-14:</strong> several elevated alert-state responses.</li><li><strong>15-20:</strong> many frequent responses worth reviewing.</li></ul><div class="note-box">The score bands and dimension bars are editorial groupings, not clinical cutoffs or population percentiles.</div>`
+    },
+    {
+      title: "How To Use The Result",
+      body: `<p>Review the individual answers and the situations in which they occur. Sleep loss, caffeine, pain, medication effects, acute stress, trauma reminders, and medical conditions can overlap with anxiety-like activation.</p><p>If symptoms persist, intensify, or limit daily life, a qualified clinician can assess duration, impairment, medical causes, and whether treatment may help.</p>`
+    },
+    {
+      title: "Urgent Support",
+      body: `<p>This page cannot assess immediate safety. Seek urgent local help for severe breathing difficulty, chest pain, fainting, feeling unable to stay safe, or thoughts of harming yourself or someone else.</p>`
+    }
+  ],
+  methodology: "This original five-item checklist scores each answer from 1 to 4. Total-score bands and arousal, worry, and sensory indicators are editorial and not clinically validated. Scoring stays in the browser.",
   disclaimer: "This educational tool cannot diagnose or treat anxiety disorders. Seek qualified support if symptoms are persistent, intense, or impairing."
 };

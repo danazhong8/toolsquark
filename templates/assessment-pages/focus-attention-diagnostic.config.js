@@ -5,6 +5,7 @@ module.exports = {
   h1: "Focus & Attention Self-Check",
   hero: "Assess concentration stability, distraction sensitivity, task initiation, and cognitive switching friction.",
   schemaName: "Privacy-First Focus Attention Self-Check",
+  lastUpdated: "June 21, 2026",
   timeframe: "Past 2 weeks",
   questionDimensions: ["distractibility", "initiation", "switching", "distractibility", "switching"],
   dimensionRelated: { distractibility: 1, initiation: 0, switching: 0 },
@@ -37,6 +38,24 @@ module.exports = {
     { question: "Does low focus mean ADHD?", answer: "Not necessarily. Sleep, stress, environment, mood, workload, and habits can all affect focus." },
     { question: "What is the fastest focus improvement?", answer: "Remove one major distraction and define the first tiny action before using a timer." }
   ],
-  methodology: "This self-check uses five four-point items covering distractibility, task initiation, switching, and sustained attention.",
+  contentSections: [
+    {
+      title: "What This Self-Check Covers",
+      body: `<p>The five questions review distractibility, task initiation, task switching, sustained focus, and priority clarity during the stated timeframe.</p><p>This is an original ToolsQuark checklist. It is not ASRS, a neuropsychological test, or an ADHD diagnostic interview.</p>`
+    },
+    {
+      title: "How Scoring Works",
+      body: `<p>Answers are scored from 1 to 4, producing a total from 5 to 20. Higher totals reflect more frequent attention friction in this question set.</p><ul><li><strong>5-8:</strong> fewer frequent focus difficulties.</li><li><strong>9-14:</strong> several recurring attention barriers.</li><li><strong>15-20:</strong> many frequent barriers that may warrant support.</li></ul><div class="note-box">The score bands and dimension bars are editorial, not validated ADHD thresholds.</div>`
+    },
+    {
+      title: "Attention Problems Have Many Causes",
+      body: `<p>Sleep loss, anxiety, depression, stress, pain, substances, medication effects, learning differences, and an overloaded environment can all affect attention. ADHD diagnosis also considers childhood history, persistence across settings, functional impairment, and alternative explanations.</p>`
+    },
+    {
+      title: "When To Seek Evaluation",
+      body: `<p>Consider qualified evaluation when attention problems are long-standing, occur across settings, or substantially affect school, work, finances, relationships, driving, or safety. Bring concrete examples and a timeline rather than relying on this score alone.</p>`
+    }
+  ],
+  methodology: "This original five-item checklist scores answers from 1 to 4. Total-score bands and distractibility, initiation, and switching indicators are editorial and not clinically validated. Scoring stays in the browser.",
   disclaimer: "This tool is not an ADHD diagnosis or medical assessment. Seek qualified evaluation if symptoms are persistent or impairing."
 };

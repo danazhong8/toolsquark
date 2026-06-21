@@ -1,10 +1,11 @@
 module.exports = {
   slug: "procrastination-test",
-  title: "Procrastination Test | Free Private Self-Check | ToolsQuark",
+  title: "Procrastination Self-Check | Task Delay Patterns",
   description: "Take a private procrastination self-check for emotional avoidance, present bias, perfectionism, and difficulty starting important tasks.",
-  h1: "Procrastination Test",
+  h1: "Procrastination Self-Check",
   hero: "Identify whether task delay is driven by emotional avoidance, present bias, perfectionism, or inconsistent execution.",
   schemaName: "Privacy-First Procrastination Test",
+  lastUpdated: "June 21, 2026",
   timeframe: "Past 30 days",
   questionDimensions: ["avoidance", "temporal", "perfectionism", "avoidance", "avoidance"],
   dimensionRelated: { avoidance: 1, temporal: 0, perfectionism: 1 },
@@ -15,6 +16,9 @@ module.exports = {
   },
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
+  references: [
+    { title: "What Research Has Been Conducted on Procrastination?", publisher: "Frontiers in Psychology / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/35185729/" }
+  ],
   questions: [
     { question: "When faced with a demanding task, how do you usually respond first?", options: ["Start immediately", "Plan but pause", "Do easier tasks first", "Delay until pressure spikes"] },
     { question: "How strongly do small immediate rewards override long-term goals?", options: ["Rarely", "Occasionally", "Frequently", "Almost constantly"] },
@@ -33,14 +37,20 @@ module.exports = {
     { key: "perfectionism", label: "Perfectionism Gridlock" }
   ],
   related: [
-    { href: "https://toolsquark.com/tools/self-discipline-test.html", title: "Self-Discipline Test", description: "Check consistency and long-term goal alignment.", action: "Assess Discipline" },
-    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus Attention Diagnostic", description: "Review attention stability and task initiation friction.", action: "Check Focus" }
+    { href: "https://toolsquark.com/tools/self-discipline-test.html", title: "Self-Discipline Self-Check", description: "Check consistency and long-term goal alignment.", action: "Review Follow-Through" },
+    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus & Attention Self-Check", description: "Review attention stability and task initiation friction.", action: "Check Focus" }
   ],
   faq: [
     { question: "Is procrastination just laziness?", answer: "Usually no. It often reflects emotion regulation, unclear task structure, fear of failure, boredom, or difficulty starting." },
     { question: "Why do deadlines help?", answer: "Deadlines increase urgency and reduce ambiguity, but relying only on crisis pressure can create stress and inconsistent quality." },
     { question: "What is the fastest practical strategy?", answer: "Define the smallest next action and do it for 10 minutes. Starting is often the hardest part of the loop." }
   ],
-  methodology: "This self-check uses five four-point items to estimate common procrastination drivers. Scoring is local and intended for self-reflection.",
+  contentSections: [
+    { title: "What This Self-Check Covers", body: `<p>The five questions review task initiation, preference for immediate rewards, perfectionistic delay, plan follow-through, and waiting to feel ready.</p><p>This is an original ToolsQuark checklist. It is not a validated procrastination scale and does not measure laziness, character, or worth.</p>` },
+    { title: "How Scoring Works", body: `<p>Answers are scored from 1 to 4, producing a total from 5 to 20. Higher totals represent more frequent delay patterns in this set.</p><ul><li><strong>5-8:</strong> fewer frequent delay signals.</li><li><strong>9-14:</strong> several recurring delay patterns.</li><li><strong>15-20:</strong> many frequent patterns causing pressure.</li></ul><div class="note-box">The bands and driver bars are editorial and not diagnostic thresholds.</div>` },
+    { title: "Delay Can Have Different Causes", body: `<p>Task ambiguity, fear of failure, boredom, low energy, competing demands, anxiety, depression, ADHD, learning differences, and unrealistic workload can all produce delay. The most useful intervention depends on the cause.</p>` },
+    { title: "How To Use The Result", body: `<p>Choose one answer to test for a week: shrink the first action, remove an immediate distraction, separate drafting from editing, or make the plan smaller. Seek qualified support when delay creates serious academic, work, financial, or emotional harm.</p>` }
+  ],
+  methodology: "This original five-item checklist scores answers from 1 to 4. Total-score bands and avoidance, present-bias, and perfectionism indicators are editorial and not clinically validated.",
   disclaimer: "This tool is educational and cannot diagnose ADHD, anxiety, depression, or executive function disorders. Seek qualified support if delay patterns significantly impair life."
 };
