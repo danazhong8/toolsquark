@@ -1,11 +1,12 @@
 module.exports = {
   slug: "waist-hip-ratio-calculator",
-  title: "Accurate Waist Hip Ratio Calculator | WHR Health Risk Tracker | ToolsQuark",
-  description: "Calculate your Waist-to-Hip Ratio (WHR) instantly with our free online calculator. Supports Metric and Imperial systems to evaluate body fat distribution and metabolic health risks with 100% data privacy.",
+  title: "Waist-to-Hip Ratio Calculator | WHO Cutoffs",
+  description: "Calculate waist-to-hip ratio with metric or imperial measurements. See WHO central-obesity cutoffs, measurement guidance, limits, and sources.",
   h1: "Waist Hip Ratio Calculator",
-  hero: "Evaluate your body fat distribution pattern and check for indicators of visceral fat accumulation instantly. This privacy-focused application computes data entirely within your browser.",
+  hero: "Compare waist and hip circumference as a screening measure of central body-fat distribution. The calculation runs privately in your browser.",
   schemaName: "Privacy-First Waist Hip Ratio Calculator",
   schemaDescription: "An interactive, client-side waist-to-hip ratio calculator for assessing body fat distribution without data logging.",
+  lastUpdated: "June 21, 2026",
   buttonText: "Calculate Waist-to-Hip Ratio",
   resultUnit: "",
   resultStatus: "Low Risk",
@@ -32,6 +33,9 @@ module.exports = {
       action: "Estimate Body Fat"
     }
   ],
+  references: [
+    { title: "Waist Circumference and Waist-Hip Ratio: Report of a WHO Expert Consultation", publisher: "World Health Organization", href: "https://www.who.int/publications/i/item/9789241501491" }
+  ],
   faq: [
     {
       question: "What does waist-to-hip ratio measure?",
@@ -46,6 +50,28 @@ module.exports = {
       answer: "Measure the waist around the midpoint between the lowest rib and the top of the hip bone after a normal exhale. Measure the hips around the widest part of the buttocks, keeping the tape level and snug without compressing skin."
     }
   ],
+  contentSections: [
+    {
+      title: "What WHR Measures",
+      body: `<p>Waist-to-hip ratio compares abdominal circumference with hip circumference. A higher ratio indicates that more circumference is concentrated around the waist relative to the hips.</p><p>WHR is a screening marker for central fat distribution. It does not directly measure visceral fat or diagnose cardiovascular or metabolic disease.</p>`
+    },
+    {
+      title: "Formula And WHO Cutoffs",
+      body: `<div class="formula-box">WHR = waist circumference / hip circumference</div><p>The units cancel as long as both measurements use the same unit. The WHO report identifies WHR above 0.90 for men and above 0.85 for women as substantially increased metabolic-complication risk cutoffs, while also noting that cut points can vary across populations.</p>`
+    },
+    {
+      title: "How To Measure",
+      body: `<ol><li>Stand with feet together and weight evenly distributed.</li><li>Measure the waist at the midpoint between the lowest rib and top of the hip bone after a normal exhale.</li><li>Measure the hips at the widest circumference over the buttocks.</li><li>Keep the tape horizontal and snug without compressing the skin.</li></ol>`
+    },
+    {
+      title: "Worked Example",
+      body: `<p>A waist of 84 cm and hips of 100 cm produce 84 / 100 = 0.84. Because this is a ratio, equivalent inch measurements return the same result.</p>`
+    },
+    {
+      title: "Limits And Context",
+      body: `<p>Measurement placement, breathing, tape tension, pregnancy, body shape, and population background affect interpretation. Pair WHR with absolute waist circumference, BMI or body composition, blood pressure, laboratory markers, and clinical history when assessing health risk.</p>`
+    }
+  ],
   methodology: "This tool divides waist circumference by hip circumference and interprets the result using commonly cited sex-specific waist-to-hip risk thresholds.",
   disclaimer: "Waist-to-hip ratio is a screening estimate, not a diagnosis. Consult a qualified clinician for personalized metabolic or cardiovascular risk assessment.",
   script: `
@@ -54,7 +80,7 @@ function renderInputs() {
     const container = document.getElementById('inputs-container');
     const baseInputs = \`
         <div class="input-group">
-            <label for="input_gender">Biological Gender</label>
+            <label for="input_gender">Sex Used For Reference Cutoff</label>
             <div class="input-wrapper">
                 <select id="input_gender">
                     <option value="male">Male</option>
@@ -120,24 +146,14 @@ function calculateNow() {
     let result = {};
     if (gender === 'male') {
         if (whr < 0.90) {
-            const percent = 5 + (whr / 0.90) * 40;
-            result = { status: 'Low Risk Health Profile', color: 'var(--normal)', desc: \`Your calculated Waist-to-Hip Ratio is \${whr.toFixed(2)}. This falls within standard low-risk parameters for male physiology.\`, suggestion: 'This body fat distribution suggests reduced central abdominal risk. Maintain balanced nutrition and steady movement habits.', percent: Math.min(45, percent) };
-        } else if (whr <= 0.95) {
-            const percent = 45 + ((whr - 0.90) / 0.05) * 30;
-            result = { status: 'Moderate Risk Profile', color: 'var(--overweight)', desc: \`Your calculated Waist-to-Hip Ratio is \${whr.toFixed(2)}. This is in the moderate risk warning range for male adults.\`, suggestion: 'This may indicate a shift toward central abdominal weight localization. Cardiovascular routines and nutritional management can help.', percent };
+            result = { status: 'Below WHO Male Cutoff', color: 'var(--normal)', desc: \`Your WHR is \${whr.toFixed(2)}, below the WHO 0.90 male cutoff for substantially increased metabolic risk.\`, suggestion: 'Treat this as one screening measure and keep measurement technique consistent when tracking change.', percent: Math.min(60, 5 + (whr / 0.90) * 55) };
         } else {
-            const percent = 75 + (Math.min(whr - 0.95, 0.2) / 0.2) * 20;
-            result = { status: 'High Risk Indicator', color: 'var(--obese)', desc: \`Your calculated Waist-to-Hip Ratio is \${whr.toFixed(2)}, indicating central body fat concentration and higher health risk.\`, suggestion: 'Ratios above 0.95 in men are associated with higher metabolic risk. Consider reviewing cardiovascular health indicators with a clinician.', percent: Math.min(95, percent) };
+            result = { status: 'At Or Above WHO Male Cutoff', color: 'var(--obese)', desc: \`Your WHR is \${whr.toFixed(2)}, at or above the WHO 0.90 male screening cutoff.\`, suggestion: 'Consider this alongside waist size and other cardiometabolic risk markers with a qualified clinician.', percent: Math.min(95, 65 + (Math.min(whr - 0.90, 0.25) / 0.25) * 30) };
         }
-    } else if (whr < 0.80) {
-        const percent = 5 + (whr / 0.80) * 40;
-        result = { status: 'Low Risk Health Profile', color: 'var(--normal)', desc: \`Your calculated Waist-to-Hip Ratio is \${whr.toFixed(2)}. This is aligned with lower-risk female physiology parameters.\`, suggestion: 'This proportion suggests lower accumulation of central abdominal fat. Continue supporting metabolic health through regular movement.', percent: Math.min(45, percent) };
-    } else if (whr <= 0.85) {
-        const percent = 45 + ((whr - 0.80) / 0.05) * 30;
-        result = { status: 'Moderate Risk Profile', color: 'var(--overweight)', desc: \`Your calculated Waist-to-Hip Ratio is \${whr.toFixed(2)}. This is within the moderate risk range for female adults.\`, suggestion: 'This may indicate early visceral fat shift around the core. Nutrition and consistent activity can help improve the pattern.', percent };
+    } else if (whr < 0.85) {
+        result = { status: 'Below WHO Female Cutoff', color: 'var(--normal)', desc: \`Your WHR is \${whr.toFixed(2)}, below the WHO 0.85 female cutoff for substantially increased metabolic risk.\`, suggestion: 'Treat this as one screening measure and keep measurement technique consistent when tracking change.', percent: Math.min(60, 5 + (whr / 0.85) * 55) };
     } else {
-        const percent = 75 + (Math.min(whr - 0.85, 0.2) / 0.2) * 20;
-        result = { status: 'High Risk Indicator', color: 'var(--obese)', desc: \`Your calculated Waist-to-Hip Ratio is \${whr.toFixed(2)}, pointing toward prominent central abdominal fat density.\`, suggestion: 'WHR above 0.85 for women is linked with increased metabolic vulnerability. Consider clinical or dietitian guidance.', percent: Math.min(95, percent) };
+        result = { status: 'At Or Above WHO Female Cutoff', color: 'var(--obese)', desc: \`Your WHR is \${whr.toFixed(2)}, at or above the WHO 0.85 female screening cutoff.\`, suggestion: 'Consider this alongside waist size and other cardiometabolic risk markers with a qualified clinician.', percent: Math.min(95, 65 + (Math.min(whr - 0.85, 0.25) / 0.25) * 30) };
     }
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = whr.toFixed(2);

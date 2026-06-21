@@ -6,7 +6,7 @@ module.exports = {
   hero: "Discover your basal metabolic rate: the estimated calories your body burns at complete rest to support essential functions.",
   schemaName: "Privacy-First BMR Calculator",
   schemaDescription: "A free browser-side Basal Metabolic Rate calculator using the Mifflin-St Jeor equation, metric and imperial inputs, and practical energy-planning context.",
-  lastUpdated: "June 19, 2026",
+  lastUpdated: "June 21, 2026",
   buttonText: "Calculate BMR",
   resultUnit: "kcal/day",
   resultStatus: "Resting Energy Baseline",
@@ -55,6 +55,10 @@ module.exports = {
       answer: "Eating below BMR is not automatically appropriate or safe. BMR is not a diet target; it is a resting-energy estimate. For weight change, use TDEE and consider professional guidance for large deficits."
     }
   ],
+  references: [
+    { title: "A New Predictive Equation for Resting Energy Expenditure", publisher: "The American Journal of Clinical Nutrition / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/2305711/" },
+    { title: "Body Weight Planner", publisher: "National Institute of Diabetes and Digestive and Kidney Diseases", href: "https://www.niddk.nih.gov/bwp" }
+  ],
   contentSections: [
     {
       title: "What BMR Measures",
@@ -71,6 +75,10 @@ module.exports = {
     {
       title: "Example Calculation",
       body: `<p>For a 30-year-old man weighing 80 kg at 180 cm, the Mifflin-St Jeor estimate is 10 x 80 + 6.25 x 180 - 5 x 30 + 5 = 1,780 kcal/day. That is his estimated resting baseline before activity is added.</p>`
+    },
+    {
+      title: "Limits And Appropriate Use",
+      body: `<p>The equation predicts resting expenditure from population averages; it does not measure an individual's metabolism. Body composition, illness, medications, endocrine conditions, growth, pregnancy, and prolonged energy restriction can change actual needs.</p><p>Do not use BMR as a minimum-safe intake or a weight-loss prescription. Total daily needs include movement, exercise, and digestion, and medical nutrition decisions require individualized assessment.</p>`
     }
   ],
   methodology: "This tool uses the Mifflin-St Jeor equation with metric conversions for imperial entries. Results are rounded to the nearest whole calorie.",
@@ -183,14 +191,7 @@ function calculateNow() {
     let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
     bmr += gender === 'male' ? 5 : -161;
     const rounded = Math.round(bmr);
-    let result = {};
-    if (rounded < 1300) {
-        result = { status: 'Lower Resting Energy', color: 'var(--underweight)', desc: \`Your estimated BMR is \${rounded.toLocaleString()} kcal/day. This is a lower resting energy baseline, often associated with smaller body size, lower body mass, or older age.\`, suggestion: 'Use this as a floor, not a weight-loss target. Daily needs usually rise after normal movement and exercise are included.', percent: Math.max(5, (rounded / 1300) * 30) };
-    } else if (rounded <= 1800) {
-        result = { status: 'Standard Resting Range', color: 'var(--normal)', desc: \`Your estimated BMR is \${rounded.toLocaleString()} kcal/day, which is a common resting-energy range for many adults.\`, suggestion: 'To estimate maintenance calories, multiply this baseline by an activity factor or use the TDEE calculator.', percent: 35 + ((rounded - 1300) / 500) * 30 };
-    } else {
-        result = { status: 'Higher Resting Energy', color: 'var(--overweight)', desc: \`Your estimated BMR is \${rounded.toLocaleString()} kcal/day. Higher baselines are often linked to larger body size, greater lean mass, or younger age.\`, suggestion: 'Make sure calorie planning supports training recovery, protein intake, and consistent real-world weight trends.', percent: Math.min(95, 65 + (Math.min(rounded - 1800, 800) / 800) * 30) };
-    }
+    const result = { status: 'Mifflin-St Jeor Estimate', color: 'var(--accent)', desc: \`Your estimated BMR is \${rounded.toLocaleString()} kcal/day. This is a predicted resting baseline, not your total daily calorie need.\`, suggestion: 'Use a TDEE estimate to add activity, then calibrate any nutrition plan against real-world trends and professional guidance when needed.', percent: Math.min(95, Math.max(5, (rounded / 2600) * 90)) };
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = rounded.toLocaleString();
     document.getElementById('calc-output').style.color = result.color;

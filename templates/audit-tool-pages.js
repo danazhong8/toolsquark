@@ -22,7 +22,7 @@ const rows = fs.readdirSync(toolsDir)
       type: hasQuestions ? "assessment" : hasCalculate ? "calculator" : "static",
       title: textBetween(html, /<title>([\s\S]*?)<\/title>/i),
       h1: textBetween(html, /<h1[^>]*>([\s\S]*?)<\/h1>/i),
-      description: textBetween(html, /<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["']/i)
+      description: textBetween(html, /<meta\s+name="description"\s+content="([^"]*)"/i)
     };
   });
 

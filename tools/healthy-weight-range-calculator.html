@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/healthy-weight-range-calculator.html">
-<title>Accurate Healthy Weight Range Calculator | ToolsQuark</title>
-<meta name="description" content="Calculate a healthy adult weight range from your height using standard BMI reference boundaries.">
+<title>Healthy Weight Range Calculator | BMI-Based Estimate</title>
+<meta name="description" content="Estimate the adult BMI healthy-weight screening range for a given height. Includes the formula, example, limitations, and CDC references.">
 <script type="application/ld+json">
 [
   {
@@ -20,7 +20,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Calculate a healthy adult weight range from your height using standard BMI reference boundaries."
+    "description": "A browser-side calculator that converts the CDC adult BMI healthy-weight category into a height-specific weight range."
   },
   {
     "@context": "https://schema.org",
@@ -118,7 +118,27 @@
             </div>
         </div>
     </div>
-
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What The Range Represents</h3>
+        <p>This tool reverses the BMI formula to show the weights that correspond to adult BMI values 18.5 through 24.9 at the entered height. The CDC labels that interval the adult healthy-weight category.</p><p>It is a screening range, not an individualized ideal weight. Health and body composition can differ substantially between people at the same height and weight.</p>
+    </div>
+    <div class="content-section">
+        <h3>Formula</h3>
+        <div class="formula-box">Lower weight = 18.5 x height (m)<sup>2</sup><br>Upper weight = 24.9 x height (m)<sup>2</sup></div><p>Imperial height is converted to meters before calculation. Metric results are shown in kilograms and imperial results in pounds.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>At 1.75 m tall, the lower boundary is 18.5 x 1.75<sup>2</sup> = 56.7 kg and the upper boundary is 24.9 x 1.75<sup>2</sup> = 76.3 kg. Those numbers describe a BMI category, not a required personal target.</p>
+    </div>
+    <div class="content-section">
+        <h3>How To Add Context</h3>
+        <p>BMI does not distinguish muscle from fat or show fat distribution. Waist measurements, body composition, strength, nutrition status, health history, blood pressure, and laboratory markers may all change how a weight is interpreted.</p>
+    </div>
+    <div class="content-section">
+        <h3>Who Should Not Use This Range Alone</h3>
+        <p>Standard adult BMI boundaries are not designed for children or teenagers and need caution during pregnancy, in highly muscular people, older adults with low muscle mass, and people with edema, amputation, or illness-related weight change. Use qualified clinical guidance when these factors apply.</p>
+    </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
             <h4>How is healthy weight range calculated?</h4>
@@ -134,7 +154,7 @@
         </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#faq">FAQs</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
         <div class="card side-card" id="related"><h3>Add More Context</h3><div class="recommend-grid">
             <a href="https://toolsquark.com/tools/bmi-calculator.html" class="recommend-card">
                 <div>
@@ -150,8 +170,8 @@
                 </div>
                 <span class="action-text">Estimate Fat % &rarr;</span>
             </a></div></div>
-
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> Weight range is calculated as BMI x height squared, using BMI 18.5 to 24.9 for adults.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> This range is educational and not medical advice. Consult a qualified clinician for personalized weight guidance.</p><div class="updated-row">Last updated: June 19, 2026</div></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html" target="_blank" rel="noopener noreferrer">Adult BMI Categories</a><span>Centers for Disease Control and Prevention</span></li><li><a href="https://www.cdc.gov/bmi/about/index.html" target="_blank" rel="noopener noreferrer">About Body Mass Index</a><span>Centers for Disease Control and Prevention</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> Weight range is calculated as BMI x height squared, using BMI 18.5 to 24.9 for adults.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> This range is educational and not medical advice. Consult a qualified clinician for personalized weight guidance.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
     </aside>
     </div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>

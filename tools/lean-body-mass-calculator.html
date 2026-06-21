@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/lean-body-mass-calculator.html">
-<title>Accurate Lean Body Mass Calculator (Boer Formula) | ToolsQuark</title>
-<meta name="description" content="Calculate your estimated lean body mass using the Boer formula and understand how much of your body weight is non-fat mass.">
+<title>Lean Body Mass Calculator | Boer Formula Estimate</title>
+<meta name="description" content="Estimate adult lean body mass with the Boer formula using height, weight, and sex. Includes equations, an example, limitations, and source.">
 <script type="application/ld+json">
 [
   {
@@ -20,7 +20,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Calculate your estimated lean body mass using the Boer formula and understand how much of your body weight is non-fat mass."
+    "description": "A browser-side adult lean body mass estimate using the sex-specific Boer height-and-weight equations."
   },
   {
     "@context": "https://schema.org",
@@ -123,7 +123,27 @@
             </div>
         </div>
     </div>
-
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What Lean Body Mass Includes</h3>
+        <p>Lean body mass is total body weight minus fat mass. It includes skeletal muscle, organs, bone, connective tissue, and body water, so it is not the same as muscle mass.</p><p>This calculator predicts lean mass from height and weight; it does not measure tissue directly.</p>
+    </div>
+    <div class="content-section">
+        <h3>Boer Equations</h3>
+        <div class="formula-box">Men: LBM (kg) = 0.407W + 0.267H - 19.2<br>Women: LBM (kg) = 0.252W + 0.473H - 48.3</div><p>W is weight in kilograms and H is height in centimeters. Imperial inputs are converted before calculation.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>For a man weighing 70 kg at 175 cm, estimated lean mass is (0.407 x 70) + (0.267 x 175) - 19.2 = 56.0 kg, or about 80.0% of total body weight.</p>
+    </div>
+    <div class="content-section">
+        <h3>How To Use The Estimate</h3>
+        <p>Use the value as rough body-composition context or as one input in formulas that explicitly call for estimated lean mass. Changes smaller than normal formula and measurement error should not be treated as proven tissue gain or loss.</p>
+    </div>
+    <div class="content-section">
+        <h3>Limits</h3>
+        <p>The original equations were fitted to particular adult samples and may be less accurate for children, pregnancy, edema, very muscular athletes, older adults, or people with body proportions outside those samples. DEXA and other clinical methods answer different questions and may be more appropriate when accuracy matters.</p>
+    </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
             <h4>What is lean body mass?</h4>
@@ -139,7 +159,7 @@
         </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#faq">FAQs</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
         <div class="card side-card" id="related"><h3>Complete Your Body Composition Check</h3><div class="recommend-grid">
             <a href="https://toolsquark.com/tools/body-fat-calculator.html" class="recommend-card">
                 <div>
@@ -155,8 +175,8 @@
                 </div>
                 <span class="action-text">Set Protein &rarr;</span>
             </a></div></div>
-
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool uses the Boer equation: male LBM = 0.407 x weight(kg) + 0.267 x height(cm) - 19.2; female LBM = 0.252 x weight(kg) + 0.473 x height(cm) - 48.3.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Lean body mass formulas are estimates and may be less accurate for athletes, older adults, pregnancy, or unusual body proportions.</p><div class="updated-row">Last updated: June 19, 2026</div></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://pubmed.ncbi.nlm.nih.gov/3564307/" target="_blank" rel="noopener noreferrer">Estimated Lean Body Mass as an Index for Normalization of Body Fluid Volumes in Humans</a><span>American Journal of Physiology / PubMed</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool uses the Boer equation: male LBM = 0.407 x weight(kg) + 0.267 x height(cm) - 19.2; female LBM = 0.252 x weight(kg) + 0.473 x height(cm) - 48.3.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Lean body mass formulas are estimates and may be less accurate for athletes, older adults, pregnancy, or unusual body proportions.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
     </aside>
     </div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>

@@ -1,10 +1,12 @@
 module.exports = {
   slug: "period-calculator",
-  title: "Accurate Period Calculator | Track Menstrual Cycle & Ovulation | ToolsQuark",
-  description: "Calculate your unique menstrual cycle configuration, estimate ovulation timing, and predict your next period and fertile window.",
+  title: "Period Calculator | Cycle & Ovulation Estimate",
+  description: "Estimate the next period, ovulation day, and fertile window from average cycle length. Includes assumptions, limits, and guidance for irregular cycles.",
   h1: "Period Calculator",
   hero: "Estimate next period date, ovulation day, and fertile window from your last period start date and average cycle length.",
   schemaName: "Privacy-First Period Calculator",
+  schemaDescription: "A browser-side menstrual calendar estimate for the next period, approximate ovulation day, and fertile window, with clear limitations.",
+  lastUpdated: "June 21, 2026",
   buttonText: "Calculate Cycle Window",
   resultHtml: `
             <div class="result-val"><span id="calc-output">--</span></div>
@@ -41,10 +43,36 @@ module.exports = {
     { href: "https://toolsquark.com/tools/due-date-calculator.html", title: "Due Date Calculator", description: "Estimate pregnancy timeline from last menstrual period.", action: "Estimate Due Date" },
     { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Index Test", description: "Stress can affect cycle regularity and symptom patterns.", action: "Assess Stress" }
   ],
+  references: [
+    { title: "Your Menstrual Cycle", publisher: "Office on Women's Health", href: "https://womenshealth.gov/menstrual-cycle/your-menstrual-cycle" },
+    { title: "Trying to Conceive", publisher: "Office on Women's Health", href: "https://womenshealth.gov/pregnancy/you-get-pregnant/trying-conceive" }
+  ],
   faq: [
     { question: "When does ovulation usually happen?", answer: "Ovulation often happens about 14 days before the next period starts, but this varies by person and cycle consistency." },
     { question: "What is a normal menstrual cycle length?", answer: "Many adult cycles fall between 21 and 35 days, with bleeding often lasting about 2 to 7 days. Persistent changes deserve clinical attention." },
     { question: "Can this be used as contraception?", answer: "No. Calendar estimates are not reliable birth control. Cycle timing can shift because of stress, illness, travel, medication, and hormonal conditions." }
+  ],
+  contentSections: [
+    {
+      title: "What This Calendar Estimates",
+      body: `<p>The tool projects one future cycle from the last period start date and an average cycle length. It estimates the next period, an approximate ovulation date, and a six-day fertile window.</p><p>These are calendar estimates. Ovulation can shift even when previous cycles appeared regular, and bleeding is not always a menstrual period.</p>`
+    },
+    {
+      title: "Formula And Variables",
+      body: `<div class="formula-box">Next period = last period start + average cycle length<br>Estimated ovulation = next period - 14 days<br>Fertile window = ovulation - 5 days through ovulation + 1 day</div><p>The 14-day luteal-phase assumption is a planning shortcut, not a measurement of ovulation. The entered bleeding duration is shown as cycle context but does not change the predicted ovulation date.</p>`
+    },
+    {
+      title: "Worked Example",
+      body: `<p>With an LMP start on June 1 and a 28-day average cycle, the next period is projected for June 29. Ovulation is estimated around June 15, with a fertile window of roughly June 10 through June 16.</p>`
+    },
+    {
+      title: "Why Predictions Move",
+      body: `<p>Stress, illness, travel, sleep changes, breastfeeding, perimenopause, medications, weight change, and hormonal conditions can alter cycle length or ovulation timing. Averaging several recent cycles is more informative than relying on one month.</p><div class="note-box">Do not use this calendar alone to prevent pregnancy. If avoiding pregnancy, use a reliable contraceptive method and professional guidance.</div>`
+    },
+    {
+      title: "When To Get Medical Advice",
+      body: `<p>Seek qualified care for possible pregnancy, very heavy bleeding, severe pain, bleeding between periods, cycles that change persistently, or periods that stop unexpectedly. Adolescents, postpartum users, and people approaching menopause may need different context.</p>`
+    }
   ],
   methodology: "This tool estimates the next period by adding average cycle length to the last period start date, then estimates ovulation as about 14 days before the next period.",
   disclaimer: "Cycle predictions are educational estimates and should not be used as contraception, diagnosis, or fertility treatment guidance. Consult a qualified clinician for irregular bleeding, missed periods, severe pain, or pregnancy concerns.",

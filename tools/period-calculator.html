@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/period-calculator.html">
-<title>Accurate Period Calculator | Track Menstrual Cycle &amp; Ovulation | ToolsQuark</title>
-<meta name="description" content="Calculate your unique menstrual cycle configuration, estimate ovulation timing, and predict your next period and fertile window.">
+<title>Period Calculator | Cycle &amp; Ovulation Estimate</title>
+<meta name="description" content="Estimate the next period, ovulation day, and fertile window from average cycle length. Includes assumptions, limits, and guidance for irregular cycles.">
 <script type="application/ld+json">
 [
   {
@@ -20,7 +20,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Calculate your unique menstrual cycle configuration, estimate ovulation timing, and predict your next period and fertile window."
+    "description": "A browser-side menstrual calendar estimate for the next period, approximate ovulation day, and fertile window, with clear limitations."
   },
   {
     "@context": "https://schema.org",
@@ -134,7 +134,27 @@
             </div>
         </div>
     </div>
-
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What This Calendar Estimates</h3>
+        <p>The tool projects one future cycle from the last period start date and an average cycle length. It estimates the next period, an approximate ovulation date, and a six-day fertile window.</p><p>These are calendar estimates. Ovulation can shift even when previous cycles appeared regular, and bleeding is not always a menstrual period.</p>
+    </div>
+    <div class="content-section">
+        <h3>Formula And Variables</h3>
+        <div class="formula-box">Next period = last period start + average cycle length<br>Estimated ovulation = next period - 14 days<br>Fertile window = ovulation - 5 days through ovulation + 1 day</div><p>The 14-day luteal-phase assumption is a planning shortcut, not a measurement of ovulation. The entered bleeding duration is shown as cycle context but does not change the predicted ovulation date.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>With an LMP start on June 1 and a 28-day average cycle, the next period is projected for June 29. Ovulation is estimated around June 15, with a fertile window of roughly June 10 through June 16.</p>
+    </div>
+    <div class="content-section">
+        <h3>Why Predictions Move</h3>
+        <p>Stress, illness, travel, sleep changes, breastfeeding, perimenopause, medications, weight change, and hormonal conditions can alter cycle length or ovulation timing. Averaging several recent cycles is more informative than relying on one month.</p><div class="note-box">Do not use this calendar alone to prevent pregnancy. If avoiding pregnancy, use a reliable contraceptive method and professional guidance.</div>
+    </div>
+    <div class="content-section">
+        <h3>When To Get Medical Advice</h3>
+        <p>Seek qualified care for possible pregnancy, very heavy bleeding, severe pain, bleeding between periods, cycles that change persistently, or periods that stop unexpectedly. Adolescents, postpartum users, and people approaching menopause may need different context.</p>
+    </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
             <h4>When does ovulation usually happen?</h4>
@@ -150,7 +170,7 @@
         </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#faq">FAQs</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
         <div class="card side-card" id="related"><h3>Reproductive &amp; Wellness Tools</h3><div class="recommend-grid">
             <a href="https://toolsquark.com/tools/due-date-calculator.html" class="recommend-card">
                 <div>
@@ -166,8 +186,8 @@
                 </div>
                 <span class="action-text">Assess Stress &rarr;</span>
             </a></div></div>
-
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool estimates the next period by adding average cycle length to the last period start date, then estimates ovulation as about 14 days before the next period.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Cycle predictions are educational estimates and should not be used as contraception, diagnosis, or fertility treatment guidance. Consult a qualified clinician for irregular bleeding, missed periods, severe pain, or pregnancy concerns.</p><div class="updated-row">Last updated: June 19, 2026</div></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://womenshealth.gov/menstrual-cycle/your-menstrual-cycle" target="_blank" rel="noopener noreferrer">Your Menstrual Cycle</a><span>Office on Women's Health</span></li><li><a href="https://womenshealth.gov/pregnancy/you-get-pregnant/trying-conceive" target="_blank" rel="noopener noreferrer">Trying to Conceive</a><span>Office on Women's Health</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool estimates the next period by adding average cycle length to the last period start date, then estimates ovulation as about 14 days before the next period.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Cycle predictions are educational estimates and should not be used as contraception, diagnosis, or fertility treatment guidance. Consult a qualified clinician for irregular bleeding, missed periods, severe pain, or pregnancy concerns.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
     </aside>
     </div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>

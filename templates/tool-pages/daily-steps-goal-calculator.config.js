@@ -1,10 +1,12 @@
 module.exports = {
   slug: "daily-steps-goal-calculator",
-  title: "Daily Steps Goal Calculator | Quantitative Milestone Planner | ToolsQuark",
-  description: "Calculate your recommended target daily step counts and generate a customized, progressive weekly physical activity milestone plan tailored to your lifestyle.",
+  title: "Daily Steps Goal Calculator | Progressive Walking Plan",
+  description: "Build a gradual step-count plan from your current baseline to a disclosed preset target. Includes assumptions, safety guidance, and research context.",
   h1: "Daily Steps Goal Calculator",
   hero: "Create a progressive step-count goal plan based on your current baseline and primary fitness objective.",
   schemaName: "Privacy-First Daily Steps Goal Calculator",
+  schemaDescription: "A browser-side progressive walking plan that moves from a current step baseline toward one of three disclosed preset targets.",
+  lastUpdated: "June 21, 2026",
   buttonText: "Generate Step Plan",
   resultHtml: `
             <div class="result-val"><span id="calc-output">0</span><span class="result-unit">steps/day</span></div>
@@ -47,10 +49,36 @@ module.exports = {
     { href: "https://toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Convert your planned steps into estimated calories.", action: "Estimate Burn" },
     { href: "https://toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Adjust hydration around higher activity volume.", action: "Plan Fluids" }
   ],
+  references: [
+    { title: "Steps per Day and All-Cause Mortality in Middle-aged Adults", publisher: "JAMA Network Open / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/34477847/" },
+    { title: "Physical Activity Guidelines for Adults", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" }
+  ],
   faq: [
     { question: "How fast should I increase daily steps?", answer: "A gradual increase is usually easier to sustain and may reduce joint stress. Many people do best by adding volume over several weeks rather than jumping immediately." },
     { question: "Is 10,000 steps required for health?", answer: "No single number fits everyone. Benefits can begin below 10,000 steps, especially when moving from a low baseline. The best target is one you can build toward consistently." },
     { question: "What if my baseline is already above the goal?", answer: "If your current baseline is above the selected goal, the plan will keep you near your current level rather than reducing your target." }
+  ],
+  contentSections: [
+    {
+      title: "What The Planner Does",
+      body: `<p>The tool takes your current average daily steps and linearly increases them toward one of three fixed presets: 5,000, 8,500, or 12,000 steps per day. It does not generate a medically personalized target.</p><p>If your baseline already exceeds the preset, the planner maintains the higher baseline rather than recommending a reduction.</p>`
+    },
+    {
+      title: "Planning Formula",
+      body: `<div class="formula-box">Week target = baseline + (final target - baseline) x week / plan weeks</div><p>The change is distributed evenly across the selected number of weeks. Real progress does not need to be perfectly linear, and repeating a week can be more appropriate than increasing through pain or fatigue.</p>`
+    },
+    {
+      title: "Worked Example",
+      body: `<p>A baseline of 4,000 steps moving toward the 8,500-step preset over 6 weeks increases by 750 steps per week: 4,750 in week 1, 5,500 in week 2, and 8,500 in week 6.</p>`
+    },
+    {
+      title: "Steps Are Not The Whole Activity Picture",
+      body: `<p>Step count captures ambulatory movement but not strength training, cycling, swimming, balance work, or exercise intensity. CDC guidance is expressed in minutes of moderate or vigorous activity plus muscle-strengthening work, not a universal step requirement.</p>`
+    },
+    {
+      title: "Safety And Personalization",
+      body: `<p>Start from a multi-day baseline and adjust for mobility, footwear, terrain, recovery, health conditions, and current symptoms. New pain, chest discomfort, faintness, or unusual shortness of breath warrants stopping and seeking appropriate guidance.</p>`
+    }
   ],
   methodology: "This tool maps goals to step targets of 12,000, 8,500, or 5,000 steps/day and distributes the change linearly across the selected plan duration.",
   disclaimer: "Step goals should be adapted for injury history, mobility limits, medical conditions, footwear, terrain, and recovery needs.",
@@ -74,8 +102,7 @@ function calculateNow() {
     let timelineHtml = '';
     for (let week = 1; week <= weeks; week++) {
         const weeklyTarget = Math.round(currentSteps + diff * (week / weeks));
-        const estimatedKcal = Math.round(weeklyTarget * 0.04);
-        timelineHtml += \`<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #e2e8f0;"><strong>Week \${week}</strong><span>\${weeklyTarget.toLocaleString()} steps/day</span><span>~\${estimatedKcal} kcal/day</span></div>\`;
+        timelineHtml += \`<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #e2e8f0;"><strong>Week \${week}</strong><span>\${weeklyTarget.toLocaleString()} steps/day</span></div>\`;
     }
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = target.toLocaleString();

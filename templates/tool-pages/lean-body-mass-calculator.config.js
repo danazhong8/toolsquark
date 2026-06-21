@@ -1,10 +1,12 @@
 module.exports = {
   slug: "lean-body-mass-calculator",
-  title: "Accurate Lean Body Mass Calculator (Boer Formula) | ToolsQuark",
-  description: "Calculate your estimated lean body mass using the Boer formula and understand how much of your body weight is non-fat mass.",
+  title: "Lean Body Mass Calculator | Boer Formula Estimate",
+  description: "Estimate adult lean body mass with the Boer formula using height, weight, and sex. Includes equations, an example, limitations, and source.",
   h1: "Lean Body Mass Calculator",
   hero: "Estimate lean body mass, the portion of body weight made up of muscle, bone, organs, water, and other non-fat tissue.",
   schemaName: "Privacy-First Lean Body Mass Calculator",
+  schemaDescription: "A browser-side adult lean body mass estimate using the sex-specific Boer height-and-weight equations.",
+  lastUpdated: "June 21, 2026",
   buttonText: "Calculate Lean Body Mass",
   resultUnit: "kg",
   resultStatus: "Estimated Lean Mass",
@@ -21,10 +23,35 @@ module.exports = {
     { href: "https://toolsquark.com/tools/body-fat-calculator.html", title: "Body Fat Calculator", description: "Estimate fat percentage from body measurements.", action: "Estimate Fat %" },
     { href: "https://toolsquark.com/tools/protein-calculator.html", title: "Protein Calculator", description: "Set protein intake based on weight and training goal.", action: "Set Protein" }
   ],
+  references: [
+    { title: "Estimated Lean Body Mass as an Index for Normalization of Body Fluid Volumes in Humans", publisher: "American Journal of Physiology / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/3564307/" }
+  ],
   faq: [
     { question: "What is lean body mass?", answer: "Lean body mass is body weight minus fat mass. It includes muscle, bone, organs, connective tissue, and body water." },
     { question: "What formula does this calculator use?", answer: "This tool uses the Boer formula, a common height- and weight-based estimate for lean body mass in adults." },
     { question: "Is lean body mass the same as muscle mass?", answer: "No. Muscle is only one part of lean body mass. Lean mass also includes organs, bone, water, and other non-fat tissues." }
+  ],
+  contentSections: [
+    {
+      title: "What Lean Body Mass Includes",
+      body: `<p>Lean body mass is total body weight minus fat mass. It includes skeletal muscle, organs, bone, connective tissue, and body water, so it is not the same as muscle mass.</p><p>This calculator predicts lean mass from height and weight; it does not measure tissue directly.</p>`
+    },
+    {
+      title: "Boer Equations",
+      body: `<div class="formula-box">Men: LBM (kg) = 0.407W + 0.267H - 19.2<br>Women: LBM (kg) = 0.252W + 0.473H - 48.3</div><p>W is weight in kilograms and H is height in centimeters. Imperial inputs are converted before calculation.</p>`
+    },
+    {
+      title: "Worked Example",
+      body: `<p>For a man weighing 70 kg at 175 cm, estimated lean mass is (0.407 x 70) + (0.267 x 175) - 19.2 = 56.0 kg, or about 80.0% of total body weight.</p>`
+    },
+    {
+      title: "How To Use The Estimate",
+      body: `<p>Use the value as rough body-composition context or as one input in formulas that explicitly call for estimated lean mass. Changes smaller than normal formula and measurement error should not be treated as proven tissue gain or loss.</p>`
+    },
+    {
+      title: "Limits",
+      body: `<p>The original equations were fitted to particular adult samples and may be less accurate for children, pregnancy, edema, very muscular athletes, older adults, or people with body proportions outside those samples. DEXA and other clinical methods answer different questions and may be more appropriate when accuracy matters.</p>`
+    }
   ],
   methodology: "This tool uses the Boer equation: male LBM = 0.407 x weight(kg) + 0.267 x height(cm) - 19.2; female LBM = 0.252 x weight(kg) + 0.473 x height(cm) - 48.3.",
   disclaimer: "Lean body mass formulas are estimates and may be less accurate for athletes, older adults, pregnancy, or unusual body proportions.",

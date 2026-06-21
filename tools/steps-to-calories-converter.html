@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/steps-to-calories-converter.html">
-<title>Steps to Calories Converter | Active Step Count Burn Tool | ToolsQuark</title>
-<meta name="description" content="Convert your daily walking step counts directly into active calories burned, customized to your body weight parameters.">
+<title>Steps to Calories Calculator | Walking Estimate</title>
+<meta name="description" content="Estimate walking calories from step count and body weight with a transparent simplified factor. Includes an example, limitations, and source context.">
 <script type="application/ld+json">
 [
   {
@@ -20,7 +20,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Convert your daily walking step counts directly into active calories burned, customized to your body weight parameters."
+    "description": "A browser-side simplified walking calorie estimate based on step count and body weight, with transparent assumptions and limitations."
   },
   {
     "@context": "https://schema.org",
@@ -134,7 +134,27 @@
             </div>
         </div>
     </div>
-
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What The Estimate Represents</h3>
+        <p>This tool produces a rough active-calorie estimate for walking. It uses only steps and body weight, so it cannot distinguish slow indoor movement from brisk hills or account for stride length and carried load.</p>
+    </div>
+    <div class="content-section">
+        <h3>Simplified Formula</h3>
+        <div class="formula-box">Estimated active kcal = steps x weight (kg) x 0.00057</div><p>The coefficient is a planning heuristic chosen to produce a plausible midrange walking estimate. It is not a metabolic-equivalent calculation or a device-calibrated measurement.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>For 10,000 steps at 70 kg, the estimate is 10,000 x 70 x 0.00057 = 399 kcal. Actual expenditure can be materially lower or higher.</p>
+    </div>
+    <div class="content-section">
+        <h3>Why Trackers Differ</h3>
+        <p>Wearables may add heart rate, speed, grade, GPS distance, age, sex, and proprietary calibration. Laboratory or Compendium-based estimates use activity intensity and duration rather than step count alone.</p>
+    </div>
+    <div class="content-section">
+        <h3>Appropriate Use</h3>
+        <p>Use the result for rough comparison between similar walking days, not to earn back food or calculate a precise calorie deficit. Exercise energy estimates have enough uncertainty that body-weight and performance trends are more useful for long-term planning.</p>
+    </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
             <h4>How does this converter estimate calories?</h4>
@@ -150,7 +170,7 @@
         </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#faq">FAQs</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
         <div class="card side-card" id="related"><h3>Build A Movement Plan</h3><div class="recommend-grid">
             <a href="https://toolsquark.com/tools/daily-steps-goal-calculator.html" class="recommend-card">
                 <div>
@@ -166,8 +186,8 @@
                 </div>
                 <span class="action-text">Calculate TDEE &rarr;</span>
             </a></div></div>
-
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> Estimated calories = steps x body weight in kg x 0.000057, a simplified walking energy estimate for general planning.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Calories burned are estimates and vary with walking speed, stride length, terrain, fitness level, and device accuracy.</p><div class="updated-row">Last updated: June 19, 2026</div></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener noreferrer">2011 Compendium of Physical Activities</a><span>Medicine &amp; Science in Sports &amp; Exercise / PubMed</span></li><li><a href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener noreferrer">Physical Activity Guidelines for Adults</a><span>Centers for Disease Control and Prevention</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> Estimated calories = steps x body weight in kg x 0.00057. This is a disclosed simplified walking heuristic, not a laboratory or wearable measurement.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Calories burned are estimates and vary with walking speed, stride length, terrain, fitness level, and device accuracy.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
     </aside>
     </div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
@@ -181,15 +201,8 @@ function calculateNow() {
         alert('Please enter valid positive values for steps and weight.');
         return;
     }
-    const calories = steps * (weight * 0.000057);
-    let result = {};
-    if (calories < 200) {
-        result = { status: 'Light Active Burn', color: 'var(--underweight)', desc: `Your estimated active burn is ${calories.toFixed(1)} kcal. This reflects light daily movement or a shorter walking session.`, suggestion: 'For more cardiovascular benefit, gradually increase walking duration or add short brisk intervals.', percent: Math.max(5, calories / 200 * 30) };
-    } else if (calories <= 500) {
-        result = { status: 'Moderate Metabolic Burn', color: 'var(--normal)', desc: `Your estimated active burn is ${calories.toFixed(1)} kcal, a meaningful contribution to daily movement and energy balance.`, suggestion: 'Consistent walking at this level supports metabolic health, circulation, and weight maintenance goals.', percent: 30 + ((calories - 200) / 300) * 40 };
-    } else {
-        result = { status: 'High Volume Energy Burn', color: 'var(--overweight)', desc: `Your estimated active burn is ${calories.toFixed(1)} kcal, typical of a high-step or long walking day.`, suggestion: 'Support higher walking volume with hydration, comfortable footwear, and recovery if your legs or joints feel overloaded.', percent: Math.min(95, 70 + (Math.min(calories - 500, 500) / 500) * 25) };
-    }
+    const calories = steps * (weight * 0.00057);
+    const result = { status: 'Simplified Walking Estimate', color: 'var(--accent)', desc: `The simplified estimate is ${calories.toFixed(1)} active kcal for the entered steps and body weight.`, suggestion: 'Use this for rough comparison between similar days. Pace, grade, stride, terrain, and individual efficiency can move actual expenditure substantially.', percent: Math.min(95, Math.max(5, (calories / 1000) * 90)) };
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = calories.toFixed(1);
     document.getElementById('calc-output').style.color = result.color;

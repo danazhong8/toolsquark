@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/running-pace-calculator.html">
-<title>Free Accurate Running Pace Calculator | Track &amp; Plan | ToolsQuark</title>
-<meta name="description" content="Calculate your running pace instantly with our free online calculator. Plan your training speeds in Metric (min/km) or Imperial (min/mi) with 100% data privacy.">
+<title>Running Pace Calculator | Minutes per km or Mile</title>
+<meta name="description" content="Calculate average running pace from elapsed time and distance in min/km or min/mile. Includes the formula, example, pacing limits, and safety context.">
 <script type="application/ld+json">
 [
   {
@@ -96,7 +96,7 @@
 <body>
 <div class="container">
     <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>Running Pace Calculator</span></div>
-    <div class="hero"><h1>Running Pace Calculator</h1><p>Determine your exact running pace or target speed required to achieve your race goals. This utility processes all data privately within your browser.</p></div>
+    <div class="hero"><h1>Running Pace Calculator</h1><p>Calculate average pace from elapsed time and distance in metric or imperial units. All inputs stay in your browser.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
@@ -123,7 +123,27 @@
             </div>
         </div>
     </div>
-
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What Pace Means</h3>
+        <p>Running pace is elapsed time per unit of distance. A lower min/km or min/mile value means faster average speed. The result describes the entered session; it does not classify fitness or prescribe a training zone.</p>
+    </div>
+    <div class="content-section">
+        <h3>Formula</h3>
+        <div class="formula-box">Pace = total elapsed time / distance<br>Average speed = distance / elapsed time</div><p>Hours, minutes, and seconds are converted to decimal minutes before division. The displayed pace is rounded to the nearest second.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>A 10 km run completed in 50 minutes has an average pace of 50 / 10 = 5:00 min/km. The same performance is approximately 8:03 min/mile.</p>
+    </div>
+    <div class="content-section">
+        <h3>Why Average Pace Can Mislead</h3>
+        <p>Hills, wind, heat, stops, GPS error, terrain, and fatigue can make equal average paces represent different effort. Heart rate and perceived exertion add context, but neither can be inferred from time and distance alone.</p>
+    </div>
+    <div class="content-section">
+        <h3>Training Use And Safety</h3>
+        <p>Compare pace against your own recent sessions under similar conditions. Training zones and race targets should reflect current ability, recovery, and health rather than generic speed labels. Stop exercise and seek appropriate care for chest pain, faintness, or unusual symptoms.</p>
+    </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
             <h4>How does this running pace calculator work?</h4>
@@ -139,7 +159,7 @@
         </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#faq">FAQs</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
         <div class="card side-card" id="related"><h3>Support Your Training Plan</h3><div class="recommend-grid">
             <a href="https://toolsquark.com/tools/calorie-calculator.html" class="recommend-card">
                 <div>
@@ -155,8 +175,8 @@
                 </div>
                 <span class="action-text">Set Protein Target &rarr;</span>
             </a></div></div>
-
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool calculates pace as total elapsed time divided by total distance, then maps the result to general recreational training ranges.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Running pace estimates are educational and should not replace medical or coaching advice. Stop exercising and seek professional guidance if you experience chest pain, dizziness, or unusual symptoms.</p><div class="updated-row">Last updated: June 19, 2026</div></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener noreferrer">Physical Activity Guidelines for Adults</a><span>Centers for Disease Control and Prevention</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool calculates pace as total elapsed time divided by total distance, then maps the result to general recreational training ranges.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Running pace estimates are educational and should not replace medical or coaching advice. Stop exercising and seek professional guidance if you experience chest pain, dizziness, or unusual symptoms.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
     </aside>
     </div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
@@ -241,21 +261,8 @@ function calculateNow() {
     }
     const displayPace = `${finalMin < 10 ? '0' : ''}${finalMin}:${finalSec < 10 ? '0' : ''}${finalSec}`;
     const unitLabel = currentUnit === 'metric' ? 'min/km' : 'min/mi';
-    const paceKmDecimal = currentUnit === 'metric' ? paceDecimal : (paceDecimal / 1.60934);
-    let result = {};
-    if (paceKmDecimal < 4.5) {
-        const percent = (paceKmDecimal / 4.5) * 30;
-        result = { status: 'Elite / High Speed', color: 'var(--underweight)', desc: `Your calculated pace is ${displayPace} ${unitLabel}. This indicates an excellent level of cardiovascular conditioning and athletic output.`, suggestion: 'At this speed threshold, prioritize structured warm-ups, cool-downs, and recovery to reduce injury risk.', percent: Math.max(5, percent) };
-    } else if (paceKmDecimal <= 6.5) {
-        const percent = 30 + ((paceKmDecimal - 4.5) / 2) * 35;
-        result = { status: 'Average Active Pace', color: 'var(--normal)', desc: `Your calculated pace is ${displayPace} ${unitLabel}. This sits within a strong range for recreational runners.`, suggestion: 'This pace is sustainable for aerobic base fitness. Keep consistent weekly volume to see gradual improvements.', percent };
-    } else if (paceKmDecimal <= 8.5) {
-        const percent = 65 + ((paceKmDecimal - 6.5) / 2) * 20;
-        result = { status: 'Light Jog / Endurance', color: 'var(--overweight)', desc: `Your calculated pace is ${displayPace} ${unitLabel}, representing a steady light jogging rhythm.`, suggestion: 'This output works well for Zone 2 training and active recovery between harder sessions.', percent };
-    } else {
-        const percent = 85 + (Math.min(paceKmDecimal - 8.5, 5) / 5) * 15;
-        result = { status: 'Walking / Recovery', color: 'var(--obese)', desc: `Your output tracks at ${displayPace} ${unitLabel}, which often corresponds to brisk walking or low-impact recovery.`, suggestion: 'Power walking is an effective low-impact strategy for maintaining joint health and daily movement.', percent: Math.min(95, percent) };
-    }
+    const speed = 60 / paceDecimal;
+    const result = { status: 'Calculated Average Pace', color: 'var(--accent)', desc: `Your average pace is ${displayPace} ${unitLabel}, equivalent to about ${speed.toFixed(2)} ${currentUnit === 'metric' ? 'km/h' : 'mph'}.`, suggestion: 'Compare this result with your own sessions under similar conditions. Time and distance alone cannot determine effort level or training zone.', percent: Math.min(95, Math.max(5, (speed / 20) * 90)) };
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = displayPace;
     document.getElementById('calc-output').style.color = result.color;

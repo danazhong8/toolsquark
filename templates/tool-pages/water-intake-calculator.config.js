@@ -1,10 +1,12 @@
 module.exports = {
   slug: "water-intake-calculator",
   title: "Water Intake Calculator | Daily Hydration & Fluid Needs | ToolsQuark",
-  description: "Calculate your optimal daily water intake based on your body weight and daily exercise duration to maintain healthy physical hydration levels.",
+  description: "Estimate a daily fluid planning target from body weight and exercise duration. Includes the heuristic, hydration limits, and authoritative guidance.",
   h1: "Water Intake Calculator",
   hero: "Estimate your daily hydration target from body weight, sex profile, and exercise duration.",
   schemaName: "Privacy-First Water Intake Calculator",
+  schemaDescription: "A browser-side fluid planning estimate based on body weight and exercise duration, with clear limits and hydration safety guidance.",
+  lastUpdated: "June 21, 2026",
   buttonText: "Calculate Hydration Target",
   resultUnit: "L/day",
   resultStatus: "Hydration Target",
@@ -21,10 +23,36 @@ module.exports = {
     { href: "https://toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Estimate calories burned from your walking step count.", action: "Convert Steps" },
     { href: "https://toolsquark.com/tools/running-pace-calculator.html", title: "Running Pace Calculator", description: "Calculate pace for training sessions that raise hydration needs.", action: "Check Pace" }
   ],
+  references: [
+    { title: "Dietary Reference Intakes for Water and Electrolytes", publisher: "National Academies Press", href: "https://nap.nationalacademies.org/catalog/10925/dietary-reference-intakes-for-water-potassium-sodium-chloride-and-sulfate" },
+    { title: "About Water and Healthier Drinks", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/healthy-weight-growth/water-healthy-drinks/index.html" }
+  ],
   faq: [
     { question: "Does coffee or tea count toward fluid intake?", answer: "Yes, mild caffeinated drinks contribute to total daily fluid intake, though plain water remains the most direct hydration option." },
     { question: "Can I drink too much water?", answer: "Yes. Excessive intake can contribute to low blood sodium, especially during long endurance events. Use thirst, urine color, and medical guidance alongside numerical estimates." },
     { question: "Why does exercise increase the result?", answer: "Exercise raises sweat and respiratory fluid losses. This calculator adds an activity allowance based on exercise duration." }
+  ],
+  contentSections: [
+    {
+      title: "What This Tool Estimates",
+      body: `<p>The result is a simple daily fluid-planning target, not a measured requirement. It combines a body-weight heuristic with a fixed exercise allowance.</p><p>Total water comes from drinking water, other beverages, and food. The National Academies' adequate-intake values describe total water from all sources and are not the same as this calculator's drink target.</p>`
+    },
+    {
+      title: "Heuristic Used",
+      body: `<div class="formula-box">Male profile: weight (kg) x 0.035 L<br>Female profile: weight (kg) x 0.031 L<br>Exercise addition: 0.35 L per 30 minutes</div><p>These factors are disclosed planning heuristics, not individualized clinical equations. Pounds are converted to kilograms before calculation.</p>`
+    },
+    {
+      title: "Worked Example",
+      body: `<p>A 70 kg person selecting the male profile and entering 30 minutes of exercise receives (70 x 0.035) + 0.35 = 2.80 L/day as a starting estimate.</p>`
+    },
+    {
+      title: "How To Adjust The Starting Point",
+      body: `<p>Heat, humidity, altitude, fever, pregnancy, breastfeeding, sodium intake, sweat rate, and exercise intensity can change needs. Thirst, urine pattern, body-weight change during long exercise, and clinician advice provide useful context.</p>`
+    },
+    {
+      title: "Safety And Limits",
+      body: `<p>More water is not always safer. Rapid excessive intake can dilute blood sodium, while some heart, kidney, liver, and endocrine conditions require fluid limits. Endurance activity may require individualized fluid and electrolyte planning rather than forced plain-water intake.</p>`
+    }
   ],
   methodology: "This calculator estimates baseline hydration as body weight in kg multiplied by a sex-specific factor, then adds about 0.35 L for every 30 minutes of exercise.",
   disclaimer: "Hydration needs vary with climate, sodium intake, medical conditions, medications, pregnancy, and sweat rate. This tool is educational and not medical advice.",
@@ -79,7 +107,7 @@ function calculateNow() {
     } else if (litres <= 3.5) {
         result = { status: 'Active Hydration Level', color: 'var(--normal)', desc: \`Your estimated target is \${litres.toFixed(2)} L/day based on body weight and activity.\`, suggestion: 'Use this as a daily anchor, then adjust for heat, sweating, salty meals, and thirst.', percent: 30 + ((litres - 2) / 1.5) * 40 };
     } else {
-        result = { status: 'High-Performance Hydration Level', color: 'var(--overweight)', desc: \`Your estimated target is \${litres.toFixed(2)} L/day, a higher fluid requirement usually linked with larger body size or exercise volume.\`, suggestion: 'For long or hot training sessions, consider electrolyte replacement and avoid forcing excessive plain water.', percent: Math.min(95, 70 + (Math.min(litres - 3.5, 2) / 2) * 25) };
+        result = { status: 'Higher Fluid Estimate', color: 'var(--overweight)', desc: \`Your estimated target is \${litres.toFixed(2)} L/day, driven by the entered body weight, profile, and exercise duration.\`, suggestion: 'For long or hot training sessions, individualize fluid and electrolyte replacement and avoid forcing excessive plain water.', percent: Math.min(95, 70 + (Math.min(litres - 3.5, 2) / 2) * 25) };
     }
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = litres.toFixed(2);

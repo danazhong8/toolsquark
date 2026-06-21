@@ -1,11 +1,12 @@
 module.exports = {
   slug: "running-pace-calculator",
-  title: "Free Accurate Running Pace Calculator | Track & Plan | ToolsQuark",
-  description: "Calculate your running pace instantly with our free online calculator. Plan your training speeds in Metric (min/km) or Imperial (min/mi) with 100% data privacy.",
+  title: "Running Pace Calculator | Minutes per km or Mile",
+  description: "Calculate average running pace from elapsed time and distance in min/km or min/mile. Includes the formula, example, pacing limits, and safety context.",
   h1: "Running Pace Calculator",
-  hero: "Determine your exact running pace or target speed required to achieve your race goals. This utility processes all data privately within your browser.",
+  hero: "Calculate average pace from elapsed time and distance in metric or imperial units. All inputs stay in your browser.",
   schemaName: "Privacy-First Running Pace Calculator",
   schemaDescription: "An interactive, client-side running pace calculator for metric and imperial race planning without data logging.",
+  lastUpdated: "June 21, 2026",
   buttonText: "Calculate Running Pace",
   resultUnit: "",
   resultStatus: "min/km",
@@ -32,6 +33,9 @@ module.exports = {
       action: "Set Protein Target"
     }
   ],
+  references: [
+    { title: "Physical Activity Guidelines for Adults", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" }
+  ],
   faq: [
     {
       question: "How does this running pace calculator work?",
@@ -44,6 +48,28 @@ module.exports = {
     {
       question: "Should I train by pace or heart rate?",
       answer: "Pace measures external output, while heart rate reflects internal strain. Many runners use both: pace for race goals and heart rate for managing easy aerobic sessions and recovery."
+    }
+  ],
+  contentSections: [
+    {
+      title: "What Pace Means",
+      body: `<p>Running pace is elapsed time per unit of distance. A lower min/km or min/mile value means faster average speed. The result describes the entered session; it does not classify fitness or prescribe a training zone.</p>`
+    },
+    {
+      title: "Formula",
+      body: `<div class="formula-box">Pace = total elapsed time / distance<br>Average speed = distance / elapsed time</div><p>Hours, minutes, and seconds are converted to decimal minutes before division. The displayed pace is rounded to the nearest second.</p>`
+    },
+    {
+      title: "Worked Example",
+      body: `<p>A 10 km run completed in 50 minutes has an average pace of 50 / 10 = 5:00 min/km. The same performance is approximately 8:03 min/mile.</p>`
+    },
+    {
+      title: "Why Average Pace Can Mislead",
+      body: `<p>Hills, wind, heat, stops, GPS error, terrain, and fatigue can make equal average paces represent different effort. Heart rate and perceived exertion add context, but neither can be inferred from time and distance alone.</p>`
+    },
+    {
+      title: "Training Use And Safety",
+      body: `<p>Compare pace against your own recent sessions under similar conditions. Training zones and race targets should reflect current ability, recovery, and health rather than generic speed labels. Stop exercise and seek appropriate care for chest pain, faintness, or unusual symptoms.</p>`
     }
   ],
   methodology: "This tool calculates pace as total elapsed time divided by total distance, then maps the result to general recreational training ranges.",
@@ -127,21 +153,8 @@ function calculateNow() {
     }
     const displayPace = \`\${finalMin < 10 ? '0' : ''}\${finalMin}:\${finalSec < 10 ? '0' : ''}\${finalSec}\`;
     const unitLabel = currentUnit === 'metric' ? 'min/km' : 'min/mi';
-    const paceKmDecimal = currentUnit === 'metric' ? paceDecimal : (paceDecimal / 1.60934);
-    let result = {};
-    if (paceKmDecimal < 4.5) {
-        const percent = (paceKmDecimal / 4.5) * 30;
-        result = { status: 'Elite / High Speed', color: 'var(--underweight)', desc: \`Your calculated pace is \${displayPace} \${unitLabel}. This indicates an excellent level of cardiovascular conditioning and athletic output.\`, suggestion: 'At this speed threshold, prioritize structured warm-ups, cool-downs, and recovery to reduce injury risk.', percent: Math.max(5, percent) };
-    } else if (paceKmDecimal <= 6.5) {
-        const percent = 30 + ((paceKmDecimal - 4.5) / 2) * 35;
-        result = { status: 'Average Active Pace', color: 'var(--normal)', desc: \`Your calculated pace is \${displayPace} \${unitLabel}. This sits within a strong range for recreational runners.\`, suggestion: 'This pace is sustainable for aerobic base fitness. Keep consistent weekly volume to see gradual improvements.', percent };
-    } else if (paceKmDecimal <= 8.5) {
-        const percent = 65 + ((paceKmDecimal - 6.5) / 2) * 20;
-        result = { status: 'Light Jog / Endurance', color: 'var(--overweight)', desc: \`Your calculated pace is \${displayPace} \${unitLabel}, representing a steady light jogging rhythm.\`, suggestion: 'This output works well for Zone 2 training and active recovery between harder sessions.', percent };
-    } else {
-        const percent = 85 + (Math.min(paceKmDecimal - 8.5, 5) / 5) * 15;
-        result = { status: 'Walking / Recovery', color: 'var(--obese)', desc: \`Your output tracks at \${displayPace} \${unitLabel}, which often corresponds to brisk walking or low-impact recovery.\`, suggestion: 'Power walking is an effective low-impact strategy for maintaining joint health and daily movement.', percent: Math.min(95, percent) };
-    }
+    const speed = 60 / paceDecimal;
+    const result = { status: 'Calculated Average Pace', color: 'var(--accent)', desc: \`Your average pace is \${displayPace} \${unitLabel}, equivalent to about \${speed.toFixed(2)} \${currentUnit === 'metric' ? 'km/h' : 'mph'}.\`, suggestion: 'Compare this result with your own sessions under similar conditions. Time and distance alone cannot determine effort level or training zone.', percent: Math.min(95, Math.max(5, (speed / 20) * 90)) };
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = displayPace;
     document.getElementById('calc-output').style.color = result.color;

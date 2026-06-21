@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/water-intake-calculator.html">
 <title>Water Intake Calculator | Daily Hydration &amp; Fluid Needs | ToolsQuark</title>
-<meta name="description" content="Calculate your optimal daily water intake based on your body weight and daily exercise duration to maintain healthy physical hydration levels.">
+<meta name="description" content="Estimate a daily fluid planning target from body weight and exercise duration. Includes the heuristic, hydration limits, and authoritative guidance.">
 <script type="application/ld+json">
 [
   {
@@ -20,7 +20,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Calculate your optimal daily water intake based on your body weight and daily exercise duration to maintain healthy physical hydration levels."
+    "description": "A browser-side fluid planning estimate based on body weight and exercise duration, with clear limits and hydration safety guidance."
   },
   {
     "@context": "https://schema.org",
@@ -123,7 +123,27 @@
             </div>
         </div>
     </div>
-
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What This Tool Estimates</h3>
+        <p>The result is a simple daily fluid-planning target, not a measured requirement. It combines a body-weight heuristic with a fixed exercise allowance.</p><p>Total water comes from drinking water, other beverages, and food. The National Academies' adequate-intake values describe total water from all sources and are not the same as this calculator's drink target.</p>
+    </div>
+    <div class="content-section">
+        <h3>Heuristic Used</h3>
+        <div class="formula-box">Male profile: weight (kg) x 0.035 L<br>Female profile: weight (kg) x 0.031 L<br>Exercise addition: 0.35 L per 30 minutes</div><p>These factors are disclosed planning heuristics, not individualized clinical equations. Pounds are converted to kilograms before calculation.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>A 70 kg person selecting the male profile and entering 30 minutes of exercise receives (70 x 0.035) + 0.35 = 2.80 L/day as a starting estimate.</p>
+    </div>
+    <div class="content-section">
+        <h3>How To Adjust The Starting Point</h3>
+        <p>Heat, humidity, altitude, fever, pregnancy, breastfeeding, sodium intake, sweat rate, and exercise intensity can change needs. Thirst, urine pattern, body-weight change during long exercise, and clinician advice provide useful context.</p>
+    </div>
+    <div class="content-section">
+        <h3>Safety And Limits</h3>
+        <p>More water is not always safer. Rapid excessive intake can dilute blood sodium, while some heart, kidney, liver, and endocrine conditions require fluid limits. Endurance activity may require individualized fluid and electrolyte planning rather than forced plain-water intake.</p>
+    </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
             <h4>Does coffee or tea count toward fluid intake?</h4>
@@ -139,7 +159,7 @@
         </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#faq">FAQs</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
         <div class="card side-card" id="related"><h3>Support Daily Activity</h3><div class="recommend-grid">
             <a href="https://toolsquark.com/tools/steps-to-calories-converter.html" class="recommend-card">
                 <div>
@@ -155,8 +175,8 @@
                 </div>
                 <span class="action-text">Check Pace &rarr;</span>
             </a></div></div>
-
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This calculator estimates baseline hydration as body weight in kg multiplied by a sex-specific factor, then adds about 0.35 L for every 30 minutes of exercise.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Hydration needs vary with climate, sodium intake, medical conditions, medications, pregnancy, and sweat rate. This tool is educational and not medical advice.</p><div class="updated-row">Last updated: June 19, 2026</div></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://nap.nationalacademies.org/catalog/10925/dietary-reference-intakes-for-water-potassium-sodium-chloride-and-sulfate" target="_blank" rel="noopener noreferrer">Dietary Reference Intakes for Water and Electrolytes</a><span>National Academies Press</span></li><li><a href="https://www.cdc.gov/healthy-weight-growth/water-healthy-drinks/index.html" target="_blank" rel="noopener noreferrer">About Water and Healthier Drinks</a><span>Centers for Disease Control and Prevention</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This calculator estimates baseline hydration as body weight in kg multiplied by a sex-specific factor, then adds about 0.35 L for every 30 minutes of exercise.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Hydration needs vary with climate, sodium intake, medical conditions, medications, pregnancy, and sweat rate. This tool is educational and not medical advice.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
     </aside>
     </div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
@@ -213,7 +233,7 @@ function calculateNow() {
     } else if (litres <= 3.5) {
         result = { status: 'Active Hydration Level', color: 'var(--normal)', desc: `Your estimated target is ${litres.toFixed(2)} L/day based on body weight and activity.`, suggestion: 'Use this as a daily anchor, then adjust for heat, sweating, salty meals, and thirst.', percent: 30 + ((litres - 2) / 1.5) * 40 };
     } else {
-        result = { status: 'High-Performance Hydration Level', color: 'var(--overweight)', desc: `Your estimated target is ${litres.toFixed(2)} L/day, a higher fluid requirement usually linked with larger body size or exercise volume.`, suggestion: 'For long or hot training sessions, consider electrolyte replacement and avoid forcing excessive plain water.', percent: Math.min(95, 70 + (Math.min(litres - 3.5, 2) / 2) * 25) };
+        result = { status: 'Higher Fluid Estimate', color: 'var(--overweight)', desc: `Your estimated target is ${litres.toFixed(2)} L/day, driven by the entered body weight, profile, and exercise duration.`, suggestion: 'For long or hot training sessions, individualize fluid and electrolyte replacement and avoid forcing excessive plain water.', percent: Math.min(95, 70 + (Math.min(litres - 3.5, 2) / 2) * 25) };
     }
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = litres.toFixed(2);

@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/due-date-calculator.html">
-<title>Accurate Due Date Calculator | Plan Your Pregnancy Timeline | ToolsQuark</title>
-<meta name="description" content="Calculate your precise clinical Estimated Date of Delivery (EDD) and current gestational age using Naegele's Rule. Track your specific trimester countdown instantly.">
+<title>Pregnancy Due Date Calculator | LMP Estimate</title>
+<meta name="description" content="Estimate pregnancy due date and gestational age from the first day of the last menstrual period. Includes Naegele's rule, limits, and prenatal guidance.">
 <script type="application/ld+json">
 [
   {
@@ -20,7 +20,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Calculate your precise clinical Estimated Date of Delivery (EDD) and current gestational age using Naegele's Rule. Track your specific trimester countdown instantly."
+    "description": "A browser-side pregnancy due date estimate based on the first day of the last menstrual period, with gestational age and method limitations."
   },
   {
     "@context": "https://schema.org",
@@ -124,7 +124,27 @@
             </div>
         </div>
     </div>
-
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What The Estimate Means</h3>
+        <p>The estimated due date is a dating reference, not a promise about the day labor will begin. This tool counts 280 days, or 40 weeks, from the first day of the last menstrual period (LMP).</p><p>Gestational age is conventionally counted from the LMP, about two weeks before conception in a textbook 28-day cycle. That convention explains why pregnancy dating can appear older than time since fertilization.</p>
+    </div>
+    <div class="content-section">
+        <h3>Formula And Assumptions</h3>
+        <div class="formula-box">Estimated due date = first day of LMP + 280 days<br>Gestational age = completed weeks and days since LMP</div><p>Naegele's rule assumes the LMP date is known, cycles are reasonably regular, and ovulation occurred near the expected time. Cycle length differences, uncertain bleeding dates, recent hormonal contraception, and assisted reproduction can require a different method.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>If the first day of the LMP was January 1, adding 280 calendar days gives an estimated due date around October 8 in a non-leap year. At 70 elapsed days, gestational age is 10 weeks 0 days.</p>
+    </div>
+    <div class="content-section">
+        <h3>How Clinical Dating Can Change</h3>
+        <p>ACOG recommends establishing and documenting gestational age using the LMP, the first accurate ultrasound, or assisted-reproduction dating as appropriate. Early ultrasound may revise an LMP estimate when the dates disagree beyond clinical thresholds.</p><p>Use the date confirmed by the prenatal clinician for medical decisions, screening windows, and delivery planning.</p>
+    </div>
+    <div class="content-section">
+        <h3>When To Seek Care</h3>
+        <p>This calculator cannot confirm pregnancy location, viability, or fetal health. Contact a qualified clinician for prenatal care and for pain, heavy bleeding, fainting, severe symptoms, or uncertainty about dates. Urgent symptoms require urgent medical assessment.</p>
+    </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
             <h4>What is Naegele's Rule?</h4>
@@ -140,7 +160,7 @@
         </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#faq">FAQs</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
         <div class="card side-card" id="related"><h3>Reproductive &amp; Wellness Tools</h3><div class="recommend-grid">
             <a href="https://toolsquark.com/tools/period-calculator.html" class="recommend-card">
                 <div>
@@ -156,8 +176,8 @@
                 </div>
                 <span class="action-text">Check Hydration &rarr;</span>
             </a></div></div>
-
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool estimates EDD as LMP plus 280 days, then calculates gestational age from elapsed days since LMP and maps that to standard trimester ranges.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Pregnancy timing estimates are educational and not a diagnosis or clinical dating confirmation. Consult an OB-GYN or qualified clinician for prenatal care.</p><div class="updated-row">Last updated: June 19, 2026</div></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/05/methods-for-estimating-the-due-date" target="_blank" rel="noopener noreferrer">Methods for Estimating the Due Date</a><span>American College of Obstetricians and Gynecologists</span></li><li><a href="https://womenshealth.gov/pregnancy/youre-pregnant-now-what/stages-pregnancy" target="_blank" rel="noopener noreferrer">Stages of Pregnancy</a><span>Office on Women's Health</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool estimates EDD as LMP plus 280 days, then calculates gestational age from elapsed days since LMP and maps that to standard trimester ranges.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Pregnancy timing estimates are educational and not a diagnosis or clinical dating confirmation. Consult an OB-GYN or qualified clinician for prenatal care.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
     </aside>
     </div>
     <footer>&copy; 2026 ToolsQuark. All rights reserved.</footer>
@@ -172,6 +192,9 @@ function addDays(date, days) {
     next.setDate(next.getDate() + days);
     return next;
 }
+function calendarDayNumber(date) {
+    return Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000);
+}
 function calculateNow() {
     const value = document.getElementById('input_lmp').value;
     if (!value) {
@@ -185,7 +208,7 @@ function calculateNow() {
         alert('The LMP date cannot be in the future.');
         return;
     }
-    const daysPassed = Math.floor((today - lmp) / 86400000);
+    const daysPassed = calendarDayNumber(today) - calendarDayNumber(lmp);
     if (daysPassed > 308) {
         alert('This date is beyond the usual pregnancy dating range. Please verify the input.');
         return;
@@ -193,7 +216,7 @@ function calculateNow() {
     const edd = addDays(lmp, 280);
     const weeks = Math.floor(daysPassed / 7);
     const days = daysPassed % 7;
-    const daysRemaining = Math.max(0, Math.ceil((edd - today) / 86400000));
+    const daysRemaining = Math.max(0, calendarDayNumber(edd) - calendarDayNumber(today));
     const weeksRemaining = Math.floor(daysRemaining / 7);
     const percent = Math.min(100, Math.max(0, (daysPassed / 280) * 100));
     let status = '';
