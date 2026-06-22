@@ -9,14 +9,16 @@ const pages = [
   {
     file: "about.html",
     title: "About ToolsQuark | Purpose, Standards & Ownership",
-    description: "Learn what ToolsQuark publishes, how its calculators and self-checks are maintained, what the site does not provide, and how to report corrections.",
+    description: "Learn how ToolsQuark publishes calculators, original self-checks, and decision guides, maintains editorial standards, and handles corrections.",
     h1: "About ToolsQuark",
-    intro: "ToolsQuark is an independently maintained library of browser-based calculators and educational self-checks.",
+    intro: "ToolsQuark is an independently maintained knowledge platform for transparent calculators, original educational self-checks, and decision guides.",
+    updated: "June 22, 2026",
+    modified: "2026-06-22",
     type: "AboutPage",
     sections: [
-      ["What We Publish", `<p>ToolsQuark builds practical calculators for body metrics, nutrition planning, activity, dates, sleep, and everyday routines. It also publishes original self-reflection checklists for stress, attention, work strain, habits, and digital use.</p><p>Calculator inputs and self-check answers are processed in the browser. No account is required.</p>`],
+      ["What We Publish", `<p>ToolsQuark builds practical calculators for body metrics, nutrition planning, activity, dates, sleep, and everyday routines. It publishes original self-reflection checklists for stress, attention, work strain, habits, digital use, and relationships.</p><p>Decision guides compare similar methods, explain limits, and help readers choose and interpret the relevant calculator or self-check. Calculator inputs and self-check answers are processed in the browser. No account is required.</p>`],
       ["What We Do Not Claim", `<p>ToolsQuark is not a clinic, healthcare provider, diagnostic service, or substitute for qualified professional care. The self-checks are original editorial tools unless a page explicitly says otherwise; they are not validated clinical instruments.</p><p>No named physician, psychologist, dietitian, or other clinician currently reviews every page. We state that plainly because a fabricated review badge would be worse than no badge at all.</p>`],
-      ["How Tools Are Built", `<p>Each professionalized tool documents its formula or scoring method, assumptions, limitations, worked examples, and relevant sources. We prefer public-health agencies, standards bodies, original research, and peer-reviewed reviews when they directly support the page.</p><p>Read the full <a href="editorial-policy.html">Editorial & Methodology Policy</a> for source selection, testing, and update practices.</p>`],
+      ["How Content Is Built", `<p>Each professionalized calculator or self-check documents its formula or scoring method, assumptions, limitations, examples, and relevant sources. Decision guides identify the distinct question each method can answer and connect claims to authoritative or primary references.</p><p>We prefer public-health agencies, standards bodies, original research, and peer-reviewed reviews when they directly support the page. Read the full <a href="editorial-policy.html">Editorial & Methodology Policy</a> for source selection, testing, and update practices.</p>`],
       ["Ownership And Corrections", `<p>The project source is maintained in the public <a href="https://github.com/danazhong8/toolsquark" target="_blank" rel="noopener noreferrer">ToolsQuark GitHub repository</a>. Errors, broken sources, and reproducible calculation problems can be reported through <a href="https://github.com/danazhong8/toolsquark/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a>.</p><p>Corrections are evaluated against the implementation, cited source, and generated page before publication.</p>`],
       ["Privacy In Brief", `<p>ToolsQuark does not require an account and does not intentionally send calculator values or individual self-check answers through analytics events. Aggregate traffic measurement is described in the <a href="privacy.html">Privacy Policy</a>.</p>`]
     ]
@@ -87,7 +89,7 @@ function render(page) {
       description: page.description,
       isPartOf: { "@type": "WebSite", name: "ToolsQuark", url: `${site}/` },
       about: { "@type": "Organization", name: "ToolsQuark", url: `${site}/` },
-      dateModified: "2026-06-21"
+      dateModified: page.modified || "2026-06-21"
     },
     {
       "@context": "https://schema.org",
@@ -119,7 +121,7 @@ ${JSON.stringify(schema, null, 2)}
 <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html">ToolsQuark</a><nav class="nav" aria-label="Primary"><a href="health.html">Health</a><a href="mental-health.html">Mental Health</a><a href="lifestyle.html">Lifestyle</a></nav></div></header>
 <main class="container">
   <div class="breadcrumb"><a href="index.html">Home</a> &gt; <span>${esc(page.h1)}</span></div>
-  <header class="hero"><h1>${esc(page.h1)}</h1><p>${esc(page.intro)}</p><div class="updated">Last updated: ${updated}</div></header>
+  <header class="hero"><h1>${esc(page.h1)}</h1><p>${esc(page.intro)}</p><div class="updated">Last updated: ${page.updated || updated}</div></header>
   <div class="content">${page.sections.map(([title, body]) => `<section class="section"><h2>${esc(title)}</h2>${body}</section>`).join("")}</div>
   <nav class="trust-links" aria-label="Trust and policy pages">
     <a class="trust-link" href="about.html"><strong>About</strong><span>Purpose, ownership, and corrections</span></a>

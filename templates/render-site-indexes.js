@@ -215,7 +215,7 @@ function footer() {
 function renderCategory(group) {
   const sections = group.sections.map((section) => `
     <h2 class="sub-category-title">${esc(section.title)}</h2>
-    <div class="tools-grid">${section.tools.map(renderToolCard).join("")}
+    <div class="tools-grid">${section.tools.map((tool) => renderToolCard(tool, { source: "category-page" })).join("")}
     </div>`).join("");
   const guide = `<section class="topic-guide" aria-label="How to use these tools">${group.guide.map(([title, body]) => `<div><h2>${esc(title)}</h2><p>${esc(body)}</p></div>`).join("")}</section>`;
 
@@ -275,6 +275,20 @@ ${guide}
         <div class="disclaimer-box">These tools provide general wellness information and self-reflection only. They do not replace professional medical, mental health, nutrition, or legal advice.</div>
     </section>
 </div>
+<script>
+document.addEventListener('click', (event) => {
+  const toolLink = event.target.closest('[data-tool-slug]');
+  if (!toolLink || typeof window.va !== 'function') return;
+  window.va('event', {
+    name: 'tool_click',
+    data: {
+      tool: toolLink.dataset.toolSlug,
+      source: toolLink.dataset.source || 'category-page',
+      category: ${JSON.stringify(group.categoryLabel)}
+    }
+  });
+});
+</script>
 ${footer()}
 </body>
 </html>
@@ -315,8 +329,14 @@ function renderHome() {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="${site}/">
-<title>Free Health Calculators & Wellness Self-Checks | ToolsQuark</title>
-<meta name="description" content="Use free BMI, calorie, sleep, body composition, lifestyle, and wellness self-check tools. No registration, with inputs processed in your browser.">
+<title>Health Calculators, Self-Checks & Guides | ToolsQuark</title>
+<meta name="description" content="Use transparent health calculators, original private self-checks, and evidence-informed decision guides. No account required; inputs stay in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ToolsQuark">
+<meta property="og:title" content="Health Calculators, Self-Checks & Guides">
+<meta property="og:description" content="Transparent calculations, private reflection, and practical guides for understanding numbers and patterns.">
+<meta property="og:url" content="${site}/">
+<meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 ${JSON.stringify([
   {
@@ -325,7 +345,7 @@ ${JSON.stringify([
     "@id": `${site}/#website`,
     name: "ToolsQuark",
     url: `${site}/`,
-    description: "A privacy-focused library of health calculators, lifestyle utilities, and educational wellness self-checks.",
+    description: "A privacy-focused knowledge platform combining transparent health calculators, original educational self-checks, and evidence-informed decision guides.",
     publisher: { "@id": `${site}/#organization` }
   },
   {
@@ -339,9 +359,9 @@ ${JSON.stringify([
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Free Health Calculators and Wellness Self-Checks",
+    name: "Health Calculators, Original Self-Checks, and Decision Guides",
     url: `${site}/`,
-    description: "A free collection of private health calculators, lifestyle tools, and educational wellness self-checks.",
+    description: "A free collection of transparent calculators, browser-local self-checks, and practical guides for choosing and interpreting them.",
     mainEntity: { "@id": `${site}/#tool-directory` },
     publisher: { "@id": `${site}/#organization` }
   },
@@ -361,7 +381,7 @@ ${JSON.stringify([
     "@context": "https://schema.org",
     "@type": "ItemList",
     "@id": `${site}/#tool-directory`,
-    name: "ToolsQuark health and wellness tool directory",
+    name: "ToolsQuark calculator and self-check directory",
     numberOfItems: allToolRecords.length,
     itemListElement: allToolRecords.map((tool, index) => ({
       "@type": "ListItem",
@@ -375,16 +395,17 @@ ${JSON.stringify([
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>${baseStyles()}.container{max-width:1280px;margin-top:32px}.tool-card,.e-e-a-t-section{border-radius:8px}.navbar{background:white;padding:15px max(20px,5%);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:10}.logo{font-size:22px;font-weight:850;color:var(--accent);text-decoration:none}.nav-links{display:flex;gap:24px}.nav-links a{text-decoration:none;color:#4b5563;font-weight:700;font-size:14px}.hero{text-align:center;margin:0 auto 32px;max-width:880px}.hero h1{font-size:2.85rem;font-weight:850;letter-spacing:0;line-height:1.12;margin-bottom:14px;color:#0f172a}.hero p{color:var(--text-muted);font-size:1.05rem;max-width:760px;margin:0 auto}.trust-badges{display:flex;justify-content:center;gap:20px;margin-top:16px;color:#047857;font-weight:750;font-size:.9rem;flex-wrap:wrap}.search-wrapper{max-width:760px;margin:0 auto 34px;position:relative}.search-input{width:100%;padding:16px 20px;border:2px solid #cbd5e1;border-radius:8px;font-size:16px;background:white}.search-input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 4px var(--accent-light)}.search-results{display:none;position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:20;background:white;border:1px solid #cbd5e1;border-radius:8px;box-shadow:0 18px 35px rgba(15,23,42,.14);overflow:hidden}.search-results.is-open{display:block}.search-result{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 18px;padding:13px 16px;border-bottom:1px solid #eef2f7;text-decoration:none;color:inherit}.search-result:last-child{border-bottom:none}.search-result:hover,.search-result:focus-visible{background:#eff6ff;outline:none}.search-result strong{font-size:14px;color:#1e293b}.search-result span{grid-row:1 / 3;grid-column:2;color:var(--accent);font-size:12px;font-weight:800;align-self:center}.search-result small{font-size:12px;color:var(--text-muted)}.search-empty{padding:16px;color:var(--text-muted);font-size:14px}.category-band{padding:26px 0 32px;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:16px}.section-heading h2{font-size:1.35rem;line-height:1.25}.section-heading p{font-size:.9rem;color:var(--text-muted)}.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.category-link{padding:20px 0;text-decoration:none;color:inherit;border-top:3px solid #cbd5e1}.category-link:hover,.category-link:focus-visible{border-color:var(--accent);outline:none}.category-link span{font-size:1.05rem;font-weight:850;color:#1e293b}.category-link small{margin-left:8px;color:var(--text-muted);font-weight:750}.category-link p{color:var(--text-muted);font-size:.9rem;line-height:1.5;margin:7px 0 12px;max-width:340px}.category-link strong{font-size:.82rem;color:var(--accent)}.popular-section{padding-top:36px}.popular-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.popular-grid .tool-card{padding:22px;min-height:220px}.popular-grid .tool-name{font-size:1.03rem}.popular-grid .tool-desc{font-size:.88rem}.directory-section{padding-top:54px}.directory-list{border-bottom:1px solid #cbd5e1}.directory-group{display:grid;grid-template-columns:230px minmax(0,1fr);gap:34px;padding:28px 0;border-top:1px solid #cbd5e1}.directory-intro h3{font-size:1.12rem;line-height:1.3}.directory-intro h3 a{color:#1e293b;text-decoration:none}.directory-intro h3 a:hover,.directory-intro h3 a:focus-visible{color:var(--accent)}.directory-intro p{font-size:.85rem;color:var(--text-muted);line-height:1.55;margin:8px 0 12px}.directory-category-link{font-size:.8rem;color:var(--accent);font-weight:800;text-decoration:none}.directory-topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:26px}.directory-topic h4{font-size:.82rem;color:#475569;margin-bottom:9px}.directory-topic ul{list-style:none;display:grid;gap:7px}.directory-topic a{color:#1e293b;text-decoration:none;font-size:.88rem;font-weight:700}.directory-topic a:hover,.directory-topic a:focus-visible{color:var(--accent);text-decoration:underline}.quality-section{margin-top:54px;padding:34px 0;border-top:1px solid #cbd5e1;border-bottom:1px solid #cbd5e1}.quality-intro{max-width:760px;margin-bottom:24px}.quality-intro h2{font-size:1.35rem;margin-bottom:7px}.quality-intro p{font-size:.92rem;color:var(--text-muted)}.quality-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}.quality-item h3{font-size:1rem;margin-bottom:7px}.quality-item p{font-size:.88rem;color:var(--text-muted);line-height:1.6}.quality-item a{color:var(--accent);font-weight:800}.quality-meta{display:flex;gap:12px 24px;flex-wrap:wrap;margin-top:25px;padding-top:18px;border-top:1px solid #e2e8f0;color:#475569;font-size:.78rem;font-weight:750}@media(max-width:1050px){.popular-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.directory-group{grid-template-columns:190px minmax(0,1fr)}}@media(max-width:820px){.directory-group{grid-template-columns:1fr}.directory-intro{max-width:620px}.directory-topics{grid-template-columns:repeat(2,minmax(0,1fr))}.quality-grid{grid-template-columns:1fr;gap:22px}}@media(max-width:768px){.container{margin-top:24px}.navbar{align-items:flex-start;gap:12px;flex-direction:column}.nav-links{gap:14px;flex-wrap:wrap}.hero h1{font-size:2.15rem}.category-grid,.popular-grid,.directory-topics{grid-template-columns:1fr}.section-heading{align-items:flex-start;flex-direction:column;gap:4px}.search-result{grid-template-columns:minmax(0,1fr)}.search-result span{grid-row:auto;grid-column:auto}.popular-grid .tool-card{min-height:0}}</style>
-<style>.home-guides{margin-top:54px;padding:34px 0;border-top:1px solid #cbd5e1}.home-guides .section-heading a{color:var(--accent);font-weight:800;text-decoration:none}.home-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.home-guide{background:#fff;border:1px solid #dbe2ea;border-radius:8px;padding:20px;text-decoration:none;color:inherit;min-height:180px}.home-guide:hover,.home-guide:focus-visible{border-color:var(--accent);outline:none}.home-guide small{display:block;color:#047857;font-size:.72rem;font-weight:850;text-transform:uppercase}.home-guide strong{display:block;color:#1e293b;font-size:1.02rem;margin-top:7px}.home-guide span{display:block;color:var(--text-muted);font-size:.85rem;line-height:1.55;margin-top:7px}.home-guide em{display:block;color:var(--accent);font-style:normal;font-size:.8rem;font-weight:800;margin-top:12px}@media(max-width:768px){.home-guide-grid{grid-template-columns:1fr}.home-guide{min-height:0}}</style>
+<style>.format-band{padding:26px 0 32px;border-top:1px solid #cbd5e1}.format-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}.format-item{border-top:3px solid #cbd5e1;padding-top:16px}.format-item h2{font-size:1.05rem;margin-bottom:6px}.format-item p{font-size:.88rem;color:var(--text-muted);line-height:1.55;margin-bottom:10px}.format-item a{font-size:.82rem;color:var(--accent);font-weight:800;text-decoration:none}.format-item:hover{border-color:var(--accent)}.home-guides{margin-top:54px;padding:34px 0;border-top:1px solid #cbd5e1}.home-guides .section-heading a{color:var(--accent);font-weight:800;text-decoration:none}.home-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.home-guide{background:#fff;border:1px solid #dbe2ea;border-radius:8px;padding:20px;text-decoration:none;color:inherit;min-height:180px}.home-guide:hover,.home-guide:focus-visible{border-color:var(--accent);outline:none}.home-guide small{display:block;color:#047857;font-size:.72rem;font-weight:850;text-transform:uppercase}.home-guide strong{display:block;color:#1e293b;font-size:1.02rem;margin-top:7px}.home-guide span{display:block;color:var(--text-muted);font-size:.85rem;line-height:1.55;margin-top:7px}.home-guide em{display:block;color:var(--accent);font-style:normal;font-size:.8rem;font-weight:800;margin-top:12px}@media(max-width:768px){.format-grid,.home-guide-grid{grid-template-columns:1fr}.home-guide{min-height:0}}</style>
 </head>
 <body>
 <nav class="navbar"><a href="index.html" class="logo">ToolsQuark</a><div class="nav-links"><a href="health.html">Health</a><a href="mental-health.html">Mental Health</a><a href="lifestyle.html">Lifestyle</a><a href="emotional-connection.html">Relationships</a><a href="guides.html">Guides</a></div></nav>
 <div class="container">
-    <header class="hero"><h1>Free Health Calculators & Wellness Self-Checks</h1><p>Private, browser-side tools for body metrics, mental wellness, sleep, habits, and daily health planning.</p><div class="trust-badges"><span>Free to use</span><span>No registration</span><span>Inputs stay in your browser</span></div></header>
-    <div class="search-wrapper" id="searchWrapper"><input type="search" id="searchInput" class="search-input" placeholder="Search BMI, burnout, sleep, calories..." autocomplete="off" aria-label="Search all ToolsQuark tools" aria-controls="searchResults" aria-expanded="false"><div class="search-results" id="searchResults" role="region" aria-label="Tool search results" aria-live="polite"></div></div>
+    <header class="hero"><h1>ToolsQuark: Calculators, Self-Checks & Decision Guides</h1><p>Calculate with transparent methods, reflect with original private self-checks, and use evidence-informed guides to interpret what the numbers and patterns can actually tell you.</p><div class="trust-badges"><span>Transparent methods</span><span>No registration</span><span>Inputs stay in your browser</span></div></header>
+    <div class="search-wrapper" id="searchWrapper"><input type="search" id="searchInput" class="search-input" placeholder="Search BMI, burnout, sleep, calories..." autocomplete="off" aria-label="Search ToolsQuark calculators and self-checks" aria-controls="searchResults" aria-expanded="false"><div class="search-results" id="searchResults" role="region" aria-label="Calculator and self-check search results" aria-live="polite"></div></div>
+    <section class="format-band" aria-label="Ways to use ToolsQuark"><div class="format-grid"><div class="format-item"><h2>Calculate</h2><p>Use disclosed formulas and assumptions for body metrics, nutrition, sleep, movement, and dates.</p><a href="health.html">Browse calculators &rarr;</a></div><div class="format-item"><h2>Reflect</h2><p>Review recent patterns with original browser-local self-checks that state their limits.</p><a href="mental-health.html">Browse self-checks &rarr;</a></div><div class="format-item"><h2>Understand</h2><p>Compare similar methods and turn results into a smaller, more useful next step.</p><a href="guides.html">Read decision guides &rarr;</a></div></div></section>
     <section class="category-band" aria-labelledby="category-heading"><div class="section-heading"><h2 id="category-heading">Browse By Category</h2><p>Choose a focused collection or search every tool above.</p></div><div class="category-grid">${categoryLinks}</div></section>
     <section class="popular-section" aria-labelledby="popular-heading"><div class="section-heading"><h2 id="popular-heading">Editor-Selected Starting Points</h2><p>A balanced set of practical tools while anonymous usage data is collected.</p></div><div class="popular-grid">${startingPoints.map((tool) => renderToolCard(tool, { popular: true, badge: "Editor pick", source: "starting-points" })).join("")}</div></section>
-    <section class="directory-section" aria-labelledby="directory-heading"><div class="section-heading"><h2 id="directory-heading">Explore All Tools By Topic</h2><p>Open any calculator or self-check directly from the complete directory.</p></div><div class="directory-list">${directoryGroups}</div></section>
+    <section class="directory-section" aria-labelledby="directory-heading"><div class="section-heading"><h2 id="directory-heading">Explore Calculators & Self-Checks By Topic</h2><p>Open any interactive experience directly from the complete directory.</p></div><div class="directory-list">${directoryGroups}</div></section>
     <section class="home-guides" aria-labelledby="guide-heading"><div class="section-heading"><h2 id="guide-heading">Understand The Numbers And Patterns</h2><p><a href="guides.html">Browse all ${guides.length} decision guides &rarr;</a></p></div><div class="home-guide-grid">${featuredGuides}</div></section>
     <section class="quality-section" aria-labelledby="quality-heading"><div class="quality-intro"><h2 id="quality-heading">How ToolsQuark Builds Trust</h2><p>Every tool is designed to make its purpose, method, limits, and data handling easy to inspect before you rely on a result.</p></div><div class="quality-grid"><div class="quality-item"><h3>Methods And Sources</h3><p>Calculators disclose formulas, assumptions, examples, limitations, and references. Original self-checks disclose scoring and validation status. Read the <a href="editorial-policy.html">Editorial & Methodology Policy</a>.</p></div><div class="quality-item"><h3>Private By Design</h3><p>Core calculations and assessment answers stay in your browser. Homepage discovery events never include search terms, answers, or calculator inputs. Read the <a href="privacy.html">Privacy Policy</a>.</p></div><div class="quality-item"><h3>Review And Corrections</h3><p>Pages include update dates and correction guidance. Learn who maintains the library on the <a href="about.html">About page</a> or report a reproducible issue through GitHub.</p></div></div><div class="quality-meta"><span>Homepage reviewed: ${reviewedDate}</span><span>${allToolRecords.length} published tools</span><span>Educational information, not diagnosis or treatment</span></div></section>
 </div>
@@ -411,7 +432,7 @@ searchInput.addEventListener('keydown',(event)=>{if(event.key==='Escape'){closeS
 document.addEventListener('click',(event)=>{
   if(!searchWrapper.contains(event.target)){closeSearch();}
   const toolLink=event.target.closest('[data-tool-slug]');
-  if(toolLink){trackHomepageEvent('homepage_tool_open',{source:toolLink.dataset.source||'unknown',slug:toolLink.dataset.toolSlug});return;}
+  if(toolLink){const toolData={source:toolLink.dataset.source||'unknown',tool:toolLink.dataset.toolSlug};trackHomepageEvent('tool_click',toolData);trackHomepageEvent('homepage_tool_open',{source:toolData.source,slug:toolData.tool});return;}
   const categoryLink=event.target.closest('[data-category]');
   if(categoryLink){trackHomepageEvent('homepage_category_open',{source:categoryLink.dataset.source||'unknown',category:categoryLink.dataset.category});}
 });

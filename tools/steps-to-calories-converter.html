@@ -224,6 +224,37 @@ function calculateNow() {
     document.getElementById('gauge-pointer').style.left = result.percent + '%';
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
+
+const calculatorSlug = "steps-to-calories-converter";
+let calculatorStarted = false;
+let calculatorCompleted = false;
+
+function trackCalculatorEvent(name) {
+    const safeData = { tool: calculatorSlug, type: 'calculator' };
+    window.dispatchEvent(new CustomEvent('toolsquark:tool', { detail: { name, data: safeData } }));
+    if (typeof window.va === 'function') window.va('event', { name, data: safeData });
+}
+
+function markCalculatorStarted() {
+    if (calculatorStarted) return;
+    calculatorStarted = true;
+    trackCalculatorEvent('tool_start');
+}
+
+const calculator = document.getElementById('calculator');
+const calculateButton = calculator.querySelector('.calc-submit-btn');
+calculator.addEventListener('input', markCalculatorStarted, { once: true });
+calculator.addEventListener('change', markCalculatorStarted, { once: true });
+calculateButton.addEventListener('click', () => {
+    markCalculatorStarted();
+    window.requestAnimationFrame(() => {
+        const resultArea = document.getElementById('result-area');
+        if (!calculatorCompleted && resultArea && window.getComputedStyle(resultArea).display !== 'none') {
+            calculatorCompleted = true;
+            trackCalculatorEvent('tool_complete');
+        }
+    });
+});
 </script>
 </body>
 </html>

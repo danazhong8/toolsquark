@@ -366,6 +366,7 @@ function startAssessment() {
     if (!hasStarted) {
         hasStarted = true;
         trackAssessmentEvent('assessment_started');
+        trackAssessmentEvent('tool_start', { type: 'assessment' });
     }
     loadQuestion();
     document.getElementById('question-text').focus();
@@ -375,6 +376,7 @@ function selectOption(el, optionIndex) {
     if (!hasStarted) {
         hasStarted = true;
         trackAssessmentEvent('assessment_started');
+        trackAssessmentEvent('tool_start', { type: 'assessment' });
     }
     isTransitioning = true;
     document.querySelectorAll('.option').forEach((item) => item.classList.remove('selected', 'selected-heavy'));
@@ -508,6 +510,7 @@ function showResult() {
     if (!completionCounted) {
         completionCounted = true;
         trackAssessmentEvent('assessment_completed');
+        trackAssessmentEvent('tool_complete', { type: 'assessment' });
     }
     document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     document.getElementById('profile-status').focus();

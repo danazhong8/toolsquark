@@ -66,7 +66,7 @@ function renderGuide(guide) {
     }
   ];
   const article = guide.sections.map(([title, body]) => `<section><h2>${esc(title)}</h2>${body}</section>`).join("");
-  const tools = guide.tools.map(([slug, title, description, action]) => `<a class="tool-link" href="../tools/${slug}.html"><strong>${esc(title)}</strong><span>${esc(description)}</span><em>${esc(action)} &rarr;</em></a>`).join("");
+  const tools = guide.tools.map(([slug, title, description, action]) => `<a class="tool-link" href="../tools/${slug}.html" data-tool-slug="${esc(slug)}"><strong>${esc(title)}</strong><span>${esc(description)}</span><em>${esc(action)} &rarr;</em></a>`).join("");
   const faq = guide.faq.map(([question, answer]) => `<div class="faq-item"><h3>${esc(question)}</h3><p>${esc(answer)}</p></div>`).join("");
   const references = guide.references.map(([title, publisher, href]) => `<li><a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a><span>${esc(publisher)}</span></li>`).join("");
   const related = guide.related.map((slug) => {
@@ -88,6 +88,7 @@ function renderGuide(guide) {
 <meta property="og:url" content="${canonical}">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>${styles()}.article,.sidebar{min-width:0}.table-wrap{width:100%;max-width:100%}</style>
 </head>
@@ -102,6 +103,32 @@ ${nav()}
   </div>
 </div>
 ${footer()}
+<script>
+const guideSlug = ${JSON.stringify(guide.slug)};
+const allowedGuideSources = new Set(['github', 'linkedin', 'x', 'reddit', 'newsletter']);
+const requestedGuideSource = new URLSearchParams(window.location.search).get('utm_source');
+const guideSource = allowedGuideSources.has(requestedGuideSource) ? requestedGuideSource : 'direct';
+
+function trackGuideEvent(name, data = {}) {
+  const safeData = { guide: guideSlug, ...data };
+  window.dispatchEvent(new CustomEvent('toolsquark:guide', { detail: { name, data: safeData } }));
+  if (typeof window.va === 'function') window.va('event', { name, data: safeData });
+}
+
+trackGuideEvent('guide_view', { source: guideSource });
+document.addEventListener('click', (event) => {
+  const toolLink = event.target.closest('[data-tool-slug]');
+  if (!toolLink) return;
+  trackGuideEvent('guide_tool_click', {
+    tool: toolLink.dataset.toolSlug,
+    source: 'matching_tool'
+  });
+  trackGuideEvent('tool_click', {
+    tool: toolLink.dataset.toolSlug,
+    source: 'guide'
+  });
+});
+</script>
 </body>
 </html>`;
 }
@@ -128,6 +155,7 @@ function renderIndex() {
 <title>Calculator & Self-Check Guides | ToolsQuark</title>
 <meta name="description" content="Compare body metrics, energy estimates, sleep tools, stress and anxiety patterns, execution friction, and relationship communication.">
 <script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>${styles()}</style>
 </head>
