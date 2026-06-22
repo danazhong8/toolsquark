@@ -1,165 +1,116 @@
 module.exports = {
   slug: "macro-calculator",
-  title: "Macro Calculator | Protein, Carbs & Fat Planning",
-  description: "Estimate daily calories and a 30/35/35 protein, fat, and carbohydrate planning split. See formulas, a worked example, limits, and sources.",
+  title: "Macro Calculator | Custom Protein, Fat & Carb Targets",
+  description: "Convert a calorie target into customizable protein, fat, and carbohydrate grams using body weight, protein factor, and fat percentage.",
   h1: "Macro Calculator",
-  hero: "Convert your calorie target into protein, fat, and carbohydrate ranges for fat loss, maintenance, or lean muscle gain. All calculations run locally in your browser.",
-  schemaName: "Privacy-First Macro Calculator",
-  schemaDescription: "A client-side macronutrient planning calculator using Mifflin-St Jeor calorie estimates and goal-based macro targets.",
-  lastUpdated: "June 20, 2026",
-  buttonText: "Calculate My Macros",
-  resultStatus: "Maintenance",
-  gaugeLabels: ["Deficit", "Maintain", "Surplus"],
-  insightTitle: "Actionable Nutrition Insight",
-  controlsHtml: `
-        <div class="unit-switcher">
-            <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
-            <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
-        </div>
-        <div id="inputs-container"></div>`,
+  hero: "Turn an existing calorie target into adjustable protein, fat, and carbohydrate grams without forcing one fixed macro split.",
+  schemaName: "Privacy-First Custom Macro Calculator",
+  schemaDescription: "A browser-side macro planner that calculates protein from body weight, fat from a selected calorie percentage, and carbohydrate from remaining calories.",
+  lastUpdated: "June 22, 2026",
+  buttonText: "Calculate Macro Targets",
   resultHtml: `
             <div class="result-val"><span id="calc-output">0</span> kcal</div>
-            <div class="result-status" id="calc-status">Maintenance</div>
-            <div class="bmi-gauge-container">
-                <div class="bmi-pointer" id="gauge-pointer"></div>
-                <div class="bmi-gauge-bar"></div>
-                <div class="bmi-labels"><span>Deficit</span><span>Maintain</span><span>Surplus</span></div>
-            </div>
+            <div class="result-status" id="calc-status">Custom Macro Plan</div>
             <p class="result-desc" id="calc-desc"></p>
             <div class="macro-grid">
                 <div class="macro-pill"><span>Protein</span><strong id="protein-output">0g</strong></div>
                 <div class="macro-pill"><span>Fat</span><strong id="fat-output">0g</strong></div>
                 <div class="macro-pill"><span>Carbs</span><strong id="carb-output">0g</strong></div>
             </div>
-            <div class="suggestion-box">
-                <h4>Actionable Nutrition Insight</h4>
-                <p id="calc-suggestion"></p>
-            </div>`,
-  relatedTitle: "Optimize Your Nutrition Further",
+            <div class="suggestion-box"><h4>Adjustment Check</h4><p id="calc-suggestion"></p></div>`,
+  controlsHtml: `
+        <div class="unit-switcher">
+            <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Kilograms</div>
+            <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Pounds</div>
+        </div>
+        <div class="input-row">
+            <div class="input-group"><label for="input_calories">Daily Calorie Target</label><div class="input-wrapper"><input type="number" id="input_calories" value="2000" min="1000" max="8000" step="10"><span class="unit-badge">kcal</span></div></div>
+            <div class="input-group"><label for="input_weight">Body Weight</label><div class="input-wrapper"><input type="number" id="input_weight" value="70" min="25" max="400" step="0.1"><span class="unit-badge" id="weight-unit">kg</span></div></div>
+        </div>
+        <div class="input-row">
+            <div class="input-group"><label for="input_protein">Protein Factor</label><div class="input-wrapper"><select id="input_protein"><option value="0.8">0.8 g/kg - general baseline</option><option value="1.2">1.2 g/kg - active</option><option value="1.6" selected>1.6 g/kg - resistance training</option><option value="2.0">2.0 g/kg - higher target</option></select></div></div>
+            <div class="input-group"><label for="input_fat">Calories From Fat</label><div class="input-wrapper"><select id="input_fat"><option value="0.20">20%</option><option value="0.25">25%</option><option value="0.30" selected>30%</option><option value="0.35">35%</option></select></div></div>
+        </div>`,
+  relatedTitle: "Set The Inputs First",
   related: [
-    {
-      href: "https://toolsquark.com/tools/calorie-calculator.html",
-      title: "Calorie Calculator",
-      description: "Estimate your maintenance calorie baseline before choosing a macro split.",
-      action: "Calculate Calories"
-    },
-    {
-      href: "https://toolsquark.com/tools/protein-calculator.html",
-      title: "Protein Calculator",
-      description: "Focus specifically on daily protein requirements for training and recovery.",
-      action: "Set Protein Goal"
-    }
+    { href: "https://toolsquark.com/tools/calorie-calculator.html", title: "Daily Calorie Goal Calculator", description: "Estimate a calorie target before distributing it across macros.", action: "Plan Calories" },
+    { href: "https://toolsquark.com/tools/protein-calculator.html", title: "Protein Calculator", description: "Compare protein factors and focus on a protein-only target.", action: "Set Protein" }
   ],
   references: [
-    { title: "A New Predictive Equation for Resting Energy Expenditure", publisher: "The American Journal of Clinical Nutrition / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/2305711/" },
-    { title: "Dietary Reference Intakes for Energy and Macronutrients", publisher: "National Academies Press", href: "https://nap.nationalacademies.org/catalog/10490/dietary-reference-intakes-for-energy-carbohydrate-fiber-fat-fatty-acids-cholesterol-protein-and-amino-acids" }
+    { title: "Dietary Reference Intakes for Energy and Macronutrients", publisher: "National Academies Press", href: "https://nap.nationalacademies.org/catalog/10490/dietary-reference-intakes-for-energy-carbohydrate-fiber-fat-fatty-acids-cholesterol-protein-and-amino-acids" },
+    { title: "Position Stand: Protein and Exercise", publisher: "Journal of the ISSN / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/28642676/" }
   ],
   faq: [
-    {
-      question: "How does this macro calculator work?",
-      answer: "It estimates daily energy needs with the Mifflin-St Jeor equation and an activity multiplier, applies the selected goal adjustment, then uses a fixed planning split of 30% protein, 35% fat, and 35% carbohydrate."
-    },
-    {
-      question: "Are these macros exact prescriptions?",
-      answer: "No. They are practical planning estimates. Real needs vary with training, digestion, food preferences, adherence, and medical context."
-    },
-    {
-      question: "Should I choose fat loss, maintenance, or muscle gain?",
-      answer: "Choose fat loss for a planned calorie deficit, maintenance when you want weight stability, and muscle gain when you are pairing a calorie surplus with progressive resistance training."
-    }
+    { question: "How does this macro calculator work?", answer: "It calculates protein grams from body weight and the selected factor, assigns the selected share of calories to fat, then gives the remaining calories to carbohydrate." },
+    { question: "Why does it ask for a calorie target?", answer: "Calorie planning and macro distribution are separate decisions. Accepting an existing target avoids repeating the TDEE calculator and makes the macro assumptions easier to inspect." },
+    { question: "Is one macro split best for everyone?", answer: "No. Suitable ranges vary with training, food preference, health context, digestion, and adherence. This tool exposes adjustable inputs rather than claiming one optimum split." },
+    { question: "What protein factor should I choose?", answer: "The 0.8 g/kg option reflects a general adult baseline, while higher options may fit active or resistance-training contexts. Medical conditions and therapeutic diets require individualized guidance." },
+    { question: "Why are carbohydrates calculated last?", answer: "After protein and fat calories are assigned, carbohydrate fills the remaining calorie budget. This keeps the displayed macros mathematically aligned with the selected total." }
   ],
   contentSections: [
     {
-      title: "What This Calculator Produces",
-      body: `<p>The calculator produces an estimated calorie target and converts it into grams of protein, fat, and carbohydrate using one fixed 30/35/35 energy split. This is a simple meal-planning preset, not an evidence-based optimum for every person.</p><p>Macro percentages can vary widely while still supporting a nutritious diet. Food quality, fiber, micronutrients, training demands, preferences, and adherence remain important.</p>`
+      title: "A Flexible Macro Starting Point",
+      body: `<p>One fixed macro percentage cannot reflect different body sizes, training demands, and food preferences. This planner starts with a calorie target chosen elsewhere, makes protein and fat assumptions visible, and calculates carbohydrate as the remainder.</p>`
     },
     {
-      title: "Calculation Steps",
-      body: `<div class="formula-box">BMR = Mifflin-St Jeor estimate<br>Target calories = BMR x activity factor, then -500 / 0 / +500 kcal by goal<br>Protein grams = target x 0.30 / 4<br>Fat grams = target x 0.35 / 9<br>Carbohydrate grams = target x 0.35 / 4</div><p>Protein and carbohydrate are converted at 4 kcal per gram and fat at 9 kcal per gram. Gram targets are rounded, so the reconstructed calorie total can differ slightly.</p>`
+      title: "Calculation Method",
+      body: `<div class="formula-box">Protein grams = weight (kg) x selected g/kg factor<br>Fat grams = target calories x selected fat percentage / 9<br>Carbohydrate grams = remaining calories / 4</div><p>Protein and carbohydrate use 4 kcal per gram. Fat uses 9 kcal per gram. Rounding can create a small difference from the entered calorie total.</p>`
     },
     {
       title: "Worked Example",
-      body: `<p>At a 2,000 kcal target, the preset allocates 600 kcal to protein, 700 kcal to fat, and 700 kcal to carbohydrate. That converts to 150 g protein, about 78 g fat, and 175 g carbohydrate.</p>`
+      body: `<p>At 70 kg, 2,000 kcal, 1.6 g/kg protein, and 30% fat, the plan assigns 112 g protein and about 67 g fat. The remaining energy provides about 237 g carbohydrate after rounding.</p>`
     },
     {
-      title: "How To Personalize The Starting Split",
-      body: `<ul><li><strong>Protein:</strong> check whether the gram target is appropriate for body size, training, and medical context.</li><li><strong>Fat:</strong> preserve enough dietary fat for food variety and essential nutrients.</li><li><strong>Carbohydrate:</strong> adjust around training volume, tolerance, and preference after protein and fat needs are covered.</li></ul><p>Judge the plan by adherence, hunger, digestion, performance, and multi-week weight trend rather than exact daily matching.</p>`
+      title: "How To Adjust The Result",
+      body: `<p>Keep the calorie target stable while testing one macro change at a time. Evaluate hunger, digestion, training performance, food quality, and adherence over multiple weeks rather than treating exact daily matching as the goal.</p>`
     },
     {
       title: "Limits And Safety",
-      body: `<p>The calorie estimate inherits uncertainty from both the BMR equation and broad activity factors. The fixed split does not account for diabetes, kidney disease, pregnancy, breastfeeding, pediatric growth, eating-disorder history, allergies, or therapeutic diets.</p><div class="note-box">The calculator places a 1,200 kcal floor on its fat-loss result, but that software limit does not establish that 1,200 kcal is suitable or safe for a particular person.</div>`
+      body: `<p>This is not medical nutrition therapy. Pregnancy, breastfeeding, diabetes, kidney disease, eating-disorder history, pediatric growth, allergies, and therapeutic diets require individualized professional guidance.</p><div class="note-box">The calculator checks only whether the selected protein and fat leave calories available for carbohydrate. It cannot establish that the calorie target itself is suitable.</div>`
     }
   ],
-  methodology: "This tool estimates BMR with Mifflin-St Jeor, applies an activity factor and goal adjustment, then converts a disclosed fixed 30% protein, 35% fat, and 35% carbohydrate split using 4/9/4 kcal-per-gram factors.",
-  disclaimer: "These results are educational estimates and not medical nutrition therapy. Consult a qualified clinician or registered dietitian for personal guidance.",
+  methodology: "Protein is calculated from body weight and a selected g/kg factor. Fat is calculated from a selected percentage of total calories. Carbohydrate receives the remaining calories using 4/9/4 kcal-per-gram factors.",
+  disclaimer: "Macro targets are educational planning estimates and not medical nutrition therapy.",
   script: `
 let currentUnit = 'metric';
-function renderInputs() {
- const container = document.getElementById('inputs-container');
- const base = \`<div class="input-row"><div class="input-group"><label for="input_gender">Gender</label><div class="input-wrapper"><select id="input_gender"><option value="male">Male</option><option value="female">Female</option></select></div></div><div class="input-group"><label for="input_age">Age</label><div class="input-wrapper"><input type="number" id="input_age" placeholder="e.g. 28" min="10" max="120"><span class="unit-badge">yrs</span></div></div></div>\`;
- const activity = \`<div class="input-group"><label for="input_activity">Activity Level</label><div class="input-wrapper"><select id="input_activity"><option value="1.2">Sedentary</option><option value="1.375">Lightly active</option><option value="1.55">Moderately active</option><option value="1.725">Very active</option><option value="1.9">Extra active</option></select></div></div><div class="input-group"><label for="input_goal">Primary Goal</label><div class="input-wrapper"><select id="input_goal"><option value="lose">Fat loss (-500 kcal)</option><option value="maintain" selected>Maintain weight</option><option value="gain">Lean gain (+500 kcal)</option></select></div></div>\`;
- if (currentUnit === 'metric') {
-  container.innerHTML = base + \`<div class="input-row"><div class="input-group"><label for="input_weight">Your Weight</label><div class="input-wrapper"><input type="number" id="input_weight" placeholder="e.g. 70" step="any"><span class="unit-badge">kg</span></div></div><div class="input-group"><label for="input_height">Your Height</label><div class="input-wrapper"><input type="number" id="input_height" placeholder="e.g. 175" step="any"><span class="unit-badge">cm</span></div></div></div>\` + activity;
- } else {
-  container.innerHTML = base + \`<div class="input-group"><label for="input_weight">Your Weight</label><div class="input-wrapper"><input type="number" id="input_weight" placeholder="e.g. 154" step="any"><span class="unit-badge">lbs</span></div></div><div class="input-row"><div class="input-group"><label for="input_ft">Height (Feet)</label><div class="input-wrapper"><input type="number" id="input_ft" placeholder="e.g. 5"><span class="unit-badge">ft</span></div></div><div class="input-group"><label for="input_in">Height (Inches)</label><div class="input-wrapper"><input type="number" id="input_in" placeholder="e.g. 9"><span class="unit-badge">in</span></div></div></div>\` + activity;
- }
-}
 function switchUnit(unit) {
- if (currentUnit === unit) return;
- currentUnit = unit;
- document.getElementById('tab-metric').classList.toggle('active', unit === 'metric');
- document.getElementById('tab-imperial').classList.toggle('active', unit === 'imperial');
- document.getElementById('result-area').style.display = 'none';
- renderInputs();
+    if (currentUnit === unit) return;
+    const input = document.getElementById('input_weight');
+    const value = parseFloat(input.value);
+    if (!isNaN(value)) input.value = unit === 'imperial' ? (value * 2.20462).toFixed(1) : (value / 2.20462).toFixed(1);
+    currentUnit = unit;
+    document.getElementById('tab-metric').classList.toggle('active', unit === 'metric');
+    document.getElementById('tab-imperial').classList.toggle('active', unit === 'imperial');
+    document.getElementById('weight-unit').innerText = unit === 'metric' ? 'kg' : 'lb';
+    document.getElementById('result-area').style.display = 'none';
 }
 function calculateNow() {
- const gender = document.getElementById('input_gender').value;
- const age = parseInt(document.getElementById('input_age').value, 10);
- const activity = parseFloat(document.getElementById('input_activity').value);
- const goal = document.getElementById('input_goal').value;
- if (isNaN(age) || age < 10 || age > 120) { alert('Please input a valid age.'); return; }
- let weightKg = 0, heightCm = 0;
- if (currentUnit === 'metric') {
-  const w = parseFloat(document.getElementById('input_weight').value);
-  const h = parseFloat(document.getElementById('input_height').value);
-  if (isNaN(w) || isNaN(h) || w <= 0 || h <= 0) { alert('Please input valid metric values.'); return; }
-  weightKg = w; heightCm = h;
- } else {
-  const lbs = parseFloat(document.getElementById('input_weight').value);
-  const ft = parseFloat(document.getElementById('input_ft').value) || 0;
-  const inch = parseFloat(document.getElementById('input_in').value) || 0;
-  if (isNaN(lbs) || lbs <= 0 || (ft === 0 && inch === 0)) { alert('Please input valid imperial values.'); return; }
-  weightKg = lbs * 0.45359237; heightCm = ((ft * 12) + inch) * 2.54;
- }
- let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
- bmr += gender === 'male' ? 5 : -161;
- const tdee = Math.round(bmr * activity);
- let target = tdee;
- let percent = 50, status = 'Weight Maintenance', color = 'var(--normal)', suggestion = 'This macro split is designed for weight stability and consistent meal planning.';
- if (goal === 'lose') {
-  target = Math.max(1200, tdee - 500);
-  percent = 15; status = 'Fat Loss Deficit'; color = 'var(--underweight)';
-  suggestion = 'Prioritize protein and fiber while using this moderate deficit. Avoid aggressive restriction without professional guidance.';
- } else if (goal === 'gain') {
-  target = tdee + 500;
-  percent = 90; status = 'Lean Muscle Surplus'; color = 'var(--obese)';
-  suggestion = 'Pair this surplus with progressive resistance training and adequate sleep to support lean mass gain.';
- }
- const protein = Math.round((target * .30) / 4);
- const fat = Math.round((target * .35) / 9);
- const carbs = Math.round((target * .35) / 4);
- document.getElementById('result-area').style.display = 'block';
- document.getElementById('calc-output').innerText = target.toLocaleString();
- document.getElementById('calc-output').style.color = color;
- document.getElementById('calc-status').innerText = status;
- document.getElementById('calc-status').style.color = color;
- document.getElementById('calc-desc').innerText = \`Daily target: \${target.toLocaleString()} kcal, based on an estimated maintenance need of \${tdee.toLocaleString()} kcal/day.\`;
- document.getElementById('protein-output').innerText = protein + 'g';
- document.getElementById('fat-output').innerText = fat + 'g';
- document.getElementById('carb-output').innerText = carbs + 'g';
- document.getElementById('calc-suggestion').innerText = suggestion;
- document.getElementById('gauge-pointer').style.left = percent + '%';
- document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-renderInputs();`
+    const calories = parseFloat(document.getElementById('input_calories').value);
+    const enteredWeight = parseFloat(document.getElementById('input_weight').value);
+    const proteinFactor = parseFloat(document.getElementById('input_protein').value);
+    const fatShare = parseFloat(document.getElementById('input_fat').value);
+    if (isNaN(calories) || calories < 1000 || calories > 8000 || isNaN(enteredWeight) || enteredWeight <= 0) {
+        alert('Please enter a calorie target from 1,000 to 8,000 kcal and a valid body weight.');
+        return;
+    }
+    const weightKg = currentUnit === 'metric' ? enteredWeight : enteredWeight * 0.45359237;
+    const protein = Math.round(weightKg * proteinFactor);
+    const fat = Math.round((calories * fatShare) / 9);
+    const remaining = calories - (protein * 4) - (fat * 9);
+    if (remaining < 0) {
+        alert('The selected protein and fat targets exceed the calorie target. Increase calories or lower one factor.');
+        return;
+    }
+    const carbs = Math.round(remaining / 4);
+    const reconstructed = (protein * 4) + (fat * 9) + (carbs * 4);
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = Math.round(calories).toLocaleString();
+    document.getElementById('calc-status').innerText = 'Custom Macro Plan';
+    document.getElementById('calc-desc').innerText = protein + ' g protein at ' + proteinFactor + ' g/kg, ' + fat + ' g fat at ' + Math.round(fatShare * 100) + '% of calories, and carbohydrate from the remaining energy.';
+    document.getElementById('protein-output').innerText = protein + 'g';
+    document.getElementById('fat-output').innerText = fat + 'g';
+    document.getElementById('carb-output').innerText = carbs + 'g';
+    document.getElementById('calc-suggestion').innerText = 'Rounded macros reconstruct approximately ' + reconstructed.toLocaleString() + ' kcal. Treat the plan as a starting point and adjust one variable at a time.';
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}`
 };

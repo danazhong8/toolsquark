@@ -13,8 +13,8 @@ module.exports = createV2Config({
   recallDays: 28,
   legacyItems: 10,
   intendedAudience: "Adults seeking general self-reflection about recent sleep patterns",
-  categoryHref: "health.html",
-  categoryLabel: "Health Tools",
+  categoryHref: "lifestyle.html",
+  categoryLabel: "Lifestyle Tools",
   dimensions: [
     { key: "initiation", label: "Sleep Initiation", definition: "Difficulty transitioning from intended bedtime to sleep." },
     { key: "continuity", label: "Sleep Continuity", definition: "Sleep being interrupted or ending earlier than intended." },

@@ -1,4 +1,6 @@
 module.exports = {
+  categoryHref: "lifestyle.html",
+  categoryLabel: "Lifestyle Tools",
   slug: "running-pace-calculator",
   title: "Running Pace Calculator | Minutes per km or Mile",
   description: "Calculate average running pace from elapsed time and distance in min/km or min/mile. Includes the formula, example, pacing limits, and safety context.",

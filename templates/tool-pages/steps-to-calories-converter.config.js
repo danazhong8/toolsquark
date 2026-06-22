@@ -1,4 +1,6 @@
 module.exports = {
+  categoryHref: "lifestyle.html",
+  categoryLabel: "Lifestyle Tools",
   slug: "steps-to-calories-converter",
   title: "Steps to Calories Calculator | Walking Estimate",
   description: "Estimate walking calories from step count and body weight with a transparent simplified factor. Includes an example, limitations, and source context.",

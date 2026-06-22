@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/sleep-calculator.html">
-<title>Sleep Cycle Calculator | 90-Minute Planning Estimate</title>
-<meta name="description" content="Turn a target sleep duration into a rough 90-minute-cycle planning window with a 15-minute latency allowance. See limits and sleep guidance.">
+<title>Sleep Schedule Calculator | Bedtime &amp; Wake Time Planner</title>
+<meta name="description" content="Plan a bedtime or wake time from your target sleep duration and expected time to fall asleep. Private browser-side sleep schedule calculator.">
 <script type="application/ld+json">
 [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Privacy-First Sleep Cycle Calculator",
+    "name": "Privacy-First Sleep Schedule Calculator",
     "url": "https://toolsquark.com/tools/sleep-calculator.html",
     "operatingSystem": "All",
     "applicationCategory": "HealthApplication",
@@ -20,7 +20,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "A browser-side sleep planning calculator that rounds a target duration to 90-minute blocks and explains why real sleep cycles vary.",
+    "description": "A browser-side bedtime and wake-time planner based on target sleep duration and expected sleep latency.",
     "publisher": {
       "@type": "Organization",
       "name": "ToolsQuark",
@@ -45,13 +45,13 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Health Tools",
-        "item": "https://toolsquark.com/health.html"
+        "name": "Lifestyle Tools",
+        "item": "https://toolsquark.com/lifestyle.html"
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Sleep Calculator",
+        "name": "Sleep Schedule Calculator",
         "item": "https://toolsquark.com/tools/sleep-calculator.html"
       }
     ]
@@ -62,42 +62,42 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is a sleep cycle?",
+        "name": "How does this sleep schedule calculator work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "During sleep, the brain moves through non-REM and REM stages repeatedly. A cycle is often summarized as about 90 minutes, but the NHLBI notes that cycles typically restart every 80 to 100 minutes and change across the night."
+          "text": "It adds your target sleep duration and expected time to fall asleep, then counts backward from a required wake time or forward from a planned bedtime."
         }
       },
       {
         "@type": "Question",
-        "name": "Why can I feel tired after enough time in bed?",
+        "name": "Does it use 90-minute sleep cycles?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Time in bed is not the same as time asleep. Fragmentation, schedule changes, stress, substances, illness, sleep disorders, and waking from a deeper stage can all affect alertness."
+          "text": "No. Sleep cycles vary between people and across the night. The planner prioritizes enough total sleep and a workable schedule instead of promising an ideal cycle boundary."
         }
       },
       {
         "@type": "Question",
-        "name": "Does everyone have exactly 90-minute cycles?",
+        "name": "How much sleep should I enter?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Cycle length varies between people and across the same night. This calculator uses 90 minutes only as a simple arithmetic planning convention."
+          "text": "Use an age-appropriate target and your real experience. The CDC notes that most adults need at least 7 hours, while individual needs and recommendations vary by age."
         }
       },
       {
         "@type": "Question",
-        "name": "How much sleep do adults need?",
+        "name": "What should I enter for sleep latency?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The CDC states that adults generally need at least 7 hours, with recommendations varying by age. Individual needs and health circumstances can differ."
+          "text": "Use the amount of time you typically need to fall asleep, not an ideal value. If it varies, begin with a recent typical estimate and adjust the plan."
         }
       },
       {
         "@type": "Question",
-        "name": "Can this calculator diagnose a sleep problem?",
+        "name": "Can this calculator diagnose insomnia?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Persistent insomnia, loud snoring, breathing pauses, excessive daytime sleepiness, or consistently unrefreshing sleep should be discussed with a qualified clinician."
+          "text": "No. Persistent difficulty sleeping, breathing pauses, loud snoring, or unsafe daytime sleepiness deserves qualified clinical assessment."
         }
       }
     ]
@@ -122,130 +122,152 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>Sleep Calculator</span></div>
-    <div class="hero"><h1>Sleep Calculator</h1><p>Convert a target duration into a rough 90-minute-cycle planning window. Real cycles vary, so total sleep, consistency, and sleep quality matter more than exact timing.</p></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; <span>Sleep Schedule Calculator</span></div>
+    <div class="hero"><h1>Sleep Schedule Calculator</h1><p>Plan a realistic bedtime or wake time from the sleep duration you want and the time you usually need to fall asleep.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
 
         <div class="input-group">
-            <label for="input_hours">Target Sleep Duration</label>
+            <label for="input_direction">What do you want to plan?</label>
             <div class="input-wrapper">
-                <input type="number" id="input_hours" step="0.5" min="2" max="16" placeholder="e.g. 7.5">
-                <span class="unit-badge">hours</span>
+                <select id="input_direction">
+                    <option value="bedtime">Bedtime from a required wake time</option>
+                    <option value="wake">Wake time from a planned bedtime</option>
+                </select>
             </div>
         </div>
-        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Sleep Cycles</button>
+        <div class="input-row">
+            <div class="input-group">
+                <label for="input_time">Required time</label>
+                <div class="input-wrapper"><input type="time" id="input_time" value="07:00"></div>
+            </div>
+            <div class="input-group">
+                <label for="input_duration">Target sleep</label>
+                <div class="input-wrapper">
+                    <input type="number" id="input_duration" value="8" min="4" max="12" step="0.25">
+                    <span class="unit-badge">hours</span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="input_latency">Expected time to fall asleep</label>
+            <div class="input-wrapper">
+                <input type="number" id="input_latency" value="20" min="0" max="180" step="5">
+                <span class="unit-badge">minutes</span>
+            </div>
+        </div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Plan Sleep Schedule</button>
         <div id="result-area" class="result-box" style="display:none;">
 
-            <div class="result-val"><span id="calc-output">0</span><span class="result-unit">min</span></div>
-            <div class="result-status" id="calc-status">Sleep Window</div>
-            <div class="bmi-gauge-container">
-                <div class="bmi-pointer" id="gauge-pointer"></div>
-                <div class="bmi-gauge-bar"></div>
-                <div class="bmi-labels"><span>Short</span><span>Ideal</span><span>Long</span></div>
-            </div>
+            <div class="result-val"><span id="calc-output">--:--</span></div>
+            <div class="result-status" id="calc-status">Suggested Schedule</div>
             <p class="result-desc" id="calc-desc"></p>
             <div class="suggestion-box">
-                <h4>Sleep Strategy</h4>
+                <h4>Schedule Check</h4>
                 <p id="calc-suggestion"></p>
             </div>
         </div>
     </div>
     <div class="card" id="guide">
     <div class="content-section">
-        <h3>What This Tool Actually Calculates</h3>
-        <p>This is a duration-rounding tool. It subtracts a fixed 15-minute falling-asleep allowance from your target, rounds the remainder to the nearest 90-minute block, and then adds the 15 minutes back.</p><p>It does not calculate a bedtime, wake time, circadian phase, or the sleep stages you will experience. It also cannot know your actual sleep latency or awakenings.</p>
+        <h3>What This Planner Calculates</h3>
+        <p>The planner converts a sleep-duration target into a clock time. It includes the delay you expect between getting into bed and falling asleep.</p><div class="formula-box">Planned time in bed = target sleep + expected sleep latency<br>Bedtime = wake time - planned time in bed<br>Wake time = bedtime + planned time in bed</div>
     </div>
     <div class="content-section">
-        <h3>Formula And Worked Example</h3>
-        <div class="formula-box">Cycles = round((target minutes - 15) / 90)<br>Planning window = cycles x 90 + 15 minutes</div><p>For a target of 8 hours, the tool uses (480 - 15) / 90 = 5.17, rounds to 5 blocks, then returns 5 x 90 + 15 = 465 minutes, or 7 hours 45 minutes in bed.</p>
+        <h3>Why Fixed Sleep Cycles Mislead</h3>
+        <p>Sleep calculators often optimize around fixed 90-minute blocks. Real sleep cycles are variable, so exact cycle arithmetic can create false precision and may encourage people to shorten adequate sleep.</p><p>A schedule can more reliably support one practical decision: when to allow enough time in bed for a chosen sleep target.</p>
     </div>
     <div class="content-section">
-        <h3>Why 90 Minutes Is Only A Shortcut</h3>
-        <p>Normal sleep alternates through non-REM and REM stages, but cycles are not identical clockwork units. The NHLBI describes cycles restarting about every 80 to 100 minutes, and more REM sleep generally occurs later in the night.</p><div class="note-box">Do not shorten adequate sleep just to land on a calculated cycle boundary. Consistent timing, enough total sleep, and treatment of sleep problems have stronger practical importance.</div>
+        <h3>Worked Example</h3>
+        <p>For a 7:00 AM wake time, 8 hours of target sleep, and 20 minutes to fall asleep, the suggested bedtime is 10:40 PM. That creates 8 hours 20 minutes in bed without claiming that every minute will be spent asleep.</p>
     </div>
     <div class="content-section">
-        <h3>How To Use The Result</h3>
-        <p>Treat the window as one scheduling option, then compare it with how long you actually take to fall asleep and how rested you feel. Protect a stable wake time where possible and allow extra time if you commonly lie awake or wake during the night.</p><p>Start by ensuring the schedule allows the age-appropriate amount of sleep recommended by public-health guidance rather than optimizing around 90-minute arithmetic.</p>
+        <h3>How To Calibrate The Schedule</h3>
+        <p>Try the schedule for several days, then compare it with actual sleep onset, awakenings, wake-time consistency, and daytime alertness. Adjust in small increments rather than chasing a single perfect bedtime.</p><div class="note-box">A stable wake time and enough total sleep are usually more useful planning anchors than an exact sleep-cycle boundary.</div>
     </div>
     <div class="content-section">
-        <h3>When A Calculator Is Not Enough</h3>
-        <p>Seek clinical guidance for persistent difficulty falling or staying asleep, loud snoring, witnessed breathing pauses, morning headaches, unsafe sleepiness, or sleep problems that impair daily life. A cycle estimate cannot diagnose insomnia, sleep apnea, circadian disorders, or other conditions.</p>
+        <h3>When Scheduling Is Not Enough</h3>
+        <p>A schedule calculator cannot address persistent insomnia, sleep apnea, circadian rhythm disorders, medication effects, shift-work constraints, or another cause of poor sleep. Seek qualified support when sleep problems persist or impair safety and daily functioning.</p>
     </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
-            <h4>What is a sleep cycle?</h4>
-            <p>During sleep, the brain moves through non-REM and REM stages repeatedly. A cycle is often summarized as about 90 minutes, but the NHLBI notes that cycles typically restart every 80 to 100 minutes and change across the night.</p>
+            <h4>How does this sleep schedule calculator work?</h4>
+            <p>It adds your target sleep duration and expected time to fall asleep, then counts backward from a required wake time or forward from a planned bedtime.</p>
         </div>
         <div class="faq-item">
-            <h4>Why can I feel tired after enough time in bed?</h4>
-            <p>Time in bed is not the same as time asleep. Fragmentation, schedule changes, stress, substances, illness, sleep disorders, and waking from a deeper stage can all affect alertness.</p>
+            <h4>Does it use 90-minute sleep cycles?</h4>
+            <p>No. Sleep cycles vary between people and across the night. The planner prioritizes enough total sleep and a workable schedule instead of promising an ideal cycle boundary.</p>
         </div>
         <div class="faq-item">
-            <h4>Does everyone have exactly 90-minute cycles?</h4>
-            <p>No. Cycle length varies between people and across the same night. This calculator uses 90 minutes only as a simple arithmetic planning convention.</p>
+            <h4>How much sleep should I enter?</h4>
+            <p>Use an age-appropriate target and your real experience. The CDC notes that most adults need at least 7 hours, while individual needs and recommendations vary by age.</p>
         </div>
         <div class="faq-item">
-            <h4>How much sleep do adults need?</h4>
-            <p>The CDC states that adults generally need at least 7 hours, with recommendations varying by age. Individual needs and health circumstances can differ.</p>
+            <h4>What should I enter for sleep latency?</h4>
+            <p>Use the amount of time you typically need to fall asleep, not an ideal value. If it varies, begin with a recent typical estimate and adjust the plan.</p>
         </div>
         <div class="faq-item">
-            <h4>Can this calculator diagnose a sleep problem?</h4>
-            <p>No. Persistent insomnia, loud snoring, breathing pauses, excessive daytime sleepiness, or consistently unrefreshing sleep should be discussed with a qualified clinician.</p>
+            <h4>Can this calculator diagnose insomnia?</h4>
+            <p>No. Persistent difficulty sleeping, breathing pauses, loud snoring, or unsafe daytime sleepiness deserves qualified clinical assessment.</p>
         </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
         <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
-        <div class="card side-card" id="related"><h3>Support Recovery</h3><div class="recommend-grid">
+        <div class="card side-card" id="related"><h3>Review Sleep And Recovery</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/tools/sleep-quality-assessment.html" class="recommend-card">
+                <div>
+                    <h4>Sleep Pattern Self-Check</h4>
+                    <p>Review sleep continuity, restoration, and daytime impact.</p>
+                </div>
+                <span class="action-text">Review Sleep &rarr;</span>
+            </a>
             <a href="https://toolsquark.com/tools/stress-index-test.html" class="recommend-card">
                 <div>
-                    <h4>Stress Index Test</h4>
-                    <p>Check whether stress load may be affecting sleep quality.</p>
+                    <h4>Stress Pattern Self-Check</h4>
+                    <p>Review whether current stress patterns may be interfering with recovery.</p>
                 </div>
-                <span class="action-text">Assess Stress &rarr;</span>
-            </a>
-            <a href="https://toolsquark.com/tools/water-intake-calculator.html" class="recommend-card">
-                <div>
-                    <h4>Water Intake Calculator</h4>
-                    <p>Plan daytime hydration without overloading fluid intake before bed.</p>
-                </div>
-                <span class="action-text">Check Hydration &rarr;</span>
+                <span class="action-text">Review Stress &rarr;</span>
             </a></div></div>
-        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.cdc.gov/sleep/about/index.html" target="_blank" rel="noopener noreferrer">About Sleep</a><span>Centers for Disease Control and Prevention</span></li><li><a href="https://www.nhlbi.nih.gov/health/sleep/stages-of-sleep" target="_blank" rel="noopener noreferrer">Sleep Phases and Stages</a><span>National Heart, Lung, and Blood Institute</span></li></ul></div>
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool subtracts a fixed 15-minute latency allowance, rounds the remaining target to the nearest 90-minute block, and adds the allowance back. The 90-minute block is a planning convention; real cycles commonly vary.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Sleep timing tools are educational and cannot diagnose insomnia, sleep apnea, circadian rhythm disorders, or other sleep conditions.</p><div class="updated-row">Last updated: June 20, 2026</div></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.cdc.gov/sleep/about/index.html" target="_blank" rel="noopener noreferrer">About Sleep</a><span>Centers for Disease Control and Prevention</span></li><li><a href="https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits" target="_blank" rel="noopener noreferrer">Healthy Sleep Habits</a><span>National Heart, Lung, and Blood Institute</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool adds target sleep duration to user-entered sleep latency, then subtracts that interval from a wake time or adds it to a bedtime. It does not predict sleep stages or circadian phase.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Sleep schedules are educational planning aids and cannot diagnose or treat a sleep disorder.</p><div class="updated-row">Last updated: June 22, 2026</div></div></div>
     </aside>
     </div>
     <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
 </div>
 <script>
 
+function parseClock(value) {
+    const parts = value.split(':').map(Number);
+    return (parts[0] * 60) + parts[1];
+}
+function formatClock(totalMinutes) {
+    const normalized = ((Math.round(totalMinutes) % 1440) + 1440) % 1440;
+    const hours = Math.floor(normalized / 60);
+    const minutes = normalized % 60;
+    const period = hours >= 12 ? 'PM' : 'AM';
+    const displayHour = hours % 12 || 12;
+    return displayHour + ':' + String(minutes).padStart(2, '0') + ' ' + period;
+}
 function calculateNow() {
-    const hours = parseFloat(document.getElementById('input_hours').value);
-    if (isNaN(hours) || hours <= 0) {
-        alert('Please enter a valid target sleep duration.');
+    const direction = document.getElementById('input_direction').value;
+    const clock = document.getElementById('input_time').value;
+    const duration = parseFloat(document.getElementById('input_duration').value);
+    const latency = parseFloat(document.getElementById('input_latency').value);
+    if (!clock || isNaN(duration) || duration < 4 || duration > 12 || isNaN(latency) || latency < 0 || latency > 180) {
+        alert('Please enter a valid time, 4 to 12 hours of target sleep, and 0 to 180 minutes of sleep latency.');
         return;
     }
-    const targetMinutes = hours * 60;
-    let cycles = Math.round((targetMinutes - 15) / 90);
-    if (cycles < 1) cycles = 1;
-    const finalMinutes = (cycles * 90) + 15;
-    let result = {};
-    if (finalMinutes < 375) {
-        result = { status: 'Restricted Sleep Window', color: 'var(--underweight)', desc: `Your calculated window is ${finalMinutes} minutes, equal to ${cycles} 90-minute planning block${cycles === 1 ? '' : 's'} plus a 15-minute falling-asleep allowance.`, suggestion: 'Avoid relying on short sleep chronically. Keep the room dark, reduce screens before bed, and protect recovery when possible.', percent: Math.max(5, finalMinutes / 375 * 30) };
-    } else if (finalMinutes <= 555) {
-        result = { status: 'Common Adult Planning Window', color: 'var(--normal)', desc: `Your calculated window is ${finalMinutes} minutes, equal to ${cycles} 90-minute planning blocks plus a 15-minute falling-asleep allowance.`, suggestion: 'Treat this as a scheduling estimate. Protect enough total sleep and a consistent wake time instead of trying to wake at an exact cycle boundary.', percent: 30 + ((finalMinutes - 375) / 180) * 40 };
-    } else {
-        result = { status: 'Extended Sleep Window', color: 'var(--overweight)', desc: `Your calculated window is ${finalMinutes} minutes, equal to ${cycles} 90-minute planning blocks plus a 15-minute falling-asleep allowance.`, suggestion: 'Long sleep can help after intense training or sleep debt. If you constantly need more than 9 hours, consider reviewing sleep quality.', percent: Math.min(95, 70 + (Math.min(finalMinutes - 555, 240) / 240) * 25) };
-    }
+    const anchor = parseClock(clock);
+    const timeInBed = (duration * 60) + latency;
+    const resultMinutes = direction === 'bedtime' ? anchor - timeInBed : anchor + timeInBed;
+    const resultLabel = direction === 'bedtime' ? 'Suggested Bedtime' : 'Suggested Wake Time';
+    const anchorLabel = direction === 'bedtime' ? 'wake time' : 'bedtime';
     document.getElementById('result-area').style.display = 'block';
-    document.getElementById('calc-output').innerText = finalMinutes.toLocaleString();
-    document.getElementById('calc-output').style.color = result.color;
-    document.getElementById('calc-status').innerText = result.status;
-    document.getElementById('calc-status').style.color = result.color;
-    document.getElementById('calc-desc').innerText = result.desc;
-    document.getElementById('calc-suggestion').innerText = result.suggestion;
-    document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    document.getElementById('calc-output').innerText = formatClock(resultMinutes);
+    document.getElementById('calc-status').innerText = resultLabel;
+    document.getElementById('calc-desc').innerText = 'This allows ' + duration.toFixed(duration % 1 ? 2 : 0) + ' hours of target sleep plus ' + Math.round(latency) + ' minutes to fall asleep before the entered ' + anchorLabel + '.';
+    document.getElementById('calc-suggestion').innerText = 'Use this as a starting schedule. Compare it with actual sleep onset and daytime alertness, then adjust gradually.';
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 </script>

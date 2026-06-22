@@ -10,7 +10,7 @@ const groups = {
   health: {
     file: "health.html",
     title: "Free Online Health Calculators & Body Trackers | ToolsQuark",
-    description: "Discover private health calculators for BMI, TDEE, body fat, hydration, nutrition, pregnancy, cycle tracking, and sleep patterns.",
+    description: "Discover private health calculators for body metrics, energy needs, nutrition planning, age, pregnancy, and cycle tracking.",
     h1: "Data-Driven Health Calculators",
     intro: "Decode body metrics with private, browser-side tools built for fast, practical health planning.",
     categoryLabel: "Health Tools",
@@ -23,8 +23,6 @@ const groups = {
         title: "Weight & Body Composition",
         tools: [
           ["bmi-calculator", "BMI Calculator", "Check the classic height-to-weight baseline for general adult screening.", "Check BMI"],
-          ["tdee-calculator", "TDEE Calculator", "Estimate total daily calorie burn from body metrics and activity level.", "Calculate TDEE", true],
-          ["bmr-calculator", "BMR Calculator", "Estimate resting calorie needs with the Mifflin-St Jeor equation.", "Calculate BMR"],
           ["body-fat-calculator", "Body Fat Calculator", "Estimate body fat percentage using circumference measurements.", "Estimate Fat %"],
           ["lean-body-mass-calculator", "Lean Body Mass Calculator", "Estimate non-fat body mass from height, weight, and sex profile.", "Check Lean Mass"],
           ["waist-to-height-ratio-calculator", "Waist-to-Height Ratio", "Screen central fat distribution by comparing waist with height.", "Check WHtR"],
@@ -33,26 +31,22 @@ const groups = {
         ]
       },
       {
-        title: "Nutrition & Activity",
+        title: "Energy & Nutrition Planning",
         tools: [
-          ["water-intake-calculator", "Water Intake Calculator", "Estimate daily hydration needs from weight and exercise duration.", "Plan Hydration", true],
-          ["calorie-calculator", "Calorie Calculator", "Estimate maintenance calories and practical nutrition targets.", "Plan Calories"],
-          ["macro-calculator", "Macro Calculator", "Split calories into protein, carbohydrates, and fat targets.", "Split Macros"],
+          ["tdee-calculator", "TDEE Calculator", "Estimate maintenance energy from resting needs and activity level.", "Calculate TDEE", true],
+          ["bmr-calculator", "BMR Calculator", "Isolate resting energy needs before activity is added.", "Calculate BMR"],
+          ["calorie-calculator", "Daily Calorie Goal Calculator", "Apply a visible goal adjustment to estimated maintenance energy.", "Plan Calories"],
+          ["macro-calculator", "Custom Macro Calculator", "Distribute an existing calorie target across adjustable macro inputs.", "Split Macros"],
           ["protein-calculator", "Protein Calculator", "Find a realistic protein range for training and recovery goals.", "Set Protein"],
-          ["running-pace-calculator", "Running Pace Calculator", "Convert distance and finish time into pace per kilometer or mile.", "Calculate Pace"]
+          ["water-intake-calculator", "Water Intake Calculator", "Estimate a disclosed hydration planning range from weight and activity.", "Plan Hydration"]
         ]
       },
       {
-        title: "Maternal & Cycle Wellness",
+        title: "Dates & Life Stage",
         tools: [
+          ["age-calculator", "Age Calculator", "Calculate chronological age with calendar-aware date handling.", "Calculate Age"],
           ["due-date-calculator", "Due Date Calculator", "Estimate due date, gestational age, and trimester from LMP.", "Track Pregnancy"],
           ["period-calculator", "Period Calculator", "Estimate next period, ovulation day, and fertile window.", "Predict Cycle"]
-        ]
-      },
-      {
-        title: "Sleep Health",
-        tools: [
-          ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review sleep initiation, continuity, restoration, and daytime impact.", "Review Sleep"]
         ]
       }
     ]
@@ -108,22 +102,28 @@ const groups = {
       {
         title: "Sleep & Recovery",
         tools: [
-          ["sleep-calculator", "Sleep Calculator", "Create a rough duration plan with clear cycle-timing limits.", "Plan Sleep", true],
-          ["age-calculator", "Age Calculator", "Calculate exact chronological age in years, months, and days.", "Calculate Age"]
+          ["sleep-calculator", "Sleep Schedule Calculator", "Plan a bedtime or wake time from sleep duration and expected sleep latency.", "Plan Sleep", true],
+          ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review sleep initiation, continuity, restoration, and daytime impact.", "Review Sleep"]
         ]
       },
       {
-        title: "Execution & Discipline",
+        title: "Movement Planning",
+        tools: [
+          ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a progressive step target plan from your current baseline.", "Plan Steps"],
+          ["steps-to-calories-converter", "Steps to Calories Converter", "Estimate walking energy with explicit simplified assumptions.", "Estimate Energy"],
+          ["running-pace-calculator", "Running Pace Calculator", "Convert distance and finish time into pace per kilometer or mile.", "Calculate Pace"]
+        ]
+      },
+      {
+        title: "Execution & Follow-Through",
         tools: [
           ["procrastination-test", "Procrastination Pattern Self-Check", "Review initiation, avoidance, short-term reward pull, and perfectionistic delay.", "Review Delay", true],
           ["self-discipline-test", "Follow-Through Pattern Self-Check", "Review starting friction, consistency, immediate impulses, and restarting.", "Review Follow-Through"]
         ]
       },
       {
-        title: "Movement & Digital Habits",
+        title: "Digital Habits",
         tools: [
-          ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a progressive step target plan from your current baseline.", "Plan Steps"],
-          ["steps-to-calories-converter", "Steps to Calories Converter", "Estimate active calories from step count and body weight.", "Convert Steps"],
           ["smartphone-addiction-test", "Smartphone Use Pattern Self-Check", "Review automatic checking, stopping control, cue reactivity, and displacement.", "Review Phone Use"],
           ["social-media-addiction-index", "Social Media Use Pattern Self-Check", "Review feed capture, stopping control, social evaluation, and displacement.", "Review Social Media"]
         ]
@@ -283,8 +283,8 @@ ${footer()}
 function renderHome() {
   const startingPoints = [
     groups.health.sections[0].tools[0],
-    groups.health.sections[0].tools[1],
-    groups.health.sections[1].tools[1],
+    groups.health.sections[1].tools[0],
+    groups.health.sections[1].tools[2],
     groups.mental.sections[0].tools[0],
     groups.mental.sections[0].tools[1],
     groups.lifestyle.sections[0].tools[0],
@@ -292,7 +292,7 @@ function renderHome() {
     groups.connection.sections[2].tools[1]
   ];
   const categoryDescriptions = {
-    health: "Body metrics, nutrition, activity, cycle, pregnancy, and sleep tools.",
+    health: "Body metrics, energy, nutrition, age, pregnancy, and cycle tools.",
     mental: "Private self-checks for stress, anxiety, focus, burnout, and connection.",
     lifestyle: "Sleep planning, daily movement, follow-through, and digital habits.",
     connection: "Relationship needs, support, emotional communication, and repair."

@@ -1,17 +1,17 @@
 module.exports = {
   slug: "tdee-calculator",
   title: "TDEE Calculator | Estimate Daily Calories by Activity Level",
-  description: "Estimate your TDEE from BMR, body metrics, age, sex, and activity level. Free private calculator with maintenance, fat-loss, and muscle-gain calorie targets.",
+  description: "Estimate maintenance energy from BMR, body metrics, age, sex, and activity level, then calibrate the estimate against your real trend.",
   h1: "TDEE Calculator",
   hero: "Estimate the calories your body burns in a full day by combining resting metabolism with your usual activity level.",
   schemaName: "Privacy-First TDEE Calculator",
-  schemaDescription: "A free browser-side Total Daily Energy Expenditure calculator using the Mifflin-St Jeor equation, activity multipliers, and practical calorie target guidance.",
-  lastUpdated: "June 20, 2026",
+  schemaDescription: "A browser-side Total Daily Energy Expenditure calculator focused on estimated maintenance energy and real-world calibration.",
+  lastUpdated: "June 22, 2026",
   buttonText: "Calculate TDEE",
   resultUnit: "kcal/day",
   resultStatus: "Maintenance Energy",
   gaugeLabels: ["Sedentary", "Moderate", "Athletic"],
-  insightTitle: "Calorie Goal Plan",
+  insightTitle: "Maintenance Calibration",
   controlsHtml: `
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
@@ -27,10 +27,10 @@ module.exports = {
       action: "Calculate BMR"
     },
     {
-      href: "https://toolsquark.com/tools/macro-calculator.html",
-      title: "Macro Calculator",
-      description: "Turn your calorie result into protein, carbohydrates, and fat targets.",
-      action: "Split Macros"
+      href: "https://toolsquark.com/tools/calorie-calculator.html",
+      title: "Daily Calorie Goal Calculator",
+      description: "Apply a visible deficit, maintenance, or surplus adjustment after estimating TDEE.",
+      action: "Plan A Goal"
     }
   ],
   faq: [
@@ -205,8 +205,6 @@ function calculateNow() {
     let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
     bmr += gender === 'male' ? 5 : -161;
     const tdee = Math.round(bmr * activityMulti);
-    const lossTarget = Math.max(1200, tdee - 500);
-    const gainTarget = tdee + 300;
     const percent = Math.min(95, Math.max(5, ((activityMulti - 1.2) / 0.7) * 90 + 5));
     let color = 'var(--normal)';
     let status = 'Maintenance Energy';
@@ -223,7 +221,7 @@ function calculateNow() {
     document.getElementById('calc-status').innerText = status;
     document.getElementById('calc-status').style.color = color;
     document.getElementById('calc-desc').innerText = \`Your estimated TDEE is \${tdee.toLocaleString()} kcal/day. This is your approximate maintenance target for your current body metrics and activity level.\`;
-    document.getElementById('calc-suggestion').innerText = \`For gradual fat loss, a common starting target is about \${lossTarget.toLocaleString()} kcal/day. For a modest muscle-gain surplus, consider about \${gainTarget.toLocaleString()} kcal/day and track your trend over several weeks.\`;
+    document.getElementById('calc-suggestion').innerText = 'Compare average intake and body-weight trend over two to four weeks. Use the Daily Calorie Goal Calculator only when you are ready to apply an explicit goal adjustment.';
     document.getElementById('gauge-pointer').style.left = percent + '%';
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }

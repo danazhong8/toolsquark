@@ -1,4 +1,6 @@
 module.exports = {
+  categoryHref: "lifestyle.html",
+  categoryLabel: "Lifestyle Tools",
   slug: "daily-steps-goal-calculator",
   title: "Daily Steps Goal Calculator | Progressive Walking Plan",
   description: "Build a gradual step-count plan from your current baseline to a disclosed preset target. Includes assumptions, safety guidance, and research context.",

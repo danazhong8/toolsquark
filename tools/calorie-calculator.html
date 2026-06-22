@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/calorie-calculator.html">
-<title>Calorie Calculator | Daily Calories for Maintenance &amp; Weight Goals</title>
-<meta name="description" content="Estimate daily calories for maintenance, fat loss, or muscle gain using BMR, activity level, and body metrics. Free private calorie calculator.">
+<title>Daily Calorie Goal Calculator | Deficit, Maintenance &amp; Gain</title>
+<meta name="description" content="Estimate maintenance calories, then choose a transparent percentage-based target for gradual fat loss, maintenance, or muscle gain.">
 <script type="application/ld+json">
 [
   {
@@ -20,7 +20,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "A free browser-side daily calorie calculator for maintenance, fat-loss, and muscle-gain planning using BMR and activity level.",
+    "description": "A browser-side daily calorie goal planner using estimated maintenance energy and an explicit percentage adjustment.",
     "publisher": {
       "@type": "Organization",
       "name": "ToolsQuark",
@@ -51,7 +51,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Calorie Calculator",
+        "name": "Daily Calorie Goal Calculator",
         "item": "https://toolsquark.com/tools/calorie-calculator.html"
       }
     ]
@@ -73,7 +73,7 @@
         "name": "How should I use the result for weight loss?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The result is an estimated maintenance calorie target. For gradual weight loss, many adults use a moderate deficit of about 300 to 500 kcal per day. Avoid aggressive restriction without professional guidance, especially if you have a medical condition, are pregnant, or have a history of disordered eating."
+          "text": "Choose a disclosed 10% or 20% reduction from estimated maintenance. Percentage-based options scale with the estimate, but they still require real-world monitoring and may not be appropriate for every person."
         }
       },
       {
@@ -86,10 +86,10 @@
       },
       {
         "@type": "Question",
-        "name": "What calorie deficit should I use for fat loss?",
+        "name": "How is this different from the TDEE calculator?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Many adults start with a moderate deficit of about 300 to 500 calories below estimated maintenance. The best target depends on body size, training, hunger, medical context, and how your trend changes over several weeks."
+          "text": "The TDEE page estimates maintenance energy only. This page adds an explicit goal choice and shows the adjustment used to produce a daily planning target."
         }
       },
       {
@@ -122,8 +122,8 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>Calorie Calculator</span></div>
-    <div class="hero"><h1>Calorie Calculator</h1><p>Estimate your daily calorie needs with the Mifflin-St Jeor equation. Everything runs locally in your browser, with no account and no server-side health data storage.</p></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>Daily Calorie Goal Calculator</span></div>
+    <div class="hero"><h1>Daily Calorie Goal Calculator</h1><p>Estimate maintenance energy, then turn it into a visible percentage-based calorie target for your current goal.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
@@ -133,39 +133,39 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
             <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
         </div>
         <div id="inputs-container"></div>
-        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Calorie Needs</button>
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Daily Goal</button>
         <div id="result-area" class="result-box" style="display:none;">
 
             <div class="result-val"><span id="calc-output">0</span><span class="result-unit">kcal/day</span></div>
-            <div class="result-status" id="calc-status">Maintenance Calories</div>
+            <div class="result-status" id="calc-status">Daily Goal Target</div>
             <div class="bmi-gauge-container">
                 <div class="bmi-pointer" id="gauge-pointer"></div>
                 <div class="bmi-gauge-bar"></div>
-                <div class="bmi-labels"><span>1500</span><span>2200</span><span>2800+</span></div>
+                <div class="bmi-labels"><span>Loss</span><span>Maintain</span><span>Gain</span></div>
             </div>
             <p class="result-desc" id="calc-desc"></p>
             <div class="suggestion-box">
-                <h4>Actionable Health Insight</h4>
+                <h4>Goal And Maintenance Context</h4>
                 <p id="calc-suggestion"></p>
             </div>
         </div>
     </div>
     <div class="card" id="guide">
     <div class="content-section">
-        <h3>What This Calorie Calculator Estimates</h3>
-        <p>This calculator estimates your daily maintenance calories: the approximate intake that would keep body weight stable at your current body metrics and activity level.</p><p>From that maintenance estimate, you can create a reasonable starting target for fat loss, muscle gain, or weight maintenance.</p>
+        <h3>What This Goal Calculator Produces</h3>
+        <p>The calculator first estimates maintenance energy, then applies the goal percentage you select. The result is a planning target, not a prediction of an exact rate of weight change.</p><p>This keeps the TDEE page focused on energy expenditure while this page supports the next decision: choosing a starting intake target.</p>
     </div>
     <div class="content-section">
-        <h3>How Daily Calories Are Calculated</h3>
-        <p>The tool estimates resting energy needs with the Mifflin-St Jeor equation, then applies an activity multiplier to estimate daily maintenance calories.</p><div class="formula-box">Men: BMR = 10W + 6.25H - 5A + 5<br>Women: BMR = 10W + 6.25H - 5A - 161<br>Maintenance calories = BMR x activity multiplier</div><p>W is kilograms, H is centimeters, and A is years. Imperial inputs are converted before calculation. The final estimate is rounded to the nearest calorie.</p>
+        <h3>How The Target Is Calculated</h3>
+        <p>The tool estimates resting energy with Mifflin-St Jeor, applies an activity multiplier, then adjusts that maintenance estimate by the selected percentage.</p><div class="formula-box">Maintenance = estimated BMR x activity multiplier<br>Daily goal = maintenance x (1 + selected adjustment)</div><p>Available adjustments are -10%, -20%, 0%, +5%, and +10%. The calculation does not promise a specific weekly weight change.</p>
     </div>
     <div class="content-section">
-        <h3>How To Use Your Target</h3>
-        <ul><li><strong>Maintenance:</strong> eat near the displayed estimate and watch your weight trend.</li><li><strong>Fat loss:</strong> start with a moderate deficit, often 300 to 500 calories below maintenance.</li><li><strong>Muscle gain:</strong> use a modest surplus, often 150 to 300 calories above maintenance, alongside resistance training.</li></ul><div class="note-box">The best calorie target is the one your real trend confirms. Adjust gradually based on average weight, training performance, hunger, sleep, and consistency.</div>
+        <h3>Choosing A Goal Option</h3>
+        <ul><li><strong>Maintenance:</strong> keeps the estimated TDEE unchanged.</li><li><strong>Gentle fat loss:</strong> applies a 10% reduction.</li><li><strong>Moderate fat loss:</strong> applies a 20% reduction and deserves more caution.</li><li><strong>Lean gain:</strong> applies a 5% increase.</li><li><strong>Higher surplus:</strong> applies a 10% increase.</li></ul><div class="note-box">Choose the smallest adjustment that supports the goal, then calibrate against hunger, energy, training, and multi-week trend.</div>
     </div>
     <div class="content-section">
         <h3>Example Calorie Plan</h3>
-        <p>For a 35-year-old woman at 65 kg and 165 cm, the equation estimates BMR at 1,330 kcal/day. A light-activity multiplier of 1.375 produces about 1,829 kcal/day for maintenance. A cautious deficit might begin near 1,500 kcal/day, then be checked against the real weight and energy trend.</p>
+        <p>If estimated maintenance is 2,000 kcal/day, a gentle 10% deficit produces a 1,800 kcal target. A 5% surplus produces 2,100 kcal. Both remain estimates that should be checked against the real trend.</p>
     </div>
     <div class="content-section">
         <h3>Where The Estimate Can Miss</h3>
@@ -178,15 +178,15 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         </div>
         <div class="faq-item">
             <h4>How should I use the result for weight loss?</h4>
-            <p>The result is an estimated maintenance calorie target. For gradual weight loss, many adults use a moderate deficit of about 300 to 500 kcal per day. Avoid aggressive restriction without professional guidance, especially if you have a medical condition, are pregnant, or have a history of disordered eating.</p>
+            <p>Choose a disclosed 10% or 20% reduction from estimated maintenance. Percentage-based options scale with the estimate, but they still require real-world monitoring and may not be appropriate for every person.</p>
         </div>
         <div class="faq-item">
             <h4>Why does activity level change my calorie target so much?</h4>
             <p>Daily movement, training volume, and physically demanding work can add substantial energy expenditure above your resting needs. Choose the activity level that best matches your average week rather than your most active day.</p>
         </div>
         <div class="faq-item">
-            <h4>What calorie deficit should I use for fat loss?</h4>
-            <p>Many adults start with a moderate deficit of about 300 to 500 calories below estimated maintenance. The best target depends on body size, training, hunger, medical context, and how your trend changes over several weeks.</p>
+            <h4>How is this different from the TDEE calculator?</h4>
+            <p>The TDEE page estimates maintenance energy only. This page adds an explicit goal choice and shows the adjustment used to produce a daily planning target.</p>
         </div>
         <div class="faq-item">
             <h4>How often should I adjust my calorie target?</h4>
@@ -195,23 +195,23 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     </main>
     <aside class="side-column" aria-label="Tool information">
         <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
-        <div class="card side-card" id="related"><h3>Optimize Your Body Metrics Further</h3><div class="recommend-grid">
-            <a href="https://toolsquark.com/tools/bmi-calculator.html" class="recommend-card">
+        <div class="card side-card" id="related"><h3>Build The Planning Sequence</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/tools/tdee-calculator.html" class="recommend-card">
                 <div>
-                    <h4>BMI Calculator</h4>
-                    <p>Check your standard height-to-weight baseline before setting a weight goal.</p>
+                    <h4>TDEE Calculator</h4>
+                    <p>Use the maintenance-only view when you do not need a goal adjustment.</p>
                 </div>
-                <span class="action-text">Check BMI Ratio &rarr;</span>
+                <span class="action-text">Estimate TDEE &rarr;</span>
             </a>
             <a href="https://toolsquark.com/tools/macro-calculator.html" class="recommend-card">
                 <div>
                     <h4>Macro Calculator</h4>
-                    <p>Turn your calorie target into protein, carbs, and fat ranges for a practical meal plan.</p>
+                    <p>Distribute this calorie target across adjustable protein, fat, and carbohydrate grams.</p>
                 </div>
                 <span class="action-text">Split Macros &rarr;</span>
             </a></div></div>
         <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" target="_blank" rel="noopener noreferrer">A New Predictive Equation for Resting Energy Expenditure</a><span>The American Journal of Clinical Nutrition / PubMed</span></li><li><a href="https://www.niddk.nih.gov/bwp" target="_blank" rel="noopener noreferrer">Body Weight Planner</a><span>National Institute of Diabetes and Digestive and Kidney Diseases</span></li></ul></div>
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool uses the Mifflin-St Jeor equation for basal metabolic rate and standard activity multipliers for estimated total daily energy expenditure.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> These calculations are educational estimates, not medical advice, diagnosis, or treatment. Consult a qualified clinician or registered dietitian for personal nutrition guidance.</p><div class="updated-row">Last updated: June 20, 2026</div></div></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool estimates maintenance energy with Mifflin-St Jeor and a selected activity multiplier, then applies a disclosed goal adjustment of -20%, -10%, 0%, +5%, or +10%.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> These calculations are educational estimates, not medical advice, diagnosis, or treatment. Consult a qualified clinician or registered dietitian for personal nutrition guidance.</p><div class="updated-row">Last updated: June 22, 2026</div></div></div>
     </aside>
     </div>
     <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
@@ -224,7 +224,7 @@ function renderInputs() {
     const baseInputs = `
         <div class="input-row">
             <div class="input-group">
-                <label for="input_gender">Gender</label>
+                <label for="input_gender">Sex Used By Equation</label>
                 <div class="input-wrapper">
                     <select id="input_gender">
                         <option value="male">Male</option>
@@ -238,6 +238,18 @@ function renderInputs() {
                     <input type="number" id="input_age" placeholder="e.g. 28" min="10" max="120">
                     <span class="unit-badge">yrs</span>
                 </div>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="input_goal">Daily Calorie Goal</label>
+            <div class="input-wrapper">
+                <select id="input_goal">
+                    <option value="-0.10">Gentle fat loss (-10%)</option>
+                    <option value="-0.20">Moderate fat loss (-20%)</option>
+                    <option value="0" selected>Maintain weight (0%)</option>
+                    <option value="0.05">Lean gain (+5%)</option>
+                    <option value="0.10">Higher surplus (+10%)</option>
+                </select>
             </div>
         </div>`;
     const activityInput = `
@@ -310,6 +322,7 @@ function calculateNow() {
     const gender = document.getElementById('input_gender').value;
     const age = parseInt(document.getElementById('input_age').value, 10);
     const activityMulti = parseFloat(document.getElementById('input_activity').value);
+    const goalAdjustment = parseFloat(document.getElementById('input_goal').value);
     if (isNaN(age) || age < 10 || age > 120) {
         alert('Please input a valid age.');
         return;
@@ -339,24 +352,19 @@ function calculateNow() {
     let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
     bmr += gender === 'male' ? 5 : -161;
     const tdee = Math.round(bmr * activityMulti);
-    let result = { status: '', color: '', desc: '', suggestion: '', percent: 0 };
-    if (tdee < 1500) {
-        result = { status: 'Lower Energy Target', color: 'var(--underweight)', desc: `Your estimated maintenance target is ${tdee.toLocaleString()} kcal/day. This is on the lower end of the adult energy range and should be interpreted carefully.`, suggestion: 'Make sure your calorie target still supports essential nutrition. Avoid dropping far below your estimated BMR without professional guidance.', percent: Math.max(5, (tdee / 1500) * 30) };
-    } else if (tdee <= 2200) {
-        result = { status: 'Standard Maintenance Range', color: 'var(--normal)', desc: `Your estimated maintenance target is ${tdee.toLocaleString()} kcal/day based on your body metrics and activity level.`, suggestion: 'Use this as a baseline. For gradual weight loss, consider a modest deficit; for muscle gain, consider a modest surplus paired with resistance training.', percent: 30 + ((tdee - 1500) / 700) * 35 };
-    } else if (tdee <= 2800) {
-        result = { status: 'Higher Active Burn', color: 'var(--overweight)', desc: `Your estimated maintenance target is ${tdee.toLocaleString()} kcal/day, suggesting higher activity, larger body size, or both.`, suggestion: 'Prioritize protein, fiber-rich carbohydrates, hydration, and consistent training recovery if you are sustaining this level of energy output.', percent: 65 + ((tdee - 2200) / 600) * 20 };
-    } else {
-        result = { status: 'Very High Energy Output', color: 'var(--obese)', desc: `Your estimated maintenance target is ${tdee.toLocaleString()} kcal/day, which is a high daily energy requirement.`, suggestion: 'High energy needs benefit from planned meals rather than guesswork. Consider splitting intake across the day and monitoring real-world weight trends.', percent: Math.min(95, 85 + (Math.min(tdee - 2800, 1000) / 1000) * 10) };
-    }
+    const target = Math.round(tdee * (1 + goalAdjustment));
+    const labels = { '-0.2': 'Moderate Fat-Loss Target', '-0.1': 'Gentle Fat-Loss Target', '0': 'Maintenance Target', '0.05': 'Lean-Gain Target', '0.1': 'Higher-Surplus Target' };
+    const status = labels[String(goalAdjustment)] || 'Daily Goal Target';
+    const color = goalAdjustment < 0 ? 'var(--underweight)' : goalAdjustment > 0 ? 'var(--overweight)' : 'var(--normal)';
+    const percent = 50 + (goalAdjustment * 225);
     document.getElementById('result-area').style.display = 'block';
-    document.getElementById('calc-output').innerText = tdee.toLocaleString();
-    document.getElementById('calc-output').style.color = result.color;
-    document.getElementById('calc-status').innerText = result.status;
-    document.getElementById('calc-status').style.color = result.color;
-    document.getElementById('calc-desc').innerText = result.desc;
-    document.getElementById('calc-suggestion').innerText = result.suggestion;
-    document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    document.getElementById('calc-output').innerText = target.toLocaleString();
+    document.getElementById('calc-output').style.color = color;
+    document.getElementById('calc-status').innerText = status;
+    document.getElementById('calc-status').style.color = color;
+    document.getElementById('calc-desc').innerText = `Daily target: ${target.toLocaleString()} kcal, using a ${(goalAdjustment * 100).toFixed(0)}% adjustment from estimated maintenance of ${tdee.toLocaleString()} kcal/day.`;
+    document.getElementById('calc-suggestion').innerText = goalAdjustment === 0 ? 'Use the maintenance estimate as a starting point and compare it with your multi-week trend.' : 'Use the smallest effective adjustment. Recheck average weight, hunger, energy, and training after two to four weeks.';
+    document.getElementById('gauge-pointer').style.left = Math.min(95, Math.max(5, percent)) + '%';
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 renderInputs();
