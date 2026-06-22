@@ -9,7 +9,7 @@ const headerAliases = {
   page: ["page", "top pages", "pages", "url", "网页", "页面", "热门网页"],
   clicks: ["clicks", "点击", "点击次数"],
   impressions: ["impressions", "展示", "展示次数"],
-  ctr: ["ctr", "点击率"],
+  ctr: ["ctr", "点击率", "平均点击率"],
   position: ["position", "average position", "排名", "平均排名"]
 };
 
@@ -131,9 +131,16 @@ function percent(value) {
   return `${(value * 100).toFixed(1)}%`;
 }
 
+function ctrFloor(position) {
+  if (position <= 3) return 0.08;
+  if (position <= 5) return 0.05;
+  if (position <= 10) return 0.03;
+  return 0;
+}
+
 function statusFor(metrics) {
   if (!metrics.impressions) return "No data";
-  if (metrics.position <= 10 && metrics.impressions >= 50 && metrics.ctr < 0.05) return "CTR opportunity";
+  if (metrics.position <= 10 && metrics.impressions >= 50 && metrics.ctr < ctrFloor(metrics.position)) return "CTR opportunity";
   if (metrics.position > 5 && metrics.position <= 20 && metrics.impressions >= 20) return "Near win";
   if (metrics.clicks > 0) return "Active";
   return "Needs demand/coverage review";
@@ -170,8 +177,8 @@ function buildReport(rows, files) {
     "",
     "## Core 12 Pages",
     "",
-    "| Page | Primary query | Clicks | Impressions | CTR | Position | Seed coverage | Status |",
-    "|---|---|---:|---:|---:|---:|---:|---|"
+    "| Page | Primary query | Clicks | Impressions | CTR | Position | Seed coverage | Status | First title hypothesis |",
+    "|---|---|---:|---:|---:|---:|---:|---|---|"
   ];
 
   const opportunities = [];
@@ -183,10 +190,10 @@ function buildReport(rows, files) {
     const position = weightedPosition(pageRows);
     const metrics = { clicks, impressions, ctr, position };
     const coverage = seedCoverage(page, pageRows);
-    lines.push(`| ${page.path} | ${page.primaryQuery} | ${clicks} | ${impressions} | ${percent(ctr)} | ${position ? position.toFixed(1) : "-"} | ${coverage}/${1 + page.secondaryQueries.length} | ${statusFor(metrics)} |`);
+    lines.push(`| ${page.path} | ${page.primaryQuery} | ${clicks} | ${impressions} | ${percent(ctr)} | ${position ? position.toFixed(1) : "-"} | ${coverage}/${1 + page.secondaryQueries.length} | ${statusFor(metrics)} | ${page.titleTests[0]} |`);
     for (const row of pageRows) {
-      if (row.impressions >= 10 && row.position > 5 && row.position <= 20) opportunities.push({ ...row, type: "Near-win ranking" });
-      else if (row.impressions >= 50 && row.position <= 10 && row.ctr < 0.05) opportunities.push({ ...row, type: "Low CTR" });
+      if (row.impressions >= 20 && row.position > 5 && row.position <= 20) opportunities.push({ ...row, type: "Near-win ranking" });
+      else if (row.impressions >= 50 && row.position <= 10 && row.ctr < ctrFloor(row.position)) opportunities.push({ ...row, type: "Low CTR" });
     }
   }
 
@@ -194,9 +201,10 @@ function buildReport(rows, files) {
   if (!opportunities.length) {
     lines.push("No threshold-qualified opportunities in this export.");
   } else {
-    lines.push("| Type | Query | Page | Impressions | CTR | Position |", "|---|---|---|---:|---:|---:|");
+    lines.push("| Type | Query | Page | Impressions | CTR | Position | Suggested title hypothesis |", "|---|---|---|---:|---:|---:|---|");
     opportunities.sort((a, b) => b.impressions - a.impressions).slice(0, 30).forEach((row) => {
-      lines.push(`| ${row.type} | ${row.query} | ${row.page} | ${row.impressions} | ${percent(row.ctr)} | ${row.position.toFixed(1)} |`);
+      const mapped = queryMap.pages.find((page) => page.path === row.page);
+      lines.push(`| ${row.type} | ${row.query} | ${row.page} | ${row.impressions} | ${percent(row.ctr)} | ${row.position.toFixed(1)} | ${mapped?.titleTests?.[0] || "Review intent before testing"} |`);
     });
   }
 
@@ -206,9 +214,9 @@ function buildReport(rows, files) {
     "",
     "- No data: confirm indexing, canonical, sitemap presence, and internal links before rewriting content.",
     "- Position 5-20 with impressions: strengthen the matching section and links; preserve the query-page boundary.",
-    "- Position 1-10 with low CTR: test title and visible summary against the actual query intent.",
+    "- Position 1-3 below 8% CTR, 4-5 below 5%, or 6-10 below 3% with at least 50 impressions: test one logged title variant.",
     "- Unmapped query: add it only when the page genuinely answers it; otherwise route it to a better page.",
-    "- Review on a 28-day cadence and log each title/content change before comparing the next period.",
+    "- Change only one title or description variable per page, log it in seo/ctr-test-log.csv, and compare complete 28-day windows.",
     ""
   );
   return lines.join("\n");

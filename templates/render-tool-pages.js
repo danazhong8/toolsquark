@@ -5,6 +5,8 @@ const root = path.resolve(__dirname, "..");
 const configDir = path.join(__dirname, "tool-pages");
 const outDir = path.join(root, "tools");
 const defaultLastUpdated = "June 19, 2026";
+const queryMap = JSON.parse(fs.readFileSync(path.join(root, "seo", "core-query-map.json"), "utf8"));
+const guideData = require("./guide-page-data");
 
 function esc(value) {
   return String(value ?? "")
@@ -16,6 +18,15 @@ function esc(value) {
 
 function cleanOutput(value) {
   return value.replace(/[ \t]+$/gm, "");
+}
+
+function renderMatchingGuide(slug) {
+  const mapping = queryMap.pages.find((page) => page.path === `/tools/${slug}.html`);
+  if (!mapping) return "";
+  const guideSlug = path.basename(mapping.guidePath, ".html");
+  const guide = guideData.find((item) => item.slug === guideSlug);
+  if (!guide) return "";
+  return `\n        <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/${guide.slug}.html" class="recommend-card"><div><h4>${esc(guide.h1)}</h4><p>${esc(guide.description)}</p></div><span class="action-text">Read guide &rarr;</span></a></div>`;
 }
 
 function renderRelated(items = []) {
@@ -151,7 +162,7 @@ ${resultContent}
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>${renderFaq(config.faq)}</div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li>${config.contentSections?.length ? `<li><a href="#guide">Detailed guide</a></li>` : ""}<li><a href="#faq">FAQs</a></li>${config.references?.length ? `<li><a href="#references">References</a></li>` : ""}<li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li>${config.contentSections?.length ? `<li><a href="#guide">Detailed guide</a></li>` : ""}<li><a href="#faq">FAQs</a></li>${config.references?.length ? `<li><a href="#references">References</a></li>` : ""}<li><a href="#methodology">Methodology</a></li></ul></nav></div>${renderMatchingGuide(config.slug)}
         <div class="card side-card" id="related"><h3>${esc(config.relatedTitle || "Related Tools")}</h3><div class="recommend-grid">${renderRelated(config.related)}</div></div>
         ${renderReferences(config.references)}
         <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> ${config.methodology}</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> ${config.disclaimer || "These calculations are educational estimates and not medical advice, diagnosis, or treatment. Consult a qualified professional for personal guidance."}</p><div class="updated-row">Last updated: ${esc(lastUpdated)}</div></div></div>
