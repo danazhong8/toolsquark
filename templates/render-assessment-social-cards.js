@@ -18,10 +18,21 @@ function wrapWords(text, maxCharacters, maxLines) {
   const words = text.split(/\s+/);
   const lines = [];
   let line = "";
-  for (const word of words) {
+  for (let index = 0; index < words.length; index += 1) {
+    const word = words[index];
     const candidate = line ? `${line} ${word}` : word;
-    if (candidate.length > maxCharacters && line && lines.length < maxLines - 1) {
+    if (candidate.length > maxCharacters && line) {
       lines.push(line);
+      if (lines.length === maxLines - 1) {
+        const remaining = words.slice(index).join(" ");
+        if (remaining.length <= maxCharacters) {
+          lines.push(remaining);
+        } else {
+          const shortened = remaining.slice(0, maxCharacters - 3);
+          lines.push(`${shortened.slice(0, shortened.lastIndexOf(" "))}...`);
+        }
+        return lines;
+      }
       line = word;
     } else {
       line = candidate;
@@ -40,7 +51,7 @@ const cards = fs.readdirSync(configDir)
     file: config.socialImage.split("/").pop(),
     eyebrow: `${config.instrument.recallPeriodDays}-DAY ORIGINAL SELF-CHECK`,
     title: wrapWords(config.h1, 20, 3),
-    description: wrapWords(config.shareDescription || config.description, 48, 2),
+    description: wrapWords(config.shareDescription || config.description, 43, 3),
     accent: config.socialAccent || "#2563eb",
     dimensions: config.dimensions.map((dimension, index) => [dimension.label, barColors[index], barWidths[index]])
   }));

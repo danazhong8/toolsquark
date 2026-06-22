@@ -74,7 +74,7 @@ function createV2Config(spec) {
     socialImage: `https://toolsquark.com/assets/social/${spec.socialFile}`,
     socialAccent: spec.socialAccent,
     shareDescription: spec.shareDescription,
-    lastUpdated: "June 21, 2026",
+    lastUpdated: spec.lastUpdated || "June 21, 2026",
     timeframe: `Past ${spec.recallDays} days`,
     categoryHref: spec.categoryHref,
     categoryLabel: spec.categoryLabel,
@@ -117,8 +117,8 @@ function createV2Config(spec) {
       { title: spec.limitsTitle || "Important Context And Limits", body: spec.limitsBody },
       { title: "How To Use The Result", body: spec.actionBody }
     ],
-    revisionHistory: [
-      { version: "2.0", date: "2026-06-21", summary: "Replaced mixed legacy scoring with 12 uniform core items, separate context, protective factors, functioning guidance, and privacy-limited sharing." },
+    revisionHistory: spec.revisionHistory || [
+      { version: "2.0", date: spec.versionTwoDate || "2026-06-21", summary: spec.versionTwoSummary || "Replaced mixed legacy scoring with 12 uniform core items, separate context, protective factors, functioning guidance, and privacy-limited sharing." },
       { version: "1.0", date: spec.versionOneDate || "2026-06-21", summary: `Initial original ${spec.legacyItems || 5}-item editorial checklist.` }
     ],
     methodology: `Version 2.0 is an original 12-item editorial self-check. Four dimensions use three items each and one explicit 0-to-4 frequency scale. Context and protective factors are separate from the scored core. The model is not clinically or psychometrically validated.`,

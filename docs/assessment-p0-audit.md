@@ -1,7 +1,7 @@
 # Original Self-Check P0 Audit
 
-Audit date: June 21, 2026  
-Scope: 12 files in `templates/assessment-pages`
+Audit date: June 22, 2026
+Scope: 20 files in `templates/assessment-pages`
 
 ## P1 Pilot Progress
 
@@ -14,6 +14,8 @@ P2 added a dedicated introduction state, explicit three-part progress, confirm-b
 P3 added unique 1200-by-630 social preview images, Open Graph and Twitter metadata, WebPage and version schema, test sharing, privacy-limited result sharing, and downloadable result cards. Shared and downloaded results exclude raw answers, context selections, functional-impact selections, and numerical scores.
 
 The full migration completed on June 21, 2026. All 12 original self-checks now use the version 2.0 contract with 12 scored items, four dimensions, one response scale, three context questions, two protective factors, versioned methods, safe sharing, and unique social preview images. Strict content audit status: zero errors, zero blockers, zero warnings, and zero migration tasks.
+
+On June 22, 2026, eight lower-risk emotional connection self-checks were added as original version 2.0 tools. Each asks the user to keep one important relationship in mind, avoids diagnosing or labeling either person, separates context and protective factors from the score, and links claims to relationship, attachment, support, or social-connection references. The published library now contains 20 version 2.0 self-checks.
 
 ## Executive Findings
 

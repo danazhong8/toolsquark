@@ -3,8 +3,8 @@ const path = require("path");
 
 const root = path.resolve(__dirname, "..");
 const site = "https://toolsquark.com";
-const lastmod = "2026-06-21";
-const reviewedDate = "June 21, 2026";
+const lastmod = "2026-06-22";
+const reviewedDate = "June 22, 2026";
 
 const groups = {
   health: {
@@ -129,6 +129,43 @@ const groups = {
         ]
       }
     ]
+  },
+  connection: {
+    file: "emotional-connection.html",
+    title: "Relationship & Emotional Connection Self-Checks | ToolsQuark",
+    description: "Use private relationship self-checks for emotional needs, availability, closeness, feeling understood, support, disclosure, communication, and repair.",
+    h1: "Relationship & Emotional Connection Self-Checks",
+    intro: "Explore how connection feels in one important relationship with original, private self-checks built for reflection rather than labels.",
+    categoryLabel: "Emotional Connection",
+    guide: [
+      ["Keep One Relationship In Mind", "Answer each self-check about one current partner, friend, family member, or other important relationship. Mixing several relationships can make a pattern harder to interpret."],
+      ["Patterns, Not Verdicts", "These original checklists summarize recent experiences. They cannot identify another person's motives, diagnose either person, or decide whether a relationship should continue."]
+    ],
+    sections: [
+      {
+        title: "Needs & Relational Awareness",
+        tools: [
+          ["emotional-needs-clarity-self-check", "Emotional Needs Clarity Self-Check", "Review how clearly you notice, name, communicate, and reassess emotional needs.", "Review Needs", true],
+          ["emotional-availability-self-check", "Emotional Availability Pattern", "Review presence, responsiveness, openness, and consistency in one relationship.", "Review Availability"],
+          ["closeness-distance-pattern-self-check", "Closeness & Distance Pattern", "Review comfort with connection, space, reassurance, and changing relational distance.", "Review Distance"]
+        ]
+      },
+      {
+        title: "Support & Understanding",
+        tools: [
+          ["felt-understood-self-check", "Felt Understood In A Relationship", "Review whether your feelings, meaning, perspective, and changing needs feel understood.", "Review Understanding"],
+          ["support-access-self-check", "Relationship Support Access", "Review whether support feels available, askable, usable, and reciprocal.", "Review Support"],
+          ["safe-emotional-disclosure-self-check", "Safe Emotional Disclosure Pattern", "Review readiness, response safety, boundaries, and recovery after personal sharing.", "Review Disclosure"]
+        ]
+      },
+      {
+        title: "Communication & Repair",
+        tools: [
+          ["emotional-communication-self-check", "Emotional Communication Pattern", "Review expression, listening, clarification, and regulation during emotional conversations.", "Review Communication"],
+          ["conflict-repair-self-check", "Conflict Repair Pattern", "Review de-escalation, accountability, reconnection, and follow-through after conflict.", "Review Repair", true]
+        ]
+      }
+    ]
   }
 };
 
@@ -250,14 +287,15 @@ function renderHome() {
     groups.health.sections[1].tools[1],
     groups.mental.sections[0].tools[0],
     groups.mental.sections[0].tools[1],
-    groups.mental.sections[1].tools[1],
     groups.lifestyle.sections[0].tools[0],
-    groups.lifestyle.sections[1].tools[0]
+    groups.connection.sections[0].tools[0],
+    groups.connection.sections[2].tools[1]
   ];
   const categoryDescriptions = {
     health: "Body metrics, nutrition, activity, cycle, pregnancy, and sleep tools.",
     mental: "Private self-checks for stress, anxiety, focus, burnout, and connection.",
-    lifestyle: "Sleep planning, daily movement, follow-through, and digital habits."
+    lifestyle: "Sleep planning, daily movement, follow-through, and digital habits.",
+    connection: "Relationship needs, support, emotional communication, and repair."
   };
   const categoryLinks = Object.entries(groups).map(([key, group]) => {
     const toolCount = group.sections.reduce((count, section) => count + section.tools.length, 0);
@@ -337,7 +375,7 @@ ${JSON.stringify([
 <style>${baseStyles()}.container{max-width:1280px;margin-top:32px}.tool-card,.e-e-a-t-section{border-radius:8px}.navbar{background:white;padding:15px max(20px,5%);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:10}.logo{font-size:22px;font-weight:850;color:var(--accent);text-decoration:none}.nav-links{display:flex;gap:24px}.nav-links a{text-decoration:none;color:#4b5563;font-weight:700;font-size:14px}.hero{text-align:center;margin:0 auto 32px;max-width:880px}.hero h1{font-size:2.85rem;font-weight:850;letter-spacing:0;line-height:1.12;margin-bottom:14px;color:#0f172a}.hero p{color:var(--text-muted);font-size:1.05rem;max-width:760px;margin:0 auto}.trust-badges{display:flex;justify-content:center;gap:20px;margin-top:16px;color:#047857;font-weight:750;font-size:.9rem;flex-wrap:wrap}.search-wrapper{max-width:760px;margin:0 auto 34px;position:relative}.search-input{width:100%;padding:16px 20px;border:2px solid #cbd5e1;border-radius:8px;font-size:16px;background:white}.search-input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 4px var(--accent-light)}.search-results{display:none;position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:20;background:white;border:1px solid #cbd5e1;border-radius:8px;box-shadow:0 18px 35px rgba(15,23,42,.14);overflow:hidden}.search-results.is-open{display:block}.search-result{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 18px;padding:13px 16px;border-bottom:1px solid #eef2f7;text-decoration:none;color:inherit}.search-result:last-child{border-bottom:none}.search-result:hover,.search-result:focus-visible{background:#eff6ff;outline:none}.search-result strong{font-size:14px;color:#1e293b}.search-result span{grid-row:1 / 3;grid-column:2;color:var(--accent);font-size:12px;font-weight:800;align-self:center}.search-result small{font-size:12px;color:var(--text-muted)}.search-empty{padding:16px;color:var(--text-muted);font-size:14px}.category-band{padding:26px 0 32px;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:16px}.section-heading h2{font-size:1.35rem;line-height:1.25}.section-heading p{font-size:.9rem;color:var(--text-muted)}.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.category-link{padding:20px 0;text-decoration:none;color:inherit;border-top:3px solid #cbd5e1}.category-link:hover,.category-link:focus-visible{border-color:var(--accent);outline:none}.category-link span{font-size:1.05rem;font-weight:850;color:#1e293b}.category-link small{margin-left:8px;color:var(--text-muted);font-weight:750}.category-link p{color:var(--text-muted);font-size:.9rem;line-height:1.5;margin:7px 0 12px;max-width:340px}.category-link strong{font-size:.82rem;color:var(--accent)}.popular-section{padding-top:36px}.popular-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.popular-grid .tool-card{padding:22px;min-height:220px}.popular-grid .tool-name{font-size:1.03rem}.popular-grid .tool-desc{font-size:.88rem}.directory-section{padding-top:54px}.directory-list{border-bottom:1px solid #cbd5e1}.directory-group{display:grid;grid-template-columns:230px minmax(0,1fr);gap:34px;padding:28px 0;border-top:1px solid #cbd5e1}.directory-intro h3{font-size:1.12rem;line-height:1.3}.directory-intro h3 a{color:#1e293b;text-decoration:none}.directory-intro h3 a:hover,.directory-intro h3 a:focus-visible{color:var(--accent)}.directory-intro p{font-size:.85rem;color:var(--text-muted);line-height:1.55;margin:8px 0 12px}.directory-category-link{font-size:.8rem;color:var(--accent);font-weight:800;text-decoration:none}.directory-topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:26px}.directory-topic h4{font-size:.82rem;color:#475569;margin-bottom:9px}.directory-topic ul{list-style:none;display:grid;gap:7px}.directory-topic a{color:#1e293b;text-decoration:none;font-size:.88rem;font-weight:700}.directory-topic a:hover,.directory-topic a:focus-visible{color:var(--accent);text-decoration:underline}.quality-section{margin-top:54px;padding:34px 0;border-top:1px solid #cbd5e1;border-bottom:1px solid #cbd5e1}.quality-intro{max-width:760px;margin-bottom:24px}.quality-intro h2{font-size:1.35rem;margin-bottom:7px}.quality-intro p{font-size:.92rem;color:var(--text-muted)}.quality-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}.quality-item h3{font-size:1rem;margin-bottom:7px}.quality-item p{font-size:.88rem;color:var(--text-muted);line-height:1.6}.quality-item a{color:var(--accent);font-weight:800}.quality-meta{display:flex;gap:12px 24px;flex-wrap:wrap;margin-top:25px;padding-top:18px;border-top:1px solid #e2e8f0;color:#475569;font-size:.78rem;font-weight:750}@media(max-width:1050px){.popular-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.directory-group{grid-template-columns:190px minmax(0,1fr)}}@media(max-width:820px){.directory-group{grid-template-columns:1fr}.directory-intro{max-width:620px}.directory-topics{grid-template-columns:repeat(2,minmax(0,1fr))}.quality-grid{grid-template-columns:1fr;gap:22px}}@media(max-width:768px){.container{margin-top:24px}.navbar{align-items:flex-start;gap:12px;flex-direction:column}.nav-links{gap:14px;flex-wrap:wrap}.hero h1{font-size:2.15rem}.category-grid,.popular-grid,.directory-topics{grid-template-columns:1fr}.section-heading{align-items:flex-start;flex-direction:column;gap:4px}.search-result{grid-template-columns:minmax(0,1fr)}.search-result span{grid-row:auto;grid-column:auto}.popular-grid .tool-card{min-height:0}}</style>
 </head>
 <body>
-<nav class="navbar"><a href="index.html" class="logo">ToolsQuark</a><div class="nav-links"><a href="health.html">Health</a><a href="mental-health.html">Mental Health</a><a href="lifestyle.html">Lifestyle</a></div></nav>
+<nav class="navbar"><a href="index.html" class="logo">ToolsQuark</a><div class="nav-links"><a href="health.html">Health</a><a href="mental-health.html">Mental Health</a><a href="lifestyle.html">Lifestyle</a><a href="emotional-connection.html">Relationships</a></div></nav>
 <div class="container">
     <header class="hero"><h1>Free Health Calculators & Wellness Self-Checks</h1><p>Private, browser-side tools for body metrics, mental wellness, sleep, habits, and daily health planning.</p><div class="trust-badges"><span>Free to use</span><span>No registration</span><span>Inputs stay in your browser</span></div></header>
     <div class="search-wrapper" id="searchWrapper"><input type="search" id="searchInput" class="search-input" placeholder="Search BMI, burnout, sleep, calories..." autocomplete="off" aria-label="Search all ToolsQuark tools" aria-controls="searchResults" aria-expanded="false"><div class="search-results" id="searchResults" role="region" aria-label="Tool search results" aria-live="polite"></div></div>
@@ -383,9 +421,7 @@ ${footer()}
 function renderSitemap() {
   const urls = [
     "",
-    "health.html",
-    "mental-health.html",
-    "lifestyle.html",
+    ...Object.values(groups).map((group) => group.file),
     "about.html",
     "editorial-policy.html",
     "privacy.html",
