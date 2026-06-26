@@ -1,12 +1,12 @@
 module.exports = {
   slug: "bmi-calculator",
   title: "BMI Calculator | Free Metric & Imperial Body Mass Index Tool",
-  description: "Calculate BMI with kg/cm or lbs/ft/in, see your adult BMI category, formula, and result interpretation. Free private browser-side BMI calculator.",
+  description: "Calculate BMI in metric or imperial units, including kg/cm, kg/m, lbs/ft/in, and the BMI formula. See adult categories and private browser-side results.",
   h1: "BMI Calculator",
-  hero: "Calculate body mass index using metric or imperial units. Everything runs locally in your browser with no account and no server-side health data storage.",
+  hero: "Calculate body mass index with metric or imperial units, including kg/cm, kg/m, pounds, feet, and inches. Everything runs locally in your browser with no account and no server-side health data storage.",
   schemaName: "Privacy-First BMI Calculator",
   schemaDescription: "A free browser-side Body Mass Index calculator for metric and imperial units, with adult BMI categories, formula notes, and result interpretation.",
-  lastUpdated: "June 20, 2026",
+  lastUpdated: "June 26, 2026",
   buttonText: "Calculate BMI",
   resultUnit: "",
   resultStatus: "BMI Result",
@@ -18,6 +18,7 @@ module.exports = {
             <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
         </div>
         <div id="inputs-container"></div>`,
+  extraCss: `.input-help{margin-top:7px;font-size:12px;color:var(--text-muted);line-height:1.45}`,
   relatedTitle: "Optimize Your Body Metrics Further",
   related: [
     {
@@ -37,6 +38,14 @@ module.exports = {
     {
       question: "What formula does this BMI calculator use?",
       answer: "For metric units, BMI = weight(kg) / height(m)^2. For imperial units, BMI = weight(lbs) x 703 / height(in)^2."
+    },
+    {
+      question: "Can I use this as a metric BMI calculator?",
+      answer: "Yes. Choose the metric tab, enter weight in kilograms and height in centimeters, and the calculator converts height to meters before applying the standard BMI equation."
+    },
+    {
+      question: "Can I use this as an imperial BMI calculator?",
+      answer: "Yes. Choose the imperial tab, enter weight in pounds and height in feet and inches, and the calculator uses the standard pounds-and-inches BMI equation with the 703 conversion factor."
     },
     {
       question: "What is considered a healthy BMI range?",
@@ -66,15 +75,15 @@ module.exports = {
     },
     {
       title: "BMI Formula",
-      body: `<div class="formula-box">Metric: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p><strong>Weight</strong> is total body weight and <strong>height</strong> is standing height without shoes. The imperial constant 703 converts pounds and inches to the metric ratio. This tool rounds only the displayed result to one decimal place.</p>`
+      body: `<div class="formula-box">Metric: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p><strong>Weight</strong> is total body weight and <strong>height</strong> is standing height without shoes. The imperial constant 703 converts pounds and inches to the metric ratio. This tool rounds only the displayed result to one decimal place.</p><p>If you enter height in centimeters, the calculator first converts centimeters to meters. For example, 175 cm becomes 1.75 m. If you enter feet and inches, the calculator converts the full height to inches before applying the imperial formula.</p>`
+    },
+    {
+      title: "Metric And Imperial BMI Examples",
+      body: `<p><strong>Metric example:</strong> 70 kg and 175 cm becomes 70 / 1.75<sup>2</sup>, which gives a BMI of 22.9.</p><p><strong>Imperial example:</strong> 154 lb and 5 ft 9 in becomes 154 x 703 / 69<sup>2</sup>, which gives a BMI of 22.7.</p><div class="note-box">Metric and imperial BMI equations should give nearly the same result when the same real-world height and weight are converted correctly. Small differences usually come from rounding the input values.</div>`
     },
     {
       title: "How To Read Your Result",
       body: `<ul><li><strong>Below 18.5:</strong> underweight screening category.</li><li><strong>18.5 to 24.9:</strong> healthy-weight screening category.</li><li><strong>25.0 to 29.9:</strong> overweight screening category.</li><li><strong>30.0 or higher:</strong> obesity screening category.</li></ul><div class="note-box">These are CDC adult screening categories, not diagnoses or personal targets. Risk can vary within every category, so interpret BMI with waist size, health history, blood pressure, laboratory results, and clinician guidance when available.</div>`
-    },
-    {
-      title: "Example Calculation",
-      body: `<p>For a person who weighs 70 kg and is 175 cm tall, height is first converted to 1.75 m. The calculation is 70 / 1.75<sup>2</sup>, which equals 22.9. That falls within the standard adult normal-weight BMI range.</p>`
     },
     {
       title: "When BMI Needs More Context",
@@ -103,6 +112,7 @@ function renderInputs() {
                         <input type="number" id="input_height" placeholder="e.g. 175" step="any">
                         <span class="unit-badge">cm</span>
                     </div>
+                    <p class="input-help">Use centimeters here. If you know your height in meters, enter 1.75 m as 175 cm.</p>
                 </div>
             </div>\`;
     } else {
