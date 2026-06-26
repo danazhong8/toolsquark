@@ -3,10 +3,10 @@ const { createV2Config } = require("./v2-assessment-factory");
 module.exports = createV2Config({
   key: "overthinking",
   slug: "cognitive-overthinking-test",
-  title: "Overthinking Pattern Self-Check | Private 14-Day Review",
-  description: "Review repetitive thinking, decision loops, threat projection, and action displacement with a private 12-item original self-check.",
+  title: "Overthinking Pattern Self-Check: Review Thought Loops And Action Delay",
+  description: "Review repetitive thinking, decision loops, threat projection, and action displacement with a private 14-day overthinking pattern self-check.",
   h1: "Overthinking Pattern Self-Check",
-  hero: "Review how often repetitive thinking, decision loops, imagined negative outcomes, and thought replacing action appeared during the past two weeks.",
+  hero: "Use this private overthinking pattern self-check to review repetitive review, decision loops, imagined negative outcomes, and thinking that replaces action across the past two weeks.",
   shareDescription: "A private 14-day self-check for repetitive thinking, decision loops, threat projection, and action displacement.",
   socialFile: "overthinking-pattern-self-check.png",
   socialAccent: "#7c3aed",
@@ -63,15 +63,20 @@ module.exports = createV2Config({
   ],
   related: [
     { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety And High-Alert Pattern", description: "Review whether thought loops occur alongside high-alert responses.", action: "Review Alertness" },
-    { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Pattern Self-Check", description: "Review whether extended thinking is displacing action.", action: "Review Delay" }
+    { href: "https://toolsquark.com/tools/procrastination-test.html", title: "Procrastination Pattern Self-Check", description: "Review whether extended thinking is displacing action.", action: "Review Delay" },
+    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus And Attention Pattern", description: "Compare thought loops with sustained attention and task organization.", action: "Review Focus" }
   ],
   faq: [
     { question: "Is overthinking a diagnosis?", answer: "No. Repetitive thinking can occur in many situations and conditions, and this original checklist cannot determine a cause." },
     { question: "Is this a validated rumination scale?", answer: "No. It is an original ToolsQuark educational self-check with editorial result patterns." },
+    { question: "What is the difference between overthinking and problem solving?", answer: "Problem solving usually produces new information, a decision, or a next action. Overthinking is more likely when the same review continues without progress, rest, or a clearer step." },
+    { question: "Can overthinking be related to anxiety?", answer: "Yes. Worry persistence and threat projection can overlap with high-alert or anxiety patterns, but repetitive thinking can also appear with stress, perfectionism, low mood, attention strain, or unresolved decisions." },
+    { question: "Why do I keep replaying conversations?", answer: "Conversation replay may be an attempt to find certainty, repair, or social safety. It becomes less useful when no new information appears and the review interrupts rest, work, or relationships." },
+    { question: "How can I stop a decision loop?", answer: "Define what information is sufficient, set a decision boundary, and identify one reversible next step. The goal is not perfect certainty; it is a workable action with the information available." },
     { question: "When may support help?", answer: "Consider qualified support when repetitive thinking persists, disrupts sleep or daily responsibilities, or causes substantial distress." }
   ],
   validationLimit: "It cannot diagnose anxiety, depression, OCD, trauma-related conditions, or another cause of repetitive thinking.",
-  limitsBody: `<p>Careful analysis is useful when it produces information or action. Repetitive thinking becomes more relevant when it continues without progress, rest, or a decision. Current stress, anxiety, depression, trauma, attention differences, and other factors can overlap.</p>`,
-  actionBody: `<p>Use the most frequent dimension to choose one experiment: close a decision, write one lesson, compare feared and likely outcomes, or take one visible next action. Seek qualified support when the pattern remains persistent or impairing.</p>`,
+  limitsBody: `<p>Careful analysis is useful when it produces information or action. Repetitive thinking becomes more relevant when it continues without progress, rest, or a decision. Current stress, anxiety, depression, trauma, attention differences, and other factors can overlap.</p><p>This self-check cannot determine why thought loops happen. It is designed to separate rumination, decision loops, threat projection, and action displacement so the next step can be more specific.</p>`,
+  actionBody: `<p>Use the most frequent dimension to choose one experiment: close a decision, write one lesson, compare feared and likely outcomes, or take one visible next action. If action displacement is high, pair this page with the Procrastination Pattern Self-Check. If threat projection is high, compare it with the Anxiety And High-Alert Pattern Self-Check.</p><p>Seek qualified support when the pattern remains persistent or impairing.</p>`,
   disclaimer: "This educational tool cannot diagnose a condition or determine why repetitive thinking occurs."
 });

@@ -6,10 +6,10 @@ const frequency14d = {
 
 module.exports = {
   slug: "anxiety-hyperarousal-assessment",
-  title: "Anxiety And High-Alert Pattern Self-Check | ToolsQuark",
-  description: "Review physical alertness, persistent worry, trigger sensitivity, and daily interference with a private 12-item original self-check.",
+  title: "Anxiety And High-Alert Self-Check: Worry, Tension, and Recovery",
+  description: "Review worry persistence, physical alertness, trigger sensitivity, recovery difficulty, and daily impact with a private 12-item self-check.",
   h1: "Anxiety And High-Alert Pattern Self-Check",
-  hero: "Review how often physical alertness, persistent worry, trigger sensitivity, and recovery difficulty appeared during the past two weeks.",
+  hero: "Use this private anxiety and high-alert self-check to review worry persistence, physical tension, trigger sensitivity, settling difficulty, and daily-life impact across the past two weeks.",
   schemaName: "ToolsQuark Anxiety And High-Alert Pattern Self-Check",
   socialImage: "https://toolsquark.com/assets/social/anxiety-high-alert-self-check.png",
   socialAccent: "#0f766e",
@@ -119,16 +119,22 @@ module.exports = {
   ],
   related: [
     { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Pattern Self-Check", description: "Compare high-alert responses with recent overload and control strain.", action: "Review Stress" },
+    { href: "https://toolsquark.com/tools/cognitive-overthinking-test.html", title: "Overthinking Pattern Self-Check", description: "Review whether worry is becoming repetitive mental rehearsal.", action: "Review Thought Loops" },
     { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Self-Check", description: "Review whether alertness is occurring alongside sleep disruption.", action: "Review Sleep" }
   ],
   faq: [
     { question: "Is this a validated anxiety screener?", answer: "No. It is an original ToolsQuark educational self-check and is not GAD-7, a trauma assessment, or another validated instrument." },
     { question: "Does a frequent result mean I have an anxiety disorder?", answer: "No. Sleep loss, pain, medication effects, acute stress, trauma reminders, medical conditions, and other factors can overlap with these experiences." },
+    { question: "What is the difference between anxiety and stress?", answer: "Stress often follows identifiable pressure or overload. Anxiety or high-alert patterns may include persistent worry, sensitivity to uncertainty, and body activation that continues even when a specific demand is not present." },
+    { question: "Why do I feel physically tense when nothing is happening?", answer: "Physical alertness can be influenced by stress, sleep loss, stimulants, pain, medical issues, trauma reminders, or worry loops. This self-check can show a pattern, but it cannot identify a medical cause." },
+    { question: "Can poor sleep make high-alert feelings worse?", answer: "Yes. Sleep disruption can increase tension, sensitivity, worry, and difficulty settling. If rest is affected, compare this result with the Sleep Pattern Self-Check." },
+    { question: "Is overthinking part of anxiety?", answer: "It can overlap. Persistent worry may show up as repeated mental rehearsal, decision loops, or threat projection, but overthinking can also appear without a broader high-alert pattern." },
     { question: "When should I seek professional support?", answer: "Consider qualified support when the pattern persists, intensifies, or interferes with daily life. Use urgent local help for immediate safety concerns or severe physical symptoms." }
   ],
   contentSections: [
     { title: "What Version 2.0 Measures", body: `<p>The 12 scored items cover physical alertness, worry persistence, trigger sensitivity, and recovery or daily-life impact. Each dimension uses three questions with the same 14-day frequency scale.</p><p>Context and protective-factor answers are displayed separately and do not change the core score.</p>` },
     { title: "How Scoring Works", body: `<p>Scored answers use values from 0 to 4 and produce an editorial total from 0 to 48. Dimension labels describe selected frequency, not medical severity or population standing.</p><div class="note-box">Version 2.0 is original and non-validated. It cannot diagnose an anxiety disorder, trauma-related condition, or medical cause.</div>` },
+    { title: "How To Read High-Alert Patterns", body: `<p>If physical alertness is highest, begin with body cues, sleep, stimulants, and settling routines. If worry persistence is highest, review whether concerns are actionable or becoming repeated mental rehearsal. If trigger sensitivity is highest, reduce one predictable source of stacked input.</p>` },
     { title: "Important Overlap And Limits", body: `<p>High-alert experiences can overlap with sleep loss, pain, stimulants, medication effects, acute stress, trauma reminders, and medical conditions. New, severe, or unexplained physical symptoms require appropriate medical assessment rather than interpretation through this page.</p>` },
     { title: "Urgent Support", body: `<p>Seek urgent local help for severe breathing difficulty, chest pain, fainting, feeling unable to stay safe, or thoughts of harming yourself or someone else.</p>` }
   ],

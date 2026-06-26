@@ -6,10 +6,10 @@ const frequency14d = {
 
 module.exports = {
   slug: "stress-index-test",
-  title: "Stress Pattern Self-Check | Private 14-Day Review",
-  description: "Review perceived overload, control strain, stress reactivity, and daily-life impact with a private 12-item original self-check.",
+  title: "Stress Pattern Self-Check: Review Overload, Tension, and Recovery",
+  description: "Review overload, control strain, stress reactivity, recovery, and daily-life impact with a private 12-item stress pattern self-check.",
   h1: "Stress Pattern Self-Check",
-  hero: "Review how often overload, reduced control, stress reactivity, and day-to-day interference appeared during the past two weeks.",
+  hero: "Use this private stress pattern self-check to review overload, control strain, body tension, recovery difficulty, and daily-life impact across the past two weeks.",
   schemaName: "ToolsQuark Stress Pattern Self-Check",
   schemaDescription: "A private browser-side 12-item original stress pattern self-check for educational reflection.",
   socialImage: "https://toolsquark.com/assets/social/stress-pattern-self-check.png",
@@ -121,16 +121,22 @@ module.exports = {
   relatedTitle: "Related Self-Checks",
   related: [
     { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Quality Self-Check", description: "Review whether sleep disruption is adding to recent strain.", action: "Review Sleep" },
+    { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety And High-Alert Pattern", description: "Compare overload with worry, alertness, and trigger sensitivity.", action: "Compare Alertness" },
     { href: "https://toolsquark.com/tools/occupational-burnout-level-test.html", title: "Occupational Burnout Self-Check", description: "Review work-related exhaustion and detachment patterns.", action: "Review Work Strain" }
   ],
   faq: [
     { question: "Is this a validated stress scale?", answer: "No. It is an original ToolsQuark educational self-check with editorial result patterns, not a validated clinical instrument." },
     { question: "Why are context questions not scored?", answer: "Duration, source, and interference help interpret a pattern but are not interchangeable with symptom frequency. Keeping them separate avoids hiding unlike information inside one total." },
+    { question: "What is the difference between stress and anxiety?", answer: "Stress often tracks a demand, pressure, or overload pattern. Anxiety or high-alert patterns can involve persistent worry, trigger sensitivity, and body activation even when the immediate demand is unclear or has passed." },
+    { question: "Why do I feel stressed when nothing serious is happening?", answer: "Stress can build from stacked minor demands, uncertainty, poor sleep, conflict, caregiving, or limited recovery. The dimension pattern can help you see whether overload, control strain, reactivity, or daily impact is most prominent." },
+    { question: "Can poor sleep increase stress?", answer: "Yes. Sleep disruption can reduce recovery, patience, concentration, and perceived control. If sleep is a major part of the pattern, compare this result with the Sleep Pattern Self-Check." },
+    { question: "How do I know if I am overloaded?", answer: "Overload is more likely when responsibilities repeatedly exceed available time, energy, or attention. The overload dimension focuses on this demand-capacity mismatch rather than on mood alone." },
     { question: "When should I seek support?", answer: "Consider qualified support when stress persists, intensifies, interferes with ordinary responsibilities, or makes you feel unable to stay safe." }
   ],
   contentSections: [
     { title: "What Version 2.0 Measures", body: `<p>The 12 scored items cover perceived overload, control strain, stress reactivity, and daily-life impact. Each dimension is supported by three items using the same 14-day frequency scale.</p><p>Three optional context questions and two protective-factor questions are reported separately. They do not silently increase or reduce the core score.</p>` },
     { title: "How Scoring Works", body: `<p>Scored answers use values from 0 to 4 and produce an editorial total from 0 to 48. Dimension labels summarize response frequency, not population standing or medical risk.</p><div class="note-box">The result patterns are editorial groupings. Version 2.0 has not undergone psychometric validation and cannot diagnose a stress-related condition.</div>` },
+    { title: "How To Read Stress Versus Anxiety", body: `<p>If overload and control strain are highest, the pattern may point toward demand management, boundaries, or recovery conditions. If reactivity stays high after pressure passes, compare the result with high-alert, worry, and trigger-sensitivity patterns.</p><p>The goal is not to label the experience. It is to identify which part of the pattern deserves the first practical next step.</p>` },
     { title: "How To Use The Result", body: `<p>Review the dimension with the most frequent experiences, the reported duration, and whether ordinary life is being affected. A practical next step should address either one demand or one recovery condition, not add a long list of new obligations.</p>` },
     { title: "Privacy And Support", body: `<p>Answers and scoring remain in the browser. If stress is making basic responsibilities difficult, seek qualified support regardless of the displayed pattern. Use urgent local help if you may be unable to stay safe.</p>` }
   ],

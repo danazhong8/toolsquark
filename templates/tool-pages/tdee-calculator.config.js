@@ -1,9 +1,9 @@
 module.exports = {
   slug: "tdee-calculator",
-  title: "TDEE Calculator | Estimate Daily Calories by Activity Level",
-  description: "Estimate maintenance energy from BMR, body metrics, age, sex, and activity level, then calibrate the estimate against your real trend.",
+  title: "TDEE Calculator: Estimate Maintenance Calories by Activity Level",
+  description: "Estimate maintenance calories from BMR, body metrics, age, sex, and activity level. See the formula, multipliers, example, limits, and calibration steps.",
   h1: "TDEE Calculator",
-  hero: "Estimate the calories your body burns in a full day by combining resting metabolism with your usual activity level.",
+  hero: "Use this TDEE calculator to estimate maintenance calories from age, sex, height, weight, and activity level, then treat the result as a starting point you can calibrate with your real trend.",
   schemaName: "Privacy-First TDEE Calculator",
   schemaDescription: "A browser-side Total Daily Energy Expenditure calculator focused on estimated maintenance energy and real-world calibration.",
   lastUpdated: "June 22, 2026",
@@ -31,6 +31,12 @@ module.exports = {
       title: "Daily Calorie Goal Calculator",
       description: "Apply a visible deficit, maintenance, or surplus adjustment after estimating TDEE.",
       action: "Plan A Goal"
+    },
+    {
+      href: "https://toolsquark.com/tools/macro-calculator.html",
+      title: "Macro Calculator",
+      description: "Turn a calorie target into protein, fat, and carbohydrate grams.",
+      action: "Split Macros"
     }
   ],
   faq: [
@@ -53,6 +59,18 @@ module.exports = {
     {
       question: "Why is my real maintenance different from this estimate?",
       answer: "TDEE formulas cannot fully capture genetics, non-exercise movement, adaptive metabolism, training intensity, sleep, illness, or tracking accuracy. Treat the result as a starting estimate and refine it with real-world progress data."
+    },
+    {
+      question: "Is TDEE the same as BMR?",
+      answer: "No. BMR estimates resting energy needs before daily activity is added. TDEE starts with BMR, then applies an activity multiplier to estimate total daily maintenance energy."
+    },
+    {
+      question: "Can I use TDEE for weight loss?",
+      answer: "Yes, but indirectly. TDEE is the maintenance estimate. To plan fat loss, use a moderate deficit below that estimate or open the Daily Calorie Goal Calculator to apply a visible adjustment."
+    },
+    {
+      question: "Why is my TDEE different from my fitness app?",
+      answer: "Apps may use wearable movement data, different formulas, exercise logs, or personalized history. This calculator uses a transparent equation and broad activity multipliers, so compare it with your multi-week trend."
     }
   ],
   references: [
@@ -71,6 +89,10 @@ module.exports = {
     {
       title: "How To Use Your Result",
       body: `<ul><li><strong>Maintenance:</strong> start near your TDEE and monitor body weight trend.</li><li><strong>Fat loss:</strong> a moderate deficit often starts around 300 to 500 calories below TDEE.</li><li><strong>Muscle gain:</strong> a modest surplus often starts around 150 to 300 calories above TDEE.</li></ul><div class="note-box">Avoid using one calculation as a permanent prescription. Track your average weight, performance, hunger, and energy for a few weeks, then adjust gradually.</div>`
+    },
+    {
+      title: "When This Estimate Is Useful",
+      body: `<p>TDEE is useful when you need a maintenance-calorie starting point before choosing a deficit, surplus, or macro split. It is especially helpful when you understand that activity level is an assumption rather than a measured value.</p><p>It is less useful when medical nutrition needs, pregnancy, breastfeeding, growth, recovery from illness, or eating-disorder history require individualized guidance.</p>`
     },
     {
       title: "Example Calculation",

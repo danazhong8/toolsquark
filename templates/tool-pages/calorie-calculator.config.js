@@ -1,9 +1,9 @@
 module.exports = {
   slug: "calorie-calculator",
-  title: "Daily Calorie Goal Calculator | Deficit, Maintenance & Gain",
-  description: "Estimate maintenance calories, then choose a transparent percentage-based target for gradual fat loss, maintenance, or muscle gain.",
+  title: "Daily Calorie Goal Calculator: Deficit, Maintenance, or Lean Gain",
+  description: "Estimate maintenance calories, then choose a transparent deficit, maintenance, or surplus target. See the formula, goal adjustment, example, and limits.",
   h1: "Daily Calorie Goal Calculator",
-  hero: "Estimate maintenance energy, then turn it into a visible percentage-based calorie target for your current goal.",
+  hero: "Use this daily calorie goal calculator after estimating maintenance energy, then choose a visible percentage adjustment for gradual fat loss, maintenance, or lean gain.",
   schemaName: "Privacy-First Calorie Calculator",
   schemaDescription: "A browser-side daily calorie goal planner using estimated maintenance energy and an explicit percentage adjustment.",
   lastUpdated: "June 22, 2026",
@@ -31,6 +31,12 @@ module.exports = {
       title: "Macro Calculator",
       description: "Distribute this calorie target across adjustable protein, fat, and carbohydrate grams.",
       action: "Split Macros"
+    },
+    {
+      href: "https://toolsquark.com/tools/calorie-deficit-timeline-calculator.html",
+      title: "Calorie Deficit Timeline",
+      description: "Estimate the time implied by a chosen daily deficit without treating it as a promise.",
+      action: "Estimate Timeline"
     }
   ],
   faq: [
@@ -53,6 +59,18 @@ module.exports = {
     {
       question: "How often should I adjust my calorie target?",
       answer: "Use the estimate for two to four weeks, track average body weight and energy, then adjust gradually. Daily scale changes are noisy, so weekly averages are more useful than single weigh-ins."
+    },
+    {
+      question: "Is a 20% deficit always better than a 10% deficit?",
+      answer: "No. A larger deficit can be harder to sustain and may affect training, hunger, mood, or adherence. The smallest adjustment that produces a useful trend is usually easier to evaluate."
+    },
+    {
+      question: "Can I use this calculator for muscle gain?",
+      answer: "You can use the +5% or +10% options as a starting surplus, but muscle gain also depends on training, protein intake, recovery, and how your body weight changes over several weeks."
+    },
+    {
+      question: "Should I eat the same calorie target every day?",
+      answer: "You can, but weekly average intake usually matters more than a perfectly identical day. Some people prefer a consistent target, while others adjust around training, appetite, or schedule."
     }
   ],
   references: [
@@ -71,6 +89,10 @@ module.exports = {
     {
       title: "Choosing A Goal Option",
       body: `<ul><li><strong>Maintenance:</strong> keeps the estimated TDEE unchanged.</li><li><strong>Gentle fat loss:</strong> applies a 10% reduction.</li><li><strong>Moderate fat loss:</strong> applies a 20% reduction and deserves more caution.</li><li><strong>Lean gain:</strong> applies a 5% increase.</li><li><strong>Higher surplus:</strong> applies a 10% increase.</li></ul><div class="note-box">Choose the smallest adjustment that supports the goal, then calibrate against hunger, energy, training, and multi-week trend.</div>`
+    },
+    {
+      title: "When This Target Is Useful",
+      body: `<p>This calculator is most useful when you already want a starting intake target rather than only a maintenance estimate. It makes the adjustment visible, so you can see whether the result comes from maintenance, a deficit, or a surplus.</p><p>It is not a meal plan, medical nutrition prescription, or promise of weekly weight change. Real-world results depend on adherence, food tracking accuracy, water changes, training, sleep, and individual metabolism.</p>`
     },
     {
       title: "Example Calorie Plan",

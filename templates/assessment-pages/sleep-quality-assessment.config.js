@@ -3,10 +3,10 @@ const { createV2Config, withSkip } = require("./v2-assessment-factory");
 module.exports = createV2Config({
   key: "sleep",
   slug: "sleep-quality-assessment",
-  title: "Sleep Pattern Self-Check | Private 28-Day Review",
-  description: "Review sleep initiation, continuity, restorative quality, and daytime impact with a private 12-item original self-check.",
+  title: "Sleep Pattern Self-Check: Review Sleep Quality And Daytime Impact",
+  description: "Review falling asleep, sleep continuity, restorative quality, daytime tiredness, and safety concerns with a private 28-day sleep pattern self-check.",
   h1: "Sleep Pattern Self-Check",
-  hero: "Review how often difficulty falling asleep, interrupted sleep, unrefreshing sleep, and daytime effects appeared during the past four weeks.",
+  hero: "Use this private sleep pattern self-check to review falling asleep, interrupted sleep, unrefreshing rest, daytime tiredness, and safety concerns across the past four weeks.",
   shareDescription: "A private 28-day self-check for sleep initiation, continuity, restorative quality, and daytime impact.",
   socialFile: "sleep-pattern-self-check.png",
   socialAccent: "#2563eb",
@@ -95,17 +95,22 @@ module.exports = createV2Config({
     { title: "Sleep Deprivation and Deficiency", publisher: "National Heart, Lung, and Blood Institute", href: "https://www.nhlbi.nih.gov/health/sleep-deprivation" }
   ],
   related: [
+    { href: "https://toolsquark.com/tools/sleep-calculator.html", title: "Sleep Schedule Calculator", description: "Plan bedtime or wake time when schedule timing is the main question.", action: "Plan Schedule" },
     { href: "https://toolsquark.com/tools/stress-index-test.html", title: "Stress Pattern Self-Check", description: "Review whether overload or reactivity overlaps with sleep disruption.", action: "Review Stress" },
     { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety And High-Alert Pattern", description: "Review whether high-alert responses are affecting rest.", action: "Review Alertness" }
   ],
   faq: [
     { question: "Is this a validated sleep questionnaire?", answer: "No. It is an original ToolsQuark educational self-check and is not the Pittsburgh Sleep Quality Index." },
     { question: "Can this diagnose insomnia or sleep apnea?", answer: "No. Diagnosis requires appropriate clinical assessment, and breathing pauses or severe daytime sleepiness deserve medical attention." },
-    { question: "Is sleep duration the same as sleep quality?", answer: "No. Timing, continuity, restoration, breathing, and daytime function also matter." }
+    { question: "Is sleep duration the same as sleep quality?", answer: "No. Timing, continuity, restoration, breathing, and daytime function also matter." },
+    { question: "Why do I wake up tired after enough sleep?", answer: "Sleep may feel unrefreshing when continuity, timing, stress, breathing, substances, illness, or daytime schedule are affecting restoration. Duration alone does not explain every sleep pattern." },
+    { question: "What is poor sleep continuity?", answer: "Poor continuity means sleep is interrupted, fragmented, or difficult to resume after waking. This can affect daytime function even when total time in bed seems adequate." },
+    { question: "Can stress affect sleep quality?", answer: "Yes. Stress can delay sleep, increase awakenings, reduce restoration, and make daytime tiredness feel worse. Compare this result with the Stress Pattern Self-Check when both patterns appear." },
+    { question: "When should I talk to a doctor about sleep problems?", answer: "Seek appropriate assessment for breathing pauses, gasping, severe daytime sleepiness, near-miss accidents, persistent insomnia, or sleep problems that substantially affect daily life." }
   ],
   validationLimit: "It cannot diagnose insomnia, sleep apnea, circadian disorders, or another sleep condition.",
   limitsTitle: "Symptoms That Need More Than A Checklist",
-  limitsBody: `<p>Breathing pauses, gasping, severe daytime sleepiness, near-miss accidents, persistent insomnia, or other concerning symptoms require appropriate medical assessment. Avoid driving or operating equipment when dangerously sleepy.</p>`,
-  actionBody: `<p>Use the most frequent dimension to choose one practical change, then observe the pattern over time. Seek qualified assessment when difficulties persist, cause daytime impairment, or include breathing or safety concerns.</p>`,
+  limitsBody: `<p>Breathing pauses, gasping, severe daytime sleepiness, near-miss accidents, persistent insomnia, or other concerning symptoms require appropriate medical assessment. Avoid driving or operating equipment when dangerously sleepy.</p><p>This page reviews patterns; it does not measure sleep stages, diagnose insomnia, or determine whether a schedule, breathing issue, stress pattern, or medical factor is the main cause.</p>`,
+  actionBody: `<p>Use the most frequent dimension to choose one practical change, then observe the pattern over time. If initiation is highest, focus on wind-down timing. If continuity is highest, track awakenings and environment. If restoration or daytime impact is highest, compare duration, schedule regularity, breathing concerns, and stress.</p><p>Seek qualified assessment when difficulties persist, cause daytime impairment, or include breathing or safety concerns.</p>`,
   disclaimer: "This educational tool cannot diagnose a sleep disorder or determine whether it is safe to drive."
 });
