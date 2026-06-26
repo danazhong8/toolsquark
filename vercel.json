@@ -141,6 +141,11 @@
       "permanent": true
     },
     {
+      "source": "/sleep-debt-calculator.html",
+      "destination": "/tools/sleep-debt-calculator.html",
+      "permanent": true
+    },
+    {
       "source": "/sleep-quality-assessment.html",
       "destination": "/tools/sleep-quality-assessment.html",
       "permanent": true

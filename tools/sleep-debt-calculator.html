@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://toolsquark.com/tools/sleep-debt-calculator.html">
+<title>Sleep Debt Calculator | Estimate Your Weekly Sleep Deficit</title>
+<meta name="description" content="Calculate sleep debt from your target sleep, recent average sleep, and number of nights. Estimate your weekly sleep deficit with private browser-side math.">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Privacy-First Sleep Debt Calculator",
+    "url": "https://toolsquark.com/tools/sleep-debt-calculator.html",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A browser-side sleep debt calculator that estimates accumulated sleep deficit from target sleep, actual average sleep, and review period.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolsquark.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Lifestyle Tools",
+        "item": "https://toolsquark.com/lifestyle.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Sleep Debt Calculator",
+        "item": "https://toolsquark.com/tools/sleep-debt-calculator.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is sleep debt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sleep debt is the gap between how much sleep you aimed to get and how much sleep you actually got over a period of time. This calculator estimates that gap in hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate weekly sleep debt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Subtract your recent average sleep from your target sleep, then multiply the nightly gap by the number of nights. If you slept more than your target, this calculator shows zero debt rather than a negative number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much sleep should adults target?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The CDC notes that most adults need at least 7 hours of sleep per night. Individual needs vary, so use a realistic target that fits your age, health, and daytime functioning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I repay sleep debt in one weekend?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Extra sleep can help after short restriction, but a large or repeated deficit is usually better addressed by improving the regular schedule rather than relying only on catch-up days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can this diagnose a sleep disorder?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This is an educational planning estimate. Persistent insomnia, loud snoring, breathing pauses, unsafe sleepiness, or major daytime impairment deserves qualified evaluation."
+        }
+      }
+    ]
+  }
+]
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--underweight:#38bdf8;--normal:#22c55e;--overweight:#eab308;--obese:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px}.container{max-width:1240px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+.hero{padding:22px 0 28px;margin-bottom:28px;border-bottom:1px solid #dbe3ec}.hero h1{font-size:40px;font-weight:850;margin-bottom:10px;letter-spacing:0;line-height:1.15}.hero p{font-size:17px;color:#475569;max-width:820px}.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}.main-column,.side-column{min-width:0}.card{background:white;padding:30px;border-radius:8px;margin-bottom:24px;border:1px solid #e2e8f0;box-shadow:0 3px 14px rgba(15,23,42,.04)}.card h3{font-size:1.25rem;font-weight:800;margin-bottom:20px;color:#1e293b}.side-card{padding:22px}.side-card h3{font-size:1.05rem;margin-bottom:14px}.side-sticky{position:static}.fact-list{list-style:none;display:grid;gap:10px}.fact-list li{display:flex;justify-content:space-between;gap:14px;padding-bottom:10px;border-bottom:1px solid #eef2f7;font-size:13px}.fact-list li:last-child{border-bottom:none;padding-bottom:0}.fact-list span{color:var(--text-muted)}.fact-list strong{text-align:right;color:#334155}.page-nav{list-style:none;display:grid;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid #e2e8f0}.page-nav a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:750}.page-nav a:hover{text-decoration:underline}
+.unit-switcher{display:flex;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:25px}.unit-tab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:700;color:var(--text-muted);border-radius:9px;cursor:pointer;transition:.2s}.unit-tab.active{background:white;color:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,.05)}
+.input-row{display:flex;gap:16px}.input-group{margin-bottom:20px;flex:1}.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px}.input-wrapper{position:relative;display:flex;align-items:center}.input-wrapper input,.input-wrapper select{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;background:white;color:var(--primary)}.input-wrapper input:focus,.input-wrapper select:focus{border-color:#2563eb;background:#eff6ff}.unit-badge{position:absolute;right:15px;color:var(--text-muted);font-size:14px;font-weight:600;pointer-events:none}
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,.2)}.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+.result-box{border-top:1px solid #dbe3ec;padding:28px 0 0;margin-top:30px;text-align:center}.result-val{font-size:54px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:0}.result-unit{font-size:20px;font-weight:700;color:var(--text-muted);margin-left:5px}.result-status{font-size:22px;font-weight:800;margin-bottom:15px}.bmi-gauge-container{max-width:500px;margin:20px auto;position:relative}.bmi-gauge-bar{height:12px;background:linear-gradient(to right,var(--underweight) 0%,var(--normal) 35%,var(--overweight) 70%,var(--obese) 100%);border-radius:6px}.bmi-pointer{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--primary);top:-14px;transform:translateX(-50%);transition:left .5s cubic-bezier(.175,.885,.32,1.275)}.bmi-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);font-weight:bold;margin-top:6px;padding:0 4px}.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:650px;line-height:1.7}.suggestion-box{background:#f8fafc;border-left:4px solid var(--accent);padding:18px;border-radius:6px;text-align:left;margin-top:20px}.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800}.suggestion-box p{color:#475569;font-size:14px}.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.macro-pill{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:16px}.macro-pill strong{display:block;font-size:22px;color:#1e293b}.macro-pill span{font-size:13px;color:var(--text-muted);font-weight:700}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{display:block;color:var(--accent);font-weight:750;text-decoration:none;line-height:1.4}.reference-list a:hover{text-decoration:underline}.reference-list span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}footer a:hover{text-decoration:underline}
+.side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.card{padding:22px 18px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; <span>Sleep Debt Calculator</span></div>
+    <div class="hero"><h1>Sleep Debt Calculator</h1><p>Estimate your recent sleep debt from a target sleep duration, your actual average sleep, and the number of nights you want to review.</p></div>
+    <div class="workspace-grid">
+    <main class="main-column">
+    <div class="card" id="calculator">
+
+        <div class="input-row">
+            <div class="input-group">
+                <label for="input_target_sleep">Target Sleep Per Night</label>
+                <div class="input-wrapper">
+                    <input type="number" id="input_target_sleep" value="8" min="4" max="12" step="0.25">
+                    <span class="unit-badge">hours</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="input_actual_sleep">Recent Average Sleep</label>
+                <div class="input-wrapper">
+                    <input type="number" id="input_actual_sleep" value="6.5" min="0" max="14" step="0.25">
+                    <span class="unit-badge">hours</span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="input_nights">Review Period</label>
+            <div class="input-wrapper">
+                <select id="input_nights">
+                    <option value="3">Last 3 nights</option>
+                    <option value="5">Last 5 nights</option>
+                    <option value="7" selected>Last 7 nights</option>
+                    <option value="14">Last 14 nights</option>
+                </select>
+            </div>
+        </div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Sleep Debt</button>
+        <div id="result-area" class="result-box" style="display:none;">
+
+            <div class="result-val"><span id="calc-output">0</span><span class="result-unit">hours</span></div>
+            <div class="result-status" id="calc-status">Estimated Sleep Debt</div>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="suggestion-box">
+                <h4>Recovery Planning Note</h4>
+                <p id="calc-suggestion"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What This Calculator Estimates</h3>
+        <p>This sleep debt calculator estimates the accumulated gap between your target sleep duration and your recent average sleep. It is designed for quick planning, not sleep-stage analysis or diagnosis.</p><p>Use a recent average from a sleep diary, wearable, or honest estimate. A typical week is usually more useful than a single unusually bad night.</p>
+    </div>
+    <div class="content-section">
+        <h3>Sleep Debt Formula</h3>
+        <div class="formula-box">Nightly sleep gap = max(0, target sleep - actual average sleep)<br>Total sleep debt = nightly sleep gap x number of nights</div><p>The calculator never reports negative sleep debt. If your average sleep meets or exceeds the target, the result is shown as zero for the selected review period.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>If your target is 8 hours, your recent average is 6.5 hours, and you review 7 nights, the nightly gap is 1.5 hours. The estimated sleep debt is 1.5 x 7 = 10.5 hours.</p>
+    </div>
+    <div class="content-section">
+        <h3>How To Use The Result</h3>
+        <p>A small deficit may point to one or two short nights. A larger repeated deficit suggests the regular schedule may need adjustment, such as an earlier wind-down, a more realistic wake time, or fewer late-night obligations.</p><div class="note-box">Treat the number as a planning signal. Sleep quality, timing, awakenings, consistency, and daytime alertness can matter as much as total hours.</div>
+    </div>
+    <div class="content-section">
+        <h3>When Sleep Debt Is Not The Whole Story</h3>
+        <p>This tool cannot explain why sleep is short or unrefreshing. Stress, caffeine timing, shift work, caregiving, pain, breathing issues, medication, alcohol, and irregular schedules can all affect sleep. Seek qualified support when sleep problems persist or affect safety.</p>
+    </div></div>
+    <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>What is sleep debt?</h4>
+            <p>Sleep debt is the gap between how much sleep you aimed to get and how much sleep you actually got over a period of time. This calculator estimates that gap in hours.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How do I calculate weekly sleep debt?</h4>
+            <p>Subtract your recent average sleep from your target sleep, then multiply the nightly gap by the number of nights. If you slept more than your target, this calculator shows zero debt rather than a negative number.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How much sleep should adults target?</h4>
+            <p>The CDC notes that most adults need at least 7 hours of sleep per night. Individual needs vary, so use a realistic target that fits your age, health, and daytime functioning.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I repay sleep debt in one weekend?</h4>
+            <p>Extra sleep can help after short restriction, but a large or repeated deficit is usually better addressed by improving the regular schedule rather than relying only on catch-up days.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can this diagnose a sleep disorder?</h4>
+            <p>No. This is an educational planning estimate. Persistent insomnia, loud snoring, breathing pauses, unsafe sleepiness, or major daytime impairment deserves qualified evaluation.</p>
+        </div></div>
+    </main>
+    <aside class="side-column" aria-label="Tool information">
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card" id="related"><h3>Plan The Next Step</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/tools/sleep-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Sleep Schedule Calculator</h4>
+                    <p>Turn a sleep target into a practical bedtime or wake-time plan.</p>
+                </div>
+                <span class="action-text">Plan Sleep &rarr;</span>
+            </a>
+            <a href="https://toolsquark.com/tools/sleep-quality-assessment.html" class="recommend-card">
+                <div>
+                    <h4>Sleep Pattern Self-Check</h4>
+                    <p>Review sleep continuity, restoration, and daytime impact.</p>
+                </div>
+                <span class="action-text">Review Sleep &rarr;</span>
+            </a></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.cdc.gov/sleep/about/index.html" target="_blank" rel="noopener noreferrer">About Sleep</a><span>Centers for Disease Control and Prevention</span></li><li><a href="https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits" target="_blank" rel="noopener noreferrer">Healthy Sleep Habits</a><span>National Heart, Lung, and Blood Institute</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool subtracts recent average sleep from target sleep, floors the nightly gap at zero, then multiplies the gap by the selected number of nights.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Sleep debt is an educational estimate, not a diagnosis. It does not evaluate sleep disorders, sleep quality, circadian rhythm, or clinical risk.</p><div class="updated-row">Last updated: June 26, 2026</div></div></div>
+    </aside>
+    </div>
+    <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
+</div>
+<script>
+
+function formatHours(value) {
+    const hours = Math.floor(value);
+    const minutes = Math.round((value - hours) * 60);
+    if (minutes === 0) return hours + ' hours';
+    return hours + ' hours ' + minutes + ' minutes';
+}
+function calculateNow() {
+    const target = parseFloat(document.getElementById('input_target_sleep').value);
+    const actual = parseFloat(document.getElementById('input_actual_sleep').value);
+    const nights = parseInt(document.getElementById('input_nights').value, 10);
+    if (isNaN(target) || isNaN(actual) || isNaN(nights) || target < 4 || target > 12 || actual < 0 || actual > 14) {
+        alert('Please enter a target between 4 and 12 hours and a recent average between 0 and 14 hours.');
+        return;
+    }
+    const nightlyGap = Math.max(0, target - actual);
+    const debt = nightlyGap * nights;
+    let status = 'No Estimated Sleep Debt';
+    let suggestion = 'Your recent average meets the target you entered. Keep checking sleep quality, consistency, and daytime alertness.';
+    if (debt > 0 && debt < 5) {
+        status = 'Small Estimated Sleep Debt';
+        suggestion = 'A small deficit may improve with one or two earlier nights, but keep the regular schedule realistic.';
+    } else if (debt < 10 && debt > 0) {
+        status = 'Moderate Estimated Sleep Debt';
+        suggestion = 'Consider moving bedtime earlier in small steps and protecting wake-time consistency for the next week.';
+    } else if (debt >= 10) {
+        status = 'Larger Estimated Sleep Debt';
+        suggestion = 'A larger repeated gap is usually a schedule-design problem, not just a weekend catch-up problem. Review timing, obligations, caffeine, stress, and recovery.';
+    }
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = debt.toFixed(debt % 1 ? 1 : 0);
+    document.getElementById('calc-status').innerText = status;
+    document.getElementById('calc-desc').innerText = 'Your nightly sleep gap is ' + formatHours(nightlyGap) + ' across ' + nights + ' nights, for an estimated total deficit of ' + formatHours(debt) + '.';
+    document.getElementById('calc-suggestion').innerText = suggestion;
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+const calculatorSlug = "sleep-debt-calculator";
+let calculatorStarted = false;
+let calculatorCompleted = false;
+
+function trackCalculatorEvent(name) {
+    const safeData = { tool: calculatorSlug, type: 'calculator' };
+    window.dispatchEvent(new CustomEvent('toolsquark:tool', { detail: { name, data: safeData } }));
+    if (typeof window.va === 'function') window.va('event', { name, data: safeData });
+}
+
+function markCalculatorStarted() {
+    if (calculatorStarted) return;
+    calculatorStarted = true;
+    trackCalculatorEvent('tool_start');
+}
+
+const calculator = document.getElementById('calculator');
+const calculateButton = calculator.querySelector('.calc-submit-btn');
+calculator.addEventListener('input', markCalculatorStarted, { once: true });
+calculator.addEventListener('change', markCalculatorStarted, { once: true });
+calculateButton.addEventListener('click', () => {
+    markCalculatorStarted();
+    window.requestAnimationFrame(() => {
+        const resultArea = document.getElementById('result-area');
+        if (!calculatorCompleted && resultArea && window.getComputedStyle(resultArea).display !== 'none') {
+            calculatorCompleted = true;
+            trackCalculatorEvent('tool_complete');
+        }
+    });
+});
+</script>
+</body>
+</html>
