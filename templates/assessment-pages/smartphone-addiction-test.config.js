@@ -3,10 +3,10 @@ const { createV2Config } = require("./v2-assessment-factory");
 module.exports = createV2Config({
   key: "phoneuse",
   slug: "smartphone-addiction-test",
-  title: "Smartphone Use Pattern Self-Check | Private 30-Day Review",
-  description: "Review automatic checking, stopping control, cue reactivity, and device-related displacement with a private 12-item original self-check.",
+  title: "Smartphone Use Pattern Self-Check: Checking, Control, and Displacement",
+  description: "Review automatic phone checking, stopping control, notification reactivity, and activity displacement with a private 30-day smartphone use self-check.",
   h1: "Smartphone Use Pattern Self-Check",
-  hero: "Review how often automatic checking, difficulty stopping, notification reactivity, and phone use displacing intended activity appeared during the past 30 days.",
+  hero: "Use this private smartphone use self-check to review automatic checking, difficulty stopping, notification reactivity, and phone use replacing sleep, work, routines, or in-person attention.",
   shareDescription: "A private 30-day self-check for automatic phone checking, stopping control, cue reactivity, and life displacement.",
   socialFile: "smartphone-use-pattern-self-check.png",
   socialAccent: "#0891b2",
@@ -65,15 +65,20 @@ module.exports = createV2Config({
   ],
   related: [
     { href: "https://toolsquark.com/tools/social-media-addiction-index.html", title: "Social Media Use Pattern", description: "Review feed capture, social evaluation, and comparison inside social apps.", action: "Review Social Apps" },
-    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Pattern Self-Check", description: "Review whether phone use overlaps with recent sleep disruption.", action: "Review Sleep" }
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Pattern Self-Check", description: "Review whether phone use overlaps with recent sleep disruption.", action: "Review Sleep" },
+    { href: "https://toolsquark.com/tools/focus-attention-diagnostic.html", title: "Focus And Attention Pattern", description: "Review whether phone cues overlap with task switching or attention strain.", action: "Review Focus" }
   ],
   faq: [
     { question: "Does frequent phone use mean addiction?", answer: "No. Frequency alone does not establish addiction. Control, distress, displacement, and practical consequences provide more context." },
     { question: "Is this a validated smartphone addiction scale?", answer: "No. It is an original ToolsQuark educational self-check." },
-    { question: "Does this test measure social media specifically?", answer: "No. It covers device-level behavior across phone activities. The separate social media self-check focuses on feeds, evaluation, and comparison." }
+    { question: "Does this test measure social media specifically?", answer: "No. It covers device-level behavior across phone activities. The separate social media self-check focuses on feeds, evaluation, and comparison." },
+    { question: "What is automatic phone checking?", answer: "Automatic checking means unlocking, opening, or returning to the phone before there is a clear purpose. It is more about habit loops and cues than total screen time alone." },
+    { question: "Why is stopping control important?", answer: "Stopping control shows whether a phone session ends when intended. A short check that repeatedly becomes an extended session may matter more than the number of unlocks." },
+    { question: "Can phone use affect sleep?", answer: "Yes. Phone use can delay bedtime, keep attention activated, or replace wind-down routines. If sleep is affected, compare this result with the Sleep Pattern Self-Check." },
+    { question: "What is a practical first step?", answer: "Start with one cue or boundary: silence nonessential notifications, move the phone out of sight for one priority block, or protect a phone-free period before sleep." }
   ],
   validationLimit: "It cannot diagnose behavioral addiction or determine why phone use is difficult to change.",
-  limitsBody: `<p>Work demands, caregiving, navigation, accessibility, social connection, and other necessary uses can increase screen time without implying loss of control. The most useful context is what the phone use is doing and what it displaces.</p>`,
-  actionBody: `<p>Use the most frequent dimension to change one cue, stopping condition, or phone-free boundary. Seek support when use repeatedly causes serious harm or remains difficult to control despite sustained attempts.</p>`,
+  limitsBody: `<p>Work demands, caregiving, navigation, accessibility, social connection, and other necessary uses can increase screen time without implying loss of control. The most useful context is what the phone use is doing and what it displaces.</p><p>This self-check is not a diagnosis. It separates automatic checking, stopping control, cue reactivity, and displacement so the next adjustment can be more specific.</p>`,
+  actionBody: `<p>Use the most frequent dimension to change one cue, stopping condition, or phone-free boundary. If checking is highest, add one intentional unlock purpose. If displacement is highest, protect the displaced activity first, such as sleep, work, or in-person time.</p><p>Seek support when use repeatedly causes serious harm or remains difficult to control despite sustained attempts.</p>`,
   disclaimer: "This educational tool cannot diagnose smartphone addiction or determine whether a specific amount of screen time is harmful."
 });

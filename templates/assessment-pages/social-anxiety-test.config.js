@@ -3,10 +3,10 @@ const { createV2Config } = require("./v2-assessment-factory");
 module.exports = createV2Config({
   key: "socialfear",
   slug: "social-anxiety-test",
-  title: "Social Anxiety Pattern Self-Check | Private 14-Day Review",
-  description: "Review anticipated evaluation, avoidance, self-monitoring, and post-event review with a private 12-item original self-check.",
+  title: "Social Anxiety Pattern Self-Check: Evaluation Fear And Avoidance",
+  description: "Review fear of judgment, social avoidance, self-monitoring, and post-event replay with a private 14-day social anxiety pattern self-check.",
   h1: "Social Anxiety Pattern Self-Check",
-  hero: "Review how often fear of evaluation, avoidance, self-monitoring, and replaying interactions appeared during the past two weeks.",
+  hero: "Use this private social anxiety pattern self-check to review fear of judgment, avoidance, self-monitoring, and replaying interactions across the past two weeks.",
   shareDescription: "A private 14-day self-check for anticipated evaluation, avoidance, self-monitoring, and post-event review.",
   socialFile: "social-anxiety-pattern-self-check.png",
   socialAccent: "#7c3aed",
@@ -62,16 +62,21 @@ module.exports = createV2Config({
     { title: "Social Anxiety", publisher: "National Health Service", href: "https://www.nhs.uk/mental-health/conditions/social-anxiety/" }
   ],
   related: [
+    { href: "https://toolsquark.com/tools/anxiety-hyperarousal-assessment.html", title: "Anxiety And High-Alert Pattern", description: "Review whether social fear appears with broader worry, tension, or alertness.", action: "Review Alertness" },
     { href: "https://toolsquark.com/tools/loneliness-level-test.html", title: "Connection And Loneliness Pattern", description: "Review whether social fear is affecting connection or support.", action: "Review Connection" },
     { href: "https://toolsquark.com/tools/cognitive-overthinking-test.html", title: "Overthinking Pattern Self-Check", description: "Review whether post-event replay is part of a broader thought loop.", action: "Review Thought Loops" }
   ],
   faq: [
     { question: "Is social anxiety the same as shyness?", answer: "No. Shyness does not necessarily involve persistent fear, avoidance, distress, or meaningful impairment." },
     { question: "Is this a validated social anxiety screener?", answer: "No. It is an original ToolsQuark educational self-check." },
+    { question: "What does fear of evaluation mean?", answer: "Fear of evaluation means expecting negative judgment before, during, or after an interaction. It can show up as worry about sounding awkward, appearing embarrassed, or being judged for ordinary behavior." },
+    { question: "Why do I replay conversations after social situations?", answer: "Post-event review can be an attempt to find mistakes or prevent future embarrassment. It becomes less useful when the same interaction is replayed without new information or a clear next step." },
+    { question: "Can social anxiety affect connection?", answer: "Yes. Avoidance, self-monitoring, or fear of judgment can reduce chances for support and belonging, even when the person wants connection." },
+    { question: "How is this different from general anxiety?", answer: "This page focuses on social settings: evaluation fear, avoidance, self-monitoring, and post-event review. The Anxiety And High-Alert Self-Check covers broader worry, physical alertness, and trigger sensitivity." },
     { question: "When may support help?", answer: "Consider qualified support when social fear persists, causes significant distress, or restricts important parts of life." }
   ],
   validationLimit: "It cannot diagnose social anxiety disorder, autism, trauma-related conditions, or another cause of social discomfort.",
-  limitsBody: `<p>Social discomfort can reflect temperament, unfamiliarity, exclusion, trauma, communication differences, culture, autism, mood, or other circumstances. This checklist cannot determine a cause or evaluate every social context.</p>`,
-  actionBody: `<p>Use the most frequent dimension to choose one manageable experiment: test a prediction, reduce avoidance gradually, redirect attention outward, or close post-event review. Seek qualified support when fear remains persistent or limiting.</p>`,
+  limitsBody: `<p>Social discomfort can reflect temperament, unfamiliarity, exclusion, trauma, communication differences, culture, autism, mood, or other circumstances. This checklist cannot determine a cause or evaluate every social context.</p><p>The result is most useful when it points to a specific pattern: anticipated judgment, avoidance, self-monitoring, or post-event review.</p>`,
+  actionBody: `<p>Use the most frequent dimension to choose one manageable experiment: test a prediction, reduce avoidance gradually, redirect attention outward, or close post-event review. If avoidance is highest, choose a smaller version of one avoided interaction. If review is highest, write one useful observation and then stop the replay.</p><p>Seek qualified support when fear remains persistent or limiting.</p>`,
   disclaimer: "This educational tool cannot diagnose social anxiety disorder or determine why social situations feel difficult."
 });

@@ -2,10 +2,10 @@ module.exports = {
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   slug: "daily-steps-goal-calculator",
-  title: "Steps Per Day Calculator | Daily Step Goal Walking Plan",
-  description: "Calculate a daily step goal from your current average and build a gradual steps-per-day plan. Includes target options, weekly milestones, and safety notes.",
+  title: "Daily Steps Goal Calculator: Build A Gradual Walking Plan",
+  description: "Calculate a realistic daily step goal from your current average. Build a 4, 6, or 8 week walking plan with milestones, target options, and safety notes.",
   h1: "Daily Steps Goal Calculator",
-  hero: "Create a progressive steps-per-day goal plan from your current daily average, then build toward a practical step target over 4, 6, or 8 weeks.",
+  hero: "Use this daily steps goal calculator to turn your current step average into a gradual walking plan with weekly milestones, realistic target options, and safety notes.",
   schemaName: "Privacy-First Daily Steps Goal Calculator",
   schemaDescription: "A browser-side progressive walking plan that moves from a current step baseline toward one of three disclosed preset targets.",
   lastUpdated: "June 26, 2026",
@@ -50,6 +50,7 @@ module.exports = {
   extraCss: `.input-help{margin-top:7px;font-size:12px;color:var(--text-muted);line-height:1.45}`,
   relatedTitle: "Track Movement Impact",
   related: [
+    { href: "https://toolsquark.com/tools/walking-time-to-steps-calculator.html", title: "Walking Time To Steps", description: "Estimate how many steps a 10, 20, 30, or 60 minute walk may add.", action: "Convert Time" },
     { href: "https://toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Convert your planned steps into estimated calories.", action: "Estimate Burn" },
     { href: "https://toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Adjust hydration around higher activity volume.", action: "Plan Fluids" }
   ],
@@ -62,7 +63,10 @@ module.exports = {
     { question: "What is a good daily step target?", answer: "A good step target depends on your baseline, health status, schedule, and recovery. The presets here are 5,000 steps for a basic movement floor, 8,500 for a moderate daily activity goal, and 12,000 for a higher activity target." },
     { question: "How fast should I increase daily steps?", answer: "A gradual increase is usually easier to sustain and may reduce joint stress. Many people do best by adding volume over several weeks rather than jumping immediately." },
     { question: "Is 10,000 steps required for health?", answer: "No single number fits everyone. Benefits can begin below 10,000 steps, especially when moving from a low baseline. The best target is one you can build toward consistently." },
-    { question: "What if my baseline is already above the goal?", answer: "If your current baseline is above the selected goal, the plan will keep you near your current level rather than reducing your target." }
+    { question: "What if my baseline is already above the goal?", answer: "If your current baseline is above the selected goal, the plan will keep you near your current level rather than reducing your target." },
+    { question: "Should I use my best day or my average steps?", answer: "Use a recent average from several ordinary days. A best day can make the plan too aggressive, while a unusually low day can make the target less useful." },
+    { question: "How can I add steps without a long workout?", answer: "Short walks after meals, walking during calls, parking farther away, taking movement breaks, or adding one 10-minute walk can increase steps without requiring one long session." },
+    { question: "When should I stop increasing steps?", answer: "Pause or repeat a week if pain, unusual shortness of breath, dizziness, excessive fatigue, or schedule strain appears. Progress does not need to be perfectly linear." }
   ],
   contentSections: [
     {
@@ -72,6 +76,10 @@ module.exports = {
     {
       title: "Choosing A Daily Step Target",
       body: `<ul><li><strong>5,000 steps/day:</strong> a basic movement floor for people rebuilding consistency or reducing very low activity.</li><li><strong>8,500 steps/day:</strong> a moderate step target for everyday stamina and less sedentary time.</li><li><strong>12,000 steps/day:</strong> a higher activity target that may suit people who already tolerate regular walking volume.</li></ul><div class="note-box">These are planning presets, not universal requirements. The best daily step goal is high enough to be useful and low enough that you can repeat it without pain or burnout.</div>`
+    },
+    {
+      title: "How To Choose A Realistic Starting Plan",
+      body: `<p>Use a recent average from several typical days, then choose the goal that matches your current tolerance rather than an ideal number. A person averaging 3,000 steps may benefit from building toward 5,000 or 8,500 before considering a higher target.</p><p>If the weekly increase feels too large, repeat the previous week or switch to a longer plan duration. Consistency usually matters more than reaching a preset number quickly.</p>`
     },
     {
       title: "Planning Formula",

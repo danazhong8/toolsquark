@@ -3,10 +3,10 @@ const { createV2Config } = require("./v2-assessment-factory");
 module.exports = createV2Config({
   key: "socialmedia",
   slug: "social-media-addiction-index",
-  title: "Social Media Use Pattern Self-Check | ToolsQuark",
-  description: "Review automatic feed use, stopping control, social evaluation, and life displacement with a private 12-item original self-check.",
+  title: "Social Media Use Pattern Self-Check: Feeds, Comparison, and Control",
+  description: "Review automatic feed use, stopping control, social comparison, feedback checking, and life displacement with a private 30-day self-check.",
   h1: "Social Media Use Pattern Self-Check",
-  hero: "Review how often automatic feed use, difficulty stopping, social evaluation, and social apps displacing intended activity appeared during the past 30 days.",
+  hero: "Use this private social media use self-check to review automatic feeds, difficulty stopping, feedback checking, comparison, and social apps replacing sleep, work, or in-person attention.",
   shareDescription: "A private 30-day self-check for feed capture, stopping control, social evaluation, and life displacement.",
   socialFile: "social-media-use-pattern-self-check.png",
   socialAccent: "#7c3aed",
@@ -65,15 +65,20 @@ module.exports = createV2Config({
   ],
   related: [
     { href: "https://toolsquark.com/tools/smartphone-addiction-test.html", title: "Smartphone Use Pattern", description: "Review device-level checking, notifications, and displacement across phone activities.", action: "Review Phone Use" },
-    { href: "https://toolsquark.com/tools/loneliness-level-test.html", title: "Connection And Loneliness Pattern", description: "Review whether online use is occurring alongside unmet connection needs.", action: "Review Connection" }
+    { href: "https://toolsquark.com/tools/loneliness-level-test.html", title: "Connection And Loneliness Pattern", description: "Review whether online use is occurring alongside unmet connection needs.", action: "Review Connection" },
+    { href: "https://toolsquark.com/tools/sleep-quality-assessment.html", title: "Sleep Pattern Self-Check", description: "Review whether feeds or late checking overlap with sleep disruption.", action: "Review Sleep" }
   ],
   faq: [
     { question: "Does frequent social media use mean addiction?", answer: "No. Frequency alone does not establish addiction. Control, distress, context, and practical consequences matter." },
     { question: "Is this a validated social media addiction scale?", answer: "No. It is an original ToolsQuark educational self-check." },
-    { question: "How is this different from the smartphone self-check?", answer: "This page focuses on feeds, social evaluation, and comparison. The smartphone page covers device-level behavior across phone activities." }
+    { question: "How is this different from the smartphone self-check?", answer: "This page focuses on feeds, social evaluation, and comparison. The smartphone page covers device-level behavior across phone activities." },
+    { question: "What is automatic feed capture?", answer: "Automatic feed capture means opening or continuing a feed without a clear purpose, often because the feed, notification, or habit loop keeps attention moving." },
+    { question: "Can social comparison affect mood?", answer: "Yes. Comparison-heavy content or repeated feedback checking can shape mood and self-appraisal. The evaluation dimension highlights this separately from time spent." },
+    { question: "Is all social media use harmful?", answer: "No. Social media can support learning, work, identity, creativity, and connection. The more useful question is whether use is intentional, controllable, and aligned with the activity it replaces." },
+    { question: "What is a practical first step?", answer: "Choose one boundary: define a purpose before opening the app, remove one feed cue, use a stopping point, or protect one feed-free time or location." }
   ],
   validationLimit: "It cannot diagnose behavioral addiction, depression, anxiety, or another cause of difficult social media use.",
-  limitsBody: `<p>Social media can support learning, identity, work, and connection. Risk cannot be inferred from time alone. Age, platform design, content, purpose, mood effects, control, and what use displaces all matter.</p>`,
-  actionBody: `<p>Use the most frequent dimension to change one feed cue, stopping condition, evaluation habit, or protected activity. Seek support when use remains difficult to control or causes serious consequences.</p>`,
+  limitsBody: `<p>Social media can support learning, identity, work, and connection. Risk cannot be inferred from time alone. Age, platform design, content, purpose, mood effects, control, and what use displaces all matter.</p><p>This self-check does not diagnose addiction, depression, anxiety, or another condition. It is designed to separate feed capture, stopping control, social evaluation, and displacement.</p>`,
+  actionBody: `<p>Use the most frequent dimension to change one feed cue, stopping condition, evaluation habit, or protected activity. If evaluation is highest, reduce feedback checking or comparison-heavy sources. If displacement is highest, protect the displaced activity first.</p><p>Seek support when use remains difficult to control or causes serious consequences.</p>`,
   disclaimer: "This educational tool cannot diagnose social media addiction or determine whether a specific amount of use is harmful."
 });
