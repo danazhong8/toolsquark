@@ -65,6 +65,13 @@ const groups = {
       ["Educational, Not Diagnostic", "These are original ToolsQuark checklists, not validated clinical instruments. Scores summarize selected answer frequency and cannot diagnose, rule out, or measure the severity of a condition."],
       ["When A Self-Check Is Not Enough", "Seek qualified support when symptoms persist, intensify, impair daily life, or create safety concerns. Use urgent local help when you may be unable to stay safe."]
     ],
+    chooser: [
+      ["Current demands feel too heavy", "Start with Stress Pattern Self-Check", "tools/stress-index-test.html"],
+      ["Worry, tension, or alertness keeps returning", "Start with Anxiety & High-Alert Pattern", "tools/anxiety-hyperarousal-assessment.html"],
+      ["Thought loops delay decisions or action", "Start with Overthinking Pattern Self-Check", "tools/cognitive-overthinking-test.html"],
+      ["Social situations trigger fear or replay", "Start with Social Anxiety Pattern Self-Check", "tools/social-anxiety-test.html"],
+      ["You want to compare stress and anxiety", "Read Stress vs Anxiety Patterns", "guides/stress-vs-anxiety-patterns.html"]
+    ],
     sections: [
       {
         title: "Mood & Nervous System",
@@ -100,6 +107,13 @@ const groups = {
     guide: [
       ["Calculators And Self-Checks", "Date, pace, sleep, and step tools apply disclosed arithmetic or planning heuristics. Habit and digital-use pages are original self-checks with editorial score bands, not personality or addiction diagnoses."],
       ["Build From A Real Baseline", "Use recent behavior rather than an ideal day, change one variable at a time, and judge usefulness by sustainable real-world outcomes instead of chasing a perfect score."]
+    ],
+    chooser: [
+      ["You need a bedtime or wake-time plan", "Start with Sleep Schedule Calculator", "tools/sleep-calculator.html"],
+      ["You sleep enough but still feel tired", "Start with Sleep Pattern Self-Check", "tools/sleep-quality-assessment.html"],
+      ["You want a gradual walking target", "Start with Daily Steps Goal Calculator", "tools/daily-steps-goal-calculator.html"],
+      ["Phone or feed use is displacing priorities", "Compare Smartphone and Social Media tools", "guides/smartphone-use-vs-social-media-use.html"],
+      ["Tasks are delayed despite intention", "Start with Procrastination Pattern Self-Check", "tools/procrastination-test.html"]
     ],
     sections: [
       {
@@ -147,6 +161,13 @@ const groups = {
     guide: [
       ["Keep One Relationship In Mind", "Answer each self-check about one current partner, friend, family member, or other important relationship. Mixing several relationships can make a pattern harder to interpret."],
       ["Patterns, Not Verdicts", "These original checklists summarize recent experiences. They cannot identify another person's motives, diagnose either person, or decide whether a relationship should continue."]
+    ],
+    chooser: [
+      ["You cannot name what you need", "Start with Emotional Needs Clarity", "tools/emotional-needs-clarity-self-check.html"],
+      ["You feel unseen or misread", "Start with Felt Understood Self-Check", "tools/felt-understood-self-check.html"],
+      ["Sharing feels risky or uncertain", "Start with Safe Emotional Disclosure", "tools/safe-emotional-disclosure-self-check.html"],
+      ["Arguments are hard to repair", "Start with Conflict Repair Pattern", "tools/conflict-repair-self-check.html"],
+      ["You need words for a request", "Read How To Identify Emotional Needs", "guides/identify-and-communicate-emotional-needs.html"]
     ],
     sections: [
       {
@@ -213,7 +234,7 @@ function renderToolCard(tool, options = {}) {
 }
 
 function baseStyles() {
-  return `:root{--primary:#0f172a;--accent:#2563eb;--accent-light:#eff6ff;--text-muted:#64748b;--bg:#f8fafc;--popular:#f59e0b}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6}.container{max-width:1050px;margin:40px auto 60px;padding:0 20px}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:25px;display:flex;gap:6px}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:700}.header{margin-bottom:46px}.header h1{font-size:2.8rem;font-weight:850;letter-spacing:0;color:#0f172a;margin-bottom:10px}.header p{color:var(--text-muted);font-size:1.05rem;max-width:760px}.sub-category-title{font-size:1.35rem;font-weight:850;margin:42px 0 18px;color:#1e293b;border-left:4px solid var(--accent);padding-left:12px}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:22px}.tool-card{background:white;padding:26px;border-radius:20px;border:1px solid #e5e7eb;text-decoration:none;color:inherit;transition:.25s;display:flex;flex-direction:column;justify-content:space-between;position:relative}.tool-card:hover{border-color:var(--accent);box-shadow:0 20px 25px -5px rgba(37,99,235,.06);transform:translateY(-3px)}.popular-choice{border-color:#fbd38d;background:#fffaf0}.card-badge{position:absolute;top:14px;right:18px;font-size:.72rem;font-weight:800;padding:2px 8px;border-radius:6px}.badge-popular{background:#fef3c7;color:#d97706}.badge-time{background:#f1f5f9;color:#475569}.tool-meta{margin:8px 0 12px}.tool-name{font-weight:850;display:block;font-size:1.12rem;color:#1e293b;margin-bottom:6px;padding-right:76px}.tool-desc{font-size:.94rem;color:var(--text-muted);line-height:1.5}.card-footer{margin-top:16px;display:flex;justify-content:space-between;font-size:.85rem;font-weight:800;color:var(--accent)}.go-link{opacity:0;transition:.2s}.tool-card:hover .go-link{opacity:1}.topic-guide{margin-top:64px;padding:32px 0;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;display:grid;grid-template-columns:1fr 1fr;gap:36px}.topic-guide h2{font-size:1.2rem;margin-bottom:8px}.topic-guide p{color:var(--text-muted);font-size:.95rem}.topic-guide a{color:var(--accent);font-weight:750}.e-e-a-t-section{margin-top:36px;padding:28px 0}.e-e-a-t-section h2{font-size:1.3rem;font-weight:850;margin-bottom:12px}.e-e-a-t-section p,.disclaimer-box{color:var(--text-muted);font-size:.95rem}.e-e-a-t-section a{color:var(--accent);font-weight:750}.disclaimer-box{font-style:italic;border-left:3px solid #cbd5e1;padding-left:14px;margin-top:14px}footer{margin-top:80px;padding:40px 20px;border-top:1px solid #e2e8f0;text-align:center;color:#64748b}footer a{text-decoration:none;color:inherit;margin:0 10px}@media(max-width:768px){.header h1{font-size:2.2rem}.tools-grid,.topic-guide{grid-template-columns:1fr}.topic-guide{gap:24px}.e-e-a-t-section{padding:22px 0}}`;
+  return `:root{--primary:#0f172a;--accent:#2563eb;--accent-light:#eff6ff;--text-muted:#64748b;--bg:#f8fafc;--popular:#f59e0b}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6}.container{max-width:1050px;margin:40px auto 60px;padding:0 20px}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:25px;display:flex;gap:6px}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:700}.header{margin-bottom:34px}.header h1{font-size:2.8rem;font-weight:850;letter-spacing:0;color:#0f172a;margin-bottom:10px}.header p{color:var(--text-muted);font-size:1.05rem;max-width:760px}.decision-path{padding:28px 0 8px;margin-bottom:14px;border-top:1px solid #cbd5e1}.decision-path h2{font-size:1.28rem;line-height:1.25;margin-bottom:6px}.decision-path>p{font-size:.93rem;color:var(--text-muted);max-width:760px;margin-bottom:18px}.decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.decision-link{display:block;text-decoration:none;color:inherit;border-top:3px solid #cbd5e1;padding:14px 0 4px}.decision-link:hover,.decision-link:focus-visible{border-color:var(--accent);outline:none}.decision-link span{display:block;color:#475569;font-size:.82rem;font-weight:760;line-height:1.4}.decision-link strong{display:block;color:#1e293b;font-size:.96rem;line-height:1.35;margin-top:5px}.decision-link em{display:block;color:var(--accent);font-style:normal;font-size:.78rem;font-weight:850;margin-top:9px}.sub-category-title{font-size:1.35rem;font-weight:850;margin:42px 0 18px;color:#1e293b;border-left:4px solid var(--accent);padding-left:12px}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:22px}.tool-card{background:white;padding:26px;border-radius:20px;border:1px solid #e5e7eb;text-decoration:none;color:inherit;transition:.25s;display:flex;flex-direction:column;justify-content:space-between;position:relative}.tool-card:hover{border-color:var(--accent);box-shadow:0 20px 25px -5px rgba(37,99,235,.06);transform:translateY(-3px)}.popular-choice{border-color:#fbd38d;background:#fffaf0}.card-badge{position:absolute;top:14px;right:18px;font-size:.72rem;font-weight:800;padding:2px 8px;border-radius:6px}.badge-popular{background:#fef3c7;color:#d97706}.badge-time{background:#f1f5f9;color:#475569}.tool-meta{margin:8px 0 12px}.tool-name{font-weight:850;display:block;font-size:1.12rem;color:#1e293b;margin-bottom:6px;padding-right:76px}.tool-desc{font-size:.94rem;color:var(--text-muted);line-height:1.5}.card-footer{margin-top:16px;display:flex;justify-content:space-between;font-size:.85rem;font-weight:800;color:var(--accent)}.go-link{opacity:0;transition:.2s}.tool-card:hover .go-link{opacity:1}.topic-guide{margin-top:64px;padding:32px 0;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;display:grid;grid-template-columns:1fr 1fr;gap:36px}.topic-guide h2{font-size:1.2rem;margin-bottom:8px}.topic-guide p{color:var(--text-muted);font-size:.95rem}.topic-guide a{color:var(--accent);font-weight:750}.e-e-a-t-section{margin-top:36px;padding:28px 0}.e-e-a-t-section h2{font-size:1.3rem;font-weight:850;margin-bottom:12px}.e-e-a-t-section p,.disclaimer-box{color:var(--text-muted);font-size:.95rem}.e-e-a-t-section a{color:var(--accent);font-weight:750}.disclaimer-box{font-style:italic;border-left:3px solid #cbd5e1;padding-left:14px;margin-top:14px}footer{margin-top:80px;padding:40px 20px;border-top:1px solid #e2e8f0;text-align:center;color:#64748b}footer a{text-decoration:none;color:inherit;margin:0 10px}@media(max-width:768px){.header h1{font-size:2.2rem}.tools-grid,.topic-guide{grid-template-columns:1fr}.topic-guide{gap:24px}.decision-grid{grid-template-columns:1fr}.e-e-a-t-section{padding:22px 0}}`;
 }
 
 function footer() {
@@ -226,6 +247,7 @@ function renderCategory(group) {
     <div class="tools-grid">${section.tools.map((tool) => renderToolCard(tool, { source: "category-page" })).join("")}
     </div>`).join("");
   const guide = `<section class="topic-guide" aria-label="How to use these tools">${group.guide.map(([title, body]) => `<div><h2>${esc(title)}</h2><p>${esc(body)}</p></div>`).join("")}</section>`;
+  const chooser = group.chooser?.length ? `<section class="decision-path" aria-labelledby="decision-path-heading"><h2 id="decision-path-heading">Choose A Starting Point</h2><p>Pick the closest question, then open the smallest useful tool or guide first.</p><div class="decision-grid">${group.chooser.map(([question, answer, href]) => `<a class="decision-link" href="${esc(href)}"><span>${esc(question)}</span><strong>${esc(answer)}</strong><em>Open &rarr;</em></a>`).join("")}</div></section>` : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -275,6 +297,7 @@ ${JSON.stringify([
 <div class="container">
     <div class="breadcrumb"><a href="index.html">Home</a> &gt; <span>${esc(group.categoryLabel)}</span></div>
     <header class="header"><h1>${esc(group.h1)}</h1><p>${esc(group.intro)}</p></header>
+${chooser}
 ${sections}
 ${guide}
     <section class="e-e-a-t-section">
