@@ -19,6 +19,13 @@ const groups = {
       ["Choose The Right Starting Point", "Use BMI or waist ratios for broad screening, BMR/TDEE for energy planning, and body-fat or lean-mass formulas for rough composition context. No single number describes overall health."],
       ["How Results Should Be Used", "Each calculator discloses its formula, assumptions, example, limits, and sources. Treat results as starting estimates and use professional guidance for pregnancy, symptoms, medical diets, or other high-stakes decisions."]
     ],
+    chooser: [
+      ["You need a quick body-size screen", "Start with BMI Calculator", "tools/bmi-calculator.html"],
+      ["You want maintenance calories", "Start with TDEE Calculator", "tools/tdee-calculator.html"],
+      ["You need an intake target", "Start with Daily Calorie Goal Calculator", "tools/calorie-calculator.html"],
+      ["You already have calories and need macros", "Start with Macro Calculator", "tools/macro-calculator.html"],
+      ["You are comparing body metrics", "Read BMI vs Body Fat vs Waist", "guides/bmi-vs-body-fat-vs-waist.html"]
+    ],
     sections: [
       {
         title: "Weight & Body Composition",
@@ -328,14 +335,14 @@ ${footer()}
 
 function renderHome() {
   const startingPoints = [
-    groups.health.sections[0].tools[0],
     groups.health.sections[1].tools[0],
     groups.health.sections[1].tools[2],
+    groups.lifestyle.sections[1].tools[0],
     groups.mental.sections[0].tools[0],
     groups.mental.sections[0].tools[1],
-    groups.lifestyle.sections[0].tools[0],
-    groups.connection.sections[0].tools[0],
-    groups.connection.sections[2].tools[1]
+    groups.lifestyle.sections[3].tools[0],
+    groups.lifestyle.sections[3].tools[1],
+    groups.connection.sections[2].tools[2]
   ];
   const categoryDescriptions = {
     health: "Body metrics, energy, nutrition, age, pregnancy, and cycle tools.",
