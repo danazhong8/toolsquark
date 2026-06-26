@@ -7,6 +7,12 @@ const outDir = path.join(root, "tools");
 const defaultLastUpdated = "June 20, 2026";
 const queryMap = JSON.parse(fs.readFileSync(path.join(root, "seo", "core-query-map.json"), "utf8"));
 const guideData = require("./guide-page-data");
+const supplementalGuideMap = {
+  "smartphone-addiction-test": "smartphone-use-vs-social-media-use",
+  "social-media-addiction-index": "social-media-addiction-vs-normal-use",
+  "loneliness-level-test": "social-media-addiction-vs-normal-use",
+  "focus-attention-diagnostic": "smartphone-use-vs-social-media-use"
+};
 
 function esc(value) {
   return String(value ?? "")
@@ -22,8 +28,8 @@ function cleanOutput(value) {
 
 function renderMatchingGuide(slug) {
   const mapping = queryMap.pages.find((page) => page.path === `/tools/${slug}.html`);
-  if (!mapping) return "";
-  const guideSlug = path.basename(mapping.guidePath, ".html");
+  const guideSlug = mapping ? path.basename(mapping.guidePath, ".html") : supplementalGuideMap[slug];
+  if (!guideSlug) return "";
   const guide = guideData.find((item) => item.slug === guideSlug);
   if (!guide) return "";
   return `\n        <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/${guide.slug}.html" class="recommend-card"><div><h4>${esc(guide.h1)}</h4><p>${esc(guide.description)}</p></div><span class="action-text">Read guide &rarr;</span></a></div>`;
