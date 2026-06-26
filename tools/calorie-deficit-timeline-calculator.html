@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://toolsquark.com/tools/calorie-deficit-timeline-calculator.html">
+<title>Calorie Deficit Timeline Calculator | Estimate Weight-Loss Time</title>
+<meta name="description" content="Estimate a calorie deficit timeline from target weight change and daily deficit. Conservative planning math with clear limitations.">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Privacy-First Calorie Deficit Timeline Calculator",
+    "url": "https://toolsquark.com/tools/calorie-deficit-timeline-calculator.html",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A browser-side calorie deficit timeline calculator for educational weight-change planning.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolsquark.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Health Tools",
+        "item": "https://toolsquark.com/health.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Calorie Deficit Timeline Calculator",
+        "item": "https://toolsquark.com/tools/calorie-deficit-timeline-calculator.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does a calorie deficit take to show weight loss?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator estimates timeline from planned energy deficit, but water changes, adherence, metabolic adaptation, and measurement noise can obscure early progress."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is 7,700 kcal per kg exact?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It is a simplified planning conversion. Real body-weight change is dynamic, so use this as a rough timeline rather than a promise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I use a very large deficit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually not without professional guidance. Larger deficits can be harder to sustain and may raise risks around hunger, performance, nutrition, and recovery."
+        }
+      }
+    ]
+  }
+]
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--underweight:#38bdf8;--normal:#22c55e;--overweight:#eab308;--obese:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px}.container{max-width:1240px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+.hero{padding:22px 0 28px;margin-bottom:28px;border-bottom:1px solid #dbe3ec}.hero h1{font-size:40px;font-weight:850;margin-bottom:10px;letter-spacing:0;line-height:1.15}.hero p{font-size:17px;color:#475569;max-width:820px}.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}.main-column,.side-column{min-width:0}.card{background:white;padding:30px;border-radius:8px;margin-bottom:24px;border:1px solid #e2e8f0;box-shadow:0 3px 14px rgba(15,23,42,.04)}.card h3{font-size:1.25rem;font-weight:800;margin-bottom:20px;color:#1e293b}.side-card{padding:22px}.side-card h3{font-size:1.05rem;margin-bottom:14px}.side-sticky{position:static}.fact-list{list-style:none;display:grid;gap:10px}.fact-list li{display:flex;justify-content:space-between;gap:14px;padding-bottom:10px;border-bottom:1px solid #eef2f7;font-size:13px}.fact-list li:last-child{border-bottom:none;padding-bottom:0}.fact-list span{color:var(--text-muted)}.fact-list strong{text-align:right;color:#334155}.page-nav{list-style:none;display:grid;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid #e2e8f0}.page-nav a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:750}.page-nav a:hover{text-decoration:underline}
+.unit-switcher{display:flex;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:25px}.unit-tab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:700;color:var(--text-muted);border-radius:9px;cursor:pointer;transition:.2s}.unit-tab.active{background:white;color:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,.05)}
+.input-row{display:flex;gap:16px}.input-group{margin-bottom:20px;flex:1}.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px}.input-wrapper{position:relative;display:flex;align-items:center}.input-wrapper input,.input-wrapper select{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;background:white;color:var(--primary)}.input-wrapper input:focus,.input-wrapper select:focus{border-color:#2563eb;background:#eff6ff}.unit-badge{position:absolute;right:15px;color:var(--text-muted);font-size:14px;font-weight:600;pointer-events:none}
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,.2)}.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+.result-box{border-top:1px solid #dbe3ec;padding:28px 0 0;margin-top:30px;text-align:center}.result-val{font-size:54px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:0}.result-unit{font-size:20px;font-weight:700;color:var(--text-muted);margin-left:5px}.result-status{font-size:22px;font-weight:800;margin-bottom:15px}.bmi-gauge-container{max-width:500px;margin:20px auto;position:relative}.bmi-gauge-bar{height:12px;background:linear-gradient(to right,var(--underweight) 0%,var(--normal) 35%,var(--overweight) 70%,var(--obese) 100%);border-radius:6px}.bmi-pointer{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--primary);top:-14px;transform:translateX(-50%);transition:left .5s cubic-bezier(.175,.885,.32,1.275)}.bmi-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);font-weight:bold;margin-top:6px;padding:0 4px}.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:650px;line-height:1.7}.suggestion-box{background:#f8fafc;border-left:4px solid var(--accent);padding:18px;border-radius:6px;text-align:left;margin-top:20px}.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800}.suggestion-box p{color:#475569;font-size:14px}.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.macro-pill{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:16px}.macro-pill strong{display:block;font-size:22px;color:#1e293b}.macro-pill span{font-size:13px;color:var(--text-muted);font-weight:700}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{display:block;color:var(--accent);font-weight:750;text-decoration:none;line-height:1.4}.reference-list a:hover{text-decoration:underline}.reference-list span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}footer a:hover{text-decoration:underline}
+.side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.card{padding:22px 18px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>Calorie Deficit Timeline Calculator</span></div>
+    <div class="hero"><h1>Calorie Deficit Timeline Calculator</h1><p>Estimate how long a planned calorie deficit might take, using transparent arithmetic and conservative warnings about real-world variability.</p></div>
+    <div class="workspace-grid">
+    <main class="main-column">
+    <div class="card" id="calculator">
+
+        <div class="input-row">
+            <div class="input-group">
+                <label for="input_weight_change">Target Weight Change</label>
+                <div class="input-wrapper">
+                    <input type="number" id="input_weight_change" value="5" min="0.5" max="50" step="0.1">
+                    <span class="unit-badge">kg</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="input_deficit">Planned Daily Deficit</label>
+                <div class="input-wrapper">
+                    <input type="number" id="input_deficit" value="500" min="100" max="1200" step="25">
+                    <span class="unit-badge">kcal</span>
+                </div>
+            </div>
+        </div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Estimate Timeline</button>
+        <div id="result-area" class="result-box" style="display:none;">
+
+            <div class="result-val"><span id="calc-output">0</span><span class="result-unit">weeks</span></div>
+            <div class="result-status" id="calc-status">Estimated Timeline</div>
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="gauge-pointer"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels"><span>Short</span><span>Moderate</span><span>Long</span></div>
+            </div>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="suggestion-box">
+                <h4>Planning Note</h4>
+                <p id="calc-suggestion"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What This Timeline Means</h3>
+        <p>This tool estimates the time required for a planned calorie deficit to equal a target amount of body-weight energy. It does not predict exact scale weight on a specific date.</p>
+    </div>
+    <div class="content-section">
+        <h3>Simplified Formula</h3>
+        <div class="formula-box">Estimated days = target kg x 7,700 / daily deficit<br>Estimated weeks = estimated days / 7</div><p>The 7,700 kcal per kg conversion is a simplified planning heuristic. It does not model changing energy expenditure or body composition.</p>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>A 5 kg target with a 500 kcal/day planned deficit gives 5 x 7,700 / 500 = 77 days, or about 11 weeks.</p>
+    </div>
+    <div class="content-section">
+        <h3>How To Use The Result</h3>
+        <p>Use the output to check whether a goal is realistic. If the timeline seems too long, avoid simply pushing the deficit higher; revisit target size, maintenance estimate, activity, and adherence instead.</p>
+    </div></div>
+    <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>How long does a calorie deficit take to show weight loss?</h4>
+            <p>This calculator estimates timeline from planned energy deficit, but water changes, adherence, metabolic adaptation, and measurement noise can obscure early progress.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is 7,700 kcal per kg exact?</h4>
+            <p>No. It is a simplified planning conversion. Real body-weight change is dynamic, so use this as a rough timeline rather than a promise.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Should I use a very large deficit?</h4>
+            <p>Usually not without professional guidance. Larger deficits can be harder to sustain and may raise risks around hunger, performance, nutrition, and recovery.</p>
+        </div></div>
+    </main>
+    <aside class="side-column" aria-label="Tool information">
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div>
+        <div class="card side-card" id="related"><h3>Build The Deficit Carefully</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/tools/calorie-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Daily Calorie Goal Calculator</h4>
+                    <p>Choose a transparent intake adjustment from maintenance.</p>
+                </div>
+                <span class="action-text">Plan Calories &rarr;</span>
+            </a>
+            <a href="https://toolsquark.com/tools/tdee-calculator.html" class="recommend-card">
+                <div>
+                    <h4>TDEE Calculator</h4>
+                    <p>Estimate maintenance energy before setting a deficit.</p>
+                </div>
+                <span class="action-text">Estimate TDEE &rarr;</span>
+            </a></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.niddk.nih.gov/bwp" target="_blank" rel="noopener noreferrer">Body Weight Planner</a><span>National Institute of Diabetes and Digestive and Kidney Diseases</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This calculator uses the simplified 7,700 kcal per kg planning conversion and divides by the entered daily deficit.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Weight change is dynamic and affected by water, glycogen, adherence, metabolic adaptation, body composition, medications, and health status. This tool is educational.</p><div class="updated-row">Last updated: June 26, 2026</div></div></div>
+    </aside>
+    </div>
+    <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
+</div>
+<script>
+
+function calculateNow() {
+    const kg = parseFloat(document.getElementById('input_weight_change').value);
+    const deficit = parseFloat(document.getElementById('input_deficit').value);
+    if (isNaN(kg) || isNaN(deficit) || kg <= 0 || deficit < 100 || deficit > 1200) {
+        alert('Please enter a target weight change and a daily deficit between 100 and 1200 kcal.');
+        return;
+    }
+    const days = (kg * 7700) / deficit;
+    const weeks = days / 7;
+    const result = {
+        status: 'Simplified Timeline Estimate',
+        color: 'var(--accent)',
+        desc: kg.toFixed(1) + ' kg at a planned ' + deficit.toFixed(0) + ' kcal/day deficit equals about ' + Math.round(days) + ' days.',
+        suggestion: 'Compare this with real trend data over several weeks. Adjust gradually rather than chasing a perfect date.',
+        percent: Math.min(95, Math.max(5, weeks / 26 * 90))
+    };
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = weeks.toFixed(weeks < 10 ? 1 : 0);
+    document.getElementById('calc-output').style.color = result.color;
+    document.getElementById('calc-status').innerText = result.status;
+    document.getElementById('calc-status').style.color = result.color;
+    document.getElementById('calc-desc').innerText = result.desc;
+    document.getElementById('calc-suggestion').innerText = result.suggestion;
+    document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+const calculatorSlug = "calorie-deficit-timeline-calculator";
+let calculatorStarted = false;
+let calculatorCompleted = false;
+
+function trackCalculatorEvent(name) {
+    const safeData = { tool: calculatorSlug, type: 'calculator' };
+    window.dispatchEvent(new CustomEvent('toolsquark:tool', { detail: { name, data: safeData } }));
+    if (typeof window.va === 'function') window.va('event', { name, data: safeData });
+}
+
+function markCalculatorStarted() {
+    if (calculatorStarted) return;
+    calculatorStarted = true;
+    trackCalculatorEvent('tool_start');
+}
+
+const calculator = document.getElementById('calculator');
+const calculateButton = calculator.querySelector('.calc-submit-btn');
+calculator.addEventListener('input', markCalculatorStarted, { once: true });
+calculator.addEventListener('change', markCalculatorStarted, { once: true });
+calculateButton.addEventListener('click', () => {
+    markCalculatorStarted();
+    window.requestAnimationFrame(() => {
+        const resultArea = document.getElementById('result-area');
+        if (!calculatorCompleted && resultArea && window.getComputedStyle(resultArea).display !== 'none') {
+            calculatorCompleted = true;
+            trackCalculatorEvent('tool_complete');
+        }
+    });
+});
+</script>
+</body>
+</html>

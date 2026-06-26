@@ -31,6 +31,16 @@
       "permanent": true
     },
     {
+      "source": "/calorie-deficit-timeline-calculator.html",
+      "destination": "/tools/calorie-deficit-timeline-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/caffeine-cutoff-calculator.html",
+      "destination": "/tools/caffeine-cutoff-calculator.html",
+      "permanent": true
+    },
+    {
       "source": "/closeness-distance-pattern-self-check.html",
       "destination": "/tools/closeness-distance-pattern-self-check.html",
       "permanent": true
@@ -61,6 +71,11 @@
       "permanent": true
     },
     {
+      "source": "/emotional-boundaries-self-check.html",
+      "destination": "/tools/emotional-boundaries-self-check.html",
+      "permanent": true
+    },
+    {
       "source": "/emotional-communication-self-check.html",
       "destination": "/tools/emotional-communication-self-check.html",
       "permanent": true
@@ -83,6 +98,11 @@
     {
       "source": "/healthy-weight-range-calculator.html",
       "destination": "/tools/healthy-weight-range-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/habit-consistency-calculator.html",
+      "destination": "/tools/habit-consistency-calculator.html",
       "permanent": true
     },
     {
@@ -118,6 +138,16 @@
     {
       "source": "/protein-calculator.html",
       "destination": "/tools/protein-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/protein-per-meal-calculator.html",
+      "destination": "/tools/protein-per-meal-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/relationship-communication-style-self-check.html",
+      "destination": "/tools/relationship-communication-style-self-check.html",
       "permanent": true
     },
     {
@@ -193,6 +223,11 @@
     {
       "source": "/waist-to-height-ratio-calculator.html",
       "destination": "/tools/waist-to-height-ratio-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/walking-time-to-steps-calculator.html",
+      "destination": "/tools/walking-time-to-steps-calculator.html",
       "permanent": true
     },
     {

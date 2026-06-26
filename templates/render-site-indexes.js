@@ -4,8 +4,8 @@ const guides = require("./guide-page-data");
 
 const root = path.resolve(__dirname, "..");
 const site = "https://toolsquark.com";
-const lastmod = "2026-06-22";
-const reviewedDate = "June 22, 2026";
+const lastmod = "2026-06-26";
+const reviewedDate = "June 26, 2026";
 
 const groups = {
   health: {
@@ -37,8 +37,10 @@ const groups = {
           ["tdee-calculator", "TDEE Calculator", "Estimate maintenance energy from resting needs and activity level.", "Calculate TDEE", true],
           ["bmr-calculator", "BMR Calculator", "Isolate resting energy needs before activity is added.", "Calculate BMR"],
           ["calorie-calculator", "Daily Calorie Goal Calculator", "Apply a visible goal adjustment to estimated maintenance energy.", "Plan Calories"],
+          ["calorie-deficit-timeline-calculator", "Calorie Deficit Timeline", "Estimate a simplified weight-change timeline from target deficit.", "Estimate Timeline"],
           ["macro-calculator", "Custom Macro Calculator", "Distribute an existing calorie target across adjustable macro inputs.", "Split Macros"],
           ["protein-calculator", "Protein Calculator", "Find a realistic protein range for training and recovery goals.", "Set Protein"],
+          ["protein-per-meal-calculator", "Protein Per Meal Calculator", "Split a daily protein target across meals or snacks.", "Split Protein"],
           ["water-intake-calculator", "Water Intake Calculator", "Estimate a disclosed hydration planning range from weight and activity.", "Plan Hydration"]
         ]
       },
@@ -105,6 +107,7 @@ const groups = {
         tools: [
           ["sleep-calculator", "Sleep Schedule Calculator", "Plan a bedtime or wake time from sleep duration and expected sleep latency.", "Plan Sleep", true],
           ["sleep-debt-calculator", "Sleep Debt Calculator", "Estimate your weekly sleep deficit from target and recent average sleep.", "Estimate Debt"],
+          ["caffeine-cutoff-calculator", "Caffeine Cutoff Calculator", "Estimate when to stop caffeine before a planned bedtime.", "Set Cutoff"],
           ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review sleep initiation, continuity, restoration, and daytime impact.", "Review Sleep"]
         ]
       },
@@ -112,6 +115,7 @@ const groups = {
         title: "Movement Planning",
         tools: [
           ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a progressive step target plan from your current baseline.", "Plan Steps"],
+          ["walking-time-to-steps-calculator", "Walking Time To Steps", "Estimate steps from walking minutes and pace presets.", "Convert Time"],
           ["steps-to-calories-converter", "Steps to Calories Converter", "Estimate walking energy with explicit simplified assumptions.", "Estimate Energy"],
           ["running-pace-calculator", "Running Pace Calculator", "Convert distance and finish time into pace per kilometer or mile.", "Calculate Pace"]
         ]
@@ -120,6 +124,7 @@ const groups = {
         title: "Execution & Follow-Through",
         tools: [
           ["procrastination-test", "Procrastination Pattern Self-Check", "Review initiation, avoidance, short-term reward pull, and perfectionistic delay.", "Review Delay", true],
+          ["habit-consistency-calculator", "Habit Consistency Calculator", "Calculate follow-through rate from planned and completed days.", "Check Rate"],
           ["self-discipline-test", "Follow-Through Pattern Self-Check", "Review starting friction, consistency, immediate impulses, and restarting.", "Review Follow-Through"]
         ]
       },
@@ -157,12 +162,14 @@ const groups = {
         tools: [
           ["felt-understood-self-check", "Felt Understood In A Relationship", "Review whether your feelings, meaning, perspective, and changing needs feel understood.", "Review Understanding"],
           ["support-access-self-check", "Relationship Support Access", "Review whether support feels available, askable, usable, and reciprocal.", "Review Support"],
+          ["emotional-boundaries-self-check", "Emotional Boundaries Self-Check", "Review limits, guilt pressure, and boundary follow-through.", "Review Boundaries"],
           ["safe-emotional-disclosure-self-check", "Safe Emotional Disclosure Pattern", "Review readiness, response safety, boundaries, and recovery after personal sharing.", "Review Disclosure"]
         ]
       },
       {
         title: "Communication & Repair",
         tools: [
+          ["relationship-communication-style-self-check", "Relationship Communication Style", "Review directness, listening, pacing, and repair signals.", "Review Style"],
           ["emotional-communication-self-check", "Emotional Communication Pattern", "Review expression, listening, clarification, and regulation during emotional conversations.", "Review Communication"],
           ["conflict-repair-self-check", "Conflict Repair Pattern", "Review de-escalation, accountability, reconnection, and follow-through after conflict.", "Review Repair", true]
         ]
