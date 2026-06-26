@@ -10,7 +10,6 @@ function text(html, expression) {
   return (html.match(expression)?.[1] || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 
-if (guides.length !== 8) errors.push(`Expected 8 guides, found ${guides.length}`);
 if (new Set(guides.map((guide) => guide.slug)).size !== guides.length) errors.push("Guide slugs must be unique");
 if (new Set(guides.map((guide) => guide.primaryQuery)).size !== guides.length) errors.push("Guide primary queries must be unique");
 
@@ -48,5 +47,5 @@ if (errors.length) {
   errors.forEach((error) => console.error(`ERROR: ${error}`));
   process.exitCode = 1;
 } else {
-  console.log("Guide audit passed: 8 unique pages with valid schema, canonicals, links, and content depth.");
+  console.log(`Guide audit passed: ${guides.length} unique pages with valid schema, canonicals, links, and content depth.`);
 }

@@ -248,5 +248,98 @@ module.exports = [
       ["Adult Attachment and Mental Health: A Meta-Analysis", "Journal of Personality and Social Psychology / PubMed", "https://pubmed.ncbi.nlm.nih.gov/36201836/"]
     ],
     related: ["identify-and-communicate-emotional-needs", "stress-vs-anxiety-patterns"]
+  },
+  {
+    slug: "social-media-addiction-vs-normal-use",
+    title: "Social Media Addiction vs Normal Use: What To Review | ToolsQuark",
+    description: "Separate frequent social media use from feed capture, stopping difficulty, social comparison, and life displacement before choosing a self-check.",
+    h1: "Social Media Addiction vs Normal Use",
+    intro: "Time spent on social media does not tell the whole story. A more useful review looks at intention, control, mood effects, and what the use replaces.",
+    primaryQuery: "social media addiction vs normal use",
+    tools: [
+      ["social-media-addiction-index", "Social Media Use Pattern Self-Check", "Review feed capture, stopping control, social evaluation, and displacement.", "Review Social Media"],
+      ["smartphone-addiction-test", "Smartphone Use Pattern Self-Check", "Review device-level checking, cues, stopping control, and displacement.", "Review Phone Use"],
+      ["loneliness-level-test", "Connection And Loneliness Pattern", "Review whether online use overlaps with unmet connection needs.", "Review Connection"]
+    ],
+    sections: [
+      ["A Better Question Than Screen Time", `<p>Frequent social media use can support work, learning, creativity, identity, and connection. It becomes more important to review when use is hard to stop, reliably worsens mood, replaces intended activities, or continues after it stops feeling useful.</p><p>That is why ToolsQuark separates automatic feed capture, stopping control, social evaluation, and life displacement instead of treating time alone as the answer.</p>`],
+      ["Quick Comparison", `<div class="table-wrap"><table><thead><tr><th>Pattern</th><th>More typical use</th><th>Worth reviewing</th></tr></thead><tbody><tr><td>Purpose</td><td>You know why you opened the app.</td><td>You open feeds automatically or repeatedly.</td></tr><tr><td>Control</td><td>You can stop near the intended time.</td><td>One more post often becomes a long session.</td></tr><tr><td>Mood</td><td>Use is neutral, enjoyable, or connecting.</td><td>Comparison or feedback checking reliably worsens mood.</td></tr><tr><td>Displacement</td><td>Use fits around priorities.</td><td>Use replaces sleep, work, study, care, or in-person attention.</td></tr></tbody></table></div>`],
+      ["When Frequent Use Is Not Automatically A Problem", `<p>A student, creator, organizer, caregiver, or worker may use social platforms often for practical reasons. The context matters: what the platform is doing, whether the person can choose when to stop, and whether the use still supports the intended purpose.</p>`],
+      ["When A Self-Check Is Useful", `<p>A self-check can help when the pattern is fuzzy: opening without intention, checking feedback repeatedly, comparing yourself with posts, or losing sleep and attention to feeds. The result should point to a dimension to adjust, not produce a label.</p>`],
+      ["Choose A First Boundary", `<ul><li><strong>Feed capture:</strong> decide the purpose before opening the app.</li><li><strong>Stopping control:</strong> use an external stopping cue.</li><li><strong>Evaluation:</strong> reduce feedback checking or comparison-heavy sources.</li><li><strong>Displacement:</strong> protect one feed-free time or location first.</li></ul>`],
+      ["Limits And Support", `<p>An original checklist cannot diagnose behavioral addiction, depression, anxiety, ADHD, loneliness, or another cause of difficult use. Seek qualified support when use remains difficult to control or causes serious practical, emotional, financial, safety, work, school, or relationship consequences.</p>`]
+    ],
+    faq: [
+      ["How much social media use is normal?", "There is no universal number. Purpose, control, mood effects, age, context, and displacement are more useful than time alone."],
+      ["Does comparison mean I should quit social media?", "Not necessarily. It may mean adjusting who you follow, reducing feedback checking, or protecting one comparison-free time block."],
+      ["Should I take the smartphone self-check too?", "Use the smartphone self-check when the issue is broader device checking, notifications, or phone visibility rather than social feeds specifically."]
+    ],
+    references: [
+      ["Health Advisory on Social Media Use in Adolescence", "American Psychological Association", "https://www.apa.org/topics/social-media-internet/health-advisory-adolescent-social-media-use"],
+      ["Social Media and Youth Mental Health", "U.S. Surgeon General", "https://www.hhs.gov/surgeongeneral/priorities/youth-mental-health/social-media/index.html"]
+    ],
+    related: ["stress-vs-anxiety-patterns", "procrastination-vs-follow-through"]
+  },
+  {
+    slug: "smartphone-use-vs-social-media-use",
+    title: "Smartphone Use vs Social Media Use: Which Pattern Fits? | ToolsQuark",
+    description: "Compare device-level phone checking with social feed capture, comparison, and feedback checking so you can choose the right self-check.",
+    h1: "Smartphone Use vs Social Media Use",
+    intro: "Phone capture and social media capture often overlap, but they are not the same pattern. Choosing the right starting point makes the next boundary more practical.",
+    primaryQuery: "smartphone use vs social media use",
+    tools: [
+      ["smartphone-addiction-test", "Smartphone Use Pattern Self-Check", "Review device-level checking, stopping control, cue reactivity, and displacement.", "Review Phone Use"],
+      ["social-media-addiction-index", "Social Media Use Pattern Self-Check", "Review feed capture, social evaluation, comparison, and displacement.", "Review Social Media"],
+      ["focus-attention-diagnostic", "Focus And Attention Pattern", "Review whether device cues overlap with attention switching.", "Review Focus"]
+    ],
+    sections: [
+      ["Two Different Levels", `<p>Smartphone use is the device-level pattern: unlocking, checking, notifications, visibility, and carrying the phone into every activity. Social media use is the platform-level pattern: feeds, posting, feedback, comparison, and updates.</p><p>A person can have broad phone capture without social media being the main issue, or social media capture even when other phone use is mostly intentional.</p>`],
+      ["Quick Comparison", `<div class="table-wrap"><table><thead><tr><th>If the main issue is...</th><th>Start with...</th></tr></thead><tbody><tr><td>Unlocking without purpose, notifications, phone visibility, bedtime phone use</td><td>Smartphone Use Pattern Self-Check</td></tr><tr><td>Feeds, comparison, feedback checking, fear of missing updates</td><td>Social Media Use Pattern Self-Check</td></tr><tr><td>Task switching, sustained attention, organization after cues</td><td>Focus And Attention Pattern</td></tr></tbody></table></div>`],
+      ["Start With Smartphone Use When", `<p>Choose the smartphone self-check when the device itself is the cue. Examples include reaching for the phone before deciding why, responding to notifications immediately, keeping the device visible during work, or delaying sleep with general phone use.</p>`],
+      ["Start With Social Media Use When", `<p>Choose the social media self-check when the feed, comparison, posting, or feedback loop is central. The practical boundary may involve specific apps, feed settings, posting habits, or social evaluation rather than the whole phone.</p>`],
+      ["Match The Boundary To The Pattern", `<ul><li><strong>Device cue:</strong> keep the phone out of sight for one priority block.</li><li><strong>Notification cue:</strong> silence nonessential alerts.</li><li><strong>Feed cue:</strong> decide the purpose before opening the app.</li><li><strong>Comparison cue:</strong> reduce comparison-heavy sources or feedback checking.</li></ul>`],
+      ["Avoid A One-Number Verdict", `<p>Screen time can be a clue, but it cannot show purpose, accessibility needs, work requirements, caregiving, social connection, mood effects, or what use displaces. Review the pattern before choosing a rule.</p>`]
+    ],
+    faq: [
+      ["Can phone use be a problem without social media?", "Yes. Messaging, games, browsing, email, notifications, and general checking can create device-level capture."],
+      ["Can social media be the main issue even if screen time is not high?", "Yes. Short but repeated feedback checking or comparison-heavy use can matter even when total time is moderate."],
+      ["Which boundary should I try first?", "Change the smallest cue that matches the pattern: phone visibility for device capture, notification settings for reactivity, or feed entry points for social media capture."]
+    ],
+    references: [
+      ["Health Advisory on Social Media Use in Adolescence", "American Psychological Association", "https://www.apa.org/topics/social-media-internet/health-advisory-adolescent-social-media-use"],
+      ["Social Media and Youth Mental Health", "U.S. Surgeon General", "https://www.hhs.gov/surgeongeneral/priorities/youth-mental-health/social-media/index.html"]
+    ],
+    related: ["social-media-addiction-vs-normal-use", "procrastination-vs-follow-through"]
+  },
+  {
+    slug: "how-to-choose-a-realistic-daily-step-goal",
+    title: "How To Choose A Realistic Daily Step Goal | ToolsQuark",
+    description: "Choose a daily step goal from your current average, schedule, recovery, and walking tolerance instead of forcing one universal step number.",
+    h1: "How To Choose A Realistic Daily Step Goal",
+    intro: "A useful step goal starts with your current average and builds gradually. The best target is repeatable, not just impressive.",
+    primaryQuery: "how to choose daily step goal",
+    tools: [
+      ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a 4, 6, or 8 week plan from your current average.", "Build Step Plan"],
+      ["walking-time-to-steps-calculator", "Walking Time To Steps Calculator", "Estimate how many steps a walking block may add.", "Convert Time"],
+      ["steps-to-calories-converter", "Steps To Calories Converter", "Estimate walking calories from steps and body weight.", "Estimate Calories"]
+    ],
+    sections: [
+      ["Start With Your Average, Not Your Best Day", `<p>A realistic plan begins with a recent average from ordinary days. A best day can make the target too aggressive, while an unusually low day can make the plan less useful. If possible, use a 7-day average.</p>`],
+      ["Choose The Target Level", `<div class="table-wrap"><table><thead><tr><th>Target</th><th>Best fit</th><th>Watch for</th></tr></thead><tbody><tr><td>5,000 steps/day</td><td>Rebuilding consistency or reducing very low activity</td><td>Making it too easy to ignore movement quality</td></tr><tr><td>8,500 steps/day</td><td>Moderate daily activity and stamina</td><td>Jumping too quickly from a low baseline</td></tr><tr><td>12,000 steps/day</td><td>People already tolerating regular walking volume</td><td>Foot, knee, hip, fatigue, or schedule strain</td></tr></tbody></table></div>`],
+      ["Increase Gradually", `<p>Adding steps over several weeks is usually easier to sustain than jumping to a target immediately. If soreness, fatigue, or schedule strain appears, repeat a week rather than forcing the next increase.</p><div class="formula">Week target = baseline + (final target - baseline) x week / plan weeks</div>`],
+      ["Use Time Blocks To Make Steps Practical", `<p>You do not need one long walk. Short walks after meals, walking during calls, movement breaks, parking farther away, or adding one 10-minute block can all increase daily steps. A time-to-steps estimate can make the plan easier to schedule.</p>`],
+      ["Remember What Steps Do Not Measure", `<p>Step count does not capture strength training, cycling, swimming, balance work, intensity, or mobility limitations. It is a useful movement proxy, not a complete activity score.</p>`],
+      ["Safety And Adjustment", `<p>Stop increasing and seek appropriate guidance for new pain, chest discomfort, faintness, unusual shortness of breath, or symptoms that feel unsafe. Health conditions, injury history, footwear, terrain, and recovery should shape the goal.</p>`]
+    ],
+    faq: [
+      ["Is 10,000 steps required?", "No. Benefits can begin below 10,000 steps, especially when moving from a low baseline. A realistic target depends on your starting point and tolerance."],
+      ["How many steps should I add each week?", "The increase should be small enough to repeat. A calculator can distribute the change over 4, 6, or 8 weeks, and you can repeat weeks when needed."],
+      ["Should I count workouts separately?", "Step count captures walking and similar movement, but not all exercise. Strength training, cycling, swimming, and intensity still matter."]
+    ],
+    references: [
+      ["Steps per Day and All-Cause Mortality in Middle-aged Adults", "JAMA Network Open / PubMed", "https://pubmed.ncbi.nlm.nih.gov/34477847/"],
+      ["Physical Activity Guidelines for Adults", "Centers for Disease Control and Prevention", "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html"]
+    ],
+    related: ["bmr-vs-tdee-vs-calorie-goal", "sleep-schedule-and-sleep-quality"]
   }
 ];
