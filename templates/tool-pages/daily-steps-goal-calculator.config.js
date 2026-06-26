@@ -2,13 +2,13 @@ module.exports = {
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   slug: "daily-steps-goal-calculator",
-  title: "Daily Steps Goal Calculator | Progressive Walking Plan",
-  description: "Build a gradual step-count plan from your current baseline to a disclosed preset target. Includes assumptions, safety guidance, and research context.",
+  title: "Steps Per Day Calculator | Daily Step Goal Walking Plan",
+  description: "Calculate a daily step goal from your current average and build a gradual steps-per-day plan. Includes target options, weekly milestones, and safety notes.",
   h1: "Daily Steps Goal Calculator",
-  hero: "Create a progressive step-count goal plan based on your current baseline and primary fitness objective.",
+  hero: "Create a progressive steps-per-day goal plan from your current daily average, then build toward a practical step target over 4, 6, or 8 weeks.",
   schemaName: "Privacy-First Daily Steps Goal Calculator",
   schemaDescription: "A browser-side progressive walking plan that moves from a current step baseline toward one of three disclosed preset targets.",
-  lastUpdated: "June 21, 2026",
+  lastUpdated: "June 26, 2026",
   buttonText: "Generate Step Plan",
   resultHtml: `
             <div class="result-val"><span id="calc-output">0</span><span class="result-unit">steps/day</span></div>
@@ -32,8 +32,9 @@ module.exports = {
         </div>
         <div class="input-row">
             <div class="input-group">
-                <label for="input_current_steps">Current Daily Average</label>
+                <label for="input_current_steps">Current Steps Per Day</label>
                 <div class="input-wrapper"><input type="number" id="input_current_steps" placeholder="e.g. 4000" min="500" max="30000" value="4000"><span class="unit-badge">steps</span></div>
+                <p class="input-help">Use your recent daily average, not your best day.</p>
             </div>
             <div class="input-group">
                 <label for="input_weeks">Plan Duration</label>
@@ -46,6 +47,7 @@ module.exports = {
                 </div>
             </div>
         </div>`,
+  extraCss: `.input-help{margin-top:7px;font-size:12px;color:var(--text-muted);line-height:1.45}`,
   relatedTitle: "Track Movement Impact",
   related: [
     { href: "https://toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Convert your planned steps into estimated calories.", action: "Estimate Burn" },
@@ -56,6 +58,8 @@ module.exports = {
     { title: "Physical Activity Guidelines for Adults", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" }
   ],
   faq: [
+    { question: "How do I calculate a steps-per-day goal?", answer: "Start with your current daily average, choose a realistic target, and increase gradually over several weeks. This calculator spreads the change evenly across 4, 6, or 8 weeks." },
+    { question: "What is a good daily step target?", answer: "A good step target depends on your baseline, health status, schedule, and recovery. The presets here are 5,000 steps for a basic movement floor, 8,500 for a moderate daily activity goal, and 12,000 for a higher activity target." },
     { question: "How fast should I increase daily steps?", answer: "A gradual increase is usually easier to sustain and may reduce joint stress. Many people do best by adding volume over several weeks rather than jumping immediately." },
     { question: "Is 10,000 steps required for health?", answer: "No single number fits everyone. Benefits can begin below 10,000 steps, especially when moving from a low baseline. The best target is one you can build toward consistently." },
     { question: "What if my baseline is already above the goal?", answer: "If your current baseline is above the selected goal, the plan will keep you near your current level rather than reducing your target." }
@@ -63,7 +67,11 @@ module.exports = {
   contentSections: [
     {
       title: "What The Planner Does",
-      body: `<p>The tool takes your current average daily steps and linearly increases them toward one of three fixed presets: 5,000, 8,500, or 12,000 steps per day. It does not generate a medically personalized target.</p><p>If your baseline already exceeds the preset, the planner maintains the higher baseline rather than recommending a reduction.</p>`
+      body: `<p>This steps-per-day calculator takes your current average daily steps and linearly increases them toward one of three fixed presets: 5,000, 8,500, or 12,000 steps per day. It does not generate a medically personalized target.</p><p>If your baseline already exceeds the preset, the planner maintains the higher baseline rather than recommending a reduction.</p>`
+    },
+    {
+      title: "Choosing A Daily Step Target",
+      body: `<ul><li><strong>5,000 steps/day:</strong> a basic movement floor for people rebuilding consistency or reducing very low activity.</li><li><strong>8,500 steps/day:</strong> a moderate step target for everyday stamina and less sedentary time.</li><li><strong>12,000 steps/day:</strong> a higher activity target that may suit people who already tolerate regular walking volume.</li></ul><div class="note-box">These are planning presets, not universal requirements. The best daily step goal is high enough to be useful and low enough that you can repeat it without pain or burnout.</div>`
     },
     {
       title: "Planning Formula",

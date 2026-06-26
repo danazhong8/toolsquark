@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/daily-steps-goal-calculator.html">
-<title>Daily Steps Goal Calculator | Progressive Walking Plan</title>
-<meta name="description" content="Build a gradual step-count plan from your current baseline to a disclosed preset target. Includes assumptions, safety guidance, and research context.">
+<title>Steps Per Day Calculator | Daily Step Goal Walking Plan</title>
+<meta name="description" content="Calculate a daily step goal from your current average and build a gradual steps-per-day plan. Includes target options, weekly milestones, and safety notes.">
 <script type="application/ld+json">
 [
   {
@@ -62,6 +62,22 @@
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "How do I calculate a steps-per-day goal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with your current daily average, choose a realistic target, and increase gradually over several weeks. This calculator spreads the change evenly across 4, 6, or 8 weeks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good daily step target?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A good step target depends on your baseline, health status, schedule, and recovery. The presets here are 5,000 steps for a basic movement floor, 8,500 for a moderate daily activity goal, and 12,000 for a higher activity target."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "How fast should I increase daily steps?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -101,13 +117,13 @@
 .recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{display:block;color:var(--accent);font-weight:750;text-decoration:none;line-height:1.4}.reference-list a:hover{text-decoration:underline}.reference-list span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
 footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}footer a:hover{text-decoration:underline}
 .side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.card{padding:22px 18px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
-
+.input-help{margin-top:7px;font-size:12px;color:var(--text-muted);line-height:1.45}
 </style>
 </head>
 <body>
 <div class="container">
     <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; <span>Daily Steps Goal Calculator</span></div>
-    <div class="hero"><h1>Daily Steps Goal Calculator</h1><p>Create a progressive step-count goal plan based on your current baseline and primary fitness objective.</p></div>
+    <div class="hero"><h1>Daily Steps Goal Calculator</h1><p>Create a progressive steps-per-day goal plan from your current daily average, then build toward a practical step target over 4, 6, or 8 weeks.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
@@ -124,8 +140,9 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         </div>
         <div class="input-row">
             <div class="input-group">
-                <label for="input_current_steps">Current Daily Average</label>
+                <label for="input_current_steps">Current Steps Per Day</label>
                 <div class="input-wrapper"><input type="number" id="input_current_steps" placeholder="e.g. 4000" min="500" max="30000" value="4000"><span class="unit-badge">steps</span></div>
+                <p class="input-help">Use your recent daily average, not your best day.</p>
             </div>
             <div class="input-group">
                 <label for="input_weeks">Plan Duration</label>
@@ -154,7 +171,11 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     <div class="card" id="guide">
     <div class="content-section">
         <h3>What The Planner Does</h3>
-        <p>The tool takes your current average daily steps and linearly increases them toward one of three fixed presets: 5,000, 8,500, or 12,000 steps per day. It does not generate a medically personalized target.</p><p>If your baseline already exceeds the preset, the planner maintains the higher baseline rather than recommending a reduction.</p>
+        <p>This steps-per-day calculator takes your current average daily steps and linearly increases them toward one of three fixed presets: 5,000, 8,500, or 12,000 steps per day. It does not generate a medically personalized target.</p><p>If your baseline already exceeds the preset, the planner maintains the higher baseline rather than recommending a reduction.</p>
+    </div>
+    <div class="content-section">
+        <h3>Choosing A Daily Step Target</h3>
+        <ul><li><strong>5,000 steps/day:</strong> a basic movement floor for people rebuilding consistency or reducing very low activity.</li><li><strong>8,500 steps/day:</strong> a moderate step target for everyday stamina and less sedentary time.</li><li><strong>12,000 steps/day:</strong> a higher activity target that may suit people who already tolerate regular walking volume.</li></ul><div class="note-box">These are planning presets, not universal requirements. The best daily step goal is high enough to be useful and low enough that you can repeat it without pain or burnout.</div>
     </div>
     <div class="content-section">
         <h3>Planning Formula</h3>
@@ -173,6 +194,14 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <p>Start from a multi-day baseline and adjust for mobility, footwear, terrain, recovery, health conditions, and current symptoms. New pain, chest discomfort, faintness, or unusual shortness of breath warrants stopping and seeking appropriate guidance.</p>
     </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>How do I calculate a steps-per-day goal?</h4>
+            <p>Start with your current daily average, choose a realistic target, and increase gradually over several weeks. This calculator spreads the change evenly across 4, 6, or 8 weeks.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What is a good daily step target?</h4>
+            <p>A good step target depends on your baseline, health status, schedule, and recovery. The presets here are 5,000 steps for a basic movement floor, 8,500 for a moderate daily activity goal, and 12,000 for a higher activity target.</p>
+        </div>
         <div class="faq-item">
             <h4>How fast should I increase daily steps?</h4>
             <p>A gradual increase is usually easier to sustain and may reduce joint stress. Many people do best by adding volume over several weeks rather than jumping immediately.</p>
@@ -204,7 +233,7 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
                 <span class="action-text">Plan Fluids &rarr;</span>
             </a></div></div>
         <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://pubmed.ncbi.nlm.nih.gov/34477847/" target="_blank" rel="noopener noreferrer">Steps per Day and All-Cause Mortality in Middle-aged Adults</a><span>JAMA Network Open / PubMed</span></li><li><a href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener noreferrer">Physical Activity Guidelines for Adults</a><span>Centers for Disease Control and Prevention</span></li></ul></div>
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool maps goals to step targets of 12,000, 8,500, or 5,000 steps/day and distributes the change linearly across the selected plan duration.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Step goals should be adapted for injury history, mobility limits, medical conditions, footwear, terrain, and recovery needs.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool maps goals to step targets of 12,000, 8,500, or 5,000 steps/day and distributes the change linearly across the selected plan duration.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Step goals should be adapted for injury history, mobility limits, medical conditions, footwear, terrain, and recovery needs.</p><div class="updated-row">Last updated: June 26, 2026</div></div></div>
     </aside>
     </div>
     <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
