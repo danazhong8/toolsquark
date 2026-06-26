@@ -1,0 +1,199 @@
+{
+  "redirects": [
+    {
+      "source": "/age-calculator.html",
+      "destination": "/tools/age-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/anxiety-hyperarousal-assessment.html",
+      "destination": "/tools/anxiety-hyperarousal-assessment.html",
+      "permanent": true
+    },
+    {
+      "source": "/bmi-calculator.html",
+      "destination": "/tools/bmi-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/bmr-calculator.html",
+      "destination": "/tools/bmr-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/body-fat-calculator.html",
+      "destination": "/tools/body-fat-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/calorie-calculator.html",
+      "destination": "/tools/calorie-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/closeness-distance-pattern-self-check.html",
+      "destination": "/tools/closeness-distance-pattern-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/cognitive-overthinking-test.html",
+      "destination": "/tools/cognitive-overthinking-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/conflict-repair-self-check.html",
+      "destination": "/tools/conflict-repair-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/daily-steps-goal-calculator.html",
+      "destination": "/tools/daily-steps-goal-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/due-date-calculator.html",
+      "destination": "/tools/due-date-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/emotional-availability-self-check.html",
+      "destination": "/tools/emotional-availability-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/emotional-communication-self-check.html",
+      "destination": "/tools/emotional-communication-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/emotional-needs-clarity-self-check.html",
+      "destination": "/tools/emotional-needs-clarity-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/felt-understood-self-check.html",
+      "destination": "/tools/felt-understood-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/focus-attention-diagnostic.html",
+      "destination": "/tools/focus-attention-diagnostic.html",
+      "permanent": true
+    },
+    {
+      "source": "/healthy-weight-range-calculator.html",
+      "destination": "/tools/healthy-weight-range-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/lean-body-mass-calculator.html",
+      "destination": "/tools/lean-body-mass-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/loneliness-level-test.html",
+      "destination": "/tools/loneliness-level-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/macro-calculator.html",
+      "destination": "/tools/macro-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/occupational-burnout-level-test.html",
+      "destination": "/tools/occupational-burnout-level-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/period-calculator.html",
+      "destination": "/tools/period-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/procrastination-test.html",
+      "destination": "/tools/procrastination-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/protein-calculator.html",
+      "destination": "/tools/protein-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/running-pace-calculator.html",
+      "destination": "/tools/running-pace-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/safe-emotional-disclosure-self-check.html",
+      "destination": "/tools/safe-emotional-disclosure-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/self-discipline-test.html",
+      "destination": "/tools/self-discipline-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/sleep-calculator.html",
+      "destination": "/tools/sleep-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/sleep-quality-assessment.html",
+      "destination": "/tools/sleep-quality-assessment.html",
+      "permanent": true
+    },
+    {
+      "source": "/smartphone-addiction-test.html",
+      "destination": "/tools/smartphone-addiction-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/social-anxiety-test.html",
+      "destination": "/tools/social-anxiety-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/social-media-addiction-index.html",
+      "destination": "/tools/social-media-addiction-index.html",
+      "permanent": true
+    },
+    {
+      "source": "/steps-to-calories-converter.html",
+      "destination": "/tools/steps-to-calories-converter.html",
+      "permanent": true
+    },
+    {
+      "source": "/stress-index-test.html",
+      "destination": "/tools/stress-index-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/support-access-self-check.html",
+      "destination": "/tools/support-access-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/tdee-calculator.html",
+      "destination": "/tools/tdee-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/waist-hip-ratio-calculator.html",
+      "destination": "/tools/waist-hip-ratio-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/waist-to-height-ratio-calculator.html",
+      "destination": "/tools/waist-to-height-ratio-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/water-intake-calculator.html",
+      "destination": "/tools/water-intake-calculator.html",
+      "permanent": true
+    }
+  ]
+}
