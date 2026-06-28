@@ -4,8 +4,8 @@ const guides = require("./guide-page-data");
 
 const root = path.resolve(__dirname, "..");
 const site = "https://toolsquark.com";
-const lastmod = "2026-06-26";
-const reviewedDate = "June 26, 2026";
+const lastmod = "2026-06-28";
+const reviewedDate = "June 28, 2026";
 
 const groups = {
   health: {
