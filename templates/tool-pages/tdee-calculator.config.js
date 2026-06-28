@@ -1,9 +1,9 @@
 module.exports = {
   slug: "tdee-calculator",
-  title: "TDEE Calculator: Estimate Maintenance Calories by Activity Level",
-  description: "Estimate maintenance calories from BMR, body metrics, age, sex, and activity level. See the formula, multipliers, example, limits, and calibration steps.",
+  title: "TDEE Calculator for Activity Level and Calorie Target Planning",
+  description: "Estimate TDEE and maintenance calories from BMR, activity level, body metrics, age, and sex. See multipliers, examples, limits, and calibration steps.",
   h1: "TDEE Calculator",
-  hero: "Use this TDEE calculator to estimate maintenance calories from age, sex, height, weight, and activity level, then treat the result as a starting point you can calibrate with your real trend.",
+  hero: "Use this TDEE calculator to estimate maintenance calories from age, sex, height, weight, and activity level, then connect the result to calorie targets and real-world calibration.",
   schemaName: "Privacy-First TDEE Calculator",
   schemaDescription: "A browser-side Total Daily Energy Expenditure calculator focused on estimated maintenance energy and real-world calibration.",
   lastUpdated: "June 22, 2026",
@@ -37,6 +37,18 @@ module.exports = {
       title: "Macro Calculator",
       description: "Turn a calorie target into protein, fat, and carbohydrate grams.",
       action: "Split Macros"
+    },
+    {
+      href: "https://toolsquark.com/tools/maintenance-calorie-calibration-calculator.html",
+      title: "Maintenance Calorie Calibration",
+      description: "Use average intake and weight trend to refine your estimated maintenance.",
+      action: "Calibrate"
+    },
+    {
+      href: "https://toolsquark.com/tools/daily-steps-goal-calculator.html",
+      title: "Daily Steps Goal Calculator",
+      description: "Build a walking plan when activity level is the weakest assumption.",
+      action: "Plan Steps"
     }
   ],
   faq: [
@@ -71,6 +83,14 @@ module.exports = {
     {
       question: "Why is my TDEE different from my fitness app?",
       answer: "Apps may use wearable movement data, different formulas, exercise logs, or personalized history. This calculator uses a transparent equation and broad activity multipliers, so compare it with your multi-week trend."
+    },
+    {
+      question: "Should I choose a higher activity level for workouts?",
+      answer: "Choose the level that reflects your average week, including non-exercise movement and work demands. If you are unsure, start conservative and calibrate from trend data."
+    },
+    {
+      question: "What is the next step after TDEE?",
+      answer: "Use the TDEE estimate as maintenance. If your goal is weight loss or gain, open the Daily Calorie Goal Calculator to apply a visible deficit or surplus."
     }
   ],
   references: [
@@ -101,6 +121,10 @@ module.exports = {
     {
       title: "Accuracy And Real-World Calibration",
       body: `<p>The published equation estimates resting needs; the activity multiplier adds another assumption. Step count, non-exercise movement, training load, body composition, illness, sleep, and food tracking can all move actual maintenance away from the estimate.</p><p>Use the result as a starting budget for two to four weeks. Compare average intake with average body-weight trend, energy, hunger, and performance, then adjust in small steps. Pregnancy, breastfeeding, growth, eating-disorder history, and medical nutrition needs require individualized guidance.</p>`
+    },
+    {
+      title: "When Activity Level Is The Weak Link",
+      body: `<p>The activity multiplier is usually the least precise part of a TDEE estimate. A desk worker who trains hard three days per week and a person with an active job may choose the same label but have very different total movement.</p><p>If the result feels too high or too low, do not only change the formula. Track steps, training days, intake, and trend for several weeks, then calibrate maintenance from what actually happens.</p>`
     }
   ],
   methodology: "This tool calculates BMR with the Mifflin-St Jeor equation, converts imperial inputs when needed, and applies standard activity multipliers from 1.2 to 1.9.",

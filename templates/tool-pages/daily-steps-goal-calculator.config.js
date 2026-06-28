@@ -2,10 +2,10 @@ module.exports = {
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   slug: "daily-steps-goal-calculator",
-  title: "Daily Steps Goal Calculator: Build A Gradual Walking Plan",
-  description: "Calculate a realistic daily step goal from your current average. Build a 4, 6, or 8 week walking plan with milestones, target options, and safety notes.",
+  title: "Daily Steps Goal Calculator Based on Time, Pace, and Routine",
+  description: "Build a realistic daily step goal from your current average, objective, and timeline. See weekly milestones, examples, walking-time context, and safety limits.",
   h1: "Daily Steps Goal Calculator",
-  hero: "Use this daily steps goal calculator to turn your current step average into a gradual walking plan with weekly milestones, realistic target options, and safety notes.",
+  hero: "Use this daily steps goal calculator to turn your current average into a gradual walking plan with weekly milestones, realistic targets, walking-time context, and safety notes.",
   schemaName: "Privacy-First Daily Steps Goal Calculator",
   schemaDescription: "A browser-side progressive walking plan that moves from a current step baseline toward one of three disclosed preset targets.",
   lastUpdated: "June 26, 2026",
@@ -52,7 +52,8 @@ module.exports = {
   related: [
     { href: "https://toolsquark.com/tools/walking-time-to-steps-calculator.html", title: "Walking Time To Steps", description: "Estimate how many steps a 10, 20, 30, or 60 minute walk may add.", action: "Convert Time" },
     { href: "https://toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Convert your planned steps into estimated calories.", action: "Estimate Burn" },
-    { href: "https://toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Adjust hydration around higher activity volume.", action: "Plan Fluids" }
+    { href: "https://toolsquark.com/tools/water-intake-calculator.html", title: "Water Intake Calculator", description: "Adjust hydration around higher activity volume.", action: "Plan Fluids" },
+    { href: "https://toolsquark.com/tools/tdee-calculator.html", title: "TDEE Calculator", description: "Estimate how a more active routine may fit into maintenance-calorie planning.", action: "Estimate TDEE" }
   ],
   references: [
     { title: "Steps per Day and All-Cause Mortality in Middle-aged Adults", publisher: "JAMA Network Open / PubMed", href: "https://pubmed.ncbi.nlm.nih.gov/34477847/" },
@@ -66,7 +67,9 @@ module.exports = {
     { question: "What if my baseline is already above the goal?", answer: "If your current baseline is above the selected goal, the plan will keep you near your current level rather than reducing your target." },
     { question: "Should I use my best day or my average steps?", answer: "Use a recent average from several ordinary days. A best day can make the plan too aggressive, while a unusually low day can make the target less useful." },
     { question: "How can I add steps without a long workout?", answer: "Short walks after meals, walking during calls, parking farther away, taking movement breaks, or adding one 10-minute walk can increase steps without requiring one long session." },
-    { question: "When should I stop increasing steps?", answer: "Pause or repeat a week if pain, unusual shortness of breath, dizziness, excessive fatigue, or schedule strain appears. Progress does not need to be perfectly linear." }
+    { question: "When should I stop increasing steps?", answer: "Pause or repeat a week if pain, unusual shortness of breath, dizziness, excessive fatigue, or schedule strain appears. Progress does not need to be perfectly linear." },
+    { question: "How do I connect steps with walking time?", answer: "Use your usual pace or the walking-time converter to translate a step increase into minutes. For many people, a 1,000-step increase is easier to plan when it becomes one or two short walks." },
+    { question: "Can daily steps replace exercise?", answer: "Steps help reduce sedentary time and support walking volume, but they do not fully replace strength training, vigorous activity, balance work, or individualized exercise guidance." }
   ],
   contentSections: [
     {
@@ -96,6 +99,10 @@ module.exports = {
     {
       title: "Safety And Personalization",
       body: `<p>Start from a multi-day baseline and adjust for mobility, footwear, terrain, recovery, health conditions, and current symptoms. New pain, chest discomfort, faintness, or unusual shortness of breath warrants stopping and seeking appropriate guidance.</p>`
+    },
+    {
+      title: "Turning Steps Into A Routine",
+      body: `<p>A step target works best when it maps to real moments in the day. Instead of treating 8,500 steps as one large task, split the increase into commute walking, short meal walks, errands, call pacing, or a planned evening route.</p><p>If the plan asks for 1,500 more steps than your baseline, use the walking-time converter to estimate the minutes needed at your usual pace. That makes the goal easier to schedule and easier to repeat.</p>`
     }
   ],
   methodology: "This tool maps goals to step targets of 12,000, 8,500, or 5,000 steps/day and distributes the change linearly across the selected plan duration.",

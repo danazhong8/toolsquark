@@ -12,7 +12,7 @@ const guideGroups = [
   {
     title: "Body Metrics & Energy Planning",
     description: "Compare weight, body composition, maintenance calories, calorie goals, macros, and protein planning before choosing a calculator.",
-    slugs: ["bmi-vs-body-fat-vs-waist", "bmr-vs-tdee-vs-calorie-goal", "bmr-vs-rmr-vs-tdee", "how-to-set-macro-targets", "protein-per-meal-vs-daily-protein"]
+    slugs: ["body-metrics-calorie-planning-tools", "bmi-vs-body-fat-vs-waist", "bmr-vs-tdee-vs-calorie-goal", "bmr-vs-rmr-vs-tdee", "how-to-set-macro-targets", "protein-per-meal-vs-daily-protein"]
   },
   {
     title: "Sleep & Daily Movement",
@@ -170,7 +170,7 @@ document.addEventListener('click', (event) => {
 }
 
 function renderIndex() {
-  const startingGuides = ["bmr-vs-tdee-vs-calorie-goal", "sleep-debt-vs-sleep-quality", "stress-vs-anxiety-patterns", "smartphone-use-vs-social-media-use"].map(guideBySlug).filter(Boolean);
+  const startingGuides = ["body-metrics-calorie-planning-tools", "sleep-debt-vs-sleep-quality", "stress-vs-anxiety-patterns", "smartphone-use-vs-social-media-use"].map(guideBySlug).filter(Boolean);
   const startingCards = startingGuides.map(renderGuideCard).join("");
   const groupedSections = guideGroups.map((group) => {
     const cards = group.slugs.map(guideBySlug).filter(Boolean).map(renderGuideCard).join("");

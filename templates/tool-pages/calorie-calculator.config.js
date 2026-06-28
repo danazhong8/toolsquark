@@ -1,9 +1,9 @@
 module.exports = {
   slug: "calorie-calculator",
-  title: "Daily Calorie Goal Calculator: Deficit, Maintenance, or Lean Gain",
-  description: "Estimate maintenance calories, then choose a transparent deficit, maintenance, or surplus target. See the formula, goal adjustment, example, and limits.",
+  title: "Calorie Calculator for Maintenance, Loss, or Gain Planning",
+  description: "Estimate a daily calorie target from maintenance, then choose a transparent deficit, maintenance, or surplus. See the formula, examples, limits, and next-step tools.",
   h1: "Daily Calorie Goal Calculator",
-  hero: "Use this daily calorie goal calculator after estimating maintenance energy, then choose a visible percentage adjustment for gradual fat loss, maintenance, or lean gain.",
+  hero: "Use this calorie calculator to estimate maintenance, fat-loss, or lean-gain targets with visible percentage adjustments, browser-local inputs, and practical calibration guidance.",
   schemaName: "Privacy-First Calorie Calculator",
   schemaDescription: "A browser-side daily calorie goal planner using estimated maintenance energy and an explicit percentage adjustment.",
   lastUpdated: "June 22, 2026",
@@ -37,6 +37,18 @@ module.exports = {
       title: "Calorie Deficit Timeline",
       description: "Estimate the time implied by a chosen daily deficit without treating it as a promise.",
       action: "Estimate Timeline"
+    },
+    {
+      href: "https://toolsquark.com/tools/maintenance-calorie-calibration-calculator.html",
+      title: "Maintenance Calorie Calibration",
+      description: "Compare your planned intake with scale trend to refine the maintenance estimate.",
+      action: "Calibrate Intake"
+    },
+    {
+      href: "https://toolsquark.com/tools/weight-trend-smoothing-calculator.html",
+      title: "Weight Trend Smoothing",
+      description: "Reduce day-to-day weight noise before judging whether a target is working.",
+      action: "Smooth Trend"
     }
   ],
   faq: [
@@ -71,6 +83,14 @@ module.exports = {
     {
       question: "Should I eat the same calorie target every day?",
       answer: "You can, but weekly average intake usually matters more than a perfectly identical day. Some people prefer a consistent target, while others adjust around training, appetite, or schedule."
+    },
+    {
+      question: "What makes this different from a food calorie counter?",
+      answer: "This page does not count calories in foods. It estimates a planning target from body metrics, activity level, and a visible goal adjustment so you can decide what intake range to test."
+    },
+    {
+      question: "How do I know if the target is working?",
+      answer: "Compare your average intake with a smoothed body-weight trend over two to four weeks. If the trend, hunger, energy, or training response does not match the goal, adjust gradually."
     }
   ],
   references: [
@@ -101,6 +121,10 @@ module.exports = {
     {
       title: "Where The Estimate Can Miss",
       body: `<p>Activity categories are broad and cannot measure individual movement, training intensity, adaptive changes, or differences in body composition. Food labels and portion estimates also introduce error, so apparent intake and true intake may differ.</p><p>This calculator is intended for generally healthy, non-pregnant adults. Children, teenagers, pregnancy, breastfeeding, recovery from illness, eating-disorder history, and therapeutic diets need professional assessment rather than a generic deficit or surplus.</p>`
+    },
+    {
+      title: "How To Calibrate The Target",
+      body: `<p>Use the calculated target as a first test, not a permanent prescription. Keep the target stable long enough to see a trend, then compare average intake, average body weight, gym performance, hunger, sleep, and adherence.</p><p>If weight is changing faster or slower than expected, adjust in small steps rather than rebuilding the plan from scratch. The maintenance calibration and weight trend tools are designed for this second pass.</p>`
     }
   ],
   methodology: "This tool estimates maintenance energy with Mifflin-St Jeor and a selected activity multiplier, then applies a disclosed goal adjustment of -20%, -10%, 0%, +5%, or +10%.",

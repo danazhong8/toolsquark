@@ -1,9 +1,9 @@
 module.exports = {
   slug: "bmi-calculator",
-  title: "BMI Calculator | Free Metric & Imperial Body Mass Index Tool",
-  description: "Calculate BMI in metric or imperial units, including kg/cm, kg/m, lbs/ft/in, and the BMI formula. See adult categories and private browser-side results.",
+  title: "BMI Calculator With Category, Limits, and Next-Step Context",
+  description: "Calculate adult BMI in metric or imperial units, see the formula, category, limitations, examples, and which body metric to check next. Inputs stay in your browser.",
   h1: "BMI Calculator",
-  hero: "Calculate body mass index with metric or imperial units, including kg/cm, kg/m, pounds, feet, and inches. Everything runs locally in your browser with no account and no server-side health data storage.",
+  hero: "Calculate adult body mass index with metric or imperial units, then read the screening category, formula, limitations, and next body-metric options. Everything runs locally in your browser with no account.",
   schemaName: "Privacy-First BMI Calculator",
   schemaDescription: "A free browser-side Body Mass Index calculator for metric and imperial units, with adult BMI categories, formula notes, and result interpretation.",
   lastUpdated: "June 26, 2026",
@@ -32,6 +32,18 @@ module.exports = {
       title: "Body Fat Calculator",
       description: "Add body composition context beyond the standard height-to-weight ratio.",
       action: "Estimate Fat %"
+    },
+    {
+      href: "https://toolsquark.com/tools/waist-to-height-ratio-calculator.html",
+      title: "Waist-to-Height Ratio",
+      description: "Add a simple central-size screen when BMI needs distribution context.",
+      action: "Check Waist Ratio"
+    },
+    {
+      href: "https://toolsquark.com/tools/calorie-calculator.html",
+      title: "Daily Calorie Goal Calculator",
+      description: "Move from body-size context to a transparent calorie planning target.",
+      action: "Plan Calories"
     }
   ],
   faq: [
@@ -62,6 +74,14 @@ module.exports = {
     {
       question: "Does this BMI calculator store my height or weight?",
       answer: "No. The calculation runs in your browser. ToolsQuark does not require an account and this page does not send your BMI inputs to a server."
+    },
+    {
+      question: "What should I check after BMI?",
+      answer: "If BMI is only a rough screen for you, compare it with waist-to-height ratio, body-fat estimate, or a calorie-planning tool depending on whether your next question is body distribution, composition, or daily energy."
+    },
+    {
+      question: "Why does this page explain BMI limitations?",
+      answer: "BMI is often searched as if it gives a complete health answer, but it is only a height-to-weight screening ratio. The page explains its limits so the result is easier to interpret responsibly."
     }
   ],
   references: [
@@ -88,6 +108,10 @@ module.exports = {
     {
       title: "When BMI Needs More Context",
       body: `<p>Standard adult categories are not designed for children or teenagers, who are assessed with age- and sex-specific percentiles. BMI also needs cautious interpretation during pregnancy, in very muscular people, and when illness, edema, amputation, or age-related muscle loss changes the relationship between weight and body composition.</p><p>For a broader picture, pair BMI with waist circumference or waist-to-height ratio and discuss unexpected weight change or health concerns with a qualified clinician.</p>`
+    },
+    {
+      title: "What To Do After The BMI Number",
+      body: `<p>If your goal is quick screening, the BMI category may be enough. If the result conflicts with your body composition, waist size, training status, or health history, use it as a prompt to add another measure rather than as a final conclusion.</p><ul><li><strong>Need distribution context?</strong> Try waist-to-height ratio.</li><li><strong>Need composition context?</strong> Try a body-fat estimate.</li><li><strong>Need nutrition planning?</strong> Estimate TDEE or a daily calorie goal after BMI.</li></ul>`
     }
   ],
   methodology: "This tool applies the standard adult Body Mass Index equation and unit conversions for metric and imperial inputs. Results are rounded to one decimal place and mapped to common adult BMI screening categories.",

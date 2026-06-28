@@ -1,9 +1,9 @@
 module.exports = {
   slug: "bmr-calculator",
-  title: "BMR Calculator | Estimate Basal Metabolic Rate Calories",
-  description: "Calculate BMR with the Mifflin-St Jeor equation using metric or imperial units. Estimate resting calories and understand how BMR differs from TDEE.",
+  title: "BMR Calculator With Formula Comparison and TDEE Context",
+  description: "Calculate BMR with Mifflin-St Jeor, see the formula, worked example, limitations, and how resting calories differ from TDEE and calorie goals.",
   h1: "BMR Calculator",
-  hero: "Discover your basal metabolic rate: the estimated calories your body burns at complete rest to support essential functions.",
+  hero: "Estimate your basal metabolic rate with a transparent formula, then see how this resting-energy baseline differs from TDEE, maintenance calories, and daily calorie goals.",
   schemaName: "Privacy-First BMR Calculator",
   schemaDescription: "A free browser-side Basal Metabolic Rate calculator using the Mifflin-St Jeor equation, metric and imperial inputs, and practical energy-planning context.",
   lastUpdated: "June 21, 2026",
@@ -31,6 +31,12 @@ module.exports = {
       title: "Calorie Calculator",
       description: "Estimate maintenance, deficit, and surplus calories for practical nutrition planning.",
       action: "Plan Calories"
+    },
+    {
+      href: "https://toolsquark.com/tools/maintenance-calorie-calibration-calculator.html",
+      title: "Maintenance Calorie Calibration",
+      description: "Use real trend data to refine the estimate after BMR and TDEE planning.",
+      action: "Calibrate"
     }
   ],
   faq: [
@@ -53,6 +59,14 @@ module.exports = {
     {
       question: "Can I eat below my BMR to lose weight?",
       answer: "Eating below BMR is not automatically appropriate or safe. BMR is not a diet target; it is a resting-energy estimate. For weight change, use TDEE and consider professional guidance for large deficits."
+    },
+    {
+      question: "Why do BMR calculators give different results?",
+      answer: "Different calculators may use Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, or different rounding and unit conversions. This page uses Mifflin-St Jeor and explains the exact equation."
+    },
+    {
+      question: "What should I do after calculating BMR?",
+      answer: "Use BMR as the resting baseline, then estimate TDEE with activity included. If you need an intake target, use the calorie goal calculator after the TDEE step."
     }
   ],
   references: [
@@ -79,6 +93,10 @@ module.exports = {
     {
       title: "Limits And Appropriate Use",
       body: `<p>The equation predicts resting expenditure from population averages; it does not measure an individual's metabolism. Body composition, illness, medications, endocrine conditions, growth, pregnancy, and prolonged energy restriction can change actual needs.</p><p>Do not use BMR as a minimum-safe intake or a weight-loss prescription. Total daily needs include movement, exercise, and digestion, and medical nutrition decisions require individualized assessment.</p>`
+    },
+    {
+      title: "Why BMR Is Not The Final Calorie Target",
+      body: `<p>BMR is the first number in an energy-planning sequence, not the last. Normal daily life adds walking, training, work, fidgeting, digestion, and recovery demands, so total daily energy needs are usually meaningfully higher than BMR.</p><p>After calculating BMR, move to TDEE for maintenance calories. Only then choose a deficit, maintenance target, surplus, or macro split.</p>`
     }
   ],
   methodology: "This tool uses the Mifflin-St Jeor equation with metric conversions for imperial entries. Results are rounded to the nearest whole calorie.",

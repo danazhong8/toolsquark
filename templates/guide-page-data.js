@@ -1,5 +1,42 @@
 module.exports = [
   {
+    slug: "body-metrics-calorie-planning-tools",
+    title: "Body Metrics & Calorie Planning Tools: What To Use First | ToolsQuark",
+    description: "Choose the right ToolsQuark body metric, calorie, activity, and trend tool before comparing BMI, BMR, TDEE, calorie targets, steps, and maintenance calibration.",
+    h1: "Body Metrics And Calorie Planning Tools: What To Use First",
+    intro: "BMI, BMR, TDEE, calorie targets, step goals, and weight trends answer different questions. This hub shows the sequence so users do not treat every number as the same kind of answer.",
+    primaryQuery: "body metrics calorie planning tools",
+    tools: [
+      ["bmi-calculator", "BMI Calculator", "Start with a standard adult height-to-weight screening ratio.", "Calculate BMI"],
+      ["bmr-calculator", "BMR Calculator", "Estimate predicted resting energy before activity is added.", "Calculate BMR"],
+      ["tdee-calculator", "TDEE Calculator", "Turn resting energy into an estimated maintenance level.", "Estimate TDEE"],
+      ["calorie-calculator", "Daily Calorie Goal Calculator", "Apply a visible deficit, maintenance, or surplus adjustment.", "Plan Calories"],
+      ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a gradual walking target when activity is the weak assumption.", "Plan Steps"],
+      ["maintenance-calorie-calibration-calculator", "Maintenance Calorie Calibration", "Use intake and trend data to refine the maintenance estimate.", "Calibrate"]
+    ],
+    sections: [
+      ["The Short Sequence", `<div class="flow"><strong>BMI</strong><span>body-size screen</span><b>&rarr;</b><strong>BMR</strong><span>resting energy</span><b>&rarr;</b><strong>TDEE</strong><span>maintenance</span></div><p>Use BMI when the question is body size relative to height. Use BMR when the question is resting energy. Use TDEE when activity needs to be included. Use the calorie goal calculator only after maintenance has been estimated.</p>`],
+      ["Which Tool Matches The Question?", `<div class="table-wrap"><table><thead><tr><th>User question</th><th>Best starting page</th><th>Why</th></tr></thead><tbody><tr><td>Where does my height and weight fall?</td><td>BMI Calculator</td><td>It gives a standard adult screening category and explains the limits.</td></tr><tr><td>How many calories do I burn at rest?</td><td>BMR Calculator</td><td>It isolates resting energy before activity assumptions are added.</td></tr><tr><td>What is my maintenance estimate?</td><td>TDEE Calculator</td><td>It adds an activity multiplier to estimated BMR.</td></tr><tr><td>What should my intake target be?</td><td>Daily Calorie Goal Calculator</td><td>It applies a visible deficit, maintenance, or surplus adjustment.</td></tr><tr><td>How can I make activity more realistic?</td><td>Daily Steps Goal Calculator</td><td>It turns a current step baseline into gradual weekly milestones.</td></tr><tr><td>Why is the estimate wrong in real life?</td><td>Maintenance Calorie Calibration</td><td>It compares average intake with trend data instead of trusting one formula.</td></tr></tbody></table></div>`],
+      ["Avoiding Calculator Overlap", `<p>The most common mistake is asking several calculators the same question and then choosing the number that feels best. ToolsQuark separates the jobs: BMI screens body size, BMR estimates resting energy, TDEE estimates maintenance, and the calorie calculator creates an intake target.</p><p>If two pages seem to disagree, check whether they are answering different questions before assuming one is wrong.</p>`],
+      ["A Practical Example", `<p>Someone may first calculate BMI to understand the adult screening category, then calculate BMR and TDEE to estimate maintenance calories. If estimated TDEE is 2,400 kcal/day, the calorie goal page can apply a 10% deficit or 5% surplus. After two to four weeks, the maintenance calibration tool can compare average intake with weight trend.</p>`],
+      ["Where Step Goals Fit", `<p>Activity level is often the weakest part of a TDEE estimate because broad labels hide daily movement. A step plan can make the activity assumption more concrete by turning vague activity goals into weekly walking milestones.</p><p>Steps do not measure every exercise type, but they can make sedentary time and daily movement easier to track.</p>`],
+      ["When Generic Tools Are Not Enough", `<p>Pregnancy, breastfeeding, growth, eating-disorder history, therapeutic diets, major illness, medication changes, and unexplained weight change require individualized professional guidance. These pages provide educational estimates and routing, not medical or nutrition prescriptions.</p>`]
+    ],
+    faq: [
+      ["Should I start with BMI or calories?", "Start with BMI only if your question is body-size screening. Start with BMR or TDEE if your question is energy planning."],
+      ["Is TDEE more useful than BMR?", "TDEE is usually more useful for daily calorie planning because it includes activity. BMR remains useful as the resting baseline."],
+      ["Why include a step goal in a calorie planning cluster?", "Activity level is a major TDEE assumption. A step goal helps make daily movement more concrete and easier to calibrate."],
+      ["How long should I test a calorie target?", "Two to four weeks is usually more informative than a few days because water, sodium, digestion, and training can hide the trend."]
+    ],
+    references: [
+      ["About Body Mass Index", "Centers for Disease Control and Prevention", "https://www.cdc.gov/bmi/about/index.html"],
+      ["A New Predictive Equation for Resting Energy Expenditure", "The American Journal of Clinical Nutrition / PubMed", "https://pubmed.ncbi.nlm.nih.gov/2305711/"],
+      ["Body Weight Planner", "National Institute of Diabetes and Digestive and Kidney Diseases", "https://www.niddk.nih.gov/bwp"],
+      ["Physical Activity Guidelines for Adults", "Centers for Disease Control and Prevention", "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html"]
+    ],
+    related: ["bmi-vs-body-fat-vs-waist", "bmr-vs-tdee-vs-calorie-goal", "how-to-choose-a-realistic-daily-step-goal"]
+  },
+  {
     slug: "bmi-vs-body-fat-vs-waist",
     title: "BMI vs Body Fat vs Waist Measurements | ToolsQuark",
     description: "Compare BMI, body-fat estimates, waist-to-height ratio, and waist-to-hip ratio so you can choose the right screening tool and interpret its limits.",
