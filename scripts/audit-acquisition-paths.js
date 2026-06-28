@@ -23,9 +23,17 @@ const guideHubHeadings = [
 ];
 const supplementalToolGuides = {
   "bmr-calculator": "bmr-vs-rmr-vs-tdee",
+  "maintenance-calorie-calibration-calculator": "bmr-vs-tdee-vs-calorie-goal",
+  "weight-trend-smoothing-calculator": "bmr-vs-tdee-vs-calorie-goal",
   "protein-calculator": "protein-per-meal-vs-daily-protein",
   "protein-per-meal-calculator": "protein-per-meal-vs-daily-protein",
   "sleep-debt-calculator": "sleep-debt-vs-sleep-quality",
+  "sleep-consistency-calculator": "sleep-debt-vs-sleep-quality",
+  "screen-free-bedtime-planner": "sleep-debt-vs-sleep-quality",
+  "relationship-check-in-planner": "identify-and-communicate-emotional-needs",
+  "notification-load-self-check": "smartphone-use-vs-social-media-use",
+  "task-initiation-friction-self-check": "procrastination-vs-follow-through",
+  "boundary-clarity-self-check": "identify-and-communicate-emotional-needs",
   "daily-steps-goal-calculator": "how-to-choose-a-realistic-daily-step-goal",
   "walking-time-to-steps-calculator": "how-to-choose-a-realistic-daily-step-goal",
   "steps-to-calories-converter": "how-to-choose-a-realistic-daily-step-goal"

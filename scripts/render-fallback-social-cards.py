@@ -93,3 +93,27 @@ render_card(
     "A private 30-day self-check for directness, listening, emotional pacing, and repair signals.",
     ["Directness", "Listening Fit", "Emotional Pacing", "Repair Signals"],
 )
+
+render_card(
+    "notification-load-self-check.png",
+    "#0f766e",
+    "Notification Load Self-Check",
+    "A private 30-day self-check for notification load, urgency pressure, and recovery difficulty.",
+    ["Interruptions", "Urgency Pressure", "Recovery Difficulty", "Boundary Drift"],
+)
+
+render_card(
+    "task-initiation-friction-self-check.png",
+    "#7c3aed",
+    "Task Initiation Friction Self-Check",
+    "A private 14-day self-check for task initiation friction and starting barriers.",
+    ["Next-Step Clarity", "Activation Barrier", "Avoidance Pull", "Competing Pulls"],
+)
+
+render_card(
+    "boundary-clarity-self-check.png",
+    "#2563eb",
+    "Boundary Clarity Self-Check",
+    "A private 30-day self-check for boundary clarity, requests, negotiation, and follow-through.",
+    ["Boundary Signal", "Clear Wording", "Negotiation Room", "Follow-Through"],
+)

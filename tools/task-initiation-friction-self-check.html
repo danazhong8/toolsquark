@@ -1,225 +1,135 @@
-const fs = require("fs");
-const path = require("path");
-
-const root = path.resolve(__dirname, "..");
-const configDir = path.join(__dirname, "assessment-pages");
-const outDir = path.join(root, "tools");
-const defaultLastUpdated = "June 20, 2026";
-const queryMap = JSON.parse(fs.readFileSync(path.join(root, "seo", "core-query-map.json"), "utf8"));
-const guideData = require("./guide-page-data");
-const supplementalGuideMap = {
-  "smartphone-addiction-test": "smartphone-use-vs-social-media-use",
-  "social-media-addiction-index": "social-media-addiction-vs-normal-use",
-  "notification-load-self-check": "smartphone-use-vs-social-media-use",
-  "task-initiation-friction-self-check": "procrastination-vs-follow-through",
-  "boundary-clarity-self-check": "identify-and-communicate-emotional-needs",
-  "loneliness-level-test": "social-media-addiction-vs-normal-use",
-  "focus-attention-diagnostic": "smartphone-use-vs-social-media-use"
-};
-
-function esc(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-function cleanOutput(value) {
-  return value.replace(/[ \t]+$/gm, "");
-}
-
-function renderMatchingGuide(slug) {
-  const mapping = queryMap.pages.find((page) => page.path === `/tools/${slug}.html`);
-  const guideSlug = mapping ? path.basename(mapping.guidePath, ".html") : supplementalGuideMap[slug];
-  if (!guideSlug) return "";
-  const guide = guideData.find((item) => item.slug === guideSlug);
-  if (!guide) return "";
-  return `\n        <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/${guide.slug}.html" class="recommend-card"><div><h4>${esc(guide.h1)}</h4><p>${esc(guide.description)}</p></div><span class="action-text">Read guide &rarr;</span></a></div>`;
-}
-
-function renderRelated(items = []) {
-  return items.map((item) => `
-            <a href="${esc(item.href)}" class="recommend-card">
-                <div>
-                    <h4>${esc(item.title)}</h4>
-                    <p>${esc(item.description)}</p>
-                </div>
-                <span>${esc(item.action || "Open Tool")} &rarr;</span>
-            </a>`).join("");
-}
-
-function renderFaq(items = []) {
-  return items.map((item) => `
-        <div class="faq-item">
-            <h4>${esc(item.question)}</h4>
-            <p>${esc(item.answer)}</p>
-        </div>`).join("");
-}
-
-function renderContentSections(items = []) {
-  return items.map((section) => `
-    <div class="content-section">
-        <h3>${esc(section.title)}</h3>
-        ${section.body}
-    </div>`).join("");
-}
-
-function renderReferences(items = []) {
-  if (!items.length) return "";
-  return `<div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">These resources provide general background. They do not validate or endorse this self-check.</p><ul class="reference-list">${items.map((item) => `<li><a href="${esc(item.href)}" target="_blank" rel="noopener noreferrer">${esc(item.title)}</a><span>${esc(item.publisher)}</span></li>`).join("")}</ul></div>`;
-}
-
-function renderVisualGuide() {
-  return `<div class="card side-card visual-guide-card"><h3>Method Visual</h3><img src="../assets/visual-guides/self-check-method-guide.png" alt="Self-check method guide showing scored items, dimensions, context, and interpretation bands." loading="lazy" width="900" height="620"></div>`;
-}
-
-function normalizeOptions(options = [], values = []) {
-  return options.map((option, index) => {
-    if (typeof option === "object") return option;
-    return { label: option, value: values[index] ?? index + 1 };
-  });
-}
-
-function buildAssessmentModel(config) {
-  const modern = config.instrument?.type === "original-self-check";
-  const responseScale = config.responseScale || {
-    id: "legacy-position-1-4",
-    values: [1, 2, 3, 4],
-    options: []
-  };
-  const coreQuestions = config.questions.map((question, index) => ({
-    ...question,
-    id: question.id || `core-${index + 1}`,
-    type: "scored",
-    dimension: question.dimension || config.questionDimensions?.[index],
-    options: normalizeOptions(question.options || responseScale.options, responseScale.values)
-  }));
-  const contextQuestions = (config.contextQuestions || []).map((question, index) => ({
-    ...question,
-    id: question.id || `context-${index + 1}`,
-    type: "context",
-    options: normalizeOptions(question.options)
-  }));
-  const protectiveScale = config.protectiveResponseScale || responseScale;
-  const protectiveQuestions = (config.protectiveQuestions || []).map((question, index) => ({
-    ...question,
-    id: question.id || `protective-${index + 1}`,
-    type: "protective",
-    options: normalizeOptions(question.options || protectiveScale.options, protectiveScale.values)
-  }));
-  const scaleValues = responseScale.values || [1, 2, 3, 4];
-
-  return {
-    modern,
-    responseScale,
-    coreQuestions,
-    contextQuestions,
-    protectiveQuestions,
-    allQuestions: [...coreQuestions, ...contextQuestions, ...protectiveQuestions],
-    minimumScore: Math.min(...scaleValues) * coreQuestions.length,
-    maximumScore: Math.max(...scaleValues) * coreQuestions.length
-  };
-}
-
-function renderScoreGuide(config, model) {
-  const dimensions = (config.indicators || []).map((item) => item.label).join(", ");
-  const minScore = model.minimumScore;
-  const maxScore = model.maximumScore;
-  const protectiveNote = (config.indicators || []).some((item) => item.direction === "protective")
-    ? " Protective factors are displayed in the positive direction."
-    : "";
-  if (model.modern) {
-    return `<div class="card score-guide" id="result-guide"><h3>How To Read This Result</h3><p>This versioned original self-check uses ${model.coreQuestions.length} scored frequency items for the ${esc((config.timeframe || "past 2 weeks").toLowerCase())}. It reviews ${esc(dimensions)}. Optional context answers personalize guidance but do not change the score.</p><p>Dimension labels summarize how often their assigned experiences were selected. Protective factors are shown separately and are not reverse-scored into a risk total. Result profiles are descriptive editorial patterns, not clinical cutoffs, probabilities, or population percentiles.</p><div class="note-box"><strong>Important limit:</strong> This is not a validated screening instrument and cannot diagnose, rule out, or measure the severity of a medical or mental health condition. Use the result as a structured reflection, not as a label.</div></div>`;
-  }
-  return `<div class="card score-guide" id="result-guide"><h3>How To Read This Result</h3><p>This original ${config.questions.length}-item educational self-check reflects your answers for the ${esc((config.timeframe || "past 2 weeks").toLowerCase())}. It reviews ${esc(dimensions)}.</p><p>The overall score runs from ${minScore} to ${maxScore}. Result bands are descriptive groupings for self-reflection, not clinical cutoffs. Dimension labels are calculated from the questions assigned to each area.${protectiveNote}</p><div class="note-box"><strong>Important limit:</strong> This is not a validated screening instrument and cannot diagnose, rule out, or measure the severity of a medical or mental health condition. Use the result as a prompt for reflection, not as a label.</div></div>`;
-}
-
-function renderPage(config) {
-  const model = buildAssessmentModel(config);
-  const canonical = `https://toolsquark.com/tools/${config.slug}.html`;
-  const categoryUrl = `https://toolsquark.com/${config.categoryHref || "mental-health.html"}`;
-  const lastUpdated = config.lastUpdated || defaultLastUpdated;
-  const dateModified = new Date(`${lastUpdated} UTC`).toISOString().slice(0, 10);
-  const shareDescription = config.shareDescription || config.description;
-  const schema = [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "@id": `${canonical}#webpage`,
-      name: config.h1,
-      url: canonical,
-      description: config.description,
-      dateModified,
-      isPartOf: { "@type": "WebSite", name: "ToolsQuark", url: "https://toolsquark.com/" },
-      author: { "@type": "Organization", name: "ToolsQuark", url: "https://toolsquark.com/about.html" },
-      publisher: { "@type": "Organization", name: "ToolsQuark", url: "https://toolsquark.com/" },
-      mainEntity: { "@id": `${canonical}#application` }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "@id": `${canonical}#application`,
-      name: config.schemaName || config.h1,
-      url: canonical,
-      operatingSystem: "All",
-      applicationCategory: "HealthApplication",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description: config.schemaDescription || config.description,
-      softwareVersion: config.instrument?.version,
-      dateModified,
-      publisher: { "@type": "Organization", name: "ToolsQuark", url: "https://toolsquark.com/" },
-      isPartOf: { "@type": "WebSite", name: "ToolsQuark", url: "https://toolsquark.com/" }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://toolsquark.com/" },
-        { "@type": "ListItem", position: 2, name: config.categoryLabel || "Mental Health", item: categoryUrl },
-        { "@type": "ListItem", position: 3, name: config.h1, item: canonical }
-      ]
-    }
-  ];
-
-  if (config.faq?.length) {
-    schema.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: config.faq.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: String(item.answer).replace(/<[^>]*>/g, "")
-        }
-      }))
-    });
-  }
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="canonical" href="${canonical}">
-<title>${esc(config.title)}</title>
-<meta name="description" content="${esc(config.description)}">
+<link rel="canonical" href="https://toolsquark.com/tools/task-initiation-friction-self-check.html">
+<title>Task Initiation Friction Self-Check | Why Starting Feels Hard</title>
+<meta name="description" content="Review task-starting friction, unclear next actions, avoidance, and activation barriers with a private 14-day self-check.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ToolsQuark">
-<meta property="og:title" content="${esc(config.h1)}">
-<meta property="og:description" content="${esc(shareDescription)}">
-<meta property="og:url" content="${canonical}">
-${config.socialImage ? `<meta property="og:image" content="${esc(config.socialImage)}">
+<meta property="og:title" content="Task Initiation Friction Self-Check">
+<meta property="og:description" content="A private 14-day self-check for task initiation friction and starting barriers.">
+<meta property="og:url" content="https://toolsquark.com/tools/task-initiation-friction-self-check.html">
+<meta property="og:image" content="https://toolsquark.com/assets/social/task-initiation-friction-self-check.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="${esc(`${config.h1} answer pattern preview`)}">` : ""}
-<meta name="twitter:card" content="${config.socialImage ? "summary_large_image" : "summary"}">
-<meta name="twitter:title" content="${esc(config.h1)}">
-<meta name="twitter:description" content="${esc(shareDescription)}">
-${config.socialImage ? `<meta name="twitter:image" content="${esc(config.socialImage)}">` : ""}
+<meta property="og:image:alt" content="Task Initiation Friction Self-Check answer pattern preview">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Task Initiation Friction Self-Check">
+<meta name="twitter:description" content="A private 14-day self-check for task initiation friction and starting barriers.">
+<meta name="twitter:image" content="https://toolsquark.com/assets/social/task-initiation-friction-self-check.png">
 <script type="application/ld+json">
-${JSON.stringify(schema, null, 2)}
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://toolsquark.com/tools/task-initiation-friction-self-check.html#webpage",
+    "name": "Task Initiation Friction Self-Check",
+    "url": "https://toolsquark.com/tools/task-initiation-friction-self-check.html",
+    "description": "Review task-starting friction, unclear next actions, avoidance, and activation barriers with a private 14-day self-check.",
+    "dateModified": "2026-06-21",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    },
+    "mainEntity": {
+      "@id": "https://toolsquark.com/tools/task-initiation-friction-self-check.html#application"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://toolsquark.com/tools/task-initiation-friction-self-check.html#application",
+    "name": "ToolsQuark Task Initiation Friction Self-Check",
+    "url": "https://toolsquark.com/tools/task-initiation-friction-self-check.html",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Review task-starting friction, unclear next actions, avoidance, and activation barriers with a private 14-day self-check.",
+    "softwareVersion": "2.0",
+    "dateModified": "2026-06-21",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolsquark.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Lifestyle Tools",
+        "item": "https://toolsquark.com/lifestyle.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Task Initiation Friction Self-Check",
+        "item": "https://toolsquark.com/tools/task-initiation-friction-self-check.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is task initiation friction the same as procrastination?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It overlaps, but this page focuses specifically on what happens before a task begins."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good first step?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A good first step is visible, small, and doable in under 10 minutes without solving the entire task."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this an ADHD test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It is an original educational checklist and cannot diagnose ADHD or any other condition."
+        }
+      }
+    ]
+  }
+]
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -233,31 +143,31 @@ ${JSON.stringify(schema, null, 2)}
 .recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.recommend-card span{font-size:13px;font-weight:800;color:var(--accent);margin-top:12px}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li,.score-guide p{font-size:15px;color:#475569;line-height:1.75}.content-section p,.score-guide p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{color:var(--accent);font-weight:750;text-decoration:none}.reference-list a:hover{text-decoration:underline}.reference-list span{font-size:13px;color:var(--text-muted);white-space:nowrap}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}footer a{color:var(--accent);font-weight:700;text-decoration:none;margin-right:14px}footer a:hover{text-decoration:underline}
 footer span{display:block;margin-top:10px}
 .result-box{background:transparent;border:none;padding:0}.result-meta{display:flex;justify-content:center;gap:8px 18px;flex-wrap:wrap;color:var(--text-muted);font-size:12px;font-weight:700;margin-bottom:12px}.bar{border-radius:6px}.focus-area,.next-tool{border-radius:6px}.result-subsection{text-align:left;margin-top:24px;padding-top:20px;border-top:1px solid #e2e8f0}.result-subsection h4{font-size:16px;margin-bottom:6px}.result-subsection>p{color:var(--text-muted);font-size:13px;margin-bottom:12px}.context-list{display:grid;gap:8px;list-style:none}.context-list li{display:flex;justify-content:space-between;gap:18px;padding:10px 0;border-bottom:1px solid #eef2f7;color:#475569;font-size:14px}.context-list strong{text-align:right;color:#1e293b}.protective-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.protective-item{border:1px solid #bbf7d0;background:#f0fdf4;padding:14px;border-radius:6px}.protective-item strong{display:block;color:#166534;font-size:14px}.protective-item span{display:block;color:#475569;font-size:13px;margin-top:4px}.safety-area{background:#fff7ed;border:1px solid #fdba74;border-left:4px solid #f97316;padding:16px;text-align:left;margin-top:20px;border-radius:6px}.safety-area h4{color:#9a3412;margin-bottom:6px}.safety-area p{color:#7c2d12;font-size:14px}.quiz-safety{margin:18px 0 0}.result-actions-primary{justify-content:center}.result-actions-secondary{justify-content:center;margin-top:10px}.instrument-status{margin-top:12px;padding-top:12px;border-top:1px solid #e2e8f0;color:#475569;font-size:12px}.visual-guide-card img{display:block;width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc}.side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.side-column .reference-list li{display:block}.side-column .reference-list span{display:block;margin-top:4px;white-space:normal}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.intro-facts{grid-template-columns:1fr 1fr}.intro-fact:nth-child(3){padding-left:0}.start-row{align-items:stretch;flex-direction:column}.start-actions{display:grid;grid-template-columns:1fr 1fr}.start-actions .primary-btn,.start-actions .secondary-btn{width:100%}.share-status{text-align:left}.question{font-size:19px}.recommend-grid,.protective-grid{grid-template-columns:1fr}.score{font-size:46px}.card{padding:22px 18px}.assessment-meta{display:grid;grid-template-columns:1fr 1fr}.quiz-actions,.result-actions{flex-wrap:wrap}.result-actions-primary .primary-btn{width:100%}.quiz-actions .primary-btn{margin-left:auto}.reference-list li{display:block}.reference-list span{display:block;margin-top:4px;white-space:normal}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
-${config.extraCss || ""}
+
 </style>
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="${categoryUrl}">${esc(config.categoryLabel || "Mental Health")}</a> &gt; <span>${esc(config.h1)}</span></div>
-    <div class="hero"><h1>${esc(config.h1)}</h1><p>${esc(config.hero)}</p></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; <span>Task Initiation Friction Self-Check</span></div>
+    <div class="hero"><h1>Task Initiation Friction Self-Check</h1><p>Use this private self-check to review what happens before a task starts: unclear steps, avoidance, activation barriers, and competing pulls.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
-    ${model.modern ? `<div class="card intro-card" id="intro-card"><div class="intro-eyebrow">Original self-check v${esc(config.instrument.version)}</div><h2>Before You Begin</h2><p class="intro-lede">This version separates scored frequency items from context and protective factors so the result can show a clearer answer pattern.</p><div class="intro-facts"><div class="intro-fact"><span>Scored items</span><strong>${model.coreQuestions.length}</strong></div><div class="intro-fact"><span>Total prompts</span><strong>${model.allQuestions.length}</strong></div><div class="intro-fact"><span>Estimated time</span><strong>About ${Math.max(2, Math.ceil(model.allQuestions.length / 5))} minutes</strong></div><div class="intro-fact"><span>Recall period</span><strong>${esc(config.timeframe || "Past 2 weeks")}</strong></div></div><p class="intro-note">Scored items use one frequency scale. Context answers personalize the summary, while protective factors are reported separately. This original tool is not clinically validated and cannot provide a diagnosis.</p><div class="start-row"><small>Answers stay in this browser and no account is required.</small><div class="start-actions"><button type="button" class="secondary-btn" onclick="shareTest()">Share test</button><button type="button" class="primary-btn start-btn" onclick="startAssessment()">Start self-check</button></div></div><div class="share-status" id="intro-share-status" role="status" aria-live="polite"></div></div>` : ""}
-    <div class="card${model.modern ? " hidden" : ""}" id="quiz-card">
-        <div class="assessment-meta"><span>${model.coreQuestions.length} scored questions</span><span>About ${Math.max(2, Math.ceil(model.allQuestions.length / 5))} minutes</span><span>${esc(config.timeframe || "Past 2 weeks")}</span><span>Scored in your browser</span></div>
-        ${model.modern ? `<div class="phase-track" id="phase-track" aria-label="Assessment sections"><span class="phase-segment active" data-phase="scored" title="Scored questions"></span><span class="phase-segment" data-phase="context" title="Context"></span><span class="phase-segment" data-phase="protective" title="Protective factors"></span></div>` : ""}
-        <div class="quiz-header"><div class="progress-wrap" id="progress-wrap" role="progressbar" aria-valuemin="1" aria-valuemax="${model.allQuestions.length}" aria-valuenow="1" aria-labelledby="progress-text"><div class="progress-bar" id="progress-bar"></div></div><div class="progress-text" id="progress-text">Question 1 / ${model.allQuestions.length}</div></div>
+    <div class="card intro-card" id="intro-card"><div class="intro-eyebrow">Original self-check v2.0</div><h2>Before You Begin</h2><p class="intro-lede">This version separates scored frequency items from context and protective factors so the result can show a clearer answer pattern.</p><div class="intro-facts"><div class="intro-fact"><span>Scored items</span><strong>12</strong></div><div class="intro-fact"><span>Total prompts</span><strong>17</strong></div><div class="intro-fact"><span>Estimated time</span><strong>About 4 minutes</strong></div><div class="intro-fact"><span>Recall period</span><strong>Past 14 days</strong></div></div><p class="intro-note">Scored items use one frequency scale. Context answers personalize the summary, while protective factors are reported separately. This original tool is not clinically validated and cannot provide a diagnosis.</p><div class="start-row"><small>Answers stay in this browser and no account is required.</small><div class="start-actions"><button type="button" class="secondary-btn" onclick="shareTest()">Share test</button><button type="button" class="primary-btn start-btn" onclick="startAssessment()">Start self-check</button></div></div><div class="share-status" id="intro-share-status" role="status" aria-live="polite"></div></div>
+    <div class="card hidden" id="quiz-card">
+        <div class="assessment-meta"><span>12 scored questions</span><span>About 4 minutes</span><span>Past 14 days</span><span>Scored in your browser</span></div>
+        <div class="phase-track" id="phase-track" aria-label="Assessment sections"><span class="phase-segment active" data-phase="scored" title="Scored questions"></span><span class="phase-segment" data-phase="context" title="Context"></span><span class="phase-segment" data-phase="protective" title="Protective factors"></span></div>
+        <div class="quiz-header"><div class="progress-wrap" id="progress-wrap" role="progressbar" aria-valuemin="1" aria-valuemax="17" aria-valuenow="1" aria-labelledby="progress-text"><div class="progress-bar" id="progress-bar"></div></div><div class="progress-text" id="progress-text">Question 1 / 17</div></div>
         <div class="question-kicker" id="question-kicker"></div>
         <div class="question" id="question-text" tabindex="-1"></div>
         <div class="answers-grid" id="answers-container"></div>
         <div class="safety-area quiz-safety hidden" id="quiz-safety-area" role="alert"></div>
-        <div class="quiz-actions"><button type="button" class="secondary-btn" id="previous-btn" onclick="previousQuestion()">&larr; Previous</button>${model.modern ? `<button type="button" class="primary-btn" id="next-btn" onclick="nextQuestion()" disabled>Next &rarr;</button>` : ""}</div>
+        <div class="quiz-actions"><button type="button" class="secondary-btn" id="previous-btn" onclick="previousQuestion()">&larr; Previous</button><button type="button" class="primary-btn" id="next-btn" onclick="nextQuestion()" disabled>Next &rarr;</button></div>
     </div>
     <div class="card hidden" id="result-card" role="region" aria-live="polite" aria-labelledby="profile-status">
         <div class="result-box">
-            ${model.modern ? `<div class="result-meta"><span>Original self-check v${esc(config.instrument.version)}</span><span>${esc(config.timeframe)}</span><span>Not clinically validated</span></div>` : ""}
-            <div class="score-label">${model.modern ? "Current answer pattern" : "Overall score"}</div>
-            <div class="score${model.modern ? " hidden" : ""}"><span id="score-val">0</span> / ${model.maximumScore}</div>
+            <div class="result-meta"><span>Original self-check v2.0</span><span>Past 14 days</span><span>Not clinically validated</span></div>
+            <div class="score-label">Current answer pattern</div>
+            <div class="score hidden"><span id="score-val">0</span> / 48</div>
             <div class="profile" id="profile-status" tabindex="-1"></div>
             <p class="description" id="profile-desc"></p>
             <div class="result-subsection"><h4>Scored Dimensions</h4><p>Labels describe selected frequency within this checklist, not medical severity or population standing.</p><div class="indicator-grid" id="indicator-grid"></div></div>
@@ -267,40 +177,639 @@ ${config.extraCss || ""}
             <div class="focus-area" id="focus-area"></div>
             <a class="next-tool" id="next-tool" href="#" onclick="trackNextTool()"><div><small>Recommended next</small><strong id="next-tool-title"></strong></div><span aria-hidden="true">&rarr;</span></a>
             <div id="insight-grid"></div>
-            ${model.modern ? `<div class="result-actions result-actions-primary"><button type="button" class="primary-btn" onclick="shareResult()">Share result</button><button type="button" class="secondary-btn" onclick="downloadResultCard()">Download image</button><button type="button" class="secondary-btn" id="copy-result-btn" onclick="copyResultSummary()">Copy summary</button></div><div class="result-actions result-actions-secondary"><button type="button" class="secondary-btn" onclick="reviewAnswers()">&larr; Review answers</button><button type="button" class="secondary-btn" onclick="restartAssessment()">Retake test</button></div>` : `<div class="result-actions"><button type="button" class="secondary-btn" onclick="reviewAnswers()">&larr; Review answers</button><button type="button" class="secondary-btn" id="copy-result-btn" onclick="copyResultSummary()">Copy summary</button><button type="button" class="primary-btn" onclick="restartAssessment()">Retake test</button></div>`}
+            <div class="result-actions result-actions-primary"><button type="button" class="primary-btn" onclick="shareResult()">Share result</button><button type="button" class="secondary-btn" onclick="downloadResultCard()">Download image</button><button type="button" class="secondary-btn" id="copy-result-btn" onclick="copyResultSummary()">Copy summary</button></div><div class="result-actions result-actions-secondary"><button type="button" class="secondary-btn" onclick="reviewAnswers()">&larr; Review answers</button><button type="button" class="secondary-btn" onclick="restartAssessment()">Retake test</button></div>
             <div class="copy-status" id="copy-status" role="status" aria-live="polite"></div>
         </div>
     </div>
-    ${renderScoreGuide(config, model)}
-    ${config.contentSections?.length ? `<div class="card" id="guide">${renderContentSections(config.contentSections)}</div>` : ""}
-    <div class="card" id="faq"><h3>Frequently Asked Questions</h3>${renderFaq(config.faq)}</div>
+    <div class="card score-guide" id="result-guide"><h3>How To Read This Result</h3><p>This versioned original self-check uses 12 scored frequency items for the past 14 days. It reviews Next-Step Clarity, Activation Barrier, Avoidance Pull, Competing Pulls. Optional context answers personalize guidance but do not change the score.</p><p>Dimension labels summarize how often their assigned experiences were selected. Protective factors are shown separately and are not reverse-scored into a risk total. Result profiles are descriptive editorial patterns, not clinical cutoffs, probabilities, or population percentiles.</p><div class="note-box"><strong>Important limit:</strong> This is not a validated screening instrument and cannot diagnose, rule out, or measure the severity of a medical or mental health condition. Use the result as a structured reflection, not as a label.</div></div>
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What Version 2.0 Measures</h3>
+        <p>The 12 scored items cover Next-Step Clarity, Activation Barrier, Avoidance Pull, Competing Pulls. Each dimension is supported by three questions using the same 14-day frequency scale.</p><p>Context and protective-factor questions are displayed separately and do not change the core score.</p>
+    </div>
+    <div class="content-section">
+        <h3>How Scoring Works</h3>
+        <p>Scored answers use values from 0 to 4 and produce an editorial total from 0 to 48. Dimension labels summarize selected frequency, not medical severity, character, or population standing.</p><div class="note-box">Version 2.0 is original and non-validated. It cannot diagnose ADHD, depression, anxiety, learning differences, burnout, or another cause of task-starting difficulty.</div>
+    </div>
+    <div class="content-section">
+        <h3>Important Context And Limits</h3>
+        <p>Task initiation can be affected by workload, sleep, mood, attention, unclear requirements, conflict, health, environment, or unrealistic plans. A self-check cannot identify a single cause.</p>
+    </div>
+    <div class="content-section">
+        <h3>How To Use The Result</h3>
+        <p>Use the highest dimension to change the start conditions: clarify the first action, reduce activation size, make a rough first pass, or remove one competing pull.</p>
+    </div></div>
+    <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>Is task initiation friction the same as procrastination?</h4>
+            <p>It overlaps, but this page focuses specifically on what happens before a task begins.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What is a good first step?</h4>
+            <p>A good first step is visible, small, and doable in under 10 minutes without solving the entire task.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is this an ADHD test?</h4>
+            <p>No. It is an original educational checklist and cannot diagnose ADHD or any other condition.</p>
+        </div></div>
     </main>
     <aside class="side-column" aria-label="Assessment information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Scored questions</span><strong>${model.coreQuestions.length}</strong></li><li><span>Total prompts</span><strong>${model.allQuestions.length}</strong></li><li><span>Time</span><strong>About ${Math.max(2, Math.ceil(model.allQuestions.length / 5))} minutes</strong></li><li><span>Timeframe</span><strong>${esc(config.timeframe || "Past 2 weeks")}</strong></li><li><span>Answers</span><strong>Stay in browser</strong></li></ul>${model.modern ? `<div class="instrument-status"><strong>Original self-check v${esc(config.instrument.version)}</strong><br>${esc(config.instrument.reviewStatus.replace(/-/g, " "))}; not clinically validated.</div>` : ""}<nav aria-label="On this page"><ul class="page-nav"><li><a href="#quiz-card">Assessment</a></li><li><a href="#result-guide">Score guide</a></li>${config.contentSections?.length ? `<li><a href="#guide">Detailed guide</a></li>` : ""}<li><a href="#faq">FAQs</a></li>${config.references?.length ? `<li><a href="#references">References</a></li>` : ""}<li><a href="#methodology">Methodology</a></li></ul></nav></div>${renderVisualGuide()}${renderMatchingGuide(config.slug)}
-        <div class="card side-card" id="related"><h3>${esc(config.relatedTitle || "Recommended Tools")}</h3><div class="recommend-grid">${renderRelated(config.related)}</div></div>
-        ${renderReferences(config.references)}
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Privacy:</strong> ${config.methodology}</p><p style="font-style:italic;font-size:12px;"><strong>Disclaimer:</strong> ${config.disclaimer}</p><div class="updated-row">Last updated: ${esc(lastUpdated)}</div></div></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Scored questions</span><strong>12</strong></li><li><span>Total prompts</span><strong>17</strong></li><li><span>Time</span><strong>About 4 minutes</strong></li><li><span>Timeframe</span><strong>Past 14 days</strong></li><li><span>Answers</span><strong>Stay in browser</strong></li></ul><div class="instrument-status"><strong>Original self-check v2.0</strong><br>editorial review; not clinically validated.</div><nav aria-label="On this page"><ul class="page-nav"><li><a href="#quiz-card">Assessment</a></li><li><a href="#result-guide">Score guide</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div><div class="card side-card visual-guide-card"><h3>Method Visual</h3><img src="../assets/visual-guides/self-check-method-guide.png" alt="Self-check method guide showing scored items, dimensions, context, and interpretation bands." loading="lazy" width="900" height="620"></div>
+        <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/procrastination-vs-follow-through.html" class="recommend-card"><div><h4>Procrastination And Follow-Through Are Not The Same</h4><p>Separate task-specific delay from broader consistency and restarting problems, then choose a more useful self-check and next action.</p></div><span class="action-text">Read guide &rarr;</span></a></div>
+        <div class="card side-card" id="related"><h3>Related Execution Tools</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/tools/procrastination-test.html" class="recommend-card">
+                <div>
+                    <h4>Procrastination Pattern Self-Check</h4>
+                    <p>Review task delay, avoidance, and reward pull.</p>
+                </div>
+                <span>Review Delay &rarr;</span>
+            </a>
+            <a href="https://toolsquark.com/tools/habit-consistency-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Habit Consistency Calculator</h4>
+                    <p>Calculate follow-through across a review window.</p>
+                </div>
+                <span>Check Rate &rarr;</span>
+            </a></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">These resources provide general background. They do not validate or endorse this self-check.</p><ul class="reference-list"><li><a href="https://pubmed.ncbi.nlm.nih.gov/17201571/" target="_blank" rel="noopener noreferrer">The Nature of Procrastination: A Meta-Analytic Review</a><span>Psychological Bulletin / PubMed</span></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/35185729/" target="_blank" rel="noopener noreferrer">What Research Has Been Conducted on Procrastination?</a><span>Frontiers in Psychology / PubMed</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Privacy:</strong> Version 2.0 is an original 12-item editorial self-check. Four dimensions use three items each and one explicit 0-to-4 frequency scale. Context and protective factors are separate from the scored core. The model is not clinically or psychometrically validated.</p><p style="font-style:italic;font-size:12px;"><strong>Disclaimer:</strong> This educational tool cannot diagnose a condition or evaluate work, school, or medical accommodations.</p><div class="updated-row">Last updated: June 21, 2026</div></div></div>
     </aside>
     </div>
     <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><span>&copy; 2026 ToolsQuark. All rights reserved.</span></footer>
 </div>
 <script>
-const questions = ${JSON.stringify(model.allQuestions, null, 2)};
-const profiles = ${JSON.stringify(config.profiles, null, 2)};
-const indicators = ${JSON.stringify((config.indicators || []).map((indicator) => ({
-  ...indicator,
-  guidance: indicator.guidance || config.dimensionGuidance?.[indicator.key]
-})), null, 2)};
-const modernAssessment = ${JSON.stringify(model.modern)};
-const scoreMinimum = ${JSON.stringify(model.minimumScore)};
-const scoreMaximum = ${JSON.stringify(model.maximumScore)};
-const safetyRules = ${JSON.stringify(config.safetyRules || [], null, 2)};
-const assessmentSlug = ${JSON.stringify(config.slug)};
-const assessmentName = ${JSON.stringify(config.h1)};
-const assessmentUrl = ${JSON.stringify(canonical)};
-const assessmentShareDescription = ${JSON.stringify(shareDescription)};
-const relatedTools = ${JSON.stringify(config.related || [], null, 2)};
-const dimensionRelated = ${JSON.stringify(config.dimensionRelated || {}, null, 2)};
+const questions = [
+  {
+    "id": "clarity-1",
+    "dimension": "clarity",
+    "question": "During the past 14 days, how often did a task feel too vague to begin?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "clarity-2",
+    "dimension": "clarity",
+    "question": "During the past 14 days, how often did you need to decide what the first step was before starting?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "clarity-3",
+    "dimension": "clarity",
+    "question": "During the past 14 days, how often did a task stay stuck because the endpoint was unclear?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "activation-1",
+    "dimension": "activation",
+    "question": "During the past 14 days, how often did you intend to start but remain unable to take the first visible action?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "activation-2",
+    "dimension": "activation",
+    "question": "During the past 14 days, how often did opening the task feel disproportionately hard?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "activation-3",
+    "dimension": "activation",
+    "question": "During the past 14 days, how often did you wait until you felt more ready before starting?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "avoidance-1",
+    "dimension": "avoidance",
+    "question": "During the past 14 days, how often did discomfort delay the start?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "avoidance-2",
+    "dimension": "avoidance",
+    "question": "During the past 14 days, how often did you avoid a task because it might reveal a problem?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "avoidance-3",
+    "dimension": "avoidance",
+    "question": "During the past 14 days, how often did perfectionism make a rough first attempt feel unsafe?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "competition-1",
+    "dimension": "competition",
+    "question": "During the past 14 days, how often did an easier activity capture the time you meant to start?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "competition-2",
+    "dimension": "competition",
+    "question": "During the past 14 days, how often did checking messages happen before the first task step?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "competition-3",
+    "dimension": "competition",
+    "question": "During the past 14 days, how often did you start preparing to start instead of starting the task itself?",
+    "type": "scored",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "taskstart-setting",
+    "label": "Task type",
+    "question": "Which task type did you think about most while answering?",
+    "options": [
+      {
+        "label": "Work or study task",
+        "value": "work"
+      },
+      {
+        "label": "Household or admin task",
+        "value": "admin"
+      },
+      {
+        "label": "Health or routine task",
+        "value": "routine"
+      },
+      {
+        "label": "Creative or personal project",
+        "value": "creative"
+      },
+      {
+        "label": "Prefer not to answer",
+        "value": "__skip__"
+      }
+    ],
+    "type": "context"
+  },
+  {
+    "id": "taskstart-duration",
+    "label": "Duration",
+    "question": "How long has this pattern been noticeable?",
+    "options": [
+      {
+        "label": "Less than 1 month",
+        "value": "under-1m"
+      },
+      {
+        "label": "1-6 months",
+        "value": "1-6m"
+      },
+      {
+        "label": "More than 6 months",
+        "value": "over-6m"
+      },
+      {
+        "label": "It varies too much to say",
+        "value": "variable"
+      },
+      {
+        "label": "Prefer not to answer",
+        "value": "__skip__"
+      }
+    ],
+    "type": "context"
+  },
+  {
+    "id": "taskstart-impact",
+    "label": "Overall interference",
+    "question": "How much is this pattern interfering with daily life?",
+    "options": [
+      {
+        "label": "Not noticeably",
+        "value": "none"
+      },
+      {
+        "label": "A little",
+        "value": "some"
+      },
+      {
+        "label": "Substantially",
+        "value": "substantial"
+      },
+      {
+        "label": "It is causing serious practical problems",
+        "value": "major"
+      },
+      {
+        "label": "Prefer not to answer",
+        "value": "__skip__"
+      }
+    ],
+    "type": "context"
+  },
+  {
+    "id": "taskstart-first-step",
+    "label": "Visible first step",
+    "question": "During the past 14 days, how often did you define a first action that could be done in under 10 minutes?",
+    "type": "protective",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "taskstart-cue",
+    "label": "Start cue",
+    "question": "During the past 14 days, how often did a clear time, place, or cue help you begin?",
+    "type": "protective",
+    "options": [
+      {
+        "label": "Not at all",
+        "value": 0
+      },
+      {
+        "label": "On 1-2 days",
+        "value": 1
+      },
+      {
+        "label": "On 3-6 days",
+        "value": 2
+      },
+      {
+        "label": "On 7-11 days",
+        "value": 3
+      },
+      {
+        "label": "On 12-14 days",
+        "value": 4
+      }
+    ]
+  }
+];
+const profiles = [
+  {
+    "min": 0,
+    "max": 12,
+    "title": "Mostly Workable Starts",
+    "color": "var(--low)",
+    "description": "Task-starting friction appeared mostly occasionally.",
+    "insights": [
+      "Keep using visible first steps.",
+      "Notice which cues make starting easier."
+    ]
+  },
+  {
+    "min": 13,
+    "max": 30,
+    "title": "Repeated Start Friction",
+    "color": "var(--mid)",
+    "description": "Several start barriers appeared repeatedly.",
+    "insights": [
+      "Make the next action smaller and more observable.",
+      "Remove one competing pull during the start window."
+    ]
+  },
+  {
+    "min": 31,
+    "max": 48,
+    "title": "Frequent Start Barriers",
+    "color": "var(--high)",
+    "description": "Starting friction appeared often across dimensions.",
+    "insights": [
+      "Reduce the task to a 5-minute opening move.",
+      "Consider support if the pattern is broad or impairing."
+    ]
+  }
+];
+const indicators = [
+  {
+    "key": "clarity",
+    "label": "Next-Step Clarity",
+    "guidance": "Write the first visible action, not the whole project."
+  },
+  {
+    "key": "activation",
+    "label": "Activation Barrier",
+    "guidance": "Use a 5-minute start that counts even if you stop."
+  },
+  {
+    "key": "avoidance",
+    "label": "Avoidance Pull",
+    "guidance": "Name the discomfort and start with a deliberately rough pass."
+  },
+  {
+    "key": "competition",
+    "label": "Competing Pulls",
+    "guidance": "Remove one easier alternative during the start window."
+  }
+];
+const modernAssessment = true;
+const scoreMinimum = 0;
+const scoreMaximum = 48;
+const safetyRules = [
+  {
+    "questionId": "taskstart-impact",
+    "values": [
+      "major"
+    ],
+    "title": "Practical impact deserves support",
+    "message": "If starting difficulty is seriously affecting work, school, money, care, health, or safety, consider qualified support to review workload, mood, attention, sleep, and context."
+  }
+];
+const assessmentSlug = "task-initiation-friction-self-check";
+const assessmentName = "Task Initiation Friction Self-Check";
+const assessmentUrl = "https://toolsquark.com/tools/task-initiation-friction-self-check.html";
+const assessmentShareDescription = "A private 14-day self-check for task initiation friction and starting barriers.";
+const relatedTools = [
+  {
+    "href": "https://toolsquark.com/tools/procrastination-test.html",
+    "title": "Procrastination Pattern Self-Check",
+    "description": "Review task delay, avoidance, and reward pull.",
+    "action": "Review Delay"
+  },
+  {
+    "href": "https://toolsquark.com/tools/habit-consistency-calculator.html",
+    "title": "Habit Consistency Calculator",
+    "description": "Calculate follow-through across a review window.",
+    "action": "Check Rate"
+  }
+];
+const dimensionRelated = {
+  "clarity": 0,
+  "activation": 1,
+  "avoidance": 0,
+  "competition": 1
+};
 let current = 0;
 let answers = Array(questions.length).fill(null);
 let isTransitioning = false;
@@ -348,22 +857,22 @@ function renderQuizSafety() {
     const question = questions[current];
     const matched = safetyRules.find((rule) => rule.questionId === question.id && rule.values.includes(answers[current]));
     area.classList.toggle('hidden', !matched);
-    area.innerHTML = matched ? \`<h4>\${matched.title}</h4><p>\${matched.message}</p>\` : '';
+    area.innerHTML = matched ? `<h4>${matched.title}</h4><p>${matched.message}</p>` : '';
 }
 function loadQuestion() {
     const q = questions[current];
     const phase = phaseDetails(q);
-    document.getElementById('question-kicker').innerText = modernAssessment ? \`\${phase.label} \${phase.index} of \${phase.total}\` : phase.label;
+    document.getElementById('question-kicker').innerText = modernAssessment ? `${phase.label} ${phase.index} of ${phase.total}` : phase.label;
     document.getElementById('question-text').innerText = q.question;
-    document.getElementById('progress-text').innerText = \`Question \${current + 1} / \${questions.length}\`;
-    document.getElementById('progress-bar').style.width = \`\${((current + 1) / questions.length) * 100}%\`;
+    document.getElementById('progress-text').innerText = `Question ${current + 1} / ${questions.length}`;
+    document.getElementById('progress-bar').style.width = `${((current + 1) / questions.length) * 100}%`;
     document.getElementById('progress-wrap').setAttribute('aria-valuenow', current + 1);
     document.getElementById('previous-btn').disabled = current === 0;
     updatePhaseTrack(q);
     document.getElementById('answers-container').innerHTML = q.options.map((option, index) => {
         const selected = answers[current] === option.value;
         const selectedClass = selected ? (!modernAssessment && q.type === 'scored' && index >= 2 ? ' selected-heavy' : ' selected') : '';
-        return \`<button type="button" class="option\${selectedClass}" aria-pressed="\${selected}" onclick="selectOption(this, \${index})">\${option.label}</button>\`;
+        return `<button type="button" class="option${selectedClass}" aria-pressed="${selected}" onclick="selectOption(this, ${index})">${option.label}</button>`;
     }).join('');
     const nextButton = document.getElementById('next-btn');
     if (nextButton) {
@@ -459,7 +968,7 @@ function renderProtectiveFactors() {
     section.classList.remove('hidden');
     document.getElementById('protective-grid').innerHTML = entries.map((entry) => {
         const selected = entry.question.options.find((option) => option.value === entry.answer);
-        return \`<div class="protective-item"><strong>\${entry.question.label || entry.question.question}</strong><span>\${selected ? selected.label : 'Not answered'}</span></div>\`;
+        return `<div class="protective-item"><strong>${entry.question.label || entry.question.question}</strong><span>${selected ? selected.label : 'Not answered'}</span></div>`;
     }).join('');
 }
 function renderContext() {
@@ -470,7 +979,7 @@ function renderContext() {
     section.classList.remove('hidden');
     document.getElementById('context-list').innerHTML = entries.map((entry) => {
         const selected = entry.question.options.find((option) => option.value === entry.answer);
-        return \`<li><span>\${entry.question.label || entry.question.question}</span><strong>\${selected ? selected.label : 'Not answered'}</strong></li>\`;
+        return `<li><span>${entry.question.label || entry.question.question}</span><strong>${selected ? selected.label : 'Not answered'}</strong></li>`;
     }).join('');
 }
 function renderSafetyGuidance() {
@@ -478,7 +987,7 @@ function renderSafetyGuidance() {
     if (!matched) return;
     const area = document.getElementById('safety-area');
     area.classList.remove('hidden');
-    area.innerHTML = \`<h4>\${matched.title}</h4><p>\${matched.message}</p>\`;
+    area.innerHTML = `<h4>${matched.title}</h4><p>${matched.message}</p>`;
 }
 function focusIndicator() {
     return indicators
@@ -501,25 +1010,25 @@ function showResult() {
     document.getElementById('indicator-grid').innerHTML = indicators.map((item) => {
         const value = dimensionValue(item);
         const level = dimensionLevel(value);
-        return \`<div class="bar"><div class="bar-label"><span>\${item.label}</span><span>\${level}</span></div><div class="bar-bg" role="img" aria-label="\${item.label}: \${level}"><div class="bar-fill" style="width:\${value}%"></div></div></div>\`;
+        return `<div class="bar"><div class="bar-label"><span>${item.label}</span><span>${level}</span></div><div class="bar-bg" role="img" aria-label="${item.label}: ${level}"><div class="bar-fill" style="width:${value}%"></div></div></div>`;
     }).join('');
     renderProtectiveFactors();
     renderContext();
     renderSafetyGuidance();
     const focus = focusIndicator();
-    const focusTitle = focus.priority < 17 ? 'Maintain what is working' : \`Suggested focus: \${focus.label}\`;
+    const focusTitle = focus.priority < 17 ? 'Maintain what is working' : `Suggested focus: ${focus.label}`;
     const focusGuidance = focus.priority < 17
         ? 'Your answers do not highlight one clear priority area. Protect the routines and support that are working, and reassess after a meaningful change rather than repeatedly testing today.'
         : focus.guidance || 'Choose one small, repeatable action that supports this area, then reassess after a meaningful period of change.';
     latestFocusTitle = focusTitle;
-    document.getElementById('focus-area').innerHTML = \`<h4>\${focusTitle}</h4><p>\${focusGuidance}</p>\`;
+    document.getElementById('focus-area').innerHTML = `<h4>${focusTitle}</h4><p>${focusGuidance}</p>`;
     const nextIndex = Number.isInteger(dimensionRelated[focus.key]) ? dimensionRelated[focus.key] : 0;
     const nextTool = relatedTools[nextIndex] || relatedTools[0];
     const nextLink = document.getElementById('next-tool');
     nextLink.href = nextTool.href;
     nextLink.dataset.target = nextTool.href.split('/').pop().replace('.html', '');
     document.getElementById('next-tool-title').innerText = nextTool.title;
-    document.getElementById('insight-grid').innerHTML = (profile.insights || []).map((text) => \`<div class="insight">\${text}</div>\`).join('');
+    document.getElementById('insight-grid').innerHTML = (profile.insights || []).map((text) => `<div class="insight">${text}</div>`).join('');
     if (!completionCounted) {
         completionCounted = true;
         trackAssessmentEvent('assessment_completed');
@@ -536,7 +1045,7 @@ async function copyResultSummary() {
     const score = document.getElementById('score-val').innerText;
     const profile = document.getElementById('profile-status').innerText;
     const scoreText = modernAssessment ? '' : ' (' + score + ' / ' + scoreMaximum + ')';
-    const summary = assessmentName + '\\nAnswer pattern: ' + profile + scoreText + '\\n' + latestFocusTitle + '\\nOriginal educational self-check, not a diagnosis: https://toolsquark.com/tools/' + assessmentSlug + '.html';
+    const summary = assessmentName + '\nAnswer pattern: ' + profile + scoreText + '\n' + latestFocusTitle + '\nOriginal educational self-check, not a diagnosis: https://toolsquark.com/tools/' + assessmentSlug + '.html';
     const status = document.getElementById('copy-status');
     try {
         await copyText(summary);
@@ -582,19 +1091,19 @@ async function sharePayload(payload, fallbackText, statusElement) {
 }
 async function shareTest() {
     const status = document.getElementById('intro-share-status');
-    const text = assessmentName + '\\n' + assessmentShareDescription + '\\n' + assessmentUrl;
+    const text = assessmentName + '\n' + assessmentShareDescription + '\n' + assessmentUrl;
     const outcome = await sharePayload({ title: assessmentName, text: assessmentShareDescription, url: assessmentUrl }, text, status);
     if (outcome === 'shared' || outcome === 'copied') trackAssessmentEvent('assessment_test_shared', { method: outcome });
 }
 async function shareResult() {
     const status = document.getElementById('copy-status');
     const resultText = 'My answer pattern: ' + latestProfileTitle + '. ' + latestFocusTitle + '. Original educational self-check, not a diagnosis.';
-    const fallback = assessmentName + '\\n' + resultText + '\\n' + assessmentUrl;
+    const fallback = assessmentName + '\n' + resultText + '\n' + assessmentUrl;
     const outcome = await sharePayload({ title: assessmentName, text: resultText, url: assessmentUrl }, fallback, status);
     if (outcome === 'shared' || outcome === 'copied') trackAssessmentEvent('assessment_result_shared', { method: outcome });
 }
 function canvasLines(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
-    const words = text.split(/\\s+/);
+    const words = text.split(/\s+/);
     const lines = [];
     let line = '';
     for (const word of words) {
@@ -710,20 +1219,3 @@ loadQuestion();
 </script>
 </body>
 </html>
-`;
-}
-
-const only = process.argv.slice(2);
-const files = fs.readdirSync(configDir)
-  .filter((file) => file.endsWith(".config.js"))
-  .filter((file) => only.length === 0 || only.includes(path.basename(file, ".config.js")));
-
-for (const file of files) {
-  const configPath = path.join(configDir, file);
-  delete require.cache[require.resolve(configPath)];
-  const config = require(configPath);
-  const html = cleanOutput(renderPage(config));
-  const outPath = path.join(outDir, `${config.slug}.html`);
-  fs.writeFileSync(outPath, html, "utf8");
-  console.log(`Rendered ${path.relative(root, outPath)}`);
-}

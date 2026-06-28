@@ -33,6 +33,7 @@ const groups = {
           ["bmi-calculator", "BMI Calculator", "Check the classic height-to-weight baseline for general adult screening.", "Check BMI"],
           ["body-fat-calculator", "Body Fat Calculator", "Estimate body fat percentage using circumference measurements.", "Estimate Fat %"],
           ["lean-body-mass-calculator", "Lean Body Mass Calculator", "Estimate non-fat body mass from height, weight, and sex profile.", "Check Lean Mass"],
+          ["weight-trend-smoothing-calculator", "Weight Trend Smoothing Calculator", "Compare weekly average weights to reduce daily scale noise.", "Smooth Trend"],
           ["waist-to-height-ratio-calculator", "Waist-to-Height Ratio", "Screen central fat distribution by comparing waist with height.", "Check WHtR"],
           ["waist-hip-ratio-calculator", "Waist Hip Ratio", "Compare waist and hip measurements for body fat distribution context.", "Check WHR"],
           ["healthy-weight-range-calculator", "Healthy Weight Range", "Estimate a BMI-based adult weight range from height.", "Find Range"]
@@ -43,6 +44,7 @@ const groups = {
         tools: [
           ["tdee-calculator", "TDEE Calculator", "Estimate maintenance energy from resting needs and activity level.", "Calculate TDEE", true],
           ["bmr-calculator", "BMR Calculator", "Isolate resting energy needs before activity is added.", "Calculate BMR"],
+          ["maintenance-calorie-calibration-calculator", "Maintenance Calorie Calibration", "Adjust estimated maintenance calories from recent intake and weight trend.", "Calibrate TDEE"],
           ["calorie-calculator", "Daily Calorie Goal Calculator", "Apply a visible goal adjustment to estimated maintenance energy.", "Plan Calories"],
           ["calorie-deficit-timeline-calculator", "Calorie Deficit Timeline", "Estimate a simplified weight-change timeline from target deficit.", "Estimate Timeline"],
           ["macro-calculator", "Custom Macro Calculator", "Distribute an existing calorie target across adjustable macro inputs.", "Split Macros"],
@@ -128,6 +130,8 @@ const groups = {
         tools: [
           ["sleep-calculator", "Sleep Schedule Calculator", "Plan a bedtime or wake time from sleep duration and expected sleep latency.", "Plan Sleep", true],
           ["sleep-debt-calculator", "Sleep Debt Calculator", "Estimate your weekly sleep deficit from target and recent average sleep.", "Estimate Debt"],
+          ["sleep-consistency-calculator", "Sleep Consistency Calculator", "Estimate bedtime and wake-time variability from your weekly timing range.", "Check Timing"],
+          ["screen-free-bedtime-planner", "Screen-Free Bedtime Planner", "Build a small phone-free wind-down window before bedtime.", "Plan Wind-Down"],
           ["caffeine-cutoff-calculator", "Caffeine Cutoff Calculator", "Estimate when to stop caffeine before a planned bedtime.", "Set Cutoff"],
           ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review sleep initiation, continuity, restoration, and daytime impact.", "Review Sleep"]
         ]
@@ -145,6 +149,7 @@ const groups = {
         title: "Execution & Follow-Through",
         tools: [
           ["procrastination-test", "Procrastination Pattern Self-Check", "Review initiation, avoidance, short-term reward pull, and perfectionistic delay.", "Review Delay", true],
+          ["task-initiation-friction-self-check", "Task Initiation Friction Self-Check", "Review unclear first steps, activation barriers, avoidance, and competing pulls.", "Review Start"],
           ["habit-consistency-calculator", "Habit Consistency Calculator", "Calculate follow-through rate from planned and completed days.", "Check Rate"],
           ["self-discipline-test", "Follow-Through Pattern Self-Check", "Review starting friction, consistency, immediate impulses, and restarting.", "Review Follow-Through"]
         ]
@@ -153,6 +158,7 @@ const groups = {
         title: "Digital Habits",
         tools: [
           ["smartphone-addiction-test", "Smartphone Use Pattern Self-Check", "Review automatic checking, stopping control, cue reactivity, and displacement.", "Review Phone Use"],
+          ["notification-load-self-check", "Notification Load Self-Check", "Review notification interruptions, urgency pressure, recovery, and boundaries.", "Review Alerts"],
           ["social-media-addiction-index", "Social Media Use Pattern Self-Check", "Review feed capture, stopping control, social evaluation, and displacement.", "Review Social Media"]
         ]
       }
@@ -190,6 +196,7 @@ const groups = {
         tools: [
           ["felt-understood-self-check", "Felt Understood In A Relationship", "Review whether your feelings, meaning, perspective, and changing needs feel understood.", "Review Understanding"],
           ["support-access-self-check", "Relationship Support Access", "Review whether support feels available, askable, usable, and reciprocal.", "Review Support"],
+          ["boundary-clarity-self-check", "Boundary Clarity Self-Check", "Review whether limits are clear enough to state, negotiate, and follow through.", "Review Clarity"],
           ["emotional-boundaries-self-check", "Emotional Boundaries Self-Check", "Review limits, guilt pressure, and boundary follow-through.", "Review Boundaries"],
           ["safe-emotional-disclosure-self-check", "Safe Emotional Disclosure Pattern", "Review readiness, response safety, boundaries, and recovery after personal sharing.", "Review Disclosure"]
         ]
@@ -199,6 +206,7 @@ const groups = {
         tools: [
           ["relationship-communication-style-self-check", "Relationship Communication Style", "Review directness, listening, pacing, and repair signals.", "Review Style"],
           ["emotional-communication-self-check", "Emotional Communication Pattern", "Review expression, listening, clarification, and regulation during emotional conversations.", "Review Communication"],
+          ["relationship-check-in-planner", "Relationship Check-In Planner", "Plan a short check-in with topic focus, timing, and answerable questions.", "Plan Check-In"],
           ["conflict-repair-self-check", "Conflict Repair Pattern", "Review de-escalation, accountability, reconnection, and follow-through after conflict.", "Review Repair", true]
         ]
       }
@@ -334,16 +342,17 @@ ${footer()}
 }
 
 function renderHome() {
+  const toolBySlug = Object.fromEntries(Object.values(groups).flatMap((group) => group.sections.flatMap((section) => section.tools)).map((tool) => [tool[0], tool]));
   const startingPoints = [
-    groups.health.sections[1].tools[0],
-    groups.health.sections[1].tools[2],
-    groups.lifestyle.sections[1].tools[0],
-    groups.mental.sections[0].tools[0],
-    groups.mental.sections[0].tools[1],
-    groups.lifestyle.sections[3].tools[0],
-    groups.lifestyle.sections[3].tools[1],
-    groups.connection.sections[2].tools[2]
-  ];
+    "tdee-calculator",
+    "calorie-calculator",
+    "maintenance-calorie-calibration-calculator",
+    "sleep-consistency-calculator",
+    "stress-index-test",
+    "smartphone-addiction-test",
+    "notification-load-self-check",
+    "relationship-check-in-planner"
+  ].map((slug) => toolBySlug[slug]).filter(Boolean);
   const categoryDescriptions = {
     health: "Body metrics, energy, nutrition, age, pregnancy, and cycle tools.",
     mental: "Private self-checks for stress, anxiety, focus, burnout, and connection.",

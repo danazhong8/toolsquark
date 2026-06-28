@@ -53,6 +53,7 @@ node scripts/audit-acquisition-paths.js
 ## Weekly Review
 
 - After a sitemap resubmission or priority URL inspection requests, use `seo/gsc/post-submit-monitor-2026-06-28.md` for the day 3, day 7, and day 14 checks.
+- After the 2026-06-28 new-tool launch, use `seo/gsc/new-tool-launch-queue-2026-06-28.md` to prioritize indexing and first-query review.
 - Check property messages, Page indexing, Sitemaps, Core Web Vitals, and HTTPS.
 - Record 28-day clicks, impressions, CTR, and average position.
 - Do not rewrite a page merely because it has no query data. Confirm indexing and internal discovery first.

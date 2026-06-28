@@ -1,151 +1,92 @@
-const fs = require("fs");
-const path = require("path");
-
-const root = path.resolve(__dirname, "..");
-const configDir = path.join(__dirname, "tool-pages");
-const outDir = path.join(root, "tools");
-const defaultLastUpdated = "June 19, 2026";
-const queryMap = JSON.parse(fs.readFileSync(path.join(root, "seo", "core-query-map.json"), "utf8"));
-const guideData = require("./guide-page-data");
-const supplementalGuideMap = {
-  "bmr-calculator": "bmr-vs-rmr-vs-tdee",
-  "maintenance-calorie-calibration-calculator": "bmr-vs-tdee-vs-calorie-goal",
-  "weight-trend-smoothing-calculator": "bmr-vs-tdee-vs-calorie-goal",
-  "protein-calculator": "protein-per-meal-vs-daily-protein",
-  "protein-per-meal-calculator": "protein-per-meal-vs-daily-protein",
-  "sleep-debt-calculator": "sleep-debt-vs-sleep-quality",
-  "sleep-consistency-calculator": "sleep-debt-vs-sleep-quality",
-  "screen-free-bedtime-planner": "sleep-debt-vs-sleep-quality",
-  "relationship-check-in-planner": "identify-and-communicate-emotional-needs",
-  "daily-steps-goal-calculator": "how-to-choose-a-realistic-daily-step-goal",
-  "walking-time-to-steps-calculator": "how-to-choose-a-realistic-daily-step-goal",
-  "steps-to-calories-converter": "how-to-choose-a-realistic-daily-step-goal"
-};
-
-function esc(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-function cleanOutput(value) {
-  return value.replace(/[ \t]+$/gm, "");
-}
-
-function renderMatchingGuide(slug) {
-  const mapping = queryMap.pages.find((page) => page.path === `/tools/${slug}.html`);
-  const guideSlug = mapping ? path.basename(mapping.guidePath, ".html") : supplementalGuideMap[slug];
-  if (!guideSlug) return "";
-  const guide = guideData.find((item) => item.slug === guideSlug);
-  if (!guide) return "";
-  return `\n        <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/${guide.slug}.html" class="recommend-card"><div><h4>${esc(guide.h1)}</h4><p>${esc(guide.description)}</p></div><span class="action-text">Read guide &rarr;</span></a></div>`;
-}
-
-function renderRelated(items = []) {
-  return items.map((item) => `
-            <a href="${esc(item.href)}" class="recommend-card">
-                <div>
-                    <h4>${esc(item.title)}</h4>
-                    <p>${esc(item.description)}</p>
-                </div>
-                <span class="action-text">${esc(item.action || "Open Tool")} &rarr;</span>
-            </a>`).join("");
-}
-
-function renderFaq(items = []) {
-  return items.map((item) => `
-        <div class="faq-item">
-            <h4>${esc(item.question)}</h4>
-            <p>${item.answer}</p>
-        </div>`).join("");
-}
-
-function renderContentSections(items = []) {
-  return items.map((section) => `
-    <div class="content-section">
-        <h3>${esc(section.title)}</h3>
-        ${section.body}
-    </div>`).join("");
-}
-
-function renderReferences(items = []) {
-  if (!items.length) return "";
-  return `<div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list">${items.map((item) => `<li><a href="${esc(item.href)}" target="_blank" rel="noopener noreferrer">${esc(item.title)}</a><span>${esc(item.publisher)}</span></li>`).join("")}</ul></div>`;
-}
-
-function renderVisualGuide() {
-  return `<div class="card side-card visual-guide-card"><h3>Method Visual</h3><img src="../assets/visual-guides/calculator-method-guide.png" alt="Calculator method guide showing inputs, formula, result, and limits." loading="lazy" width="900" height="620"></div>`;
-}
-
-function renderPage(config) {
-  const canonical = `https://toolsquark.com/tools/${config.slug}.html`;
-  const categoryUrl = `https://toolsquark.com/${config.categoryHref || "health.html"}`;
-  const lastUpdated = config.lastUpdated || defaultLastUpdated;
-  const schema = [
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: config.schemaName || config.h1,
-      url: canonical,
-      operatingSystem: "All",
-      applicationCategory: "HealthApplication",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description: config.schemaDescription || config.description,
-      publisher: { "@type": "Organization", name: "ToolsQuark", url: "https://toolsquark.com/" },
-      isPartOf: { "@type": "WebSite", name: "ToolsQuark", url: "https://toolsquark.com/" }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://toolsquark.com/" },
-        { "@type": "ListItem", position: 2, name: config.categoryLabel || "Health Tools", item: categoryUrl },
-        { "@type": "ListItem", position: 3, name: config.h1, item: canonical }
-      ]
-    }
-  ];
-
-  if (config.faq?.length) {
-    schema.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: config.faq.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: String(item.answer).replace(/<[^>]*>/g, "")
-        }
-      }))
-    });
-  }
-
-  const resultContent = config.resultHtml || `
-            <div class="result-val"><span id="calc-output">0</span>${config.resultUnit ? `<span class="result-unit">${esc(config.resultUnit)}</span>` : ""}</div>
-            <div class="result-status" id="calc-status">${esc(config.resultStatus || "Result")}</div>
-            <div class="bmi-gauge-container">
-                <div class="bmi-pointer" id="gauge-pointer"></div>
-                <div class="bmi-gauge-bar"></div>
-                <div class="bmi-labels">${(config.gaugeLabels || ["Low", "Target", "High"]).map((label) => `<span>${esc(label)}</span>`).join("")}</div>
-            </div>
-            <p class="result-desc" id="calc-desc"></p>
-            <div class="suggestion-box">
-                <h4>${esc(config.insightTitle || "Actionable Insight")}</h4>
-                <p id="calc-suggestion"></p>
-            </div>`;
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="canonical" href="${canonical}">
-<title>${esc(config.title)}</title>
-<meta name="description" content="${esc(config.description)}">
+<link rel="canonical" href="https://toolsquark.com/tools/weight-trend-smoothing-calculator.html">
+<title>Weight Trend Smoothing Calculator | 7-Day Average Weight</title>
+<meta name="description" content="Calculate a simple 7-day average weight and compare it with last week's average to reduce daily scale noise.">
 <script type="application/ld+json">
-${JSON.stringify(schema, null, 2)}
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Weight Trend Smoothing Calculator",
+    "url": "https://toolsquark.com/tools/weight-trend-smoothing-calculator.html",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A browser-side calculator for comparing two weekly average body-weight values.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolsquark.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Health Tools",
+        "item": "https://toolsquark.com/health.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Weight Trend Smoothing Calculator",
+        "item": "https://toolsquark.com/tools/weight-trend-smoothing-calculator.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why use weekly averages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Daily weight can move because of water, sodium, carbohydrate intake, digestion, soreness, and timing. Weekly averages reduce some of that noise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is one week enough to decide if a plan works?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually no. One week can be noisy. Use this as a quick check and compare multiple weeks before making major changes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can this calculate body fat change?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It only compares scale-weight averages. It cannot separate fat, lean mass, water, or digestive contents."
+        }
+      }
+    ]
+  }
+]
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -160,38 +101,101 @@ ${JSON.stringify(schema, null, 2)}
 .recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{display:block;color:var(--accent);font-weight:750;text-decoration:none;line-height:1.4}.reference-list a:hover{text-decoration:underline}.reference-list span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
 footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}footer a:hover{text-decoration:underline}
 .side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.visual-guide-card img{display:block;width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.card{padding:22px 18px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
-${config.extraCss || ""}
+
 </style>
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="${categoryUrl}">${esc(config.categoryLabel || "Health Tools")}</a> &gt; <span>${esc(config.h1)}</span></div>
-    <div class="hero"><h1>${esc(config.h1)}</h1><p>${esc(config.hero)}</p></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>Weight Trend Smoothing Calculator</span></div>
+    <div class="hero"><h1>Weight Trend Smoothing Calculator</h1><p>Smooth daily scale noise by comparing this week's average weight with last week's average.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
-${config.controlsHtml}
-        <button class="calc-submit-btn" onclick="calculateNow()">${esc(config.buttonText || "Calculate Now")}</button>
+
+        <div class="input-row">
+            <div class="input-group"><label for="last_avg">Last Week Average</label><div class="input-wrapper"><input type="number" id="last_avg" value="180.5" min="40" max="700" step="0.1"><span class="unit-badge">lb</span></div></div>
+            <div class="input-group"><label for="this_avg">This Week Average</label><div class="input-wrapper"><input type="number" id="this_avg" value="179.8" min="40" max="700" step="0.1"><span class="unit-badge">lb</span></div></div>
+        </div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Calculate Trend</button>
         <div id="result-area" class="result-box" style="display:none;">
-${resultContent}
+
+            <div class="result-val"><span id="calc-output">0</span><span class="result-unit">lb/week</span></div>
+            <div class="result-status" id="calc-status">Weekly Trend</div>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="suggestion-box"><h4>Trend Reading</h4><p id="calc-suggestion"></p></div>
         </div>
     </div>
-    ${config.contentSections?.length ? `<div class="card" id="guide">${renderContentSections(config.contentSections)}</div>` : ""}
-    <div class="card" id="faq"><h3>Frequently Asked Questions</h3>${renderFaq(config.faq)}</div>
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What This Calculator Measures</h3>
+        <p>This calculator compares two weekly average weights. It is meant to reduce the emotional noise of single weigh-ins and make the direction easier to see.</p>
+    </div>
+    <div class="content-section">
+        <h3>Formula Used</h3>
+        <div class="formula-box">Weekly trend = this week's average - last week's average</div><p>A negative result indicates a lower weekly average; a positive result indicates a higher weekly average.</p>
+    </div>
+    <div class="content-section">
+        <h3>How To Use The Result</h3>
+        <p>Small changes can be ordinary noise. Look for repeated direction across several weeks before changing calories, training, or expectations.</p>
+    </div></div>
+    <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>Why use weekly averages?</h4>
+            <p>Daily weight can move because of water, sodium, carbohydrate intake, digestion, soreness, and timing. Weekly averages reduce some of that noise.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is one week enough to decide if a plan works?</h4>
+            <p>Usually no. One week can be noisy. Use this as a quick check and compare multiple weeks before making major changes.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can this calculate body fat change?</h4>
+            <p>No. It only compares scale-weight averages. It cannot separate fat, lean mass, water, or digestive contents.</p>
+        </div></div>
     </main>
     <aside class="side-column" aria-label="Tool information">
-        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li>${config.contentSections?.length ? `<li><a href="#guide">Detailed guide</a></li>` : ""}<li><a href="#faq">FAQs</a></li>${config.references?.length ? `<li><a href="#references">References</a></li>` : ""}<li><a href="#methodology">Methodology</a></li></ul></nav></div>${renderVisualGuide()}${renderMatchingGuide(config.slug)}
-        <div class="card side-card" id="related"><h3>${esc(config.relatedTitle || "Related Tools")}</h3><div class="recommend-grid">${renderRelated(config.related)}</div></div>
-        ${renderReferences(config.references)}
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> ${config.methodology}</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> ${config.disclaimer || "These calculations are educational estimates and not medical advice, diagnosis, or treatment. Consult a qualified professional for personal guidance."}</p><div class="updated-row">Last updated: ${esc(lastUpdated)}</div></div></div>
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div><div class="card side-card visual-guide-card"><h3>Method Visual</h3><img src="../assets/visual-guides/calculator-method-guide.png" alt="Calculator method guide showing inputs, formula, result, and limits." loading="lazy" width="900" height="620"></div>
+        <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/bmr-vs-tdee-vs-calorie-goal.html" class="recommend-card"><div><h4>BMR vs TDEE vs A Daily Calorie Goal</h4><p>Understand the difference between BMR, TDEE, maintenance calories, and a daily calorie goal before choosing a deficit or surplus.</p></div><span class="action-text">Read guide &rarr;</span></a></div>
+        <div class="card side-card" id="related"><h3>Use The Trend</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/tools/maintenance-calorie-calibration-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Maintenance Calorie Calibration</h4>
+                    <p>Use a multi-week trend to calibrate maintenance calories.</p>
+                </div>
+                <span class="action-text">Calibrate &rarr;</span>
+            </a>
+            <a href="https://toolsquark.com/tools/calorie-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Daily Calorie Goal Calculator</h4>
+                    <p>Set a visible calorie target after estimating maintenance.</p>
+                </div>
+                <span class="action-text">Plan Calories &rarr;</span>
+            </a></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.niddk.nih.gov/bwp" target="_blank" rel="noopener noreferrer">Body Weight Planner</a><span>National Institute of Diabetes and Digestive and Kidney Diseases</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool subtracts last week's average weight from this week's average weight and maps the difference to simple editorial trend bands.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> Weight trends are educational planning signals and do not diagnose health status or body composition.</p><div class="updated-row">Last updated: June 28, 2026</div></div></div>
     </aside>
     </div>
     <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
 </div>
 <script>
-${config.script}
 
-const calculatorSlug = ${JSON.stringify(config.slug)};
+function calculateNow(){
+  const last=Number(document.getElementById('last_avg').value);
+  const current=Number(document.getElementById('this_avg').value);
+  if(!Number.isFinite(last)||!Number.isFinite(current)||last<40||current<40){alert('Please enter valid weekly average weights.');return;}
+  const diff=current-last;
+  let status='Mostly Stable';
+  let suggestion='This weekly change is small enough that normal scale noise may explain part of it. Watch another week.';
+  if(diff<=-0.5){status='Average Trending Down';suggestion='The weekly average moved down. Compare with energy, hunger, training, and adherence before changing the plan.';}
+  if(diff>=0.5){status='Average Trending Up';suggestion='The weekly average moved up. Review the multi-week pattern before assuming fat gain.';}
+  document.getElementById('result-area').style.display='block';
+  document.getElementById('calc-output').innerText=diff.toFixed(1);
+  document.getElementById('calc-status').innerText=status;
+  document.getElementById('calc-desc').innerText='Last week average: '+last.toFixed(1)+' lb. This week average: '+current.toFixed(1)+' lb. Difference: '+diff.toFixed(1)+' lb.';
+  document.getElementById('calc-suggestion').innerText=suggestion;
+  document.getElementById('result-area').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+const calculatorSlug = "weight-trend-smoothing-calculator";
 let calculatorStarted = false;
 let calculatorCompleted = false;
 
@@ -224,20 +228,3 @@ calculateButton.addEventListener('click', () => {
 </script>
 </body>
 </html>
-`;
-}
-
-const only = process.argv.slice(2);
-const files = fs.readdirSync(configDir)
-  .filter((file) => file.endsWith(".config.js"))
-  .filter((file) => only.length === 0 || only.includes(path.basename(file, ".config.js")));
-
-for (const file of files) {
-  const configPath = path.join(configDir, file);
-  delete require.cache[require.resolve(configPath)];
-  const config = require(configPath);
-  const html = cleanOutput(renderPage(config));
-  const outPath = path.join(outDir, `${config.slug}.html`);
-  fs.writeFileSync(outPath, html, "utf8");
-  console.log(`Rendered ${path.relative(root, outPath)}`);
-}
