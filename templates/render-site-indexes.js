@@ -350,7 +350,12 @@ function renderHome() {
     lifestyle: "Sleep planning, daily movement, follow-through, and digital habits.",
     connection: "Relationship needs, support, emotional communication, and repair."
   };
-  const featuredGuides = guides.slice(0, 4).map((guide) => `<a class="home-guide" href="guides/${guide.slug}.html" data-guide-slug="${guide.slug}"><small>${esc(guide.primaryQuery)}</small><strong>${esc(guide.h1)}</strong><span>${esc(guide.description)}</span><em>Read guide &rarr;</em></a>`).join("");
+  const featuredGuideSlugs = ["bmr-vs-tdee-vs-calorie-goal", "sleep-debt-vs-sleep-quality", "stress-vs-anxiety-patterns", "smartphone-use-vs-social-media-use"];
+  const featuredGuides = featuredGuideSlugs
+    .map((slug) => guides.find((guide) => guide.slug === slug))
+    .filter(Boolean)
+    .map((guide) => `<a class="home-guide" href="guides/${guide.slug}.html" data-guide-slug="${guide.slug}"><small>${esc(guide.primaryQuery)}</small><strong>${esc(guide.h1)}</strong><span>${esc(guide.description)}</span><em>Read guide &rarr;</em></a>`)
+    .join("");
   const categoryLinks = Object.entries(groups).map(([key, group]) => {
     const toolCount = group.sections.reduce((count, section) => count + section.tools.length, 0);
     return `<a href="${group.file}" class="category-link" data-category="${key}" data-source="category-quick"><span>${esc(group.categoryLabel)}</span><small>${toolCount} tools</small><p>${esc(categoryDescriptions[key])}</p><strong>Browse category &rarr;</strong></a>`;
