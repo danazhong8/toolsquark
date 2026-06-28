@@ -8,6 +8,10 @@ const defaultLastUpdated = "June 19, 2026";
 const queryMap = JSON.parse(fs.readFileSync(path.join(root, "seo", "core-query-map.json"), "utf8"));
 const guideData = require("./guide-page-data");
 const supplementalGuideMap = {
+  "bmr-calculator": "bmr-vs-rmr-vs-tdee",
+  "protein-calculator": "protein-per-meal-vs-daily-protein",
+  "protein-per-meal-calculator": "protein-per-meal-vs-daily-protein",
+  "sleep-debt-calculator": "sleep-debt-vs-sleep-quality",
   "daily-steps-goal-calculator": "how-to-choose-a-realistic-daily-step-goal",
   "walking-time-to-steps-calculator": "how-to-choose-a-realistic-daily-step-goal",
   "steps-to-calories-converter": "how-to-choose-a-realistic-daily-step-goal"

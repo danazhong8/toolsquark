@@ -341,5 +341,98 @@ module.exports = [
       ["Physical Activity Guidelines for Adults", "Centers for Disease Control and Prevention", "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html"]
     ],
     related: ["bmr-vs-tdee-vs-calorie-goal", "sleep-schedule-and-sleep-quality"]
+  },
+  {
+    slug: "bmr-vs-rmr-vs-tdee",
+    title: "BMR vs RMR vs TDEE: Which Energy Number To Use | ToolsQuark",
+    description: "Compare BMR, RMR, and TDEE so you can choose the right energy estimate before setting a calorie goal or macro plan.",
+    h1: "BMR vs RMR vs TDEE",
+    intro: "BMR, RMR, and TDEE are often used as if they mean the same thing. They belong to the same energy-planning chain, but each answers a different question.",
+    primaryQuery: "bmr vs rmr vs tdee",
+    tools: [
+      ["bmr-calculator", "BMR Calculator", "Estimate resting energy from age, sex profile, height, and weight.", "Calculate BMR"],
+      ["tdee-calculator", "TDEE Calculator", "Turn a resting estimate into a maintenance estimate with activity.", "Estimate TDEE"],
+      ["calorie-calculator", "Daily Calorie Goal Calculator", "Apply a visible deficit, maintenance, or surplus adjustment.", "Plan Calories"]
+    ],
+    sections: [
+      ["The Short Version", `<div class="table-wrap"><table><thead><tr><th>Term</th><th>Main question</th><th>Best use</th></tr></thead><tbody><tr><td>BMR</td><td>How much energy would the body use under strict basal conditions?</td><td>Resting baseline estimate.</td></tr><tr><td>RMR</td><td>How much energy is used at rest under less strict conditions?</td><td>Practical resting metabolism discussion.</td></tr><tr><td>TDEE</td><td>How much energy might the whole day require after activity?</td><td>Maintenance calorie planning.</td></tr></tbody></table></div>`],
+      ["Why BMR And RMR Get Confused", `<p>Basal metabolic rate is usually defined under more controlled conditions, while resting metabolic rate is measured or discussed under less restrictive resting conditions. Online calculators often use equation-based resting energy estimates and label them BMR because that is the common search term.</p><p>The practical takeaway is simple: neither number is a daily intake target by itself. It is a resting estimate before activity and goal adjustments are added.</p>`],
+      ["Where TDEE Fits", `<p>Total Daily Energy Expenditure starts with a resting estimate and adds an activity factor. This makes TDEE closer to a maintenance-calorie estimate than BMR or RMR. It still depends heavily on how accurately the activity category fits your real movement.</p>`],
+      ["A Practical Sequence", `<ol><li>Use BMR when you want the resting baseline.</li><li>Use TDEE when you need an estimated maintenance level.</li><li>Use Daily Calorie Goal after TDEE when you want a deficit, maintenance, or surplus target.</li><li>Use Macro Calculator only after a calorie target exists.</li></ol>`],
+      ["Why The Number Is Only A Starting Point", `<p>Energy equations are estimates. NEAT, training load, body composition, dieting history, illness, sleep, stress, and measurement error can all move the real maintenance level away from the prediction.</p><p>Use two to four weeks of consistent intake and weight trend data to calibrate the estimate when body-weight change is the goal.</p>`],
+      ["When Not To Use A Generic Estimate", `<p>Pregnancy, breastfeeding, growth, eating-disorder history, significant illness, medical nutrition therapy, and major recent weight change require more individualized guidance than a public calculator can provide.</p>`]
+    ],
+    faq: [
+      ["Is BMR the same as RMR?", "They are closely related resting-energy concepts, but BMR is usually stricter. Many online calculators use estimated resting energy and label it BMR for simplicity."],
+      ["Should I use BMR or TDEE for calories?", "Use TDEE as the maintenance starting point. BMR is a resting estimate before activity is added."],
+      ["Why is my real maintenance different from the calculator?", "Activity, body composition, movement outside exercise, tracking error, adaptation, and normal equation error can all change the real-world result."]
+    ],
+    references: [
+      ["A New Predictive Equation for Resting Energy Expenditure", "The American Journal of Clinical Nutrition / PubMed", "https://pubmed.ncbi.nlm.nih.gov/2305711/"],
+      ["Body Weight Planner", "National Institute of Diabetes and Digestive and Kidney Diseases", "https://www.niddk.nih.gov/bwp"]
+    ],
+    related: ["bmr-vs-tdee-vs-calorie-goal", "how-to-set-macro-targets"]
+  },
+  {
+    slug: "protein-per-meal-vs-daily-protein",
+    title: "Protein Per Meal vs Daily Protein: What Matters First | ToolsQuark",
+    description: "Learn when to focus on total daily protein, when meal distribution helps, and how to split a daily target across meals.",
+    h1: "Protein Per Meal vs Daily Protein",
+    intro: "Daily protein is the foundation. Per-meal distribution can make the plan easier to execute and may support training goals, but it should not replace the total target.",
+    primaryQuery: "protein per meal vs daily protein",
+    tools: [
+      ["protein-calculator", "Protein Calculator", "Estimate a daily protein range from body weight and goal context.", "Set Daily Protein"],
+      ["protein-per-meal-calculator", "Protein Per Meal Calculator", "Split a daily target across meals and snacks.", "Split Protein"],
+      ["macro-calculator", "Macro Calculator", "Fit protein into a calorie and macro plan.", "Calculate Macros"]
+    ],
+    sections: [
+      ["Choose The Right First Question", `<div class="table-wrap"><table><thead><tr><th>If you need to know...</th><th>Start with...</th></tr></thead><tbody><tr><td>How much protein per day?</td><td>Protein Calculator</td></tr><tr><td>How to divide an existing daily target?</td><td>Protein Per Meal Calculator</td></tr><tr><td>How protein fits with fat and carbs?</td><td>Macro Calculator</td></tr></tbody></table></div>`],
+      ["Daily Protein Comes First", `<p>A meal split cannot fix a daily target that is too low, too high, or disconnected from the rest of the diet. Start by choosing a daily range that fits body size, training, energy intake, and medical context.</p>`],
+      ["Why Per-Meal Targets Still Help", `<p>Many people miss protein because intake is concentrated in one meal. A per-meal plan turns a daily number into visible checkpoints. This can be especially useful for busy schedules, appetite changes, training recovery, or meal planning.</p>`],
+      ["Simple Distribution Options", `<ul><li><strong>Even split:</strong> useful when meals are similar size.</li><li><strong>Training-aware split:</strong> place one higher-protein meal near a workout if that fits your routine.</li><li><strong>Appetite-aware split:</strong> use smaller repeated doses when one large serving is uncomfortable.</li><li><strong>Meal-count split:</strong> divide by the number of meals and snacks you actually eat.</li></ul>`],
+      ["Worked Example", `<p>If the daily target is 120 g and the routine has three meals plus one snack, an even split would be 30 g per eating occasion. A more realistic split might be 35 g breakfast, 35 g lunch, 40 g dinner, and 10 g snack.</p><p>The better plan is the one that can be repeated with normal food choices.</p>`],
+      ["When To Get Individual Advice", `<p>Kidney disease, pregnancy, eating-disorder history, medical nutrition therapy, pediatric growth, and major illness can change appropriate protein planning. A calculator cannot decide those cases.</p>`]
+    ],
+    faq: [
+      ["Is total daily protein more important than timing?", "For most general planning, the daily amount comes first. Distribution is a practical layer after the daily target is chosen."],
+      ["How many grams of protein should I eat per meal?", "It depends on your daily target and meal count. Divide the daily number across the meals and snacks you actually eat."],
+      ["Do I need protein immediately after exercise?", "Immediate timing is usually less important than meeting the daily target and having a repeatable meal pattern, though training context can affect preferences."]
+    ],
+    references: [
+      ["Position Stand: Protein and Exercise", "Journal of the ISSN / PubMed", "https://pubmed.ncbi.nlm.nih.gov/28642676/"],
+      ["Dietary Reference Intakes for Energy and Macronutrients", "National Academies Press", "https://nap.nationalacademies.org/catalog/10490/dietary-reference-intakes-for-energy-carbohydrate-fiber-fat-fatty-acids-cholesterol-protein-and-amino-acids"]
+    ],
+    related: ["how-to-set-macro-targets", "bmr-vs-tdee-vs-calorie-goal"]
+  },
+  {
+    slug: "sleep-debt-vs-sleep-quality",
+    title: "Sleep Debt vs Sleep Quality: What To Fix First | ToolsQuark",
+    description: "Separate short sleep opportunity from poor sleep quality, then choose whether to plan more sleep time or review sleep pattern signals.",
+    h1: "Sleep Debt vs Sleep Quality",
+    intro: "Feeling tired can come from too little time asleep, poor sleep continuity, poor recovery, or daytime strain. The first useful step is separating duration from quality.",
+    primaryQuery: "sleep debt vs sleep quality",
+    tools: [
+      ["sleep-debt-calculator", "Sleep Debt Calculator", "Compare recent sleep with a target duration across several nights.", "Estimate Debt"],
+      ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review initiation, continuity, restoration, and daytime impact.", "Review Quality"],
+      ["sleep-calculator", "Sleep Schedule Calculator", "Plan bedtime or wake time from desired sleep duration.", "Plan Schedule"]
+    ],
+    sections: [
+      ["Two Different Problems", `<div class="table-wrap"><table><thead><tr><th>Pattern</th><th>Main clue</th><th>Best starting tool</th></tr></thead><tbody><tr><td>Sleep debt</td><td>You are regularly sleeping less than your target duration.</td><td>Sleep Debt Calculator</td></tr><tr><td>Sleep quality problem</td><td>You allow enough time but sleep is fragmented or unrefreshing.</td><td>Sleep Pattern Self-Check</td></tr><tr><td>Schedule problem</td><td>The desired sleep window does not fit the wake time.</td><td>Sleep Schedule Calculator</td></tr></tbody></table></div>`],
+      ["Start With Duration When Time Is Too Short", `<p>If the schedule regularly allows only five or six hours, quality tips may not solve the main issue. First estimate the gap between recent sleep and a realistic target, then protect one earlier or longer sleep window.</p>`],
+      ["Review Quality When Time Is Adequate", `<p>If time in bed is adequate but sleep is hard to start, frequently interrupted, unrefreshing, or followed by daytime impairment, the problem is not just sleep debt. A quality review can organize the pattern before deciding what to change.</p>`],
+      ["Do Not Rely On One Night", `<p>One unusual night can create a large short-term deficit, but the more useful signal is the repeated pattern. Look across at least several nights before deciding whether the main issue is opportunity, continuity, recovery, or schedule timing.</p>`],
+      ["A Practical First Week", `<ol><li>Record bedtime, estimated sleep onset, wake time, and awakenings.</li><li>Compare actual sleep with a realistic target.</li><li>Note morning restoration and daytime sleepiness.</li><li>Choose one change: more opportunity, a steadier schedule, or quality review.</li></ol>`],
+      ["When To Seek Help", `<p>Loud habitual snoring, witnessed breathing pauses, severe insomnia, unsafe sleepiness, morning headaches, or persistent impairment deserve qualified assessment. A sleep calculator cannot rule out sleep apnea, insomnia disorder, circadian rhythm problems, or another condition.</p>`]
+    ],
+    faq: [
+      ["Can I repay sleep debt on weekends?", "Extra sleep may help short-term tiredness, but a repeated weekday deficit usually needs a schedule change rather than relying only on catch-up sleep."],
+      ["Can sleep quality be poor even with eight hours in bed?", "Yes. Fragmentation, breathing problems, stress, pain, substances, or circadian mismatch can reduce restoration even when time in bed looks adequate."],
+      ["Which sleep tool should I use first?", "Use Sleep Debt Calculator when duration is clearly short; use Sleep Pattern Self-Check when time is adequate but sleep still feels poor."]
+    ],
+    references: [
+      ["About Sleep", "Centers for Disease Control and Prevention", "https://www.cdc.gov/sleep/about/index.html"],
+      ["Healthy Sleep Habits", "National Heart, Lung, and Blood Institute", "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits"]
+    ],
+    related: ["sleep-schedule-and-sleep-quality", "stress-vs-anxiety-patterns"]
   }
 ];
