@@ -224,8 +224,14 @@ function buildReport(rows, files) {
 
 function selfTest() {
   const sample = "query,page,clicks,impressions,ctr,position\n\"bmi calculator\",https://toolsquark.com/tools/bmi-calculator.html,8,100,8%,7.5\n";
+  const chineseSample = "查询,网页,点击次数,展示次数,点击率,平均排名\n\"bmi calculator\",https://toolsquark.com/tools/bmi-calculator.html,8,100,8%,7.5\n";
   const parsed = parseCsv(sample);
   if (parsed.length !== 2 || parsed[1][0] !== "bmi calculator") throw new Error("CSV parser self-test failed");
+  const chineseFile = path.join(root, "seo", "gsc", "search-analytics-template.tmp.csv");
+  fs.writeFileSync(chineseFile, chineseSample, "utf8");
+  const chineseRows = parseExport(chineseFile);
+  fs.unlinkSync(chineseFile);
+  if (chineseRows.length !== 1 || chineseRows[0].clicks !== 8 || chineseRows[0].page !== "/tools/bmi-calculator.html") throw new Error("Chinese header self-test failed");
   const normalized = normalizePage(parsed[1][1]);
   if (normalized !== "/tools/bmi-calculator.html") throw new Error("URL normalization self-test failed");
   if (queryMap.pages.length !== 12 || new Set(queryMap.pages.map((page) => page.path)).size !== 12) throw new Error("Core query map must contain 12 unique pages");

@@ -47,6 +47,7 @@ Validate the analyzer after changes:
 ```powershell
 node scripts/analyze-gsc-export.js --self-test
 node scripts/audit-core-query-map.js
+node scripts/audit-acquisition-paths.js
 ```
 
 ## Weekly Review
@@ -57,6 +58,7 @@ node scripts/audit-core-query-map.js
 - Prioritize queries in positions 5-20 with real impressions.
 - Test title or description only when a top-10 query meets the impression and position-aware CTR thresholds in `seo/ctr-playbook.md`.
 - Preserve the query boundaries in `core-query-map.json` to prevent TDEE, calorie, BMR, macro, and protein pages from competing with each other.
+- Run the acquisition path audit after changing homepage guides, guide data, tool-guide mappings, or category pages.
 - Compare complete 28-day windows and document every title or description change in `seo/ctr-test-log.csv`.
 
 ## Target
