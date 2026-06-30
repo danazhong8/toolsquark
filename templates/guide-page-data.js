@@ -34,7 +34,128 @@ module.exports = [
       ["Body Weight Planner", "National Institute of Diabetes and Digestive and Kidney Diseases", "https://www.niddk.nih.gov/bwp"],
       ["Physical Activity Guidelines for Adults", "Centers for Disease Control and Prevention", "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html"]
     ],
-    related: ["bmi-vs-body-fat-vs-waist", "bmr-vs-tdee-vs-calorie-goal", "how-to-choose-a-realistic-daily-step-goal"]
+    related: ["metric-vs-imperial-bmi-formula", "mifflin-st-jeor-equation-explained", "maintenance-calories-vs-calorie-deficit"]
+  },
+  {
+    slug: "metric-vs-imperial-bmi-formula",
+    title: "Metric vs Imperial BMI Formula: Why The Same BMI Can Look Different | ToolsQuark",
+    description: "Compare metric and imperial BMI formulas, conversion steps, rounding differences, examples, and when BMI needs body-composition context.",
+    h1: "Metric vs Imperial BMI Formula",
+    intro: "Metric BMI and imperial BMI are two unit paths to the same height-to-weight ratio. Differences usually come from conversion and rounding, not from a different health concept.",
+    primaryQuery: "bmi calculator metric",
+    tools: [
+      ["bmi-calculator", "BMI Calculator", "Calculate BMI in kg/cm or lb/ft-in and see the adult screening category.", "Calculate BMI"],
+      ["waist-to-height-ratio-calculator", "Waist-to-Height Ratio", "Add central-size context when BMI alone is too broad.", "Check Waist Ratio"],
+      ["body-fat-calculator", "Body Fat Calculator", "Estimate body composition from circumference measurements.", "Estimate Body Fat"]
+    ],
+    sections: [
+      ["The Two Formulas", `<div class="formula">Metric BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p>The imperial formula includes 703 so pounds and inches produce the same ratio as kilograms and meters. When the same height and weight are converted precisely, the results should be nearly identical.</p>`],
+      ["Why Results Differ By A Decimal", `<p>Small differences usually happen when height or weight is rounded before conversion. For example, 175 cm is close to 5 ft 9 in, but not exactly the same as every rounded foot-and-inch entry. The calculator rounds only the final displayed BMI to one decimal place.</p>`],
+      ["Metric Example", `<p>70 kg and 175 cm becomes 70 / 1.75<sup>2</sup>, producing a BMI of 22.9 after rounding. This is the cleanest path when your source measurements are already metric.</p>`],
+      ["Imperial Example", `<p>154 lb and 5 ft 9 in becomes 154 x 703 / 69<sup>2</sup>, producing a BMI near 22.7. If you convert 70 kg and 175 cm more precisely before rounding, the two paths move closer together.</p>`],
+      ["When Formula Precision Is Not The Main Issue", `<p>BMI is still a screening ratio, not a direct body-fat measurement. A precise BMI can still be incomplete for muscular people, older adults, pregnancy, edema, children, or unusual body composition.</p><p>When BMI feels mismatched with your body context, compare it with waist-to-height ratio, body-fat estimate, or professional health markers rather than recalculating the same formula repeatedly.</p>`]
+    ],
+    faq: [
+      ["Is metric BMI more accurate than imperial BMI?", "Not inherently. Metric BMI is simpler because it uses kilograms and meters directly, while imperial BMI uses the 703 conversion factor."],
+      ["Why does my BMI change when I switch units?", "The most common reason is rounded height or weight conversion. Use the original measured units when possible."],
+      ["Which BMI calculator should I use?", "Use the unit path that matches your original measurements: kg/cm for metric or lb/ft-in for imperial."]
+    ],
+    references: [
+      ["About Body Mass Index", "Centers for Disease Control and Prevention", "https://www.cdc.gov/bmi/about/index.html"],
+      ["Adult BMI Categories", "Centers for Disease Control and Prevention", "https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html"]
+    ],
+    related: ["bmi-vs-body-fat-vs-waist", "body-metrics-calorie-planning-tools"]
+  },
+  {
+    slug: "mifflin-st-jeor-equation-explained",
+    title: "Mifflin-St Jeor Equation Explained For BMR And Calorie Calculators | ToolsQuark",
+    description: "Understand the Mifflin-St Jeor equation, male and female formulas, units, examples, limits, and how it feeds BMR, TDEE, and calorie targets.",
+    h1: "Mifflin-St Jeor Equation Explained",
+    intro: "Many BMR, TDEE, and calorie calculators begin with the Mifflin-St Jeor equation. This guide separates the formula from the later activity and goal assumptions.",
+    primaryQuery: "mifflin st jeor equation",
+    tools: [
+      ["bmr-calculator", "BMR Calculator", "Use the equation to estimate resting energy.", "Calculate BMR"],
+      ["tdee-calculator", "TDEE Calculator", "Add activity to the resting estimate.", "Estimate TDEE"],
+      ["calorie-calculator", "Calorie Calculator", "Apply a visible deficit, maintenance, or surplus adjustment.", "Plan Calories"]
+    ],
+    sections: [
+      ["The Formula", `<div class="formula">Men: BMR = 10W + 6.25H - 5A + 5<br>Women: BMR = 10W + 6.25H - 5A - 161</div><p>W is weight in kilograms, H is height in centimeters, and A is age in years. If a calculator accepts pounds, feet, and inches, it should convert those inputs before using the equation.</p>`],
+      ["What The Equation Estimates", `<p>The equation estimates resting energy expenditure from body size, age, and the sex-specific constants in the formula. It does not directly measure metabolism and it does not include your daily activity level.</p>`],
+      ["Worked Example", `<p>For a 30-year-old man at 80 kg and 180 cm, the estimate is 10 x 80 + 6.25 x 180 - 5 x 30 + 5 = 1,780 kcal/day. That number is a resting baseline before TDEE activity multipliers are applied.</p>`],
+      ["Where TDEE Starts", `<p>TDEE calculators usually multiply the Mifflin-St Jeor BMR estimate by an activity factor. That activity factor is often the least precise part of the process because normal movement, work demands, and exercise volume vary widely.</p>`],
+      ["Where Calorie Targets Start", `<p>A calorie target is one more step after TDEE. Maintenance keeps the estimate unchanged, a deficit lowers it, and a surplus raises it. The equation itself does not decide the goal.</p>`],
+      ["Limitations", `<p>Body composition, illness, medications, pregnancy, growth, long-term dieting, endocrine conditions, and tracking error can all make real needs differ from the equation. Use the number as a starting estimate and calibrate with real-world trends.</p>`]
+    ],
+    faq: [
+      ["Is Mifflin-St Jeor a BMR formula?", "It is commonly used to estimate resting energy needs and is often labeled as a BMR formula in online calculators."],
+      ["Does the equation include activity?", "No. Activity is added later through a TDEE multiplier."],
+      ["Can I use pounds and inches?", "Yes, if the calculator converts them to kilograms and centimeters before applying the equation."]
+    ],
+    references: [
+      ["A New Predictive Equation for Resting Energy Expenditure", "The American Journal of Clinical Nutrition / PubMed", "https://pubmed.ncbi.nlm.nih.gov/2305711/"],
+      ["Body Weight Planner", "National Institute of Diabetes and Digestive and Kidney Diseases", "https://www.niddk.nih.gov/bwp"]
+    ],
+    related: ["bmr-vs-rmr-vs-tdee", "bmr-vs-tdee-vs-calorie-goal"]
+  },
+  {
+    slug: "bmr-vs-resting-calorie-calculator",
+    title: "BMR vs Resting Calorie Calculator: What The Number Means | ToolsQuark",
+    description: "Learn how BMR, resting calories, RMR, TDEE, and daily calorie goals differ before using a calorie calculator for planning.",
+    h1: "BMR vs Resting Calorie Calculator",
+    intro: "A resting calorie estimate is useful, but it is only the first number in an energy-planning sequence. It should not be confused with full daily maintenance.",
+    primaryQuery: "resting calorie calculator",
+    tools: [
+      ["bmr-calculator", "BMR Calculator", "Estimate resting calories with Mifflin-St Jeor.", "Calculate BMR"],
+      ["tdee-calculator", "TDEE Calculator", "Add activity to estimate maintenance calories.", "Estimate Maintenance"],
+      ["calorie-calculator", "Calorie Calculator", "Choose a goal after maintenance is estimated.", "Set Goal"]
+    ],
+    sections: [
+      ["Resting Calories Are The Baseline", `<p>A resting calorie calculator estimates the calories used at rest. BMR is the common online term for that baseline, while RMR is a related resting-metabolism concept often used in practical settings.</p>`],
+      ["Why It Is Not A Daily Target", `<p>Daily life adds walking, exercise, work, digestion, and spontaneous movement. That is why TDEE is usually higher than BMR or resting calories.</p>`],
+      ["The Planning Chain", `<div class="flow"><strong>BMR</strong><span>resting calories</span><b>&rarr;</b><strong>TDEE</strong><span>maintenance</span><b>&rarr;</b><strong>Goal</strong><span>deficit or surplus</span></div><p>Use each number for its proper job instead of treating them as competing answers.</p>`],
+      ["When A Resting Estimate Helps", `<p>It helps you understand the lower baseline behind energy planning. It also makes calorie calculators more transparent because you can see the formula before activity and goal assumptions are added.</p>`],
+      ["When It Can Mislead", `<p>Eating below BMR is not automatically appropriate, and BMR is not a minimum-safe intake. Medical context, nutritional adequacy, symptoms, and professional guidance matter for aggressive or therapeutic changes.</p>`]
+    ],
+    faq: [
+      ["Is BMR the same as resting calories?", "For most online calculator use, yes: both refer to a predicted resting-energy baseline."],
+      ["Should I use BMR or TDEE for maintenance?", "Use TDEE for maintenance because it includes activity. BMR is the resting starting point."],
+      ["Can a calorie calculator skip BMR?", "It can hide it, but most body-metric calorie calculators start from a resting estimate before adding activity."]
+    ],
+    references: [
+      ["A New Predictive Equation for Resting Energy Expenditure", "The American Journal of Clinical Nutrition / PubMed", "https://pubmed.ncbi.nlm.nih.gov/2305711/"],
+      ["Body Weight Planner", "National Institute of Diabetes and Digestive and Kidney Diseases", "https://www.niddk.nih.gov/bwp"]
+    ],
+    related: ["mifflin-st-jeor-equation-explained", "bmr-vs-tdee-vs-calorie-goal"]
+  },
+  {
+    slug: "maintenance-calories-vs-calorie-deficit",
+    title: "Maintenance Calories vs Calorie Deficit: Which Calculator To Use First | ToolsQuark",
+    description: "Compare maintenance calories, TDEE, calorie deficits, surpluses, and calibration before choosing a daily calorie target.",
+    h1: "Maintenance Calories vs Calorie Deficit",
+    intro: "Maintenance calories and calorie deficits answer different questions. Estimate maintenance first, then decide whether a deficit, maintenance target, or surplus is appropriate.",
+    primaryQuery: "maintenance calorie calculator",
+    tools: [
+      ["tdee-calculator", "TDEE Calculator", "Estimate maintenance calories from activity level.", "Estimate TDEE"],
+      ["calorie-calculator", "Calorie Calculator", "Apply a visible deficit, maintenance, or surplus.", "Plan Target"],
+      ["maintenance-calorie-calibration-calculator", "Maintenance Calorie Calibration", "Refine the estimate with trend data.", "Calibrate"]
+    ],
+    sections: [
+      ["Two Different Questions", `<div class="table-wrap"><table><thead><tr><th>Question</th><th>Best page</th><th>Reason</th></tr></thead><tbody><tr><td>What is my estimated maintenance?</td><td>TDEE Calculator</td><td>It estimates full-day energy expenditure from BMR and activity.</td></tr><tr><td>What calorie target should I test?</td><td>Calorie Calculator</td><td>It applies a visible deficit, maintenance, or surplus adjustment.</td></tr><tr><td>Is the estimate working?</td><td>Maintenance Calorie Calibration</td><td>It compares average intake with weight trend.</td></tr></tbody></table></div>`],
+      ["Start With Maintenance", `<p>A deficit is defined relative to maintenance. If maintenance is poorly estimated, the deficit may be too large, too small, or simply not connected to real intake and movement.</p>`],
+      ["Then Choose The Adjustment", `<p>ToolsQuark uses visible percentage options so the goal adjustment is inspectable. A 10% deficit, 20% deficit, 0% maintenance target, 5% surplus, and 10% surplus answer different planning needs.</p>`],
+      ["Why Deficits Are Not Promises", `<p>A calculated deficit does not guarantee a precise weekly change. Water, sodium, digestion, adherence, training, sleep, adaptive changes, and tracking error all affect the observed trend.</p>`],
+      ["How To Calibrate", `<p>Hold the target steady long enough to observe a trend, usually two to four weeks. Compare average intake with smoothed body weight, hunger, energy, training, and schedule fit. Then adjust gradually.</p>`]
+    ],
+    faq: [
+      ["Should I use a maintenance calculator or calorie deficit calculator first?", "Estimate maintenance first, then decide whether a deficit is appropriate."],
+      ["Is a bigger deficit better?", "Not automatically. Larger deficits can be harder to sustain and may affect energy, training, hunger, or adequacy."],
+      ["How do I know my maintenance estimate is wrong?", "If average intake and weight trend do not match the expected direction over several weeks, calibrate the estimate."]
+    ],
+    references: [
+      ["Body Weight Planner", "National Institute of Diabetes and Digestive and Kidney Diseases", "https://www.niddk.nih.gov/bwp"],
+      ["A New Predictive Equation for Resting Energy Expenditure", "The American Journal of Clinical Nutrition / PubMed", "https://pubmed.ncbi.nlm.nih.gov/2305711/"]
+    ],
+    related: ["body-metrics-calorie-planning-tools", "bmr-vs-tdee-vs-calorie-goal"]
   },
   {
     slug: "bmi-vs-body-fat-vs-waist",

@@ -1,6 +1,17 @@
 {
   "redirects": [
     {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.toolsquark.com"
+        }
+      ],
+      "destination": "https://toolsquark.com/$1",
+      "permanent": true
+    },
+    {
       "source": "/age-calculator.html",
       "destination": "/tools/age-calculator.html",
       "permanent": true

@@ -1,9 +1,9 @@
 module.exports = {
   slug: "bmr-calculator",
-  title: "BMR Calculator With Formula Comparison and TDEE Context",
-  description: "Calculate BMR with Mifflin-St Jeor, see the formula, worked example, limitations, and how resting calories differ from TDEE and calorie goals.",
-  h1: "BMR Calculator",
-  hero: "Estimate your basal metabolic rate with a transparent formula, then see how this resting-energy baseline differs from TDEE, maintenance calories, and daily calorie goals.",
+  title: "BMR Calculator in kg or lb Using Mifflin-St Jeor Equation",
+  description: "Calculate BMR and resting calories with the Mifflin-St Jeor equation in metric or imperial units. See formula, example, limits, and TDEE context.",
+  h1: "BMR Calculator: Resting Calories",
+  hero: "Estimate basal metabolic rate and resting calories with the Mifflin-St Jeor equation, then see how this baseline differs from TDEE, maintenance calories, and daily calorie goals.",
   schemaName: "Privacy-First BMR Calculator",
   schemaDescription: "A free browser-side Basal Metabolic Rate calculator using the Mifflin-St Jeor equation, metric and imperial inputs, and practical energy-planning context.",
   lastUpdated: "June 21, 2026",
@@ -49,6 +49,14 @@ module.exports = {
       answer: "This calculator uses the Mifflin-St Jeor equation. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161."
     },
     {
+      question: "Can I use this as a BMR calculator in kg?",
+      answer: "Yes. Choose metric units, enter weight in kilograms and height in centimeters, and the calculator applies the Mifflin-St Jeor equation directly."
+    },
+    {
+      question: "Is a resting calorie calculator the same as a BMR calculator?",
+      answer: "In everyday search, people often use resting calorie calculator to mean a BMR or resting-energy estimate. This page estimates BMR, then explains why full daily calories require TDEE."
+    },
+    {
       question: "Is BMR the same as daily calories?",
       answer: "No. BMR estimates resting energy only. Your real daily needs are higher once walking, exercise, work, digestion, and normal daily movement are included."
     },
@@ -80,7 +88,7 @@ module.exports = {
     },
     {
       title: "BMR Formula",
-      body: `<p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Imperial inputs are converted to kilograms and centimeters before the equation is applied.</p>`
+      body: `<p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Metric inputs in kilograms and centimeters are used directly. Imperial inputs are converted to kilograms and centimeters before the equation is applied, so the calculation remains formula-consistent across unit systems.</p>`
     },
     {
       title: "How To Use Your Result",
@@ -88,7 +96,7 @@ module.exports = {
     },
     {
       title: "Example Calculation",
-      body: `<p>For a 30-year-old man weighing 80 kg at 180 cm, the Mifflin-St Jeor estimate is 10 x 80 + 6.25 x 180 - 5 x 30 + 5 = 1,780 kcal/day. That is his estimated resting baseline before activity is added.</p>`
+      body: `<p>For a 30-year-old man weighing 80 kg at 180 cm, the Mifflin-St Jeor estimate is 10 x 80 + 6.25 x 180 - 5 x 30 + 5 = 1,780 kcal/day. That is his estimated resting calorie baseline before activity is added.</p><p>For imperial inputs, the calculator first converts pounds to kilograms and feet/inches to centimeters. The displayed result is still a Mifflin-St Jeor BMR estimate, not a separate imperial-only formula.</p>`
     },
     {
       title: "Limits And Appropriate Use",

@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/bmr-calculator.html">
-<title>BMR Calculator With Formula Comparison and TDEE Context</title>
-<meta name="description" content="Calculate BMR with Mifflin-St Jeor, see the formula, worked example, limitations, and how resting calories differ from TDEE and calorie goals.">
+<title>BMR Calculator in kg or lb Using Mifflin-St Jeor Equation</title>
+<meta name="description" content="Calculate BMR and resting calories with the Mifflin-St Jeor equation in metric or imperial units. See formula, example, limits, and TDEE context.">
 <script type="application/ld+json">
 [
   {
@@ -51,7 +51,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "BMR Calculator",
+        "name": "BMR Calculator: Resting Calories",
         "item": "https://toolsquark.com/tools/bmr-calculator.html"
       }
     ]
@@ -74,6 +74,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "This calculator uses the Mifflin-St Jeor equation. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this as a BMR calculator in kg?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Choose metric units, enter weight in kilograms and height in centimeters, and the calculator applies the Mifflin-St Jeor equation directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a resting calorie calculator the same as a BMR calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In everyday search, people often use resting calorie calculator to mean a BMR or resting-energy estimate. This page estimates BMR, then explains why full daily calories require TDEE."
         }
       },
       {
@@ -138,8 +154,8 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>BMR Calculator</span></div>
-    <div class="hero"><h1>BMR Calculator</h1><p>Estimate your basal metabolic rate with a transparent formula, then see how this resting-energy baseline differs from TDEE, maintenance calories, and daily calorie goals.</p></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>BMR Calculator: Resting Calories</span></div>
+    <div class="hero"><h1>BMR Calculator: Resting Calories</h1><p>Estimate basal metabolic rate and resting calories with the Mifflin-St Jeor equation, then see how this baseline differs from TDEE, maintenance calories, and daily calorie goals.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
@@ -173,7 +189,7 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     </div>
     <div class="content-section">
         <h3>BMR Formula</h3>
-        <p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Imperial inputs are converted to kilograms and centimeters before the equation is applied.</p>
+        <p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Metric inputs in kilograms and centimeters are used directly. Imperial inputs are converted to kilograms and centimeters before the equation is applied, so the calculation remains formula-consistent across unit systems.</p>
     </div>
     <div class="content-section">
         <h3>How To Use Your Result</h3>
@@ -181,7 +197,7 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     </div>
     <div class="content-section">
         <h3>Example Calculation</h3>
-        <p>For a 30-year-old man weighing 80 kg at 180 cm, the Mifflin-St Jeor estimate is 10 x 80 + 6.25 x 180 - 5 x 30 + 5 = 1,780 kcal/day. That is his estimated resting baseline before activity is added.</p>
+        <p>For a 30-year-old man weighing 80 kg at 180 cm, the Mifflin-St Jeor estimate is 10 x 80 + 6.25 x 180 - 5 x 30 + 5 = 1,780 kcal/day. That is his estimated resting calorie baseline before activity is added.</p><p>For imperial inputs, the calculator first converts pounds to kilograms and feet/inches to centimeters. The displayed result is still a Mifflin-St Jeor BMR estimate, not a separate imperial-only formula.</p>
     </div>
     <div class="content-section">
         <h3>Limits And Appropriate Use</h3>
@@ -199,6 +215,14 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <div class="faq-item">
             <h4>What formula does this BMR calculator use?</h4>
             <p>This calculator uses the Mifflin-St Jeor equation. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I use this as a BMR calculator in kg?</h4>
+            <p>Yes. Choose metric units, enter weight in kilograms and height in centimeters, and the calculator applies the Mifflin-St Jeor equation directly.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is a resting calorie calculator the same as a BMR calculator?</h4>
+            <p>In everyday search, people often use resting calorie calculator to mean a BMR or resting-energy estimate. This page estimates BMR, then explains why full daily calories require TDEE.</p>
         </div>
         <div class="faq-item">
             <h4>Is BMR the same as daily calories?</h4>

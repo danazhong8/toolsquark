@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/tdee-calculator.html">
-<title>TDEE Calculator for Activity Level and Calorie Target Planning</title>
-<meta name="description" content="Estimate TDEE and maintenance calories from BMR, activity level, body metrics, age, and sex. See multipliers, examples, limits, and calibration steps.">
+<title>TDEE Calculator for Maintenance Calories and Activity Level</title>
+<meta name="description" content="Estimate TDEE and maintenance calories from Mifflin-St Jeor BMR, activity level, body metrics, age, and sex. See multipliers and calibration steps.">
 <script type="application/ld+json">
 [
   {
@@ -51,7 +51,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "TDEE Calculator",
+        "name": "TDEE Calculator: Maintenance Calories",
         "item": "https://toolsquark.com/tools/tdee-calculator.html"
       }
     ]
@@ -74,6 +74,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "This calculator estimates BMR with the Mifflin-St Jeor equation, then multiplies it by an activity factor such as sedentary, lightly active, moderately active, very active, or extra active."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is TDEE the same as maintenance calories?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TDEE is an estimated maintenance calorie level. Your real maintenance can differ, so compare the estimate with average intake and body-weight trend over several weeks."
         }
       },
       {
@@ -162,8 +170,8 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>TDEE Calculator</span></div>
-    <div class="hero"><h1>TDEE Calculator</h1><p>Use this TDEE calculator to estimate maintenance calories from age, sex, height, weight, and activity level, then connect the result to calorie targets and real-world calibration.</p></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>TDEE Calculator: Maintenance Calories</span></div>
+    <div class="hero"><h1>TDEE Calculator: Maintenance Calories</h1><p>Use this TDEE calculator to estimate maintenance calories from Mifflin-St Jeor BMR, age, sex, height, weight, and activity level, then connect the result to real-world calibration.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
@@ -193,11 +201,11 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     <div class="card" id="guide">
     <div class="content-section">
         <h3>What TDEE Means</h3>
-        <p>Total Daily Energy Expenditure is an estimate of how many calories your body burns in a typical day. It combines your resting metabolic needs with daily movement, exercise, digestion, and general activity.</p><p>TDEE is most useful as a starting point for planning maintenance calories, a moderate fat-loss deficit, or a controlled muscle-gain surplus.</p>
+        <p>Total Daily Energy Expenditure is an estimate of how many calories your body burns in a typical day. It combines your resting metabolic needs with daily movement, exercise, digestion, and general activity.</p><p>In practical nutrition planning, TDEE is the maintenance calorie estimate. It is most useful before choosing a moderate fat-loss deficit, a maintenance target, or a controlled muscle-gain surplus.</p>
     </div>
     <div class="content-section">
         <h3>How This Calculator Works</h3>
-        <p>This tool first estimates resting energy expenditure with the Mifflin-St Jeor equations, then multiplies that estimate by a selected activity factor.</p><div class="formula-box">Men: BMR = 10W + 6.25H - 5A + 5<br>Women: BMR = 10W + 6.25H - 5A - 161<br>TDEE = BMR x activity multiplier</div><p>W is weight in kilograms, H is height in centimeters, and A is age in years. The sex-specific constants are part of the published equation.</p><ul><li><strong>1.2:</strong> sedentary.</li><li><strong>1.375:</strong> lightly active.</li><li><strong>1.55:</strong> moderately active.</li><li><strong>1.725:</strong> very active.</li><li><strong>1.9:</strong> extra active.</li></ul>
+        <p>This tool first estimates resting energy expenditure with the Mifflin-St Jeor equations, then multiplies that estimate by a selected activity factor.</p><div class="formula-box">Men: BMR = 10W + 6.25H - 5A + 5<br>Women: BMR = 10W + 6.25H - 5A - 161<br>Maintenance calories = TDEE = BMR x activity multiplier</div><p>W is weight in kilograms, H is height in centimeters, and A is age in years. The sex-specific constants are part of the published equation.</p><ul><li><strong>1.2:</strong> sedentary.</li><li><strong>1.375:</strong> lightly active.</li><li><strong>1.55:</strong> moderately active.</li><li><strong>1.725:</strong> very active.</li><li><strong>1.9:</strong> extra active.</li></ul>
     </div>
     <div class="content-section">
         <h3>How To Use Your Result</h3>
@@ -227,6 +235,10 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <div class="faq-item">
             <h4>How is TDEE calculated?</h4>
             <p>This calculator estimates BMR with the Mifflin-St Jeor equation, then multiplies it by an activity factor such as sedentary, lightly active, moderately active, very active, or extra active.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is TDEE the same as maintenance calories?</h4>
+            <p>TDEE is an estimated maintenance calorie level. Your real maintenance can differ, so compare the estimate with average intake and body-weight trend over several weeks.</p>
         </div>
         <div class="faq-item">
             <h4>How should I use TDEE for weight change?</h4>

@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/calorie-calculator.html">
-<title>Calorie Calculator for Maintenance, Loss, or Gain Planning</title>
-<meta name="description" content="Estimate a daily calorie target from maintenance, then choose a transparent deficit, maintenance, or surplus. See the formula, examples, limits, and next-step tools.">
+<title>Calorie Calculator for Maintenance, Deficit, or Surplus Goals</title>
+<meta name="description" content="Estimate resting calories, maintenance calories, and a daily target for loss, maintenance, or gain using Mifflin-St Jeor and visible adjustments.">
 <script type="application/ld+json">
 [
   {
@@ -51,7 +51,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Daily Calorie Goal Calculator",
+        "name": "Calorie Calculator: Maintenance, Deficit, Surplus",
         "item": "https://toolsquark.com/tools/calorie-calculator.html"
       }
     ]
@@ -66,6 +66,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "This calculator estimates basal metabolic rate with the Mifflin-St Jeor equation, then multiplies that baseline by your selected activity level. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this a resting calorie calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It includes a resting calorie estimate as the first step, but the final result is a daily goal after activity and your selected deficit, maintenance, or surplus adjustment are applied."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this the same as a maintenance calorie calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Maintenance is one option on this page. Choose the 0% goal to use the TDEE-style maintenance estimate without adding a deficit or surplus."
         }
       },
       {
@@ -162,8 +178,8 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>Daily Calorie Goal Calculator</span></div>
-    <div class="hero"><h1>Daily Calorie Goal Calculator</h1><p>Use this calorie calculator to estimate maintenance, fat-loss, or lean-gain targets with visible percentage adjustments, browser-local inputs, and practical calibration guidance.</p></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>Calorie Calculator: Maintenance, Deficit, Surplus</span></div>
+    <div class="hero"><h1>Calorie Calculator: Maintenance, Deficit, Surplus</h1><p>Use this calorie calculator to estimate resting calories, maintenance calories, and a daily target for fat loss, maintenance, or lean gain with visible percentage adjustments and browser-local inputs.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
@@ -193,11 +209,11 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     <div class="card" id="guide">
     <div class="content-section">
         <h3>What This Goal Calculator Produces</h3>
-        <p>The calculator first estimates maintenance energy, then applies the goal percentage you select. The result is a planning target, not a prediction of an exact rate of weight change.</p><p>This keeps the TDEE page focused on energy expenditure while this page supports the next decision: choosing a starting intake target.</p>
+        <p>The calculator first estimates resting calories with Mifflin-St Jeor, converts that resting baseline into maintenance energy with an activity multiplier, then applies the goal percentage you select. The result is a planning target, not a prediction of an exact rate of weight change.</p><p>This keeps the TDEE page focused on energy expenditure while this page supports the next decision: choosing a starting intake target for maintenance, deficit, or surplus planning.</p>
     </div>
     <div class="content-section">
         <h3>How The Target Is Calculated</h3>
-        <p>The tool estimates resting energy with Mifflin-St Jeor, applies an activity multiplier, then adjusts that maintenance estimate by the selected percentage.</p><div class="formula-box">Maintenance = estimated BMR x activity multiplier<br>Daily goal = maintenance x (1 + selected adjustment)</div><p>Available adjustments are -10%, -20%, 0%, +5%, and +10%. The calculation does not promise a specific weekly weight change.</p>
+        <p>The tool estimates resting calories with Mifflin-St Jeor, applies an activity multiplier, then adjusts that maintenance estimate by the selected percentage.</p><div class="formula-box">Resting calories = Mifflin-St Jeor BMR<br>Maintenance calories = resting calories x activity multiplier<br>Daily goal = maintenance calories x (1 + selected adjustment)</div><p>Available adjustments are -10%, -20%, 0%, +5%, and +10%. The calculation does not promise a specific weekly weight change.</p>
     </div>
     <div class="content-section">
         <h3>Choosing A Goal Option</h3>
@@ -223,6 +239,14 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <div class="faq-item">
             <h4>What formula does this calorie calculator use?</h4>
             <p>This calculator estimates basal metabolic rate with the Mifflin-St Jeor equation, then multiplies that baseline by your selected activity level. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is this a resting calorie calculator?</h4>
+            <p>It includes a resting calorie estimate as the first step, but the final result is a daily goal after activity and your selected deficit, maintenance, or surplus adjustment are applied.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is this the same as a maintenance calorie calculator?</h4>
+            <p>Maintenance is one option on this page. Choose the 0% goal to use the TDEE-style maintenance estimate without adding a deficit or surplus.</p>
         </div>
         <div class="faq-item">
             <h4>How should I use the result for weight loss?</h4>

@@ -1,9 +1,9 @@
 module.exports = {
   slug: "calorie-calculator",
-  title: "Calorie Calculator for Maintenance, Loss, or Gain Planning",
-  description: "Estimate a daily calorie target from maintenance, then choose a transparent deficit, maintenance, or surplus. See the formula, examples, limits, and next-step tools.",
-  h1: "Daily Calorie Goal Calculator",
-  hero: "Use this calorie calculator to estimate maintenance, fat-loss, or lean-gain targets with visible percentage adjustments, browser-local inputs, and practical calibration guidance.",
+  title: "Calorie Calculator for Maintenance, Deficit, or Surplus Goals",
+  description: "Estimate resting calories, maintenance calories, and a daily target for loss, maintenance, or gain using Mifflin-St Jeor and visible adjustments.",
+  h1: "Calorie Calculator: Maintenance, Deficit, Surplus",
+  hero: "Use this calorie calculator to estimate resting calories, maintenance calories, and a daily target for fat loss, maintenance, or lean gain with visible percentage adjustments and browser-local inputs.",
   schemaName: "Privacy-First Calorie Calculator",
   schemaDescription: "A browser-side daily calorie goal planner using estimated maintenance energy and an explicit percentage adjustment.",
   lastUpdated: "June 22, 2026",
@@ -57,6 +57,14 @@ module.exports = {
       answer: "This calculator estimates basal metabolic rate with the Mifflin-St Jeor equation, then multiplies that baseline by your selected activity level. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161."
     },
     {
+      question: "Is this a resting calorie calculator?",
+      answer: "It includes a resting calorie estimate as the first step, but the final result is a daily goal after activity and your selected deficit, maintenance, or surplus adjustment are applied."
+    },
+    {
+      question: "Is this the same as a maintenance calorie calculator?",
+      answer: "Maintenance is one option on this page. Choose the 0% goal to use the TDEE-style maintenance estimate without adding a deficit or surplus."
+    },
+    {
       question: "How should I use the result for weight loss?",
       answer: "Choose a disclosed 10% or 20% reduction from estimated maintenance. Percentage-based options scale with the estimate, but they still require real-world monitoring and may not be appropriate for every person."
     },
@@ -100,11 +108,11 @@ module.exports = {
   contentSections: [
     {
       title: "What This Goal Calculator Produces",
-      body: `<p>The calculator first estimates maintenance energy, then applies the goal percentage you select. The result is a planning target, not a prediction of an exact rate of weight change.</p><p>This keeps the TDEE page focused on energy expenditure while this page supports the next decision: choosing a starting intake target.</p>`
+      body: `<p>The calculator first estimates resting calories with Mifflin-St Jeor, converts that resting baseline into maintenance energy with an activity multiplier, then applies the goal percentage you select. The result is a planning target, not a prediction of an exact rate of weight change.</p><p>This keeps the TDEE page focused on energy expenditure while this page supports the next decision: choosing a starting intake target for maintenance, deficit, or surplus planning.</p>`
     },
     {
       title: "How The Target Is Calculated",
-      body: `<p>The tool estimates resting energy with Mifflin-St Jeor, applies an activity multiplier, then adjusts that maintenance estimate by the selected percentage.</p><div class="formula-box">Maintenance = estimated BMR x activity multiplier<br>Daily goal = maintenance x (1 + selected adjustment)</div><p>Available adjustments are -10%, -20%, 0%, +5%, and +10%. The calculation does not promise a specific weekly weight change.</p>`
+      body: `<p>The tool estimates resting calories with Mifflin-St Jeor, applies an activity multiplier, then adjusts that maintenance estimate by the selected percentage.</p><div class="formula-box">Resting calories = Mifflin-St Jeor BMR<br>Maintenance calories = resting calories x activity multiplier<br>Daily goal = maintenance calories x (1 + selected adjustment)</div><p>Available adjustments are -10%, -20%, 0%, +5%, and +10%. The calculation does not promise a specific weekly weight change.</p>`
     },
     {
       title: "Choosing A Goal Option",

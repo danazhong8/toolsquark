@@ -1,9 +1,9 @@
 module.exports = {
   slug: "tdee-calculator",
-  title: "TDEE Calculator for Activity Level and Calorie Target Planning",
-  description: "Estimate TDEE and maintenance calories from BMR, activity level, body metrics, age, and sex. See multipliers, examples, limits, and calibration steps.",
-  h1: "TDEE Calculator",
-  hero: "Use this TDEE calculator to estimate maintenance calories from age, sex, height, weight, and activity level, then connect the result to calorie targets and real-world calibration.",
+  title: "TDEE Calculator for Maintenance Calories and Activity Level",
+  description: "Estimate TDEE and maintenance calories from Mifflin-St Jeor BMR, activity level, body metrics, age, and sex. See multipliers and calibration steps.",
+  h1: "TDEE Calculator: Maintenance Calories",
+  hero: "Use this TDEE calculator to estimate maintenance calories from Mifflin-St Jeor BMR, age, sex, height, weight, and activity level, then connect the result to real-world calibration.",
   schemaName: "Privacy-First TDEE Calculator",
   schemaDescription: "A browser-side Total Daily Energy Expenditure calculator focused on estimated maintenance energy and real-world calibration.",
   lastUpdated: "June 22, 2026",
@@ -61,6 +61,10 @@ module.exports = {
       answer: "This calculator estimates BMR with the Mifflin-St Jeor equation, then multiplies it by an activity factor such as sedentary, lightly active, moderately active, very active, or extra active."
     },
     {
+      question: "Is TDEE the same as maintenance calories?",
+      answer: "TDEE is an estimated maintenance calorie level. Your real maintenance can differ, so compare the estimate with average intake and body-weight trend over several weeks."
+    },
+    {
       question: "How should I use TDEE for weight change?",
       answer: "Eating near TDEE tends to support maintenance. A moderate deficit can support gradual fat loss, while a modest surplus can support muscle gain when paired with resistance training."
     },
@@ -100,11 +104,11 @@ module.exports = {
   contentSections: [
     {
       title: "What TDEE Means",
-      body: `<p>Total Daily Energy Expenditure is an estimate of how many calories your body burns in a typical day. It combines your resting metabolic needs with daily movement, exercise, digestion, and general activity.</p><p>TDEE is most useful as a starting point for planning maintenance calories, a moderate fat-loss deficit, or a controlled muscle-gain surplus.</p>`
+      body: `<p>Total Daily Energy Expenditure is an estimate of how many calories your body burns in a typical day. It combines your resting metabolic needs with daily movement, exercise, digestion, and general activity.</p><p>In practical nutrition planning, TDEE is the maintenance calorie estimate. It is most useful before choosing a moderate fat-loss deficit, a maintenance target, or a controlled muscle-gain surplus.</p>`
     },
     {
       title: "How This Calculator Works",
-      body: `<p>This tool first estimates resting energy expenditure with the Mifflin-St Jeor equations, then multiplies that estimate by a selected activity factor.</p><div class="formula-box">Men: BMR = 10W + 6.25H - 5A + 5<br>Women: BMR = 10W + 6.25H - 5A - 161<br>TDEE = BMR x activity multiplier</div><p>W is weight in kilograms, H is height in centimeters, and A is age in years. The sex-specific constants are part of the published equation.</p><ul><li><strong>1.2:</strong> sedentary.</li><li><strong>1.375:</strong> lightly active.</li><li><strong>1.55:</strong> moderately active.</li><li><strong>1.725:</strong> very active.</li><li><strong>1.9:</strong> extra active.</li></ul>`
+      body: `<p>This tool first estimates resting energy expenditure with the Mifflin-St Jeor equations, then multiplies that estimate by a selected activity factor.</p><div class="formula-box">Men: BMR = 10W + 6.25H - 5A + 5<br>Women: BMR = 10W + 6.25H - 5A - 161<br>Maintenance calories = TDEE = BMR x activity multiplier</div><p>W is weight in kilograms, H is height in centimeters, and A is age in years. The sex-specific constants are part of the published equation.</p><ul><li><strong>1.2:</strong> sedentary.</li><li><strong>1.375:</strong> lightly active.</li><li><strong>1.55:</strong> moderately active.</li><li><strong>1.725:</strong> very active.</li><li><strong>1.9:</strong> extra active.</li></ul>`
     },
     {
       title: "How To Use Your Result",

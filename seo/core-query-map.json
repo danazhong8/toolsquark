@@ -1,20 +1,20 @@
 {
   "version": "2.0",
-  "updated": "2026-06-22",
+  "updated": "2026-06-30",
   "market": "en",
-  "notes": "Queries are editorial hypotheses until validated with Google Search Console query-page data. Title tests require meaningful impressions before activation.",
+  "notes": "Queries now include Google Search Console observations from June 30, 2026. Title tests require meaningful impressions before activation.",
   "pages": [
     {
       "path": "/tools/bmi-calculator.html",
       "cluster": "body-metrics",
       "primaryQuery": "bmi calculator",
-      "secondaryQueries": ["body mass index calculator", "adult bmi calculator", "metric bmi calculator", "imperial bmi calculator"],
+      "secondaryQueries": ["body mass index calculator", "adult bmi calculator", "metric bmi calculator", "bmi calculator metric", "imperial bmi calculator", "bmi calculator imperial", "bmi imperial formula"],
       "intent": "Calculate adult BMI from height and weight and interpret the screening category.",
       "snippetAngle": "Metric and imperial adult BMI calculation with category context and limitations.",
       "avoidQueries": ["child bmi calculator", "pregnancy bmi calculator", "bmi percentile calculator"],
       "cannibalizationGuard": "Own current-BMI calculation. Healthy Weight Range owns height-to-range queries; Body Fat owns circumference estimates.",
       "guidePath": "/guides/bmi-vs-body-fat-vs-waist.html",
-      "titleTests": ["BMI Calculator | Metric & Imperial Adult BMI", "Adult BMI Calculator | Formula, Category & Context"]
+      "titleTests": ["BMI Calculator Metric & Imperial | Formula & Category", "Adult BMI Calculator | kg/cm or lb/ft-in"]
     },
     {
       "path": "/tools/body-fat-calculator.html",
@@ -32,25 +32,25 @@
       "path": "/tools/tdee-calculator.html",
       "cluster": "energy-needs",
       "primaryQuery": "tdee calculator",
-      "secondaryQueries": ["total daily energy expenditure calculator", "maintenance calorie estimate", "daily energy expenditure calculator", "tdee calculator metric"],
+      "secondaryQueries": ["total daily energy expenditure calculator", "maintenance calorie estimate", "maintenance calories calculator", "daily energy expenditure calculator", "tdee calculator metric"],
       "intent": "Estimate maintenance energy from predicted BMR and an activity multiplier.",
       "snippetAngle": "Estimate TDEE and maintenance energy, then calibrate it against a real trend.",
       "avoidQueries": ["calorie deficit calculator", "food calorie calculator"],
       "cannibalizationGuard": "Own expenditure and maintenance estimation. Daily Calorie Goal owns explicit deficit or surplus targets.",
       "guidePath": "/guides/bmr-vs-tdee-vs-calorie-goal.html",
-      "titleTests": ["TDEE Calculator | Estimate Maintenance Calories", "Total Daily Energy Expenditure Calculator | TDEE"]
+      "titleTests": ["TDEE Calculator | Maintenance Calories & Activity", "Maintenance Calories Calculator | Estimate TDEE"]
     },
     {
       "path": "/tools/calorie-calculator.html",
       "cluster": "energy-needs",
-      "primaryQuery": "daily calorie goal calculator",
-      "secondaryQueries": ["calorie deficit calculator", "daily calorie target calculator", "calories for weight loss calculator", "calorie surplus calculator"],
+      "primaryQuery": "calorie calculator",
+      "secondaryQueries": ["daily calorie goal calculator", "resting calorie calculator", "maintenance calorie calculator", "calorie deficit calculator", "daily calorie target calculator", "calories for weight loss calculator", "calorie surplus calculator"],
       "intent": "Apply a disclosed percentage adjustment to estimated maintenance energy for loss, maintenance, or gain.",
       "snippetAngle": "Choose a visible deficit, maintenance, or surplus adjustment and see the maintenance baseline.",
       "avoidQueries": ["food calorie counter", "calories burned calculator", "tdee calculator"],
       "cannibalizationGuard": "Own intake-goal adjustments. TDEE owns maintenance expenditure and BMR owns resting energy.",
       "guidePath": "/guides/bmr-vs-tdee-vs-calorie-goal.html",
-      "titleTests": ["Daily Calorie Goal Calculator | Deficit & Surplus", "Calorie Deficit Calculator | Daily Goal From TDEE"]
+      "titleTests": ["Calorie Calculator | Maintenance, Deficit & Surplus", "Daily Calorie Goal Calculator | From Resting Calories"]
     },
     {
       "path": "/tools/macro-calculator.html",

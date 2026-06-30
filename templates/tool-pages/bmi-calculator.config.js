@@ -1,9 +1,9 @@
 module.exports = {
   slug: "bmi-calculator",
-  title: "BMI Calculator With Category, Limits, and Next-Step Context",
-  description: "Calculate adult BMI in metric or imperial units, see the formula, category, limitations, examples, and which body metric to check next. Inputs stay in your browser.",
-  h1: "BMI Calculator",
-  hero: "Calculate adult body mass index with metric or imperial units, then read the screening category, formula, limitations, and next body-metric options. Everything runs locally in your browser with no account.",
+  title: "BMI Calculator Metric & Imperial With Formula and Category",
+  description: "Calculate adult BMI in metric kg/cm or imperial lb/ft-in units. See BMI formula, category, examples, limits, and what to check next.",
+  h1: "BMI Calculator: Metric & Imperial",
+  hero: "Calculate adult body mass index in metric or imperial units, then see the formula, category, worked examples, limitations, and next body-metric options. Everything runs locally in your browser with no account.",
   schemaName: "Privacy-First BMI Calculator",
   schemaDescription: "A free browser-side Body Mass Index calculator for metric and imperial units, with adult BMI categories, formula notes, and result interpretation.",
   lastUpdated: "June 26, 2026",
@@ -82,6 +82,10 @@ module.exports = {
     {
       question: "Why does this page explain BMI limitations?",
       answer: "BMI is often searched as if it gives a complete health answer, but it is only a height-to-weight screening ratio. The page explains its limits so the result is easier to interpret responsibly."
+    },
+    {
+      question: "Why do metric BMI and imperial BMI sometimes differ slightly?",
+      answer: "They use the same underlying ratio after unit conversion. Small differences usually come from rounding height or weight before converting between centimeters, meters, inches, pounds, and kilograms."
     }
   ],
   references: [
@@ -95,7 +99,7 @@ module.exports = {
     },
     {
       title: "BMI Formula",
-      body: `<div class="formula-box">Metric: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p><strong>Weight</strong> is total body weight and <strong>height</strong> is standing height without shoes. The imperial constant 703 converts pounds and inches to the metric ratio. This tool rounds only the displayed result to one decimal place.</p><p>If you enter height in centimeters, the calculator first converts centimeters to meters. For example, 175 cm becomes 1.75 m. If you enter feet and inches, the calculator converts the full height to inches before applying the imperial formula.</p>`
+      body: `<div class="formula-box">Metric BMI: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial BMI: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p><strong>Weight</strong> is total body weight and <strong>height</strong> is standing height without shoes. The imperial constant 703 converts pounds and inches to the metric ratio. This tool rounds only the displayed result to one decimal place.</p><p>If you enter height in centimeters, the calculator first converts centimeters to meters. For example, 175 cm becomes 1.75 m. If you enter feet and inches, the calculator converts the full height to inches before applying the imperial formula.</p><p>Use the metric BMI path when your inputs are kilograms and centimeters. Use the imperial BMI path when your inputs are pounds, feet, and inches. Both paths should be nearly equivalent when the same real height and weight are converted carefully.</p>`
     },
     {
       title: "Metric And Imperial BMI Examples",
