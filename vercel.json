@@ -37,6 +37,11 @@
       "permanent": true
     },
     {
+      "source": "/boundary-clarity-self-check.html",
+      "destination": "/tools/boundary-clarity-self-check.html",
+      "permanent": true
+    },
+    {
       "source": "/calorie-calculator.html",
       "destination": "/tools/calorie-calculator.html",
       "permanent": true
@@ -132,6 +137,16 @@
       "permanent": true
     },
     {
+      "source": "/maintenance-calorie-calibration-calculator.html",
+      "destination": "/tools/maintenance-calorie-calibration-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/notification-load-self-check.html",
+      "destination": "/tools/notification-load-self-check.html",
+      "permanent": true
+    },
+    {
       "source": "/occupational-burnout-level-test.html",
       "destination": "/tools/occupational-burnout-level-test.html",
       "permanent": true
@@ -162,6 +177,11 @@
       "permanent": true
     },
     {
+      "source": "/relationship-check-in-planner.html",
+      "destination": "/tools/relationship-check-in-planner.html",
+      "permanent": true
+    },
+    {
       "source": "/running-pace-calculator.html",
       "destination": "/tools/running-pace-calculator.html",
       "permanent": true
@@ -182,8 +202,18 @@
       "permanent": true
     },
     {
+      "source": "/screen-free-bedtime-planner.html",
+      "destination": "/tools/screen-free-bedtime-planner.html",
+      "permanent": true
+    },
+    {
       "source": "/sleep-debt-calculator.html",
       "destination": "/tools/sleep-debt-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/sleep-consistency-calculator.html",
+      "destination": "/tools/sleep-consistency-calculator.html",
       "permanent": true
     },
     {
@@ -222,6 +252,11 @@
       "permanent": true
     },
     {
+      "source": "/task-initiation-friction-self-check.html",
+      "destination": "/tools/task-initiation-friction-self-check.html",
+      "permanent": true
+    },
+    {
       "source": "/tdee-calculator.html",
       "destination": "/tools/tdee-calculator.html",
       "permanent": true
@@ -244,6 +279,11 @@
     {
       "source": "/water-intake-calculator.html",
       "destination": "/tools/water-intake-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/weight-trend-smoothing-calculator.html",
+      "destination": "/tools/weight-trend-smoothing-calculator.html",
       "permanent": true
     }
   ]
