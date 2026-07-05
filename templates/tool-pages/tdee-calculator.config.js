@@ -12,6 +12,7 @@ module.exports = {
   resultStatus: "Maintenance Energy",
   gaugeLabels: ["Sedentary", "Moderate", "Athletic"],
   insightTitle: "Maintenance Calibration",
+  shareResult: true,
   controlsHtml: `
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
@@ -127,6 +128,14 @@ module.exports = {
     {
       title: "Example Calculation",
       body: `<p>For a 30-year-old man at 70 kg and 175 cm, estimated BMR is (10 x 70) + (6.25 x 175) - (5 x 30) + 5 = 1,649 kcal/day. With the moderate 1.55 multiplier, estimated TDEE is 1,649 x 1.55 = 2,556 kcal/day after rounding.</p>`
+    },
+    {
+      title: "Activity Multipliers Compared",
+      body: `<table class="comparison-table"><thead><tr><th>Activity Level</th><th>Typical Pattern</th><th>Common Risk</th></tr></thead><tbody><tr><td>Sedentary</td><td>Desk-heavy days with little purposeful exercise.</td><td>Under-counting small daily movement if steps are higher than expected.</td></tr><tr><td>Moderately active</td><td>Regular training or a consistently active routine.</td><td>Choosing this for a few hard workouts while the rest of the week is low movement.</td></tr><tr><td>Very active</td><td>Frequent training, active job demands, or high step volume.</td><td>Overestimating if exercise calories are already counted elsewhere.</td></tr></tbody></table>`
+    },
+    {
+      title: "Best Use Cases For TDEE",
+      body: `<div class="use-case-grid"><div class="use-case-card"><strong>Maintenance estimate</strong><span>Use TDEE when you need the full-day calorie number rather than resting calories only.</span></div><div class="use-case-card"><strong>Deficit or surplus setup</strong><span>Use TDEE before choosing a daily calorie goal for fat loss or lean gain.</span></div><div class="use-case-card"><strong>Calibration checkpoint</strong><span>Compare estimated TDEE with real intake and weight trend to refine the number.</span></div></div>`
     },
     {
       title: "Accuracy And Real-World Calibration",

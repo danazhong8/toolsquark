@@ -12,6 +12,7 @@ module.exports = {
   resultStatus: "BMI Result",
   gaugeLabels: ["18.5", "24.9", "29.9"],
   insightTitle: "Actionable Health Insight",
+  shareResult: true,
   controlsHtml: `
         <div class="intent-banner">
             <strong>Metric or imperial BMI in one place.</strong>
@@ -126,6 +127,14 @@ module.exports = {
     {
       title: "Metric And Imperial BMI Examples",
       body: `<p><strong>Metric example:</strong> 70 kg and 175 cm becomes 70 / 1.75<sup>2</sup>, which gives a BMI of 22.9.</p><p><strong>Imperial example:</strong> 154 lb and 5 ft 9 in becomes 154 x 703 / 69<sup>2</sup>, which gives a BMI of 22.7.</p><div class="note-box">Metric and imperial BMI equations should give nearly the same result when the same real-world height and weight are converted correctly. Small differences usually come from rounding the input values.</div>`
+    },
+    {
+      title: "BMI Compared With Related Body Metrics",
+      body: `<table class="comparison-table"><thead><tr><th>Metric</th><th>Best Use</th><th>Main Limitation</th></tr></thead><tbody><tr><td>BMI</td><td>Fast adult height-to-weight screening and category comparison.</td><td>Does not separate muscle, fat, bone, or fat distribution.</td></tr><tr><td>Waist-to-height ratio</td><td>Quick central-size context when waist measurement is available.</td><td>Needs careful waist measurement and still does not diagnose risk.</td></tr><tr><td>Body-fat estimate</td><td>Rough composition context from circumference or other inputs.</td><td>Formula error can be meaningful for individuals.</td></tr></tbody></table><p>Use BMI as the first screen, then choose the next metric based on the question you actually need answered.</p>`
+    },
+    {
+      title: "Common Use Cases",
+      body: `<div class="use-case-grid"><div class="use-case-card"><strong>Quick adult screening</strong><span>Use BMI when you need a fast category from height and weight only.</span></div><div class="use-case-card"><strong>Unit conversion confidence</strong><span>Use the metric/imperial tabs to avoid mixing kilograms, pounds, centimeters, and inches.</span></div><div class="use-case-card"><strong>Next-step planning</strong><span>Use the result to decide whether waist, body-fat, TDEE, or calorie planning is the better follow-up.</span></div></div>`
     },
     {
       title: "How To Read Your Result",

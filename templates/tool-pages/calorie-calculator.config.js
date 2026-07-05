@@ -12,6 +12,7 @@ module.exports = {
   resultStatus: "Daily Goal Target",
   gaugeLabels: ["Loss", "Maintain", "Gain"],
   insightTitle: "Goal And Maintenance Context",
+  shareResult: true,
   controlsHtml: `
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
@@ -131,6 +132,14 @@ module.exports = {
     {
       title: "Example Calorie Plan",
       body: `<p>If estimated maintenance is 2,000 kcal/day, a gentle 10% deficit produces a 1,800 kcal target. A 5% surplus produces 2,100 kcal. Both remain estimates that should be checked against the real trend.</p>`
+    },
+    {
+      title: "Goal Options Compared",
+      body: `<table class="comparison-table"><thead><tr><th>Goal Option</th><th>Adjustment</th><th>Best Fit</th></tr></thead><tbody><tr><td>Gentle fat loss</td><td>About 10% below estimated maintenance.</td><td>When adherence, training, and energy matter more than speed.</td></tr><tr><td>Maintenance</td><td>No planned adjustment from estimated TDEE.</td><td>When you want stability, a diet break, or a baseline check.</td></tr><tr><td>Lean gain</td><td>About 5% above estimated maintenance.</td><td>When training progress matters and rapid weight gain is not desired.</td></tr></tbody></table>`
+    },
+    {
+      title: "Common Planning Scenarios",
+      body: `<div class="use-case-grid"><div class="use-case-card"><strong>Starting a cut</strong><span>Begin with a moderate percentage deficit, then evaluate average weight after two to four weeks.</span></div><div class="use-case-card"><strong>Finding maintenance</strong><span>Use the 0% option when you need a baseline before changing intake.</span></div><div class="use-case-card"><strong>Lean gain phase</strong><span>Use a small surplus and compare body-weight trend with training performance.</span></div></div>`
     },
     {
       title: "Where The Estimate Can Miss",

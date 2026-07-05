@@ -12,6 +12,7 @@ module.exports = {
   resultStatus: "Resting Energy Baseline",
   gaugeLabels: ["Lower", "Standard", "Higher"],
   insightTitle: "Energy Strategy",
+  shareResult: true,
   controlsHtml: `
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
@@ -103,6 +104,14 @@ module.exports = {
     {
       title: "Example Calculation",
       body: `<p>For a 30-year-old man weighing 80 kg at 180 cm, the Mifflin-St Jeor estimate is 10 x 80 + 6.25 x 180 - 5 x 30 + 5 = 1,780 kcal/day. That is his estimated resting calorie baseline before activity is added.</p><p>For imperial inputs, the calculator first converts pounds to kilograms and feet/inches to centimeters. The displayed result is still a Mifflin-St Jeor BMR estimate, not a separate imperial-only formula.</p>`
+    },
+    {
+      title: "Example Profiles And Interpretation",
+      body: `<table class="comparison-table"><thead><tr><th>Profile</th><th>Approximate Meaning</th><th>What To Do Next</th></tr></thead><tbody><tr><td>Lower body size or older age</td><td>BMR may be lower because the equation is strongly influenced by weight, height, and age.</td><td>Use activity and trend data before choosing an intake target.</td></tr><tr><td>Larger body size or taller height</td><td>BMR may be higher because maintaining more tissue generally uses more energy.</td><td>Move to TDEE to include daily movement and training.</td></tr><tr><td>Very muscular or medically complex</td><td>The equation may miss individual metabolism or body composition.</td><td>Use professional assessment or trend-based calibration.</td></tr></tbody></table>`
+    },
+    {
+      title: "When To Use BMR Instead Of TDEE",
+      body: `<div class="use-case-grid"><div class="use-case-card"><strong>Formula learning</strong><span>Use BMR when you want to understand the Mifflin-St Jeor baseline before activity is added.</span></div><div class="use-case-card"><strong>Energy sequence</strong><span>Use BMR as step one before calculating maintenance calories with TDEE.</span></div><div class="use-case-card"><strong>Estimate comparison</strong><span>Compare BMR with app or wearable estimates to see what is resting baseline versus total daily burn.</span></div></div>`
     },
     {
       title: "Limits And Appropriate Use",
