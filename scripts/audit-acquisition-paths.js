@@ -8,10 +8,10 @@ const queryMap = JSON.parse(fs.readFileSync(path.join(root, "seo", "core-query-m
 const errors = [];
 const guideSlugs = new Set(guides.map((guide) => guide.slug));
 const homepageFeaturedGuides = [
+  "metric-vs-imperial-bmi-formula",
+  "mifflin-st-jeor-equation-explained",
   "bmr-vs-tdee-vs-calorie-goal",
-  "sleep-debt-vs-sleep-quality",
-  "stress-vs-anxiety-patterns",
-  "smartphone-use-vs-social-media-use"
+  "maintenance-calories-vs-calorie-deficit"
 ];
 const guideHubHeadings = [
   "Start With These Decision Guides",

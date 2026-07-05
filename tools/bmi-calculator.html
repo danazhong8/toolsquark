@@ -78,10 +78,26 @@
       },
       {
         "@type": "Question",
+        "name": "What is the metric BMI formula?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The metric BMI formula is BMI = weight in kilograms divided by height in meters squared. A height entered in centimeters is first converted to meters."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Can I use this as an imperial BMI calculator?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes. Choose the imperial tab, enter weight in pounds and height in feet and inches, and the calculator uses the standard pounds-and-inches BMI equation with the 703 conversion factor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the imperial BMI formula?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The imperial BMI formula is BMI = weight in pounds x 703 divided by height in inches squared. Feet and inches are converted to total inches before the equation is applied."
         }
       },
       {
@@ -157,7 +173,7 @@
 .recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{display:block;color:var(--accent);font-weight:750;text-decoration:none;line-height:1.4}.reference-list a:hover{text-decoration:underline}.reference-list span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
 footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}footer a:hover{text-decoration:underline}
 .side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.visual-guide-card img{display:block;width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.card{padding:22px 18px}.input-row,.recommend-grid,.macro-grid{grid-template-columns:1fr;flex-direction:column;gap:0}.result-val{font-size:42px}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
-.input-help{margin-top:7px;font-size:12px;color:var(--text-muted);line-height:1.45}
+.intent-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bbf7d0;background:#f0fdf4;border-radius:10px;color:#14532d}.intent-banner strong{font-size:15px}.intent-banner span{font-size:13px;line-height:1.5;color:#166534}.input-help{margin-top:7px;font-size:12px;color:var(--text-muted);line-height:1.45}
 </style>
 </head>
 <body>
@@ -168,6 +184,10 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     <main class="main-column">
     <div class="card" id="calculator">
 
+        <div class="intent-banner">
+            <strong>Metric or imperial BMI in one place.</strong>
+            <span>Choose kg/cm or lb/ft-in, then see the exact formula, adult category, and what to check next.</span>
+        </div>
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
             <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
@@ -197,7 +217,11 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     </div>
     <div class="content-section">
         <h3>BMI Formula</h3>
-        <div class="formula-box">Metric BMI: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial BMI: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p><strong>Weight</strong> is total body weight and <strong>height</strong> is standing height without shoes. The imperial constant 703 converts pounds and inches to the metric ratio. This tool rounds only the displayed result to one decimal place.</p><p>If you enter height in centimeters, the calculator first converts centimeters to meters. For example, 175 cm becomes 1.75 m. If you enter feet and inches, the calculator converts the full height to inches before applying the imperial formula.</p><p>Use the metric BMI path when your inputs are kilograms and centimeters. Use the imperial BMI path when your inputs are pounds, feet, and inches. Both paths should be nearly equivalent when the same real height and weight are converted carefully.</p>
+        <div class="formula-box">Metric BMI: BMI = weight (kg) / height (m)<sup>2</sup><br>Imperial BMI: BMI = weight (lb) x 703 / height (in)<sup>2</sup></div><p><strong>Weight</strong> is total body weight and <strong>height</strong> is standing height without shoes. The imperial constant 703 converts pounds and inches to the metric ratio. This tool rounds only the displayed result to one decimal place.</p><p>If you enter height in centimeters, the calculator first converts centimeters to meters. For example, 175 cm becomes 1.75 m. If you enter feet and inches, the calculator converts the full height to inches before applying the imperial formula.</p><p>Use the metric BMI path when your inputs are kilograms and centimeters. Use the imperial BMI path when your inputs are pounds, feet, and inches. Both paths should be nearly equivalent when the same real height and weight are converted carefully. For a deeper comparison, read the <a href="https://toolsquark.com/guides/metric-vs-imperial-bmi-formula.html">metric vs imperial BMI formula guide</a>.</p>
+    </div>
+    <div class="content-section">
+        <h3>Metric Or Imperial: Which Tab To Use</h3>
+        <p>Use <strong>Metric Units</strong> when your weight is in kilograms and height is in centimeters. Use <strong>Imperial Units</strong> when your weight is in pounds and height is measured in feet and inches.</p><p>Do not mix systems in a single calculation. If you only know one value in another system, convert both inputs first or use the matching tab so the calculator can apply the correct equation.</p>
     </div>
     <div class="content-section">
         <h3>Metric And Imperial BMI Examples</h3>
@@ -213,7 +237,7 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     </div>
     <div class="content-section">
         <h3>What To Do After The BMI Number</h3>
-        <p>If your goal is quick screening, the BMI category may be enough. If the result conflicts with your body composition, waist size, training status, or health history, use it as a prompt to add another measure rather than as a final conclusion.</p><ul><li><strong>Need distribution context?</strong> Try waist-to-height ratio.</li><li><strong>Need composition context?</strong> Try a body-fat estimate.</li><li><strong>Need nutrition planning?</strong> Estimate TDEE or a daily calorie goal after BMI.</li></ul>
+        <p>If your goal is quick screening, the BMI category may be enough. If the result conflicts with your body composition, waist size, training status, or health history, use it as a prompt to add another measure rather than as a final conclusion.</p><ul><li><strong>Need distribution context?</strong> Try the <a href="https://toolsquark.com/tools/waist-to-height-ratio-calculator.html">waist-to-height ratio calculator</a>.</li><li><strong>Need composition context?</strong> Try the <a href="https://toolsquark.com/tools/body-fat-calculator.html">body fat calculator</a>.</li><li><strong>Need nutrition planning?</strong> Estimate <a href="https://toolsquark.com/tools/tdee-calculator.html">TDEE</a> or a <a href="https://toolsquark.com/tools/calorie-calculator.html">daily calorie goal</a> after BMI.</li></ul>
     </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
@@ -225,8 +249,16 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
             <p>Yes. Choose the metric tab, enter weight in kilograms and height in centimeters, and the calculator converts height to meters before applying the standard BMI equation.</p>
         </div>
         <div class="faq-item">
+            <h4>What is the metric BMI formula?</h4>
+            <p>The metric BMI formula is BMI = weight in kilograms divided by height in meters squared. A height entered in centimeters is first converted to meters.</p>
+        </div>
+        <div class="faq-item">
             <h4>Can I use this as an imperial BMI calculator?</h4>
             <p>Yes. Choose the imperial tab, enter weight in pounds and height in feet and inches, and the calculator uses the standard pounds-and-inches BMI equation with the 703 conversion factor.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What is the imperial BMI formula?</h4>
+            <p>The imperial BMI formula is BMI = weight in pounds x 703 divided by height in inches squared. Feet and inches are converted to total inches before the equation is applied.</p>
         </div>
         <div class="faq-item">
             <h4>What is considered a healthy BMI range?</h4>
@@ -261,6 +293,13 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div><div class="card side-card visual-guide-card"><h3>Method Visual</h3><img src="../assets/visual-guides/calculator-method-guide.png" alt="Calculator method guide showing inputs, formula, result, and limits." loading="lazy" width="900" height="620"></div>
         <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/bmi-vs-body-fat-vs-waist.html" class="recommend-card"><div><h4>BMI vs Body Fat vs Waist Measurements</h4><p>Compare BMI, body-fat estimates, waist-to-height ratio, and waist-to-hip ratio so you can choose the right screening tool and interpret its limits.</p></div><span class="action-text">Read guide &rarr;</span></a></div>
         <div class="card side-card" id="related"><h3>Optimize Your Body Metrics Further</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/guides/metric-vs-imperial-bmi-formula.html" class="recommend-card">
+                <div>
+                    <h4>Metric vs Imperial BMI Formula</h4>
+                    <p>Compare kg/cm and lb/ft-in BMI equations, rounding differences, and examples.</p>
+                </div>
+                <span class="action-text">Read Guide &rarr;</span>
+            </a>
             <a href="https://toolsquark.com/tools/tdee-calculator.html" class="recommend-card">
                 <div>
                     <h4>TDEE Calculator</h4>

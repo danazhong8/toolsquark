@@ -21,6 +21,12 @@ module.exports = {
   relatedTitle: "Build The Planning Sequence",
   related: [
     {
+      href: "https://toolsquark.com/guides/maintenance-calories-vs-calorie-deficit.html",
+      title: "Maintenance vs Calorie Deficit",
+      description: "Understand when to hold maintenance, when to create a deficit, and how to review the trend.",
+      action: "Read Guide"
+    },
+    {
       href: "https://toolsquark.com/tools/tdee-calculator.html",
       title: "TDEE Calculator",
       description: "Use the maintenance-only view when you do not need a goal adjustment.",
@@ -108,7 +114,7 @@ module.exports = {
   contentSections: [
     {
       title: "What This Goal Calculator Produces",
-      body: `<p>The calculator first estimates resting calories with Mifflin-St Jeor, converts that resting baseline into maintenance energy with an activity multiplier, then applies the goal percentage you select. The result is a planning target, not a prediction of an exact rate of weight change.</p><p>This keeps the TDEE page focused on energy expenditure while this page supports the next decision: choosing a starting intake target for maintenance, deficit, or surplus planning.</p>`
+      body: `<p>The calculator first estimates resting calories with Mifflin-St Jeor, converts that resting baseline into maintenance energy with an activity multiplier, then applies the goal percentage you select. The result is a planning target, not a prediction of an exact rate of weight change.</p><p>This keeps the <a href="https://toolsquark.com/tools/tdee-calculator.html">TDEE calculator</a> focused on energy expenditure while this page supports the next decision: choosing a starting intake target for maintenance, deficit, or surplus planning.</p>`
     },
     {
       title: "How The Target Is Calculated",
@@ -132,7 +138,7 @@ module.exports = {
     },
     {
       title: "How To Calibrate The Target",
-      body: `<p>Use the calculated target as a first test, not a permanent prescription. Keep the target stable long enough to see a trend, then compare average intake, average body weight, gym performance, hunger, sleep, and adherence.</p><p>If weight is changing faster or slower than expected, adjust in small steps rather than rebuilding the plan from scratch. The maintenance calibration and weight trend tools are designed for this second pass.</p>`
+      body: `<p>Use the calculated target as a first test, not a permanent prescription. Keep the target stable long enough to see a trend, then compare average intake, average body weight, gym performance, hunger, sleep, and adherence.</p><p>If weight is changing faster or slower than expected, adjust in small steps rather than rebuilding the plan from scratch. The <a href="https://toolsquark.com/tools/maintenance-calorie-calibration-calculator.html">maintenance calibration</a> and <a href="https://toolsquark.com/tools/weight-trend-smoothing-calculator.html">weight trend</a> tools are designed for this second pass. The <a href="https://toolsquark.com/guides/maintenance-calories-vs-calorie-deficit.html">maintenance vs calorie deficit guide</a> explains when each target makes sense.</p>`
     }
   ],
   methodology: "This tool estimates maintenance energy with Mifflin-St Jeor and a selected activity multiplier, then applies a disclosed goal adjustment of -20%, -10%, 0%, +5%, or +10%.",

@@ -21,6 +21,12 @@ module.exports = {
   relatedTitle: "Turn Baseline Into Daily Targets",
   related: [
     {
+      href: "https://toolsquark.com/guides/mifflin-st-jeor-equation-explained.html",
+      title: "Mifflin-St Jeor Equation Guide",
+      description: "See the exact male and female formulas, variables, examples, and limits.",
+      action: "Read Guide"
+    },
+    {
       href: "https://toolsquark.com/tools/tdee-calculator.html",
       title: "TDEE Calculator",
       description: "Add activity level to your resting baseline and estimate total daily calorie burn.",
@@ -88,7 +94,7 @@ module.exports = {
     },
     {
       title: "BMR Formula",
-      body: `<p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Metric inputs in kilograms and centimeters are used directly. Imperial inputs are converted to kilograms and centimeters before the equation is applied, so the calculation remains formula-consistent across unit systems.</p>`
+      body: `<p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Metric inputs in kilograms and centimeters are used directly. Imperial inputs are converted to kilograms and centimeters before the equation is applied, so the calculation remains formula-consistent across unit systems. The <a href="https://toolsquark.com/guides/mifflin-st-jeor-equation-explained.html">Mifflin-St Jeor equation guide</a> shows the variables and worked examples in more detail.</p>`
     },
     {
       title: "How To Use Your Result",
@@ -104,7 +110,7 @@ module.exports = {
     },
     {
       title: "Why BMR Is Not The Final Calorie Target",
-      body: `<p>BMR is the first number in an energy-planning sequence, not the last. Normal daily life adds walking, training, work, fidgeting, digestion, and recovery demands, so total daily energy needs are usually meaningfully higher than BMR.</p><p>After calculating BMR, move to TDEE for maintenance calories. Only then choose a deficit, maintenance target, surplus, or macro split.</p>`
+      body: `<p>BMR is the first number in an energy-planning sequence, not the last. Normal daily life adds walking, training, work, fidgeting, digestion, and recovery demands, so total daily energy needs are usually meaningfully higher than BMR.</p><p>After calculating BMR, move to the <a href="https://toolsquark.com/tools/tdee-calculator.html">TDEE calculator</a> for maintenance calories. Only then choose a deficit, maintenance target, surplus, or macro split with the <a href="https://toolsquark.com/tools/calorie-calculator.html">daily calorie goal calculator</a>.</p>`
     }
   ],
   methodology: "This tool uses the Mifflin-St Jeor equation with metric conversions for imperial entries. Results are rounded to the nearest whole calorie.",

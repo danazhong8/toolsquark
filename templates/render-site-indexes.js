@@ -20,7 +20,7 @@ const groups = {
       ["How Results Should Be Used", "Each calculator discloses its formula, assumptions, example, limits, and sources. Treat results as starting estimates and use professional guidance for pregnancy, symptoms, medical diets, or other high-stakes decisions."]
     ],
     chooser: [
-      ["You need a quick body-size screen", "Start with BMI Calculator", "tools/bmi-calculator.html"],
+      ["You need a quick body-size screen", "Start with Metric & Imperial BMI Calculator", "tools/bmi-calculator.html"],
       ["You want maintenance calories", "Start with TDEE Calculator", "tools/tdee-calculator.html"],
       ["You need an intake target", "Start with Daily Calorie Goal Calculator", "tools/calorie-calculator.html"],
       ["You already have calories and need macros", "Start with Macro Calculator", "tools/macro-calculator.html"],
@@ -30,7 +30,7 @@ const groups = {
       {
         title: "Weight & Body Composition",
         tools: [
-          ["bmi-calculator", "BMI Calculator", "Check the classic height-to-weight baseline for general adult screening.", "Check BMI"],
+          ["bmi-calculator", "BMI Calculator", "Check metric or imperial adult BMI with formula, category, limits, and next-step context.", "Check BMI"],
           ["body-fat-calculator", "Body Fat Calculator", "Estimate body fat percentage using circumference measurements.", "Estimate Fat %"],
           ["lean-body-mass-calculator", "Lean Body Mass Calculator", "Estimate non-fat body mass from height, weight, and sex profile.", "Check Lean Mass"],
           ["weight-trend-smoothing-calculator", "Weight Trend Smoothing Calculator", "Compare weekly average weights to reduce daily scale noise.", "Smooth Trend"],
@@ -42,10 +42,10 @@ const groups = {
       {
         title: "Energy & Nutrition Planning",
         tools: [
-          ["tdee-calculator", "TDEE Calculator", "Estimate maintenance energy from resting needs and activity level.", "Calculate TDEE", true],
-          ["bmr-calculator", "BMR Calculator", "Isolate resting energy needs before activity is added.", "Calculate BMR"],
+          ["tdee-calculator", "TDEE Calculator", "Estimate maintenance calories from Mifflin-St Jeor BMR and activity level.", "Calculate TDEE", true],
+          ["bmr-calculator", "BMR Calculator", "Estimate resting calories with the Mifflin-St Jeor equation before activity is added.", "Calculate BMR"],
           ["maintenance-calorie-calibration-calculator", "Maintenance Calorie Calibration", "Adjust estimated maintenance calories from recent intake and weight trend.", "Calibrate TDEE"],
-          ["calorie-calculator", "Daily Calorie Goal Calculator", "Apply a visible goal adjustment to estimated maintenance energy.", "Plan Calories"],
+          ["calorie-calculator", "Daily Calorie Goal Calculator", "Apply a visible maintenance, deficit, or surplus adjustment to estimated energy.", "Plan Calories"],
           ["calorie-deficit-timeline-calculator", "Calorie Deficit Timeline", "Estimate a simplified weight-change timeline from target deficit.", "Estimate Timeline"],
           ["macro-calculator", "Custom Macro Calculator", "Distribute an existing calorie target across adjustable macro inputs.", "Split Macros"],
           ["protein-calculator", "Protein Calculator", "Find a realistic protein range for training and recovery goals.", "Set Protein"],
@@ -348,13 +348,14 @@ ${footer()}
 function renderHome() {
   const toolBySlug = Object.fromEntries(Object.values(groups).flatMap((group) => group.sections.flatMap((section) => section.tools)).map((tool) => [tool[0], tool]));
   const startingPoints = [
+    "bmi-calculator",
+    "bmr-calculator",
     "tdee-calculator",
     "calorie-calculator",
     "maintenance-calorie-calibration-calculator",
+    "daily-steps-goal-calculator",
     "sleep-consistency-calculator",
     "stress-index-test",
-    "smartphone-addiction-test",
-    "notification-load-self-check",
     "relationship-check-in-planner"
   ].map((slug) => toolBySlug[slug]).filter(Boolean);
   const categoryDescriptions = {
@@ -363,7 +364,7 @@ function renderHome() {
     lifestyle: "Sleep planning, daily movement, follow-through, and digital habits.",
     connection: "Relationship needs, support, emotional communication, and repair."
   };
-  const featuredGuideSlugs = ["bmr-vs-tdee-vs-calorie-goal", "sleep-debt-vs-sleep-quality", "stress-vs-anxiety-patterns", "smartphone-use-vs-social-media-use"];
+  const featuredGuideSlugs = ["metric-vs-imperial-bmi-formula", "mifflin-st-jeor-equation-explained", "bmr-vs-tdee-vs-calorie-goal", "maintenance-calories-vs-calorie-deficit"];
   const featuredGuides = featuredGuideSlugs
     .map((slug) => guides.find((guide) => guide.slug === slug))
     .filter(Boolean)

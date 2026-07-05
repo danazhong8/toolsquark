@@ -21,6 +21,12 @@ module.exports = {
   relatedTitle: "Refine Your Nutrition Plan",
   related: [
     {
+      href: "https://toolsquark.com/guides/bmr-vs-tdee-vs-calorie-goal.html",
+      title: "BMR vs TDEE vs Calorie Goal",
+      description: "Choose the right energy number before turning it into an intake target.",
+      action: "Read Guide"
+    },
+    {
       href: "https://toolsquark.com/tools/bmr-calculator.html",
       title: "BMR Calculator",
       description: "Isolate your resting metabolic baseline before activity is added.",
@@ -104,7 +110,7 @@ module.exports = {
   contentSections: [
     {
       title: "What TDEE Means",
-      body: `<p>Total Daily Energy Expenditure is an estimate of how many calories your body burns in a typical day. It combines your resting metabolic needs with daily movement, exercise, digestion, and general activity.</p><p>In practical nutrition planning, TDEE is the maintenance calorie estimate. It is most useful before choosing a moderate fat-loss deficit, a maintenance target, or a controlled muscle-gain surplus.</p>`
+      body: `<p>Total Daily Energy Expenditure is an estimate of how many calories your body burns in a typical day. It combines your resting metabolic needs with daily movement, exercise, digestion, and general activity.</p><p>In practical nutrition planning, TDEE is the maintenance calorie estimate. It is most useful after a <a href="https://toolsquark.com/tools/bmr-calculator.html">BMR estimate</a> and before choosing a moderate fat-loss deficit, a maintenance target, or a controlled muscle-gain surplus in the <a href="https://toolsquark.com/tools/calorie-calculator.html">daily calorie goal calculator</a>.</p>`
     },
     {
       title: "How This Calculator Works",
@@ -112,7 +118,7 @@ module.exports = {
     },
     {
       title: "How To Use Your Result",
-      body: `<ul><li><strong>Maintenance:</strong> start near your TDEE and monitor body weight trend.</li><li><strong>Fat loss:</strong> a moderate deficit often starts around 300 to 500 calories below TDEE.</li><li><strong>Muscle gain:</strong> a modest surplus often starts around 150 to 300 calories above TDEE.</li></ul><div class="note-box">Avoid using one calculation as a permanent prescription. Track your average weight, performance, hunger, and energy for a few weeks, then adjust gradually.</div>`
+      body: `<ul><li><strong>Maintenance:</strong> start near your TDEE and monitor body weight trend.</li><li><strong>Fat loss:</strong> a moderate deficit often starts around 300 to 500 calories below TDEE.</li><li><strong>Muscle gain:</strong> a modest surplus often starts around 150 to 300 calories above TDEE.</li></ul><div class="note-box">Avoid using one calculation as a permanent prescription. Track your average weight, performance, hunger, and energy for a few weeks, then adjust gradually with the <a href="https://toolsquark.com/tools/maintenance-calorie-calibration-calculator.html">maintenance calibration calculator</a>.</div>`
     },
     {
       title: "When This Estimate Is Useful",
