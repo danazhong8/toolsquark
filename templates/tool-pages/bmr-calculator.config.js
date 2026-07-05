@@ -13,6 +13,7 @@ module.exports = {
   gaugeLabels: ["Lower", "Standard", "Higher"],
   insightTitle: "Energy Strategy",
   shareResult: true,
+  dynamicNextSteps: true,
   controlsHtml: `
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
@@ -241,6 +242,10 @@ function calculateNow() {
     document.getElementById('calc-desc').innerText = result.desc;
     document.getElementById('calc-suggestion').innerText = result.suggestion;
     document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    setNextStepRecommendations([
+        { label: 'TDEE Calculator', href: 'https://toolsquark.com/tools/tdee-calculator.html', reason: 'Add activity level to turn resting calories into a maintenance estimate.', action: 'Estimate TDEE' },
+        { label: 'Mifflin-St Jeor Examples', href: 'https://toolsquark.com/guides/mifflin-st-jeor-examples-men-women.html', reason: 'Review male and female examples before comparing calculator outputs.', action: 'Read Guide' }
+    ]);
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 renderInputs();`

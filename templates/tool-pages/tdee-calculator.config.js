@@ -13,6 +13,7 @@ module.exports = {
   gaugeLabels: ["Sedentary", "Moderate", "Athletic"],
   insightTitle: "Maintenance Calibration",
   shareResult: true,
+  dynamicNextSteps: true,
   controlsHtml: `
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
@@ -288,6 +289,10 @@ function calculateNow() {
     document.getElementById('calc-desc').innerText = \`Your estimated TDEE is \${tdee.toLocaleString()} kcal/day. This is your approximate maintenance target for your current body metrics and activity level.\`;
     document.getElementById('calc-suggestion').innerText = 'Compare average intake and body-weight trend over two to four weeks. Use the Daily Calorie Goal Calculator only when you are ready to apply an explicit goal adjustment.';
     document.getElementById('gauge-pointer').style.left = percent + '%';
+    setNextStepRecommendations([
+        { label: 'Daily Calorie Goal Calculator', href: 'https://toolsquark.com/tools/calorie-calculator.html', reason: 'Apply a visible deficit, maintenance, or surplus after estimating TDEE.', action: 'Plan Goal' },
+        { label: 'Activity Multiplier Guide', href: 'https://toolsquark.com/guides/tdee-activity-multiplier-explained.html', reason: 'Check whether your selected activity factor matches your real week.', action: 'Read Guide' }
+    ]);
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 renderInputs();`

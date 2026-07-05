@@ -13,6 +13,7 @@ module.exports = {
   gaugeLabels: ["Loss", "Maintain", "Gain"],
   insightTitle: "Goal And Maintenance Context",
   shareResult: true,
+  dynamicNextSteps: true,
   controlsHtml: `
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
@@ -300,6 +301,22 @@ function calculateNow() {
     document.getElementById('calc-desc').innerText = \`Daily target: \${target.toLocaleString()} kcal, using a \${(goalAdjustment * 100).toFixed(0)}% adjustment from estimated maintenance of \${tdee.toLocaleString()} kcal/day.\`;
     document.getElementById('calc-suggestion').innerText = goalAdjustment === 0 ? 'Use the maintenance estimate as a starting point and compare it with your multi-week trend.' : 'Use the smallest effective adjustment. Recheck average weight, hunger, energy, and training after two to four weeks.';
     document.getElementById('gauge-pointer').style.left = Math.min(95, Math.max(5, percent)) + '%';
+    if (goalAdjustment === 0) {
+        setNextStepRecommendations([
+            { label: 'Maintenance Calorie Calibration', href: 'https://toolsquark.com/tools/maintenance-calorie-calibration-calculator.html', reason: 'Compare this estimate with real intake and weight trend.', action: 'Calibrate' },
+            { label: 'Maintenance vs Deficit Guide', href: 'https://toolsquark.com/guides/maintenance-calories-vs-calorie-deficit-which-number.html', reason: 'Decide whether maintenance or a deficit is the right next number.', action: 'Read Guide' }
+        ]);
+    } else if (goalAdjustment < 0) {
+        setNextStepRecommendations([
+            { label: 'Weight Trend Smoothing', href: 'https://toolsquark.com/tools/weight-trend-smoothing-calculator.html', reason: 'Use smoothed trend data before judging whether the deficit is working.', action: 'Smooth Trend' },
+            { label: 'Macro Calculator', href: 'https://toolsquark.com/tools/macro-calculator.html', reason: 'Turn the calorie target into protein, fat, and carbohydrate grams.', action: 'Split Macros' }
+        ]);
+    } else {
+        setNextStepRecommendations([
+            { label: 'Macro Calculator', href: 'https://toolsquark.com/tools/macro-calculator.html', reason: 'Plan protein, fat, and carbohydrates for the surplus target.', action: 'Split Macros' },
+            { label: 'Weight Trend Smoothing', href: 'https://toolsquark.com/tools/weight-trend-smoothing-calculator.html', reason: 'Monitor whether the surplus is producing a controlled trend.', action: 'Smooth Trend' }
+        ]);
+    }
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 renderInputs();`

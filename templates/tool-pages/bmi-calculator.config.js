@@ -13,6 +13,7 @@ module.exports = {
   gaugeLabels: ["18.5", "24.9", "29.9"],
   insightTitle: "Actionable Health Insight",
   shareResult: true,
+  dynamicNextSteps: true,
   controlsHtml: `
         <div class="intent-banner">
             <strong>Metric or imperial BMI in one place.</strong>
@@ -250,6 +251,22 @@ function calculateNow() {
     document.getElementById('calc-desc').innerText = result.desc;
     document.getElementById('calc-suggestion').innerText = result.suggestion;
     document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    if (rounded < 18.5) {
+        setNextStepRecommendations([
+            { label: 'Daily Calorie Goal Calculator', href: 'https://toolsquark.com/tools/calorie-calculator.html', reason: 'Use energy planning cautiously if low intake or unintentional loss may be involved.', action: 'Plan Calories' },
+            { label: 'Healthy Weight Range', href: 'https://toolsquark.com/tools/healthy-weight-range-calculator.html', reason: 'See the BMI-based adult weight range implied by your height.', action: 'Find Range' }
+        ]);
+    } else if (rounded < 25) {
+        setNextStepRecommendations([
+            { label: 'TDEE Calculator', href: 'https://toolsquark.com/tools/tdee-calculator.html', reason: 'Move from body-size screening to a maintenance calorie estimate.', action: 'Estimate TDEE' },
+            { label: 'Daily Steps Goal Calculator', href: 'https://toolsquark.com/tools/daily-steps-goal-calculator.html', reason: 'Translate general activity into a practical movement target.', action: 'Plan Steps' }
+        ]);
+    } else {
+        setNextStepRecommendations([
+            { label: 'Waist-to-Height Ratio', href: 'https://toolsquark.com/tools/waist-to-height-ratio-calculator.html', reason: 'Add central-size context before treating BMI as the full story.', action: 'Check Waist' },
+            { label: 'Daily Calorie Goal Calculator', href: 'https://toolsquark.com/tools/calorie-calculator.html', reason: 'If weight change is a goal, start with a visible maintenance or deficit target.', action: 'Plan Calories' }
+        ]);
+    }
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 renderInputs();`
