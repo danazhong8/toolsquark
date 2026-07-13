@@ -4,6 +4,7 @@ module.exports = {
   description: "Estimate maintenance calories, daily calorie targets, deficits, or surpluses from BMR and activity level. Uses Mifflin-St Jeor with visible adjustments.",
   h1: "Calorie Calculator: Maintenance, Deficit, Surplus",
   hero: "Use this maintenance calorie calculator to estimate resting calories, maintenance calories, and a daily target for fat loss, maintenance, or lean gain with visible percentage adjustments and browser-local inputs.",
+  heroHighlights: ["Maintenance-first mode", "Visible deficit or surplus", "Shareable target summary"],
   schemaName: "Privacy-First Calorie Calculator",
   schemaDescription: "A browser-side daily calorie goal planner using estimated maintenance energy and an explicit percentage adjustment.",
   lastUpdated: "June 22, 2026",

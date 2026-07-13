@@ -4,6 +4,7 @@ module.exports = {
   description: "Estimate TDEE and maintenance calories from Mifflin-St Jeor BMR, activity level, body metrics, age, and sex. See multipliers and calibration steps.",
   h1: "TDEE Calculator: Maintenance Calories",
   hero: "Use this TDEE calculator to estimate maintenance calories from Mifflin-St Jeor BMR, age, sex, height, weight, and activity level, then connect the result to real-world calibration.",
+  heroHighlights: ["Maintenance calories estimate", "Activity multiplier shown", "Calorie goal next step"],
   schemaName: "Privacy-First TDEE Calculator",
   schemaDescription: "A browser-side Total Daily Energy Expenditure calculator focused on estimated maintenance energy and real-world calibration.",
   lastUpdated: "June 22, 2026",
@@ -15,11 +16,16 @@ module.exports = {
   shareResult: true,
   dynamicNextSteps: true,
   controlsHtml: `
+        <div class="maintenance-estimate-banner">
+            <strong>Maintenance calories before diet targets.</strong>
+            <span>TDEE is the maintenance estimate. Calculate it first, then move to a calorie goal only if you want a visible deficit, maintenance, or surplus target.</span>
+        </div>
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
             <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
         </div>
         <div id="inputs-container"></div>`,
+  extraCss: `.maintenance-estimate-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bfdbfe;background:#eff6ff;border-radius:10px;color:#1e3a8a}.maintenance-estimate-banner strong{font-size:15px}.maintenance-estimate-banner span{font-size:13px;line-height:1.5;color:#334155}`,
   relatedTitle: "Refine Your Nutrition Plan",
   related: [
     {

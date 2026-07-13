@@ -4,6 +4,7 @@ module.exports = {
   description: "Calculate basal metabolic rate, BMR, and resting calories in kg/cm or lb/ft-in using Mifflin-St Jeor. See formula, examples, limits, and TDEE next steps.",
   h1: "BMR Calculator: Basal Metabolic Rate & Resting Calories",
   hero: "Estimate basal metabolic rate, BMR, and resting calories in metric or imperial units with the Mifflin-St Jeor equation, then see how this baseline connects to TDEE, maintenance calories, and daily calorie goals.",
+  heroHighlights: ["Basal metabolic rate focus", "Mifflin-St Jeor formula", "TDEE next step included"],
   schemaName: "Privacy-First BMR Calculator",
   schemaDescription: "A free browser-side Basal Metabolic Rate calculator using the Mifflin-St Jeor equation, metric and imperial inputs, and practical energy-planning context.",
   lastUpdated: "June 21, 2026",

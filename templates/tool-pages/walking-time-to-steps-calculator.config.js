@@ -6,6 +6,7 @@ module.exports = {
   description: "Convert walking minutes to estimated steps using pace presets. Estimate how many steps are in 10, 20, 30, 45, or 60 minutes of walking.",
   h1: "Walking Time To Steps Calculator",
   hero: "Estimate how many steps you may get from a planned walk by entering walking time and choosing an easy, moderate, or brisk pace. Use it for questions like how many steps are in 30 minutes of walking or how long to walk for a step goal.",
+  heroHighlights: ["Minutes to steps", "Easy, moderate, or brisk pace", "Daily step goal next"],
   schemaName: "Privacy-First Walking Time To Steps Calculator",
   schemaDescription: "A browser-side calculator that estimates walking steps from walking minutes and pace presets.",
   lastUpdated: "June 26, 2026",
@@ -14,7 +15,13 @@ module.exports = {
   resultStatus: "Estimated Steps",
   gaugeLabels: ["Short", "Moderate", "Long"],
   insightTitle: "Walking Plan Note",
+  shareResult: true,
+  dynamicNextSteps: true,
   controlsHtml: `
+        <div class="walking-plan-banner">
+            <strong>Estimate steps before the walk.</strong>
+            <span>Choose time and pace to create a practical walking estimate, then compare it with your phone or wearable after the walk.</span>
+        </div>
         <div class="input-row">
             <div class="input-group">
                 <label for="input_minutes">Walking Time</label>
@@ -34,6 +41,7 @@ module.exports = {
                 </div>
             </div>
         </div>`,
+  extraCss: `.walking-plan-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bbf7d0;background:#f0fdf4;border-radius:10px;color:#14532d}.walking-plan-banner strong{font-size:15px}.walking-plan-banner span{font-size:13px;line-height:1.5;color:#166534}`,
   relatedTitle: "Use The Estimate",
   related: [
     { href: "https://toolsquark.com/tools/daily-steps-goal-calculator.html", title: "Daily Steps Goal Calculator", description: "Build a progressive step target plan from your baseline.", action: "Plan Steps" },
@@ -102,6 +110,10 @@ function calculateNow() {
     document.getElementById('calc-desc').innerText = result.desc;
     document.getElementById('calc-suggestion').innerText = result.suggestion;
     document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    setNextStepRecommendations([
+        { label: 'Daily Steps Goal Calculator', href: 'https://toolsquark.com/tools/daily-steps-goal-calculator.html', reason: 'Turn this single-walk estimate into a realistic daily or weekly step target.', action: 'Plan Steps' },
+        { label: 'Steps To Calories Converter', href: 'https://toolsquark.com/tools/steps-to-calories-converter.html', reason: 'Use the estimated steps for a rough walking calorie-burn estimate.', action: 'Estimate Burn' }
+    ]);
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }`
 };
