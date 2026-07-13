@@ -412,6 +412,7 @@ module.exports = [
     primaryQuery: "sleep schedule vs sleep quality",
     tools: [
       ["sleep-calculator", "Sleep Schedule Calculator", "Plan bedtime or wake time from duration and sleep latency.", "Plan A Schedule"],
+      ["nap-duration-calculator", "Nap Duration Calculator", "Choose a short nap or longer recovery nap without disrupting bedtime.", "Plan Nap"],
       ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review initiation, continuity, restoration, and daytime impact.", "Review Sleep"],
       ["stress-index-test", "Stress Pattern Self-Check", "Review whether overload and reactivity may be affecting recovery.", "Review Stress"]
     ],
@@ -475,6 +476,7 @@ module.exports = [
     tools: [
       ["procrastination-test", "Procrastination Pattern Self-Check", "Review initiation, avoidance, reward pull, and perfectionistic delay.", "Review Delay"],
       ["self-discipline-test", "Follow-Through Pattern Self-Check", "Review starting friction, consistency, impulses, and restarting.", "Review Follow-Through"],
+      ["habit-restart-planner", "Habit Restart Planner", "Plan a smaller restart after missed days instead of trying to catch up all at once.", "Plan Restart"],
       ["focus-attention-diagnostic", "Focus & Attention Self-Check", "Review distractibility, sustained attention, and organization.", "Review Focus"]
     ],
     sections: [
@@ -630,7 +632,9 @@ module.exports = [
     tools: [
       ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a 4, 6, or 8 week plan from your current average.", "Build Step Plan"],
       ["walking-time-to-steps-calculator", "Walking Time To Steps Calculator", "Estimate how many steps a walking block may add.", "Convert Time"],
-      ["steps-to-calories-converter", "Steps To Calories Converter", "Estimate walking calories from steps and body weight.", "Estimate Calories"]
+      ["walking-distance-to-steps-calculator", "Walking Distance To Steps Calculator", "Convert miles or kilometers into estimated steps.", "Convert Distance"],
+      ["steps-to-calories-converter", "Steps To Calories Converter", "Estimate walking calories from steps and body weight.", "Estimate Calories"],
+      ["exercise-calories-to-steps-calculator", "Exercise Calories To Steps Calculator", "Convert exercise calories into a rough walking step equivalent.", "Convert Calories"]
     ],
     sections: [
       ["Start With Your Average, Not Your Best Day", `<p>A realistic plan begins with a recent average from ordinary days. A best day can make the target too aggressive, while an unusually low day can make the plan less useful. If possible, use a 7-day average.</p>`],
@@ -722,6 +726,7 @@ module.exports = [
     primaryQuery: "sleep debt vs sleep quality",
     tools: [
       ["sleep-debt-calculator", "Sleep Debt Calculator", "Compare recent sleep with a target duration across several nights.", "Estimate Debt"],
+      ["sleep-inertia-calculator", "Sleep Inertia Calculator", "Estimate wake grogginess risk and plan a morning buffer.", "Estimate Grogginess"],
       ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review initiation, continuity, restoration, and daytime impact.", "Review Quality"],
       ["sleep-calculator", "Sleep Schedule Calculator", "Plan bedtime or wake time from desired sleep duration.", "Plan Schedule"]
     ],

@@ -31,11 +31,16 @@ function cleanOutput(value) {
 
 function renderMatchingGuide(slug) {
   const mapping = queryMap.pages.find((page) => page.path === `/tools/${slug}.html`);
-  const guideSlug = mapping ? path.basename(mapping.guidePath, ".html") : supplementalGuideMap[slug];
-  if (!guideSlug) return "";
-  const guide = guideData.find((item) => item.slug === guideSlug);
-  if (!guide) return "";
-  return `\n        <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/${guide.slug}.html" class="recommend-card"><div><h4>${esc(guide.h1)}</h4><p>${esc(guide.description)}</p></div><span class="action-text">Read guide &rarr;</span></a></div>`;
+  const guideSlugs = [
+    mapping ? path.basename(mapping.guidePath, ".html") : null,
+    supplementalGuideMap[slug],
+    ...guideData.filter((guide) => guide.tools?.some(([toolSlug]) => toolSlug === slug)).map((guide) => guide.slug)
+  ].filter(Boolean);
+  const uniqueSlugs = [...new Set(guideSlugs)].slice(0, 3);
+  if (!uniqueSlugs.length) return "";
+  const guides = uniqueSlugs.map((guideSlug) => guideData.find((item) => item.slug === guideSlug)).filter(Boolean);
+  if (!guides.length) return "";
+  return `\n        <div class="card side-card"><h3>Guides For This Self-Check</h3><div class="recommend-grid">${guides.map((guide) => `<a href="../guides/${guide.slug}.html" class="recommend-card"><div><h4>${esc(guide.h1)}</h4><p>${esc(guide.description)}</p></div><span>Read guide &rarr;</span></a>`).join("")}</div></div>`;
 }
 
 function renderRelated(items = []) {

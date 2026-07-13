@@ -29,6 +29,8 @@ const supplementalToolGuides = {
   "protein-per-meal-calculator": "protein-per-meal-vs-daily-protein",
   "sleep-debt-calculator": "sleep-debt-vs-sleep-quality",
   "sleep-consistency-calculator": "sleep-debt-vs-sleep-quality",
+  "sleep-inertia-calculator": "sleep-debt-vs-sleep-quality",
+  "nap-duration-calculator": "sleep-schedule-and-sleep-quality",
   "screen-free-bedtime-planner": "sleep-debt-vs-sleep-quality",
   "relationship-check-in-planner": "identify-and-communicate-emotional-needs",
   "notification-load-self-check": "smartphone-use-vs-social-media-use",
@@ -36,7 +38,10 @@ const supplementalToolGuides = {
   "boundary-clarity-self-check": "identify-and-communicate-emotional-needs",
   "daily-steps-goal-calculator": "how-to-choose-a-realistic-daily-step-goal",
   "walking-time-to-steps-calculator": "how-to-choose-a-realistic-daily-step-goal",
-  "steps-to-calories-converter": "how-to-choose-a-realistic-daily-step-goal"
+  "walking-distance-to-steps-calculator": "how-to-choose-a-realistic-daily-step-goal",
+  "steps-to-calories-converter": "how-to-choose-a-realistic-daily-step-goal",
+  "exercise-calories-to-steps-calculator": "how-to-choose-a-realistic-daily-step-goal",
+  "habit-restart-planner": "procrastination-vs-follow-through"
 };
 
 function read(relativePath) {
