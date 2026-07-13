@@ -88,6 +88,10 @@ module.exports = {
       answer: "Yes. BMI does not separate muscle from fat, so muscular athletes can score high even when body fat is low. Pair BMI with waist or body fat tools for better context."
     },
     {
+      question: "Can men use this BMI calculator?",
+      answer: "Yes. Adult men can use the same standard BMI formula shown here. BMI categories are not sex-specific for adults, but men with high muscle mass or unusual body composition should add waist, body-fat, or clinical context."
+    },
+    {
       question: "Is BMI different for children or teenagers?",
       answer: "Yes. Children and teenagers are usually evaluated with age- and sex-specific BMI percentiles rather than the standard adult BMI categories shown here."
     },
@@ -128,6 +132,10 @@ module.exports = {
     {
       title: "Metric And Imperial BMI Examples",
       body: `<p><strong>Metric example:</strong> 70 kg and 175 cm becomes 70 / 1.75<sup>2</sup>, which gives a BMI of 22.9.</p><p><strong>Imperial example:</strong> 154 lb and 5 ft 9 in becomes 154 x 703 / 69<sup>2</sup>, which gives a BMI of 22.7.</p><div class="note-box">Metric and imperial BMI equations should give nearly the same result when the same real-world height and weight are converted correctly. Small differences usually come from rounding the input values.</div>`
+    },
+    {
+      title: "BMI Calculator For Men",
+      body: `<p>Adult men use the same BMI equation as other adults: weight adjusted for height. The calculator does not use a separate male BMI formula because adult BMI categories are based on the ratio itself, not on sex-specific constants.</p><p>Interpretation still needs context. Men with higher muscle mass, larger frames, or unusual body composition can have a BMI that looks high without reflecting the same body-fat profile as another person. In those cases, add waist-to-height ratio, body-fat estimation, training history, and clinical markers before making decisions.</p>`
     },
     {
       title: "BMI Compared With Related Body Metrics",

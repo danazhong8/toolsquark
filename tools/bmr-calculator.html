@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/bmr-calculator.html">
-<title>BMR Calculator in kg or lb Using Mifflin-St Jeor Equation</title>
-<meta name="description" content="Calculate BMR and resting calories with the Mifflin-St Jeor equation in metric or imperial units. See formula, example, limits, and TDEE context.">
+<title>BMR Calculator | Basal Metabolic Rate in kg or lb</title>
+<meta name="description" content="Calculate basal metabolic rate, BMR, and resting calories in kg/cm or lb/ft-in using Mifflin-St Jeor. See formula, examples, limits, and TDEE next steps.">
 <script type="application/ld+json">
 [
   {
@@ -51,7 +51,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "BMR Calculator: Resting Calories",
+        "name": "BMR Calculator: Basal Metabolic Rate & Resting Calories",
         "item": "https://toolsquark.com/tools/bmr-calculator.html"
       }
     ]
@@ -66,6 +66,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Basal metabolic rate is an estimate of the energy your body uses at complete rest to maintain vital functions such as breathing, circulation, cellular repair, and brain activity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this a basal metabolic rate calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This page is a basal metabolic rate calculator. It estimates BMR, also called resting baseline calories in everyday use, with the Mifflin-St Jeor equation."
         }
       },
       {
@@ -154,8 +162,8 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>BMR Calculator: Resting Calories</span></div>
-    <div class="hero"><h1>BMR Calculator: Resting Calories</h1><p>Estimate basal metabolic rate and resting calories with the Mifflin-St Jeor equation, then see how this baseline differs from TDEE, maintenance calories, and daily calorie goals.</p></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>BMR Calculator: Basal Metabolic Rate &amp; Resting Calories</span></div>
+    <div class="hero"><h1>BMR Calculator: Basal Metabolic Rate &amp; Resting Calories</h1><p>Estimate basal metabolic rate, BMR, and resting calories in metric or imperial units with the Mifflin-St Jeor equation, then see how this baseline connects to TDEE, maintenance calories, and daily calorie goals.</p></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
@@ -188,7 +196,7 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     <div class="card" id="guide">
     <div class="content-section">
         <h3>What BMR Measures</h3>
-        <p>Basal Metabolic Rate estimates the calories your body would use at complete rest to support essential functions such as breathing, circulation, body temperature, organ function, and cellular repair.</p><p>BMR is not the same as your full daily calorie need. It is the resting baseline that sits underneath your total daily energy expenditure.</p>
+        <p>Basal Metabolic Rate, usually shortened to BMR, estimates the calories your body would use at complete rest to support essential functions such as breathing, circulation, body temperature, organ function, and cellular repair.</p><p>Use this basal metabolic rate calculator when your search question is "how many calories do I burn at rest?" BMR is not the same as your full daily calorie need. It is the resting baseline underneath total daily energy expenditure.</p>
     </div>
     <div class="content-section">
         <h3>BMR Formula</h3>
@@ -222,6 +230,10 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <div class="faq-item">
             <h4>What is BMR?</h4>
             <p>Basal metabolic rate is an estimate of the energy your body uses at complete rest to maintain vital functions such as breathing, circulation, cellular repair, and brain activity.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is this a basal metabolic rate calculator?</h4>
+            <p>Yes. This page is a basal metabolic rate calculator. It estimates BMR, also called resting baseline calories in everyday use, with the Mifflin-St Jeor equation.</p>
         </div>
         <div class="faq-item">
             <h4>What formula does this BMR calculator use?</h4>
@@ -442,7 +454,7 @@ function buildShareResultText() {
     const status = document.getElementById('calc-status')?.innerText?.trim() || '';
     const desc = document.getElementById('calc-desc')?.innerText?.trim() || '';
     const suggestion = document.getElementById('calc-suggestion')?.innerText?.trim() || '';
-    return "BMR Calculator: Resting Calories: " + output + (unit ? " " + unit : "") + " - " + status + ". " + desc + " Next step: " + suggestion + " Source: https://toolsquark.com/tools/bmr-calculator.html";
+    return "BMR Calculator: Basal Metabolic Rate &amp; Resting Calories: " + output + (unit ? " " + unit : "") + " - " + status + ". " + desc + " Next step: " + suggestion + " Source: https://toolsquark.com/tools/bmr-calculator.html";
 }
 
 function refreshShareSummary() {
