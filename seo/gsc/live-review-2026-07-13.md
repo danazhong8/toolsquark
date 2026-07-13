@@ -64,7 +64,11 @@ Top page impressions:
 - Updated BMR title, H1, description, and intro copy to target `bmr calculator` plus `basal metabolic rate calculator`.
 - Updated Calorie title, description, and intro copy to target `maintenance calorie calculator` and `calorie maintenance calculator`.
 - Added BMI-for-men FAQ and section because the query appeared in the live 7-day query table.
+- Activated BMI title test for `bmi calculator metric`, `bmi calculator imperial`, and related metric/imperial variants.
+- Activated Walking Time title test to expose common `30`, `45`, and `60` minute examples.
+- Activated Daily Steps title test to match `daily steps goal calculator` wording while keeping the apex canonical path.
+- Activated TDEE title test from the core query map: `TDEE Calculator | Maintenance Calories & Activity`.
 
 ## Next Review
 
-Review after a complete new 7-day window and again after 14 days. Do not change the same titles again before there is enough post-change data.
+Review after a complete new 7-day window and again after 14 days. Do not change the same titles again before there is enough post-change data. New tools launched on 2026-07-13 should be observed before title changes.

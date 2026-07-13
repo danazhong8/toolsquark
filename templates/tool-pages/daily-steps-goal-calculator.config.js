@@ -2,13 +2,13 @@ module.exports = {
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   slug: "daily-steps-goal-calculator",
-  title: "Steps Per Day Calculator for a Realistic Daily Goal Plan",
+  title: "Daily Steps Goal Calculator | Realistic Steps Per Day Plan",
   description: "Use a steps per day calculator to build a realistic daily step goal from your current average, objective, and timeline with weekly milestones.",
   h1: "Steps Per Day Calculator",
   hero: "Use this steps per day calculator to turn your current average into a realistic daily step goal with gradual weekly milestones, walking-time context, and safety notes.",
   schemaName: "Privacy-First Daily Steps Goal Calculator",
   schemaDescription: "A browser-side progressive walking plan that moves from a current step baseline toward one of three disclosed preset targets.",
-  lastUpdated: "June 26, 2026",
+  lastUpdated: "July 13, 2026",
   buttonText: "Generate Step Plan",
   resultHtml: `
             <div class="result-val"><span id="calc-output">0</span><span class="result-unit">steps/day</span></div>
