@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://toolsquark.com/tools/nap-duration-calculator.html">
+<title>Nap Duration Calculator | Short Nap Or Full Cycle</title>
+<meta name="description" content="Choose a nap duration from available time, desired alertness, and bedtime distance. Compare short naps and longer recovery naps.">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Privacy-First Nap Duration Calculator",
+    "url": "https://toolsquark.com/tools/nap-duration-calculator.html",
+    "operatingSystem": "All",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A browser-side nap duration planner for choosing a short nap or longer recovery nap with transparent assumptions.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ToolsQuark",
+      "url": "https://toolsquark.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolsquark.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Lifestyle Tools",
+        "item": "https://toolsquark.com/lifestyle.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Nap Duration Calculator",
+        "item": "https://toolsquark.com/tools/nap-duration-calculator.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long should a power nap be?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many people use a short 10-30 minute nap for alertness because it is less likely to create heavy grogginess than a long partial sleep cycle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I avoid a long nap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A long or late nap can make bedtime harder for some people. If bedtime is close, this calculator favors a shorter nap or no late recovery nap."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a 90 minute nap always better?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A longer nap may help recovery when you have enough time and bedtime is far away, but it can also produce grogginess or delay nighttime sleep."
+        }
+      }
+    ]
+  }
+]
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--text-muted:#64748b;--bg:#f8fafc;--underweight:#38bdf8;--normal:#22c55e;--overweight:#eab308;--obese:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6;padding:20px}.container{max-width:1240px;margin:auto}.breadcrumb{font-size:.85rem;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--accent);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+.hero{padding:22px 0 28px;margin-bottom:28px;border-bottom:1px solid #dbe3ec}.hero h1{font-size:40px;font-weight:850;margin-bottom:10px;letter-spacing:0;line-height:1.15}.hero p{font-size:17px;color:#475569;max-width:820px}.hero-highlights{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.hero-highlights span{display:inline-flex;align-items:center;min-height:34px;padding:8px 12px;border:1px solid #cbd5e1;background:#fff;border-radius:999px;color:#334155;font-size:13px;font-weight:800;box-shadow:0 2px 8px rgba(15,23,42,.04)}.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}.main-column,.side-column{min-width:0}.card{background:white;padding:30px;border-radius:8px;margin-bottom:24px;border:1px solid #e2e8f0;box-shadow:0 3px 14px rgba(15,23,42,.04)}.card h3{font-size:1.25rem;font-weight:800;margin-bottom:20px;color:#1e293b}.side-card{padding:22px}.side-card h3{font-size:1.05rem;margin-bottom:14px}.side-sticky{position:static}.fact-list{list-style:none;display:grid;gap:10px}.fact-list li{display:flex;justify-content:space-between;gap:14px;padding-bottom:10px;border-bottom:1px solid #eef2f7;font-size:13px}.fact-list li:last-child{border-bottom:none;padding-bottom:0}.fact-list span{color:var(--text-muted)}.fact-list strong{text-align:right;color:#334155}.page-nav{list-style:none;display:grid;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid #e2e8f0}.page-nav a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:750}.page-nav a:hover{text-decoration:underline}
+.unit-switcher{display:flex;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:25px}.unit-tab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:700;color:var(--text-muted);border-radius:9px;cursor:pointer;transition:.2s}.unit-tab.active{background:white;color:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,.05)}
+.input-row{display:flex;gap:16px}.input-group{margin-bottom:20px;flex:1}.input-group label{display:block;font-weight:700;margin-bottom:8px;color:#374151;font-size:14px}.input-wrapper{position:relative;display:flex;align-items:center}.input-wrapper input,.input-wrapper select{width:100%;padding:14px 45px 14px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:16px;outline:none;transition:.2s;font-weight:600;background:white;color:var(--primary)}.input-wrapper input:focus,.input-wrapper select:focus{border-color:#2563eb;background:#eff6ff}.unit-badge{position:absolute;right:15px;color:var(--text-muted);font-size:14px;font-weight:600;pointer-events:none}
+.calc-submit-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#2563eb;color:white;font-size:16px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 4px 12px rgba(37,99,235,.2)}.calc-submit-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+.result-box{border-top:1px solid #dbe3ec;padding:28px 0 0;margin-top:30px;text-align:center}.result-val{font-size:54px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:5px;letter-spacing:0}.result-unit{font-size:20px;font-weight:700;color:var(--text-muted);margin-left:5px}.result-status{font-size:22px;font-weight:800;margin-bottom:15px}.bmi-gauge-container{max-width:500px;margin:20px auto;position:relative}.bmi-gauge-bar{height:12px;background:linear-gradient(to right,var(--underweight) 0%,var(--normal) 35%,var(--overweight) 70%,var(--obese) 100%);border-radius:6px}.bmi-pointer{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--primary);top:-14px;transform:translateX(-50%);transition:left .5s cubic-bezier(.175,.885,.32,1.275)}.bmi-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);font-weight:bold;margin-top:6px;padding:0 4px}.result-desc{color:#475569;font-size:15px;margin:15px auto;max-width:650px;line-height:1.7}.result-boundary{max-width:650px;margin:0 auto 15px;padding:13px 15px;border:1px solid #e2e8f0;background:#fff;border-radius:8px;text-align:left}.result-boundary strong{display:block;font-size:13px;color:#1e293b;margin-bottom:3px}.result-boundary span{display:block;font-size:13px;color:#64748b;line-height:1.5}.suggestion-box{background:#f8fafc;border-left:4px solid var(--accent);padding:18px;border-radius:6px;text-align:left;margin-top:20px}.suggestion-box h4{color:#1e293b;margin-bottom:6px;font-size:15px;font-weight:800}.suggestion-box p{color:#475569;font-size:14px}.next-step-panel{margin-top:18px;padding:18px;border:1px solid #bbf7d0;background:#f0fdf4;border-radius:8px;text-align:left}.next-step-panel h4{font-size:15px;font-weight:850;color:#14532d;margin-bottom:10px}.next-step-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.next-step-card{display:block;padding:13px;border:1px solid #bbf7d0;background:white;border-radius:8px;text-decoration:none;color:#1e293b}.next-step-card strong{display:block;font-size:14px;margin-bottom:4px}.next-step-card span{display:block;font-size:12px;line-height:1.45;color:#475569}.next-step-card em{display:block;margin-top:8px;font-style:normal;color:#047857;font-size:12px;font-weight:850}.next-step-empty{font-size:13px;color:#475569;margin:0}.share-result-panel{margin-top:18px;padding:18px;border:1px solid #dbeafe;background:#eff6ff;border-radius:8px;text-align:left}.share-result-panel h4{font-size:15px;font-weight:850;color:#1e3a8a;margin-bottom:6px}.share-result-panel p{font-size:13px;color:#334155;line-height:1.55;margin-bottom:12px}.share-copy-btn{border:0;border-radius:8px;background:#1d4ed8;color:white;font-weight:800;font-size:13px;padding:10px 13px;cursor:pointer}.share-copy-btn:hover{background:#1e40af}#share-copy-status{display:inline-block;margin-left:10px;font-size:13px;color:#166534;font-weight:750}.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.macro-pill{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:16px}.macro-pill strong{display:block;font-size:22px;color:#1e293b}.macro-pill span{font-size:13px;color:var(--text-muted);font-weight:700}
+.recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.comparison-table{width:100%;border-collapse:collapse;margin:14px 0;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;display:table}.comparison-table th,.comparison-table td{border:1px solid #e2e8f0;padding:11px 12px;text-align:left;vertical-align:top;font-size:14px}.comparison-table th{background:#f8fafc;color:#1e293b;font-weight:850}.comparison-table td{color:#475569}.use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.use-case-card{border:1px solid #e2e8f0;background:#f8fafc;border-radius:8px;padding:14px}.use-case-card strong{display:block;color:#1e293b;font-size:14px;margin-bottom:5px}.use-case-card span{display:block;color:#475569;font-size:13px;line-height:1.55}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{display:block;color:var(--accent);font-weight:750;text-decoration:none;line-height:1.4}.reference-list a:hover{text-decoration:underline}.reference-list span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
+footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}footer a:hover{text-decoration:underline}
+.side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.visual-guide-card img{display:block;width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.card{padding:22px 18px}.input-row,.recommend-grid,.macro-grid,.use-case-grid,.next-step-grid{grid-template-columns:1fr;flex-direction:column;gap:10px}.comparison-table{display:block;overflow-x:auto;white-space:normal}.result-val{font-size:42px}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; <span>Nap Duration Calculator</span></div>
+    <div class="hero"><h1>Nap Duration Calculator</h1><p>Pick a practical nap length from your available time, how soon bedtime is, and whether you need quick alertness or deeper recovery.</p><div class="hero-highlights"><span>Short nap planning</span><span>Bedtime distance check</span><span>Wake buffer included</span></div></div>
+    <div class="workspace-grid">
+    <main class="main-column">
+    <div class="card" id="calculator">
+
+        <div class="input-row">
+            <div class="input-group">
+                <label for="input_available">Available Time</label>
+                <div class="input-wrapper"><input type="number" id="input_available" value="30" min="10" max="180" step="5"><span class="unit-badge">min</span></div>
+            </div>
+            <div class="input-group">
+                <label for="input_bedtime_distance">Hours Until Bedtime</label>
+                <div class="input-wrapper"><input type="number" id="input_bedtime_distance" value="7" min="1" max="18" step="0.5"><span class="unit-badge">hours</span></div>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="input_goal">Nap Goal</label>
+            <div class="input-wrapper">
+                <select id="input_goal">
+                    <option value="alert">Quick alertness</option>
+                    <option value="recovery">Deeper recovery</option>
+                    <option value="avoid">Avoid bedtime disruption</option>
+                </select>
+            </div>
+        </div>
+        <button class="calc-submit-btn" onclick="calculateNow()">Plan Nap Duration</button>
+        <div id="result-area" class="result-box" style="display:none;">
+
+            <div class="result-val"><span id="calc-output">0</span><span class="result-unit">minutes</span></div>
+            <div class="result-status" id="calc-status">Suggested Nap</div>
+            <div class="bmi-gauge-container">
+                <div class="bmi-pointer" id="gauge-pointer"></div>
+                <div class="bmi-gauge-bar"></div>
+                <div class="bmi-labels"><span>Short</span><span>Cycle</span><span>Long</span></div>
+            </div>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="result-boundary"><strong>What this does not mean</strong><span>This result is an educational estimate, not a diagnosis, prescription, or personal medical decision.</span></div>
+            <div class="suggestion-box">
+                <h4>Nap Planning Note</h4>
+                <p id="calc-suggestion"></p>
+            </div>
+            <div class="next-step-panel"><h4>Recommended Next Step</h4><div id="next-step-cards" class="next-step-grid"><p class="next-step-empty">Calculate first to see the most relevant follow-up.</p></div></div>
+            <div class="share-result-panel"><h4>Shareable Result Summary</h4><p id="share-summary">Calculate first, then copy a short plain-text summary with the result, interpretation, and page link.</p><button type="button" class="share-copy-btn" onclick="copyShareResult()">Copy Summary</button><span id="share-copy-status" aria-live="polite"></span></div>
+        </div>
+    </div>
+    <div class="card" id="guide">
+    <div class="content-section">
+        <h3>What This Calculator Does</h3>
+        <p>This tool chooses a practical nap length from your available time, bedtime distance, and goal. It separates quick alertness from deeper recovery because those are different use cases.</p>
+    </div>
+    <div class="content-section">
+        <h3>Planning Rules</h3>
+        <div class="formula-box">Quick alertness: 10-30 minutes<br>Deeper recovery: about 90 minutes when time and bedtime distance allow<br>Late-day protection: shorter naps when bedtime is close</div>
+    </div>
+    <div class="content-section">
+        <h3>Worked Example</h3>
+        <p>If you have 30 minutes and bedtime is 7 hours away, the tool usually suggests a 20 minute nap plus a wake-up buffer. If you have 120 minutes and bedtime is far away, it may suggest a longer recovery nap.</p>
+    </div>
+    <div class="content-section">
+        <h3>Use The Result</h3>
+        <p>Set an alarm for the nap itself and leave a wake-up buffer afterward. If naps repeatedly become long or urgent, check nighttime sleep duration and consistency.</p>
+    </div></div>
+    <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>How long should a power nap be?</h4>
+            <p>Many people use a short 10-30 minute nap for alertness because it is less likely to create heavy grogginess than a long partial sleep cycle.</p>
+        </div>
+        <div class="faq-item">
+            <h4>When should I avoid a long nap?</h4>
+            <p>A long or late nap can make bedtime harder for some people. If bedtime is close, this calculator favors a shorter nap or no late recovery nap.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is a 90 minute nap always better?</h4>
+            <p>No. A longer nap may help recovery when you have enough time and bedtime is far away, but it can also produce grogginess or delay nighttime sleep.</p>
+        </div></div>
+    </main>
+    <aside class="side-column" aria-label="Tool information">
+        <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div><div class="card side-card visual-guide-card"><h3>Method Visual</h3><img src="../assets/visual-guides/calculator-method-guide.png" alt="Calculator method guide showing inputs, formula, result, and limits." loading="lazy" width="900" height="620"></div>
+        <div class="card side-card" id="related"><h3>Sleep Planning Tools</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/tools/sleep-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Sleep Schedule Calculator</h4>
+                    <p>Plan the main sleep window after choosing a nap.</p>
+                </div>
+                <span class="action-text">Plan Sleep &rarr;</span>
+            </a>
+            <a href="https://toolsquark.com/tools/sleep-debt-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Sleep Debt Calculator</h4>
+                    <p>Estimate whether a nap is compensating for a larger weekly deficit.</p>
+                </div>
+                <span class="action-text">Estimate Debt &rarr;</span>
+            </a>
+            <a href="https://toolsquark.com/tools/caffeine-cutoff-calculator.html" class="recommend-card">
+                <div>
+                    <h4>Caffeine Cutoff Calculator</h4>
+                    <p>Avoid stacking late caffeine with late naps.</p>
+                </div>
+                <span class="action-text">Set Cutoff &rarr;</span>
+            </a></div></div>
+        <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits" target="_blank" rel="noopener noreferrer">Healthy Sleep Habits</a><span>National Heart, Lung, and Blood Institute</span></li></ul></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This planner uses editorial nap-duration rules: 10-30 minutes for alertness, about 90 minutes for a longer recovery opportunity, and shorter naps when bedtime is close.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> This tool is for general sleep planning. Persistent daytime sleepiness, unsafe drowsiness, or sudden sleep attacks should be discussed with a qualified professional.</p><div class="updated-row">Last updated: July 13, 2026</div></div></div>
+    </aside>
+    </div>
+    <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
+</div>
+<script>
+
+function calculateNow() {
+    const available = parseFloat(document.getElementById('input_available').value);
+    const bedtimeDistance = parseFloat(document.getElementById('input_bedtime_distance').value);
+    const goal = document.getElementById('input_goal').value;
+    if (isNaN(available) || isNaN(bedtimeDistance) || available < 10 || available > 180 || bedtimeDistance < 1 || bedtimeDistance > 18) {
+        alert('Please enter available time from 10 to 180 minutes and bedtime distance from 1 to 18 hours.');
+        return;
+    }
+    let nap = Math.min(20, available - 5);
+    let status = 'Short Alertness Nap';
+    let suggestion = 'Keep the nap short and leave a few minutes to fully wake before important tasks.';
+    if (goal === 'recovery' && available >= 105 && bedtimeDistance >= 6) {
+        nap = 90;
+        status = 'Longer Recovery Nap';
+        suggestion = 'Use this only when bedtime is far enough away and you can leave a wake-up buffer afterward.';
+    } else if (bedtimeDistance < 4 || goal === 'avoid') {
+        nap = Math.min(15, available - 5);
+        status = 'Bedtime-Protective Nap';
+        suggestion = 'Because bedtime is relatively close or disruption is a concern, keep the nap brief and avoid extending it.';
+    } else if (available >= 35) {
+        nap = 25;
+    }
+    nap = Math.max(10, Math.round(nap / 5) * 5);
+    const percent = Math.min(95, Math.max(5, nap / 90 * 90));
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('calc-output').innerText = nap;
+    document.getElementById('calc-output').style.color = 'var(--accent)';
+    document.getElementById('calc-status').innerText = status;
+    document.getElementById('calc-status').style.color = 'var(--accent)';
+    document.getElementById('calc-desc').innerText = 'Suggested nap length is ' + nap + ' minutes. Leave at least 5-15 extra minutes after the alarm before demanding tasks.';
+    document.getElementById('calc-suggestion').innerText = suggestion;
+    document.getElementById('gauge-pointer').style.left = percent + '%';
+    setNextStepRecommendations([
+        { label: 'Sleep Schedule Calculator', href: 'https://toolsquark.com/tools/sleep-calculator.html', reason: 'Protect the main sleep window after planning a nap.', action: 'Plan Sleep' },
+        { label: 'Sleep Debt Calculator', href: 'https://toolsquark.com/tools/sleep-debt-calculator.html', reason: 'Check whether repeated naps reflect a larger sleep deficit.', action: 'Estimate Debt' }
+    ]);
+    document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+const calculatorSlug = "nap-duration-calculator";
+let calculatorStarted = false;
+let calculatorCompleted = false;
+
+function trackCalculatorEvent(name) {
+    const safeData = { tool: calculatorSlug, type: 'calculator' };
+    window.dispatchEvent(new CustomEvent('toolsquark:tool', { detail: { name, data: safeData } }));
+    if (typeof window.va === 'function') window.va('event', { name, data: safeData });
+}
+
+function markCalculatorStarted() {
+    if (calculatorStarted) return;
+    calculatorStarted = true;
+    trackCalculatorEvent('tool_start');
+}
+
+function buildShareResultText() {
+    const output = document.getElementById('calc-output')?.innerText?.trim() || '';
+    const unit = document.querySelector('.result-unit')?.innerText?.trim() || '';
+    const status = document.getElementById('calc-status')?.innerText?.trim() || '';
+    const desc = document.getElementById('calc-desc')?.innerText?.trim() || '';
+    const suggestion = document.getElementById('calc-suggestion')?.innerText?.trim() || '';
+    return "Nap Duration Calculator: " + output + (unit ? " " + unit : "") + " - " + status + ". " + desc + " Next step: " + suggestion + " Source: https://toolsquark.com/tools/nap-duration-calculator.html";
+}
+
+function refreshShareSummary() {
+    const summary = document.getElementById('share-summary');
+    if (summary) summary.innerText = buildShareResultText();
+}
+
+function setNextStepRecommendations(items) {
+    const container = document.getElementById('next-step-cards');
+    if (!container || !Array.isArray(items)) return;
+    container.innerHTML = items.map((item) => '<a class="next-step-card" href="' + item.href + '" data-next-step="' + item.label + '"><strong>' + item.label + '</strong><span>' + item.reason + '</span><em>' + (item.action || 'Open') + ' &rarr;</em></a>').join('');
+}
+
+async function copyShareResult() {
+    const status = document.getElementById('share-copy-status');
+    const text = buildShareResultText();
+    try {
+        await navigator.clipboard.writeText(text);
+        if (status) status.innerText = 'Copied';
+        if (typeof window.va === 'function') window.va('event', { name: 'result_share_copy', data: { tool: calculatorSlug, type: 'calculator' } });
+    } catch (error) {
+        if (status) status.innerText = 'Copy failed';
+    }
+}
+
+const calculator = document.getElementById('calculator');
+const calculateButton = calculator.querySelector('.calc-submit-btn');
+calculator.addEventListener('input', markCalculatorStarted, { once: true });
+calculator.addEventListener('change', markCalculatorStarted, { once: true });
+calculateButton.addEventListener('click', () => {
+    markCalculatorStarted();
+    window.requestAnimationFrame(() => {
+        const resultArea = document.getElementById('result-area');
+        if (!calculatorCompleted && resultArea && window.getComputedStyle(resultArea).display !== 'none') {
+            calculatorCompleted = true;
+            trackCalculatorEvent('tool_complete');
+        }
+        if (resultArea && window.getComputedStyle(resultArea).display !== 'none') refreshShareSummary();
+    });
+});
+
+document.addEventListener('click', (event) => {
+    const nextStep = event.target.closest('[data-next-step]');
+    if (!nextStep || typeof window.va !== 'function') return;
+    window.va('event', { name: 'next_step_click', data: { tool: calculatorSlug, target: nextStep.dataset.nextStep, type: 'calculator' } });
+});
+</script>
+</body>
+</html>

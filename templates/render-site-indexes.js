@@ -4,8 +4,8 @@ const guides = require("./guide-page-data");
 
 const root = path.resolve(__dirname, "..");
 const site = "https://toolsquark.com";
-const lastmod = "2026-06-28";
-const reviewedDate = "June 28, 2026";
+const lastmod = "2026-07-13";
+const reviewedDate = "July 13, 2026";
 
 const groups = {
   health: {
@@ -130,6 +130,8 @@ const groups = {
         tools: [
           ["sleep-calculator", "Sleep Schedule Calculator", "Plan a bedtime or wake time from sleep duration and expected sleep latency.", "Plan Sleep", true],
           ["sleep-debt-calculator", "Sleep Debt Calculator", "Estimate your weekly sleep deficit from target and recent average sleep.", "Estimate Debt"],
+          ["sleep-inertia-calculator", "Sleep Inertia Calculator", "Estimate wake grogginess risk and plan a practical morning buffer.", "Estimate Grogginess"],
+          ["nap-duration-calculator", "Nap Duration Calculator", "Choose a short nap or longer recovery nap from available time and bedtime distance.", "Plan Nap"],
           ["sleep-consistency-calculator", "Sleep Consistency Calculator", "Estimate bedtime and wake-time variability from your weekly timing range.", "Check Timing"],
           ["screen-free-bedtime-planner", "Screen-Free Bedtime Planner", "Build a small phone-free wind-down window before bedtime.", "Plan Wind-Down"],
           ["caffeine-cutoff-calculator", "Caffeine Cutoff Calculator", "Estimate when to stop caffeine before a planned bedtime.", "Set Cutoff"],
@@ -141,7 +143,9 @@ const groups = {
         tools: [
           ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Build a progressive step target plan from your current baseline.", "Plan Steps"],
           ["walking-time-to-steps-calculator", "Walking Time To Steps", "Estimate steps from walking minutes and pace presets.", "Convert Time"],
+          ["walking-distance-to-steps-calculator", "Walking Distance To Steps", "Convert miles or kilometers into estimated walking steps.", "Convert Distance"],
           ["steps-to-calories-converter", "Steps to Calories Converter", "Estimate walking energy with explicit simplified assumptions.", "Estimate Energy"],
+          ["exercise-calories-to-steps-calculator", "Exercise Calories To Steps", "Convert exercise calories into a rough walking step equivalent.", "Convert Calories"],
           ["running-pace-calculator", "Running Pace Calculator", "Convert distance and finish time into pace per kilometer or mile.", "Calculate Pace"]
         ]
       },
@@ -151,6 +155,7 @@ const groups = {
           ["procrastination-test", "Procrastination Pattern Self-Check", "Review initiation, avoidance, short-term reward pull, and perfectionistic delay.", "Review Delay", true],
           ["task-initiation-friction-self-check", "Task Initiation Friction Self-Check", "Review unclear first steps, activation barriers, avoidance, and competing pulls.", "Review Start"],
           ["habit-consistency-calculator", "Habit Consistency Calculator", "Calculate follow-through rate from planned and completed days.", "Check Rate"],
+          ["habit-restart-planner", "Habit Restart Planner", "Plan a smaller restart after missed habit days.", "Plan Restart"],
           ["self-discipline-test", "Follow-Through Pattern Self-Check", "Review starting friction, consistency, immediate impulses, and restarting.", "Review Follow-Through"]
         ]
       },

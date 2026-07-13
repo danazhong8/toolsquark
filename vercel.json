@@ -57,6 +57,11 @@
       "permanent": true
     },
     {
+      "source": "/exercise-calories-to-steps-calculator.html",
+      "destination": "/tools/exercise-calories-to-steps-calculator.html",
+      "permanent": true
+    },
+    {
       "source": "/closeness-distance-pattern-self-check.html",
       "destination": "/tools/closeness-distance-pattern-self-check.html",
       "permanent": true
@@ -122,6 +127,11 @@
       "permanent": true
     },
     {
+      "source": "/habit-restart-planner.html",
+      "destination": "/tools/habit-restart-planner.html",
+      "permanent": true
+    },
+    {
       "source": "/lean-body-mass-calculator.html",
       "destination": "/tools/lean-body-mass-calculator.html",
       "permanent": true
@@ -144,6 +154,11 @@
     {
       "source": "/notification-load-self-check.html",
       "destination": "/tools/notification-load-self-check.html",
+      "permanent": true
+    },
+    {
+      "source": "/nap-duration-calculator.html",
+      "destination": "/tools/nap-duration-calculator.html",
       "permanent": true
     },
     {
@@ -212,6 +227,11 @@
       "permanent": true
     },
     {
+      "source": "/sleep-inertia-calculator.html",
+      "destination": "/tools/sleep-inertia-calculator.html",
+      "permanent": true
+    },
+    {
       "source": "/sleep-consistency-calculator.html",
       "destination": "/tools/sleep-consistency-calculator.html",
       "permanent": true
@@ -274,6 +294,11 @@
     {
       "source": "/walking-time-to-steps-calculator.html",
       "destination": "/tools/walking-time-to-steps-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/walking-distance-to-steps-calculator.html",
+      "destination": "/tools/walking-distance-to-steps-calculator.html",
       "permanent": true
     },
     {
