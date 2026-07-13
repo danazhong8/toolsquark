@@ -157,7 +157,7 @@
 .recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.comparison-table{width:100%;border-collapse:collapse;margin:14px 0;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;display:table}.comparison-table th,.comparison-table td{border:1px solid #e2e8f0;padding:11px 12px;text-align:left;vertical-align:top;font-size:14px}.comparison-table th{background:#f8fafc;color:#1e293b;font-weight:850}.comparison-table td{color:#475569}.use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.use-case-card{border:1px solid #e2e8f0;background:#f8fafc;border-radius:8px;padding:14px}.use-case-card strong{display:block;color:#1e293b;font-size:14px;margin-bottom:5px}.use-case-card span{display:block;color:#475569;font-size:13px;line-height:1.55}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{display:block;color:var(--accent);font-weight:750;text-decoration:none;line-height:1.4}.reference-list a:hover{text-decoration:underline}.reference-list span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
 footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}footer a:hover{text-decoration:underline}
 .side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.visual-guide-card img{display:block;width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.card{padding:22px 18px}.input-row,.recommend-grid,.macro-grid,.use-case-grid,.next-step-grid{grid-template-columns:1fr;flex-direction:column;gap:10px}.comparison-table{display:block;overflow-x:auto;white-space:normal}.result-val{font-size:42px}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
-
+.basal-rate-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bfdbfe;background:#eff6ff;border-radius:10px;color:#1e3a8a}.basal-rate-banner strong{font-size:15px}.basal-rate-banner span{font-size:13px;line-height:1.5;color:#334155}
 </style>
 </head>
 <body>
@@ -168,6 +168,10 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     <main class="main-column">
     <div class="card" id="calculator">
 
+        <div class="basal-rate-banner">
+            <strong>Basal Metabolic Rate Calculator</strong>
+            <span>Use this page when your search question is BMR, basal metabolic rate, metabolic rate at rest, or resting calories. Activity and calorie targets come after this baseline.</span>
+        </div>
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
             <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
@@ -197,6 +201,10 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     <div class="content-section">
         <h3>What BMR Measures</h3>
         <p>Basal Metabolic Rate, usually shortened to BMR, estimates the calories your body would use at complete rest to support essential functions such as breathing, circulation, body temperature, organ function, and cellular repair.</p><p>Use this basal metabolic rate calculator when your search question is "how many calories do I burn at rest?" BMR is not the same as your full daily calorie need. It is the resting baseline underneath total daily energy expenditure.</p>
+    </div>
+    <div class="content-section">
+        <h3>Metabolic Rate Calculator vs BMR Calculator</h3>
+        <p>People often search for a metabolic rate calculator when they want a BMR estimate, a resting calorie estimate, or a full-day calorie estimate. This page answers the resting baseline question. If you want calories burned across a normal day, use TDEE after BMR.</p><p>In practical terms, BMR is the first step, TDEE is the daily maintenance estimate, and a calorie goal is a later planning decision.</p>
     </div>
     <div class="content-section">
         <h3>BMR Formula</h3>
@@ -272,6 +280,13 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <div class="card side-card side-sticky"><h3>At A Glance</h3><ul class="fact-list"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In your browser</strong></li><li><span>Purpose</span><strong>Educational estimate</strong></li></ul><nav aria-label="On this page"><ul class="page-nav"><li><a href="#calculator">Calculator</a></li><li><a href="#guide">Detailed guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#references">References</a></li><li><a href="#methodology">Methodology</a></li></ul></nav></div><div class="card side-card visual-guide-card"><h3>Method Visual</h3><img src="../assets/visual-guides/calculator-method-guide.png" alt="Calculator method guide showing inputs, formula, result, and limits." loading="lazy" width="900" height="620"></div>
         <div class="card side-card"><h3>Read The Matching Guide</h3><a href="../guides/bmr-vs-rmr-vs-tdee.html" class="recommend-card"><div><h4>BMR vs RMR vs TDEE</h4><p>Compare BMR, RMR, and TDEE so you can choose the right energy estimate before setting a calorie goal or macro plan.</p></div><span class="action-text">Read guide &rarr;</span></a></div>
         <div class="card side-card" id="related"><h3>Turn Baseline Into Daily Targets</h3><div class="recommend-grid">
+            <a href="https://toolsquark.com/guides/metabolic-rate-calculator-vs-bmr.html" class="recommend-card">
+                <div>
+                    <h4>Metabolic Rate vs BMR</h4>
+                    <p>Understand why metabolic rate calculator searches often lead to BMR, RMR, and TDEE choices.</p>
+                </div>
+                <span class="action-text">Read Guide &rarr;</span>
+            </a>
             <a href="https://toolsquark.com/guides/mifflin-st-jeor-equation-explained.html" class="recommend-card">
                 <div>
                     <h4>Mifflin-St Jeor Equation Guide</h4>

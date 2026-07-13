@@ -15,11 +15,17 @@ module.exports = {
   shareResult: true,
   dynamicNextSteps: true,
   controlsHtml: `
+        <div class="maintenance-first-panel">
+            <strong>Start with maintenance calories.</strong>
+            <span>Choose the 0% maintenance option first if you only want a maintenance calorie calculator. Add a deficit or surplus after you understand the baseline.</span>
+            <button type="button" onclick="selectMaintenanceMode()">Use maintenance mode</button>
+        </div>
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
             <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
         </div>
         <div id="inputs-container"></div>`,
+  extraCss: `.maintenance-first-panel{display:grid;gap:7px;margin-bottom:14px;padding:14px 16px;border:1px solid #bbf7d0;background:#f0fdf4;border-radius:10px;color:#14532d}.maintenance-first-panel strong{font-size:15px}.maintenance-first-panel span{font-size:13px;line-height:1.5;color:#166534}.maintenance-first-panel button{justify-self:start;border:0;border-radius:8px;background:#047857;color:white;font-weight:800;font-size:13px;padding:9px 12px;cursor:pointer}.maintenance-first-panel button:hover{background:#065f46}`,
   relatedTitle: "Build The Planning Sequence",
   related: [
     {
@@ -257,6 +263,12 @@ function switchUnit(unit) {
     document.getElementById('tab-imperial').classList.toggle('active', unit === 'imperial');
     document.getElementById('result-area').style.display = 'none';
     renderInputs();
+}
+function selectMaintenanceMode() {
+    const goal = document.getElementById('input_goal');
+    if (goal) goal.value = '0';
+    const resultArea = document.getElementById('result-area');
+    if (resultArea) resultArea.style.display = 'none';
 }
 function calculateNow() {
     const gender = document.getElementById('input_gender').value;

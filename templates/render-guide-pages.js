@@ -12,7 +12,7 @@ const guideGroups = [
   {
     title: "Body Metrics & Energy Planning",
     description: "Compare weight, body composition, maintenance calories, calorie goals, macros, and protein planning before choosing a calculator.",
-    slugs: ["body-metrics-calorie-planning-tools", "how-to-calculate-bmi-metric-imperial", "metric-vs-imperial-bmi-formula", "mifflin-st-jeor-examples-men-women", "mifflin-st-jeor-equation-explained", "tdee-activity-multiplier-explained", "maintenance-calories-vs-calorie-deficit-which-number", "bmr-vs-resting-calorie-calculator", "maintenance-calories-vs-calorie-deficit", "bmi-vs-body-fat-vs-waist", "bmr-vs-tdee-vs-calorie-goal", "bmr-vs-rmr-vs-tdee", "how-to-set-macro-targets", "protein-per-meal-vs-daily-protein"]
+    slugs: ["body-metrics-calorie-planning-tools", "how-to-calculate-bmi-metric-imperial", "metric-vs-imperial-bmi-formula", "mifflin-st-jeor-examples-men-women", "mifflin-st-jeor-equation-explained", "metabolic-rate-calculator-vs-bmr", "tdee-activity-multiplier-explained", "maintenance-calories-vs-calorie-deficit-which-number", "bmr-vs-resting-calorie-calculator", "maintenance-calories-vs-calorie-deficit", "bmi-vs-body-fat-vs-waist", "bmr-vs-tdee-vs-calorie-goal", "bmr-vs-rmr-vs-tdee", "how-to-set-macro-targets", "protein-per-meal-vs-daily-protein"]
   },
   {
     title: "Sleep & Daily Movement",

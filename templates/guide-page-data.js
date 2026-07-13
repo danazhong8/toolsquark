@@ -98,6 +98,37 @@ module.exports = [
     related: ["bmr-vs-rmr-vs-tdee", "bmr-vs-tdee-vs-calorie-goal"]
   },
   {
+    slug: "metabolic-rate-calculator-vs-bmr",
+    title: "Metabolic Rate Calculator vs BMR Calculator: Which Number Do You Need? | ToolsQuark",
+    description: "Compare metabolic rate, BMR, RMR, TDEE, and maintenance calories so you can choose the right calculator before setting a calorie target.",
+    h1: "Metabolic Rate Calculator vs BMR Calculator",
+    intro: "People often search for a metabolic rate calculator when they want one clear calorie number. The useful answer depends on whether they need a resting baseline, full-day maintenance, or an intake target.",
+    primaryQuery: "metabolic rate calculator",
+    tools: [
+      ["bmr-calculator", "BMR Calculator", "Estimate resting energy before activity is added.", "Calculate BMR"],
+      ["tdee-calculator", "TDEE Calculator", "Turn resting energy into estimated maintenance calories.", "Estimate TDEE"],
+      ["calorie-calculator", "Daily Calorie Goal Calculator", "Choose maintenance, deficit, or surplus after estimating TDEE.", "Plan Calories"]
+    ],
+    sections: [
+      ["Why Search Results Mix These Terms", `<p>"Metabolic rate calculator" is a broad phrase. Some pages return a resting estimate, some return maintenance calories, and some jump directly to a weight-loss calorie target. Those are not the same number.</p><p>ToolsQuark separates the steps so the result is easier to interpret: BMR estimates resting energy, TDEE adds activity, and the calorie calculator applies a goal adjustment.</p>`],
+      ["BMR Is The Resting Baseline", `<p>Basal metabolic rate is commonly used online for the calories your body may use at rest before normal activity is counted. ToolsQuark uses the Mifflin-St Jeor equation for this estimate and shows the formula context instead of hiding the assumption.</p>`],
+      ["TDEE Is The Maintenance Estimate", `<p>Total Daily Energy Expenditure starts with the resting estimate and applies an activity multiplier. This makes TDEE the better starting number when the real question is, "How many calories might maintain my weight?"</p>`],
+      ["Calorie Goals Are A Planning Layer", `<p>A calorie target is not the same as metabolic rate. It applies a visible maintenance, deficit, or surplus choice after TDEE is estimated. That target should be calibrated with real intake, weight trend, training, energy, hunger, and schedule fit.</p>`],
+      ["Which Calculator Should You Use?", `<div class="table-wrap"><table><thead><tr><th>If you are asking...</th><th>Use...</th><th>Why</th></tr></thead><tbody><tr><td>How many calories do I use at rest?</td><td>BMR Calculator</td><td>It isolates the resting baseline.</td></tr><tr><td>What is my maintenance calorie estimate?</td><td>TDEE Calculator</td><td>It includes activity level.</td></tr><tr><td>What should I eat for a goal?</td><td>Daily Calorie Goal Calculator</td><td>It applies a transparent adjustment after maintenance.</td></tr><tr><td>Why is the estimate wrong in real life?</td><td>Maintenance Calorie Calibration</td><td>It compares predicted numbers with trend data.</td></tr></tbody></table></div>`],
+      ["When A Generic Estimate Is Not Enough", `<p>Pregnancy, breastfeeding, growth, eating-disorder history, major illness, unexplained weight change, or medical nutrition therapy can change appropriate calorie planning. A public calculator can explain estimates, but it cannot replace individualized care.</p>`]
+    ],
+    faq: [
+      ["Is metabolic rate the same as BMR?", "Not always. BMR is a resting-energy estimate. Metabolic rate is a broader phrase that people may use for resting energy, daily maintenance, or calorie needs."],
+      ["Should I use BMR or TDEE for maintenance calories?", "Use TDEE for maintenance because it adds activity to the resting estimate. BMR is the baseline before activity."],
+      ["Why does a calorie calculator give a different number than a BMR calculator?", "The calorie calculator usually starts from BMR, adds activity to estimate TDEE, and then applies a goal adjustment such as maintenance, deficit, or surplus."]
+    ],
+    references: [
+      ["A New Predictive Equation for Resting Energy Expenditure", "The American Journal of Clinical Nutrition / PubMed", "https://pubmed.ncbi.nlm.nih.gov/2305711/"],
+      ["Body Weight Planner", "National Institute of Diabetes and Digestive and Kidney Diseases", "https://www.niddk.nih.gov/bwp"]
+    ],
+    related: ["mifflin-st-jeor-equation-explained", "bmr-vs-rmr-vs-tdee", "bmr-vs-tdee-vs-calorie-goal"]
+  },
+  {
     slug: "bmr-vs-resting-calorie-calculator",
     title: "BMR vs Resting Calorie Calculator: What The Number Means | ToolsQuark",
     description: "Learn how BMR, resting calories, RMR, TDEE, and daily calorie goals differ before using a calorie calculator for planning.",

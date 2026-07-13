@@ -15,13 +15,24 @@ module.exports = {
   shareResult: true,
   dynamicNextSteps: true,
   controlsHtml: `
+        <div class="basal-rate-banner">
+            <strong>Basal Metabolic Rate Calculator</strong>
+            <span>Use this page when your search question is BMR, basal metabolic rate, metabolic rate at rest, or resting calories. Activity and calorie targets come after this baseline.</span>
+        </div>
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg/cm)</div>
             <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs/ft-in)</div>
         </div>
         <div id="inputs-container"></div>`,
+  extraCss: `.basal-rate-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bfdbfe;background:#eff6ff;border-radius:10px;color:#1e3a8a}.basal-rate-banner strong{font-size:15px}.basal-rate-banner span{font-size:13px;line-height:1.5;color:#334155}`,
   relatedTitle: "Turn Baseline Into Daily Targets",
   related: [
+    {
+      href: "https://toolsquark.com/guides/metabolic-rate-calculator-vs-bmr.html",
+      title: "Metabolic Rate vs BMR",
+      description: "Understand why metabolic rate calculator searches often lead to BMR, RMR, and TDEE choices.",
+      action: "Read Guide"
+    },
     {
       href: "https://toolsquark.com/guides/mifflin-st-jeor-equation-explained.html",
       title: "Mifflin-St Jeor Equation Guide",
@@ -97,6 +108,10 @@ module.exports = {
     {
       title: "What BMR Measures",
       body: `<p>Basal Metabolic Rate, usually shortened to BMR, estimates the calories your body would use at complete rest to support essential functions such as breathing, circulation, body temperature, organ function, and cellular repair.</p><p>Use this basal metabolic rate calculator when your search question is "how many calories do I burn at rest?" BMR is not the same as your full daily calorie need. It is the resting baseline underneath total daily energy expenditure.</p>`
+    },
+    {
+      title: "Metabolic Rate Calculator vs BMR Calculator",
+      body: `<p>People often search for a metabolic rate calculator when they want a BMR estimate, a resting calorie estimate, or a full-day calorie estimate. This page answers the resting baseline question. If you want calories burned across a normal day, use TDEE after BMR.</p><p>In practical terms, BMR is the first step, TDEE is the daily maintenance estimate, and a calorie goal is a later planning decision.</p>`
     },
     {
       title: "BMR Formula",
