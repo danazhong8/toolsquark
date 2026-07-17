@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://toolsquark.com/tools/walking-pace-time-calculator.html">
+<title>Walking Pace Time Calculator | Distance, Pace, Finish Time</title>
+<meta name="description" content="Calculate walking finish time from distance and pace, or estimate walking pace from distance and time. Includes mile and kilometer options.">
+<script type="application/ld+json">
+[
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Privacy-First Walking Pace Time Calculator","url":"https://toolsquark.com/tools/walking-pace-time-calculator.html","operatingSystem":"All","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A browser-side walking pace calculator for converting distance and pace into finish time or distance and time into pace.","publisher":{"@type":"Organization","name":"ToolsQuark","url":"https://toolsquark.com/"}},
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolsquark.com/"},{"@type":"ListItem","position":2,"name":"Lifestyle Tools","item":"https://toolsquark.com/lifestyle.html"},{"@type":"ListItem","position":3,"name":"Walking Pace Time Calculator","item":"https://toolsquark.com/tools/walking-pace-time-calculator.html"}]},
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate walking time from pace?","acceptedAnswer":{"@type":"Answer","text":"Multiply distance by pace per unit. For example, 3 miles at 20 minutes per mile takes about 60 minutes."}},{"@type":"Question","name":"Can this calculate pace from time?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose the pace from time mode, then enter distance and total walking time."}},{"@type":"Question","name":"Is this the same as a running pace calculator?","acceptedAnswer":{"@type":"Answer","text":"The math is similar, but this page uses walking examples and planning context."}}]}
+]
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--muted:#64748b;--bg:#f8fafc;--line:#e2e8f0}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.65;padding:20px}.container{max-width:1120px;margin:auto}.breadcrumb{font-size:13px;color:var(--muted);margin:8px 0 18px}.breadcrumb a{color:var(--accent);font-weight:750;text-decoration:none}.hero{border-bottom:1px solid #cbd5e1;padding:20px 0 24px;margin-bottom:24px}.hero h1{font-size:38px;line-height:1.15;margin-bottom:10px}.hero p{font-size:17px;color:#475569;max-width:780px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px}.card{background:white;border:1px solid var(--line);border-radius:8px;padding:24px;margin-bottom:20px;box-shadow:0 3px 14px rgba(15,23,42,.04)}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.input-group{margin-bottom:14px}.input-group label{display:block;font-weight:800;font-size:14px;margin-bottom:7px}.input-wrapper{position:relative}.input-wrapper input,.input-wrapper select{width:100%;border:2px solid var(--line);border-radius:10px;padding:13px 44px 13px 12px;font-size:16px;font-weight:650}.unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:750;font-size:13px}.btn{width:100%;border:0;border-radius:12px;background:var(--accent);color:white;font-size:16px;font-weight:850;padding:14px;cursor:pointer}.result{display:none;margin-top:22px;border-top:1px solid var(--line);padding-top:22px}.value{font-size:46px;line-height:1;font-weight:900;color:var(--accent)}.status{font-size:21px;font-weight:850;margin:8px 0;color:var(--accent)}.desc,.content p{color:#475569;font-size:15px}.note{margin-top:14px;background:#f8fafc;border-left:4px solid var(--accent);padding:14px;border-radius:6px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.mini{display:block;border:1px solid var(--line);border-radius:8px;padding:12px;text-decoration:none;color:inherit;background:#fff}.mini strong{display:block;font-size:14px}.mini span{display:block;color:var(--muted);font-size:13px}.table{width:100%;border-collapse:collapse;margin:14px 0}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;font-size:14px}.table th{background:#f8fafc}.facts{list-style:none}.facts li{display:flex;justify-content:space-between;border-bottom:1px solid #eef2f7;padding:8px 0;font-size:13px}.facts span{color:var(--muted)}footer{text-align:center;margin:36px 0 12px;color:var(--muted);font-size:13px}@media(max-width:850px){.grid,.input-row,.cards{grid-template-columns:1fr}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; Walking Pace Time Calculator</div>
+  <section class="hero"><h1>Walking Pace Time Calculator</h1><p>Convert distance and walking pace into total time, or use a known walk time to estimate pace. Useful for route planning, step goals, and realistic walking schedules.</p></section>
+  <div class="grid">
+    <main>
+      <section class="card" id="calculator">
+        <div class="input-row">
+          <div class="input-group"><label for="mode">Calculation Mode</label><div class="input-wrapper"><select id="mode"><option value="time">Finish time from pace</option><option value="pace">Pace from finish time</option></select></div></div>
+          <div class="input-group"><label for="unit">Distance Unit</label><div class="input-wrapper"><select id="unit"><option value="mile">Miles</option><option value="km">Kilometers</option></select></div></div>
+        </div>
+        <div class="input-row">
+          <div class="input-group"><label for="distance">Distance</label><div class="input-wrapper"><input id="distance" type="number" value="3" min="0.1" max="100" step="0.1"><span class="unit">dist</span></div></div>
+          <div class="input-group"><label for="minutes">Pace Or Total Time</label><div class="input-wrapper"><input id="minutes" type="number" value="20" min="1" max="1000" step="1"><span class="unit">min</span></div></div>
+        </div>
+        <button class="btn" onclick="calculateNow()">Calculate Walking Plan</button>
+        <div class="result" id="result"><div class="value" id="output">0 min</div><div class="status" id="status"></div><p class="desc" id="desc"></p><div class="note" id="suggestion"></div><div class="cards" id="nextSteps"></div></div>
+      </section>
+      <section class="card content">
+        <h2>Common Walking Pace Examples</h2>
+        <table class="table"><thead><tr><th>Pace</th><th>3 miles</th><th>5 km</th></tr></thead><tbody><tr><td>20 min/mile</td><td>60 minutes</td><td>About 62 minutes</td></tr><tr><td>18 min/mile</td><td>54 minutes</td><td>About 56 minutes</td></tr><tr><td>15 min/mile</td><td>45 minutes</td><td>About 47 minutes</td></tr></tbody></table>
+        <p>This tool is for planning. Terrain, stops, grade, weather, crossings, and fatigue can change actual walking time.</p>
+      </section>
+    </main>
+    <aside><div class="card"><h3>At A Glance</h3><ul class="facts"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In browser</strong></li><li><span>Purpose</span><strong>Walking plan</strong></li></ul></div><div class="card"><h3>Related Tools</h3><div class="cards"><a class="mini" href="https://toolsquark.com/tools/walking-time-to-steps-calculator.html"><strong>Walking Time To Steps</strong><span>Convert walking time into steps.</span></a><a class="mini" href="https://toolsquark.com/tools/walking-distance-to-steps-calculator.html"><strong>Distance To Steps</strong><span>Convert route distance into steps.</span></a></div></div><div class="card"><h3>Last updated</h3><p class="desc">July 17, 2026</p></div></aside>
+  </div>
+  <footer><a href="https://toolsquark.com/about.html">About</a> | <a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a> | <a href="https://toolsquark.com/privacy.html">Privacy</a></footer>
+</div>
+<script>
+function formatMinutes(total){const h=Math.floor(total/60);const m=Math.round(total%60);return h>0?h+' hr '+m+' min':m+' min';}
+function calculateNow(){
+  const mode=document.getElementById('mode').value;
+  const unit=document.getElementById('unit').value;
+  const distance=Number(document.getElementById('distance').value);
+  const minutes=Number(document.getElementById('minutes').value);
+  if(!Number.isFinite(distance)||!Number.isFinite(minutes)||distance<=0||minutes<=0){alert('Please enter a valid distance and minutes.');return;}
+  const label=unit==='mile'?'mile':'km';
+  let output,status,desc;
+  if(mode==='time'){const total=distance*minutes;output=formatMinutes(total);status='Estimated finish time';desc=distance+' '+label+' at '+minutes+' min/'+label+' gives an estimated walking time of '+output+'.';}
+  else{const pace=minutes/distance;output=pace.toFixed(1)+' min/'+label;status='Estimated walking pace';desc=distance+' '+label+' in '+formatMinutes(minutes)+' gives an estimated pace of '+output+'.';}
+  document.getElementById('result').style.display='block';
+  document.getElementById('output').textContent=output;
+  document.getElementById('status').textContent=status;
+  document.getElementById('desc').textContent=desc;
+  document.getElementById('suggestion').textContent='Use this result to plan the walk, then compare with real route time and step count.';
+  document.getElementById('nextSteps').innerHTML='<a class="mini" href="https://toolsquark.com/tools/walking-time-to-steps-calculator.html"><strong>Estimate steps</strong><span>Turn the walking time into expected steps.</span></a><a class="mini" href="https://toolsquark.com/tools/daily-steps-goal-calculator.html"><strong>Plan daily steps</strong><span>Build a realistic walking target.</span></a>';
+  if(typeof window.va==='function')window.va('event',{name:'tool_complete',data:{tool:'walking-pace-time-calculator'}});
+}
+</script>
+</body>
+</html>

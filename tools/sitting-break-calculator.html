@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://toolsquark.com/tools/sitting-break-calculator.html">
+<title>Sitting Break Calculator | Desk Breaks And Standing Time</title>
+<meta name="description" content="Plan desk breaks from total sitting time, break frequency, and break length. Estimate how many breaks and movement minutes to add.">
+<script type="application/ld+json">
+[
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Privacy-First Sitting Break Calculator","url":"https://toolsquark.com/tools/sitting-break-calculator.html","operatingSystem":"All","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A browser-side planner for desk breaks, standing intervals, and movement minutes during sitting-heavy days.","publisher":{"@type":"Organization","name":"ToolsQuark","url":"https://toolsquark.com/"}},
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolsquark.com/"},{"@type":"ListItem","position":2,"name":"Lifestyle Tools","item":"https://toolsquark.com/lifestyle.html"},{"@type":"ListItem","position":3,"name":"Sitting Break Calculator","item":"https://toolsquark.com/tools/sitting-break-calculator.html"}]},
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this sitting break calculator do?","acceptedAnswer":{"@type":"Answer","text":"It estimates how many breaks fit into a sitting-heavy period and how many movement minutes those breaks create."}},{"@type":"Question","name":"Does it diagnose sitting risk?","acceptedAnswer":{"@type":"Answer","text":"No. It is a planning tool for adding breaks, not a medical risk assessment."}},{"@type":"Question","name":"What counts as a break?","acceptedAnswer":{"@type":"Answer","text":"A break can be standing, walking, stretching, refilling water, or another light interruption to continuous sitting."}}]}
+]
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--muted:#64748b;--bg:#f8fafc;--line:#e2e8f0;--good:#16a34a;--warn:#d97706;--bad:#dc2626}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.65;padding:20px}.container{max-width:1120px;margin:auto}.breadcrumb{font-size:13px;color:var(--muted);margin:8px 0 18px}.breadcrumb a{color:var(--accent);font-weight:750;text-decoration:none}.hero{border-bottom:1px solid #cbd5e1;padding:20px 0 24px;margin-bottom:24px}.hero h1{font-size:38px;line-height:1.15;margin-bottom:10px}.hero p{font-size:17px;color:#475569;max-width:780px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px}.card{background:white;border:1px solid var(--line);border-radius:8px;padding:24px;margin-bottom:20px;box-shadow:0 3px 14px rgba(15,23,42,.04)}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.input-group{margin-bottom:14px}.input-group label{display:block;font-weight:800;font-size:14px;margin-bottom:7px}.input-wrapper{position:relative}.input-wrapper input,.input-wrapper select{width:100%;border:2px solid var(--line);border-radius:10px;padding:13px 44px 13px 12px;font-size:16px;font-weight:650}.unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:750;font-size:13px}.btn{width:100%;border:0;border-radius:12px;background:var(--accent);color:white;font-size:16px;font-weight:850;padding:14px;cursor:pointer}.result{display:none;margin-top:22px;border-top:1px solid var(--line);padding-top:22px}.value{font-size:46px;line-height:1;font-weight:900;color:var(--accent)}.status{font-size:21px;font-weight:850;margin:8px 0}.desc,.content p{color:#475569;font-size:15px}.note{margin-top:14px;background:#f8fafc;border-left:4px solid var(--accent);padding:14px;border-radius:6px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.mini{display:block;border:1px solid var(--line);border-radius:8px;padding:12px;text-decoration:none;color:inherit;background:#fff}.mini strong{display:block;font-size:14px}.mini span{display:block;color:var(--muted);font-size:13px}.table{width:100%;border-collapse:collapse;margin:14px 0}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;font-size:14px}.table th{background:#f8fafc}.facts{list-style:none}.facts li{display:flex;justify-content:space-between;border-bottom:1px solid #eef2f7;padding:8px 0;font-size:13px}.facts span{color:var(--muted)}footer{text-align:center;margin:36px 0 12px;color:var(--muted);font-size:13px}@media(max-width:850px){.grid,.input-row,.cards{grid-template-columns:1fr}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; Sitting Break Calculator</div>
+  <section class="hero"><h1>Sitting Break Calculator</h1><p>Plan how many standing, walking, or movement breaks to add during a sitting-heavy day. Keep the method transparent: sitting time, break frequency, and break length.</p></section>
+  <div class="grid">
+    <main>
+      <section class="card" id="calculator">
+        <div class="input-row">
+          <div class="input-group"><label for="sitting">Sitting Window</label><div class="input-wrapper"><input id="sitting" type="number" value="8" min="0.5" max="18" step="0.25"><span class="unit">hr</span></div></div>
+          <div class="input-group"><label for="interval">Break Every</label><div class="input-wrapper"><input id="interval" type="number" value="60" min="15" max="240" step="5"><span class="unit">min</span></div></div>
+        </div>
+        <div class="input-row">
+          <div class="input-group"><label for="breakLength">Break Length</label><div class="input-wrapper"><input id="breakLength" type="number" value="5" min="1" max="60" step="1"><span class="unit">min</span></div></div>
+          <div class="input-group"><label for="intensity">Break Type</label><div class="input-wrapper"><select id="intensity"><option value="Standing">Standing or mobility</option><option value="Walking">Short walking break</option><option value="Mixed">Mixed movement break</option></select></div></div>
+        </div>
+        <button class="btn" onclick="calculateNow()">Plan Sitting Breaks</button>
+        <div class="result" id="result"><div class="value"><span id="output">0</span><span style="font-size:20px;color:#64748b"> breaks</span></div><div class="status" id="status"></div><p class="desc" id="desc"></p><div class="note" id="suggestion"></div><div class="cards" id="nextSteps"></div></div>
+      </section>
+      <section class="card content">
+        <h2>What This Calculator Estimates</h2>
+        <p>The calculator divides your sitting window by the chosen interval, then multiplies breaks by break length. It is a practical schedule helper, not a medical risk score.</p>
+        <table class="table"><thead><tr><th>Plan</th><th>Total break time in 8 hours</th></tr></thead><tbody><tr><td>5 minutes every 60 minutes</td><td>About 40 minutes</td></tr><tr><td>3 minutes every 30 minutes</td><td>About 48 minutes</td></tr><tr><td>10 minutes every 90 minutes</td><td>About 50 minutes</td></tr></tbody></table>
+        <p>Use a realistic interval. A small break that actually happens is usually more useful than an ambitious break plan that never starts.</p>
+      </section>
+    </main>
+    <aside><div class="card"><h3>At A Glance</h3><ul class="facts"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In browser</strong></li><li><span>Purpose</span><strong>Desk routine</strong></li></ul></div><div class="card"><h3>Related Tools</h3><div class="cards"><a class="mini" href="https://toolsquark.com/tools/work-break-planner.html"><strong>Work Break Planner</strong><span>Plan focus blocks and breaks.</span></a><a class="mini" href="https://toolsquark.com/tools/daily-steps-goal-calculator.html"><strong>Daily Steps Goal</strong><span>Turn movement into a step plan.</span></a></div></div><div class="card"><h3>Last updated</h3><p class="desc">July 17, 2026</p></div></aside>
+  </div>
+  <footer><a href="https://toolsquark.com/about.html">About</a> | <a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a> | <a href="https://toolsquark.com/privacy.html">Privacy</a></footer>
+</div>
+<script>
+function calculateNow(){
+  const sitting=Number(document.getElementById('sitting').value);
+  const interval=Number(document.getElementById('interval').value);
+  const breakLength=Number(document.getElementById('breakLength').value);
+  const intensity=document.getElementById('intensity').value;
+  if(!Number.isFinite(sitting)||!Number.isFinite(interval)||!Number.isFinite(breakLength)||sitting<=0||interval<=0||breakLength<=0){alert('Please enter valid sitting and break values.');return;}
+  const sittingMinutes=sitting*60;
+  const breaks=Math.floor(sittingMinutes/interval);
+  const movement=breaks*breakLength;
+  let color='var(--good)',status='Balanced break plan',suggestion='This looks like a practical movement plan if it fits your work context.';
+  if(interval>90){color='var(--warn)';status='Long sitting intervals';suggestion='Consider a shorter interval if it is realistic for your schedule.';}
+  if(movement<20&&sitting>=6){color='var(--bad)';status='Low break volume';suggestion='The plan adds little movement for a long sitting window. Try shorter intervals or longer breaks.';}
+  document.getElementById('result').style.display='block';
+  document.getElementById('output').textContent=breaks;
+  document.getElementById('output').style.color=color;
+  document.getElementById('status').textContent=status;
+  document.getElementById('status').style.color=color;
+  document.getElementById('desc').textContent=sitting+' hours of sitting with a '+breakLength+' minute '+intensity.toLowerCase()+' break every '+interval+' minutes creates about '+movement+' minutes of planned break time.';
+  document.getElementById('suggestion').textContent=suggestion;
+  document.getElementById('nextSteps').innerHTML='<a class="mini" href="https://toolsquark.com/tools/work-break-planner.html"><strong>Plan focus cycles</strong><span>Pair desk breaks with work blocks.</span></a><a class="mini" href="https://toolsquark.com/tools/walking-time-to-steps-calculator.html"><strong>Estimate steps</strong><span>Turn short walks into a step estimate.</span></a>';
+  if(typeof window.va==='function')window.va('event',{name:'tool_complete',data:{tool:'sitting-break-calculator'}});
+}
+</script>
+</body>
+</html>

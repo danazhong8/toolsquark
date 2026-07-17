@@ -52,6 +52,11 @@
       "permanent": true
     },
     {
+      "source": "/caffeine-half-life-calculator.html",
+      "destination": "/tools/caffeine-half-life-calculator.html",
+      "permanent": true
+    },
+    {
       "source": "/caffeine-cutoff-calculator.html",
       "destination": "/tools/caffeine-cutoff-calculator.html",
       "permanent": true
@@ -227,6 +232,11 @@
       "permanent": true
     },
     {
+      "source": "/sleep-efficiency-calculator.html",
+      "destination": "/tools/sleep-efficiency-calculator.html",
+      "permanent": true
+    },
+    {
       "source": "/sleep-inertia-calculator.html",
       "destination": "/tools/sleep-inertia-calculator.html",
       "permanent": true
@@ -244,6 +254,11 @@
     {
       "source": "/smartphone-addiction-test.html",
       "destination": "/tools/smartphone-addiction-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/sitting-break-calculator.html",
+      "destination": "/tools/sitting-break-calculator.html",
       "permanent": true
     },
     {
@@ -302,6 +317,11 @@
       "permanent": true
     },
     {
+      "source": "/walking-pace-time-calculator.html",
+      "destination": "/tools/walking-pace-time-calculator.html",
+      "permanent": true
+    },
+    {
       "source": "/water-intake-calculator.html",
       "destination": "/tools/water-intake-calculator.html",
       "permanent": true
@@ -309,6 +329,11 @@
     {
       "source": "/weight-trend-smoothing-calculator.html",
       "destination": "/tools/weight-trend-smoothing-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/work-break-planner.html",
+      "destination": "/tools/work-break-planner.html",
       "permanent": true
     }
   ]

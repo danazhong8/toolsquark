@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://toolsquark.com/tools/sleep-efficiency-calculator.html">
+<title>Sleep Efficiency Calculator | Time Asleep vs Time In Bed</title>
+<meta name="description" content="Calculate sleep efficiency from time in bed and estimated time asleep. See interpretation, examples, and next steps for sleep planning.">
+<script type="application/ld+json">
+[
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Privacy-First Sleep Efficiency Calculator","url":"https://toolsquark.com/tools/sleep-efficiency-calculator.html","operatingSystem":"All","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A browser-side calculator for estimating sleep efficiency from time asleep and time in bed.","publisher":{"@type":"Organization","name":"ToolsQuark","url":"https://toolsquark.com/"}},
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolsquark.com/"},{"@type":"ListItem","position":2,"name":"Lifestyle Tools","item":"https://toolsquark.com/lifestyle.html"},{"@type":"ListItem","position":3,"name":"Sleep Efficiency Calculator","item":"https://toolsquark.com/tools/sleep-efficiency-calculator.html"}]},
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is sleep efficiency?","acceptedAnswer":{"@type":"Answer","text":"Sleep efficiency is estimated time asleep divided by time in bed, shown as a percentage."}},{"@type":"Question","name":"Is this a sleep disorder test?","acceptedAnswer":{"@type":"Answer","text":"No. It is a planning calculation. Persistent insomnia, sleepiness, breathing problems, or safety concerns deserve qualified evaluation."}},{"@type":"Question","name":"What is a good sleep efficiency?","acceptedAnswer":{"@type":"Answer","text":"Many educational sources treat higher efficiency as better, but interpretation depends on context. This calculator uses broad planning bands, not a diagnosis."}}]}
+]
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--muted:#64748b;--bg:#f8fafc;--line:#e2e8f0;--good:#16a34a;--warn:#d97706;--bad:#dc2626}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.65;padding:20px}.container{max-width:1120px;margin:auto}.breadcrumb{font-size:13px;color:var(--muted);margin:8px 0 18px}.breadcrumb a{color:var(--accent);font-weight:750;text-decoration:none}.hero{border-bottom:1px solid #cbd5e1;padding:20px 0 24px;margin-bottom:24px}.hero h1{font-size:38px;line-height:1.15;margin-bottom:10px}.hero p{font-size:17px;color:#475569;max-width:780px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px}.card{background:white;border:1px solid var(--line);border-radius:8px;padding:24px;margin-bottom:20px;box-shadow:0 3px 14px rgba(15,23,42,.04)}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.input-group{margin-bottom:14px}.input-group label{display:block;font-weight:800;font-size:14px;margin-bottom:7px}.input-wrapper{position:relative}.input-wrapper input{width:100%;border:2px solid var(--line);border-radius:10px;padding:13px 44px 13px 12px;font-size:16px;font-weight:650}.unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:750;font-size:13px}.btn{width:100%;border:0;border-radius:12px;background:var(--accent);color:white;font-size:16px;font-weight:850;padding:14px;cursor:pointer}.result{display:none;margin-top:22px;border-top:1px solid var(--line);padding-top:22px}.value{font-size:50px;line-height:1;font-weight:900;color:var(--accent)}.status{font-size:21px;font-weight:850;margin:8px 0}.desc,.content p,.content li{color:#475569;font-size:15px}.note{margin-top:14px;background:#f8fafc;border-left:4px solid var(--accent);padding:14px;border-radius:6px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.mini{display:block;border:1px solid var(--line);border-radius:8px;padding:12px;text-decoration:none;color:inherit;background:#fff}.mini strong{display:block;font-size:14px}.mini span{display:block;color:var(--muted);font-size:13px}.table{width:100%;border-collapse:collapse;margin:14px 0}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;font-size:14px}.table th{background:#f8fafc}.facts{list-style:none}.facts li{display:flex;justify-content:space-between;border-bottom:1px solid #eef2f7;padding:8px 0;font-size:13px}.facts span{color:var(--muted)}footer{text-align:center;margin:36px 0 12px;color:var(--muted);font-size:13px}@media(max-width:850px){.grid,.input-row,.cards{grid-template-columns:1fr}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; Sleep Efficiency Calculator</div>
+  <section class="hero"><h1>Sleep Efficiency Calculator</h1><p>Compare estimated time asleep with total time in bed. This is a simple way to separate sleep opportunity from sleep actually obtained.</p></section>
+  <div class="grid">
+    <main>
+      <section class="card" id="calculator">
+        <div class="input-row">
+          <div class="input-group"><label for="bed">Time In Bed</label><div class="input-wrapper"><input id="bed" type="number" value="8" min="0.5" max="16" step="0.25"><span class="unit">hr</span></div></div>
+          <div class="input-group"><label for="asleep">Estimated Time Asleep</label><div class="input-wrapper"><input id="asleep" type="number" value="6.8" min="0" max="16" step="0.25"><span class="unit">hr</span></div></div>
+        </div>
+        <div class="input-row">
+          <div class="input-group"><label for="awakenings">Awakenings</label><div class="input-wrapper"><input id="awakenings" type="number" value="2" min="0" max="20" step="1"><span class="unit">x</span></div></div>
+          <div class="input-group"><label for="latency">Time To Fall Asleep</label><div class="input-wrapper"><input id="latency" type="number" value="25" min="0" max="240" step="5"><span class="unit">min</span></div></div>
+        </div>
+        <button class="btn" onclick="calculateNow()">Calculate Sleep Efficiency</button>
+        <div class="result" id="result"><div class="value"><span id="output">0</span><span style="font-size:20px;color:#64748b">%</span></div><div class="status" id="status"></div><p class="desc" id="desc"></p><div class="note" id="suggestion"></div><div class="cards" id="nextSteps"></div></div>
+      </section>
+      <section class="card content">
+        <h2>Formula</h2>
+        <p>Sleep efficiency = estimated time asleep / time in bed x 100. The result is only as good as the sleep estimate you enter.</p>
+        <table class="table"><thead><tr><th>Scenario</th><th>What it may suggest</th></tr></thead><tbody><tr><td>High time in bed, low sleep time</td><td>Sleep opportunity is not converting into sleep.</td></tr><tr><td>Long sleep latency</td><td>The wind-down routine or schedule timing may need review.</td></tr><tr><td>Many awakenings</td><td>Sleep continuity may be the better next question.</td></tr></tbody></table>
+        <h2>Use It With Care</h2>
+        <p>This is not a clinical insomnia test. It is a private planning tool for noticing whether sleep timing, awakenings, or time in bed deserves a closer look.</p>
+      </section>
+    </main>
+    <aside>
+      <div class="card"><h3>At A Glance</h3><ul class="facts"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In browser</strong></li><li><span>Purpose</span><strong>Sleep planning</strong></li></ul></div>
+      <div class="card"><h3>Related Tools</h3><div class="cards"><a class="mini" href="https://toolsquark.com/tools/sleep-debt-calculator.html"><strong>Sleep Debt Calculator</strong><span>Check recent sleep shortfall.</span></a><a class="mini" href="https://toolsquark.com/tools/sleep-quality-assessment.html"><strong>Sleep Pattern Self-Check</strong><span>Review sleep continuity and daytime impact.</span></a></div></div>
+      <div class="card"><h3>Last updated</h3><p class="desc">July 17, 2026</p></div>
+    </aside>
+  </div>
+  <footer><a href="https://toolsquark.com/about.html">About</a> | <a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a> | <a href="https://toolsquark.com/privacy.html">Privacy</a></footer>
+</div>
+<script>
+function calculateNow(){
+  const bed=Number(document.getElementById('bed').value);
+  const asleep=Number(document.getElementById('asleep').value);
+  const awakenings=Number(document.getElementById('awakenings').value);
+  const latency=Number(document.getElementById('latency').value);
+  if(!Number.isFinite(bed)||!Number.isFinite(asleep)||bed<=0||asleep<0||asleep>bed){alert('Time asleep must be between 0 and time in bed.');return;}
+  const score=Math.round((asleep/bed)*100);
+  let status='Higher sleep efficiency',color='var(--good)',suggestion='Efficiency looks higher in this estimate. If you still feel unrefreshed, review sleep quality and daytime impact.';
+  if(score<85&&score>=75){status='Moderate sleep efficiency';color='var(--warn)';suggestion='Review sleep latency, awakenings, caffeine timing, and consistency before changing everything at once.';}
+  if(score<75){status='Lower sleep efficiency';color='var(--bad)';suggestion='The gap between time in bed and time asleep is large. Consider tracking several nights and seeking guidance if this persists.';}
+  document.getElementById('result').style.display='block';
+  document.getElementById('output').textContent=score;
+  document.getElementById('output').style.color=color;
+  document.getElementById('status').textContent=status;
+  document.getElementById('status').style.color=color;
+  document.getElementById('desc').textContent='You estimated '+asleep.toFixed(1)+' hours asleep out of '+bed.toFixed(1)+' hours in bed, with '+awakenings+' awakenings and about '+latency+' minutes to fall asleep.';
+  document.getElementById('suggestion').textContent=suggestion;
+  document.getElementById('nextSteps').innerHTML='<a class="mini" href="https://toolsquark.com/tools/sleep-consistency-calculator.html"><strong>Check consistency</strong><span>See whether timing variability is part of the pattern.</span></a><a class="mini" href="https://toolsquark.com/tools/screen-free-bedtime-planner.html"><strong>Plan wind-down</strong><span>Create a smaller pre-bed buffer.</span></a>';
+  if(typeof window.va==='function')window.va('event',{name:'tool_complete',data:{tool:'sleep-efficiency-calculator'}});
+}
+</script>
+</body>
+</html>

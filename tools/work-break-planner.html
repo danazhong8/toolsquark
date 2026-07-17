@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://toolsquark.com/tools/work-break-planner.html">
+<title>Work Break Planner | Focus Cycles And Break Time</title>
+<meta name="description" content="Plan focus blocks, short breaks, and total session length with a simple work break planner for study, desk work, or deep work sessions.">
+<script type="application/ld+json">
+[
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Privacy-First Work Break Planner","url":"https://toolsquark.com/tools/work-break-planner.html","operatingSystem":"All","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A browser-side planner for focus blocks, breaks, and total work session length.","publisher":{"@type":"Organization","name":"ToolsQuark","url":"https://toolsquark.com/"}},
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolsquark.com/"},{"@type":"ListItem","position":2,"name":"Lifestyle Tools","item":"https://toolsquark.com/lifestyle.html"},{"@type":"ListItem","position":3,"name":"Work Break Planner","item":"https://toolsquark.com/tools/work-break-planner.html"}]},
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a work break planner?","acceptedAnswer":{"@type":"Answer","text":"It helps estimate total session length from focus blocks, breaks, and cycles."}},{"@type":"Question","name":"Is this a Pomodoro timer?","acceptedAnswer":{"@type":"Answer","text":"No. It is a planning calculator, not a live timer."}},{"@type":"Question","name":"How long should breaks be?","acceptedAnswer":{"@type":"Answer","text":"Break length depends on task intensity and fatigue. This page uses your chosen values and shows the resulting plan."}}]}
+]
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{--primary:#0f172a;--accent:#2563eb;--muted:#64748b;--bg:#f8fafc;--line:#e2e8f0}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--primary);line-height:1.65;padding:20px}.container{max-width:1120px;margin:auto}.breadcrumb{font-size:13px;color:var(--muted);margin:8px 0 18px}.breadcrumb a{color:var(--accent);font-weight:750;text-decoration:none}.hero{border-bottom:1px solid #cbd5e1;padding:20px 0 24px;margin-bottom:24px}.hero h1{font-size:38px;line-height:1.15;margin-bottom:10px}.hero p{font-size:17px;color:#475569;max-width:780px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px}.card{background:white;border:1px solid var(--line);border-radius:8px;padding:24px;margin-bottom:20px;box-shadow:0 3px 14px rgba(15,23,42,.04)}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.input-group{margin-bottom:14px}.input-group label{display:block;font-weight:800;font-size:14px;margin-bottom:7px}.input-wrapper{position:relative}.input-wrapper input{width:100%;border:2px solid var(--line);border-radius:10px;padding:13px 44px 13px 12px;font-size:16px;font-weight:650}.unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:750;font-size:13px}.btn{width:100%;border:0;border-radius:12px;background:var(--accent);color:white;font-size:16px;font-weight:850;padding:14px;cursor:pointer}.result{display:none;margin-top:22px;border-top:1px solid var(--line);padding-top:22px}.value{font-size:46px;line-height:1;font-weight:900;color:var(--accent)}.status{font-size:21px;font-weight:850;margin:8px 0;color:var(--accent)}.desc,.content p{color:#475569;font-size:15px}.note{margin-top:14px;background:#f8fafc;border-left:4px solid var(--accent);padding:14px;border-radius:6px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.mini{display:block;border:1px solid var(--line);border-radius:8px;padding:12px;text-decoration:none;color:inherit;background:#fff}.mini strong{display:block;font-size:14px}.mini span{display:block;color:var(--muted);font-size:13px}.table{width:100%;border-collapse:collapse;margin:14px 0}.table th,.table td{border:1px solid var(--line);padding:10px;text-align:left;font-size:14px}.table th{background:#f8fafc}.facts{list-style:none}.facts li{display:flex;justify-content:space-between;border-bottom:1px solid #eef2f7;padding:8px 0;font-size:13px}.facts span{color:var(--muted)}footer{text-align:center;margin:36px 0 12px;color:var(--muted);font-size:13px}@media(max-width:850px){.grid,.input-row,.cards{grid-template-columns:1fr}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/lifestyle.html">Lifestyle Tools</a> &gt; Work Break Planner</div>
+  <section class="hero"><h1>Work Break Planner</h1><p>Plan a work session from focus block length, break length, and number of cycles. Useful for study sessions, desk work, and deep work planning.</p></section>
+  <div class="grid">
+    <main>
+      <section class="card" id="calculator">
+        <div class="input-row">
+          <div class="input-group"><label for="focus">Focus Block</label><div class="input-wrapper"><input id="focus" type="number" value="25" min="5" max="180" step="5"><span class="unit">min</span></div></div>
+          <div class="input-group"><label for="breakMin">Short Break</label><div class="input-wrapper"><input id="breakMin" type="number" value="5" min="0" max="60" step="1"><span class="unit">min</span></div></div>
+        </div>
+        <div class="input-row">
+          <div class="input-group"><label for="cycles">Cycles</label><div class="input-wrapper"><input id="cycles" type="number" value="4" min="1" max="20" step="1"><span class="unit">x</span></div></div>
+          <div class="input-group"><label for="longBreak">Long Break After Session</label><div class="input-wrapper"><input id="longBreak" type="number" value="15" min="0" max="120" step="5"><span class="unit">min</span></div></div>
+        </div>
+        <button class="btn" onclick="calculateNow()">Plan Work Breaks</button>
+        <div class="result" id="result"><div class="value" id="output">0 min</div><div class="status" id="status"></div><p class="desc" id="desc"></p><div class="note" id="suggestion"></div><div class="cards" id="nextSteps"></div></div>
+      </section>
+      <section class="card content">
+        <h2>What This Planner Calculates</h2>
+        <p>Total session time equals focus time plus breaks. It does not run a timer; it gives you the plan before you begin.</p>
+        <table class="table"><thead><tr><th>Plan</th><th>Good fit</th></tr></thead><tbody><tr><td>25/5 x 4</td><td>Short study or admin blocks.</td></tr><tr><td>50/10 x 3</td><td>Longer writing or analysis blocks.</td></tr><tr><td>90/15 x 2</td><td>Deep work with stronger recovery needs.</td></tr></tbody></table>
+      </section>
+    </main>
+    <aside><div class="card"><h3>At A Glance</h3><ul class="facts"><li><span>Cost</span><strong>Free</strong></li><li><span>Account</span><strong>Not required</strong></li><li><span>Processing</span><strong>In browser</strong></li><li><span>Purpose</span><strong>Focus planning</strong></li></ul></div><div class="card"><h3>Related Tools</h3><div class="cards"><a class="mini" href="https://toolsquark.com/tools/task-initiation-friction-self-check.html"><strong>Task Initiation Check</strong><span>Review why starting feels hard.</span></a><a class="mini" href="https://toolsquark.com/tools/habit-consistency-calculator.html"><strong>Habit Consistency</strong><span>Measure follow-through rate.</span></a></div></div><div class="card"><h3>Last updated</h3><p class="desc">July 17, 2026</p></div></aside>
+  </div>
+  <footer><a href="https://toolsquark.com/about.html">About</a> | <a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a> | <a href="https://toolsquark.com/privacy.html">Privacy</a></footer>
+</div>
+<script>
+function formatMinutes(total){const h=Math.floor(total/60);const m=Math.round(total%60);return h>0?h+' hr '+m+' min':m+' min';}
+function calculateNow(){
+  const focus=Number(document.getElementById('focus').value);
+  const breakMin=Number(document.getElementById('breakMin').value);
+  const cycles=Number(document.getElementById('cycles').value);
+  const longBreak=Number(document.getElementById('longBreak').value);
+  if(!Number.isFinite(focus)||!Number.isFinite(breakMin)||!Number.isFinite(cycles)||focus<=0||cycles<1){alert('Please enter valid focus, break, and cycle values.');return;}
+  const focusTotal=focus*cycles;
+  const shortBreakTotal=breakMin*Math.max(0,cycles-1);
+  const total=focusTotal+shortBreakTotal+longBreak;
+  document.getElementById('result').style.display='block';
+  document.getElementById('output').textContent=formatMinutes(total);
+  document.getElementById('status').textContent='Planned session length';
+  document.getElementById('desc').textContent=cycles+' focus blocks create '+formatMinutes(focusTotal)+' of focused work, '+formatMinutes(shortBreakTotal)+' of short breaks, plus a '+longBreak+' minute long break.';
+  document.getElementById('suggestion').textContent=total>180?'This is a long session. Consider reducing cycles or adding a longer recovery break.':'Use the plan as a starting structure, then adjust block length based on real attention and fatigue.';
+  document.getElementById('nextSteps').innerHTML='<a class="mini" href="https://toolsquark.com/tools/sitting-break-calculator.html"><strong>Plan movement breaks</strong><span>Add standing or walking breaks to desk work.</span></a><a class="mini" href="https://toolsquark.com/tools/procrastination-test.html"><strong>Review delay pattern</strong><span>Check whether avoidance is shaping the work session.</span></a>';
+  if(typeof window.va==='function')window.va('event',{name:'tool_complete',data:{tool:'work-break-planner'}});
+}
+</script>
+</body>
+</html>
