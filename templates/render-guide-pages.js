@@ -6,7 +6,7 @@ const root = path.resolve(__dirname, "..");
 const outDir = path.join(root, "guides");
 const site = "https://toolsquark.com";
 const updated = "July 13, 2026";
-const modified = "2026-07-13";
+const modified = "2026-07-17";
 
 const guideGroups = [
   {

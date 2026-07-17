@@ -748,5 +748,99 @@ module.exports = [
       ["Healthy Sleep Habits", "National Heart, Lung, and Blood Institute", "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits"]
     ],
     related: ["sleep-schedule-and-sleep-quality", "stress-vs-anxiety-patterns"]
+  },
+  {
+    slug: "caffeine-half-life-vs-caffeine-cutoff",
+    title: "Caffeine Half Life vs Caffeine Cutoff: Which Sleep Tool To Use | ToolsQuark",
+    description: "Compare caffeine remaining, caffeine cutoff timing, bedtime planning, and sleep debt before deciding whether caffeine may be affecting sleep.",
+    h1: "Caffeine Half Life vs Caffeine Cutoff",
+    intro: "Caffeine planning has two different questions: how much caffeine may still be in your system, and when you should stop caffeine before bed. Use both carefully before blaming caffeine for every sleep issue.",
+    primaryQuery: "caffeine half life vs caffeine cutoff",
+    tools: [
+      ["caffeine-half-life-calculator", "Caffeine Half Life Calculator", "Estimate caffeine remaining from dose, elapsed time, and half-life assumption.", "Estimate Remaining"],
+      ["caffeine-cutoff-calculator", "Caffeine Cutoff Calculator", "Choose a caffeine stop time before a planned bedtime.", "Set Cutoff"],
+      ["sleep-calculator", "Sleep Schedule Calculator", "Plan bedtime or wake time from desired sleep duration.", "Plan Sleep"],
+      ["sleep-debt-calculator", "Sleep Debt Calculator", "Check whether short sleep is also part of the problem.", "Estimate Debt"]
+    ],
+    sections: [
+      ["Two Different Caffeine Questions", `<div class="table-wrap"><table><thead><tr><th>Question</th><th>Best tool</th><th>Why</th></tr></thead><tbody><tr><td>How much caffeine may be left now?</td><td>Caffeine Half Life Calculator</td><td>It estimates remaining caffeine from dose and time.</td></tr><tr><td>When should I stop caffeine before bed?</td><td>Caffeine Cutoff Calculator</td><td>It starts from bedtime and works backward.</td></tr><tr><td>Is the sleep window realistic?</td><td>Sleep Schedule Calculator</td><td>It checks bedtime, wake time, and sleep opportunity.</td></tr></tbody></table></div>`],
+      ["What Half-Life Can And Cannot Tell You", `<p>A half-life estimate explains why caffeine can still be present hours after intake. It does not predict your exact alertness, sleep quality, anxiety, heart rate, or individual sensitivity.</p>`],
+      ["When To Use A Cutoff Tool", `<p>Use a cutoff tool when you want a practical rule for future days. It is better for planning habits than for explaining one bad night after the fact.</p>`],
+      ["Check Sleep Debt Too", `<p>If sleep is short for several nights, caffeine may be only one piece of the problem. Compare caffeine timing with sleep opportunity, wake time, and recent sleep debt before changing everything at once.</p>`],
+      ["A Simple Sequence", `<ol><li>Estimate caffeine remaining after a typical drink.</li><li>Set a conservative cutoff before bedtime.</li><li>Check whether the planned bedtime gives enough sleep opportunity.</li><li>Review sleep debt if tiredness continues.</li></ol>`]
+    ],
+    faq: [
+      ["Is caffeine half-life the same for everyone?", "No. Clearance can vary with genetics, pregnancy, medications, liver function, nicotine use, and sensitivity."],
+      ["Should I use half-life or cutoff first?", "Use half-life to understand a specific intake; use cutoff to build a repeatable future rule."],
+      ["Can caffeine explain all insomnia?", "No. Stress, light, schedule, alcohol, sleep debt, pain, and sleep disorders can also affect sleep."]
+    ],
+    references: [
+      ["About Sleep", "Centers for Disease Control and Prevention", "https://www.cdc.gov/sleep/about/index.html"],
+      ["Healthy Sleep Habits", "National Heart, Lung, and Blood Institute", "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits"]
+    ],
+    related: ["sleep-debt-vs-sleep-quality", "sleep-schedule-and-sleep-quality"]
+  },
+  {
+    slug: "sleep-efficiency-vs-sleep-debt",
+    title: "Sleep Efficiency vs Sleep Debt: Which Sleep Number Matters First | ToolsQuark",
+    description: "Compare sleep efficiency, sleep debt, time in bed, time asleep, awakenings, and sleep quality before choosing a sleep tool.",
+    h1: "Sleep Efficiency vs Sleep Debt",
+    intro: "Sleep debt and sleep efficiency can point to different problems. One is about not getting enough sleep time; the other is about how much time in bed becomes actual sleep.",
+    primaryQuery: "sleep efficiency vs sleep debt",
+    tools: [
+      ["sleep-efficiency-calculator", "Sleep Efficiency Calculator", "Compare estimated time asleep with total time in bed.", "Check Efficiency"],
+      ["sleep-debt-calculator", "Sleep Debt Calculator", "Compare recent sleep with a target duration.", "Estimate Debt"],
+      ["sleep-quality-assessment", "Sleep Pattern Self-Check", "Review continuity, restoration, and daytime impact.", "Review Sleep"],
+      ["sleep-consistency-calculator", "Sleep Consistency Calculator", "Check bedtime and wake-time variability.", "Check Timing"]
+    ],
+    sections: [
+      ["The Difference", `<div class="table-wrap"><table><thead><tr><th>Metric</th><th>Formula or signal</th><th>Best use</th></tr></thead><tbody><tr><td>Sleep efficiency</td><td>Time asleep / time in bed</td><td>When you spend enough time in bed but may not sleep efficiently.</td></tr><tr><td>Sleep debt</td><td>Target sleep - recent sleep</td><td>When your sleep opportunity is regularly too short.</td></tr><tr><td>Sleep quality</td><td>Pattern of initiation, continuity, restoration, impact</td><td>When the numbers do not explain how you feel.</td></tr></tbody></table></div>`],
+      ["Start With Sleep Debt When Time Is Short", `<p>If your schedule allows only five or six hours, sleep efficiency may not be the main issue. First check whether the sleep window is simply too small.</p>`],
+      ["Use Sleep Efficiency When Time In Bed Looks Adequate", `<p>If you are in bed for eight hours but estimate only six hours asleep, efficiency helps show the gap between opportunity and actual sleep.</p>`],
+      ["When To Add A Quality Review", `<p>Frequent awakenings, non-restorative sleep, early waking, or daytime impairment deserve a broader sleep pattern review. Efficiency is a number; quality is the lived pattern around the number.</p>`],
+      ["A Practical Tracking Plan", `<ol><li>Track time in bed and estimated time asleep for several nights.</li><li>Calculate efficiency and debt separately.</li><li>Review timing consistency.</li><li>Change one variable at a time.</li></ol>`]
+    ],
+    faq: [
+      ["Can sleep efficiency be low without sleep debt?", "Yes. You may allow enough time in bed but spend a large share of it awake."],
+      ["Can sleep debt be high with good efficiency?", "Yes. You may fall asleep quickly and sleep efficiently, but still schedule too few hours."],
+      ["Which tool should I use first?", "Use Sleep Debt Calculator if sleep duration is short. Use Sleep Efficiency Calculator if time in bed is adequate but actual sleep seems lower."]
+    ],
+    references: [
+      ["About Sleep", "Centers for Disease Control and Prevention", "https://www.cdc.gov/sleep/about/index.html"],
+      ["Healthy Sleep Habits", "National Heart, Lung, and Blood Institute", "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits"]
+    ],
+    related: ["sleep-debt-vs-sleep-quality", "sleep-schedule-and-sleep-quality"]
+  },
+  {
+    slug: "desk-breaks-walking-and-focus-planning",
+    title: "Desk Breaks, Walking, And Focus Planning: How To Combine The Tools | ToolsQuark",
+    description: "Plan desk breaks, focus blocks, sitting interruptions, walking pace, walking steps, and daily movement without turning the day into a rigid schedule.",
+    h1: "Desk Breaks, Walking, And Focus Planning",
+    intro: "A sitting-heavy day usually needs two plans: a focus structure for work and a movement structure for the body. These tools help connect the two without overcomplicating the day.",
+    primaryQuery: "desk breaks walking focus planning",
+    tools: [
+      ["work-break-planner", "Work Break Planner", "Plan focus blocks, short breaks, and total work session length.", "Plan Breaks"],
+      ["sitting-break-calculator", "Sitting Break Calculator", "Plan desk breaks and movement minutes during sitting-heavy days.", "Plan Movement"],
+      ["walking-pace-time-calculator", "Walking Pace Time Calculator", "Convert walking distance and pace into total time.", "Plan Walk"],
+      ["walking-time-to-steps-calculator", "Walking Time To Steps Calculator", "Estimate steps from walking minutes.", "Estimate Steps"],
+      ["daily-steps-goal-calculator", "Daily Steps Goal Calculator", "Turn movement into a realistic daily step target.", "Plan Steps"]
+    ],
+    sections: [
+      ["Separate Work Structure From Movement Structure", `<p>A focus plan answers when to work and when to pause. A sitting break plan answers how often to interrupt continuous sitting. A walking plan answers how much movement a break or route may add.</p>`],
+      ["Which Tool Fits The Question?", `<div class="table-wrap"><table><thead><tr><th>Question</th><th>Use</th></tr></thead><tbody><tr><td>How long will this work session take?</td><td>Work Break Planner</td></tr><tr><td>How many desk breaks should I add?</td><td>Sitting Break Calculator</td></tr><tr><td>How long will a walk route take?</td><td>Walking Pace Time Calculator</td></tr><tr><td>How many steps will a walking break add?</td><td>Walking Time To Steps Calculator</td></tr></tbody></table></div>`],
+      ["Build A Small Combined Plan", `<ol><li>Choose focus blocks for the work session.</li><li>Add sitting breaks that can actually happen.</li><li>Convert one or two breaks into short walks.</li><li>Estimate steps from those walks.</li><li>Use the daily step goal only after you know your baseline.</li></ol>`],
+      ["Avoid The Perfect-Schedule Trap", `<p>A plan with too many alarms and rules often collapses. Start with one reliable movement break, one realistic focus cycle, and one short walk before adding more structure.</p>`],
+      ["When To Adjust", `<p>Adjust if breaks are ignored, work blocks feel too long, walking time disrupts the day, or steps rise faster than recovery allows. The useful plan is the one you can repeat.</p>`]
+    ],
+    faq: [
+      ["Should I plan focus breaks or sitting breaks first?", "Start with the constraint that is causing the biggest problem. Use focus breaks if attention collapses; use sitting breaks if continuous sitting is the issue."],
+      ["Can short walks count as breaks?", "Yes. A short walk can be both a cognitive break and a movement break if it fits the task context."],
+      ["Do I need a daily step goal too?", "Only if you want a broader movement target. Start with breaks and short walks before forcing a big step number."]
+    ],
+    references: [
+      ["Physical Activity Guidelines for Adults", "Centers for Disease Control and Prevention", "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html"],
+      ["Physical Activity Guidelines for Americans", "U.S. Department of Health and Human Services", "https://health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines"]
+    ],
+    related: ["how-to-choose-a-realistic-daily-step-goal", "procrastination-vs-follow-through"]
   }
 ];
