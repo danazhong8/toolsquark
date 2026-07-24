@@ -42,10 +42,49 @@ The ignored report is written to `seo/gsc/reports/gsc-YYYY-MM-DD.md`. A combined
 node scripts/analyze-gsc-export.js C:\path\search-analytics.csv
 ```
 
+## Real-Time API Pull
+
+Browser reading is not reliable for Search Console because the Google UI is heavy, session-bound, and often blocks automation control. Use the Search Analytics API for repeatable reads.
+
+One-time authorization options:
+
+```powershell
+$env:GSC_ACCESS_TOKEN="ya29..."
+```
+
+Or use a refresh token for repeatable access:
+
+```powershell
+$env:GSC_CLIENT_ID="..."
+$env:GSC_CLIENT_SECRET="..."
+$env:GSC_REFRESH_TOKEN="..."
+```
+
+The Google OAuth token must include this readonly scope:
+
+```text
+https://www.googleapis.com/auth/webmasters.readonly
+```
+
+Then fetch the latest complete 28-day window and generate a report:
+
+```powershell
+node scripts/fetch-gsc-api.js
+```
+
+Or specify a window:
+
+```powershell
+node scripts/fetch-gsc-api.js --start 2026-06-23 --end 2026-07-20
+```
+
+The script writes ignored CSV files under `seo/gsc/api/` and an ignored Markdown report under `seo/gsc/reports/`.
+
 Validate the analyzer after changes:
 
 ```powershell
 node scripts/analyze-gsc-export.js --self-test
+node scripts/fetch-gsc-api.js --self-test
 node scripts/audit-core-query-map.js
 node scripts/audit-acquisition-paths.js
 ```

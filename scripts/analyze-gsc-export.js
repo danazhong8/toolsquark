@@ -247,7 +247,9 @@ function selfTest() {
     position: 7.5,
     sourceFile: "sample.csv"
   }], ["sample.csv"]);
-  if (!report.includes("8 / 2,800") || !report.includes("bmi calculator") || !report.includes("1/5")) throw new Error("Report generation self-test failed");
+  const bmiPage = queryMap.pages.find((page) => page.path === "/tools/bmi-calculator.html");
+  const expectedCoverage = `1/${1 + bmiPage.secondaryQueries.length}`;
+  if (!report.includes("8 / 2,800") || !report.includes("bmi calculator") || !report.includes(expectedCoverage)) throw new Error("Report generation self-test failed");
   console.log("GSC analyzer self-test passed.");
 }
 

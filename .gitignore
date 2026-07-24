@@ -1,2 +1,5 @@
 seo/gsc/input/*.csv
 seo/gsc/reports/*.md
+seo/gsc/api/*.csv
+seo/gsc/credentials/*
+!seo/gsc/credentials/.gitkeep
