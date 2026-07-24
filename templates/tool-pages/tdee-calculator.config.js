@@ -1,13 +1,13 @@
 module.exports = {
   slug: "tdee-calculator",
-  title: "TDEE Calculator | Maintenance Calories & Activity",
-  description: "Estimate TDEE and maintenance calories from Mifflin-St Jeor BMR, activity level, body metrics, age, and sex. See multipliers and calibration steps.",
-  h1: "TDEE Calculator: Maintenance Calories",
-  hero: "Use this TDEE calculator to estimate maintenance calories from Mifflin-St Jeor BMR, age, sex, height, weight, and activity level, then connect the result to real-world calibration.",
-  heroHighlights: ["Maintenance calories estimate", "Activity multiplier shown", "Calorie goal next step"],
+  title: "TDEE Calculator: Maintenance Calories By Activity Level",
+  description: "Estimate TDEE and maintenance calories from Mifflin-St Jeor BMR and activity multipliers. Compare sedentary, light, moderate, and very active levels.",
+  h1: "TDEE Calculator: Maintenance Calories By Activity Level",
+  hero: "Estimate total daily energy expenditure from Mifflin-St Jeor BMR and a clear activity multiplier. Use the result as maintenance calories first, then calibrate before choosing a deficit or surplus.",
+  heroHighlights: ["Maintenance calories by activity", "BMR x activity multiplier", "Calibration next step"],
   schemaName: "Privacy-First TDEE Calculator",
   schemaDescription: "A browser-side Total Daily Energy Expenditure calculator focused on estimated maintenance energy and real-world calibration.",
-  lastUpdated: "July 13, 2026",
+  lastUpdated: "July 24, 2026",
   buttonText: "Calculate TDEE",
   resultUnit: "kcal/day",
   resultStatus: "Maintenance Energy",
@@ -39,6 +39,12 @@ module.exports = {
       title: "BMR Calculator",
       description: "Isolate your resting metabolic baseline before activity is added.",
       action: "Calculate BMR"
+    },
+    {
+      href: "https://toolsquark.com/guides/tdee-activity-multiplier-explained.html",
+      title: "TDEE Activity Multiplier Guide",
+      description: "Choose between sedentary, light, moderate, and very active multipliers with fewer guesswork mistakes.",
+      action: "Pick Multiplier"
     },
     {
       href: "https://toolsquark.com/tools/calorie-calculator.html",
@@ -85,6 +91,10 @@ module.exports = {
     {
       question: "Which activity level should I choose?",
       answer: "Choose the activity level that matches your usual week, not your hardest training day. If you are between two options, start with the lower one and adjust after tracking your weight trend for two to four weeks."
+    },
+    {
+      question: "What are the TDEE activity multipliers?",
+      answer: "This calculator uses 1.2 for sedentary, 1.375 for lightly active, 1.55 for moderately active, 1.725 for very active, and 1.9 for extra active. The multiplier is applied after estimating BMR."
     },
     {
       question: "Why is my real maintenance different from this estimate?",
@@ -139,6 +149,10 @@ module.exports = {
     {
       title: "Activity Multipliers Compared",
       body: `<table class="comparison-table"><thead><tr><th>Activity Level</th><th>Typical Pattern</th><th>Common Risk</th></tr></thead><tbody><tr><td>Sedentary</td><td>Desk-heavy days with little purposeful exercise.</td><td>Under-counting small daily movement if steps are higher than expected.</td></tr><tr><td>Moderately active</td><td>Regular training or a consistently active routine.</td><td>Choosing this for a few hard workouts while the rest of the week is low movement.</td></tr><tr><td>Very active</td><td>Frequent training, active job demands, or high step volume.</td><td>Overestimating if exercise calories are already counted elsewhere.</td></tr></tbody></table>`
+    },
+    {
+      title: "Maintenance Calories By Activity Level",
+      body: `<p>The same BMR can produce very different maintenance estimates once activity is added. For example, a 1,650 kcal BMR becomes about 1,980 kcal at sedentary, 2,269 kcal at light activity, 2,558 kcal at moderate activity, and 2,846 kcal at very active.</p><p>This is the main reason TDEE pages should show the multiplier clearly. If activity is uncertain, start conservative and use trend data rather than choosing the highest label.</p>`
     },
     {
       title: "Best Use Cases For TDEE",

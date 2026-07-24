@@ -1,13 +1,13 @@
 module.exports = {
   slug: "calorie-calculator",
-  title: "Calorie Calculator: Maintenance, Deficit & Surplus",
-  description: "Estimate maintenance calories, daily calorie targets, deficits, or surpluses from BMR and activity level. Uses Mifflin-St Jeor with visible adjustments.",
-  h1: "Calorie Calculator: Maintenance, Deficit, Surplus",
-  hero: "Use this maintenance calorie calculator to estimate resting calories, maintenance calories, and a daily target for fat loss, maintenance, or lean gain with visible percentage adjustments and browser-local inputs.",
-  heroHighlights: ["Maintenance-first mode", "Visible deficit or surplus", "Shareable target summary"],
+  title: "Maintenance Calorie Calculator | Deficit & Surplus Targets",
+  description: "Estimate maintenance calories first, then apply a visible deficit or surplus target. Uses Mifflin-St Jeor, activity level, and browser-local inputs.",
+  h1: "Maintenance Calorie Calculator: Deficit & Surplus Targets",
+  hero: "Start with estimated maintenance calories, then decide whether to keep 0%, create a deficit, or add a small surplus. This page is for calorie targets, not a food calorie counter.",
+  heroHighlights: ["Maintenance-first calculator", "0% option highlighted", "Deficit or surplus target"],
   schemaName: "Privacy-First Calorie Calculator",
   schemaDescription: "A browser-side daily calorie goal planner using estimated maintenance energy and an explicit percentage adjustment.",
-  lastUpdated: "June 22, 2026",
+  lastUpdated: "July 24, 2026",
   buttonText: "Calculate Daily Goal",
   resultUnit: "kcal/day",
   resultStatus: "Daily Goal Target",
@@ -128,6 +128,10 @@ module.exports = {
     {
       title: "What This Goal Calculator Produces",
       body: `<p>This calorie calculator first estimates resting calories with Mifflin-St Jeor, converts that resting baseline into maintenance calories with an activity multiplier, then applies the goal percentage you select. The result is a planning target, not a prediction of an exact rate of weight change.</p><p>Use it as a maintenance calorie calculator when you choose the 0% option. Use the deficit or surplus options only after you understand the maintenance estimate. This keeps the <a href="https://toolsquark.com/tools/tdee-calculator.html">TDEE calculator</a> focused on energy expenditure while this page supports the next decision: choosing a starting intake target for maintenance, deficit, or surplus planning.</p>`
+    },
+    {
+      title: "Maintenance-First Mode",
+      body: `<p>Search data shows users are looking for maintenance calories more than a generic calorie counter. For that reason, the 0% maintenance option is the default path: it estimates calories to test for weight stability before adding any deficit or surplus.</p><p>Use maintenance-first mode when you want a baseline, a diet break target, or a number to calibrate against your real intake and body-weight trend.</p>`
     },
     {
       title: "How The Target Is Calculated",

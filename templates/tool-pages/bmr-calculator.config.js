@@ -1,13 +1,13 @@
 module.exports = {
   slug: "bmr-calculator",
-  title: "BMR Calculator | Basal Metabolic Rate in kg or lb",
-  description: "Calculate basal metabolic rate, BMR, and resting calories in kg/cm or lb/ft-in using Mifflin-St Jeor. See formula, examples, limits, and TDEE next steps.",
+  title: "BMR Calculator | Basal Metabolic Rate & Mifflin-St Jeor",
+  description: "Calculate BMR, basal metabolic rate, and resting calories with the Mifflin-St Jeor male and female equations. Supports kg/cm and lb/ft-in.",
   h1: "BMR Calculator: Basal Metabolic Rate & Resting Calories",
   hero: "Estimate basal metabolic rate, BMR, and resting calories in metric or imperial units with the Mifflin-St Jeor equation, then see how this baseline connects to TDEE, maintenance calories, and daily calorie goals.",
   heroHighlights: ["Basal metabolic rate focus", "Mifflin-St Jeor formula", "TDEE next step included"],
   schemaName: "Privacy-First BMR Calculator",
   schemaDescription: "A free browser-side Basal Metabolic Rate calculator using the Mifflin-St Jeor equation, metric and imperial inputs, and practical energy-planning context.",
-  lastUpdated: "June 21, 2026",
+  lastUpdated: "July 24, 2026",
   buttonText: "Calculate BMR",
   resultUnit: "kcal/day",
   resultStatus: "Resting Energy Baseline",
@@ -73,6 +73,14 @@ module.exports = {
       answer: "This calculator uses the Mifflin-St Jeor equation. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161."
     },
     {
+      question: "What is the Mifflin-St Jeor equation for men?",
+      answer: "For men, the Mifflin-St Jeor BMR equation is 10 x weight in kilograms + 6.25 x height in centimeters - 5 x age in years + 5."
+    },
+    {
+      question: "What is the Mifflin-St Jeor equation for women?",
+      answer: "For women, the Mifflin-St Jeor BMR equation is 10 x weight in kilograms + 6.25 x height in centimeters - 5 x age in years - 161."
+    },
+    {
       question: "Can I use this as a BMR calculator in kg?",
       answer: "Yes. Choose metric units, enter weight in kilograms and height in centimeters, and the calculator applies the Mifflin-St Jeor equation directly."
     },
@@ -117,6 +125,10 @@ module.exports = {
     {
       title: "BMR Formula",
       body: `<p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Metric inputs in kilograms and centimeters are used directly. Imperial inputs are converted to kilograms and centimeters before the equation is applied, so the calculation remains formula-consistent across unit systems. The <a href="https://toolsquark.com/guides/mifflin-st-jeor-equation-explained.html">Mifflin-St Jeor equation guide</a> shows the variables and worked examples in more detail.</p>`
+    },
+    {
+      title: "Mifflin-St Jeor Male And Female Equation",
+      body: `<p>Search Console shows that users are finding ToolsQuark through very specific Mifflin-St Jeor equation questions. The important detail is the sex-specific constant at the end of the equation: +5 for men and -161 for women.</p><table class="comparison-table"><thead><tr><th>Equation Path</th><th>Formula</th><th>Use Case</th></tr></thead><tbody><tr><td>Men</td><td>10W + 6.25H - 5A + 5</td><td>Adult male BMR estimate from kg, cm, and age.</td></tr><tr><td>Women</td><td>10W + 6.25H - 5A - 161</td><td>Adult female BMR estimate from kg, cm, and age.</td></tr></tbody></table><p>W is weight in kilograms, H is height in centimeters, and A is age in years.</p>`
     },
     {
       title: "How To Use Your Result",

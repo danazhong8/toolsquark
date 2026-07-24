@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/tdee-calculator.html">
-<title>TDEE Calculator | Maintenance Calories &amp; Activity</title>
-<meta name="description" content="Estimate TDEE and maintenance calories from Mifflin-St Jeor BMR, activity level, body metrics, age, and sex. See multipliers and calibration steps.">
+<title>TDEE Calculator: Maintenance Calories By Activity Level</title>
+<meta name="description" content="Estimate TDEE and maintenance calories from Mifflin-St Jeor BMR and activity multipliers. Compare sedentary, light, moderate, and very active levels.">
 <script type="application/ld+json">
 [
   {
@@ -51,7 +51,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "TDEE Calculator: Maintenance Calories",
+        "name": "TDEE Calculator: Maintenance Calories By Activity Level",
         "item": "https://toolsquark.com/tools/tdee-calculator.html"
       }
     ]
@@ -98,6 +98,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Choose the activity level that matches your usual week, not your hardest training day. If you are between two options, start with the lower one and adjust after tracking your weight trend for two to four weeks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the TDEE activity multipliers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator uses 1.2 for sedentary, 1.375 for lightly active, 1.55 for moderately active, 1.725 for very active, and 1.9 for extra active. The multiplier is applied after estimating BMR."
         }
       },
       {
@@ -170,8 +178,8 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
 </head>
 <body>
 <div class="container">
-    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>TDEE Calculator: Maintenance Calories</span></div>
-    <div class="hero"><h1>TDEE Calculator: Maintenance Calories</h1><p>Use this TDEE calculator to estimate maintenance calories from Mifflin-St Jeor BMR, age, sex, height, weight, and activity level, then connect the result to real-world calibration.</p><div class="hero-highlights"><span>Maintenance calories estimate</span><span>Activity multiplier shown</span><span>Calorie goal next step</span></div></div>
+    <div class="breadcrumb"><a href="https://toolsquark.com/">Home</a> &gt; <a href="https://toolsquark.com/health.html">Health Tools</a> &gt; <span>TDEE Calculator: Maintenance Calories By Activity Level</span></div>
+    <div class="hero"><h1>TDEE Calculator: Maintenance Calories By Activity Level</h1><p>Estimate total daily energy expenditure from Mifflin-St Jeor BMR and a clear activity multiplier. Use the result as maintenance calories first, then calibrate before choosing a deficit or surplus.</p><div class="hero-highlights"><span>Maintenance calories by activity</span><span>BMR x activity multiplier</span><span>Calibration next step</span></div></div>
     <div class="workspace-grid">
     <main class="main-column">
     <div class="card" id="calculator">
@@ -231,6 +239,10 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <table class="comparison-table"><thead><tr><th>Activity Level</th><th>Typical Pattern</th><th>Common Risk</th></tr></thead><tbody><tr><td>Sedentary</td><td>Desk-heavy days with little purposeful exercise.</td><td>Under-counting small daily movement if steps are higher than expected.</td></tr><tr><td>Moderately active</td><td>Regular training or a consistently active routine.</td><td>Choosing this for a few hard workouts while the rest of the week is low movement.</td></tr><tr><td>Very active</td><td>Frequent training, active job demands, or high step volume.</td><td>Overestimating if exercise calories are already counted elsewhere.</td></tr></tbody></table>
     </div>
     <div class="content-section">
+        <h3>Maintenance Calories By Activity Level</h3>
+        <p>The same BMR can produce very different maintenance estimates once activity is added. For example, a 1,650 kcal BMR becomes about 1,980 kcal at sedentary, 2,269 kcal at light activity, 2,558 kcal at moderate activity, and 2,846 kcal at very active.</p><p>This is the main reason TDEE pages should show the multiplier clearly. If activity is uncertain, start conservative and use trend data rather than choosing the highest label.</p>
+    </div>
+    <div class="content-section">
         <h3>Best Use Cases For TDEE</h3>
         <div class="use-case-grid"><div class="use-case-card"><strong>Maintenance estimate</strong><span>Use TDEE when you need the full-day calorie number rather than resting calories only.</span></div><div class="use-case-card"><strong>Deficit or surplus setup</strong><span>Use TDEE before choosing a daily calorie goal for fat loss or lean gain.</span></div><div class="use-case-card"><strong>Calibration checkpoint</strong><span>Compare estimated TDEE with real intake and weight trend to refine the number.</span></div></div>
     </div>
@@ -262,6 +274,10 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <div class="faq-item">
             <h4>Which activity level should I choose?</h4>
             <p>Choose the activity level that matches your usual week, not your hardest training day. If you are between two options, start with the lower one and adjust after tracking your weight trend for two to four weeks.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What are the TDEE activity multipliers?</h4>
+            <p>This calculator uses 1.2 for sedentary, 1.375 for lightly active, 1.55 for moderately active, 1.725 for very active, and 1.9 for extra active. The multiplier is applied after estimating BMR.</p>
         </div>
         <div class="faq-item">
             <h4>Why is my real maintenance different from this estimate?</h4>
@@ -306,6 +322,13 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
                 </div>
                 <span class="action-text">Calculate BMR &rarr;</span>
             </a>
+            <a href="https://toolsquark.com/guides/tdee-activity-multiplier-explained.html" class="recommend-card">
+                <div>
+                    <h4>TDEE Activity Multiplier Guide</h4>
+                    <p>Choose between sedentary, light, moderate, and very active multipliers with fewer guesswork mistakes.</p>
+                </div>
+                <span class="action-text">Pick Multiplier &rarr;</span>
+            </a>
             <a href="https://toolsquark.com/tools/calorie-calculator.html" class="recommend-card">
                 <div>
                     <h4>Daily Calorie Goal Calculator</h4>
@@ -335,7 +358,7 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
                 <span class="action-text">Plan Steps &rarr;</span>
             </a></div></div>
         <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" target="_blank" rel="noopener noreferrer">A New Predictive Equation for Resting Energy Expenditure</a><span>The American Journal of Clinical Nutrition / PubMed</span></li><li><a href="https://www.niddk.nih.gov/bwp" target="_blank" rel="noopener noreferrer">Body Weight Planner</a><span>National Institute of Diabetes and Digestive and Kidney Diseases</span></li></ul></div>
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool calculates BMR with the Mifflin-St Jeor equation, converts imperial inputs when needed, and applies standard activity multipliers from 1.2 to 1.9.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> TDEE is an educational estimate, not medical advice. Consult a qualified clinician or registered dietitian before making aggressive calorie changes.</p><div class="updated-row">Last updated: July 13, 2026</div></div></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool calculates BMR with the Mifflin-St Jeor equation, converts imperial inputs when needed, and applies standard activity multipliers from 1.2 to 1.9.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> TDEE is an educational estimate, not medical advice. Consult a qualified clinician or registered dietitian before making aggressive calorie changes.</p><div class="updated-row">Last updated: July 24, 2026</div></div></div>
     </aside>
     </div>
     <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
@@ -511,7 +534,7 @@ function buildShareResultText() {
     const status = document.getElementById('calc-status')?.innerText?.trim() || '';
     const desc = document.getElementById('calc-desc')?.innerText?.trim() || '';
     const suggestion = document.getElementById('calc-suggestion')?.innerText?.trim() || '';
-    return "TDEE Calculator: Maintenance Calories: " + output + (unit ? " " + unit : "") + " - " + status + ". " + desc + " Next step: " + suggestion + " Source: https://toolsquark.com/tools/tdee-calculator.html";
+    return "TDEE Calculator: Maintenance Calories By Activity Level: " + output + (unit ? " " + unit : "") + " - " + status + ". " + desc + " Next step: " + suggestion + " Source: https://toolsquark.com/tools/tdee-calculator.html";
 }
 
 function refreshShareSummary() {

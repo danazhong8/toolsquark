@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://toolsquark.com/tools/bmr-calculator.html">
-<title>BMR Calculator | Basal Metabolic Rate in kg or lb</title>
-<meta name="description" content="Calculate basal metabolic rate, BMR, and resting calories in kg/cm or lb/ft-in using Mifflin-St Jeor. See formula, examples, limits, and TDEE next steps.">
+<title>BMR Calculator | Basal Metabolic Rate &amp; Mifflin-St Jeor</title>
+<meta name="description" content="Calculate BMR, basal metabolic rate, and resting calories with the Mifflin-St Jeor male and female equations. Supports kg/cm and lb/ft-in.">
 <script type="application/ld+json">
 [
   {
@@ -86,6 +86,22 @@
       },
       {
         "@type": "Question",
+        "name": "What is the Mifflin-St Jeor equation for men?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For men, the Mifflin-St Jeor BMR equation is 10 x weight in kilograms + 6.25 x height in centimeters - 5 x age in years + 5."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Mifflin-St Jeor equation for women?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For women, the Mifflin-St Jeor BMR equation is 10 x weight in kilograms + 6.25 x height in centimeters - 5 x age in years - 161."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Can I use this as a BMR calculator in kg?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -157,7 +173,7 @@
 .recommend-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.recommend-card{background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:16px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;justify-content:space-between}.recommend-card:hover{border-color:var(--accent);background:#eff6ff;transform:translateY(-2px)}.recommend-card h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:5px}.recommend-card p{font-size:13px;color:var(--text-muted);line-height:1.4}.action-text{font-size:13px;font-weight:700;color:var(--accent);margin-top:12px;display:inline-flex}.content-section{border-bottom:1px solid #f1f5f9;padding-bottom:22px;margin-bottom:24px}.content-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.content-section h3{margin-bottom:10px}.content-section p,.content-section li{font-size:15px;color:#475569;line-height:1.75}.content-section p{margin-bottom:12px}.content-section ul,.content-section ol{padding-left:22px;margin:10px 0}.comparison-table{width:100%;border-collapse:collapse;margin:14px 0;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;display:table}.comparison-table th,.comparison-table td{border:1px solid #e2e8f0;padding:11px 12px;text-align:left;vertical-align:top;font-size:14px}.comparison-table th{background:#f8fafc;color:#1e293b;font-weight:850}.comparison-table td{color:#475569}.use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.use-case-card{border:1px solid #e2e8f0;background:#f8fafc;border-radius:8px;padding:14px}.use-case-card strong{display:block;color:#1e293b;font-size:14px;margin-bottom:5px}.use-case-card span{display:block;color:#475569;font-size:13px;line-height:1.55}.formula-box{background:#f8fafc;border:1px solid #dbeafe;border-left:4px solid var(--accent);border-radius:12px;padding:16px;margin:14px 0;color:#1e293b;font-weight:800}.note-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-top:14px;color:#7c2d12}.reference-intro{font-size:14px;color:var(--text-muted);margin-bottom:14px}.reference-list{list-style:none}.reference-list li{padding:12px 0;border-bottom:1px solid #e2e8f0}.reference-list li:last-child{border-bottom:none}.reference-list a{display:block;color:var(--accent);font-weight:750;text-decoration:none;line-height:1.4}.reference-list a:hover{text-decoration:underline}.reference-list span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}.faq-item{margin-bottom:20px;border-bottom:1px solid #f1f5f9;padding-bottom:15px}.faq-item:last-child{border:none;padding:0;margin:0}.faq-item h4{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:6px}.faq-item p{font-size:14px;color:var(--text-muted);line-height:1.6;text-align:justify}.scientific-backing{font-size:.85rem;color:var(--text-muted);line-height:1.6;border-top:1px solid #e2e8f0;padding-top:25px;margin-top:25px}.scientific-backing p{margin-bottom:10px}.updated-row{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:16px}footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;color:var(--text-muted);font-size:13px}
 footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}footer a:hover{text-decoration:underline}
 .side-column .recommend-grid{grid-template-columns:1fr}.side-column .recommend-card{border-radius:6px;padding:17px}.side-column .scientific-backing{border-top:none;padding-top:0;margin-top:0}.visual-guide-card img{display:block;width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc}@media(max-width:1050px){.workspace-grid{grid-template-columns:1fr}.side-sticky{position:static}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side-column .card{margin-bottom:0}}@media(max-width:768px){body{padding:14px}.hero{padding:18px 0 22px;margin-bottom:20px}.hero h1{font-size:30px}.hero p{font-size:15px}.card{padding:22px 18px}.input-row,.recommend-grid,.macro-grid,.use-case-grid,.next-step-grid{grid-template-columns:1fr;flex-direction:column;gap:10px}.comparison-table{display:block;overflow-x:auto;white-space:normal}.result-val{font-size:42px}.side-column{grid-template-columns:1fr}.side-column .card{margin-bottom:0}}
-.basal-rate-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bfdbfe;background:#eff6ff;border-radius:10px;color:#1e3a8a}.basal-rate-banner strong{font-size:15px}.basal-rate-banner span{font-size:13px;line-height:1.5;color:#334155}.intent-match-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}.intent-match-card{border:1px solid #dbeafe;background:#eff6ff;border-radius:8px;padding:14px}.intent-match-card strong{display:block;color:#1e3a8a;font-size:14px;margin-bottom:5px}.intent-match-card span{display:block;color:#334155;font-size:13px;line-height:1.55}@media(max-width:768px){.intent-match-grid{grid-template-columns:1fr}}
+.basal-rate-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bfdbfe;background:#eff6ff;border-radius:10px;color:#1e3a8a}.basal-rate-banner strong{font-size:15px}.basal-rate-banner span{font-size:13px;line-height:1.5;color:#334155}
 </style>
 </head>
 <body>
@@ -203,16 +219,16 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <p>Basal Metabolic Rate, usually shortened to BMR, estimates the calories your body would use at complete rest to support essential functions such as breathing, circulation, body temperature, organ function, and cellular repair.</p><p>Use this basal metabolic rate calculator when your search question is "how many calories do I burn at rest?" BMR is not the same as your full daily calorie need. It is the resting baseline underneath total daily energy expenditure.</p>
     </div>
     <div class="content-section">
-        <h3>Quick Answers For Common BMR Searches</h3>
-        <div class="intent-match-grid"><div class="intent-match-card"><strong>bmr calculator</strong><span>Use the calculator above for a Mifflin-St Jeor BMR estimate from age, sex, height, and weight.</span></div><div class="intent-match-card"><strong>basal metabolic rate calculator</strong><span>This is the same resting baseline estimate, shown in kcal/day before activity is added.</span></div><div class="intent-match-card"><strong>find resting metabolic rate</strong><span>The result is a practical resting calorie estimate. True RMR can differ because lab conditions and measurement methods vary.</span></div><div class="intent-match-card"><strong>how to calculate BMR</strong><span>The formula section below shows the male and female equations and explains how metric and imperial inputs are handled.</span></div></div>
-    </div>
-    <div class="content-section">
         <h3>Metabolic Rate Calculator vs BMR Calculator</h3>
         <p>People often search for a metabolic rate calculator when they want a BMR estimate, a resting calorie estimate, or a full-day calorie estimate. This page answers the resting baseline question. If you want calories burned across a normal day, use TDEE after BMR.</p><p>In practical terms, BMR is the first step, TDEE is the daily maintenance estimate, and a calorie goal is a later planning decision.</p>
     </div>
     <div class="content-section">
         <h3>BMR Formula</h3>
         <p>This calculator uses the Mifflin-St Jeor equation, a common equation for estimating resting energy needs from weight, height, age, and sex.</p><div class="formula-box">Men: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5<br>Women: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</div><p>Metric inputs in kilograms and centimeters are used directly. Imperial inputs are converted to kilograms and centimeters before the equation is applied, so the calculation remains formula-consistent across unit systems. The <a href="https://toolsquark.com/guides/mifflin-st-jeor-equation-explained.html">Mifflin-St Jeor equation guide</a> shows the variables and worked examples in more detail.</p>
+    </div>
+    <div class="content-section">
+        <h3>Mifflin-St Jeor Male And Female Equation</h3>
+        <p>Search Console shows that users are finding ToolsQuark through very specific Mifflin-St Jeor equation questions. The important detail is the sex-specific constant at the end of the equation: +5 for men and -161 for women.</p><table class="comparison-table"><thead><tr><th>Equation Path</th><th>Formula</th><th>Use Case</th></tr></thead><tbody><tr><td>Men</td><td>10W + 6.25H - 5A + 5</td><td>Adult male BMR estimate from kg, cm, and age.</td></tr><tr><td>Women</td><td>10W + 6.25H - 5A - 161</td><td>Adult female BMR estimate from kg, cm, and age.</td></tr></tbody></table><p>W is weight in kilograms, H is height in centimeters, and A is age in years.</p>
     </div>
     <div class="content-section">
         <h3>How To Use Your Result</h3>
@@ -237,7 +253,6 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
     <div class="content-section">
         <h3>Why BMR Is Not The Final Calorie Target</h3>
         <p>BMR is the first number in an energy-planning sequence, not the last. Normal daily life adds walking, training, work, fidgeting, digestion, and recovery demands, so total daily energy needs are usually meaningfully higher than BMR.</p><p>After calculating BMR, move to the <a href="https://toolsquark.com/tools/tdee-calculator.html">TDEE calculator</a> for maintenance calories. Only then choose a deficit, maintenance target, surplus, or macro split with the <a href="https://toolsquark.com/tools/calorie-calculator.html">daily calorie goal calculator</a>.</p>
-        <table class="comparison-table"><thead><tr><th>Next Question</th><th>Best Next Page</th><th>Why</th></tr></thead><tbody><tr><td>What are my maintenance calories?</td><td><a href="https://toolsquark.com/tools/tdee-calculator.html">TDEE Calculator</a></td><td>Adds normal activity to the resting baseline.</td></tr><tr><td>What daily intake should I test?</td><td><a href="https://toolsquark.com/tools/calorie-calculator.html">Calorie Calculator</a></td><td>Turns maintenance into a deficit, maintenance, or surplus target.</td></tr><tr><td>How do BMR, RMR, and TDEE differ?</td><td><a href="https://toolsquark.com/guides/bmr-vs-rmr-vs-tdee.html">BMR vs RMR vs TDEE Guide</a></td><td>Explains which estimate to use before making decisions.</td></tr></tbody></table>
     </div></div>
     <div class="card" id="faq"><h3>Frequently Asked Questions</h3>
         <div class="faq-item">
@@ -251,6 +266,14 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
         <div class="faq-item">
             <h4>What formula does this BMR calculator use?</h4>
             <p>This calculator uses the Mifflin-St Jeor equation. For men, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5. For women, BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What is the Mifflin-St Jeor equation for men?</h4>
+            <p>For men, the Mifflin-St Jeor BMR equation is 10 x weight in kilograms + 6.25 x height in centimeters - 5 x age in years + 5.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What is the Mifflin-St Jeor equation for women?</h4>
+            <p>For women, the Mifflin-St Jeor BMR equation is 10 x weight in kilograms + 6.25 x height in centimeters - 5 x age in years - 161.</p>
         </div>
         <div class="faq-item">
             <h4>Can I use this as a BMR calculator in kg?</h4>
@@ -321,7 +344,7 @@ footer a{color:var(--accent);font-weight:700;text-decoration:none;margin:0 8px}f
                 <span class="action-text">Calibrate &rarr;</span>
             </a></div></div>
         <div class="card side-card reference-card" id="references"><h3>Authoritative References</h3><p class="reference-intro">Sources explain the underlying method and general guidance. They do not endorse this calculator or replace individual care.</p><ul class="reference-list"><li><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" target="_blank" rel="noopener noreferrer">A New Predictive Equation for Resting Energy Expenditure</a><span>The American Journal of Clinical Nutrition / PubMed</span></li><li><a href="https://www.niddk.nih.gov/bwp" target="_blank" rel="noopener noreferrer">Body Weight Planner</a><span>National Institute of Diabetes and Digestive and Kidney Diseases</span></li></ul></div>
-        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool uses the Mifflin-St Jeor equation with metric conversions for imperial entries. Results are rounded to the nearest whole calorie.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> BMR is an educational estimate, not a medical diagnosis or nutrition prescription. Consult a qualified clinician or registered dietitian before making major calorie changes.</p><div class="updated-row">Last updated: July 17, 2026</div></div></div>
+        <div class="card side-card" id="methodology"><div class="scientific-backing"><p><strong>Methodology & Quality Assurance:</strong> This tool uses the Mifflin-St Jeor equation with metric conversions for imperial entries. Results are rounded to the nearest whole calorie.</p><p style="font-style:italic;font-size:12px;"><strong>Medical Disclaimer:</strong> BMR is an educational estimate, not a medical diagnosis or nutrition prescription. Consult a qualified clinician or registered dietitian before making major calorie changes.</p><div class="updated-row">Last updated: July 24, 2026</div></div></div>
     </aside>
     </div>
     <footer><div><a href="https://toolsquark.com/about.html">About</a><a href="https://toolsquark.com/editorial-policy.html">Editorial Policy</a><a href="https://toolsquark.com/privacy.html">Privacy</a></div><p style="margin-top:10px;">&copy; 2026 ToolsQuark. All rights reserved.</p></footer>
