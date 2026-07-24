@@ -66,6 +66,43 @@ The Google OAuth token must include this readonly scope:
 https://www.googleapis.com/auth/webmasters.readonly
 ```
 
+### Create The OAuth Client
+
+1. Open [Google Cloud Console](https://console.cloud.google.com/).
+2. Create or select a project for ToolsQuark analytics.
+3. Go to **APIs & Services > Library** and enable **Google Search Console API**.
+4. Go to **APIs & Services > OAuth consent screen**.
+5. Use **External** if this is a personal Google account, add your own Google account as a test user while the app is in testing, and save.
+6. Go to **APIs & Services > Credentials > Create credentials > OAuth client ID**.
+7. Choose **Desktop app**.
+8. Download the client JSON and save it locally as:
+
+```text
+seo/gsc/credentials/oauth-client.json
+```
+
+This credentials directory is ignored by Git.
+
+### Generate A Refresh Token
+
+Run:
+
+```powershell
+node scripts/gsc-oauth-helper.js --write-env
+```
+
+Open the printed Google authorization URL, approve readonly Search Console access, and return to the terminal. The helper writes an ignored local file:
+
+```text
+seo/gsc/credentials/gsc-env.ps1
+```
+
+Load it before API pulls:
+
+```powershell
+. .\seo\gsc\credentials\gsc-env.ps1
+```
+
 Then fetch the latest complete 28-day window and generate a report:
 
 ```powershell
@@ -84,6 +121,7 @@ Validate the analyzer after changes:
 
 ```powershell
 node scripts/analyze-gsc-export.js --self-test
+node scripts/gsc-oauth-helper.js --self-test
 node scripts/fetch-gsc-api.js --self-test
 node scripts/audit-core-query-map.js
 node scripts/audit-acquisition-paths.js
