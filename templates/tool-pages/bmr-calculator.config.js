@@ -7,7 +7,7 @@ module.exports = {
   heroHighlights: ["Basal metabolic rate focus", "Mifflin-St Jeor formula", "TDEE next step included"],
   schemaName: "Privacy-First BMR Calculator",
   schemaDescription: "A free browser-side Basal Metabolic Rate calculator using the Mifflin-St Jeor equation, metric and imperial inputs, and practical energy-planning context.",
-  lastUpdated: "July 24, 2026",
+  lastUpdated: "September 28, 2026",
   buttonText: "Calculate BMR",
   resultUnit: "kcal/day",
   resultStatus: "Resting Energy Baseline",
@@ -45,6 +45,12 @@ module.exports = {
       title: "Mifflin-St Jeor Equation Guide",
       description: "See the exact male and female formulas, variables, examples, and limits.",
       action: "Read Guide"
+    },
+    {
+      href: "https://toolsquark.com/guides/mifflin-st-jeor-examples-men-women.html",
+      title: "Mifflin-St Jeor Examples",
+      description: "Follow complete male and female equation examples before comparing results.",
+      action: "See Examples"
     },
     {
       href: "https://toolsquark.com/tools/tdee-calculator.html",
@@ -134,7 +140,7 @@ module.exports = {
     },
     {
       title: "Mifflin-St Jeor Male And Female Equation",
-      body: `<p>Search Console shows that users are finding ToolsQuark through very specific Mifflin-St Jeor equation questions. The important detail is the sex-specific constant at the end of the equation: +5 for men and -161 for women.</p><table class="comparison-table"><thead><tr><th>Equation Path</th><th>Formula</th><th>Use Case</th></tr></thead><tbody><tr><td>Men</td><td>10W + 6.25H - 5A + 5</td><td>Adult male BMR estimate from kg, cm, and age.</td></tr><tr><td>Women</td><td>10W + 6.25H - 5A - 161</td><td>Adult female BMR estimate from kg, cm, and age.</td></tr></tbody></table><p>W is weight in kilograms, H is height in centimeters, and A is age in years.</p>`
+      body: `<p>The male and female Mifflin-St Jeor equations use the same weight, height, and age terms. The final constant is the key difference: +5 for men and -161 for women.</p><table class="comparison-table"><thead><tr><th>Equation Path</th><th>Formula</th><th>Use Case</th></tr></thead><tbody><tr><td>Men</td><td>10W + 6.25H - 5A + 5</td><td>Adult male BMR estimate from kg, cm, and age.</td></tr><tr><td>Women</td><td>10W + 6.25H - 5A - 161</td><td>Adult female BMR estimate from kg, cm, and age.</td></tr></tbody></table><p>W is weight in kilograms, H is height in centimeters, and A is age in years. The <a href="https://toolsquark.com/guides/mifflin-st-jeor-examples-men-women.html">worked examples guide</a> shows both calculations from start to finish.</p>`
     },
     {
       title: "How To Use Your Result",

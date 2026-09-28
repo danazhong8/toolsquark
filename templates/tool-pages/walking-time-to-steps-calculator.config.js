@@ -2,14 +2,14 @@ module.exports = {
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   slug: "walking-time-to-steps-calculator",
-  title: "Walking Time To Steps Calculator | 30, 45, 60 Min Walk",
-  description: "Convert walking minutes to steps for 30, 45, 60, or 90 minute walks. See easy, moderate, and brisk pace estimates plus steps-to-minutes examples.",
+  title: "45 Minute Walk To Steps Calculator | 30-90 Min",
+  description: "Estimate steps in a 45 minute walk or any 30-90 minute walk. Compare easy, moderate, and brisk pace estimates, including 4,050-5,625 steps for 45 minutes.",
   h1: "Walking Time To Steps Calculator",
-  hero: "Convert minutes of walking into estimated steps before you leave. Start with common searches like 15, 30, 45, or 60 minutes, choose a pace preset, then use the estimate for a daily step goal or a walking route plan.",
-  heroHighlights: ["15, 30, 45, 60 min examples", "5,000 and 10,000 step timing", "Easy, moderate, brisk pace"],
+  hero: "A 45 minute walk is about 4,050 to 5,625 steps across the easy-to-brisk presets. Enter any walking time, choose the pace that best matches your walk, and get an estimate you can use for a daily step goal.",
+  heroHighlights: ["45 min: 4,050-5,625 steps", "30, 60, 90 min examples", "Easy, moderate, brisk pace"],
   schemaName: "Privacy-First Walking Time To Steps Calculator",
   schemaDescription: "A browser-side calculator that estimates walking steps from walking minutes and pace presets.",
-  lastUpdated: "July 24, 2026",
+  lastUpdated: "September 28, 2026",
   buttonText: "Estimate Steps",
   resultUnit: "steps",
   resultStatus: "Estimated Steps",
@@ -19,14 +19,14 @@ module.exports = {
   dynamicNextSteps: true,
   controlsHtml: `
         <div class="walking-plan-banner">
-            <strong>30, 45, 60, or 90 minute walk to steps.</strong>
-            <span>Search data shows people asking exact walking-time questions. Enter minutes, choose easy/moderate/brisk pace, and copy a plain-language estimate.</span>
+            <strong>How many steps are in a 45 minute walk?</strong>
+            <span>About 4,050 at an easy pace, 4,950 at a moderate pace, or 5,625 at a brisk pace. Change the minutes or pace below for your own estimate.</span>
         </div>
         <div class="input-row">
             <div class="input-group">
                 <label for="input_minutes">Walking Time</label>
                 <div class="input-wrapper">
-                    <input type="number" id="input_minutes" value="30" min="1" max="300" step="1">
+                    <input type="number" id="input_minutes" value="45" min="1" max="300" step="1">
                     <span class="unit-badge">min</span>
                 </div>
             </div>

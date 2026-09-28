@@ -2,13 +2,14 @@ module.exports = {
   categoryHref: "lifestyle.html",
   categoryLabel: "Lifestyle Tools",
   slug: "daily-steps-goal-calculator",
-  title: "Daily Steps Goal Calculator | Realistic Steps Per Day Plan",
-  description: "Use a steps per day calculator to build a realistic daily step goal from your current average, objective, and timeline with weekly milestones.",
-  h1: "Steps Per Day Calculator",
-  hero: "Use this steps per day calculator to turn your current average into a realistic daily step goal with gradual weekly milestones, walking-time context, and safety notes.",
+  title: "Daily Step Goal Calculator | Personal Steps Per Day Plan",
+  description: "Create a personal daily step goal from your current 7-day average, objective, and timeline. Get realistic weekly milestones for a 4, 6, or 8 week plan.",
+  h1: "Daily Step Goal Calculator",
+  hero: "Turn your current 7-day step average into a personal daily goal. Choose a practical target and get gradual weekly milestones that fit a 4, 6, or 8 week plan.",
+  heroHighlights: ["Starts from your 7-day average", "4, 6, or 8 week plan", "5,000, 8,500, 12,000 presets"],
   schemaName: "Privacy-First Daily Steps Goal Calculator",
   schemaDescription: "A browser-side progressive walking plan that moves from a current step baseline toward one of three disclosed preset targets.",
-  lastUpdated: "July 13, 2026",
+  lastUpdated: "September 28, 2026",
   buttonText: "Generate Step Plan",
   resultHtml: `
             <div class="result-val"><span id="calc-output">0</span><span class="result-unit">steps/day</span></div>
@@ -20,6 +21,10 @@ module.exports = {
                 <p id="calc-suggestion" style="margin-top:12px;"></p>
             </div>`,
   controlsHtml: `
+        <div class="step-goal-banner">
+            <strong>Start with your normal week, not your best day.</strong>
+            <span>Use the average from the last 7 days, then choose a goal and timeline. The calculator spreads the increase into visible weekly milestones.</span>
+        </div>
         <div class="input-group">
             <label for="select_goal">Primary Fitness Objective</label>
             <div class="input-wrapper">
@@ -47,7 +52,7 @@ module.exports = {
                 </div>
             </div>
         </div>`,
-  extraCss: `.input-help{margin-top:7px;font-size:12px;color:var(--text-muted);line-height:1.45}`,
+  extraCss: `.step-goal-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bfdbfe;background:#eff6ff;border-radius:10px;color:#1e3a8a}.step-goal-banner strong{font-size:15px}.step-goal-banner span{font-size:13px;line-height:1.5;color:#334155}.input-help{margin-top:7px;font-size:12px;color:var(--text-muted);line-height:1.45}`,
   relatedTitle: "Track Movement Impact",
   related: [
     { href: "https://toolsquark.com/guides/common-walking-distances-to-steps.html", title: "Common Walking Distances Guide", description: "Estimate how many steps common routes may add before setting a daily target.", action: "Read Guide" },

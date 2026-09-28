@@ -1,23 +1,29 @@
 module.exports = {
   slug: "body-fat-calculator",
-  title: "Body Fat Calculator | U.S. Navy Circumference Method",
-  description: "Estimate adult body fat percentage with the U.S. Navy circumference method. Includes measurement instructions, formula details, limits, and sources.",
-  h1: "Body Fat Calculator",
-  hero: "Estimate body fat percentage from circumference measurements using the U.S. Navy method, processed privately in your browser.",
+  title: "Body Fat Calculator: How To Measure Body Fat At Home",
+  description: "Measure body fat at home with a tape measure and the U.S. Navy method. See exactly where to measure neck, waist, hips, and height before calculating.",
+  h1: "Body Fat Calculator: Measure Body Fat At Home",
+  hero: "Estimate body fat percentage from simple circumference measurements. Follow the tape-placement guide first, then calculate privately in your browser with the U.S. Navy method.",
+  heroHighlights: ["Men: height, neck, waist", "Women: add hip measurement", "Tape-placement guide included"],
   schemaName: "Privacy-First Body Fat Calculator",
   schemaDescription: "A browser-side adult body fat estimate using U.S. Navy circumference equations, with metric and imperial inputs and method limitations.",
-  lastUpdated: "June 20, 2026",
+  lastUpdated: "September 28, 2026",
   buttonText: "Calculate Body Fat",
   resultUnit: "%",
   resultStatus: "Estimated Body Fat",
   gaugeLabels: ["Lower", "Midrange", "Higher"],
   insightTitle: "Composition Insight",
   controlsHtml: `
+        <div class="measurement-guide-banner">
+            <strong>Measure first, then calculate.</strong>
+            <span>Keep the tape level and snug without compressing skin. Men enter height, neck, and waist. Women also enter hip circumference at the widest point.</span>
+        </div>
         <div class="unit-switcher">
             <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (cm)</div>
             <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (inches)</div>
         </div>
         <div id="inputs-container"></div>`,
+  extraCss: `.measurement-guide-banner{display:grid;gap:5px;margin-bottom:14px;padding:14px 16px;border:1px solid #bfdbfe;background:#eff6ff;border-radius:10px;color:#1e3a8a}.measurement-guide-banner strong{font-size:15px}.measurement-guide-banner span{font-size:13px;line-height:1.5;color:#334155}`,
   relatedTitle: "Add Context To The Result",
   related: [
     { href: "https://toolsquark.com/tools/lean-body-mass-calculator.html", title: "Lean Body Mass Calculator", description: "Estimate non-fat body mass from height and weight.", action: "Check Lean Mass" },
@@ -31,7 +37,7 @@ module.exports = {
     { question: "What measurements are required?", answer: "Men need height, neck, and waist circumference. Women need height, neck, waist, and hip circumference." },
     { question: "How accurate is the U.S. Navy method?", answer: "It is a field estimate derived from circumference measurements and population equations. Individual error can be meaningful, so it is better for repeatable trend tracking than for treating one decimal result as exact." },
     { question: "Should I use metric or imperial units?", answer: "Either works as long as every measurement matches the selected system. Imperial entries are converted to centimeters before the equations are applied." },
-    { question: "Where should I measure?", answer: "Keep the tape horizontal and snug without compressing skin. Measure the neck below the larynx, the waist at the method-specific abdominal site, and for women the hips at the widest point. Repeat each measurement." },
+    { question: "How do I measure body fat at home?", answer: "Use a flexible tape and keep it horizontal and snug without compressing skin. Measure height, the neck below the larynx, and the waist at the abdominal site. Women also measure hips at the widest point. Repeat each measurement and use the average if readings differ." },
     { question: "Can this replace DEXA or clinical assessment?", answer: "No. Circumference equations infer body composition from body shape. They do not directly image fat or lean tissue and may be less suitable when body proportions differ from the development samples." }
   ],
   contentSections: [
