@@ -5,6 +5,14 @@ const guides = require("./guide-page-data");
 const root = path.resolve(__dirname, "..");
 const site = "https://toolsquark.com";
 const lastmod = "2026-07-27";
+const pageLastmods = {
+  "tools/bmr-calculator.html": "2026-09-28",
+  "tools/tdee-calculator.html": "2026-09-28",
+  "tools/body-fat-calculator.html": "2026-09-28",
+  "tools/water-intake-calculator.html": "2026-10-10",
+  "tools/due-date-calculator.html": "2026-10-10",
+  "tools/walking-time-to-steps-calculator.html": "2026-10-10"
+};
 const reviewedDate = "July 27, 2026";
 
 const groups = {
@@ -626,7 +634,7 @@ function renderSitemap() {
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((url) => `  <url><loc>${site}/${url}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}
+${urls.map((url) => `  <url><loc>${site}/${url}</loc><lastmod>${pageLastmods[url] || lastmod}</lastmod></url>`).join("\n")}
 </urlset>
 `;
 }

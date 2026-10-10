@@ -1,23 +1,34 @@
 module.exports = {
   slug: "water-intake-calculator",
   title: "Water Intake Calculator | Daily Hydration & Fluid Needs | ToolsQuark",
-  description: "Estimate a daily fluid planning target from body weight and exercise duration. Includes the heuristic, hydration limits, and authoritative guidance.",
-  h1: "Water Intake Calculator",
-  hero: "Estimate your daily hydration target from body weight, sex profile, and exercise duration.",
+  description: "How much water should you drink a day? Estimate a daily fluid starting point by weight and exercise, in liters, US cups and fluid ounces, with clear limits.",
+  h1: "Daily Water Intake Calculator",
+  hero: "How much water should you drink a day? Estimate fluid intake in liters, US cups, and fluid ounces from weight and exercise. A general adult starting point, not a plain-water prescription.",
   schemaName: "Privacy-First Water Intake Calculator",
   schemaDescription: "A browser-side fluid planning estimate based on body weight and exercise duration, with clear limits and hydration safety guidance.",
-  lastUpdated: "June 21, 2026",
-  buttonText: "Calculate Hydration Target",
-  resultUnit: "L/day",
-  resultStatus: "Hydration Target",
-  gaugeLabels: ["Baseline", "Active", "High"],
-  insightTitle: "Hydration Strategy",
+  lastUpdated: "October 10, 2026",
+  buttonText: "Estimate Daily Fluid Intake",
+  resultHtml: `
+            <div class="result-status" id="calc-status">Daily Fluid Starting Estimate</div>
+            <div class="result-val"><span id="calc-output">--</span><span class="result-unit">L/day</span></div>
+            <dl class="water-result-grid">
+                <div><dt>US cups / day</dt><dd id="water-cups">--</dd></div>
+                <div><dt>US fluid ounces / day</dt><dd id="water-ounces">--</dd></div>
+                <div><dt>Baseline estimate</dt><dd id="water-baseline">--</dd></div>
+                <div><dt>Exercise allowance</dt><dd id="water-exercise">--</dd></div>
+            </dl>
+            <p class="result-desc" id="calc-desc"></p>
+            <div class="result-boundary"><strong>Not a plain-water prescription</strong><span>Other drinks contribute to fluid intake, and food contributes to total water. This estimate does not measure dehydration or replace a clinician's fluid restriction. Do not force yourself to meet the number.</span></div>
+            <div class="suggestion-box"><h4>Put The Estimate In Context</h4><p id="calc-suggestion"></p></div>
+            <div class="share-result-panel"><h4>Result Summary</h4><p id="share-summary"></p><button type="button" class="share-copy-btn" onclick="copyShareResult()">Copy Summary</button><span id="share-copy-status" aria-live="polite"></span></div>`,
   controlsHtml: `
         <div class="unit-switcher">
-            <div class="unit-tab active" id="tab-metric" onclick="switchUnit('metric')">Metric Units (kg)</div>
-            <div class="unit-tab" id="tab-imperial" onclick="switchUnit('imperial')">Imperial Units (lbs)</div>
+            <button type="button" class="unit-tab active" id="tab-metric" aria-label="Body weight in kilograms" aria-pressed="true" onclick="switchUnit('metric')">Kilograms</button>
+            <button type="button" class="unit-tab" id="tab-imperial" aria-label="Body weight in pounds" aria-pressed="false" onclick="switchUnit('imperial')">Pounds</button>
         </div>
-        <div id="inputs-container"></div>`,
+        <div id="inputs-container"></div>
+        <p class="water-method-note">Adult planning heuristic, not a clinical or pregnancy-specific target. <a href="#guide">Method and limits</a>.</p>`,
+  extraCss: `.unit-tab{border:0;font-family:inherit}.unit-tab:focus-visible,.share-copy-btn:focus-visible{outline:3px solid #2563eb;outline-offset:3px}.water-method-note{font-size:13px;color:#475569;margin-bottom:18px}.water-method-note a{color:#2563eb}.water-result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:22px 0;text-align:left}.water-result-grid div{padding:12px 0;border-bottom:1px solid #e2e8f0;min-width:0}.water-result-grid dt{font-size:13px;color:#64748b}.water-result-grid dd{font-size:22px;font-weight:800;overflow-wrap:anywhere}.result-val{overflow-wrap:anywhere}.share-result-panel p{white-space:pre-line;overflow-wrap:anywhere}.input-group{min-width:0}@media(max-width:768px){.hero{padding:12px 0 18px;margin-bottom:16px}.card{padding:18px 16px}.unit-switcher{margin-bottom:16px}.input-group{margin-bottom:14px}}@media(max-width:380px){.water-result-grid{grid-template-columns:1fr}}`,
   relatedTitle: "Support Daily Activity",
   related: [
     { href: "https://toolsquark.com/tools/steps-to-calories-converter.html", title: "Steps to Calories Converter", description: "Estimate calories burned from your walking step count.", action: "Convert Steps" },
@@ -28,6 +39,8 @@ module.exports = {
     { title: "About Water and Healthier Drinks", publisher: "Centers for Disease Control and Prevention", href: "https://www.cdc.gov/healthy-weight-growth/water-healthy-drinks/index.html" }
   ],
   faq: [
+    { question: "How much water should I drink a day?", answer: "There is no single amount that suits everyone. This calculator gives a disclosed weight-and-exercise starting estimate in liters, US cups, and US fluid ounces. Climate, pregnancy, health conditions, food, and other drinks can change how you interpret it; it is not a requirement to drink that much plain water." },
+    { question: "How many cups are in a liter of water?", answer: "One liter is about 4.23 US customary cups or 33.81 US fluid ounces. This page uses a 236.59 mL US cup, not a 250 mL metric cup or an Imperial fluid ounce." },
     { question: "Does coffee or tea count toward fluid intake?", answer: "Yes, mild caffeinated drinks contribute to total daily fluid intake, though plain water remains the most direct hydration option." },
     { question: "Can I drink too much water?", answer: "Yes. Excessive intake can contribute to low blood sodium, especially during long endurance events. Use thirst, urine color, and medical guidance alongside numerical estimates." },
     { question: "Why does exercise increase the result?", answer: "Exercise raises sweat and respiratory fluid losses. This calculator adds an activity allowance based on exercise duration." }
@@ -43,7 +56,11 @@ module.exports = {
     },
     {
       title: "Worked Example",
-      body: `<p>A 70 kg person selecting the male profile and entering 30 minutes of exercise receives (70 x 0.035) + 0.35 = 2.80 L/day as a starting estimate.</p>`
+      body: `<p>For 70 kg, the 35 mL/kg profile, and 30 minutes of exercise: 2.45 L baseline + 0.35 L exercise allowance = 2.80 L/day. That is about 11.8 US cups or 94.7 US fluid ounces, not an instruction to drink 11.8 cups of plain water.</p><table class="comparison-table"><thead><tr><th>Example inputs</th><th>Starting estimate</th><th>US cups</th></tr></thead><tbody><tr><td>60 kg, 31 mL/kg, no exercise</td><td>1.86 L/day</td><td>7.9</td></tr><tr><td>70 kg, 35 mL/kg, 30 min exercise</td><td>2.80 L/day</td><td>11.8</td></tr><tr><td>80 kg, 35 mL/kg, 60 min exercise</td><td>3.50 L/day</td><td>14.8</td></tr></tbody></table><p>The examples illustrate the heuristic, not recommended targets for people of these weights.</p>`
+    },
+    {
+      title: "Drinking Fluids Versus Total Water",
+      body: `<p>Keep three different quantities separate: plain drinking water, fluids from all drinks, and total water including food. This result is a fluid-planning estimate; it is not the National Academies' total-water adequate intake. <a href="https://www.cdc.gov/healthy-weight-growth/water-healthy-drinks/index.html">CDC guidance</a> explains that water needs vary and that beverages and food both contribute.</p><p>If you are planning a walk or routine day, the unit conversions can help you understand drink sizes. For endurance exercise, pregnancy, breastfeeding, or a medical fluid limit, use advice specific to your circumstances instead of scaling this general estimate.</p>`
     },
     {
       title: "How To Adjust The Starting Point",
@@ -63,61 +80,78 @@ function renderInputs() {
     const unit = currentUnit === 'metric' ? 'kg' : 'lbs';
     container.innerHTML = \`
         <div class="input-group">
-            <label for="input_gender">Profile</label>
+            <label for="input_gender">Formula Profile</label>
             <div class="input-wrapper">
                 <select id="input_gender">
-                    <option value="male">Male Profile</option>
-                    <option value="female">Female Profile</option>
+                    <option value="male">Male profile (35 mL/kg)</option>
+                    <option value="female">Female profile (31 mL/kg)</option>
                 </select>
             </div>
         </div>
         <div class="input-row">
             <div class="input-group">
                 <label for="input_weight">Body Weight</label>
-                <div class="input-wrapper"><input type="number" id="input_weight" placeholder="\${currentUnit === 'metric' ? 'e.g. 70' : 'e.g. 154'}" step="any"><span class="unit-badge">\${unit}</span></div>
+                <div class="input-wrapper"><input type="number" id="input_weight" placeholder="\${currentUnit === 'metric' ? 'e.g. 70' : 'e.g. 154'}" min="0.01" step="any" inputmode="decimal"><span class="unit-badge">\${unit}</span></div>
             </div>
             <div class="input-group">
                 <label for="input_activity">Daily Exercise</label>
-                <div class="input-wrapper"><input type="number" id="input_activity" placeholder="e.g. 45" step="any"><span class="unit-badge">min</span></div>
+                <div class="input-wrapper"><input type="number" id="input_activity" value="0" min="0" max="1440" step="any" inputmode="decimal"><span class="unit-badge">min</span></div>
             </div>
         </div>\`;
 }
+function clearWaterResult() {
+    document.getElementById('result-area').style.display = 'none';
+    document.getElementById('share-copy-status').innerText = '';
+}
 function switchUnit(unit) {
     if (currentUnit === unit) return;
+    const profile = document.getElementById('input_gender').value;
+    const weight = parseFloat(document.getElementById('input_weight').value);
+    const activity = document.getElementById('input_activity').value;
+    const converted = unit === 'imperial' ? weight / 0.45359237 : weight * 0.45359237;
     currentUnit = unit;
     document.getElementById('tab-metric').classList.toggle('active', unit === 'metric');
     document.getElementById('tab-imperial').classList.toggle('active', unit === 'imperial');
-    document.getElementById('result-area').style.display = 'none';
+    document.getElementById('tab-metric').setAttribute('aria-pressed', String(unit === 'metric'));
+    document.getElementById('tab-imperial').setAttribute('aria-pressed', String(unit === 'imperial'));
+    clearWaterResult();
     renderInputs();
+    document.getElementById('input_gender').value = profile;
+    document.getElementById('input_weight').value = Number.isFinite(converted) && converted > 0 ? converted.toFixed(2) : '';
+    document.getElementById('input_activity').value = activity;
 }
 function calculateNow() {
+    clearWaterResult();
     const gender = document.getElementById('input_gender').value;
     let weight = parseFloat(document.getElementById('input_weight').value);
-    const activity = parseFloat(document.getElementById('input_activity').value) || 0;
-    if (isNaN(weight) || weight <= 0 || activity < 0) {
-        alert('Please enter valid body weight and exercise duration.');
+    const activityValue = document.getElementById('input_activity').value;
+    const activity = activityValue === '' ? 0 : Number(activityValue);
+    if (!Number.isFinite(weight) || weight <= 0 || !Number.isFinite(activity) || activity < 0 || activity > 1440) {
+        alert('Enter a positive body weight and exercise duration from 0 to 1,440 minutes.');
         return;
     }
     if (currentUnit === 'imperial') weight *= 0.45359237;
     const multiplier = gender === 'male' ? 0.035 : 0.031;
-    const litres = (weight * multiplier) + ((activity / 30) * 0.35);
-    let result = {};
-    if (litres < 2) {
-        result = { status: 'Baseline Hydration Level', color: 'var(--underweight)', desc: \`Your estimated target is \${litres.toFixed(2)} L/day. This reflects a lower body weight or low exercise volume.\`, suggestion: 'Spread intake across the day instead of trying to drink everything at once.', percent: Math.max(5, litres / 2 * 30) };
-    } else if (litres <= 3.5) {
-        result = { status: 'Active Hydration Level', color: 'var(--normal)', desc: \`Your estimated target is \${litres.toFixed(2)} L/day based on body weight and activity.\`, suggestion: 'Use this as a daily anchor, then adjust for heat, sweating, salty meals, and thirst.', percent: 30 + ((litres - 2) / 1.5) * 40 };
-    } else {
-        result = { status: 'Higher Fluid Estimate', color: 'var(--overweight)', desc: \`Your estimated target is \${litres.toFixed(2)} L/day, driven by the entered body weight, profile, and exercise duration.\`, suggestion: 'For long or hot training sessions, individualize fluid and electrolyte replacement and avoid forcing excessive plain water.', percent: Math.min(95, 70 + (Math.min(litres - 3.5, 2) / 2) * 25) };
+    const baseline = weight * multiplier;
+    const exercise = (activity / 30) * 0.35;
+    const litres = baseline + exercise;
+    if (!Number.isFinite(litres)) {
+        alert('Please check the entered body weight.');
+        return;
     }
     document.getElementById('result-area').style.display = 'block';
     document.getElementById('calc-output').innerText = litres.toFixed(2);
-    document.getElementById('calc-output').style.color = result.color;
-    document.getElementById('calc-status').innerText = result.status;
-    document.getElementById('calc-status').style.color = result.color;
-    document.getElementById('calc-desc').innerText = result.desc;
-    document.getElementById('calc-suggestion').innerText = result.suggestion;
-    document.getElementById('gauge-pointer').style.left = result.percent + '%';
+    document.getElementById('water-cups').innerText = (litres / 0.2365882365).toFixed(1);
+    document.getElementById('water-ounces').innerText = (litres / 0.0295735295625).toFixed(1);
+    document.getElementById('water-baseline').innerText = baseline.toFixed(2) + ' L';
+    document.getElementById('water-exercise').innerText = exercise.toFixed(2) + ' L';
+    document.getElementById('calc-desc').innerText = 'Starting estimate: ' + litres.toFixed(2) + ' L/day, about ' + (litres / 0.2365882365).toFixed(1) + ' US cups or ' + (litres / 0.0295735295625).toFixed(1) + ' US fl oz. Based on the ' + (multiplier * 1000).toFixed(0) + ' mL/kg profile and ' + activity + ' exercise minutes. This is not a plain-water prescription.';
+    document.getElementById('calc-suggestion').innerText = activity >= 120
+        ? 'A fixed exercise allowance is not a sweat-loss measurement. For prolonged exercise, individualize fluids and electrolytes and avoid forcing plain water.'
+        : 'Use thirst, conditions, other drinks, and medical advice as context. If you have a prescribed fluid limit, follow that instead of this estimate.';
     document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
-renderInputs();`
+renderInputs();
+document.getElementById('inputs-container').addEventListener('input', clearWaterResult);
+document.getElementById('inputs-container').addEventListener('change', clearWaterResult);`
 };
